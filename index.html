@@ -371,6 +371,35 @@
 
         <!-- SECTION: HISTORIAL DE PICKS -->
         <section id="section-history" class="hidden space-y-6">
+            <!-- PANEL DE EVALUACIÓN Y RACHA -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Racha Card -->
+                <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Racha Actual del Sistema</span>
+                        <h2 class="text-3xl font-extrabold mt-1" id="system-current-streak">--</h2>
+                        <p class="text-xs text-gray-400 mt-1">Picks consecutivos del mismo resultado</p>
+                    </div>
+                    <div class="p-4 rounded-xl flex items-center justify-center" id="system-streak-icon-container">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                
+                <!-- Últimos 10 Resultados Form Row -->
+                <div class="glass-card p-6 rounded-2xl md:col-span-2 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Historial de Forma Reciente (Últimos 10 Picks Resueltos)</span>
+                        <div class="flex items-center gap-2 mt-3" id="system-form-row">
+                            <!-- Burbujas cargadas dinámicamente -->
+                        </div>
+                    </div>
+                    <div class="text-xs text-gray-400 mt-2 flex justify-between">
+                        <span>Izquierda: Más antiguo • Derecha: Más reciente</span>
+                        <span id="system-streak-winrate-10">Win Rate (Últimos 10): --%</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="glass-card p-6 rounded-2xl space-y-4">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
@@ -587,6 +616,39 @@
             return html;
         }
 
+        // Helper para convertir hora UTC a Local (e.g. GMT-4 del usuario)
+        function formatLocalTime(dateStr, timeStr) {
+            if (!dateStr || dateStr === 'N/A' || !timeStr || timeStr === 'N/A') {
+                return { date: dateStr, time: timeStr, tz: 'UTC' };
+            }
+            try {
+                // Parsear como string UTC
+                const utcString = `${dateStr}T${timeStr}:00Z`;
+                const dateObj = new Date(utcString);
+                if (isNaN(dateObj.getTime())) {
+                    return { date: dateStr, time: timeStr, tz: 'UTC' };
+                }
+                
+                // Formato de fecha local: YYYY-MM-DD
+                const year = dateObj.getFullYear();
+                const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                const day = String(dateObj.getDate()).padStart(2, '0');
+                const localDate = `${year}-${month}-${day}`;
+                
+                // Formato de hora local: HH:MM
+                const hours = String(dateObj.getHours()).padStart(2, '0');
+                const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+                const localTime = `${hours}:${minutes}`;
+                
+                // Obtener nombre corto de la zona horaria
+                const tzStr = dateObj.toLocaleTimeString('es-ES', { timeZoneName: 'short' }).split(' ').pop();
+                
+                return { date: localDate, time: localTime, tz: tzStr };
+            } catch (e) {
+                return { date: dateStr, time: timeStr, tz: 'UTC' };
+            }
+        }
+
         // --- SECTION PICKS ---
         function renderPicks(picks) {
             const grid = document.getElementById('picks-grid');
@@ -627,6 +689,24 @@
                     sustentoLabel = '<span class="text-[11px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>Solo Visitante</span>';
                 }
                 
+                // Detección de sequía HT
+                let droughtWarning = '';
+                if (pick.local_stats.sequia_ht || pick.visitante_stats.sequia_ht) {
+                    const droughtTeams = [];
+                    if (pick.local_stats.sequia_ht) droughtTeams.push('Local');
+                    if (pick.visitante_stats.sequia_ht) droughtTeams.push('Visitante');
+                    const teamsStr = droughtTeams.join(' y ');
+                    droughtWarning = `
+                        <div class="px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-xl text-xs flex items-center gap-1.5 cursor-help" title="Alerta: El equipo ${teamsStr} viene de 2 o más partidos consecutivos con 0-0 al descanso en sus encuentros recientes.">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-400 animate-bounce flex-shrink-0"></i>
+                            <span class="font-semibold text-amber-300">Alerta de Sequía HT (${teamsStr})</span>
+                        </div>
+                    `;
+                }
+                
+                // Conversión de hora local
+                const localInfo = formatLocalTime(pick.fecha, pick.hora);
+                
                 card.innerHTML = `
                     <div class="space-y-4">
                         <div class="flex justify-between items-start border-b border-white/5 pb-3">
@@ -634,7 +714,7 @@
                                 <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga}
                             </span>
                             <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
-                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${pick.fecha || ''} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${pick.hora} (UTC)
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${localInfo.date} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${localInfo.time} (${localInfo.tz})
                             </span>
                         </div>
                         
@@ -642,6 +722,8 @@
                             ${classBadge}
                             ${sustentoLabel}
                         </div>
+                        
+                        ${droughtWarning}
                         
                         <div class="py-2 text-center">
                             <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
@@ -697,8 +779,11 @@
 
         // Helper to check if a value meets criteria
         function meetsThreshold(key, valStr) {
+            if (key === 'sequia_ht') {
+                return !valStr; // Favorable si no hay sequía (false)
+            }
             if (!valStr || valStr === 'N/A') return false;
-            const valNum = parseFloat(valStr.replace('%', ''));
+            const valNum = parseFloat(String(valStr).replace('%', ''));
             if (key === 'ht_05_pct') return valNum >= 75.0;
             if (key === 'ht_15_pct') return valNum >= 40.0;
             if (key === 'bts_pct') return valNum >= 40.0;
@@ -711,6 +796,9 @@
 
         // --- HISTORY TABLE ---
         function renderHistoryTable() {
+            // Calcular racha actual del sistema y forma de los últimos 10
+            calculateSystemStreakAndForm();
+
             const tbody = document.getElementById('history-table-body');
             tbody.innerHTML = '';
             
@@ -742,8 +830,11 @@
                 
                 const marcador = pick.marcador_ht !== null ? pick.marcador_ht : '-';
                 
+                // Conversión de hora local
+                const localInfo = formatLocalTime(pick.fecha, pick.hora);
+
                 tr.innerHTML = `
-                    <td class="py-3 text-xs md:text-sm">${pick.fecha} <span class="text-gray-500 text-[11px] font-light">${pick.hora}</span></td>
+                    <td class="py-3 text-xs md:text-sm">${localInfo.date} <span class="text-gray-500 text-[11px] font-light">${localInfo.time} (${localInfo.tz})</span></td>
                     <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
                         ${pick.liga} ${classBadge}
                     </td>
@@ -769,6 +860,87 @@
             lucide.createIcons();
         }
 
+        // Función para calcular la racha actual del sistema y la forma
+        function calculateSystemStreakAndForm() {
+            const history = window.dashboardData.picks_history || [];
+            
+            // Filtrar solo picks con resultado resuelto
+            const resolved = history.filter(p => p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA');
+            
+            const streakEl = document.getElementById('system-current-streak');
+            const streakIconContainer = document.getElementById('system-streak-icon-container');
+            const formRow = document.getElementById('system-form-row');
+            const streakWinrateEl = document.getElementById('system-streak-winrate-10');
+            
+            if (resolved.length === 0) {
+                if (streakEl) streakEl.innerText = "Sin picks";
+                if (formRow) formRow.innerHTML = '<span class="text-xs text-gray-500">No hay picks resueltos en el historial.</span>';
+                return;
+            }
+            
+            // 1. Calcular racha activa (del pick más reciente hacia atrás)
+            const firstResult = resolved[0].resultado_apuesta;
+            let streakCount = 0;
+            for (let i = 0; i < resolved.length; i++) {
+                if (resolved[i].resultado_apuesta === firstResult) {
+                    streakCount++;
+                } else {
+                    break;
+                }
+            }
+            
+            if (streakEl) {
+                if (firstResult === 'GANADA') {
+                    streakEl.className = "text-3xl font-extrabold mt-1 text-emerald-400";
+                    streakEl.innerText = `${streakCount} GANADAS`;
+                    if (streakIconContainer) {
+                        streakIconContainer.className = "p-4 bg-emerald-500/10 text-emerald-400 rounded-xl";
+                        streakIconContainer.innerHTML = '<i data-lucide="trending-up" class="w-8 h-8"></i>';
+                    }
+                } else {
+                    streakEl.className = "text-3xl font-extrabold mt-1 text-rose-500";
+                    streakEl.innerText = `${streakCount} PERDIDAS`;
+                    if (streakIconContainer) {
+                        streakIconContainer.className = "p-4 bg-rose-500/10 text-rose-500 rounded-xl";
+                        streakIconContainer.innerHTML = '<i data-lucide="trending-down" class="w-8 h-8"></i>';
+                    }
+                }
+            }
+            
+            // 2. Renderizar últimas 10 (orden cronológico ascendente: más antiguo izquierda, más reciente derecha)
+            const last10 = resolved.slice(0, 10).reverse();
+            if (formRow) {
+                formRow.innerHTML = '';
+                last10.forEach(pick => {
+                    const circle = document.createElement('div');
+                    const isWin = pick.resultado_apuesta === 'GANADA';
+                    const bgClass = isWin 
+                        ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400' 
+                        : 'bg-rose-500/10 border-rose-500/25 text-rose-400/75';
+                    
+                    circle.className = `w-10 h-10 rounded-full border flex items-center justify-center font-bold text-sm cursor-help hover:scale-110 transition-transform ${bgClass}`;
+                    
+                    const localInfo = formatLocalTime(pick.fecha, pick.hora);
+                    const teamsStr = `${pick.local} vs ${pick.visitante}`;
+                    const scoreStr = pick.marcador_ht ? `(HT: ${pick.marcador_ht})` : '';
+                    circle.title = `${localInfo.date} ${localInfo.time}\n${teamsStr}\nResultado: ${pick.resultado_apuesta} ${scoreStr}`;
+                    circle.innerText = isWin ? '✓' : '✗';
+                    
+                    formRow.appendChild(circle);
+                });
+            }
+            
+            // 3. Win Rate de los últimos 10
+            if (streakWinrateEl) {
+                const winsInLast10 = last10.filter(p => p.resultado_apuesta === 'GANADA').length;
+                const totalInLast10 = last10.length;
+                const rate = totalInLast10 > 0 ? ((winsInLast10 / totalInLast10) * 100).toFixed(1) : 0;
+                streakWinrateEl.innerText = `Win Rate (Últimos ${totalInLast10}): ${rate}%`;
+            }
+            
+            lucide.createIcons();
+        }
+
         // --- MODAL LOGIC ---
         function openModal(pickIndex, isHistory = false) {
             const pick = isHistory 
@@ -779,6 +951,13 @@
             document.getElementById('modal-home-team').innerText = pick.local;
             document.getElementById('modal-away-team').innerText = pick.visitante;
             
+            // Actualizar la hora local en el subtítulo del modal
+            const localInfo = formatLocalTime(pick.fecha, pick.hora);
+            const subtitleEl = document.querySelector('#modal-sustento p.text-gray-400');
+            if (subtitleEl) {
+                subtitleEl.innerText = `Comparación estadística detallada (Primer Tiempo / HT) • ${localInfo.date} ${localInfo.time} (${localInfo.tz})`;
+            }
+
             // Update headers based on candidate status
             const homeHeader = document.getElementById('modal-home-header');
             const awayHeader = document.getElementById('modal-away-header');
@@ -805,7 +984,8 @@
                 { label: 'Rendimiento HT (Anotó+Encajó)', key: 'rendimiento_ht', threshold: '>= 50.0%', valH: pick.local_stats.rendimiento_ht, valA: pick.visitante_stats.rendimiento_ht },
                 { label: 'Media Goles HT (General)', key: 'avg_goals_ht_general', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_general, valA: pick.visitante_stats.avg_goals_ht_general },
                 { label: 'Media Goles HT (Rol en Casa/Fuera)', key: 'avg_goals_ht_rol', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_rol, valA: pick.visitante_stats.avg_goals_ht_rol },
-                { label: 'Racha HT (Últimos 5)', key: 'racha_ht', threshold: '>= 4/5', valH: pick.local_stats.racha_ht, valA: pick.visitante_stats.racha_ht }
+                { label: 'Racha HT (Últimos 5)', key: 'racha_ht', threshold: '>= 4/5', valH: pick.local_stats.racha_ht, valA: pick.visitante_stats.racha_ht },
+                { label: 'Detección de Sequía HT (2+ sin goles)', key: 'sequia_ht', threshold: 'No (Favorable)', valH: pick.local_stats.sequia_ht, valA: pick.visitante_stats.sequia_ht }
             ];
             
             filters.forEach(f => {
@@ -820,6 +1000,13 @@
                 let hValHtml = '';
                 let aValHtml = '';
                 
+                let formattedValH = f.valH;
+                let formattedValA = f.valA;
+                if (f.key === 'sequia_ht') {
+                    formattedValH = f.valH ? 'Sí (Alerta ⚠️)' : 'No (Ok)';
+                    formattedValA = f.valA ? 'Sí (Alerta ⚠️)' : 'No (Ok)';
+                }
+
                 if (f.key === 'racha_ht') {
                     hValHtml = pick.local_stats.is_candidate
                         ? `<div class="flex justify-center">${renderStreakCircles(pick.local_stats.racha_detalles, f.valH)}</div>`
@@ -830,12 +1017,12 @@
                         : `<div class="flex justify-center opacity-50">${renderStreakCircles(pick.visitante_stats.racha_detalles, f.valA)}</div>`;
                 } else {
                     hValHtml = pick.local_stats.is_candidate
-                        ? `<span class="font-bold ${hMeets ? 'text-emerald-400' : 'text-amber-400'}">${f.valH}</span>`
-                        : `<span class="text-gray-500 opacity-60 font-medium">${f.valH}</span>`;
+                        ? `<span class="font-bold ${hMeets ? 'text-emerald-400' : 'text-amber-400'}">${formattedValH}</span>`
+                        : `<span class="text-gray-500 opacity-60 font-medium">${formattedValH}</span>`;
                         
                     aValHtml = pick.visitante_stats.is_candidate
-                        ? `<span class="font-bold ${aMeets ? 'text-emerald-400' : 'text-amber-400'}">${f.valA}</span>`
-                        : `<span class="text-gray-500 opacity-60 font-medium">${f.valA}</span>`;
+                        ? `<span class="font-bold ${aMeets ? 'text-emerald-400' : 'text-amber-400'}">${formattedValA}</span>`
+                        : `<span class="text-gray-500 opacity-60 font-medium">${formattedValA}</span>`;
                 }
                 
                 // Icono e indicación de cumplimiento general
