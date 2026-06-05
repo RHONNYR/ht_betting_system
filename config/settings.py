@@ -36,7 +36,8 @@ SEASONS_TO_TEST = ['2122', '2223', '2324', '2425', '2526']  # Ligas principales 
 # ==========================================
 # CREDENCIALES DE API-FOOTBALL / API-SPORTS
 # ==========================================
-API_FOOTBALL_KEY = os.environ.get("API_FOOTBALL_KEY", "e4efe9095c65d1f98870a6512b081874")
+clean_secret = lambda v: "".join(c for c in str(v).strip() if c.isalnum() or c in ['-', '_']) if v else ""
+API_FOOTBALL_KEY = clean_secret(os.environ.get("API_FOOTBALL_KEY", "e4efe9095c65d1f98870a6512b081874"))
 API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
 DEFAULT_HT_O05_ODDS = 1.45
 
@@ -211,7 +212,7 @@ DAILY_PICKS_DIR = os.path.join(DATA_DIR, 'picks')
 # CONFIGURACIÓN DE GITHUB PAGES (AUTO-UPLOAD)
 # ==========================================
 GITHUB_ENABLED = os.environ.get("GITHUB_ENABLED", "True").lower() == "true"
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", os.environ.get("GITHUB_TOKEN", ""))
-GITHUB_REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER", "rhonnyr")
-GITHUB_REPO_NAME = os.environ.get("GITHUB_REPO_NAME", "ht_betting_system")
+GITHUB_TOKEN = clean_secret(os.environ.get("GITHUB_TOKEN", os.environ.get("GITHUB_TOKEN", "")))
+GITHUB_REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER", "rhonnyr").strip()
+GITHUB_REPO_NAME = os.environ.get("GITHUB_REPO_NAME", "ht_betting_system").strip()
 
