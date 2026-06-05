@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HT 0.5+ Value Betting Dashboard</title>
+    <meta name="description" content="Dashboard cuantitativo de análisis y selección de apuestas en el mercado HT 0.5+.">
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#090d16',
+                        glassBg: 'rgba(17, 24, 39, 0.65)',
+                        glassBorder: 'rgba(255, 255, 255, 0.08)',
+                        accentPrimary: '#3b82f6',
+                        accentSecondary: '#10b981',
+                        accentWarning: '#f59e0b',
+                        accentDanger: '#ef4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #060911;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .glass-card {
+            background: rgba(17, 25, 40, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .glass-modal {
+            background: rgba(13, 19, 33, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(17, 25, 40, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen antialiased">
+
+    <!-- Cargar Datos Locales del Script -->
+    <script src="data/picks/dashboard_data.js"></script>
+
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <!-- HEADER -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+            <div>
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-blue-600/20 text-blue-400 rounded-lg border border-blue-500/20">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 via-indigo-200 to-emerald-400 bg-clip-text text-transparent">
+                            HT 0.5+ Quantitative Dashboard
+                        </h1>
+                        <p class="text-gray-400 text-sm mt-0.5">Sistema de apuestas de fútbol basado en valor matemático</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-right">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Última actualización: <span id="update-time">-- : --</span>
+                </span>
+            </div>
+        </header>
+
+        <!-- KPI SUMMARY CARDS -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <!-- WIN RATE -->
+            <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Win Rate Backtesting</span>
+                    <h2 class="text-4xl font-extrabold text-emerald-400 mt-1" id="kpi-winrate">--%</h2>
+                </div>
+                <div class="p-4 bg-emerald-500/10 text-emerald-400 rounded-xl">
+                    <i data-lucide="award" class="w-8 h-8"></i>
+                </div>
+            </div>
+
+            <!-- TOTAL MATCHES -->
+            <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Partidos de Sustento</span>
+                    <h2 class="text-4xl font-extrabold text-blue-400 mt-1" id="kpi-matches">0</h2>
+                </div>
+                <div class="p-4 bg-blue-500/10 text-blue-400 rounded-xl">
+                    <i data-lucide="database" class="w-8 h-8"></i>
+                </div>
+            </div>
+
+            <!-- LEAGUES -->
+            <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Ligas Aprobadas</span>
+                    <h2 class="text-4xl font-extrabold text-purple-400 mt-1" id="kpi-leagues">0</h2>
+                </div>
+                <div class="p-4 bg-purple-500/10 text-purple-400 rounded-xl">
+                    <i data-lucide="globe" class="w-8 h-8"></i>
+                </div>
+            </div>
+
+            <!-- PICKS TODAY -->
+            <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                <div class="w-full">
+                    <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider block">Picks 7 Días</span>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 mt-1">
+                        <h2 class="text-4xl font-extrabold text-amber-400" id="kpi-picks">0</h2>
+                        <span class="text-[11px] text-gray-400" id="kpi-picks-split">(0 Premium / 0 Valor)</span>
+                    </div>
+                </div>
+                <div class="p-4 bg-amber-500/10 text-amber-400 rounded-xl flex-shrink-0">
+                    <i data-lucide="target" class="w-8 h-8"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- WARNING IF NO DATA -->
+        <div id="no-data-warning" class="hidden glass-card p-6 rounded-2xl border border-rose-500/30 bg-rose-950/15 text-center mb-8">
+            <i data-lucide="alert-triangle" class="w-12 h-12 text-rose-500 mx-auto mb-3"></i>
+            <h3 class="text-lg font-bold text-rose-200">No se encontraron datos generados</h3>
+            <p class="text-gray-400 text-sm mt-1 max-w-lg mx-auto">
+                Por favor, asegúrate de haber ejecutado el script <code>run_sheets_pipeline.py</code> en tu terminal para compilar las estadísticas de la API-Sports.
+            </p>
+        </div>
+
+        <!-- MAIN TABS NAVIGATION -->
+        <nav class="flex border-b border-white/10 gap-2 mb-8">
+            <button onclick="switchTab('picks')" id="tab-btn-picks" class="px-5 py-3 font-semibold text-sm border-b-2 border-blue-500 text-blue-400 flex items-center gap-2 transition-all">
+                <i data-lucide="target" class="w-4 h-4"></i> Picks 7 Días
+            </button>
+            <button onclick="switchTab('backtest')" id="tab-btn-backtest" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all">
+                <i data-lucide="award" class="w-4 h-4"></i> Backtesting
+            </button>
+            <button onclick="switchTab('teams')" id="tab-btn-teams" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all">
+                <i data-lucide="shield" class="w-4 h-4"></i> Radar de Equipos
+            </button>
+            <button onclick="switchTab('leagues')" id="tab-btn-leagues" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all">
+                <i data-lucide="globe" class="w-4 h-4"></i> Ligas Filtro
+            </button>
+            <button onclick="switchTab('history')" id="tab-btn-history" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all">
+                <i data-lucide="history" class="w-4 h-4"></i> Historial de Picks
+            </button>
+        </nav>
+
+        <!-- CONTENT SECTIONS -->
+
+        <!-- SECTION: PICKS DEL DIA -->
+        <section id="section-picks" class="space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h3 class="text-xl font-bold text-gray-200 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-amber-400 rounded-full"></span>
+                    Selecciones (Próximos 7 Días) de los Equipos Aprobados
+                </h3>
+                <!-- Filtro por Clase -->
+                <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 self-stretch sm:self-auto">
+                    <button onclick="filterPicksByClass('all')" id="btn-pick-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos</button>
+                    <button onclick="filterPicksByClass('Clase A')" id="btn-pick-filter-a" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i> Premium (A)
+                    </button>
+                    <button onclick="filterPicksByClass('Clase B')" id="btn-pick-filter-b" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-400"></i> Valor (B)
+                    </button>
+                </div>
+            </div>
+            
+            <div id="picks-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Se cargan dinámicamente -->
+            </div>
+            
+            <div id="no-picks-message" class="hidden text-center py-12 glass-card rounded-2xl text-gray-400">
+                <i data-lucide="calendar" class="w-12 h-12 text-gray-500 mx-auto mb-3"></i>
+                <p class="font-medium text-lg">No hay partidos programados en los próximos 7 días</p>
+                <p class="text-sm mt-1">Ninguno de los partidos programados coincide con los criterios de selección (Clase A o Clase B).</p>
+            </div>
+        </section>
+
+        <!-- SECTION: BACKTESTING -->
+        <section id="section-backtest" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- CHART -->
+                <div class="glass-card p-6 rounded-2xl lg:col-span-1 flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-gray-200">Win Rate Simulado</h3>
+                        <select id="backtest-class-selector" onchange="updateBacktestChartAndTable()" class="bg-white/5 border border-white/10 text-gray-300 rounded-xl px-2 py-1 text-xs focus:outline-none focus:border-blue-500">
+                            <option value="all">Global</option>
+                            <option value="Clase A">Premium (Clase A)</option>
+                            <option value="Clase B">Valor (Clase B)</option>
+                        </select>
+                    </div>
+                    <div class="relative w-48 h-48 mx-auto mb-4">
+                        <canvas id="backtestChart"></canvas>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                            <span class="text-sm text-gray-400 uppercase font-semibold">Win Rate</span>
+                            <span class="text-3xl font-extrabold text-white" id="chart-winrate-text">--%</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400 flex items-center gap-1.5"><span class="w-3 h-3 bg-emerald-500 rounded-full inline-block"></span>GANADOS</span>
+                            <span class="font-bold text-emerald-400" id="chart-win-count">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400 flex items-center gap-1.5"><span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>PERDIDOS</span>
+                            <span class="font-bold text-red-400" id="chart-lose-count">0</span>
+                        </div>
+                        <div class="flex justify-between border-t border-white/5 pt-2 font-bold text-white text-base">
+                            <span>TOTAL</span>
+                            <span id="chart-total-count">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLE -->
+                <div class="glass-card p-6 rounded-2xl lg:col-span-2 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <h3 class="font-bold text-lg text-gray-200">Historial de Partidos Cruzados</h3>
+                        <div class="relative w-full sm:w-64">
+                            <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-gray-500"></i>
+                            <input type="text" id="search-backtest" oninput="filterBacktestTable()" placeholder="Buscar equipo o liga..." class="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-blue-500 text-white">
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
+                            <thead>
+                                <tr class="border-b border-white/5 text-gray-400 font-semibold">
+                                    <th class="pb-3">Fecha</th>
+                                    <th class="pb-3">Liga</th>
+                                    <th class="pb-3 text-right">Local</th>
+                                    <th class="pb-3 text-center px-4">vs</th>
+                                    <th class="pb-3">Visitante</th>
+                                    <th class="pb-3 text-center">Goles HT</th>
+                                    <th class="pb-3 text-center">Resultado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="backtest-table-body" class="divide-y divide-white/5">
+                                <!-- Cargado dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Paginación -->
+                    <div class="flex justify-between items-center border-t border-white/5 pt-4 text-xs text-gray-400">
+                        <span id="backtest-pagination-info">Mostrando 1-10 de 0 partidos</span>
+                        <div class="flex gap-2">
+                            <button id="backtest-prev" onclick="prevBacktestPage()" class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 text-white disabled:opacity-50 disabled:hover:bg-white/5">Anterior</button>
+                            <button id="backtest-next" onclick="nextBacktestPage()" class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 text-white disabled:opacity-50 disabled:hover:bg-white/5">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: RADAR EQUIPOS -->
+        <section id="section-teams" class="hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-200">Radar de Equipos Candidatos (Temporada Actual)</h3>
+                        <p class="text-gray-400 text-xs mt-0.5">Equipos que superaron todos los filtros de Fase 2 en su respectivo rol.</p>
+                    </div>
+                    <div class="relative w-full sm:w-64">
+                        <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-gray-500"></i>
+                        <input type="text" id="search-teams" oninput="filterTeamsTable()" placeholder="Buscar equipo..." class="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-blue-500 text-white">
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead>
+                            <tr class="border-b border-white/5 text-gray-400 font-semibold">
+                                <th class="pb-3">Equipo</th>
+                                <th class="pb-3">Liga</th>
+                                <th class="pb-3 text-center">Rol</th>
+                                <th class="pb-3 text-center">HT 0.5+ %</th>
+                                <th class="pb-3 text-center">HT 1.5+ %</th>
+                                <th class="pb-3 text-center">BTS FT %</th>
+                                <th class="pb-3 text-center">Rend HT %</th>
+                                <th class="pb-3 text-center">Gol HT (Gral)</th>
+                                <th class="pb-3 text-center">Gol HT (Rol)</th>
+                                <th class="pb-3 text-center">Racha HT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teams-table-body" class="divide-y divide-white/5">
+                            <!-- Cargado dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LIGAS FILTRO -->
+        <section id="section-leagues" class="hidden space-y-8">
+            <!-- Ligas Aprobadas -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-lg text-emerald-400 flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+                            Ligas Aprobadas (Fase 1 Superada)
+                        </h3>
+                        <p class="text-gray-400 text-xs mt-0.5">Ligas habilitadas para análisis de equipos. Ordenadas de mayor a menor partidos restantes (Temporada Actual).</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="approved-leagues-grid">
+                    <!-- Se cargan dinámicamente -->
+                </div>
+                <div id="no-approved-leagues-message" class="hidden text-center py-8 glass-card rounded-xl text-gray-500 text-sm">
+                    No hay ligas aprobadas en la temporada actual.
+                </div>
+            </div>
+
+            <!-- Ligas Rechazadas -->
+            <div class="glass-card p-6 rounded-2xl space-y-4 bg-white/[0.01]">
+                <div>
+                    <h3 class="font-bold text-lg text-rose-400 flex items-center gap-2">
+                        <i data-lucide="x-circle" class="w-5 h-5 text-rose-400"></i>
+                        Ligas Rechazadas
+                    </h3>
+                    <p class="text-gray-400 text-xs mt-0.5">Ligas analizadas que no superaron los umbrales requeridos (Over 1.5 FT >= 80% o Over 2.5 FT >= 60%) en la temporada actual.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 opacity-75" id="rejected-leagues-grid">
+                    <!-- Se cargan dinámicamente -->
+                </div>
+                <div id="no-rejected-leagues-message" class="hidden text-center py-8 glass-card rounded-xl text-gray-500 text-sm">
+                    No hay ligas rechazadas en la temporada actual.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: HISTORIAL DE PICKS -->
+        <section id="section-history" class="hidden space-y-6">
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-blue-400 flex items-center gap-2">
+                            <i data-lucide="history" class="w-5 h-5 text-blue-400"></i>
+                            Historial de Picks y Resultados
+                        </h3>
+                        <p class="text-gray-400 text-xs mt-0.5">Registro histórico de todos los picks recomendados y sus resultados oficiales (Primer Tiempo).</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead>
+                            <tr class="border-b border-white/5 text-gray-400 font-semibold">
+                                <th class="pb-3">Fecha/Hora</th>
+                                <th class="pb-3">Liga</th>
+                                <th class="pb-3 text-right">Local</th>
+                                <th class="pb-3 text-center px-4">vs</th>
+                                <th class="pb-3 text-left">Visitante</th>
+                                <th class="pb-3 text-center">Probabilidad</th>
+                                <th class="pb-3 text-center">Cuota / Casa</th>
+                                <th class="pb-3 text-center">Marcador HT</th>
+                                <th class="pb-3 text-center">Resultado</th>
+                                <th class="pb-3 text-center">Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-table-body" class="divide-y divide-white/5">
+                            <!-- Cargado dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL: SUSTENTO DEL PICK -->
+    <div id="modal-sustento" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 transition-opacity duration-300">
+        <div class="glass-modal w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="text-center md:text-left">
+                <span class="inline-block px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2" id="modal-league-pill">
+                    Liga
+                </span>
+                <h3 class="text-2xl font-extrabold text-white flex flex-col md:flex-row items-center gap-3 justify-center md:justify-start">
+                    <span id="modal-home-team">Equipo Local</span>
+                    <span class="text-gray-500 font-light text-xl">vs</span>
+                    <span id="modal-away-team">Equipo Visitante</span>
+                </h3>
+                <p class="text-sm text-gray-400 mt-1">Comparación estadística detallada (Primer Tiempo / HT)</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-center text-sm border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/10 text-gray-400 font-semibold bg-white/5">
+                            <th class="py-3 px-4 text-left">Filtro Estadístico</th>
+                            <th class="py-3 px-2" id="modal-home-header">Local (Casa)</th>
+                            <th class="py-3 px-2">Umbral</th>
+                            <th class="py-3 px-2" id="modal-away-header">Visitante (Fuera)</th>
+                            <th class="py-3 px-2">Umbral</th>
+                            <th class="py-3 px-2">Evaluación</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body" class="divide-y divide-white/5 font-medium">
+                        <!-- Rellenado dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Comparativa de Cuotas -->
+            <div class="border-t border-white/10 pt-4" id="modal-odds-container">
+                <h4 class="text-sm font-bold text-gray-300 mb-2.5 flex items-center gap-1.5">
+                    <i data-lucide="percent" class="w-4 h-4 text-blue-400"></i> Comparativa de Cuotas (HT Over 0.5)
+                </h4>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="modal-odds-grid">
+                    <!-- Rellenado dinámicamente -->
+                </div>
+            </div>
+            
+            <div class="flex justify-end pt-2">
+                <button onclick="closeModal()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-blue-500/15">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS LOGIC -->
+    <script>
+        // Inicializar iconos
+        lucide.createIcons();
+
+        // Variables de estado
+        let activeTab = 'picks';
+        let backtestData = [];
+        let filteredBacktest = [];
+        let backtestPage = 0;
+        const backtestPageSize = 10;
+        
+        let teamsData = [];
+        let filteredTeams = [];
+        
+        let leaguesData = [];
+        let chartInstance = null;
+        let currentPickFilter = 'all';
+
+        // Cargar datos
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof window.dashboardData === 'undefined') {
+                document.getElementById('no-data-warning').classList.remove('hidden');
+                return;
+            }
+
+            const data = window.dashboardData;
+            
+            // Cargar actualización
+            document.getElementById('update-time').innerText = data.last_updated || 'Desconocido';
+            
+            // Cargar KPIs
+            const picks = data.picks || [];
+            const picksA = picks.filter(p => p.clase === 'Clase A').length;
+            const picksB = picks.filter(p => p.clase === 'Clase B').length;
+            
+            document.getElementById('kpi-winrate').innerText = data.backtest_summary.win_rate || '--%';
+            document.getElementById('kpi-matches').innerText = data.backtest_summary.total || '0';
+            document.getElementById('kpi-leagues').innerText = data.leagues.filter(l => l.Estado === 'APROBADA').length || '0';
+            document.getElementById('kpi-picks').innerText = picks.length || '0';
+            document.getElementById('kpi-picks-split').innerText = `(${picksA} Premium / ${picksB} Valor)`;
+            
+            // Datos del backend
+            backtestData = data.backtest || [];
+            filteredBacktest = [...backtestData];
+            
+            teamsData = data.teams || [];
+            filteredTeams = [...teamsData];
+            
+            leaguesData = data.leagues || [];
+            
+            // Cargar Picks
+            renderPicks(picks);
+            
+            // Cargar Backtest
+            renderBacktestTable();
+            renderChart(data.backtest_summary);
+            
+            // Cargar Equipos
+            renderTeamsTable();
+            
+            // Cargar Ligas
+            renderLeaguesGrid();
+            
+            // Cargar Historial
+            renderHistoryTable();
+        });
+
+        function switchTab(tab) {
+            // Ocultar todas las secciones
+            ['picks', 'backtest', 'teams', 'leagues', 'history'].forEach(s => {
+                const el = document.getElementById(`section-${s}`);
+                if (el) el.classList.add('hidden');
+            });
+            
+            // Reset botones de tabs
+            ['picks', 'backtest', 'teams', 'leagues', 'history'].forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (btn) {
+                    btn.className = "px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all";
+                }
+            });
+
+            // Mostrar sección activa
+            const activeSection = document.getElementById(`section-${tab}`);
+            if (activeSection) activeSection.classList.remove('hidden');
+            
+            const activeBtn = document.getElementById(`tab-btn-${tab}`);
+            if (activeBtn) activeBtn.className = "px-5 py-3 font-semibold text-sm border-b-2 border-blue-500 text-blue-400 flex items-center gap-2 transition-all";
+            
+            if (tab === 'history') {
+                renderHistoryTable();
+            }
+            
+            activeTab = tab;
+            lucide.createIcons();
+        }
+
+        function renderOtherOddsTooltip(otrasCuotas) {
+            if (!otrasCuotas || Object.keys(otrasCuotas).length === 0) return '';
+            
+            let html = `
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-gray-900 border border-white/10 rounded-xl p-3 shadow-2xl opacity-0 invisible group-hover/odds:opacity-100 group-hover/odds:visible group-hover/hist-odds:opacity-100 group-hover/hist-odds:visible transition-all duration-200 z-30 text-left pointer-events-none">
+                    <h5 class="text-[11px] font-bold text-gray-300 border-b border-white/5 pb-1 mb-1.5 uppercase tracking-wider flex items-center gap-1">
+                        <i data-lucide="percent" class="w-3 h-3 text-blue-400"></i> Otras Casas
+                    </h5>
+                    <div class="space-y-1 text-xs">
+            `;
+            
+            for (const [bm, odd] of Object.entries(otrasCuotas)) {
+                html += `
+                    <div class="flex justify-between items-center text-gray-400">
+                        <span class="font-medium">${bm}</span>
+                        <span class="font-bold text-white">${odd}</span>
+                    </div>
+                `;
+            }
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            return html;
+        }
+
+        // --- SECTION PICKS ---
+        function renderPicks(picks) {
+            const grid = document.getElementById('picks-grid');
+            grid.innerHTML = '';
+            
+            if (!picks || picks.length === 0) {
+                document.getElementById('no-picks-message').classList.remove('hidden');
+                return;
+            }
+            
+            document.getElementById('no-picks-message').classList.add('hidden');
+            
+            picks.forEach((pick, index) => {
+                const card = document.createElement('div');
+                card.className = "glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all group duration-300";
+                
+                let classBadge = '';
+                if (pick.clase === 'Clase A') {
+                    classBadge = `
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i> Premium (Clase A)
+                        </span>
+                    `;
+                } else {
+                    classBadge = `
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-500/10 border border-blue-500/30 text-blue-400">
+                            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-400"></i> Valor (Clase B)
+                        </span>
+                    `;
+                }
+                
+                let sustentoLabel = '';
+                if (pick.sustento === 'Ambos') {
+                    sustentoLabel = '<span class="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>Ambos</span>';
+                } else if (pick.sustento === 'Local') {
+                    sustentoLabel = '<span class="text-[11px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>Solo Local</span>';
+                } else {
+                    sustentoLabel = '<span class="text-[11px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>Solo Visitante</span>';
+                }
+                
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start border-b border-white/5 pb-3">
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1">
+                                <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga}
+                            </span>
+                            <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${pick.fecha || ''} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${pick.hora} (UTC)
+                            </span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center px-1">
+                            ${classBadge}
+                            ${sustentoLabel}
+                        </div>
+                        
+                        <div class="py-2 text-center">
+                            <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
+                                ${pick.local}
+                                ${pick.local_stats.is_candidate ? '<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 inline-block" title="Aprobado en Radar"></i>' : '<i data-lucide="minus-circle" class="w-4 h-4 text-gray-600 inline-block" title="No Aprobado"></i>'}
+                            </h4>
+                            <p class="text-gray-500 text-xs font-semibold py-1">vs</p>
+                            <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
+                                ${pick.visitante}
+                                ${pick.visitante_stats.is_candidate ? '<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 inline-block" title="Aprobado en Radar"></i>' : '<i data-lucide="minus-circle" class="w-4 h-4 text-gray-600 inline-block" title="No Aprobado"></i>'}
+                            </h4>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="flex flex-col bg-emerald-500/5 border border-emerald-500/10 rounded-xl px-3 py-2 text-center">
+                                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Probabilidad</span>
+                                <span class="text-base font-extrabold text-emerald-400 mt-0.5">${pick.probabilidad}</span>
+                            </div>
+                            <div class="flex flex-col bg-blue-500/5 border border-blue-500/10 rounded-xl px-3 py-2 text-center relative group/odds cursor-help">
+                                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Mejor Cuota</span>
+                                <span class="text-base font-extrabold text-blue-400 mt-0.5">${pick.cuota_recomendada || '1.45'}</span>
+                                <span class="text-[10px] text-gray-400 font-medium truncate block mt-0.5" title="${pick.bookmaker_recomendado || 'Por determinar'}">${pick.bookmaker_recomendado || 'Por determinar'}</span>
+                                ${renderOtherOddsTooltip(pick.otras_cuotas)}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="openModal(${index})" class="w-full mt-4 py-2.5 bg-blue-600/10 hover:bg-blue-600/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 font-semibold rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="info" class="w-4 h-4"></i> Ver Sustento Estadístico
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function filterPicksByClass(clase) {
+            currentPickFilter = clase;
+            
+            // Update filter buttons style
+            ['all', 'a', 'b'].forEach(f => {
+                const btn = document.getElementById(`btn-pick-filter-${f}`);
+                btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
+            });
+            
+            const activeBtnId = clase === 'all' ? 'btn-pick-filter-all' : (clase === 'Clase A' ? 'btn-pick-filter-a' : 'btn-pick-filter-b');
+            document.getElementById(activeBtnId).className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
+            
+            const allPicks = window.dashboardData.picks;
+            const filtered = clase === 'all' ? allPicks : allPicks.filter(p => p.clase === clase);
+            renderPicks(filtered);
+        }
+
+        // Helper to check if a value meets criteria
+        function meetsThreshold(key, valStr) {
+            if (!valStr || valStr === 'N/A') return false;
+            const valNum = parseFloat(valStr.replace('%', ''));
+            if (key === 'ht_05_pct') return valNum >= 75.0;
+            if (key === 'ht_15_pct') return valNum >= 40.0;
+            if (key === 'bts_pct') return valNum >= 40.0;
+            if (key === 'rendimiento_ht') return valNum >= 50.0;
+            if (key === 'avg_goals_ht_general') return valNum >= 0.80;
+            if (key === 'avg_goals_ht_rol') return valNum >= 0.80;
+            if (key === 'racha_ht') return valNum >= 4.0;
+            return false;
+        }
+
+        // --- HISTORY TABLE ---
+        function renderHistoryTable() {
+            const tbody = document.getElementById('history-table-body');
+            tbody.innerHTML = '';
+            
+            const history = window.dashboardData.picks_history || [];
+            
+            if (history.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-gray-500">No hay picks registrados en el historial todavía. Se registrarán cuando pase la fecha de juego o se actualicen resultados.</td></tr>`;
+                return;
+            }
+            
+            history.forEach((pick, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
+                
+                let resultBadge = '';
+                if (pick.resultado_apuesta === 'GANADA') {
+                    resultBadge = `<span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">GANADA</span>`;
+                } else if (pick.resultado_apuesta === 'PERDIDA') {
+                    resultBadge = `<span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-rose-500/10 border border-rose-500/20 text-rose-400">PERDIDA</span>`;
+                } else if (pick.resultado_apuesta === 'CANCELADO') {
+                    resultBadge = `<span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-white/5 border border-white/10 text-gray-400">CANCELADO</span>`;
+                } else {
+                    resultBadge = `<span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-500/10 border border-amber-500/20 text-amber-400">PENDIENTE</span>`;
+                }
+                
+                const classBadge = pick.clase === 'Clase A' 
+                    ? `<span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold rounded-full">Premium (A)</span>`
+                    : `<span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-bold rounded-full">Valor (B)</span>`;
+                
+                const marcador = pick.marcador_ht !== null ? pick.marcador_ht : '-';
+                
+                tr.innerHTML = `
+                    <td class="py-3 text-xs md:text-sm">${pick.fecha} <span class="text-gray-500 text-[11px] font-light">${pick.hora}</span></td>
+                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
+                        ${pick.liga} ${classBadge}
+                    </td>
+                    <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${pick.local}</td>
+                    <td class="py-3 text-center text-gray-500 text-xs px-4">vs</td>
+                    <td class="py-3 text-left text-xs md:text-sm font-medium text-white">${pick.visitante}</td>
+                    <td class="py-3 text-center font-bold text-gray-300">${pick.probabilidad}</td>
+                    <td class="py-3 text-center font-semibold text-blue-400 text-xs md:text-sm relative group/hist-odds cursor-help">
+                        ${pick.cuota_recomendada || '1.45'}
+                        <span class="text-[10px] text-gray-500 font-medium block">${pick.bookmaker_recomendado || 'Por determinar'}</span>
+                        ${renderOtherOddsTooltip(pick.otras_cuotas)}
+                    </td>
+                    <td class="py-3 text-center font-extrabold text-white text-base">${marcador}</td>
+                    <td class="py-3 text-center">${resultBadge}</td>
+                    <td class="py-3 text-center">
+                        <button onclick="openModal(${index}, true)" class="p-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-lg transition-all" title="Ver Análisis">
+                            <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            lucide.createIcons();
+        }
+
+        // --- MODAL LOGIC ---
+        function openModal(pickIndex, isHistory = false) {
+            const pick = isHistory 
+                ? window.dashboardData.picks_history[pickIndex] 
+                : window.dashboardData.picks[pickIndex];
+            
+            document.getElementById('modal-league-pill').innerText = pick.liga;
+            document.getElementById('modal-home-team').innerText = pick.local;
+            document.getElementById('modal-away-team').innerText = pick.visitante;
+            
+            // Update headers based on candidate status
+            const homeHeader = document.getElementById('modal-home-header');
+            const awayHeader = document.getElementById('modal-away-header');
+            
+            if (pick.local_stats.is_candidate) {
+                homeHeader.innerHTML = `Local (Casa) <span class="text-[10px] text-emerald-400 font-semibold block uppercase tracking-wider">Aprobado</span>`;
+            } else {
+                homeHeader.innerHTML = `Local (Casa) <span class="text-[10px] text-gray-500 font-semibold block uppercase tracking-wider">No Aprobado</span>`;
+            }
+            
+            if (pick.visitante_stats.is_candidate) {
+                awayHeader.innerHTML = `Visitante (Fuera) <span class="text-[10px] text-emerald-400 font-semibold block uppercase tracking-wider">Aprobado</span>`;
+            } else {
+                awayHeader.innerHTML = `Visitante (Fuera) <span class="text-[10px] text-gray-500 font-semibold block uppercase tracking-wider">No Aprobado</span>`;
+            }
+            
+            const tbody = document.getElementById('modal-table-body');
+            tbody.innerHTML = '';
+            
+            const filters = [
+                { label: 'HT 0.5+ Frecuencia', key: 'ht_05_pct', threshold: '>= 75.0%', valH: pick.local_stats.ht_05_pct, valA: pick.visitante_stats.ht_05_pct },
+                { label: 'HT 1.5+ Frecuencia (Refuerzo)', key: 'ht_15_pct', threshold: '>= 40.0%', valH: pick.local_stats.ht_15_pct, valA: pick.visitante_stats.ht_15_pct },
+                { label: 'Ambos Marcan FT (BTS)', key: 'bts_pct', threshold: '>= 40.0%', valH: pick.local_stats.bts_pct, valA: pick.visitante_stats.bts_pct },
+                { label: 'Rendimiento HT (Anotó+Encajó)', key: 'rendimiento_ht', threshold: '>= 50.0%', valH: pick.local_stats.rendimiento_ht, valA: pick.visitante_stats.rendimiento_ht },
+                { label: 'Media Goles HT (General)', key: 'avg_goals_ht_general', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_general, valA: pick.visitante_stats.avg_goals_ht_general },
+                { label: 'Media Goles HT (Rol en Casa/Fuera)', key: 'avg_goals_ht_rol', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_rol, valA: pick.visitante_stats.avg_goals_ht_rol },
+                { label: 'Racha HT (Últimos 5)', key: 'racha_ht', threshold: '>= 4/5', valH: pick.local_stats.racha_ht, valA: pick.visitante_stats.racha_ht }
+            ];
+            
+            filters.forEach(f => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-white/5 hover:bg-white/5";
+                
+                // Evaluar si cada celda cumple
+                const hMeets = meetsThreshold(f.key, f.valH);
+                const aMeets = meetsThreshold(f.key, f.valA);
+                
+                // Formatear valores con opacidad si no son candidatos
+                let hValHtml = '';
+                let aValHtml = '';
+                
+                if (f.key === 'racha_ht') {
+                    hValHtml = pick.local_stats.is_candidate
+                        ? `<div class="flex justify-center">${renderStreakCircles(pick.local_stats.racha_detalles, f.valH)}</div>`
+                        : `<div class="flex justify-center opacity-50">${renderStreakCircles(pick.local_stats.racha_detalles, f.valH)}</div>`;
+                    
+                    aValHtml = pick.visitante_stats.is_candidate
+                        ? `<div class="flex justify-center">${renderStreakCircles(pick.visitante_stats.racha_detalles, f.valA)}</div>`
+                        : `<div class="flex justify-center opacity-50">${renderStreakCircles(pick.visitante_stats.racha_detalles, f.valA)}</div>`;
+                } else {
+                    hValHtml = pick.local_stats.is_candidate
+                        ? `<span class="font-bold ${hMeets ? 'text-emerald-400' : 'text-amber-400'}">${f.valH}</span>`
+                        : `<span class="text-gray-500 opacity-60 font-medium">${f.valH}</span>`;
+                        
+                    aValHtml = pick.visitante_stats.is_candidate
+                        ? `<span class="font-bold ${aMeets ? 'text-emerald-400' : 'text-amber-400'}">${f.valA}</span>`
+                        : `<span class="text-gray-500 opacity-60 font-medium">${f.valA}</span>`;
+                }
+                
+                // Icono e indicación de cumplimiento general
+                let evaluationHtml = '';
+                if (pick.local_stats.is_candidate && pick.visitante_stats.is_candidate) {
+                    evaluationHtml = `
+                        <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold">
+                            <i data-lucide="check" class="w-3.5 h-3.5"></i> Ambos Cumplen
+                        </span>
+                    `;
+                } else if (pick.local_stats.is_candidate) {
+                    evaluationHtml = hMeets ? `
+                        <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-semibold">
+                            <i data-lucide="check" class="w-3.5 h-3.5"></i> Local Cumple
+                        </span>
+                    ` : `
+                        <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-semibold">
+                            <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Local Alternativo
+                        </span>
+                    `;
+                } else {
+                    evaluationHtml = aMeets ? `
+                        <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-semibold">
+                            <i data-lucide="check" class="w-3.5 h-3.5"></i> Vis. Cumple
+                        </span>
+                    ` : `
+                        <span class="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-semibold">
+                            <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Vis. Alternativo
+                        </span>
+                    `;
+                }
+                
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 text-left text-gray-300 font-semibold text-xs md:text-sm">${f.label}</td>
+                    <td class="py-3.5 text-center">${hValHtml}</td>
+                    <td class="py-3.5 text-gray-500 text-xs">${f.threshold}</td>
+                    <td class="py-3.5 text-center">${aValHtml}</td>
+                    <td class="py-3.5 text-gray-500 text-xs">${f.threshold}</td>
+                    <td class="py-3.5 text-center">${evaluationHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            // Cargar cuotas en el modal
+            const oddsGrid = document.getElementById('modal-odds-grid');
+            oddsGrid.innerHTML = '';
+            
+            const recBm = pick.bookmaker_recomendado || 'Por determinar';
+            const recOdd = pick.cuota_recomendada || '1.45';
+            
+            const recCard = document.createElement('div');
+            recCard.className = "bg-blue-500/10 border border-blue-500/30 rounded-xl p-2.5 text-center relative overflow-hidden group";
+            recCard.innerHTML = `
+                <span class="absolute -right-2 -top-2 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center rotate-12 group-hover:scale-110 transition-transform"><i data-lucide="star" class="w-3.5 h-3.5 text-blue-400 fill-blue-400"></i></span>
+                <span class="text-[10px] text-blue-400 font-extrabold uppercase tracking-wider block">Recomendada</span>
+                <span class="text-base font-extrabold text-white block mt-0.5">${recOdd}</span>
+                <span class="text-[10px] text-gray-400 font-medium block mt-0.5 truncate" title="${recBm}">${recBm}</span>
+            `;
+            oddsGrid.appendChild(recCard);
+            
+            const otras = pick.otras_cuotas || {};
+            for (const [bm, odd] of Object.entries(otras)) {
+                if (bm === recBm) continue;
+                const card = document.createElement('div');
+                card.className = "bg-white/5 border border-white/10 rounded-xl p-2.5 text-center";
+                card.innerHTML = `
+                    <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider block">Alternativa</span>
+                    <span class="text-base font-extrabold text-gray-300 block mt-0.5">${odd}</span>
+                    <span class="text-[10px] text-gray-400 font-medium block mt-0.5 truncate" title="${bm}">${bm}</span>
+                `;
+                oddsGrid.appendChild(card);
+            }
+            
+            document.getElementById('modal-sustento').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('modal-sustento').classList.add('hidden');
+        }
+
+        // --- BACKTEST TABLE & SEARCH & PAGINATION & SELECTOR ---
+        function renderBacktestTable() {
+            const tbody = document.getElementById('backtest-table-body');
+            tbody.innerHTML = '';
+            
+            const start = backtestPage * backtestPageSize;
+            const end = start + backtestPageSize;
+            const pageData = filteredBacktest.slice(start, end);
+            
+            if (pageData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-gray-500">No se encontraron partidos.</td></tr>`;
+                document.getElementById('backtest-pagination-info').innerText = "0 de 0 partidos";
+                document.getElementById('backtest-prev').disabled = true;
+                document.getElementById('backtest-next').disabled = true;
+                return;
+            }
+            
+            pageData.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
+                
+                const resultBadgeClass = r.Resultado === 'GANADA' ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400' : 'bg-rose-500/10 border border-rose-500/20 text-rose-400';
+                
+                const classBadge = r.Clase === 'Clase A' 
+                    ? `<span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold rounded-full">Premium (A)</span>`
+                    : `<span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-bold rounded-full">Valor (B)</span>`;
+                
+                tr.innerHTML = `
+                    <td class="py-3 text-xs md:text-sm">${r.Fecha}</td>
+                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
+                        ${r.Liga} ${classBadge}
+                    </td>
+                    <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${r.Local}</td>
+                    <td class="py-3 text-center text-gray-500 text-xs px-4">vs</td>
+                    <td class="py-3 text-left text-xs md:text-sm font-medium text-white">${r.Visitante}</td>
+                    <td class="py-3 text-center font-bold text-white">${r['Goles HT']}</td>
+                    <td class="py-3 text-center">
+                        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold ${resultBadgeClass}">
+                            ${r.Resultado}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            // Paginación info
+            const totalCount = filteredBacktest.length;
+            document.getElementById('backtest-pagination-info').innerText = `Mostrando ${start + 1}-${Math.min(end, totalCount)} de ${totalCount} partidos`;
+            document.getElementById('backtest-prev').disabled = backtestPage === 0;
+            document.getElementById('backtest-next').disabled = end >= totalCount;
+        }
+
+        function prevBacktestPage() {
+            if (backtestPage > 0) {
+                backtestPage--;
+                renderBacktestTable();
+            }
+        }
+
+        function nextBacktestPage() {
+            if ((backtestPage + 1) * backtestPageSize < filteredBacktest.length) {
+                backtestPage++;
+                renderBacktestTable();
+            }
+        }
+
+        function filterBacktestTable() {
+            const query = document.getElementById('search-backtest').value.toLowerCase();
+            const selectedClass = document.getElementById('backtest-class-selector').value;
+            
+            let baseData = backtestData;
+            if (selectedClass !== 'all') {
+                baseData = backtestData.filter(r => r.Clase === selectedClass);
+            }
+            
+            filteredBacktest = baseData.filter(r => 
+                r.Local.toLowerCase().includes(query) || 
+                r.Visitante.toLowerCase().includes(query) || 
+                r.Liga.toLowerCase().includes(query)
+            );
+            backtestPage = 0;
+            renderBacktestTable();
+        }
+
+        function updateBacktestChartAndTable() {
+            const selectedClass = document.getElementById('backtest-class-selector').value;
+            const summary = window.dashboardData.backtest_summary;
+            
+            let targetSummary = {};
+            if (selectedClass === 'all') {
+                targetSummary = {
+                    total: summary.total,
+                    aciertos: summary.aciertos,
+                    fallos: summary.fallos,
+                    win_rate: summary.win_rate
+                };
+            } else if (selectedClass === 'Clase A') {
+                targetSummary = {
+                    total: summary.total_a,
+                    aciertos: summary.aciertos_a,
+                    fallos: summary.fallos_a,
+                    win_rate: summary.win_rate_a
+                };
+            } else {
+                targetSummary = {
+                    total: summary.total_b,
+                    aciertos: summary.aciertos_b,
+                    fallos: summary.fallos_b,
+                    win_rate: summary.win_rate_b
+                };
+            }
+            
+            // Re-filtrar tabla y resetear búsqueda
+            document.getElementById('search-backtest').value = '';
+            filterBacktestTable();
+            renderChart(targetSummary);
+        }
+
+        // --- CHART JS ---
+        function renderChart(summary) {
+            const ctx = document.getElementById('backtestChart').getContext('2d');
+            
+            // Destruir instancia anterior si existe
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+            
+            document.getElementById('chart-winrate-text').innerText = summary.win_rate || '--%';
+            document.getElementById('chart-win-count').innerText = summary.aciertos || '0';
+            document.getElementById('chart-lose-count').innerText = summary.fallos || '0';
+            document.getElementById('chart-total-count').innerText = summary.total || '0';
+            
+            chartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['GANADAS', 'PERDIDAS'],
+                    datasets: [{
+                        data: [summary.aciertos || 0, summary.fallos || 0],
+                        backgroundColor: ['#10b981', '#ef4444'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '80%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderStreakCircles(details, rachaVal) {
+            if (!details || details.length === 0) {
+                return `<span class="inline-block px-2 py-0.5 bg-white/5 rounded-lg text-xs font-semibold text-amber-400 border border-white/5">${rachaVal || 'N/A'}</span>`;
+            }
+            
+            let html = `<div class="flex flex-col items-center gap-1">`;
+            html += `<span class="text-xs font-extrabold text-amber-400">${rachaVal}</span>`;
+            html += `<div class="flex items-center gap-1">`;
+            
+            details.forEach(m => {
+                const hit = m.total_ht > 0;
+                const circleClass = hit 
+                    ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400' 
+                    : 'bg-rose-500/10 border-rose-500/25 text-rose-400/75';
+                
+                const ballScored = '⚽'.repeat(m.goles_favor_ht);
+                const ballConceded = '⚫'.repeat(m.goles_contra_ht);
+                
+                let tooltip = `${m.fecha} vs ${m.rival}\n`;
+                tooltip += m.local ? `Rol: Local | Marcador HT: ${m.goles_favor_ht} - ${m.goles_contra_ht}\n` : `Rol: Visitante | Marcador HT: ${m.goles_contra_ht} - ${m.goles_favor_ht}\n`;
+                tooltip += `Goles Anotados HT: ${ballScored || 'Ninguno'}\n`;
+                tooltip += `Goles Encajados HT: ${ballConceded || 'Ninguno'}`;
+                
+                html += `
+                    <div title="${tooltip.replace(/"/g, '&quot;')}" class="w-4 h-4 rounded-full border text-[9px] flex items-center justify-center font-extrabold cursor-help transition-all duration-150 hover:scale-125 ${circleClass}">
+                        ${hit ? '✓' : '✗'}
+                    </div>
+                `;
+            });
+            
+            html += `</div></div>`;
+            return html;
+        }
+
+        // --- SECTION TEAMS ---
+        function renderTeamsTable() {
+            const tbody = document.getElementById('teams-table-body');
+            tbody.innerHTML = '';
+            
+            if (filteredTeams.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-gray-500">No se encontraron equipos candidatos.</td></tr>`;
+                return;
+            }
+            
+            filteredTeams.forEach(t => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
+                
+                const roleClass = t.role === 'Local' ? 'bg-blue-500/10 text-blue-400' : 'bg-purple-500/10 text-purple-400';
+                
+                tr.innerHTML = `
+                    <td class="py-3.5 font-bold text-white">${t.team_name}</td>
+                    <td class="py-3.5 text-xs md:text-sm">${t.league_name}</td>
+                    <td class="py-3.5 text-center">
+                        <span class="inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${roleClass}">${t.role}</span>
+                    </td>
+                    <td class="py-3.5 text-center font-semibold text-white">${t.ht_05_pct}%</td>
+                    <td class="py-3.5 text-center">${t.ht_15_pct}%</td>
+                    <td class="py-3.5 text-center">${t.bts_pct}%</td>
+                    <td class="py-3.5 text-center">${t.rendimiento_ht}%</td>
+                    <td class="py-3.5 text-center font-semibold text-emerald-400">${t.avg_goals_ht_general}</td>
+                    <td class="py-3.5 text-center font-semibold text-emerald-400">${t.avg_goals_ht_rol}</td>
+                    <td class="py-3.5">
+                        <div class="flex justify-center">
+                            ${renderStreakCircles(t.racha_detalles, t.racha_ht)}
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterTeamsTable() {
+            const query = document.getElementById('search-teams').value.toLowerCase();
+            filteredTeams = teamsData.filter(t => 
+                t.team_name.toLowerCase().includes(query) || 
+                t.league_name.toLowerCase().includes(query)
+            );
+            renderTeamsTable();
+        }
+
+        // --- SECTION LEAGUES ---
+        function renderLeaguesGrid() {
+            const approvedGrid = document.getElementById('approved-leagues-grid');
+            const rejectedGrid = document.getElementById('rejected-leagues-grid');
+            
+            approvedGrid.innerHTML = '';
+            rejectedGrid.innerHTML = '';
+            
+            const approved = leaguesData.filter(l => l.Estado === 'APROBADA');
+            // Ordenar por partidos restantes de mayor a menor
+            approved.sort((a, b) => (b.partidos_restantes || 0) - (a.partidos_restantes || 0));
+            
+            const rejected = leaguesData.filter(l => l.Estado === 'RECHAZADA');
+            // Ordenar por partidos restantes de mayor a menor
+            rejected.sort((a, b) => (b.partidos_restantes || 0) - (a.partidos_restantes || 0));
+            
+            if (approved.length === 0) {
+                document.getElementById('no-approved-leagues-message').classList.remove('hidden');
+            } else {
+                document.getElementById('no-approved-leagues-message').classList.add('hidden');
+                approved.forEach(l => {
+                    approvedGrid.appendChild(createLeagueCard(l));
+                });
+            }
+            
+            if (rejected.length === 0) {
+                document.getElementById('no-rejected-leagues-message').classList.remove('hidden');
+            } else {
+                document.getElementById('no-rejected-leagues-message').classList.add('hidden');
+                rejected.forEach(l => {
+                    rejectedGrid.appendChild(createLeagueCard(l));
+                });
+            }
+            
+            lucide.createIcons();
+        }
+        
+        function createLeagueCard(l) {
+            const card = document.createElement('div');
+            const isApproved = l.Estado === 'APROBADA';
+            const badgeClass = isApproved 
+                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
+                : 'bg-red-500/10 border-red-500/20 text-rose-400';
+            
+            card.className = `glass-card p-5 rounded-2xl border ${isApproved ? 'hover:border-emerald-500/30' : 'hover:border-red-500/20'} transition-all duration-300`;
+            card.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-white text-base">${l.league_name}</h4>
+                        <p class="text-gray-400 text-xs mt-0.5">Temporada ${l.season}</p>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-xs font-extrabold border ${badgeClass}">${l.Estado}</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-white/5 text-xs">
+                    <div>
+                        <span class="text-gray-500 font-medium block">Over 1.5 FT</span>
+                        <span class="text-sm font-bold text-white">${l.over_15_pct}% <span class="text-[10px] text-gray-400 font-normal">(Min 80%)</span></span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 font-medium block">Over 2.5 FT</span>
+                        <span class="text-sm font-bold text-white">${l.over_25_pct}% <span class="text-[10px] text-gray-400 font-normal">(Min 60%)</span></span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-white/5 text-xs">
+                    <div>
+                        <span class="text-gray-500 font-medium block">Partidos Jugados</span>
+                        <span class="text-sm font-bold text-emerald-400">${l.partidos_jugados || 0}</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 font-medium block">Partidos Restantes</span>
+                        <span class="text-sm font-bold text-amber-400">${l.partidos_restantes || 0}</span>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+    </script>
+</body>
+</html>
