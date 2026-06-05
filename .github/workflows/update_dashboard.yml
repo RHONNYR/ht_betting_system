@@ -1,0 +1,35 @@
+name: Update HT Betting Dashboard
+
+on:
+  schedule:
+    # Corre automáticamente cada 12 horas (05:00 y 17:00 UTC)
+    - cron: '0 5,17 * * *'
+  workflow_dispatch: # Permite ejecutar el pipeline manualmente desde la web
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Betting Pipeline
+      env:
+        API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT_TOKEN }}
+        GITHUB_ENABLED: "True"
+        GITHUB_REPO_OWNER: "rhonnyr"
+        GITHUB_REPO_NAME: "ht_betting_system"
+      run: |
+        python run_sheets_pipeline.py
