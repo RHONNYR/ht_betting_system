@@ -36,7 +36,19 @@ SEASONS_TO_TEST = ['2122', '2223', '2324', '2425', '2526']  # Ligas principales 
 # ==========================================
 # CREDENCIALES DE API-FOOTBALL / API-SPORTS
 # ==========================================
-clean_secret = lambda v: "".join(c for c in str(v).strip() if c.isalnum() or c in ['-', '_']) if v else ""
+def clean_secret(val):
+    if not val:
+        return ""
+    import re
+    val_str = str(val).strip()
+    ghp_match = re.search(r'(ghp_[a-zA-Z0-9]{36,40})', val_str)
+    if ghp_match:
+        return ghp_match.group(1)
+    hex_match = re.search(r'\b([a-fA-F0-9]{32})\b', val_str)
+    if hex_match:
+        return hex_match.group(1)
+    return "".join(c for c in val_str if c.isalnum() or c in ['-', '_'])
+
 API_FOOTBALL_KEY = clean_secret(os.environ.get("API_FOOTBALL_KEY") or "e4efe9095c65d1f98870a6512b081874")
 API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
 DEFAULT_HT_O05_ODDS = 1.45
