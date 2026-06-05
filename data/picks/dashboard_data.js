@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-04 23:20:21",
+  "last_updated": "2026-06-05 13:24:04",
   "leagues": [
     {
       "league_id": 39,
@@ -335,10 +335,10 @@ window.dashboardData = {
       "league_id": 245,
       "league_name": "Ykkönen",
       "season": 2026,
-      "over_15_pct": 85.2,
-      "over_25_pct": 63.0,
-      "partidos_jugados": 54,
-      "partidos_restantes": 78,
+      "over_15_pct": 85.5,
+      "over_25_pct": 63.6,
+      "partidos_jugados": 55,
+      "partidos_restantes": 77,
       "Estado": "APROBADA"
     },
     {
@@ -358,7 +358,7 @@ window.dashboardData = {
       "over_15_pct": 86.1,
       "over_25_pct": 58.3,
       "partidos_jugados": 36,
-      "partidos_restantes": 54,
+      "partidos_restantes": 53,
       "Estado": "RECHAZADA"
     },
     {
@@ -458,7 +458,7 @@ window.dashboardData = {
       "over_15_pct": 79.0,
       "over_25_pct": 61.7,
       "partidos_jugados": 81,
-      "partidos_restantes": 159,
+      "partidos_restantes": 158,
       "Estado": "RECHAZADA"
     },
     {
@@ -498,7 +498,7 @@ window.dashboardData = {
       "over_15_pct": 51.1,
       "over_25_pct": 35.6,
       "partidos_jugados": 45,
-      "partidos_restantes": 90,
+      "partidos_restantes": 88,
       "Estado": "RECHAZADA"
     }
   ],
@@ -38764,10 +38764,10 @@ window.dashboardData = {
       "clase": "Clase B",
       "sustento": "Visitante",
       "cuota_recomendada": 1.25,
-      "bookmaker_recomendado": "BetVictor",
+      "bookmaker_recomendado": "William Hill",
       "otras_cuotas": {
-        "William Hill": 1.22,
-        "Betfair": 1.22
+        "Betfair": 1.22,
+        "BetVictor": 1.25
       },
       "local_stats": {
         "ht_05_pct": "50.0%",
@@ -38819,6 +38819,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -38871,6 +38872,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -38884,9 +38886,10 @@ window.dashboardData = {
       "probabilidad": "100.0%",
       "clase": "Clase A",
       "sustento": "Ambos",
-      "cuota_recomendada": 1.17,
-      "bookmaker_recomendado": "Betfair",
+      "cuota_recomendada": 1.18,
+      "bookmaker_recomendado": "William Hill",
       "otras_cuotas": {
+        "Betfair": 1.17,
         "1xBet": 1.17
       },
       "local_stats": {
@@ -38939,6 +38942,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -38991,6 +38995,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -39005,12 +39010,12 @@ window.dashboardData = {
       "clase": "Clase B",
       "sustento": "Visitante",
       "cuota_recomendada": 1.3,
-      "bookmaker_recomendado": "BetVictor",
+      "bookmaker_recomendado": "10Bet",
       "otras_cuotas": {
-        "10Bet": 1.28,
         "William Hill": 1.29,
         "Marathonbet": 1.29,
         "Betfair": 1.29,
+        "BetVictor": 1.3,
         "1xBet": 1.29
       },
       "local_stats": {
@@ -39063,6 +39068,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -39115,6 +39121,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -39181,6 +39188,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -39233,6 +39241,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -39246,9 +39255,10 @@ window.dashboardData = {
       "probabilidad": "75.0%",
       "clase": "Clase B",
       "sustento": "Visitante",
-      "cuota_recomendada": 1.24,
-      "bookmaker_recomendado": "Marathonbet",
+      "cuota_recomendada": 1.25,
+      "bookmaker_recomendado": "10Bet",
       "otras_cuotas": {
+        "Marathonbet": 1.24,
         "Betfair": 1.22,
         "1xBet": 1.24
       },
@@ -39302,6 +39312,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -39354,6 +39365,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -39423,6 +39435,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -39475,6 +39488,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": true,
         "is_candidate": false
       }
     },
@@ -39547,6 +39561,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -39599,6 +39614,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       }
     },
@@ -39665,6 +39681,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -39717,6 +39734,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       }
     },
@@ -39783,6 +39801,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -39835,6 +39854,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -39901,6 +39921,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -39953,6 +39974,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -40022,6 +40044,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -40074,6 +40097,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -40140,6 +40164,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -40192,6 +40217,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       }
     },
@@ -40258,6 +40284,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -40310,6 +40337,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     },
@@ -40376,6 +40404,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -40428,6 +40457,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       }
     },
@@ -40494,6 +40524,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
@@ -40501,18 +40532,10 @@ window.dashboardData = {
         "ht_15_pct": "75.0%",
         "bts_pct": "25.0%",
         "rendimiento_ht": "37.5%",
-        "avg_goals_ht_general": "0.11",
+        "avg_goals_ht_general": "0.20",
         "avg_goals_ht_rol": "0.00",
-        "racha_ht": "3/5",
+        "racha_ht": "4/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-02",
-            "rival": "VJS",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
           {
             "fecha": "2026-05-09",
             "rival": "FC jazz",
@@ -40544,8 +40567,17 @@ window.dashboardData = {
             "goles_contra_ht": 2,
             "total_ht": 2,
             "local": false
+          },
+          {
+            "fecha": "2026-06-05",
+            "rival": "KPV-j",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       }
     },
@@ -40612,6 +40644,7 @@ window.dashboardData = {
             "local": true
           }
         ],
+        "sequia_ht": false,
         "is_candidate": false
       },
       "visitante_stats": {
@@ -40664,6 +40697,7 @@ window.dashboardData = {
             "local": false
           }
         ],
+        "sequia_ht": false,
         "is_candidate": true
       }
     }
