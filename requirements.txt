@@ -1,0 +1,10 @@
+# Dependencias del Sistema HT 0.5+
+pandas
+numpy
+requests
+streamlit
+plotly
+xlsxwriter
+openpyxl
+gspread
+gspread-formatting
