@@ -17,6 +17,8 @@ from src.data.google_sheets_client import GoogleSheetsClient
 
 def main():
     print("=== INICIANDO PIPELINE HT 0.5+ CON GOOGLE SHEETS ===")
+    print(f"DEBUG: Key length = {len(settings.API_FOOTBALL_KEY)}, Key prefix = {settings.API_FOOTBALL_KEY[:6]}..., Key suffix = ...{settings.API_FOOTBALL_KEY[-6:] if settings.API_FOOTBALL_KEY else ''}")
+    print(f"DEBUG: Token length = {len(settings.GITHUB_TOKEN)}, Token prefix = {settings.GITHUB_TOKEN[:6]}..., Token suffix = ...{settings.GITHUB_TOKEN[-6:] if settings.GITHUB_TOKEN else ''}")
     
     # 1. Instanciar el extractor
     try:
