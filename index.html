@@ -520,7 +520,7 @@
             const data = window.dashboardData;
             
             // Cargar actualización
-            document.getElementById('update-time').innerText = data.last_updated || 'Desconocido';
+            document.getElementById('update-time').innerText = data.last_updated ? data.last_updated + ' (VET)' : 'Desconocido';
             
             // Cargar KPIs
             const picks = data.picks || [];
@@ -616,36 +616,47 @@
             return html;
         }
 
-        // Helper para convertir hora UTC a Local (e.g. GMT-4 del usuario)
+        // Helper para convertir hora UTC a la hora de Venezuela (America/Caracas)
         function formatLocalTime(dateStr, timeStr) {
             if (!dateStr || dateStr === 'N/A' || !timeStr || timeStr === 'N/A') {
-                return { date: dateStr, time: timeStr, tz: 'UTC' };
+                return { date: dateStr, time: timeStr, tz: 'VET' };
             }
             try {
                 // Parsear como string UTC
                 const utcString = `${dateStr}T${timeStr}:00Z`;
                 const dateObj = new Date(utcString);
                 if (isNaN(dateObj.getTime())) {
-                    return { date: dateStr, time: timeStr, tz: 'UTC' };
+                    return { date: dateStr, time: timeStr, tz: 'VET' };
                 }
                 
-                // Formato de fecha local: YYYY-MM-DD
-                const year = dateObj.getFullYear();
-                const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-                const day = String(dateObj.getDate()).padStart(2, '0');
+                // Formatear forzando la zona horaria de Venezuela (America/Caracas)
+                const formatter = new Intl.DateTimeFormat('es-VE', {
+                    timeZone: 'America/Caracas',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+                
+                const parts = formatter.formatToParts(dateObj);
+                let year = '', month = '', day = '', hour = '', minute = '';
+                for (const part of parts) {
+                    if (part.type === 'year') year = part.value;
+                    if (part.type === 'month') month = part.value;
+                    if (part.type === 'day') day = part.value;
+                    if (part.type === 'hour') hour = part.value;
+                    if (part.type === 'minute') minute = part.value;
+                }
+                
                 const localDate = `${year}-${month}-${day}`;
-                
-                // Formato de hora local: HH:MM
-                const hours = String(dateObj.getHours()).padStart(2, '0');
-                const minutes = String(dateObj.getMinutes()).padStart(2, '0');
-                const localTime = `${hours}:${minutes}`;
-                
-                // Obtener nombre corto de la zona horaria
-                const tzStr = dateObj.toLocaleTimeString('es-ES', { timeZoneName: 'short' }).split(' ').pop();
+                const localTime = `${hour}:${minute}`;
+                const tzStr = 'VET'; // Sello de Venezuela Time
                 
                 return { date: localDate, time: localTime, tz: tzStr };
             } catch (e) {
-                return { date: dateStr, time: timeStr, tz: 'UTC' };
+                return { date: dateStr, time: timeStr, tz: 'VET' };
             }
         }
 
