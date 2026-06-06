@@ -996,7 +996,7 @@
                 { label: 'Media Goles HT (General)', key: 'avg_goals_ht_general', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_general, valA: pick.visitante_stats.avg_goals_ht_general },
                 { label: 'Media Goles HT (Rol en Casa/Fuera)', key: 'avg_goals_ht_rol', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_rol, valA: pick.visitante_stats.avg_goals_ht_rol },
                 { label: 'Racha HT (Últimos 5)', key: 'racha_ht', threshold: '>= 4/5', valH: pick.local_stats.racha_ht, valA: pick.visitante_stats.racha_ht },
-                { label: 'Detección de Sequía HT (2+ sin goles)', key: 'sequia_ht', threshold: 'No (Favorable)', valH: pick.local_stats.sequia_ht, valA: pick.visitante_stats.sequia_ht }
+                { label: '¿Viene de 2+ partidos seguidos 0-0 al descanso?', key: 'sequia_ht', threshold: 'No', valH: pick.local_stats.sequia_ht, valA: pick.visitante_stats.sequia_ht }
             ];
             
             filters.forEach(f => {
@@ -1014,8 +1014,8 @@
                 let formattedValH = f.valH;
                 let formattedValA = f.valA;
                 if (f.key === 'sequia_ht') {
-                    formattedValH = f.valH ? 'Sí (Alerta ⚠️)' : 'No (Ok)';
-                    formattedValA = f.valA ? 'Sí (Alerta ⚠️)' : 'No (Ok)';
+                    formattedValH = f.valH ? 'Sí (Alerta ⚠️)' : 'No (Favorable)';
+                    formattedValA = f.valA ? 'Sí (Alerta ⚠️)' : 'No (Favorable)';
                 }
 
                 if (f.key === 'racha_ht') {
