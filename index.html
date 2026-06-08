@@ -190,15 +190,31 @@
                     <span class="w-2 h-2 bg-amber-400 rounded-full"></span>
                     Selecciones (Próximos 7 Días) de los Equipos Aprobados
                 </h3>
-                <!-- Filtro por Clase -->
-                <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 self-stretch sm:self-auto">
-                    <button onclick="filterPicksByClass('all')" id="btn-pick-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos</button>
-                    <button onclick="filterPicksByClass('Clase A')" id="btn-pick-filter-a" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
-                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i> Premium (A)
-                    </button>
-                    <button onclick="filterPicksByClass('Clase B')" id="btn-pick-filter-b" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
-                        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-400"></i> Valor (B)
-                    </button>
+                <div class="flex flex-col sm:flex-row gap-3 self-stretch sm:self-auto flex-wrap">
+                    <!-- Filtro por Clase -->
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1">
+                        <button onclick="filterPicksByClass('all')" id="btn-pick-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos Clase</button>
+                        <button onclick="filterPicksByClass('Clase A')" id="btn-pick-filter-a" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i> Premium (A)
+                        </button>
+                        <button onclick="filterPicksByClass('Clase B')" id="btn-pick-filter-b" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-400"></i> Valor (B)
+                        </button>
+                    </div>
+
+                    <!-- Filtro por Liquidez (Tier) -->
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1">
+                        <button onclick="filterPicksByTier('all')" id="btn-tier-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos Tier</button>
+                        <button onclick="filterPicksByTier(1)" id="btn-tier-filter-1" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Tier 1 (Alta)
+                        </button>
+                        <button onclick="filterPicksByTier(2)" id="btn-tier-filter-2" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-blue-400"></span> Tier 2 (Media)
+                        </button>
+                        <button onclick="filterPicksByTier(3)" id="btn-tier-filter-3" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Tier 3 (Exótica)
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -510,7 +526,8 @@
         
         let leaguesData = [];
         let chartInstance = null;
-        let currentPickFilter = 'all';
+        let currentClassFilter = 'all';
+        let currentTierFilter = 'all';
 
         // Cargar datos
         window.addEventListener('DOMContentLoaded', () => {
@@ -723,8 +740,8 @@
                 card.innerHTML = `
                     <div class="space-y-4">
                         <div class="flex justify-between items-start border-b border-white/5 pb-3">
-                            <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1">
-                                <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga}
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1.5 flex-wrap">
+                                <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga} ${getTierBadgeHtml(pick.tier)}
                             </span>
                             <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
                                 <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${localInfo.date} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${localInfo.time} (${localInfo.tz})
@@ -773,21 +790,69 @@
             lucide.createIcons();
         }
 
+        function getTierBadgeHtml(tier) {
+            const tierVal = parseInt(tier) || 3;
+            if (tierVal === 1) {
+                return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400" title="Tier 1: Alta liquidez">
+                        Tier 1
+                    </span>
+                `;
+            } else if (tierVal === 2) {
+                return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-500/10 border border-blue-500/25 text-blue-400" title="Tier 2: Liquidez media">
+                        Tier 2
+                    </span>
+                `;
+            } else {
+                return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-500/10 border border-amber-500/25 text-amber-500" title="Tier 3: Liquidez exótica/baja">
+                        Tier 3
+                    </span>
+                `;
+            }
+        }
+
+        function applyUnifiedFilters() {
+            const allPicks = window.dashboardData.picks || [];
+            const filtered = allPicks.filter(p => {
+                const matchClass = currentClassFilter === 'all' || p.clase === currentClassFilter;
+                const matchTier = currentTierFilter === 'all' || parseInt(p.tier) === parseInt(currentTierFilter);
+                return matchClass && matchTier;
+            });
+            renderPicks(filtered);
+        }
+
         function filterPicksByClass(clase) {
-            currentPickFilter = clase;
+            currentClassFilter = clase;
             
             // Update filter buttons style
             ['all', 'a', 'b'].forEach(f => {
                 const btn = document.getElementById(`btn-pick-filter-${f}`);
-                btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
+                if (btn) btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
             });
             
             const activeBtnId = clase === 'all' ? 'btn-pick-filter-all' : (clase === 'Clase A' ? 'btn-pick-filter-a' : 'btn-pick-filter-b');
-            document.getElementById(activeBtnId).className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
+            const activeBtn = document.getElementById(activeBtnId);
+            if (activeBtn) activeBtn.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
             
-            const allPicks = window.dashboardData.picks;
-            const filtered = clase === 'all' ? allPicks : allPicks.filter(p => p.clase === clase);
-            renderPicks(filtered);
+            applyUnifiedFilters();
+        }
+
+        function filterPicksByTier(tier) {
+            currentTierFilter = tier;
+            
+            // Update tier filter buttons style
+            ['all', '1', '2', '3'].forEach(t => {
+                const btn = document.getElementById(`btn-tier-filter-${t}`);
+                if (btn) btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
+            });
+            
+            const activeBtnId = tier === 'all' ? 'btn-tier-filter-all' : `btn-tier-filter-${tier}`;
+            const activeBtn = document.getElementById(activeBtnId);
+            if (activeBtn) activeBtn.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
+            
+            applyUnifiedFilters();
         }
 
         // Helper to check if a value meets criteria
@@ -848,8 +913,8 @@
 
                 tr.innerHTML = `
                     <td class="py-3 text-xs md:text-sm">${localInfo.date} <span class="text-gray-500 text-[11px] font-light">${localInfo.time} (${localInfo.tz})</span></td>
-                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
-                        ${pick.liga} ${classBadge}
+                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5 flex-wrap">
+                        <span class="truncate max-w-[120px]" title="${pick.liga}">${pick.liga}</span> ${getTierBadgeHtml(pick.tier)} ${classBadge}
                     </td>
                     <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${pick.local}</td>
                     <td class="py-3 text-center text-gray-500 text-xs px-4">vs</td>
@@ -960,7 +1025,7 @@
                 ? window.dashboardData.picks_history[pickIndex] 
                 : window.dashboardData.picks[pickIndex];
             
-            document.getElementById('modal-league-pill').innerText = pick.liga;
+            document.getElementById('modal-league-pill').innerHTML = `${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
             document.getElementById('modal-home-team').innerText = pick.local;
             document.getElementById('modal-away-team').innerText = pick.visitante;
             
@@ -1404,7 +1469,10 @@
             card.innerHTML = `
                 <div class="flex justify-between items-start">
                     <div>
-                        <h4 class="font-bold text-white text-base">${l.league_name}</h4>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h4 class="font-bold text-white text-base">${l.league_name}</h4>
+                            ${getTierBadgeHtml(l.tier)}
+                        </div>
                         <p class="text-gray-400 text-xs mt-0.5">Temporada ${l.season}</p>
                     </div>
                     <span class="px-2 py-0.5 rounded-full text-xs font-extrabold border ${badgeClass}">${l.Estado}</span>
