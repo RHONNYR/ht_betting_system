@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-07 22:25:47",
+  "last_updated": "2026-06-07 22:27:38",
   "leagues": [
     {
       "league_id": 39,
