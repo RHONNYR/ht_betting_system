@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-07 22:09:37",
+  "last_updated": "2026-06-07 22:25:47",
   "leagues": [
     {
       "league_id": 39,
@@ -63516,9 +63516,6 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 909,
       "tier": 3
     },
@@ -63640,9 +63637,6 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 909,
       "tier": 3
     },
@@ -63764,6 +63758,8 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
+      "league_id": 564,
+      "tier": 3,
       "cuota_recomendada": 1.29,
       "bookmaker_recomendado": "BetVictor",
       "otras_cuotas": {
@@ -63772,12 +63768,12 @@ window.dashboardData = {
         "Marathonbet": 1.28,
         "Betfair": 1.25,
         "1xBet": 1.28
-      },
-      "league_id": 564,
-      "tier": 3
+      }
     },
     {
       "match_id": 1550468,
+      "league_id": 492,
+      "tier": 3,
       "fecha": "2026-06-10",
       "hora": "16:30",
       "liga": "Tweede Divisie",
@@ -63798,18 +63794,10 @@ window.dashboardData = {
         "ht_15_pct": "82.4%",
         "bts_pct": "76.5%",
         "rendimiento_ht": "70.6%",
-        "avg_goals_ht_general": "1.18",
+        "avg_goals_ht_general": "1.14",
         "avg_goals_ht_rol": "1.47",
-        "racha_ht": "4/5",
+        "racha_ht": "5/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-04-18",
-            "rival": "Almere City II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
           {
             "fecha": "2026-04-25",
             "rival": "Barendrecht",
@@ -63841,6 +63829,14 @@ window.dashboardData = {
             "goles_contra_ht": 1,
             "total_ht": 2,
             "local": false
+          },
+          {
+            "fecha": "2026-06-06",
+            "rival": "Groningen U21",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
           }
         ],
         "sequia_ht": false,
@@ -63857,9 +63853,7 @@ window.dashboardData = {
         "racha_detalles": [],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 492,
-      "tier": 3
+      }
     },
     {
       "match_id": 1543395,
@@ -63979,11 +63973,11 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
+      "league_id": 166,
+      "tier": 3,
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "league_id": 166,
-      "tier": 3
+      "otras_cuotas": {}
     },
     {
       "match_id": 1543392,
@@ -64103,14 +64097,13 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 166,
       "tier": 3
     },
     {
       "match_id": 1543393,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-10",
       "hora": "19:15",
       "liga": "2. Deild",
@@ -64231,9 +64224,7 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 166,
-      "tier": 3
+      }
     },
     {
       "match_id": 1541620,
@@ -64353,11 +64344,11 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
+      "league_id": 247,
+      "tier": 3,
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "league_id": 247,
-      "tier": 3
+      "otras_cuotas": {}
     },
     {
       "match_id": 1517192,
@@ -64477,14 +64468,16 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
+      "league_id": 245,
+      "tier": 3,
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "league_id": 245,
-      "tier": 3
+      "otras_cuotas": {}
     },
     {
       "match_id": 1517191,
+      "league_id": 245,
+      "tier": 3,
       "fecha": "2026-06-12",
       "hora": "15:30",
       "liga": "Ykkönen",
@@ -64605,9 +64598,7 @@ window.dashboardData = {
         ],
         "sequia_ht": true,
         "is_candidate": false
-      },
-      "league_id": 245,
-      "tier": 3
+      }
     },
     {
       "match_id": 1541621,
@@ -64727,14 +64718,16 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
+      "league_id": 247,
+      "tier": 3,
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "league_id": 247,
-      "tier": 3
+      "otras_cuotas": {}
     },
     {
       "match_id": 1504463,
+      "league_id": 564,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "11:00",
       "liga": "Ettan - Södra",
@@ -64855,12 +64848,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 564,
-      "tier": 3
+      }
     },
     {
       "match_id": 1541623,
+      "league_id": 247,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "13:00",
       "liga": "Kakkonen - Lohko A",
@@ -64934,18 +64927,10 @@ window.dashboardData = {
         "ht_15_pct": "50.0%",
         "bts_pct": "100.0%",
         "rendimiento_ht": "62.5%",
-        "avg_goals_ht_general": "0.43",
+        "avg_goals_ht_general": "0.38",
         "avg_goals_ht_rol": "0.50",
         "racha_ht": "4/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-02",
-            "rival": "MyPa",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
           {
             "fecha": "2026-05-08",
             "rival": "Atlantis",
@@ -64977,22 +64962,30 @@ window.dashboardData = {
             "goles_contra_ht": 2,
             "total_ht": 2,
             "local": true
+          },
+          {
+            "fecha": "2026-06-06",
+            "rival": "HPS",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": true
           }
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 247,
-      "tier": 3
+      }
     },
     {
       "match_id": 1504460,
+      "league_id": 564,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "14:00",
       "liga": "Ettan - Södra",
       "local": "Atvidabergs FF",
       "visitante": "Eskilsminne",
-      "probabilidad": "87.5%",
+      "probabilidad": "90.0%",
       "clase": "Clase A",
       "sustento": "Ambos",
       "status": "NS",
@@ -65004,21 +64997,13 @@ window.dashboardData = {
       "otras_cuotas": {},
       "local_stats": {
         "ht_05_pct": "100.0%",
-        "ht_15_pct": "40.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "60.0%",
-        "avg_goals_ht_general": "0.90",
-        "avg_goals_ht_rol": "1.20",
+        "ht_15_pct": "50.0%",
+        "bts_pct": "66.7%",
+        "rendimiento_ht": "58.3%",
+        "avg_goals_ht_general": "1.00",
+        "avg_goals_ht_rol": "1.33",
         "racha_ht": "4/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-10",
-            "rival": "Trelleborg",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          },
           {
             "fecha": "2026-05-14",
             "rival": "Angelholms FF",
@@ -65050,28 +65035,28 @@ window.dashboardData = {
             "goles_contra_ht": 2,
             "total_ht": 3,
             "local": false
+          },
+          {
+            "fecha": "2026-06-07",
+            "rival": "Tvååker",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": true
           }
         ],
         "sequia_ht": false,
         "is_candidate": true
       },
       "visitante_stats": {
-        "ht_05_pct": "75.0%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "50.0%",
+        "ht_05_pct": "80.0%",
+        "ht_15_pct": "40.0%",
+        "bts_pct": "60.0%",
         "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.90",
-        "avg_goals_ht_rol": "1.25",
+        "avg_goals_ht_general": "0.82",
+        "avg_goals_ht_rol": "1.00",
         "racha_ht": "5/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Utsikten",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
           {
             "fecha": "2026-05-13",
             "rival": "Hässleholms IF",
@@ -65103,16 +65088,24 @@ window.dashboardData = {
             "goles_contra_ht": 1,
             "total_ht": 3,
             "local": true
+          },
+          {
+            "fecha": "2026-06-07",
+            "rival": "AFC Malmo",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
           }
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 564,
-      "tier": 3
+      }
     },
     {
       "match_id": 1505185,
+      "league_id": 563,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "14:00",
       "liga": "Ettan - Norra",
@@ -65233,12 +65226,12 @@ window.dashboardData = {
         ],
         "sequia_ht": true,
         "is_candidate": false
-      },
-      "league_id": 563,
-      "tier": 3
+      }
     },
     {
       "match_id": 1543397,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "16:00",
       "liga": "2. Deild",
@@ -65308,22 +65301,14 @@ window.dashboardData = {
         "is_candidate": true
       },
       "visitante_stats": {
-        "ht_05_pct": "50.0%",
-        "ht_15_pct": "0.0%",
+        "ht_05_pct": "66.7%",
+        "ht_15_pct": "33.3%",
         "bts_pct": "100.0%",
-        "rendimiento_ht": "25.0%",
-        "avg_goals_ht_general": "0.50",
-        "avg_goals_ht_rol": "0.00",
-        "racha_ht": "4/5",
+        "rendimiento_ht": "50.0%",
+        "avg_goals_ht_general": "0.60",
+        "avg_goals_ht_rol": "0.50",
+        "racha_ht": "5/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-02",
-            "rival": "Kári",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
           {
             "fecha": "2026-05-09",
             "rival": "Thróttur Vogar",
@@ -65355,16 +65340,24 @@ window.dashboardData = {
             "goles_contra_ht": 2,
             "total_ht": 3,
             "local": true
+          },
+          {
+            "fecha": "2026-06-06",
+            "rival": "Fjardabyggd / Leiknir",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 3,
+            "total_ht": 4,
+            "local": false
           }
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 166,
-      "tier": 3
+      }
     },
     {
       "match_id": 1519574,
+      "league_id": 328,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "17:00",
       "liga": "Esiliiga A",
@@ -65485,12 +65478,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 328,
-      "tier": 3
+      }
     },
     {
       "match_id": 1513153,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "23:00",
       "liga": "MLS Next Pro",
@@ -65611,12 +65604,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 909,
-      "tier": 3
+      }
     },
     {
       "match_id": 1513150,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "00:00",
       "liga": "MLS Next Pro",
@@ -65737,12 +65730,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 909,
-      "tier": 3
+      }
     },
     {
       "match_id": 1519575,
+      "league_id": 328,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "09:30",
       "liga": "Esiliiga A",
@@ -65863,12 +65856,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 328,
-      "tier": 3
+      }
     },
     {
       "match_id": 1496260,
+      "league_id": 474,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "13:00",
       "liga": "2. Division - Group 2",
@@ -65989,12 +65982,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 474,
-      "tier": 3
+      }
     },
     {
       "match_id": 1495861,
+      "league_id": 104,
+      "tier": 2,
       "fecha": "2026-06-14",
       "hora": "14:00",
       "liga": "1. Division",
@@ -66115,12 +66108,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 120,
-      "tier": 2
+      }
     },
     {
       "match_id": 1495856,
+      "league_id": 104,
+      "tier": 2,
       "fecha": "2026-06-14",
       "hora": "14:00",
       "liga": "1. Division",
@@ -66241,12 +66234,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 120,
-      "tier": 2
+      }
     },
     {
       "match_id": 1495857,
+      "league_id": 104,
+      "tier": 2,
       "fecha": "2026-06-14",
       "hora": "14:00",
       "liga": "1. Division",
@@ -66367,12 +66360,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 120,
-      "tier": 2
+      }
     },
     {
       "match_id": 1543400,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "16:00",
       "liga": "2. Deild",
@@ -66493,12 +66486,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 166,
-      "tier": 3
+      }
     },
     {
       "match_id": 1513159,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "20:00",
       "liga": "MLS Next Pro",
@@ -66619,12 +66612,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_id": 909,
-      "tier": 3
+      }
     },
     {
       "match_id": 1513160,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "22:00",
       "liga": "MLS Next Pro",
@@ -66745,12 +66738,12 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 909,
-      "tier": 3
+      }
     },
     {
       "match_id": 1543401,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-15",
       "hora": "19:15",
       "liga": "2. Deild",
@@ -66871,9 +66864,7 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      },
-      "league_id": 166,
-      "tier": 3
+      }
     },
     {
       "match_id": 1513147,
@@ -66993,9 +66984,6 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 909,
       "tier": 3
     },
@@ -67117,9 +67105,6 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 120,
       "tier": 2
     },
@@ -67241,9 +67226,6 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 564,
       "tier": 3
     },
@@ -67365,9 +67347,6 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 564,
       "tier": 3
     },
@@ -67489,95 +67468,7 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 909,
-      "tier": 3
-    },
-    {
-      "match_id": 1550467,
-      "fecha": "2026-06-06",
-      "hora": "17:00",
-      "liga": "Tweede Divisie",
-      "local": "Groningen U21",
-      "visitante": "Sparta Rotterdam II",
-      "probabilidad": "76.5%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "status": "FT",
-      "goles_ht": 1,
-      "resultado_apuesta": "GANADA",
-      "marcador_ht": "1 - 0",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "local_stats": {
-        "ht_05_pct": "N/A",
-        "ht_15_pct": "N/A",
-        "bts_pct": "N/A",
-        "rendimiento_ht": "N/A",
-        "avg_goals_ht_general": "N/A",
-        "avg_goals_ht_rol": "N/A",
-        "racha_ht": "N/A",
-        "racha_detalles": [],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "76.5%",
-        "ht_15_pct": "47.1%",
-        "bts_pct": "76.5%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "1.18",
-        "avg_goals_ht_rol": "0.88",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-04-18",
-            "rival": "Almere City II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-04-25",
-            "rival": "Barendrecht",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-09",
-            "rival": "Rijnsburgse Boys",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 2,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-16",
-            "rival": "De Treffers",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Katwijk",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "league_id": 492,
       "tier": 3
     },
     {
@@ -67698,9 +67589,6 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 166,
       "tier": 3
     },
@@ -67822,9 +67710,6 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 165,
       "tier": 3
     },
@@ -67946,9 +67831,6 @@ window.dashboardData = {
         ],
         "is_candidate": true
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 909,
       "tier": 3
     },
@@ -68070,9 +67952,6 @@ window.dashboardData = {
         ],
         "is_candidate": false
       },
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
       "league_id": 248,
       "tier": 3
     }
