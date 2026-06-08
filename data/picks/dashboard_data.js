@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-07 21:04:35",
+  "last_updated": "2026-06-07 21:22:39",
   "leagues": [
     {
       "league_id": 39,
@@ -42431,7 +42431,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1513148,
@@ -42550,7 +42553,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1504451,
@@ -42669,6 +42675,15 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
+      },
+      "cuota_recomendada": 1.29,
+      "bookmaker_recomendado": "BetVictor",
+      "otras_cuotas": {
+        "10Bet": 1.25,
+        "William Hill": 1.25,
+        "Marathonbet": 1.28,
+        "Betfair": 1.25,
+        "1xBet": 1.28
       }
     },
     {
@@ -42871,7 +42886,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1543392,
@@ -42990,7 +43008,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1543393,
@@ -43233,7 +43254,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1517192,
@@ -43352,7 +43376,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1517191,
@@ -43595,7 +43622,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1504463,
@@ -45822,7 +45852,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1495781,
@@ -45941,7 +45974,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1504453,
@@ -46060,7 +46096,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1504452,
@@ -46179,7 +46218,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1513142,
@@ -46298,7 +46340,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1550467,
@@ -46500,7 +46545,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1514199,
@@ -46619,7 +46667,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1513136,
@@ -46738,7 +46789,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": true
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     },
     {
       "match_id": 1541502,
@@ -46857,7 +46911,10 @@ window.dashboardData = {
           }
         ],
         "is_candidate": false
-      }
+      },
+      "cuota_recomendada": 1.45,
+      "bookmaker_recomendado": "Por determinar",
+      "otras_cuotas": {}
     }
   ]
 };
