@@ -304,6 +304,41 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- LINE CHART OF BANKROLL EVOLUTION -->
+            <div class="glass-card p-6 rounded-2xl w-full mt-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-200">Evolución de la Banca (Simulado 2 Años)</h3>
+                        <p class="text-gray-400 text-xs mt-0.5">Simulación en base a los partidos cruzados en el backtesting (Orden cronológico)</p>
+                    </div>
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 self-stretch sm:self-auto flex-wrap">
+                        <button onclick="setBankrollMethod('flat')" id="btn-bank-method-flat" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all">Stake Fijo ($20)</button>
+                        <button onclick="setBankrollMethod('compound')" id="btn-bank-method-compound" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all">Stake Compuesto (2%)</button>
+                    </div>
+                </div>
+                <div class="h-80 w-full relative">
+                    <canvas id="bankrollChart"></canvas>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-4 border-t border-white/5 text-center">
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Banca Final Fijo</span>
+                        <span class="text-lg font-extrabold text-blue-400" id="stat-bank-flat">$1,000.00</span>
+                    </div>
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Rendimiento Fijo</span>
+                        <span class="text-lg font-extrabold text-blue-400" id="stat-yield-flat">+0.0%</span>
+                    </div>
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Banca Final Compuesto</span>
+                        <span class="text-lg font-extrabold text-emerald-400" id="stat-bank-compound">$1,000.00</span>
+                    </div>
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Rendimiento Compuesto</span>
+                        <span class="text-lg font-extrabold text-emerald-400" id="stat-yield-compound">+0.0%</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- SECTION: RADAR EQUIPOS -->
@@ -567,6 +602,7 @@
             // Cargar Backtest
             renderBacktestTable();
             renderChart(data.backtest_summary);
+            initBankrollSimulation();
             
             // Cargar Equipos
             renderTeamsTable();
@@ -1263,6 +1299,9 @@
             );
             backtestPage = 0;
             renderBacktestTable();
+            
+            // Actualizar simulación de banca
+            initBankrollSimulation();
         }
 
         function updateBacktestChartAndTable() {
@@ -1334,6 +1373,159 @@
                         },
                         tooltip: {
                             enabled: true
+                        }
+                    }
+                }
+            });
+        }
+
+        let bankrollChartInstance = null;
+        let activeBankrollMethod = 'flat'; // 'flat' or 'compound'
+
+        function initBankrollSimulation() {
+            const results = calculateBankrollEvolutionJS(filteredBacktest);
+            
+            document.getElementById('stat-bank-flat').innerText = `$${results.finalFlat.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stat-yield-flat').innerText = `${results.yieldFlat >= 0 ? '+' : ''}${results.yieldFlat}%`;
+            document.getElementById('stat-bank-compound').innerText = `$${results.finalComp.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stat-yield-compound').innerText = `${results.yieldComp >= 0 ? '+' : ''}${results.yieldComp}%`;
+            
+            renderBankrollChart(results);
+        }
+
+        function calculateBankrollEvolutionJS(matchesList) {
+            const sorted = [...matchesList].sort((a, b) => new Date(a.Fecha) - new Date(b.Fecha));
+            
+            const initialBank = window.dashboardData.backtest_summary.banca_inicial || 1000;
+            const flatStakePct = 0.02; // 2%
+            
+            let bankFlat = initialBank;
+            let bankComp = initialBank;
+            
+            const dataFlat = [initialBank];
+            const dataComp = [initialBank];
+            const labels = ['Inicio'];
+            
+            sorted.forEach((m, idx) => {
+                const odd = parseFloat(m.Cuota) || 1.45;
+                const isWin = m.Resultado === 'GANADA';
+                
+                // Flat
+                const stkFlat = initialBank * flatStakePct;
+                const pftFlat = isWin ? stkFlat * (odd - 1.0) : -stkFlat;
+                bankFlat += pftFlat;
+                dataFlat.push(Math.round(bankFlat * 100) / 100);
+                
+                // Compound
+                const stkComp = bankComp * flatStakePct;
+                const pftComp = isWin ? stkComp * (odd - 1.0) : -stkComp;
+                bankComp += pftComp;
+                dataComp.push(Math.round(bankComp * 100) / 100);
+                
+                labels.push(m.Fecha);
+            });
+            
+            return {
+                labels,
+                flat: dataFlat,
+                compound: dataComp,
+                finalFlat: Math.round(bankFlat * 100) / 100,
+                finalComp: Math.round(bankComp * 100) / 100,
+                yieldFlat: ((bankFlat - initialBank) / initialBank * 100).toFixed(1),
+                yieldComp: ((bankComp - initialBank) / initialBank * 100).toFixed(1)
+            };
+        }
+
+        function setBankrollMethod(method) {
+            activeBankrollMethod = method;
+            
+            const btnFlat = document.getElementById('btn-bank-method-flat');
+            const btnComp = document.getElementById('btn-bank-method-compound');
+            
+            if (method === 'flat') {
+                btnFlat.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all";
+                btnComp.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+            } else {
+                btnFlat.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+                btnComp.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all";
+            }
+            
+            initBankrollSimulation();
+        }
+
+        function renderBankrollChart(results) {
+            const ctx = document.getElementById('bankrollChart').getContext('2d');
+            
+            if (bankrollChartInstance) {
+                bankrollChartInstance.destroy();
+            }
+            
+            const isFlat = activeBankrollMethod === 'flat';
+            const chartData = isFlat ? results.flat : results.compound;
+            const lineColor = isFlat ? '#3b82f6' : '#10b981';
+            const fillGradient = ctx.createLinearGradient(0, 0, 0, 320);
+            
+            if (isFlat) {
+                fillGradient.addColorStop(0, 'rgba(59, 130, 246, 0.2)');
+                fillGradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+            } else {
+                fillGradient.addColorStop(0, 'rgba(16, 185, 129, 0.2)');
+                fillGradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+            }
+            
+            bankrollChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: results.labels,
+                    datasets: [{
+                        label: isFlat ? 'Banca con Stake Fijo ($20)' : 'Banca con Stake Compuesto (2%)',
+                        data: chartData,
+                        borderColor: lineColor,
+                        borderWidth: 2,
+                        backgroundColor: fillGradient,
+                        fill: true,
+                        tension: 0.1,
+                        pointRadius: chartData.length > 500 ? 0 : 2,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `Banca: $${context.raw.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                maxTicksLimit: 12
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                callback: function(value) {
+                                    return `$${value}`;
+                                }
+                            }
                         }
                     }
                 }
