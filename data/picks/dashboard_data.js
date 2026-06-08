@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-07 22:27:38",
+  "last_updated": "2026-06-08 18:32:32",
   "leagues": [
     {
       "league_id": 39,
@@ -233,17 +233,6 @@ window.dashboardData = {
       "tier": 2
     },
     {
-      "league_id": 119,
-      "league_name": "Superliga",
-      "season": 2025,
-      "over_15_pct": 82.3,
-      "over_25_pct": 60.4,
-      "partidos_jugados": 193,
-      "partidos_restantes": 0,
-      "Estado": "APROBADA",
-      "tier": 2
-    },
-    {
       "league_id": 120,
       "league_name": "1. Division",
       "season": 2025,
@@ -253,17 +242,6 @@ window.dashboardData = {
       "partidos_restantes": 0,
       "Estado": "RECHAZADA",
       "tier": 2
-    },
-    {
-      "league_id": 135,
-      "league_name": "Serie A",
-      "season": 2025,
-      "over_15_pct": 70.0,
-      "over_25_pct": 45.8,
-      "partidos_jugados": 380,
-      "partidos_restantes": 0,
-      "Estado": "RECHAZADA",
-      "tier": 1
     },
     {
       "league_id": 140,
@@ -379,10 +357,10 @@ window.dashboardData = {
       "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "season": 2026,
-      "over_15_pct": 89.7,
-      "over_25_pct": 69.2,
-      "partidos_jugados": 39,
-      "partidos_restantes": 51,
+      "over_15_pct": 90.0,
+      "over_25_pct": 67.5,
+      "partidos_jugados": 40,
+      "partidos_restantes": 50,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -492,7 +470,7 @@ window.dashboardData = {
       "over_15_pct": 84.6,
       "over_25_pct": 65.4,
       "partidos_jugados": 319,
-      "partidos_restantes": 1,
+      "partidos_restantes": 3,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -500,10 +478,10 @@ window.dashboardData = {
       "league_id": 563,
       "league_name": "Ettan - Norra",
       "season": 2026,
-      "over_15_pct": 80.2,
-      "over_25_pct": 60.5,
-      "partidos_jugados": 86,
-      "partidos_restantes": 154,
+      "over_15_pct": 80.7,
+      "over_25_pct": 61.4,
+      "partidos_jugados": 88,
+      "partidos_restantes": 152,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -511,10 +489,10 @@ window.dashboardData = {
       "league_id": 564,
       "league_name": "Ettan - Södra",
       "season": 2026,
-      "over_15_pct": 81.4,
-      "over_25_pct": 61.6,
-      "partidos_jugados": 86,
-      "partidos_restantes": 154,
+      "over_15_pct": 80.7,
+      "over_25_pct": 60.2,
+      "partidos_jugados": 88,
+      "partidos_restantes": 152,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -533,10 +511,10 @@ window.dashboardData = {
       "league_id": 909,
       "league_name": "MLS Next Pro",
       "season": 2026,
-      "over_15_pct": 84.7,
+      "over_15_pct": 85.0,
       "over_25_pct": 70.1,
-      "partidos_jugados": 189,
-      "partidos_restantes": 229,
+      "partidos_jugados": 192,
+      "partidos_restantes": 228,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -544,10 +522,10 @@ window.dashboardData = {
       "league_id": 1087,
       "league_name": "Ykkösliiga",
       "season": 2026,
-      "over_15_pct": 52.1,
-      "over_25_pct": 37.5,
-      "partidos_jugados": 48,
-      "partidos_restantes": 87,
+      "over_15_pct": 53.1,
+      "over_25_pct": 36.7,
+      "partidos_jugados": 49,
+      "partidos_restantes": 86,
       "Estado": "RECHAZADA",
       "tier": 3
     }
@@ -2228,60 +2206,6 @@ window.dashboardData = {
       ]
     },
     {
-      "league_name": "Superliga",
-      "team_name": "FC Copenhagen",
-      "role": "Local",
-      "ht_05_pct": 87.5,
-      "ht_15_pct": 50.0,
-      "bts_pct": 56.2,
-      "rendimiento_ht": 50.0,
-      "avg_goals_ht_general": 0.94,
-      "avg_goals_ht_rol": 1.06,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-22",
-          "rival": "Odense",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-27",
-          "rival": "Vejle",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-03",
-          "rival": "FC Fredericia",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 2,
-          "total_ht": 4,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-10",
-          "rival": "Silkeborg",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-17",
-          "rival": "Randers FC",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        }
-      ]
-    },
-    {
       "league_name": "Úrvalsdeild",
       "team_name": "Vikingur Reykjavik",
       "role": "Local",
@@ -3196,6 +3120,60 @@ window.dashboardData = {
           "goles_contra_ht": 0,
           "total_ht": 1,
           "local": false
+        }
+      ]
+    },
+    {
+      "league_name": "Kakkonen - Lohko A",
+      "team_name": "Kiffen",
+      "role": "Local",
+      "ht_05_pct": 100.0,
+      "ht_15_pct": 50.0,
+      "bts_pct": 50.0,
+      "rendimiento_ht": 50.0,
+      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_rol": 1.0,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-09",
+          "rival": "PEPO",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-18",
+          "rival": "HIFK Helsinki",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-23",
+          "rival": "MyPa",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-29",
+          "rival": "Union Plaani",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "PuiU Helsinki",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
         }
       ]
     },
@@ -4395,18 +4373,10 @@ window.dashboardData = {
       "ht_15_pct": 83.3,
       "bts_pct": 100.0,
       "rendimiento_ht": 66.7,
-      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_general": 1.18,
       "avg_goals_ht_rol": 1.17,
       "racha_ht": "5/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-09",
-          "rival": "Stockholm Internazionale",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
         {
           "fecha": "2026-05-14",
           "rival": "IF Karlstad",
@@ -4437,6 +4407,14 @@ window.dashboardData = {
           "goles_favor_ht": 1,
           "goles_contra_ht": 0,
           "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "Järfälla",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
           "local": false
         }
       ]
@@ -4490,60 +4468,6 @@ window.dashboardData = {
           "rival": "Tvååker",
           "goles_favor_ht": 2,
           "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_name": "Ettan - Södra",
-      "team_name": "Olympic",
-      "role": "Local",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 80.0,
-      "bts_pct": 80.0,
-      "rendimiento_ht": 80.0,
-      "avg_goals_ht_general": 0.8,
-      "avg_goals_ht_rol": 0.8,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-09",
-          "rival": "Kristianstad",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-14",
-          "rival": "Tvååker",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-17",
-          "rival": "Atvidabergs FF",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-23",
-          "rival": "Rosengård",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-03",
-          "rival": "Lund",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
           "total_ht": 2,
           "local": true
         }
@@ -5255,22 +5179,14 @@ window.dashboardData = {
       "league_name": "MLS Next Pro",
       "team_name": "The Town",
       "role": "Local",
-      "ht_05_pct": 75.0,
-      "ht_15_pct": 50.0,
-      "bts_pct": 50.0,
+      "ht_05_pct": 80.0,
+      "ht_15_pct": 60.0,
+      "bts_pct": 40.0,
       "rendimiento_ht": 50.0,
-      "avg_goals_ht_general": 1.5,
-      "avg_goals_ht_rol": 1.5,
+      "avg_goals_ht_general": 1.67,
+      "avg_goals_ht_rol": 1.8,
       "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-04-13",
-          "rival": "Minnesota United II",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
         {
           "fecha": "2026-04-20",
           "rival": "Los Angeles FC II",
@@ -5301,6 +5217,14 @@ window.dashboardData = {
           "goles_favor_ht": 0,
           "goles_contra_ht": 0,
           "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "Real Monarchs",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
           "local": true
         }
       ]
@@ -5356,60 +5280,6 @@ window.dashboardData = {
           "goles_contra_ht": 0,
           "total_ht": 0,
           "local": false
-        }
-      ]
-    },
-    {
-      "league_name": "MLS Next Pro",
-      "team_name": "Los Angeles FC II",
-      "role": "Local",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 40.0,
-      "bts_pct": 80.0,
-      "rendimiento_ht": 70.0,
-      "avg_goals_ht_general": 0.88,
-      "avg_goals_ht_rol": 0.8,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-20",
-          "rival": "The Town",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-27",
-          "rival": "Tacoma Defiance",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 3,
-          "total_ht": 4,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-04",
-          "rival": "Vancouver Whitecaps II",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-10",
-          "rival": "Real Monarchs",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-17",
-          "rival": "Ventura County",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
         }
       ]
     },
@@ -6872,60 +6742,6 @@ window.dashboardData = {
       ]
     },
     {
-      "league_name": "Superliga",
-      "team_name": "Odense",
-      "role": "Visitante",
-      "ht_05_pct": 93.8,
-      "ht_15_pct": 43.8,
-      "bts_pct": 75.0,
-      "rendimiento_ht": 59.4,
-      "avg_goals_ht_general": 0.81,
-      "avg_goals_ht_rol": 0.81,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-22",
-          "rival": "FC Copenhagen",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-26",
-          "rival": "FC Fredericia",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-03",
-          "rival": "Silkeborg",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-11",
-          "rival": "Randers FC",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-17",
-          "rival": "Vejle",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        }
-      ]
-    },
-    {
       "league_name": "Úrvalsdeild",
       "team_name": "KR Reykjavik",
       "role": "Visitante",
@@ -7311,18 +7127,10 @@ window.dashboardData = {
       "ht_15_pct": 50.0,
       "bts_pct": 75.0,
       "rendimiento_ht": 50.0,
-      "avg_goals_ht_general": 0.86,
+      "avg_goals_ht_general": 1.0,
       "avg_goals_ht_rol": 1.0,
       "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-02",
-          "rival": "Atlantis",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
         {
           "fecha": "2026-05-09",
           "rival": "PEPO",
@@ -7354,6 +7162,14 @@ window.dashboardData = {
           "goles_contra_ht": 0,
           "total_ht": 2,
           "local": false
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "PuiU Helsinki",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
         }
       ]
     },
@@ -8277,24 +8093,70 @@ window.dashboardData = {
     },
     {
       "league_name": "Ettan - Norra",
+      "team_name": "Stocksund",
+      "role": "Visitante",
+      "ht_05_pct": 80.0,
+      "ht_15_pct": 40.0,
+      "bts_pct": 60.0,
+      "rendimiento_ht": 60.0,
+      "avg_goals_ht_general": 1.18,
+      "avg_goals_ht_rol": 1.2,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-14",
+          "rival": "IF Karlstad",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-17",
+          "rival": "Piteå",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 2,
+          "total_ht": 4,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-23",
+          "rival": "Assyriska FF",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Umeå FC",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "Järfälla",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_name": "Ettan - Norra",
       "team_name": "Järfälla",
       "role": "Visitante",
       "ht_05_pct": 100.0,
       "ht_15_pct": 83.3,
       "bts_pct": 83.3,
       "rendimiento_ht": 83.3,
-      "avg_goals_ht_general": 0.9,
+      "avg_goals_ht_general": 0.91,
       "avg_goals_ht_rol": 1.17,
       "racha_ht": "5/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-09",
-          "rival": "FBK Karlstad",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
         {
           "fecha": "2026-05-13",
           "rival": "Enköping",
@@ -8326,6 +8188,14 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 2,
           "local": false
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "Stocksund",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 3,
+          "total_ht": 4,
+          "local": true
         }
       ]
     },
@@ -8434,60 +8304,6 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 3,
           "local": false
-        }
-      ]
-    },
-    {
-      "league_name": "Ettan - Södra",
-      "team_name": "Olympic",
-      "role": "Visitante",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 60.0,
-      "bts_pct": 60.0,
-      "rendimiento_ht": 50.0,
-      "avg_goals_ht_general": 0.8,
-      "avg_goals_ht_rol": 0.8,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-09",
-          "rival": "Kristianstad",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-14",
-          "rival": "Tvååker",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-17",
-          "rival": "Atvidabergs FF",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-23",
-          "rival": "Rosengård",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-03",
-          "rival": "Lund",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
         }
       ]
     },
@@ -9147,18 +8963,10 @@ window.dashboardData = {
       "ht_15_pct": 50.0,
       "bts_pct": 100.0,
       "rendimiento_ht": 62.5,
-      "avg_goals_ht_general": 1.5,
+      "avg_goals_ht_general": 1.67,
       "avg_goals_ht_rol": 1.5,
       "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-04-13",
-          "rival": "Minnesota United II",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
         {
           "fecha": "2026-04-20",
           "rival": "Los Angeles FC II",
@@ -9190,60 +8998,14 @@ window.dashboardData = {
           "goles_contra_ht": 0,
           "total_ht": 0,
           "local": true
-        }
-      ]
-    },
-    {
-      "league_name": "MLS Next Pro",
-      "team_name": "Columbus Crew II",
-      "role": "Visitante",
-      "ht_05_pct": 83.3,
-      "ht_15_pct": 83.3,
-      "bts_pct": 83.3,
-      "rendimiento_ht": 66.7,
-      "avg_goals_ht_general": 0.8,
-      "avg_goals_ht_rol": 0.83,
-      "racha_ht": "5/5",
-      "racha_detalles": [
+        },
         {
-          "fecha": "2026-04-18",
-          "rival": "New England II",
-          "goles_favor_ht": 1,
+          "fecha": "2026-06-08",
+          "rival": "Real Monarchs",
+          "goles_favor_ht": 3,
           "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-26",
-          "rival": "New York RB II",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
           "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-03",
-          "rival": "Inter Miami II",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
           "local": true
-        },
-        {
-          "fecha": "2026-05-10",
-          "rival": "FC Cincinnati II",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-30",
-          "rival": "New York City II",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
         }
       ]
     },
@@ -9251,22 +9013,14 @@ window.dashboardData = {
       "league_name": "MLS Next Pro",
       "team_name": "Real Monarchs",
       "role": "Visitante",
-      "ht_05_pct": 75.0,
-      "ht_15_pct": 50.0,
-      "bts_pct": 50.0,
+      "ht_05_pct": 80.0,
+      "ht_15_pct": 60.0,
+      "bts_pct": 40.0,
       "rendimiento_ht": 50.0,
-      "avg_goals_ht_general": 0.89,
-      "avg_goals_ht_rol": 1.0,
+      "avg_goals_ht_general": 0.8,
+      "avg_goals_ht_rol": 0.8,
       "racha_ht": "5/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-03",
-          "rival": "Portland Timbers II",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
         {
           "fecha": "2026-05-10",
           "rival": "Los Angeles FC II",
@@ -9298,60 +9052,14 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 1,
           "local": true
-        }
-      ]
-    },
-    {
-      "league_name": "MLS Next Pro",
-      "team_name": "Los Angeles FC II",
-      "role": "Visitante",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 100.0,
-      "bts_pct": 100.0,
-      "rendimiento_ht": 100.0,
-      "avg_goals_ht_general": 0.88,
-      "avg_goals_ht_rol": 1.0,
-      "racha_ht": "5/5",
-      "racha_detalles": [
+        },
         {
-          "fecha": "2026-04-20",
+          "fecha": "2026-06-08",
           "rival": "The Town",
           "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-27",
-          "rival": "Tacoma Defiance",
-          "goles_favor_ht": 1,
           "goles_contra_ht": 3,
-          "total_ht": 4,
+          "total_ht": 3,
           "local": false
-        },
-        {
-          "fecha": "2026-05-04",
-          "rival": "Vancouver Whitecaps II",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-10",
-          "rival": "Real Monarchs",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-17",
-          "rival": "Ventura County",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
         }
       ]
     },
@@ -29830,10 +29538,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-19",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "FC Midtjylland",
-      "Goles HT": 1.0,
+      "Liga": "Premier League",
+      "Local": "Geylang International",
+      "Visitante": "Tanjong Pagar",
+      "Goles HT": 4.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -29847,13 +29555,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-19",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Aalborg",
-      "Goles HT": 2.0,
+      "Liga": "Premier League",
+      "Local": "DPMM FC Brunei",
+      "Visitante": "Hougang United",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -29864,10 +29572,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-19",
-      "Liga": "Premier League",
-      "Local": "Geylang International",
-      "Visitante": "Tanjong Pagar",
-      "Goles HT": 4.0,
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "FC Midtjylland",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -29881,13 +29589,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-19",
-      "Liga": "Premier League",
-      "Local": "DPMM FC Brunei",
-      "Visitante": "Hougang United",
-      "Goles HT": 1.0,
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Aalborg",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30051,9 +29759,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-21",
-      "Liga": "Superliga",
-      "Local": "Vejle",
-      "Visitante": "Randers FC",
+      "Liga": "Kakkonen - Lohko C",
+      "Local": "SJK-juniorit",
+      "Visitante": "GBK",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -30068,9 +29776,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-21",
-      "Liga": "Kakkonen - Lohko C",
-      "Local": "SJK-juniorit",
-      "Visitante": "GBK",
+      "Liga": "Superliga",
+      "Local": "Vejle",
+      "Visitante": "Randers FC",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -30374,23 +30082,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-27",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "FC Midtjylland",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7379.0,
-      "Stake Compuesto": 10825.01,
-      "Beneficio Compuesto": 4871.25,
-      "Banca Compuesto": 546121.63
-    },
-    {
-      "Fecha": "2024-07-27",
       "Liga": "Kakkonen - Lohko C",
       "Local": "JBK",
       "Visitante": "GBK",
@@ -30401,10 +30092,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7388.0,
-      "Stake Compuesto": 10922.43,
-      "Beneficio Compuesto": 4915.09,
-      "Banca Compuesto": 551036.72
+      "Banca Fijo": 7379.0,
+      "Stake Compuesto": 10825.01,
+      "Beneficio Compuesto": 4871.25,
+      "Banca Compuesto": 546121.63
     },
     {
       "Fecha": "2024-07-27",
@@ -30418,10 +30109,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7397.0,
-      "Stake Compuesto": 11020.73,
-      "Beneficio Compuesto": 4959.33,
-      "Banca Compuesto": 555996.05
+      "Banca Fijo": 7388.0,
+      "Stake Compuesto": 10922.43,
+      "Beneficio Compuesto": 4915.09,
+      "Banca Compuesto": 551036.72
     },
     {
       "Fecha": "2024-07-27",
@@ -30432,6 +30123,23 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 7397.0,
+      "Stake Compuesto": 11020.73,
+      "Beneficio Compuesto": 4959.33,
+      "Banca Compuesto": 555996.05
+    },
+    {
+      "Fecha": "2024-07-27",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "FC Midtjylland",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30595,40 +30303,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-07-28",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Viborg",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7467.0,
-      "Stake Compuesto": 11812.68,
-      "Beneficio Compuesto": 5315.7,
-      "Banca Compuesto": 595949.48
-    },
-    {
-      "Fecha": "2024-07-28",
-      "Liga": "Superliga",
-      "Local": "Aalborg",
-      "Visitante": "Silkeborg",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7476.0,
-      "Stake Compuesto": 11918.99,
-      "Beneficio Compuesto": 5363.55,
-      "Banca Compuesto": 601313.03
-    },
-    {
-      "Fecha": "2024-07-28",
       "Liga": "Kakkonen - Lohko C",
       "Local": "Kuopion Elo",
       "Visitante": "SJK-juniorit",
@@ -30639,10 +30313,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7485.0,
-      "Stake Compuesto": 12026.26,
-      "Beneficio Compuesto": 5411.82,
-      "Banca Compuesto": 606724.85
+      "Banca Fijo": 7467.0,
+      "Stake Compuesto": 11812.68,
+      "Beneficio Compuesto": 5315.7,
+      "Banca Compuesto": 595949.48
     },
     {
       "Fecha": "2024-07-28",
@@ -30656,10 +30330,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7494.0,
-      "Stake Compuesto": 12134.5,
-      "Beneficio Compuesto": 5460.52,
-      "Banca Compuesto": 612185.37
+      "Banca Fijo": 7476.0,
+      "Stake Compuesto": 11918.99,
+      "Beneficio Compuesto": 5363.55,
+      "Banca Compuesto": 601313.03
     },
     {
       "Fecha": "2024-07-28",
@@ -30670,6 +30344,40 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase A",
       "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 7485.0,
+      "Stake Compuesto": 12026.26,
+      "Beneficio Compuesto": 5411.82,
+      "Banca Compuesto": 606724.85
+    },
+    {
+      "Fecha": "2024-07-28",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Viborg",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 7494.0,
+      "Stake Compuesto": 12134.5,
+      "Beneficio Compuesto": 5460.52,
+      "Banca Compuesto": 612185.37
+    },
+    {
+      "Fecha": "2024-07-28",
+      "Liga": "Superliga",
+      "Local": "Aalborg",
+      "Visitante": "Silkeborg",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30850,13 +30558,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-02",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Sonderjyske",
-      "Goles HT": 2.0,
+      "Liga": "Premier League",
+      "Local": "Geylang International",
+      "Visitante": "Hougang United",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30867,13 +30575,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-02",
-      "Liga": "Premier League",
-      "Local": "Geylang International",
-      "Visitante": "Hougang United",
-      "Goles HT": 1.0,
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Sonderjyske",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30952,13 +30660,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-03",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Aalborg",
+      "Liga": "Premier League",
+      "Local": "Home United",
+      "Visitante": "DPMM FC Brunei",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30970,12 +30678,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-03",
       "Liga": "Premier League",
-      "Local": "Home United",
-      "Visitante": "DPMM FC Brunei",
-      "Goles HT": 1.0,
+      "Local": "Tanjong Pagar",
+      "Visitante": "Tampines Rovers",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -30986,13 +30694,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-03",
-      "Liga": "Premier League",
-      "Local": "Tanjong Pagar",
-      "Visitante": "Tampines Rovers",
-      "Goles HT": 3.0,
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Aalborg",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -31071,13 +30779,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-04",
-      "Liga": "Superliga",
-      "Local": "FC Copenhagen",
-      "Visitante": "Randers FC",
-      "Goles HT": 1.0,
+      "Liga": "Kakkonen - Lohko C",
+      "Local": "GBK",
+      "Visitante": "JBK",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -31089,12 +30797,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-04",
       "Liga": "Kakkonen - Lohko C",
-      "Local": "GBK",
-      "Visitante": "JBK",
+      "Local": "TP-47",
+      "Visitante": "Kraft",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -31105,13 +30813,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-04",
-      "Liga": "Kakkonen - Lohko C",
-      "Local": "TP-47",
-      "Visitante": "Kraft",
-      "Goles HT": 2.0,
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Randers FC",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -31309,13 +31017,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-09",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Vejle",
-      "Goles HT": 1.0,
+      "Liga": "Challenge League",
+      "Local": "Stade Lausanne-Ouchy",
+      "Visitante": "FC Aarau",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -31327,12 +31035,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-09",
       "Liga": "Challenge League",
-      "Local": "Stade Lausanne-Ouchy",
-      "Visitante": "FC Aarau",
+      "Local": "Étoile Carouge",
+      "Visitante": "FC Thun",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -31343,10 +31051,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-09",
-      "Liga": "Challenge League",
-      "Local": "Étoile Carouge",
-      "Visitante": "FC Thun",
-      "Goles HT": 2.0,
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Vejle",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -31564,40 +31272,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-11",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Lyngby",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7893.0,
-      "Stake Compuesto": 18036.38,
-      "Beneficio Compuesto": 8116.37,
-      "Banca Compuesto": 909935.59
-    },
-    {
-      "Fecha": "2024-08-11",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Silkeborg",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 7873.0,
-      "Stake Compuesto": 18198.71,
-      "Beneficio Compuesto": -18198.71,
-      "Banca Compuesto": 891736.88
-    },
-    {
-      "Fecha": "2024-08-11",
       "Liga": "Premier League",
       "Local": "Balestier Khalsa",
       "Visitante": "Tampines Rovers",
@@ -31608,10 +31282,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 7882.0,
-      "Stake Compuesto": 17834.74,
-      "Beneficio Compuesto": 8025.63,
-      "Banca Compuesto": 899762.51
+      "Banca Fijo": 7893.0,
+      "Stake Compuesto": 18036.38,
+      "Beneficio Compuesto": 8116.37,
+      "Banca Compuesto": 909935.59
     },
     {
       "Fecha": "2024-08-11",
@@ -31625,9 +31299,43 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 7902.0,
+      "Stake Compuesto": 18198.71,
+      "Beneficio Compuesto": 8189.42,
+      "Banca Compuesto": 918125.01
+    },
+    {
+      "Fecha": "2024-08-11",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Lyngby",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 7911.0,
+      "Stake Compuesto": 18362.5,
+      "Beneficio Compuesto": 8263.13,
+      "Banca Compuesto": 926388.14
+    },
+    {
+      "Fecha": "2024-08-11",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Silkeborg",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 7891.0,
-      "Stake Compuesto": 17995.25,
-      "Beneficio Compuesto": 8097.86,
+      "Stake Compuesto": 18527.76,
+      "Beneficio Compuesto": -18527.76,
       "Banca Compuesto": 907860.37
     },
     {
@@ -32142,10 +31850,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-19",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Vejle",
-      "Goles HT": 4.0,
+      "Liga": "Premier League 2 Division One",
+      "Local": "Newcastle United U21",
+      "Visitante": "Sunderland U21",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -32159,10 +31867,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-19",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Newcastle United U21",
-      "Visitante": "Sunderland U21",
-      "Goles HT": 1.0,
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Vejle",
+      "Goles HT": 4.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -32516,13 +32224,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-24",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Sonderjyske",
+      "Liga": "Premier League",
+      "Local": "Geylang International",
+      "Visitante": "DPMM FC Brunei",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -32533,13 +32241,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-24",
-      "Liga": "Premier League",
-      "Local": "Geylang International",
-      "Visitante": "DPMM FC Brunei",
-      "Goles HT": 3.0,
+      "Liga": "Tweede Divisie",
+      "Local": "RKAV Volendam",
+      "Visitante": "Sparta Rotterdam II",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -32551,8 +32259,8 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-24",
       "Liga": "Tweede Divisie",
-      "Local": "RKAV Volendam",
-      "Visitante": "Sparta Rotterdam II",
+      "Local": "GVVV Veenendaal",
+      "Visitante": "Rijnsburgse Boys",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -32568,12 +32276,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-24",
       "Liga": "Tweede Divisie",
-      "Local": "GVVV Veenendaal",
-      "Visitante": "Rijnsburgse Boys",
-      "Goles HT": 2.0,
+      "Local": "Almere City II",
+      "Visitante": "SVV Scheveningen",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -32584,10 +32292,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-24",
-      "Liga": "Tweede Divisie",
-      "Local": "Almere City II",
-      "Visitante": "SVV Scheveningen",
-      "Goles HT": 1.0,
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Sonderjyske",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -32720,9 +32428,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-25",
-      "Liga": "Superliga",
-      "Local": "Vejle",
-      "Visitante": "Silkeborg",
+      "Liga": "Premier League",
+      "Local": "Albirex Niigata S",
+      "Visitante": "Home United",
       "Goles HT": 0.0,
       "Resultado": "PERDIDA",
       "Clase": "Clase B",
@@ -32737,13 +32445,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-25",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "FC Copenhagen",
-      "Goles HT": 3.0,
+      "Liga": "Premier League 2 Division One",
+      "Local": "Tottenham Hotspur U21",
+      "Visitante": "Newcastle United U21",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -32755,25 +32463,8 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-25",
       "Liga": "Superliga",
-      "Local": "Brondby",
-      "Visitante": "Randers FC",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 8291.0,
-      "Stake Compuesto": 26743.02,
-      "Beneficio Compuesto": 12034.36,
-      "Banca Compuesto": 1349185.19
-    },
-    {
-      "Fecha": "2024-08-25",
-      "Liga": "Premier League",
-      "Local": "Albirex Niigata S",
-      "Visitante": "Home United",
+      "Local": "Vejle",
+      "Visitante": "Silkeborg",
       "Goles HT": 0.0,
       "Resultado": "PERDIDA",
       "Clase": "Clase B",
@@ -32781,16 +32472,33 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
+      "Banca Fijo": 8262.0,
+      "Stake Compuesto": 26743.02,
+      "Beneficio Compuesto": -26743.02,
+      "Banca Compuesto": 1310407.81
+    },
+    {
+      "Fecha": "2024-08-25",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 8271.0,
-      "Stake Compuesto": 26983.7,
-      "Beneficio Compuesto": -26983.7,
+      "Stake Compuesto": 26208.16,
+      "Beneficio Compuesto": 11793.67,
       "Banca Compuesto": 1322201.48
     },
     {
       "Fecha": "2024-08-25",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Tottenham Hotspur U21",
-      "Visitante": "Newcastle United U21",
+      "Liga": "Superliga",
+      "Local": "Brondby",
+      "Visitante": "Randers FC",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -33145,13 +32853,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-31",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "FC Nordsjaelland",
+      "Liga": "Premier League",
+      "Local": "Young Lions",
+      "Visitante": "Balestier Khalsa",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -33162,13 +32870,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-31",
-      "Liga": "Premier League",
-      "Local": "Young Lions",
-      "Visitante": "Balestier Khalsa",
-      "Goles HT": 3.0,
+      "Liga": "Tweede Divisie",
+      "Local": "Noordwijk",
+      "Visitante": "De Treffers",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -33180,8 +32888,8 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-31",
       "Liga": "Tweede Divisie",
-      "Local": "Noordwijk",
-      "Visitante": "De Treffers",
+      "Local": "Rijnsburgse Boys",
+      "Visitante": "RKAV Volendam",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -33197,12 +32905,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-08-31",
       "Liga": "Tweede Divisie",
-      "Local": "Rijnsburgse Boys",
-      "Visitante": "RKAV Volendam",
+      "Local": "Quick Boys",
+      "Visitante": "Almere City II",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -33213,13 +32921,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-08-31",
-      "Liga": "Tweede Divisie",
-      "Local": "Quick Boys",
-      "Visitante": "Almere City II",
-      "Goles HT": 2.0,
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -33383,13 +33091,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-01",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Aalborg",
-      "Goles HT": 1.0,
+      "Liga": "Premier League 2 Division One",
+      "Local": "Middlesbrough U21",
+      "Visitante": "Chelsea U21",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -33400,13 +33108,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-01",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Middlesbrough U21",
-      "Visitante": "Chelsea U21",
-      "Goles HT": 3.0,
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Aalborg",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -33961,23 +33669,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-14",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "FC Copenhagen",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 8698.0,
-      "Stake Compuesto": 40009.44,
-      "Beneficio Compuesto": 18004.25,
-      "Banca Compuesto": 2018476.25
-    },
-    {
-      "Fecha": "2024-09-14",
       "Liga": "Premier League",
       "Local": "Tanjong Pagar",
       "Visitante": "Home United",
@@ -33988,10 +33679,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 8707.0,
-      "Stake Compuesto": 40369.52,
-      "Beneficio Compuesto": 18166.29,
-      "Banca Compuesto": 2036642.53
+      "Banca Fijo": 8698.0,
+      "Stake Compuesto": 40009.44,
+      "Beneficio Compuesto": 18004.25,
+      "Banca Compuesto": 2018476.25
     },
     {
       "Fecha": "2024-09-14",
@@ -34005,16 +33696,33 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 8687.0,
-      "Stake Compuesto": 40732.85,
-      "Beneficio Compuesto": -40732.85,
-      "Banca Compuesto": 1995909.68
+      "Banca Fijo": 8678.0,
+      "Stake Compuesto": 40369.52,
+      "Beneficio Compuesto": -40369.52,
+      "Banca Compuesto": 1978106.72
     },
     {
       "Fecha": "2024-09-14",
       "Liga": "Tweede Divisie",
       "Local": "Rijnsburgse Boys",
       "Visitante": "Excelsior Maassluis",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 8687.0,
+      "Stake Compuesto": 39562.13,
+      "Beneficio Compuesto": 17802.96,
+      "Banca Compuesto": 1995909.68
+    },
+    {
+      "Fecha": "2024-09-14",
+      "Liga": "Tweede Divisie",
+      "Local": "Almere City II",
+      "Visitante": "De Treffers",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -34029,10 +33737,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-14",
-      "Liga": "Tweede Divisie",
-      "Local": "Almere City II",
-      "Visitante": "De Treffers",
-      "Goles HT": 2.0,
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -34199,13 +33907,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-15",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Silkeborg",
+      "Liga": "Premier League",
+      "Local": "Geylang International",
+      "Visitante": "Albirex Niigata S",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -34216,13 +33924,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-15",
-      "Liga": "Premier League",
-      "Local": "Geylang International",
-      "Visitante": "Albirex Niigata S",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Silkeborg",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -34743,23 +34451,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-22",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "FC Midtjylland",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 8851.0,
-      "Stake Compuesto": 46469.75,
-      "Beneficio Compuesto": 20911.39,
-      "Banca Compuesto": 2344398.72
-    },
-    {
-      "Fecha": "2024-09-22",
       "Liga": "Premier League",
       "Local": "Home United",
       "Visitante": "Balestier Khalsa",
@@ -34770,10 +34461,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 8860.0,
-      "Stake Compuesto": 46887.97,
-      "Beneficio Compuesto": 21099.59,
-      "Banca Compuesto": 2365498.3
+      "Banca Fijo": 8851.0,
+      "Stake Compuesto": 46469.75,
+      "Beneficio Compuesto": 20911.39,
+      "Banca Compuesto": 2344398.72
     },
     {
       "Fecha": "2024-09-22",
@@ -34787,6 +34478,23 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 8860.0,
+      "Stake Compuesto": 46887.97,
+      "Beneficio Compuesto": 21099.59,
+      "Banca Compuesto": 2365498.3
+    },
+    {
+      "Fecha": "2024-09-22",
+      "Liga": "Premier League 2 Division One",
+      "Local": "Everton U21",
+      "Visitante": "Sunderland U21",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 8869.0,
       "Stake Compuesto": 47309.97,
       "Beneficio Compuesto": 21289.48,
@@ -34794,9 +34502,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-22",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Everton U21",
-      "Visitante": "Sunderland U21",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "FC Midtjylland",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -35219,23 +34927,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-28",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Randers FC",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9074.0,
-      "Stake Compuesto": 58003.99,
-      "Beneficio Compuesto": 26101.8,
-      "Banca Compuesto": 2926301.29
-    },
-    {
-      "Fecha": "2024-09-28",
       "Liga": "Premier League",
       "Local": "Balestier Khalsa",
       "Visitante": "Albirex Niigata S",
@@ -35246,10 +34937,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9083.0,
-      "Stake Compuesto": 58526.03,
-      "Beneficio Compuesto": 26336.71,
-      "Banca Compuesto": 2952638.0
+      "Banca Fijo": 9074.0,
+      "Stake Compuesto": 58003.99,
+      "Beneficio Compuesto": 26101.8,
+      "Banca Compuesto": 2926301.29
     },
     {
       "Fecha": "2024-09-28",
@@ -35263,6 +34954,23 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 9083.0,
+      "Stake Compuesto": 58526.03,
+      "Beneficio Compuesto": 26336.71,
+      "Banca Compuesto": 2952638.0
+    },
+    {
+      "Fecha": "2024-09-28",
+      "Liga": "Tweede Divisie",
+      "Local": "Rijnsburgse Boys",
+      "Visitante": "Katwijk",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 9092.0,
       "Stake Compuesto": 59052.76,
       "Beneficio Compuesto": 26573.74,
@@ -35271,9 +34979,9 @@ window.dashboardData = {
     {
       "Fecha": "2024-09-28",
       "Liga": "Tweede Divisie",
-      "Local": "Rijnsburgse Boys",
-      "Visitante": "Katwijk",
-      "Goles HT": 2.0,
+      "Local": "Noordwijk",
+      "Visitante": "HHC",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -35288,9 +34996,9 @@ window.dashboardData = {
     {
       "Fecha": "2024-09-28",
       "Liga": "Tweede Divisie",
-      "Local": "Noordwijk",
-      "Visitante": "HHC",
-      "Goles HT": 1.0,
+      "Local": "Almere City II",
+      "Visitante": "RKAV Volendam",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -35304,13 +35012,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-28",
-      "Liga": "Tweede Divisie",
-      "Local": "Almere City II",
-      "Visitante": "RKAV Volendam",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Randers FC",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -35440,13 +35148,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-29",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Viborg",
-      "Goles HT": 2.0,
+      "Liga": "Premier League",
+      "Local": "Tampines Rovers",
+      "Visitante": "Home United",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -35458,12 +35166,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-09-29",
       "Liga": "Superliga",
-      "Local": "Lyngby",
-      "Visitante": "Silkeborg",
-      "Goles HT": 1.0,
+      "Local": "FC Midtjylland",
+      "Visitante": "Viborg",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -35474,9 +35182,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-29",
-      "Liga": "Premier League",
-      "Local": "Tampines Rovers",
-      "Visitante": "Home United",
+      "Liga": "Superliga",
+      "Local": "Lyngby",
+      "Visitante": "Silkeborg",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -35593,10 +35301,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-09-30",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Brondby",
-      "Goles HT": 5.0,
+      "Liga": "Premier League 2 Division One",
+      "Local": "Everton U21",
+      "Visitante": "Reading U21",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -35611,23 +35319,6 @@ window.dashboardData = {
     {
       "Fecha": "2024-09-30",
       "Liga": "Premier League 2 Division One",
-      "Local": "Everton U21",
-      "Visitante": "Reading U21",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9194.0,
-      "Stake Compuesto": 65306.95,
-      "Beneficio Compuesto": 29388.13,
-      "Banca Compuesto": 3294735.77
-    },
-    {
-      "Fecha": "2024-09-30",
-      "Liga": "Premier League 2 Division One",
       "Local": "Crystal Palace U21",
       "Visitante": "Nottingham Forest U21",
       "Goles HT": 0.0,
@@ -35637,9 +35328,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
+      "Banca Fijo": 9165.0,
+      "Stake Compuesto": 65306.95,
+      "Beneficio Compuesto": -65306.95,
+      "Banca Compuesto": 3200040.69
+    },
+    {
+      "Fecha": "2024-09-30",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Brondby",
+      "Goles HT": 5.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 9174.0,
-      "Stake Compuesto": 65894.72,
-      "Beneficio Compuesto": -65894.72,
+      "Stake Compuesto": 64000.81,
+      "Beneficio Compuesto": 28800.37,
       "Banca Compuesto": 3228841.05
     },
     {
@@ -36069,23 +35777,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-10-06",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Lyngby",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9234.0,
-      "Stake Compuesto": 67821.17,
-      "Beneficio Compuesto": 30519.53,
-      "Banca Compuesto": 3421578.0
-    },
-    {
-      "Fecha": "2024-10-06",
       "Liga": "Premier League 2 Division One",
       "Local": "Manchester United U21",
       "Visitante": "Liverpool U21",
@@ -36096,9 +35787,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
+      "Banca Fijo": 9205.0,
+      "Stake Compuesto": 67821.17,
+      "Beneficio Compuesto": -67821.17,
+      "Banca Compuesto": 3323237.31
+    },
+    {
+      "Fecha": "2024-10-06",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Lyngby",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 9214.0,
-      "Stake Compuesto": 68431.56,
-      "Beneficio Compuesto": -68431.56,
+      "Stake Compuesto": 66464.75,
+      "Beneficio Compuesto": 29909.14,
       "Banca Compuesto": 3353146.44
     },
     {
@@ -36800,6 +36508,23 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-10-20",
+      "Liga": "Premier League",
+      "Local": "Balestier Khalsa",
+      "Visitante": "Geylang International",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 9505.0,
+      "Stake Compuesto": 88720.72,
+      "Beneficio Compuesto": 39924.32,
+      "Banca Compuesto": 4475960.36
+    },
+    {
+      "Fecha": "2024-10-20",
       "Liga": "Superliga",
       "Local": "Aalborg",
       "Visitante": "Randers FC",
@@ -36810,33 +36535,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 9476.0,
-      "Stake Compuesto": 88720.72,
-      "Beneficio Compuesto": -88720.72,
-      "Banca Compuesto": 4347315.31
+      "Banca Fijo": 9485.0,
+      "Stake Compuesto": 89519.21,
+      "Beneficio Compuesto": -89519.21,
+      "Banca Compuesto": 4386441.15
     },
     {
       "Fecha": "2024-10-20",
       "Liga": "Superliga",
       "Local": "FC Nordsjaelland",
       "Visitante": "Silkeborg",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9485.0,
-      "Stake Compuesto": 86946.31,
-      "Beneficio Compuesto": 39125.84,
-      "Banca Compuesto": 4386441.15
-    },
-    {
-      "Fecha": "2024-10-20",
-      "Liga": "Premier League",
-      "Local": "Balestier Khalsa",
-      "Visitante": "Geylang International",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase A",
@@ -37446,13 +37154,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-10-28",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "FC Nordsjaelland",
-      "Goles HT": 2.0,
+      "Liga": "Premier League",
+      "Local": "Tanjong Pagar",
+      "Visitante": "Balestier Khalsa",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -37463,13 +37171,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-10-28",
-      "Liga": "Premier League",
-      "Local": "Tanjong Pagar",
-      "Visitante": "Balestier Khalsa",
-      "Goles HT": 3.0,
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -37684,10 +37392,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-02",
-      "Liga": "Superliga",
-      "Local": "Sonderjyske",
-      "Visitante": "Randers FC",
-      "Goles HT": 5.0,
+      "Liga": "Premier League",
+      "Local": "Albirex Niigata S",
+      "Visitante": "DPMM FC Brunei",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -37702,23 +37410,6 @@ window.dashboardData = {
     {
       "Fecha": "2024-11-02",
       "Liga": "Premier League",
-      "Local": "Albirex Niigata S",
-      "Visitante": "DPMM FC Brunei",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9808.0,
-      "Stake Compuesto": 119747.46,
-      "Beneficio Compuesto": 53886.36,
-      "Banca Compuesto": 6041259.6
-    },
-    {
-      "Fecha": "2024-11-02",
-      "Liga": "Premier League",
       "Local": "Tampines Rovers",
       "Visitante": "Balestier Khalsa",
       "Goles HT": 0.0,
@@ -37728,10 +37419,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 9788.0,
-      "Stake Compuesto": 120825.19,
-      "Beneficio Compuesto": -120825.19,
-      "Banca Compuesto": 5920434.41
+      "Banca Fijo": 9779.0,
+      "Stake Compuesto": 119747.46,
+      "Beneficio Compuesto": -119747.46,
+      "Banca Compuesto": 5867625.78
     },
     {
       "Fecha": "2024-11-02",
@@ -37739,6 +37430,23 @@ window.dashboardData = {
       "Local": "Noordwijk",
       "Visitante": "Quick Boys",
       "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 9788.0,
+      "Stake Compuesto": 117352.52,
+      "Beneficio Compuesto": 52808.63,
+      "Banca Compuesto": 5920434.41
+    },
+    {
+      "Fecha": "2024-11-02",
+      "Liga": "Premier League 2 Division One",
+      "Local": "Everton U21",
+      "Visitante": "Stoke City U21",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -37753,12 +37461,12 @@ window.dashboardData = {
     {
       "Fecha": "2024-11-02",
       "Liga": "Premier League 2 Division One",
-      "Local": "Everton U21",
-      "Visitante": "Stoke City U21",
-      "Goles HT": 2.0,
+      "Local": "Middlesbrough U21",
+      "Visitante": "Nottingham Forest U21",
+      "Goles HT": 4.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -37769,10 +37477,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-02",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Middlesbrough U21",
-      "Visitante": "Nottingham Forest U21",
-      "Goles HT": 4.0,
+      "Liga": "Superliga",
+      "Local": "Sonderjyske",
+      "Visitante": "Randers FC",
+      "Goles HT": 5.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -37888,10 +37596,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-03",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Brondby",
-      "Goles HT": 2.0,
+      "Liga": "Premier League",
+      "Local": "Geylang International",
+      "Visitante": "Young Lions",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -37906,8 +37614,8 @@ window.dashboardData = {
     {
       "Fecha": "2024-11-03",
       "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Viborg",
+      "Local": "FC Midtjylland",
+      "Visitante": "Brondby",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -37923,9 +37631,9 @@ window.dashboardData = {
     {
       "Fecha": "2024-11-03",
       "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Lyngby",
-      "Goles HT": 1.0,
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Viborg",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -37939,9 +37647,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-03",
-      "Liga": "Premier League",
-      "Local": "Geylang International",
-      "Visitante": "Young Lions",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Lyngby",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -38211,6 +37919,23 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-10",
+      "Liga": "Tweede Divisie",
+      "Local": "ADO '20",
+      "Visitante": "Almere City II",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 9991.0,
+      "Stake Compuesto": 143550.94,
+      "Beneficio Compuesto": 64597.92,
+      "Banca Compuesto": 7242144.97
+    },
+    {
+      "Fecha": "2024-11-10",
       "Liga": "Superliga",
       "Local": "Silkeborg",
       "Visitante": "Randers FC",
@@ -38221,10 +37946,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 9962.0,
-      "Stake Compuesto": 143550.94,
-      "Beneficio Compuesto": -143550.94,
-      "Banca Compuesto": 7033996.1
+      "Banca Fijo": 9971.0,
+      "Stake Compuesto": 144842.9,
+      "Beneficio Compuesto": -144842.9,
+      "Banca Compuesto": 7097302.07
     },
     {
       "Fecha": "2024-11-10",
@@ -38235,23 +37960,6 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 9971.0,
-      "Stake Compuesto": 140679.92,
-      "Beneficio Compuesto": 63305.96,
-      "Banca Compuesto": 7097302.07
-    },
-    {
-      "Fecha": "2024-11-10",
-      "Liga": "Tweede Divisie",
-      "Local": "ADO '20",
-      "Visitante": "Almere City II",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -38432,23 +38140,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-22",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Aarhus",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 9963.0,
-      "Stake Compuesto": 143526.09,
-      "Beneficio Compuesto": -143526.09,
-      "Banca Compuesto": 7032778.22
-    },
-    {
-      "Fecha": "2024-11-22",
       "Liga": "Challenge League",
       "Local": "Étoile Carouge",
       "Visitante": "Bellinzona",
@@ -38459,9 +38150,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 9992.0,
+      "Stake Compuesto": 143526.09,
+      "Beneficio Compuesto": 64586.74,
+      "Banca Compuesto": 7240891.05
+    },
+    {
+      "Fecha": "2024-11-22",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Aarhus",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 9972.0,
-      "Stake Compuesto": 140655.56,
-      "Beneficio Compuesto": 63295.0,
+      "Stake Compuesto": 144817.82,
+      "Beneficio Compuesto": -144817.82,
       "Banca Compuesto": 7096073.23
     },
     {
@@ -38619,23 +38327,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2024-11-24",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Vejle",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10033.0,
-      "Stake Compuesto": 153839.76,
-      "Beneficio Compuesto": -153839.76,
-      "Banca Compuesto": 7538148.01
-    },
-    {
-      "Fecha": "2024-11-24",
       "Liga": "Premier League",
       "Local": "Hougang United",
       "Visitante": "Geylang International",
@@ -38646,9 +38337,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10062.0,
+      "Stake Compuesto": 153839.76,
+      "Beneficio Compuesto": 69227.89,
+      "Banca Compuesto": 7761215.65
+    },
+    {
+      "Fecha": "2024-11-24",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Vejle",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 10042.0,
-      "Stake Compuesto": 150762.96,
-      "Beneficio Compuesto": 67843.33,
+      "Stake Compuesto": 155224.31,
+      "Beneficio Compuesto": -155224.31,
       "Banca Compuesto": 7605991.34
     },
     {
@@ -40608,23 +40316,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-16",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Lyngby",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10593.0,
-      "Stake Compuesto": 259635.1,
-      "Beneficio Compuesto": 116835.79,
-      "Banca Compuesto": 13098590.68
-    },
-    {
-      "Fecha": "2025-02-16",
       "Liga": "Premier League 2 Division One",
       "Local": "Liverpool U21",
       "Visitante": "Chelsea U21",
@@ -40635,27 +40326,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10573.0,
-      "Stake Compuesto": 261971.81,
-      "Beneficio Compuesto": -261971.81,
-      "Banca Compuesto": 12836618.86
+      "Banca Fijo": 10564.0,
+      "Stake Compuesto": 259635.1,
+      "Beneficio Compuesto": -259635.1,
+      "Banca Compuesto": 12722119.78
     },
     {
-      "Fecha": "2025-02-17",
+      "Fecha": "2025-02-16",
       "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "FC Copenhagen",
-      "Goles HT": 2.0,
+      "Local": "FC Midtjylland",
+      "Visitante": "Lyngby",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10582.0,
-      "Stake Compuesto": 256732.38,
-      "Beneficio Compuesto": 115529.57,
-      "Banca Compuesto": 12952148.43
+      "Banca Fijo": 10573.0,
+      "Stake Compuesto": 254442.4,
+      "Beneficio Compuesto": 114499.08,
+      "Banca Compuesto": 12836618.86
     },
     {
       "Fecha": "2025-02-17",
@@ -40669,9 +40360,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
+      "Banca Fijo": 10553.0,
+      "Stake Compuesto": 256732.38,
+      "Beneficio Compuesto": -256732.38,
+      "Banca Compuesto": 12579886.48
+    },
+    {
+      "Fecha": "2025-02-17",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 10562.0,
-      "Stake Compuesto": 259042.97,
-      "Beneficio Compuesto": -259042.97,
+      "Stake Compuesto": 251597.73,
+      "Beneficio Compuesto": 113218.98,
       "Banca Compuesto": 12693105.46
     },
     {
@@ -40710,23 +40418,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-21",
-      "Liga": "Superliga",
-      "Local": "Lyngby",
-      "Visitante": "Randers FC",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10560.0,
-      "Stake Compuesto": 258452.19,
-      "Beneficio Compuesto": -258452.19,
-      "Banca Compuesto": 12664157.31
-    },
-    {
-      "Fecha": "2025-02-21",
       "Liga": "Premier League 2 Division One",
       "Local": "Southampton U21",
       "Visitante": "Sunderland U21",
@@ -40737,10 +40428,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10569.0,
-      "Stake Compuesto": 253283.15,
-      "Beneficio Compuesto": 113977.42,
-      "Banca Compuesto": 12778134.73
+      "Banca Fijo": 10589.0,
+      "Stake Compuesto": 258452.19,
+      "Beneficio Compuesto": 116303.49,
+      "Banca Compuesto": 13038912.99
     },
     {
       "Fecha": "2025-02-21",
@@ -40754,10 +40445,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10578.0,
-      "Stake Compuesto": 255562.69,
-      "Beneficio Compuesto": 115003.21,
-      "Banca Compuesto": 12893137.94
+      "Banca Fijo": 10598.0,
+      "Stake Compuesto": 260778.26,
+      "Beneficio Compuesto": 117350.22,
+      "Banca Compuesto": 13156263.21
     },
     {
       "Fecha": "2025-02-21",
@@ -40771,10 +40462,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10587.0,
-      "Stake Compuesto": 257862.76,
-      "Beneficio Compuesto": 116038.24,
-      "Banca Compuesto": 13009176.18
+      "Banca Fijo": 10607.0,
+      "Stake Compuesto": 263125.26,
+      "Beneficio Compuesto": 118406.37,
+      "Banca Compuesto": 13274669.57
     },
     {
       "Fecha": "2025-02-21",
@@ -40788,9 +40479,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10616.0,
+      "Stake Compuesto": 265493.39,
+      "Beneficio Compuesto": 119472.03,
+      "Banca Compuesto": 13394141.6
+    },
+    {
+      "Fecha": "2025-02-21",
+      "Liga": "Superliga",
+      "Local": "Lyngby",
+      "Visitante": "Randers FC",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 10596.0,
-      "Stake Compuesto": 260183.52,
-      "Beneficio Compuesto": 117082.59,
+      "Stake Compuesto": 267882.83,
+      "Beneficio Compuesto": -267882.83,
       "Banca Compuesto": 13126258.77
     },
     {
@@ -40948,40 +40656,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-23",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Sonderjyske",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10657.0,
-      "Stake Compuesto": 276392.57,
-      "Beneficio Compuesto": 124376.66,
-      "Banca Compuesto": 13944005.12
-    },
-    {
-      "Fecha": "2025-02-23",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Aalborg",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10666.0,
-      "Stake Compuesto": 278880.1,
-      "Beneficio Compuesto": 125496.05,
-      "Banca Compuesto": 14069501.16
-    },
-    {
-      "Fecha": "2025-02-23",
       "Liga": "Challenge League",
       "Local": "FC Vaduz",
       "Visitante": "FC Aarau",
@@ -40992,10 +40666,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10675.0,
-      "Stake Compuesto": 281390.02,
-      "Beneficio Compuesto": 126625.51,
-      "Banca Compuesto": 14196126.67
+      "Banca Fijo": 10657.0,
+      "Stake Compuesto": 276392.57,
+      "Beneficio Compuesto": 124376.66,
+      "Banca Compuesto": 13944005.12
     },
     {
       "Fecha": "2025-02-23",
@@ -41009,10 +40683,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10684.0,
-      "Stake Compuesto": 283922.53,
-      "Beneficio Compuesto": 127765.14,
-      "Banca Compuesto": 14323891.81
+      "Banca Fijo": 10666.0,
+      "Stake Compuesto": 278880.1,
+      "Beneficio Compuesto": 125496.05,
+      "Banca Compuesto": 14069501.16
     },
     {
       "Fecha": "2025-02-23",
@@ -41026,10 +40700,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10664.0,
-      "Stake Compuesto": 286477.84,
-      "Beneficio Compuesto": -286477.84,
-      "Banca Compuesto": 14037413.98
+      "Banca Fijo": 10646.0,
+      "Stake Compuesto": 281390.02,
+      "Beneficio Compuesto": -281390.02,
+      "Banca Compuesto": 13788111.14
     },
     {
       "Fecha": "2025-02-23",
@@ -41043,6 +40717,40 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10655.0,
+      "Stake Compuesto": 275762.22,
+      "Beneficio Compuesto": 124093.0,
+      "Banca Compuesto": 13912204.14
+    },
+    {
+      "Fecha": "2025-02-23",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Sonderjyske",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10664.0,
+      "Stake Compuesto": 278244.08,
+      "Beneficio Compuesto": 125209.84,
+      "Banca Compuesto": 14037413.98
+    },
+    {
+      "Fecha": "2025-02-23",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Aalborg",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 10673.0,
       "Stake Compuesto": 280748.28,
       "Beneficio Compuesto": 126336.73,
@@ -41050,10 +40758,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-24",
-      "Liga": "Superliga",
-      "Local": "Viborg",
-      "Visitante": "Silkeborg",
-      "Goles HT": 3.0,
+      "Liga": "Premier League 2 Division One",
+      "Local": "Blackburn Rovers U21",
+      "Visitante": "Nottingham Forest U21",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -41067,10 +40775,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-24",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Blackburn Rovers U21",
-      "Visitante": "Nottingham Forest U21",
-      "Goles HT": 2.0,
+      "Liga": "Superliga",
+      "Local": "Viborg",
+      "Visitante": "Silkeborg",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -41186,9 +40894,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-28",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Aarhus",
+      "Liga": "Meistriliiga",
+      "Local": "FC Levadia Tallinn",
+      "Visitante": "Laagri",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -41203,13 +40911,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-28",
-      "Liga": "Meistriliiga",
-      "Local": "FC Levadia Tallinn",
-      "Visitante": "Laagri",
-      "Goles HT": 2.0,
+      "Liga": "Premier League 2 Division One",
+      "Local": "Manchester City U21",
+      "Visitante": "Chelsea U21",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -41221,12 +40929,12 @@ window.dashboardData = {
     {
       "Fecha": "2025-02-28",
       "Liga": "Premier League 2 Division One",
-      "Local": "Manchester City U21",
-      "Visitante": "Chelsea U21",
-      "Goles HT": 1.0,
+      "Local": "Newcastle United U21",
+      "Visitante": "Stoke City U21",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -41238,8 +40946,8 @@ window.dashboardData = {
     {
       "Fecha": "2025-02-28",
       "Liga": "Premier League 2 Division One",
-      "Local": "Newcastle United U21",
-      "Visitante": "Stoke City U21",
+      "Local": "Southampton U21",
+      "Visitante": "Wolves U21",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -41254,9 +40962,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-02-28",
-      "Liga": "Premier League 2 Division One",
-      "Local": "Southampton U21",
-      "Visitante": "Wolves U21",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Aarhus",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -41373,40 +41081,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-02",
-      "Liga": "Superliga",
-      "Local": "Sonderjyske",
-      "Visitante": "Silkeborg",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10795.0,
-      "Stake Compuesto": 316818.29,
-      "Beneficio Compuesto": 142568.23,
-      "Banca Compuesto": 15983482.79
-    },
-    {
-      "Fecha": "2025-03-02",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "FC Nordsjaelland",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10775.0,
-      "Stake Compuesto": 319669.66,
-      "Beneficio Compuesto": -319669.66,
-      "Banca Compuesto": 15663813.13
-    },
-    {
-      "Fecha": "2025-03-02",
       "Liga": "Challenge League",
       "Local": "Étoile Carouge",
       "Visitante": "FC Vaduz",
@@ -41417,10 +41091,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10784.0,
-      "Stake Compuesto": 313276.26,
-      "Beneficio Compuesto": 140974.32,
-      "Banca Compuesto": 15804787.45
+      "Banca Fijo": 10795.0,
+      "Stake Compuesto": 316818.29,
+      "Beneficio Compuesto": 142568.23,
+      "Banca Compuesto": 15983482.79
     },
     {
       "Fecha": "2025-03-02",
@@ -41434,9 +41108,43 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10804.0,
+      "Stake Compuesto": 319669.66,
+      "Beneficio Compuesto": 143851.35,
+      "Banca Compuesto": 16127334.13
+    },
+    {
+      "Fecha": "2025-03-02",
+      "Liga": "Superliga",
+      "Local": "Sonderjyske",
+      "Visitante": "Silkeborg",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10813.0,
+      "Stake Compuesto": 322546.68,
+      "Beneficio Compuesto": 145146.01,
+      "Banca Compuesto": 16272480.14
+    },
+    {
+      "Fecha": "2025-03-02",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 10793.0,
-      "Stake Compuesto": 316095.75,
-      "Beneficio Compuesto": 142243.09,
+      "Stake Compuesto": 325449.6,
+      "Beneficio Compuesto": -325449.6,
       "Banca Compuesto": 15947030.54
     },
     {
@@ -41475,23 +41183,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-07",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Vejle",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10820.0,
-      "Stake Compuesto": 324707.38,
-      "Beneficio Compuesto": 146118.32,
-      "Banca Compuesto": 16381487.12
-    },
-    {
-      "Fecha": "2025-03-07",
       "Liga": "Premier League",
       "Local": "Geylang International",
       "Visitante": "Balestier Khalsa",
@@ -41502,10 +41193,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10829.0,
-      "Stake Compuesto": 327629.74,
-      "Beneficio Compuesto": 147433.38,
-      "Banca Compuesto": 16528920.5
+      "Banca Fijo": 10820.0,
+      "Stake Compuesto": 324707.38,
+      "Beneficio Compuesto": 146118.32,
+      "Banca Compuesto": 16381487.12
     },
     {
       "Fecha": "2025-03-07",
@@ -41519,10 +41210,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10838.0,
-      "Stake Compuesto": 330578.41,
-      "Beneficio Compuesto": 148760.28,
-      "Banca Compuesto": 16677680.78
+      "Banca Fijo": 10829.0,
+      "Stake Compuesto": 327629.74,
+      "Beneficio Compuesto": 147433.38,
+      "Banca Compuesto": 16528920.5
     },
     {
       "Fecha": "2025-03-07",
@@ -41530,6 +41221,23 @@ window.dashboardData = {
       "Local": "Austin II",
       "Visitante": "Colorado Rapids II",
       "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10838.0,
+      "Stake Compuesto": 330578.41,
+      "Beneficio Compuesto": 148760.28,
+      "Banca Compuesto": 16677680.78
+    },
+    {
+      "Fecha": "2025-03-07",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Vejle",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -41747,23 +41455,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-09",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Viborg",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10906.0,
-      "Stake Compuesto": 363986.87,
-      "Beneficio Compuesto": -363986.87,
-      "Banca Compuesto": 17835356.86
-    },
-    {
-      "Fecha": "2025-03-09",
       "Liga": "Esiliiga A",
       "Local": "FCI Levadia II",
       "Visitante": "Nõmme United",
@@ -41774,10 +41465,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10915.0,
-      "Stake Compuesto": 356707.14,
-      "Beneficio Compuesto": 160518.21,
-      "Banca Compuesto": 17995875.07
+      "Banca Fijo": 10935.0,
+      "Stake Compuesto": 363986.87,
+      "Beneficio Compuesto": 163794.09,
+      "Banca Compuesto": 18363137.82
     },
     {
       "Fecha": "2025-03-09",
@@ -41791,10 +41482,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10924.0,
-      "Stake Compuesto": 359917.5,
-      "Beneficio Compuesto": 161962.88,
-      "Banca Compuesto": 18157837.94
+      "Banca Fijo": 10944.0,
+      "Stake Compuesto": 367262.76,
+      "Beneficio Compuesto": 165268.24,
+      "Banca Compuesto": 18528406.06
     },
     {
       "Fecha": "2025-03-09",
@@ -41808,16 +41499,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10933.0,
-      "Stake Compuesto": 363156.76,
-      "Beneficio Compuesto": 163420.54,
-      "Banca Compuesto": 18321258.49
+      "Banca Fijo": 10953.0,
+      "Stake Compuesto": 370568.12,
+      "Beneficio Compuesto": 166755.65,
+      "Banca Compuesto": 18695161.72
     },
     {
-      "Fecha": "2025-03-10",
+      "Fecha": "2025-03-09",
       "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Brondby",
+      "Local": "Aarhus",
+      "Visitante": "Viborg",
       "Goles HT": 0.0,
       "Resultado": "PERDIDA",
       "Clase": "Clase B",
@@ -41825,10 +41516,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10913.0,
-      "Stake Compuesto": 366425.17,
-      "Beneficio Compuesto": -366425.17,
-      "Banca Compuesto": 17954833.32
+      "Banca Fijo": 10933.0,
+      "Stake Compuesto": 373903.23,
+      "Beneficio Compuesto": -373903.23,
+      "Banca Compuesto": 18321258.49
     },
     {
       "Fecha": "2025-03-10",
@@ -41842,9 +41533,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10942.0,
+      "Stake Compuesto": 366425.17,
+      "Beneficio Compuesto": 164891.33,
+      "Banca Compuesto": 18486149.81
+    },
+    {
+      "Fecha": "2025-03-10",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Brondby",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 10922.0,
-      "Stake Compuesto": 359096.67,
-      "Beneficio Compuesto": 161593.5,
+      "Stake Compuesto": 369723.0,
+      "Beneficio Compuesto": -369723.0,
       "Banca Compuesto": 18116426.82
     },
     {
@@ -42206,40 +41914,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-16",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Randers FC",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10975.0,
-      "Stake Compuesto": 377999.81,
-      "Beneficio Compuesto": 170099.91,
-      "Banca Compuesto": 19070090.25
-    },
-    {
-      "Fecha": "2025-03-16",
-      "Liga": "Superliga",
-      "Local": "Brondby",
-      "Visitante": "Silkeborg",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10984.0,
-      "Stake Compuesto": 381401.81,
-      "Beneficio Compuesto": 171630.81,
-      "Banca Compuesto": 19241721.06
-    },
-    {
-      "Fecha": "2025-03-16",
       "Liga": "Challenge League",
       "Local": "FC WIL 1900",
       "Visitante": "FC Aarau",
@@ -42250,10 +41924,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 10993.0,
-      "Stake Compuesto": 384834.42,
-      "Beneficio Compuesto": 173175.49,
-      "Banca Compuesto": 19414896.55
+      "Banca Fijo": 10975.0,
+      "Stake Compuesto": 377999.81,
+      "Beneficio Compuesto": 170099.91,
+      "Banca Compuesto": 19070090.25
     },
     {
       "Fecha": "2025-03-16",
@@ -42267,10 +41941,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 10973.0,
-      "Stake Compuesto": 388297.93,
-      "Beneficio Compuesto": -388297.93,
-      "Banca Compuesto": 19026598.62
+      "Banca Fijo": 10955.0,
+      "Stake Compuesto": 381401.81,
+      "Beneficio Compuesto": -381401.81,
+      "Banca Compuesto": 18688688.45
     },
     {
       "Fecha": "2025-03-16",
@@ -42281,6 +41955,40 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase A",
       "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10964.0,
+      "Stake Compuesto": 373773.77,
+      "Beneficio Compuesto": 168198.2,
+      "Banca Compuesto": 18856886.64
+    },
+    {
+      "Fecha": "2025-03-16",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Randers FC",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 10973.0,
+      "Stake Compuesto": 377137.73,
+      "Beneficio Compuesto": 169711.98,
+      "Banca Compuesto": 19026598.62
+    },
+    {
+      "Fecha": "2025-03-16",
+      "Liga": "Superliga",
+      "Local": "Brondby",
+      "Visitante": "Silkeborg",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -42631,10 +42339,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-30",
-      "Liga": "Superliga",
-      "Local": "Sonderjyske",
-      "Visitante": "Silkeborg",
-      "Goles HT": 3.0,
+      "Liga": "Esiliiga A",
+      "Local": "Flora II",
+      "Visitante": "Nõmme United",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -42648,10 +42356,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-30",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "FC Nordsjaelland",
-      "Goles HT": 1.0,
+      "Liga": "Meistriliiga",
+      "Local": "FC Levadia Tallinn",
+      "Visitante": "Kalju Nomme",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -42665,9 +42373,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-30",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Brondby",
+      "Liga": "2. Division - Group 1",
+      "Local": "Sandnes ULF",
+      "Visitante": "Eik-Tønsberg",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -42682,57 +42390,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-30",
-      "Liga": "Esiliiga A",
-      "Local": "Flora II",
-      "Visitante": "Nõmme United",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11140.0,
-      "Stake Compuesto": 445091.15,
-      "Beneficio Compuesto": 200291.02,
-      "Banca Compuesto": 22454848.61
-    },
-    {
-      "Fecha": "2025-03-30",
-      "Liga": "Meistriliiga",
-      "Local": "FC Levadia Tallinn",
-      "Visitante": "Kalju Nomme",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11149.0,
-      "Stake Compuesto": 449096.97,
-      "Beneficio Compuesto": 202093.64,
-      "Banca Compuesto": 22656942.25
-    },
-    {
-      "Fecha": "2025-03-30",
-      "Liga": "2. Division - Group 1",
-      "Local": "Sandnes ULF",
-      "Visitante": "Eik-Tønsberg",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11158.0,
-      "Stake Compuesto": 453138.84,
-      "Beneficio Compuesto": 203912.48,
-      "Banca Compuesto": 22860854.73
-    },
-    {
-      "Fecha": "2025-03-30",
       "Liga": "2. Division - Group 2",
       "Local": "Strommen",
       "Visitante": "Rana",
@@ -42743,10 +42400,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11167.0,
-      "Stake Compuesto": 457217.09,
-      "Beneficio Compuesto": 205747.69,
-      "Banca Compuesto": 23066602.42
+      "Banca Fijo": 11140.0,
+      "Stake Compuesto": 445091.15,
+      "Beneficio Compuesto": 200291.02,
+      "Banca Compuesto": 22454848.61
     },
     {
       "Fecha": "2025-03-30",
@@ -42760,10 +42417,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11176.0,
-      "Stake Compuesto": 461332.05,
-      "Beneficio Compuesto": 207599.42,
-      "Banca Compuesto": 23274201.84
+      "Banca Fijo": 11149.0,
+      "Stake Compuesto": 449096.97,
+      "Beneficio Compuesto": 202093.64,
+      "Banca Compuesto": 22656942.25
     },
     {
       "Fecha": "2025-03-30",
@@ -42774,6 +42431,57 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase A",
       "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11158.0,
+      "Stake Compuesto": 453138.84,
+      "Beneficio Compuesto": 203912.48,
+      "Banca Compuesto": 22860854.73
+    },
+    {
+      "Fecha": "2025-03-30",
+      "Liga": "Superliga",
+      "Local": "Sonderjyske",
+      "Visitante": "Silkeborg",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11167.0,
+      "Stake Compuesto": 457217.09,
+      "Beneficio Compuesto": 205747.69,
+      "Banca Compuesto": 23066602.42
+    },
+    {
+      "Fecha": "2025-03-30",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11176.0,
+      "Stake Compuesto": 461332.05,
+      "Beneficio Compuesto": 207599.42,
+      "Banca Compuesto": 23274201.84
+    },
+    {
+      "Fecha": "2025-03-30",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Brondby",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -42801,10 +42509,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-03-31",
-      "Liga": "Superliga",
-      "Local": "FC Copenhagen",
-      "Visitante": "Randers FC",
-      "Goles HT": 1.0,
+      "Liga": "Challenge League",
+      "Local": "Bellinzona",
+      "Visitante": "FC Aarau",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -42819,23 +42527,6 @@ window.dashboardData = {
     {
       "Fecha": "2025-03-31",
       "Liga": "Challenge League",
-      "Local": "Bellinzona",
-      "Visitante": "FC Aarau",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11212.0,
-      "Stake Compuesto": 478165.56,
-      "Beneficio Compuesto": 215174.5,
-      "Banca Compuesto": 24123452.39
-    },
-    {
-      "Fecha": "2025-03-31",
-      "Liga": "Challenge League",
       "Local": "Étoile Carouge",
       "Visitante": "Stade Nyonnais",
       "Goles HT": 3.0,
@@ -42845,10 +42536,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11221.0,
-      "Stake Compuesto": 482469.05,
-      "Beneficio Compuesto": 217111.07,
-      "Banca Compuesto": 24340563.46
+      "Banca Fijo": 11212.0,
+      "Stake Compuesto": 478165.56,
+      "Beneficio Compuesto": 215174.5,
+      "Banca Compuesto": 24123452.39
     },
     {
       "Fecha": "2025-03-31",
@@ -42862,10 +42553,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11230.0,
-      "Stake Compuesto": 486811.27,
-      "Beneficio Compuesto": 219065.07,
-      "Banca Compuesto": 24559628.53
+      "Banca Fijo": 11221.0,
+      "Stake Compuesto": 482469.05,
+      "Beneficio Compuesto": 217111.07,
+      "Banca Compuesto": 24340563.46
     },
     {
       "Fecha": "2025-03-31",
@@ -42873,6 +42564,23 @@ window.dashboardData = {
       "Local": "Nottingham Forest U21",
       "Visitante": "Newcastle United U21",
       "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11230.0,
+      "Stake Compuesto": 486811.27,
+      "Beneficio Compuesto": 219065.07,
+      "Banca Compuesto": 24559628.53
+    },
+    {
+      "Fecha": "2025-03-31",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Randers FC",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -42920,23 +42628,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-04",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "FC Midtjylland",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11237.0,
-      "Stake Compuesto": 490072.35,
-      "Beneficio Compuesto": 220532.56,
-      "Banca Compuesto": 24724149.91
-    },
-    {
-      "Fecha": "2025-04-04",
       "Liga": "Premier League",
       "Local": "Tampines Rovers",
       "Visitante": "Geylang International",
@@ -42947,10 +42638,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11246.0,
-      "Stake Compuesto": 494483.0,
-      "Beneficio Compuesto": 222517.35,
-      "Banca Compuesto": 24946667.26
+      "Banca Fijo": 11237.0,
+      "Stake Compuesto": 490072.35,
+      "Beneficio Compuesto": 220532.56,
+      "Banca Compuesto": 24724149.91
     },
     {
       "Fecha": "2025-04-04",
@@ -42964,6 +42655,23 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11246.0,
+      "Stake Compuesto": 494483.0,
+      "Beneficio Compuesto": 222517.35,
+      "Banca Compuesto": 24946667.26
+    },
+    {
+      "Fecha": "2025-04-04",
+      "Liga": "Premier League 2 Division One",
+      "Local": "Chelsea U21",
+      "Visitante": "Aston Villa U21",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 11255.0,
       "Stake Compuesto": 498933.35,
       "Beneficio Compuesto": 224520.01,
@@ -42972,9 +42680,9 @@ window.dashboardData = {
     {
       "Fecha": "2025-04-04",
       "Liga": "Premier League 2 Division One",
-      "Local": "Chelsea U21",
-      "Visitante": "Aston Villa U21",
-      "Goles HT": 2.0,
+      "Local": "Southampton U21",
+      "Visitante": "Blackburn Rovers U21",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -42989,23 +42697,6 @@ window.dashboardData = {
     {
       "Fecha": "2025-04-04",
       "Liga": "Premier League 2 Division One",
-      "Local": "Southampton U21",
-      "Visitante": "Blackburn Rovers U21",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11273.0,
-      "Stake Compuesto": 507954.56,
-      "Beneficio Compuesto": 228579.55,
-      "Banca Compuesto": 25626307.5
-    },
-    {
-      "Fecha": "2025-04-04",
-      "Liga": "Premier League 2 Division One",
       "Local": "Sunderland U21",
       "Visitante": "Nottingham Forest U21",
       "Goles HT": 0.0,
@@ -43015,9 +42706,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
+      "Banca Fijo": 11244.0,
+      "Stake Compuesto": 507954.56,
+      "Beneficio Compuesto": -507954.56,
+      "Banca Compuesto": 24889773.39
+    },
+    {
+      "Fecha": "2025-04-04",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "FC Midtjylland",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 11253.0,
-      "Stake Compuesto": 512526.15,
-      "Beneficio Compuesto": -512526.15,
+      "Stake Compuesto": 497795.47,
+      "Beneficio Compuesto": 224007.96,
       "Banca Compuesto": 25113781.35
     },
     {
@@ -43345,9 +43053,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-06",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "FC Copenhagen",
+      "Liga": "Úrvalsdeild",
+      "Local": "Valur Reykjavik",
+      "Visitante": "Vestri",
       "Goles HT": 0.0,
       "Resultado": "PERDIDA",
       "Clase": "Clase B",
@@ -43363,23 +43071,6 @@ window.dashboardData = {
     {
       "Fecha": "2025-04-06",
       "Liga": "Úrvalsdeild",
-      "Local": "Valur Reykjavik",
-      "Visitante": "Vestri",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11268.0,
-      "Stake Compuesto": 519325.89,
-      "Beneficio Compuesto": -519325.89,
-      "Banca Compuesto": 25446968.75
-    },
-    {
-      "Fecha": "2025-04-06",
-      "Liga": "Úrvalsdeild",
       "Local": "KA Akureyri",
       "Visitante": "KR Reykjavik",
       "Goles HT": 4.0,
@@ -43389,16 +43080,33 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11277.0,
-      "Stake Compuesto": 508939.38,
-      "Beneficio Compuesto": 229022.72,
-      "Banca Compuesto": 25675991.47
+      "Banca Fijo": 11297.0,
+      "Stake Compuesto": 519325.89,
+      "Beneficio Compuesto": 233696.65,
+      "Banca Compuesto": 26199991.3
     },
     {
       "Fecha": "2025-04-06",
       "Liga": "Esiliiga A",
       "Local": "Nõmme United",
       "Visitante": "Tartu Welco",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
+      "Banca Fijo": 11277.0,
+      "Stake Compuesto": 523999.83,
+      "Beneficio Compuesto": -523999.83,
+      "Banca Compuesto": 25675991.47
+    },
+    {
+      "Fecha": "2025-04-06",
+      "Liga": "Esiliiga A",
+      "Local": "Luunja",
+      "Visitante": "FCI Levadia II",
       "Goles HT": 0.0,
       "Resultado": "PERDIDA",
       "Clase": "Clase B",
@@ -43413,23 +43121,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-06",
-      "Liga": "Esiliiga A",
-      "Local": "Luunja",
-      "Visitante": "FCI Levadia II",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11237.0,
-      "Stake Compuesto": 503249.43,
-      "Beneficio Compuesto": -503249.43,
-      "Banca Compuesto": 24659222.21
-    },
-    {
-      "Fecha": "2025-04-06",
       "Liga": "Premier League",
       "Local": "Young Lions",
       "Visitante": "Home United",
@@ -43440,10 +43131,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11246.0,
-      "Stake Compuesto": 493184.44,
-      "Beneficio Compuesto": 221933.0,
-      "Banca Compuesto": 24881155.21
+      "Banca Fijo": 11266.0,
+      "Stake Compuesto": 503249.43,
+      "Beneficio Compuesto": 226462.24,
+      "Banca Compuesto": 25388933.89
     },
     {
       "Fecha": "2025-04-06",
@@ -43457,10 +43148,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11255.0,
-      "Stake Compuesto": 497623.1,
-      "Beneficio Compuesto": 223930.4,
-      "Banca Compuesto": 25105085.61
+      "Banca Fijo": 11275.0,
+      "Stake Compuesto": 507778.68,
+      "Beneficio Compuesto": 228500.4,
+      "Banca Compuesto": 25617434.29
     },
     {
       "Fecha": "2025-04-06",
@@ -43474,9 +43165,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11284.0,
+      "Stake Compuesto": 512348.69,
+      "Beneficio Compuesto": 230556.91,
+      "Banca Compuesto": 25847991.2
+    },
+    {
+      "Fecha": "2025-04-06",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 11264.0,
-      "Stake Compuesto": 502101.71,
-      "Beneficio Compuesto": 225945.77,
+      "Stake Compuesto": 516959.82,
+      "Beneficio Compuesto": -516959.82,
       "Banca Compuesto": 25331031.38
     },
     {
@@ -44008,57 +43716,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-13",
-      "Liga": "Superliga",
-      "Local": "Viborg",
-      "Visitante": "Silkeborg",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11233.0,
-      "Stake Compuesto": 485280.71,
-      "Beneficio Compuesto": 218376.32,
-      "Banca Compuesto": 24482411.68
-    },
-    {
-      "Fecha": "2025-04-13",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "FC Midtjylland",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11213.0,
-      "Stake Compuesto": 489648.23,
-      "Beneficio Compuesto": -489648.23,
-      "Banca Compuesto": 23992763.45
-    },
-    {
-      "Fecha": "2025-04-13",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Randers FC",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11222.0,
-      "Stake Compuesto": 479855.27,
-      "Beneficio Compuesto": 215934.87,
-      "Banca Compuesto": 24208698.32
-    },
-    {
-      "Fecha": "2025-04-13",
       "Liga": "Úrvalsdeild",
       "Local": "Vikingur Reykjavik",
       "Visitante": "KA Akureyri",
@@ -44069,10 +43726,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11231.0,
-      "Stake Compuesto": 484173.97,
-      "Beneficio Compuesto": 217878.28,
-      "Banca Compuesto": 24426576.6
+      "Banca Fijo": 11233.0,
+      "Stake Compuesto": 485280.71,
+      "Beneficio Compuesto": 218376.32,
+      "Banca Compuesto": 24482411.68
     },
     {
       "Fecha": "2025-04-13",
@@ -44086,10 +43743,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11240.0,
-      "Stake Compuesto": 488531.53,
-      "Beneficio Compuesto": 219839.19,
-      "Banca Compuesto": 24646415.79
+      "Banca Fijo": 11242.0,
+      "Stake Compuesto": 489648.23,
+      "Beneficio Compuesto": 220341.71,
+      "Banca Compuesto": 24702753.38
     },
     {
       "Fecha": "2025-04-13",
@@ -44103,10 +43760,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11249.0,
-      "Stake Compuesto": 492928.32,
-      "Beneficio Compuesto": 221817.74,
-      "Banca Compuesto": 24868233.53
+      "Banca Fijo": 11251.0,
+      "Stake Compuesto": 494055.07,
+      "Beneficio Compuesto": 222324.78,
+      "Banca Compuesto": 24925078.16
     },
     {
       "Fecha": "2025-04-13",
@@ -44120,10 +43777,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11258.0,
-      "Stake Compuesto": 497364.67,
-      "Beneficio Compuesto": 223814.1,
-      "Banca Compuesto": 25092047.63
+      "Banca Fijo": 11260.0,
+      "Stake Compuesto": 498501.56,
+      "Beneficio Compuesto": 224325.7,
+      "Banca Compuesto": 25149403.87
     },
     {
       "Fecha": "2025-04-13",
@@ -44137,10 +43794,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11267.0,
-      "Stake Compuesto": 501840.95,
-      "Beneficio Compuesto": 225828.43,
-      "Banca Compuesto": 25317876.06
+      "Banca Fijo": 11269.0,
+      "Stake Compuesto": 502988.08,
+      "Beneficio Compuesto": 226344.63,
+      "Banca Compuesto": 25375748.5
     },
     {
       "Fecha": "2025-04-13",
@@ -44151,6 +43808,57 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11278.0,
+      "Stake Compuesto": 507514.97,
+      "Beneficio Compuesto": 228381.74,
+      "Banca Compuesto": 25604130.24
+    },
+    {
+      "Fecha": "2025-04-13",
+      "Liga": "Superliga",
+      "Local": "Viborg",
+      "Visitante": "Silkeborg",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11287.0,
+      "Stake Compuesto": 512082.6,
+      "Beneficio Compuesto": 230437.17,
+      "Banca Compuesto": 25834567.41
+    },
+    {
+      "Fecha": "2025-04-13",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "FC Midtjylland",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
+      "Banca Fijo": 11267.0,
+      "Stake Compuesto": 516691.35,
+      "Beneficio Compuesto": -516691.35,
+      "Banca Compuesto": 25317876.06
+    },
+    {
+      "Fecha": "2025-04-13",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Randers FC",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -44246,40 +43954,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-17",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Aarhus",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11330.0,
-      "Stake Compuesto": 534323.48,
-      "Beneficio Compuesto": 240445.57,
-      "Banca Compuesto": 26956619.79
-    },
-    {
-      "Fecha": "2025-04-17",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "FC Copenhagen",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11339.0,
-      "Stake Compuesto": 539132.4,
-      "Beneficio Compuesto": 242609.58,
-      "Banca Compuesto": 27199229.37
-    },
-    {
-      "Fecha": "2025-04-17",
       "Liga": "Esiliiga A",
       "Local": "Elva",
       "Visitante": "Nõmme United",
@@ -44290,10 +43964,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11319.0,
-      "Stake Compuesto": 543984.59,
-      "Beneficio Compuesto": -543984.59,
-      "Banca Compuesto": 26655244.78
+      "Banca Fijo": 11301.0,
+      "Stake Compuesto": 534323.48,
+      "Beneficio Compuesto": -534323.48,
+      "Banca Compuesto": 26181850.74
     },
     {
       "Fecha": "2025-04-17",
@@ -44307,10 +43981,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11328.0,
-      "Stake Compuesto": 533104.9,
-      "Beneficio Compuesto": 239897.2,
-      "Banca Compuesto": 26895141.99
+      "Banca Fijo": 11310.0,
+      "Stake Compuesto": 523637.01,
+      "Beneficio Compuesto": 235636.66,
+      "Banca Compuesto": 26417487.4
     },
     {
       "Fecha": "2025-04-17",
@@ -44321,6 +43995,40 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11319.0,
+      "Stake Compuesto": 528349.75,
+      "Beneficio Compuesto": 237757.39,
+      "Banca Compuesto": 26655244.78
+    },
+    {
+      "Fecha": "2025-04-17",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Aarhus",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11328.0,
+      "Stake Compuesto": 533104.9,
+      "Beneficio Compuesto": 239897.2,
+      "Banca Compuesto": 26895141.99
+    },
+    {
+      "Fecha": "2025-04-17",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -44705,40 +44413,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-21",
-      "Liga": "Superliga",
-      "Local": "Vejle",
-      "Visitante": "Silkeborg",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11486.0,
-      "Stake Compuesto": 623548.85,
-      "Beneficio Compuesto": 280596.98,
-      "Banca Compuesto": 31458039.25
-    },
-    {
-      "Fecha": "2025-04-21",
-      "Liga": "Superliga",
-      "Local": "Brondby",
-      "Visitante": "Randers FC",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11495.0,
-      "Stake Compuesto": 629160.79,
-      "Beneficio Compuesto": 283122.35,
-      "Banca Compuesto": 31741161.61
-    },
-    {
-      "Fecha": "2025-04-21",
       "Liga": "Kakkonen - Lohko A",
       "Local": "JPS",
       "Visitante": "VJS",
@@ -44749,10 +44423,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11504.0,
-      "Stake Compuesto": 634823.23,
-      "Beneficio Compuesto": 285670.45,
-      "Banca Compuesto": 32026832.06
+      "Banca Fijo": 11486.0,
+      "Stake Compuesto": 623548.85,
+      "Beneficio Compuesto": 280596.98,
+      "Banca Compuesto": 31458039.25
     },
     {
       "Fecha": "2025-04-21",
@@ -44766,10 +44440,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11513.0,
-      "Stake Compuesto": 640536.64,
-      "Beneficio Compuesto": 288241.49,
-      "Banca Compuesto": 32315073.55
+      "Banca Fijo": 11495.0,
+      "Stake Compuesto": 629160.79,
+      "Beneficio Compuesto": 283122.35,
+      "Banca Compuesto": 31741161.61
     },
     {
       "Fecha": "2025-04-21",
@@ -44783,27 +44457,44 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11504.0,
+      "Stake Compuesto": 634823.23,
+      "Beneficio Compuesto": 285670.45,
+      "Banca Compuesto": 32026832.06
+    },
+    {
+      "Fecha": "2025-04-21",
+      "Liga": "Superliga",
+      "Local": "Vejle",
+      "Visitante": "Silkeborg",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11513.0,
+      "Stake Compuesto": 640536.64,
+      "Beneficio Compuesto": 288241.49,
+      "Banca Compuesto": 32315073.55
+    },
+    {
+      "Fecha": "2025-04-21",
+      "Liga": "Superliga",
+      "Local": "Brondby",
+      "Visitante": "Randers FC",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 11522.0,
       "Stake Compuesto": 646301.47,
       "Beneficio Compuesto": 290835.66,
       "Banca Compuesto": 32605909.21
-    },
-    {
-      "Fecha": "2025-04-22",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "FC Midtjylland",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11531.0,
-      "Stake Compuesto": 652118.18,
-      "Beneficio Compuesto": 293453.18,
-      "Banca Compuesto": 32899362.39
     },
     {
       "Fecha": "2025-04-22",
@@ -44817,10 +44508,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11511.0,
-      "Stake Compuesto": 657987.25,
-      "Beneficio Compuesto": -657987.25,
-      "Banca Compuesto": 32241375.15
+      "Banca Fijo": 11502.0,
+      "Stake Compuesto": 652118.18,
+      "Beneficio Compuesto": -652118.18,
+      "Banca Compuesto": 31953791.03
     },
     {
       "Fecha": "2025-04-22",
@@ -44831,6 +44522,23 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11511.0,
+      "Stake Compuesto": 639075.82,
+      "Beneficio Compuesto": 287584.12,
+      "Banca Compuesto": 32241375.15
+    },
+    {
+      "Fecha": "2025-04-22",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "FC Midtjylland",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -44977,23 +44685,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-25",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Brondby",
-      "Goles HT": 0.0,
-      "Resultado": "PERDIDA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11572.0,
-      "Stake Compuesto": 698978.87,
-      "Beneficio Compuesto": -698978.87,
-      "Banca Compuesto": 34249964.74
-    },
-    {
-      "Fecha": "2025-04-25",
       "Liga": "Challenge League",
       "Local": "FC Schaffhausen",
       "Visitante": "FC Aarau",
@@ -45004,10 +44695,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11552.0,
-      "Stake Compuesto": 684999.29,
-      "Beneficio Compuesto": -684999.29,
-      "Banca Compuesto": 33564965.44
+      "Banca Fijo": 11572.0,
+      "Stake Compuesto": 698978.87,
+      "Beneficio Compuesto": -698978.87,
+      "Banca Compuesto": 34249964.74
     },
     {
       "Fecha": "2025-04-25",
@@ -45021,10 +44712,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11561.0,
-      "Stake Compuesto": 671299.31,
-      "Beneficio Compuesto": 302084.69,
-      "Banca Compuesto": 33867050.13
+      "Banca Fijo": 11581.0,
+      "Stake Compuesto": 684999.29,
+      "Beneficio Compuesto": 308249.68,
+      "Banca Compuesto": 34558214.42
     },
     {
       "Fecha": "2025-04-25",
@@ -45038,10 +44729,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11570.0,
-      "Stake Compuesto": 677341.0,
-      "Beneficio Compuesto": 304803.45,
-      "Banca Compuesto": 34171853.58
+      "Banca Fijo": 11590.0,
+      "Stake Compuesto": 691164.29,
+      "Beneficio Compuesto": 311023.93,
+      "Banca Compuesto": 34869238.35
     },
     {
       "Fecha": "2025-04-25",
@@ -45055,10 +44746,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11579.0,
-      "Stake Compuesto": 683437.07,
-      "Beneficio Compuesto": 307546.68,
-      "Banca Compuesto": 34479400.27
+      "Banca Fijo": 11599.0,
+      "Stake Compuesto": 697384.77,
+      "Beneficio Compuesto": 313823.15,
+      "Banca Compuesto": 35183061.5
     },
     {
       "Fecha": "2025-04-25",
@@ -45072,9 +44763,26 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11608.0,
+      "Stake Compuesto": 703661.23,
+      "Beneficio Compuesto": 316647.55,
+      "Banca Compuesto": 35499709.05
+    },
+    {
+      "Fecha": "2025-04-25",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Brondby",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
       "Banca Fijo": 11588.0,
-      "Stake Compuesto": 689588.01,
-      "Beneficio Compuesto": 310314.6,
+      "Stake Compuesto": 709994.18,
+      "Beneficio Compuesto": -709994.18,
       "Banca Compuesto": 34789714.87
     },
     {
@@ -45334,10 +45042,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-27",
-      "Liga": "Superliga",
-      "Local": "Lyngby",
-      "Visitante": "Silkeborg",
-      "Goles HT": 1.0,
+      "Liga": "Ykkönen",
+      "Local": "JJK",
+      "Visitante": "Inter Turku II",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -45351,57 +45059,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-04-27",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "FC Copenhagen",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11683.0,
-      "Stake Compuesto": 757546.58,
-      "Beneficio Compuesto": 340895.96,
-      "Banca Compuesto": 38218225.12
-    },
-    {
-      "Fecha": "2025-04-27",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "FC Nordsjaelland",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11692.0,
-      "Stake Compuesto": 764364.5,
-      "Beneficio Compuesto": 343964.03,
-      "Banca Compuesto": 38562189.15
-    },
-    {
-      "Fecha": "2025-04-27",
-      "Liga": "Ykkönen",
-      "Local": "JJK",
-      "Visitante": "Inter Turku II",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11701.0,
-      "Stake Compuesto": 771243.78,
-      "Beneficio Compuesto": 347059.7,
-      "Banca Compuesto": 38909248.85
-    },
-    {
-      "Fecha": "2025-04-27",
       "Liga": "Esiliiga A",
       "Local": "Tallinna Kalev II",
       "Visitante": "Nõmme United",
@@ -45412,10 +45069,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11710.0,
-      "Stake Compuesto": 778184.98,
-      "Beneficio Compuesto": 350183.24,
-      "Banca Compuesto": 39259432.09
+      "Banca Fijo": 11683.0,
+      "Stake Compuesto": 757546.58,
+      "Beneficio Compuesto": 340895.96,
+      "Banca Compuesto": 38218225.12
     },
     {
       "Fecha": "2025-04-27",
@@ -45429,10 +45086,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11690.0,
-      "Stake Compuesto": 785188.64,
-      "Beneficio Compuesto": -785188.64,
-      "Banca Compuesto": 38474243.45
+      "Banca Fijo": 11663.0,
+      "Stake Compuesto": 764364.5,
+      "Beneficio Compuesto": -764364.5,
+      "Banca Compuesto": 37453860.62
     },
     {
       "Fecha": "2025-04-27",
@@ -45446,10 +45103,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11699.0,
-      "Stake Compuesto": 769484.87,
-      "Beneficio Compuesto": 346268.19,
-      "Banca Compuesto": 38820511.64
+      "Banca Fijo": 11672.0,
+      "Stake Compuesto": 749077.21,
+      "Beneficio Compuesto": 337084.75,
+      "Banca Compuesto": 37790945.36
     },
     {
       "Fecha": "2025-04-27",
@@ -45463,10 +45120,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11708.0,
-      "Stake Compuesto": 776410.23,
-      "Beneficio Compuesto": 349384.6,
-      "Banca Compuesto": 39169896.24
+      "Banca Fijo": 11681.0,
+      "Stake Compuesto": 755818.91,
+      "Beneficio Compuesto": 340118.51,
+      "Banca Compuesto": 38131063.87
     },
     {
       "Fecha": "2025-04-27",
@@ -45480,10 +45137,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11717.0,
-      "Stake Compuesto": 783397.92,
-      "Beneficio Compuesto": 352529.07,
-      "Banca Compuesto": 39522425.31
+      "Banca Fijo": 11690.0,
+      "Stake Compuesto": 762621.28,
+      "Beneficio Compuesto": 343179.57,
+      "Banca Compuesto": 38474243.45
     },
     {
       "Fecha": "2025-04-27",
@@ -45497,10 +45154,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11726.0,
-      "Stake Compuesto": 790448.51,
-      "Beneficio Compuesto": 355701.83,
-      "Banca Compuesto": 39878127.14
+      "Banca Fijo": 11699.0,
+      "Stake Compuesto": 769484.87,
+      "Beneficio Compuesto": 346268.19,
+      "Banca Compuesto": 38820511.64
     },
     {
       "Fecha": "2025-04-27",
@@ -45514,10 +45171,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11735.0,
-      "Stake Compuesto": 797562.54,
-      "Beneficio Compuesto": 358903.14,
-      "Banca Compuesto": 40237030.28
+      "Banca Fijo": 11708.0,
+      "Stake Compuesto": 776410.23,
+      "Beneficio Compuesto": 349384.6,
+      "Banca Compuesto": 39169896.24
     },
     {
       "Fecha": "2025-04-27",
@@ -45531,10 +45188,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11715.0,
-      "Stake Compuesto": 804740.61,
-      "Beneficio Compuesto": -804740.61,
-      "Banca Compuesto": 39432289.68
+      "Banca Fijo": 11688.0,
+      "Stake Compuesto": 783397.92,
+      "Beneficio Compuesto": -783397.92,
+      "Banca Compuesto": 38386498.32
     },
     {
       "Fecha": "2025-04-27",
@@ -45545,6 +45202,57 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase A",
       "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11697.0,
+      "Stake Compuesto": 767729.97,
+      "Beneficio Compuesto": 345478.48,
+      "Banca Compuesto": 38731976.8
+    },
+    {
+      "Fecha": "2025-04-27",
+      "Liga": "Superliga",
+      "Local": "Lyngby",
+      "Visitante": "Silkeborg",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11706.0,
+      "Stake Compuesto": 774639.54,
+      "Beneficio Compuesto": 348587.79,
+      "Banca Compuesto": 39080564.59
+    },
+    {
+      "Fecha": "2025-04-27",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11715.0,
+      "Stake Compuesto": 781611.29,
+      "Beneficio Compuesto": 351725.08,
+      "Banca Compuesto": 39432289.68
+    },
+    {
+      "Fecha": "2025-04-27",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -45776,23 +45484,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-02",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "FC Nordsjaelland",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11763.0,
-      "Stake Compuesto": 819149.27,
-      "Beneficio Compuesto": 368617.17,
-      "Banca Compuesto": 41326080.51
-    },
-    {
-      "Fecha": "2025-05-02",
       "Liga": "1. Deild",
       "Local": "Thor Akureyri",
       "Visitante": "HK Kopavogur",
@@ -45803,10 +45494,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11772.0,
-      "Stake Compuesto": 826521.61,
-      "Beneficio Compuesto": 371934.72,
-      "Banca Compuesto": 41698015.24
+      "Banca Fijo": 11763.0,
+      "Stake Compuesto": 819149.27,
+      "Beneficio Compuesto": 368617.17,
+      "Banca Compuesto": 41326080.51
     },
     {
       "Fecha": "2025-05-02",
@@ -45820,10 +45511,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 11752.0,
-      "Stake Compuesto": 833960.3,
-      "Beneficio Compuesto": -833960.3,
-      "Banca Compuesto": 40864054.93
+      "Banca Fijo": 11743.0,
+      "Stake Compuesto": 826521.61,
+      "Beneficio Compuesto": -826521.61,
+      "Banca Compuesto": 40499558.9
     },
     {
       "Fecha": "2025-05-02",
@@ -45837,6 +45528,23 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11752.0,
+      "Stake Compuesto": 809991.18,
+      "Beneficio Compuesto": 364496.03,
+      "Banca Compuesto": 40864054.93
+    },
+    {
+      "Fecha": "2025-05-02",
+      "Liga": "Challenge League",
+      "Local": "Étoile Carouge",
+      "Visitante": "Stade Lausanne-Ouchy",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 11761.0,
       "Stake Compuesto": 817281.1,
       "Beneficio Compuesto": 367776.49,
@@ -45844,9 +45552,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-02",
-      "Liga": "Challenge League",
-      "Local": "Étoile Carouge",
-      "Visitante": "Stade Lausanne-Ouchy",
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "Reipas",
+      "Visitante": "HaPK Edustus",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -45861,13 +45569,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-02",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "Reipas",
-      "Visitante": "HaPK Edustus",
-      "Goles HT": 1.0,
+      "Liga": "Kakkonen - Lohko B",
+      "Local": "NJS",
+      "Visitante": "P-Iirot",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -45878,9 +45586,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-02",
-      "Liga": "Kakkonen - Lohko B",
-      "Local": "NJS",
-      "Visitante": "P-Iirot",
+      "Liga": "Meistriliiga",
+      "Local": "Vaprus",
+      "Visitante": "Flora Tallinn",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -45895,23 +45603,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-02",
-      "Liga": "Meistriliiga",
-      "Local": "Vaprus",
-      "Visitante": "Flora Tallinn",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11797.0,
-      "Stake Compuesto": 847102.81,
-      "Beneficio Compuesto": 381196.26,
-      "Banca Compuesto": 42736336.53
-    },
-    {
-      "Fecha": "2025-05-02",
       "Liga": "Premier League",
       "Local": "Hougang United",
       "Visitante": "Tampines Rovers",
@@ -45922,10 +45613,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11806.0,
-      "Stake Compuesto": 854726.73,
-      "Beneficio Compuesto": 384627.03,
-      "Banca Compuesto": 43120963.56
+      "Banca Fijo": 11797.0,
+      "Stake Compuesto": 847102.81,
+      "Beneficio Compuesto": 381196.26,
+      "Banca Compuesto": 42736336.53
     },
     {
       "Fecha": "2025-05-02",
@@ -45939,10 +45630,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11815.0,
-      "Stake Compuesto": 862419.27,
-      "Beneficio Compuesto": 388088.67,
-      "Banca Compuesto": 43509052.23
+      "Banca Fijo": 11806.0,
+      "Stake Compuesto": 854726.73,
+      "Beneficio Compuesto": 384627.03,
+      "Banca Compuesto": 43120963.56
     },
     {
       "Fecha": "2025-05-02",
@@ -45956,10 +45647,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11824.0,
-      "Stake Compuesto": 870181.04,
-      "Beneficio Compuesto": 391581.47,
-      "Banca Compuesto": 43900633.7
+      "Banca Fijo": 11815.0,
+      "Stake Compuesto": 862419.27,
+      "Beneficio Compuesto": 388088.67,
+      "Banca Compuesto": 43509052.23
     },
     {
       "Fecha": "2025-05-02",
@@ -45970,6 +45661,23 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11824.0,
+      "Stake Compuesto": 870181.04,
+      "Beneficio Compuesto": 391581.47,
+      "Banca Compuesto": 43900633.7
+    },
+    {
+      "Fecha": "2025-05-02",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -46439,13 +46147,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-04",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Aarhus",
-      "Goles HT": 1.0,
+      "Liga": "Úrvalsdeild",
+      "Local": "FH hafnarfjordur",
+      "Visitante": "Valur Reykjavik",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -46456,9 +46164,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-04",
-      "Liga": "Úrvalsdeild",
-      "Local": "FH hafnarfjordur",
-      "Visitante": "Valur Reykjavik",
+      "Liga": "Meistriliiga",
+      "Local": "Kalju Nomme",
+      "Visitante": "FC Levadia Tallinn",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -46473,23 +46181,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-04",
-      "Liga": "Meistriliiga",
-      "Local": "Kalju Nomme",
-      "Visitante": "FC Levadia Tallinn",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 11958.0,
-      "Stake Compuesto": 992910.99,
-      "Beneficio Compuesto": 446809.95,
-      "Banca Compuesto": 50092359.64
-    },
-    {
-      "Fecha": "2025-05-04",
       "Liga": "Premier League",
       "Local": "Home United",
       "Visitante": "Geylang International",
@@ -46500,6 +46191,23 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 11958.0,
+      "Stake Compuesto": 992910.99,
+      "Beneficio Compuesto": 446809.95,
+      "Banca Compuesto": 50092359.64
+    },
+    {
+      "Fecha": "2025-05-04",
+      "Liga": "Ettan - Norra",
+      "Local": "Karlberg",
+      "Visitante": "IF Karlstad",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 11967.0,
       "Stake Compuesto": 1001847.19,
       "Beneficio Compuesto": 450831.24,
@@ -46507,9 +46215,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-04",
-      "Liga": "Ettan - Norra",
-      "Local": "Karlberg",
-      "Visitante": "IF Karlstad",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Aarhus",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -47085,10 +46793,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Brondby",
-      "Goles HT": 2.0,
+      "Liga": "Úrvalsdeild",
+      "Local": "Vikingur Reykjavik",
+      "Visitante": "FH hafnarfjordur",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -47102,40 +46810,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Randers FC",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12204.0,
-      "Stake Compuesto": 1267325.57,
-      "Beneficio Compuesto": 570296.51,
-      "Banca Compuesto": 63936575.16
-    },
-    {
-      "Fecha": "2025-05-11",
-      "Liga": "Úrvalsdeild",
-      "Local": "Vikingur Reykjavik",
-      "Visitante": "FH hafnarfjordur",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12213.0,
-      "Stake Compuesto": 1278731.5,
-      "Beneficio Compuesto": 575429.18,
-      "Banca Compuesto": 64512004.34
-    },
-    {
-      "Fecha": "2025-05-11",
       "Liga": "Ykkönen",
       "Local": "EPS",
       "Visitante": "Inter Turku II",
@@ -47146,6 +46820,40 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12204.0,
+      "Stake Compuesto": 1267325.57,
+      "Beneficio Compuesto": 570296.51,
+      "Banca Compuesto": 63936575.16
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "Ykkönen",
+      "Local": "KuPS Akatemia",
+      "Visitante": "Atlantis",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12213.0,
+      "Stake Compuesto": 1278731.5,
+      "Beneficio Compuesto": 575429.18,
+      "Banca Compuesto": 64512004.34
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "Reipas",
+      "Visitante": "GrIFK",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 12222.0,
       "Stake Compuesto": 1290240.09,
       "Beneficio Compuesto": 580608.04,
@@ -47153,9 +46861,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "Ykkönen",
-      "Local": "KuPS Akatemia",
-      "Visitante": "Atlantis",
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "Honka",
+      "Visitante": "VJS",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -47170,40 +46878,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "Reipas",
-      "Visitante": "GrIFK",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12240.0,
-      "Stake Compuesto": 1313568.92,
-      "Beneficio Compuesto": 591106.01,
-      "Banca Compuesto": 66269551.9
-    },
-    {
-      "Fecha": "2025-05-11",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "Honka",
-      "Visitante": "VJS",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12249.0,
-      "Stake Compuesto": 1325391.04,
-      "Beneficio Compuesto": 596425.97,
-      "Banca Compuesto": 66865977.87
-    },
-    {
-      "Fecha": "2025-05-11",
       "Liga": "Esiliiga A",
       "Local": "Luunja",
       "Visitante": "Tartu Welco",
@@ -47214,10 +46888,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12229.0,
-      "Stake Compuesto": 1337319.56,
-      "Beneficio Compuesto": -1337319.56,
-      "Banca Compuesto": 65528658.31
+      "Banca Fijo": 12211.0,
+      "Stake Compuesto": 1313568.92,
+      "Beneficio Compuesto": -1313568.92,
+      "Banca Compuesto": 64364876.97
     },
     {
       "Fecha": "2025-05-11",
@@ -47231,10 +46905,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12238.0,
-      "Stake Compuesto": 1310573.17,
-      "Beneficio Compuesto": 589757.92,
-      "Banca Compuesto": 66118416.24
+      "Banca Fijo": 12220.0,
+      "Stake Compuesto": 1287297.54,
+      "Beneficio Compuesto": 579283.89,
+      "Banca Compuesto": 64944160.86
     },
     {
       "Fecha": "2025-05-11",
@@ -47248,6 +46922,40 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12229.0,
+      "Stake Compuesto": 1298883.22,
+      "Beneficio Compuesto": 584497.45,
+      "Banca Compuesto": 65528658.31
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "Premier League",
+      "Local": "Geylang International",
+      "Visitante": "Albirex Niigata S",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12238.0,
+      "Stake Compuesto": 1310573.17,
+      "Beneficio Compuesto": 589757.92,
+      "Banca Compuesto": 66118416.24
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "2. Division - Group 1",
+      "Local": "Brattvåg",
+      "Visitante": "Sandnes ULF",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 12247.0,
       "Stake Compuesto": 1322368.32,
       "Beneficio Compuesto": 595065.75,
@@ -47255,9 +46963,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "Premier League",
-      "Local": "Geylang International",
-      "Visitante": "Albirex Niigata S",
+      "Liga": "2. Division - Group 2",
+      "Local": "Alta",
+      "Visitante": "Strindheim",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -47272,40 +46980,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "2. Division - Group 1",
-      "Local": "Brattvåg",
-      "Visitante": "Sandnes ULF",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12265.0,
-      "Stake Compuesto": 1346278.07,
-      "Beneficio Compuesto": 605825.13,
-      "Banca Compuesto": 67919728.45
-    },
-    {
-      "Fecha": "2025-05-11",
-      "Liga": "2. Division - Group 2",
-      "Local": "Alta",
-      "Visitante": "Strindheim",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12274.0,
-      "Stake Compuesto": 1358394.57,
-      "Beneficio Compuesto": 611277.56,
-      "Banca Compuesto": 68531006.0
-    },
-    {
-      "Fecha": "2025-05-11",
       "Liga": "2. Division - Group 2",
       "Local": "Kjelsås",
       "Visitante": "Tromsdalen Uil",
@@ -47316,16 +46990,50 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12254.0,
-      "Stake Compuesto": 1370620.12,
-      "Beneficio Compuesto": -1370620.12,
-      "Banca Compuesto": 67160385.88
+      "Banca Fijo": 12236.0,
+      "Stake Compuesto": 1346278.07,
+      "Beneficio Compuesto": -1346278.07,
+      "Banca Compuesto": 65967625.25
     },
     {
       "Fecha": "2025-05-11",
       "Liga": "2. Division - Group 2",
       "Local": "Strommen",
       "Visitante": "Ull/Kisa",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12245.0,
+      "Stake Compuesto": 1319352.51,
+      "Beneficio Compuesto": 593708.63,
+      "Banca Compuesto": 66561333.88
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "2. Division - Group 2",
+      "Local": "Follo",
+      "Visitante": "Hønefoss",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12254.0,
+      "Stake Compuesto": 1331226.68,
+      "Beneficio Compuesto": 599052.0,
+      "Banca Compuesto": 67160385.88
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "2. Division - Group 2",
+      "Local": "Eidsvold",
+      "Visitante": "Stjørdals-Blink",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -47340,40 +47048,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-11",
-      "Liga": "2. Division - Group 2",
-      "Local": "Follo",
-      "Visitante": "Hønefoss",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12272.0,
-      "Stake Compuesto": 1355296.59,
-      "Beneficio Compuesto": 609883.46,
-      "Banca Compuesto": 68374712.82
-    },
-    {
-      "Fecha": "2025-05-11",
-      "Liga": "2. Division - Group 2",
-      "Local": "Eidsvold",
-      "Visitante": "Stjørdals-Blink",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12281.0,
-      "Stake Compuesto": 1367494.26,
-      "Beneficio Compuesto": 615372.42,
-      "Banca Compuesto": 68990085.24
-    },
-    {
-      "Fecha": "2025-05-11",
       "Liga": "Ettan - Norra",
       "Local": "Umea FF",
       "Visitante": "Hammarby Talang",
@@ -47384,10 +47058,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12261.0,
-      "Stake Compuesto": 1379801.7,
-      "Beneficio Compuesto": -1379801.7,
-      "Banca Compuesto": 67610283.53
+      "Banca Fijo": 12243.0,
+      "Stake Compuesto": 1355296.59,
+      "Beneficio Compuesto": -1355296.59,
+      "Banca Compuesto": 66409532.77
     },
     {
       "Fecha": "2025-05-11",
@@ -47398,6 +47072,40 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12252.0,
+      "Stake Compuesto": 1328190.66,
+      "Beneficio Compuesto": 597685.79,
+      "Banca Compuesto": 67007218.57
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Brondby",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12261.0,
+      "Stake Compuesto": 1340144.37,
+      "Beneficio Compuesto": 603064.97,
+      "Banca Compuesto": 67610283.53
+    },
+    {
+      "Fecha": "2025-05-11",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Randers FC",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -47612,23 +47320,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-16",
-      "Liga": "Superliga",
-      "Local": "FC Nordsjaelland",
-      "Visitante": "Aarhus",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12358.0,
-      "Stake Compuesto": 1475580.21,
-      "Beneficio Compuesto": 664011.1,
-      "Banca Compuesto": 74443021.84
-    },
-    {
-      "Fecha": "2025-05-16",
       "Liga": "1. Deild",
       "Local": "Leiknir R.",
       "Visitante": "HK Kopavogur",
@@ -47639,10 +47330,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12338.0,
-      "Stake Compuesto": 1488860.44,
-      "Beneficio Compuesto": -1488860.44,
-      "Banca Compuesto": 72954161.4
+      "Banca Fijo": 12329.0,
+      "Stake Compuesto": 1475580.21,
+      "Beneficio Compuesto": -1475580.21,
+      "Banca Compuesto": 72303430.53
     },
     {
       "Fecha": "2025-05-16",
@@ -47656,10 +47347,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12347.0,
-      "Stake Compuesto": 1459083.23,
-      "Beneficio Compuesto": 656587.45,
-      "Banca Compuesto": 73610748.86
+      "Banca Fijo": 12338.0,
+      "Stake Compuesto": 1446068.61,
+      "Beneficio Compuesto": 650730.87,
+      "Banca Compuesto": 72954161.4
     },
     {
       "Fecha": "2025-05-16",
@@ -47670,6 +47361,23 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12347.0,
+      "Stake Compuesto": 1459083.23,
+      "Beneficio Compuesto": 656587.45,
+      "Banca Compuesto": 73610748.86
+    },
+    {
+      "Fecha": "2025-05-16",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Aarhus",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -48003,10 +47711,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-18",
-      "Liga": "Superliga",
-      "Local": "Aalborg",
-      "Visitante": "Silkeborg",
-      "Goles HT": 2.0,
+      "Liga": "Úrvalsdeild",
+      "Local": "Afturelding",
+      "Visitante": "KR Reykjavik",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -48020,10 +47728,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-18",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "FC Copenhagen",
-      "Goles HT": 2.0,
+      "Liga": "1. Deild",
+      "Local": "Thor Akureyri",
+      "Visitante": "Keflavik",
+      "Goles HT": 5.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -48037,10 +47745,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-18",
-      "Liga": "Úrvalsdeild",
-      "Local": "Afturelding",
-      "Visitante": "KR Reykjavik",
-      "Goles HT": 3.0,
+      "Liga": "2. Deild",
+      "Local": "Kári",
+      "Visitante": "Grotta",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -48054,10 +47762,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-18",
-      "Liga": "1. Deild",
-      "Local": "Thor Akureyri",
-      "Visitante": "Keflavik",
-      "Goles HT": 5.0,
+      "Liga": "Ykkönen",
+      "Local": "Inter Turku II",
+      "Visitante": "FC jazz",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -48071,40 +47779,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-18",
-      "Liga": "2. Deild",
-      "Local": "Kári",
-      "Visitante": "Grotta",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12543.0,
-      "Stake Compuesto": 1772940.38,
-      "Beneficio Compuesto": 797823.17,
-      "Banca Compuesto": 89444842.01
-    },
-    {
-      "Fecha": "2025-05-18",
-      "Liga": "Ykkönen",
-      "Local": "Inter Turku II",
-      "Visitante": "FC jazz",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12552.0,
-      "Stake Compuesto": 1788896.84,
-      "Beneficio Compuesto": 805003.58,
-      "Banca Compuesto": 90249845.59
-    },
-    {
-      "Fecha": "2025-05-18",
       "Liga": "Ykkönen",
       "Local": "OLS",
       "Visitante": "PKKU",
@@ -48115,10 +47789,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12532.0,
-      "Stake Compuesto": 1804996.91,
-      "Beneficio Compuesto": -1804996.91,
-      "Banca Compuesto": 88444848.68
+      "Banca Fijo": 12514.0,
+      "Stake Compuesto": 1772940.38,
+      "Beneficio Compuesto": -1772940.38,
+      "Banca Compuesto": 86874078.46
     },
     {
       "Fecha": "2025-05-18",
@@ -48132,10 +47806,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12541.0,
-      "Stake Compuesto": 1768896.97,
-      "Beneficio Compuesto": 796003.64,
-      "Banca Compuesto": 89240852.31
+      "Banca Fijo": 12523.0,
+      "Stake Compuesto": 1737481.57,
+      "Beneficio Compuesto": 781866.71,
+      "Banca Compuesto": 87655945.17
     },
     {
       "Fecha": "2025-05-18",
@@ -48149,10 +47823,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12550.0,
-      "Stake Compuesto": 1784817.05,
-      "Beneficio Compuesto": 803167.67,
-      "Banca Compuesto": 90044019.99
+      "Banca Fijo": 12532.0,
+      "Stake Compuesto": 1753118.9,
+      "Beneficio Compuesto": 788903.51,
+      "Banca Compuesto": 88444848.68
     },
     {
       "Fecha": "2025-05-18",
@@ -48166,10 +47840,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12559.0,
-      "Stake Compuesto": 1800880.4,
-      "Beneficio Compuesto": 810396.18,
-      "Banca Compuesto": 90854416.17
+      "Banca Fijo": 12541.0,
+      "Stake Compuesto": 1768896.97,
+      "Beneficio Compuesto": 796003.64,
+      "Banca Compuesto": 89240852.31
     },
     {
       "Fecha": "2025-05-18",
@@ -48183,10 +47857,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12568.0,
-      "Stake Compuesto": 1817088.32,
-      "Beneficio Compuesto": 817689.75,
-      "Banca Compuesto": 91672105.91
+      "Banca Fijo": 12550.0,
+      "Stake Compuesto": 1784817.05,
+      "Beneficio Compuesto": 803167.67,
+      "Banca Compuesto": 90044019.99
     },
     {
       "Fecha": "2025-05-18",
@@ -48200,10 +47874,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12577.0,
-      "Stake Compuesto": 1833442.12,
-      "Beneficio Compuesto": 825048.95,
-      "Banca Compuesto": 92497154.86
+      "Banca Fijo": 12559.0,
+      "Stake Compuesto": 1800880.4,
+      "Beneficio Compuesto": 810396.18,
+      "Banca Compuesto": 90854416.17
     },
     {
       "Fecha": "2025-05-18",
@@ -48217,10 +47891,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12586.0,
-      "Stake Compuesto": 1849943.1,
-      "Beneficio Compuesto": 832474.39,
-      "Banca Compuesto": 93329629.26
+      "Banca Fijo": 12568.0,
+      "Stake Compuesto": 1817088.32,
+      "Beneficio Compuesto": 817689.75,
+      "Banca Compuesto": 91672105.91
     },
     {
       "Fecha": "2025-05-18",
@@ -48234,10 +47908,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12566.0,
-      "Stake Compuesto": 1866592.59,
-      "Beneficio Compuesto": -1866592.59,
-      "Banca Compuesto": 91463036.67
+      "Banca Fijo": 12548.0,
+      "Stake Compuesto": 1833442.12,
+      "Beneficio Compuesto": -1833442.12,
+      "Banca Compuesto": 89838663.79
     },
     {
       "Fecha": "2025-05-18",
@@ -48248,6 +47922,40 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12557.0,
+      "Stake Compuesto": 1796773.28,
+      "Beneficio Compuesto": 808547.97,
+      "Banca Compuesto": 90647211.77
+    },
+    {
+      "Fecha": "2025-05-18",
+      "Liga": "Superliga",
+      "Local": "Aalborg",
+      "Visitante": "Silkeborg",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12566.0,
+      "Stake Compuesto": 1812944.24,
+      "Beneficio Compuesto": 815824.91,
+      "Banca Compuesto": 91463036.67
+    },
+    {
+      "Fecha": "2025-05-18",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "FC Copenhagen",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -48768,40 +48476,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-05-25",
-      "Liga": "Superliga",
-      "Local": "FC Midtjylland",
-      "Visitante": "Randers FC",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12767.0,
-      "Stake Compuesto": 2212618.27,
-      "Beneficio Compuesto": 995678.22,
-      "Banca Compuesto": 111626591.62
-    },
-    {
-      "Fecha": "2025-05-25",
-      "Liga": "Superliga",
-      "Local": "Aarhus",
-      "Visitante": "Brondby",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12776.0,
-      "Stake Compuesto": 2232531.83,
-      "Beneficio Compuesto": 1004639.32,
-      "Banca Compuesto": 112631230.94
-    },
-    {
-      "Fecha": "2025-05-25",
       "Liga": "Veikkausliiga",
       "Local": "SJK",
       "Visitante": "Inter Turku",
@@ -48812,10 +48486,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12785.0,
-      "Stake Compuesto": 2252624.62,
-      "Beneficio Compuesto": 1013681.08,
-      "Banca Compuesto": 113644912.02
+      "Banca Fijo": 12767.0,
+      "Stake Compuesto": 2212618.27,
+      "Beneficio Compuesto": 995678.22,
+      "Banca Compuesto": 111626591.62
     },
     {
       "Fecha": "2025-05-25",
@@ -48829,10 +48503,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12794.0,
-      "Stake Compuesto": 2272898.24,
-      "Beneficio Compuesto": 1022804.21,
-      "Banca Compuesto": 114667716.23
+      "Banca Fijo": 12776.0,
+      "Stake Compuesto": 2232531.83,
+      "Beneficio Compuesto": 1004639.32,
+      "Banca Compuesto": 112631230.94
     },
     {
       "Fecha": "2025-05-25",
@@ -48846,10 +48520,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12803.0,
-      "Stake Compuesto": 2293354.32,
-      "Beneficio Compuesto": 1032009.45,
-      "Banca Compuesto": 115699725.67
+      "Banca Fijo": 12785.0,
+      "Stake Compuesto": 2252624.62,
+      "Beneficio Compuesto": 1013681.08,
+      "Banca Compuesto": 113644912.02
     },
     {
       "Fecha": "2025-05-25",
@@ -48863,10 +48537,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12812.0,
-      "Stake Compuesto": 2313994.51,
-      "Beneficio Compuesto": 1041297.53,
-      "Banca Compuesto": 116741023.2
+      "Banca Fijo": 12794.0,
+      "Stake Compuesto": 2272898.24,
+      "Beneficio Compuesto": 1022804.21,
+      "Banca Compuesto": 114667716.23
     },
     {
       "Fecha": "2025-05-25",
@@ -48880,10 +48554,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12821.0,
-      "Stake Compuesto": 2334820.46,
-      "Beneficio Compuesto": 1050669.21,
-      "Banca Compuesto": 117791692.41
+      "Banca Fijo": 12803.0,
+      "Stake Compuesto": 2293354.32,
+      "Beneficio Compuesto": 1032009.45,
+      "Banca Compuesto": 115699725.67
     },
     {
       "Fecha": "2025-05-25",
@@ -48897,10 +48571,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12830.0,
-      "Stake Compuesto": 2355833.85,
-      "Beneficio Compuesto": 1060125.23,
-      "Banca Compuesto": 118851817.64
+      "Banca Fijo": 12812.0,
+      "Stake Compuesto": 2313994.51,
+      "Beneficio Compuesto": 1041297.53,
+      "Banca Compuesto": 116741023.2
     },
     {
       "Fecha": "2025-05-25",
@@ -48914,10 +48588,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12839.0,
-      "Stake Compuesto": 2377036.35,
-      "Beneficio Compuesto": 1069666.36,
-      "Banca Compuesto": 119921484.0
+      "Banca Fijo": 12821.0,
+      "Stake Compuesto": 2334820.46,
+      "Beneficio Compuesto": 1050669.21,
+      "Banca Compuesto": 117791692.41
     },
     {
       "Fecha": "2025-05-25",
@@ -48931,10 +48605,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12848.0,
-      "Stake Compuesto": 2398429.68,
-      "Beneficio Compuesto": 1079293.36,
-      "Banca Compuesto": 121000777.36
+      "Banca Fijo": 12830.0,
+      "Stake Compuesto": 2355833.85,
+      "Beneficio Compuesto": 1060125.23,
+      "Banca Compuesto": 118851817.64
     },
     {
       "Fecha": "2025-05-25",
@@ -48948,10 +48622,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12857.0,
-      "Stake Compuesto": 2420015.55,
-      "Beneficio Compuesto": 1089007.0,
-      "Banca Compuesto": 122089784.36
+      "Banca Fijo": 12839.0,
+      "Stake Compuesto": 2377036.35,
+      "Beneficio Compuesto": 1069666.36,
+      "Banca Compuesto": 119921484.0
     },
     {
       "Fecha": "2025-05-25",
@@ -48962,6 +48636,40 @@ window.dashboardData = {
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12848.0,
+      "Stake Compuesto": 2398429.68,
+      "Beneficio Compuesto": 1079293.36,
+      "Banca Compuesto": 121000777.36
+    },
+    {
+      "Fecha": "2025-05-25",
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Randers FC",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12857.0,
+      "Stake Compuesto": 2420015.55,
+      "Beneficio Compuesto": 1089007.0,
+      "Banca Compuesto": 122089784.36
+    },
+    {
+      "Fecha": "2025-05-25",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Brondby",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -49448,9 +49156,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-06-01",
-      "Liga": "Superliga",
-      "Local": "Randers FC",
-      "Visitante": "Silkeborg",
+      "Liga": "Ykkönen",
+      "Local": "OLS",
+      "Visitante": "Atlantis",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase A",
@@ -49465,23 +49173,6 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-06-01",
-      "Liga": "Ykkönen",
-      "Local": "OLS",
-      "Visitante": "Atlantis",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12991.0,
-      "Stake Compuesto": 2761333.47,
-      "Beneficio Compuesto": 1242600.06,
-      "Banca Compuesto": 139309273.47
-    },
-    {
-      "Fecha": "2025-06-01",
       "Liga": "Kakkonen - Lohko A",
       "Local": "MyPa",
       "Visitante": "Honka",
@@ -49492,10 +49183,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 13000.0,
-      "Stake Compuesto": 2786185.47,
-      "Beneficio Compuesto": 1253783.46,
-      "Banca Compuesto": 140563056.93
+      "Banca Fijo": 12991.0,
+      "Stake Compuesto": 2761333.47,
+      "Beneficio Compuesto": 1242600.06,
+      "Banca Compuesto": 139309273.47
     },
     {
       "Fecha": "2025-06-01",
@@ -49509,10 +49200,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 13009.0,
-      "Stake Compuesto": 2811261.14,
-      "Beneficio Compuesto": 1265067.51,
-      "Banca Compuesto": 141828124.44
+      "Banca Fijo": 13000.0,
+      "Stake Compuesto": 2786185.47,
+      "Beneficio Compuesto": 1253783.46,
+      "Banca Compuesto": 140563056.93
     },
     {
       "Fecha": "2025-06-01",
@@ -49526,10 +49217,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 12989.0,
-      "Stake Compuesto": 2836562.49,
-      "Beneficio Compuesto": -2836562.49,
-      "Banca Compuesto": 138991561.95
+      "Banca Fijo": 12980.0,
+      "Stake Compuesto": 2811261.14,
+      "Beneficio Compuesto": -2811261.14,
+      "Banca Compuesto": 137751795.79
     },
     {
       "Fecha": "2025-06-01",
@@ -49543,10 +49234,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 12998.0,
-      "Stake Compuesto": 2779831.24,
-      "Beneficio Compuesto": 1250924.06,
-      "Banca Compuesto": 140242486.01
+      "Banca Fijo": 12989.0,
+      "Stake Compuesto": 2755035.92,
+      "Beneficio Compuesto": 1239766.16,
+      "Banca Compuesto": 138991561.95
     },
     {
       "Fecha": "2025-06-01",
@@ -49560,6 +49251,23 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
+      "Banca Fijo": 12998.0,
+      "Stake Compuesto": 2779831.24,
+      "Beneficio Compuesto": 1250924.06,
+      "Banca Compuesto": 140242486.01
+    },
+    {
+      "Fecha": "2025-06-01",
+      "Liga": "2. Division - Group 2",
+      "Local": "Alta",
+      "Visitante": "Asker",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
       "Banca Fijo": 13007.0,
       "Stake Compuesto": 2804849.72,
       "Beneficio Compuesto": 1262182.37,
@@ -49567,9 +49275,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-06-01",
-      "Liga": "2. Division - Group 2",
-      "Local": "Alta",
-      "Visitante": "Asker",
+      "Liga": "Ettan - Norra",
+      "Local": "Karlberg",
+      "Visitante": "Umea FF",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -49585,9 +49293,9 @@ window.dashboardData = {
     {
       "Fecha": "2025-06-01",
       "Liga": "Ettan - Norra",
-      "Local": "Karlberg",
-      "Visitante": "Umea FF",
-      "Goles HT": 2.0,
+      "Local": "Hammarby Talang",
+      "Visitante": "Vasalund",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -49601,13 +49309,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-06-01",
-      "Liga": "Ettan - Norra",
-      "Local": "Hammarby Talang",
-      "Visitante": "Vasalund",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Silkeborg",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53103,13 +52811,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-20",
-      "Liga": "Úrvalsdeild",
-      "Local": "Vikingur Reykjavik",
-      "Visitante": "Valur Reykjavik",
-      "Goles HT": 1.0,
+      "Liga": "Superliga",
+      "Local": "FC Midtjylland",
+      "Visitante": "Odense",
+      "Goles HT": 4.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53120,13 +52828,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-20",
-      "Liga": "2. Deild",
-      "Local": "Vikingur Olafsiik",
-      "Visitante": "Vídir",
-      "Goles HT": 2.0,
+      "Liga": "Úrvalsdeild",
+      "Local": "Vikingur Reykjavik",
+      "Visitante": "Valur Reykjavik",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53138,9 +52846,9 @@ window.dashboardData = {
     {
       "Fecha": "2025-07-20",
       "Liga": "2. Deild",
-      "Local": "Ægir",
-      "Visitante": "KFG",
-      "Goles HT": 4.0,
+      "Local": "Vikingur Olafsiik",
+      "Visitante": "Vídir",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -53155,6 +52863,23 @@ window.dashboardData = {
     {
       "Fecha": "2025-07-20",
       "Liga": "2. Deild",
+      "Local": "Ægir",
+      "Visitante": "KFG",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14016.0,
+      "Stake Compuesto": 7589602.54,
+      "Beneficio Compuesto": 3415321.14,
+      "Banca Compuesto": 382895447.94
+    },
+    {
+      "Fecha": "2025-07-20",
+      "Liga": "2. Deild",
       "Local": "Höttur / Huginn",
       "Visitante": "Grotta",
       "Goles HT": 2.0,
@@ -53164,10 +52889,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14016.0,
-      "Stake Compuesto": 7589602.54,
-      "Beneficio Compuesto": 3415321.14,
-      "Banca Compuesto": 382895447.94
+      "Banca Fijo": 14025.0,
+      "Stake Compuesto": 7657908.96,
+      "Beneficio Compuesto": 3446059.03,
+      "Banca Compuesto": 386341506.97
     },
     {
       "Fecha": "2025-07-20",
@@ -53181,10 +52906,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14025.0,
-      "Stake Compuesto": 7657908.96,
-      "Beneficio Compuesto": 3446059.03,
-      "Banca Compuesto": 386341506.97
+      "Banca Fijo": 14034.0,
+      "Stake Compuesto": 7726830.14,
+      "Beneficio Compuesto": 3477073.56,
+      "Banca Compuesto": 389818580.54
     },
     {
       "Fecha": "2025-07-20",
@@ -53198,10 +52923,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14034.0,
-      "Stake Compuesto": 7726830.14,
-      "Beneficio Compuesto": 3477073.56,
-      "Banca Compuesto": 389818580.54
+      "Banca Fijo": 14043.0,
+      "Stake Compuesto": 7796371.61,
+      "Beneficio Compuesto": 3508367.22,
+      "Banca Compuesto": 393326947.76
     },
     {
       "Fecha": "2025-07-20",
@@ -53215,33 +52940,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14043.0,
-      "Stake Compuesto": 7796371.61,
-      "Beneficio Compuesto": 3508367.22,
-      "Banca Compuesto": 393326947.76
-    },
-    {
-      "Fecha": "2025-07-20",
-      "Liga": "2. Division - Group 2",
-      "Local": "Alta",
-      "Visitante": "Grorud",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14052.0,
       "Stake Compuesto": 7866538.96,
       "Beneficio Compuesto": 3539942.53,
       "Banca Compuesto": 396866890.29
     },
     {
-      "Fecha": "2025-07-21",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "VJS",
-      "Visitante": "GrIFK",
+      "Fecha": "2025-07-20",
+      "Liga": "2. Division - Group 2",
+      "Local": "Alta",
+      "Visitante": "Grorud",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -53256,13 +52964,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-21",
-      "Liga": "Kakkonen - Lohko B",
-      "Local": "HPS",
-      "Visitante": "P-Iirot",
-      "Goles HT": 3.0,
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "VJS",
+      "Visitante": "GrIFK",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53273,9 +52981,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-21",
-      "Liga": "MLS Next Pro",
-      "Local": "Colorado Rapids II",
-      "Visitante": "Tacoma Defiance",
+      "Liga": "Kakkonen - Lohko B",
+      "Local": "HPS",
+      "Visitante": "P-Iirot",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -53289,11 +52997,11 @@ window.dashboardData = {
       "Banca Compuesto": 407679024.3
     },
     {
-      "Fecha": "2025-07-23",
-      "Liga": "Esiliiga A",
-      "Local": "Viimsi",
-      "Visitante": "Tartu Welco",
-      "Goles HT": 1.0,
+      "Fecha": "2025-07-21",
+      "Liga": "MLS Next Pro",
+      "Local": "Colorado Rapids II",
+      "Visitante": "Tacoma Defiance",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -53307,6 +53015,23 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-23",
+      "Liga": "Esiliiga A",
+      "Local": "Viimsi",
+      "Visitante": "Tartu Welco",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14097.0,
+      "Stake Compuesto": 8226962.71,
+      "Beneficio Compuesto": 3702133.22,
+      "Banca Compuesto": 415050268.74
+    },
+    {
+      "Fecha": "2025-07-23",
       "Liga": "MLS Next Pro",
       "Local": "The Town",
       "Visitante": "Minnesota United II",
@@ -53317,10 +53042,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14097.0,
-      "Stake Compuesto": 8226962.71,
-      "Beneficio Compuesto": 3702133.22,
-      "Banca Compuesto": 415050268.74
+      "Banca Fijo": 14106.0,
+      "Stake Compuesto": 8301005.37,
+      "Beneficio Compuesto": 3735452.42,
+      "Banca Compuesto": 418785721.16
     },
     {
       "Fecha": "2025-07-24",
@@ -53334,23 +53059,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14106.0,
-      "Stake Compuesto": 8301005.37,
-      "Beneficio Compuesto": 3735452.42,
-      "Banca Compuesto": 418785721.16
-    },
-    {
-      "Fecha": "2025-07-25",
-      "Liga": "1. Deild",
-      "Local": "Keflavik",
-      "Visitante": "Thor Akureyri",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14115.0,
       "Stake Compuesto": 8375714.42,
       "Beneficio Compuesto": 3769071.49,
@@ -53359,9 +53067,9 @@ window.dashboardData = {
     {
       "Fecha": "2025-07-25",
       "Liga": "1. Deild",
-      "Local": "Fylkir",
-      "Visitante": "Fjolnir",
-      "Goles HT": 3.0,
+      "Local": "Keflavik",
+      "Visitante": "Thor Akureyri",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -53376,12 +53084,12 @@ window.dashboardData = {
     {
       "Fecha": "2025-07-25",
       "Liga": "1. Deild",
-      "Local": "HK Kopavogur",
-      "Visitante": "Leiknir R.",
-      "Goles HT": 1.0,
+      "Local": "Fylkir",
+      "Visitante": "Fjolnir",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Local",
+      "Sustento": "Visitante",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53392,10 +53100,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-25",
-      "Liga": "Ykkönen",
-      "Local": "FC jazz",
-      "Visitante": "MP",
-      "Goles HT": 3.0,
+      "Liga": "1. Deild",
+      "Local": "HK Kopavogur",
+      "Visitante": "Leiknir R.",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -53410,6 +53118,23 @@ window.dashboardData = {
     {
       "Fecha": "2025-07-25",
       "Liga": "Ykkönen",
+      "Local": "FC jazz",
+      "Visitante": "MP",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14151.0,
+      "Stake Compuesto": 8681335.22,
+      "Beneficio Compuesto": 3906600.85,
+      "Banca Compuesto": 437973361.75
+    },
+    {
+      "Fecha": "2025-07-25",
+      "Liga": "Ykkönen",
       "Local": "Atlantis",
       "Visitante": "KuPS Akatemia",
       "Goles HT": 2.0,
@@ -53419,10 +53144,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14151.0,
-      "Stake Compuesto": 8681335.22,
-      "Beneficio Compuesto": 3906600.85,
-      "Banca Compuesto": 437973361.75
+      "Banca Fijo": 14160.0,
+      "Stake Compuesto": 8759467.24,
+      "Beneficio Compuesto": 3941760.26,
+      "Banca Compuesto": 441915122.01
     },
     {
       "Fecha": "2025-07-25",
@@ -53436,10 +53161,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14160.0,
-      "Stake Compuesto": 8759467.24,
-      "Beneficio Compuesto": 3941760.26,
-      "Banca Compuesto": 441915122.01
+      "Banca Fijo": 14169.0,
+      "Stake Compuesto": 8838302.44,
+      "Beneficio Compuesto": 3977236.1,
+      "Banca Compuesto": 445892358.11
     },
     {
       "Fecha": "2025-07-26",
@@ -53453,10 +53178,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14169.0,
-      "Stake Compuesto": 8838302.44,
-      "Beneficio Compuesto": 3977236.1,
-      "Banca Compuesto": 445892358.11
+      "Banca Fijo": 14178.0,
+      "Stake Compuesto": 8917847.16,
+      "Beneficio Compuesto": 4013031.22,
+      "Banca Compuesto": 449905389.33
     },
     {
       "Fecha": "2025-07-26",
@@ -53470,10 +53195,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14178.0,
-      "Stake Compuesto": 8917847.16,
-      "Beneficio Compuesto": 4013031.22,
-      "Banca Compuesto": 449905389.33
+      "Banca Fijo": 14187.0,
+      "Stake Compuesto": 8998107.79,
+      "Beneficio Compuesto": 4049148.5,
+      "Banca Compuesto": 453954537.83
+    },
+    {
+      "Fecha": "2025-07-26",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Vejle",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14196.0,
+      "Stake Compuesto": 9079090.76,
+      "Beneficio Compuesto": 4085590.84,
+      "Banca Compuesto": 458040128.67
     },
     {
       "Fecha": "2025-07-26",
@@ -53487,40 +53229,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14187.0,
-      "Stake Compuesto": 8998107.79,
-      "Beneficio Compuesto": 4049148.5,
-      "Banca Compuesto": 453954537.83
-    },
-    {
-      "Fecha": "2025-07-26",
-      "Liga": "2. Deild",
-      "Local": "Kormákur / Hvöt",
-      "Visitante": "Ægir",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14196.0,
-      "Stake Compuesto": 9079090.76,
-      "Beneficio Compuesto": 4085590.84,
-      "Banca Compuesto": 458040128.67
-    },
-    {
-      "Fecha": "2025-07-26",
-      "Liga": "Ykkönen",
-      "Local": "Inter Turku II",
-      "Visitante": "EPS",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14205.0,
       "Stake Compuesto": 9160802.57,
       "Beneficio Compuesto": 4122361.16,
@@ -53528,9 +53236,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "MyPa",
-      "Visitante": "VJS",
+      "Liga": "2. Deild",
+      "Local": "Kormákur / Hvöt",
+      "Visitante": "Ægir",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -53545,13 +53253,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "PEPO",
-      "Visitante": "Honka",
+      "Liga": "Ykkönen",
+      "Local": "Inter Turku II",
+      "Visitante": "EPS",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
+      "Clase": "Clase B",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53562,9 +53270,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
-      "Liga": "Kakkonen - Lohko B",
-      "Local": "NJS",
-      "Visitante": "TPV",
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "MyPa",
+      "Visitante": "VJS",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -53579,13 +53287,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
-      "Liga": "Esiliiga A",
-      "Local": "FCI Levadia II",
-      "Visitante": "FC Tallinn",
-      "Goles HT": 7.0,
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "PEPO",
+      "Visitante": "Honka",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -53596,10 +53304,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
-      "Liga": "2. Division - Group 2",
-      "Local": "Hønefoss",
-      "Visitante": "Strommen",
-      "Goles HT": 2.0,
+      "Liga": "Kakkonen - Lohko B",
+      "Local": "NJS",
+      "Visitante": "TPV",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -53613,10 +53321,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
-      "Liga": "MLS Next Pro",
-      "Local": "Austin II",
-      "Visitante": "Houston Dynamo FC II",
-      "Goles HT": 2.0,
+      "Liga": "Esiliiga A",
+      "Local": "FCI Levadia II",
+      "Visitante": "FC Tallinn",
+      "Goles HT": 7.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -53630,6 +53338,40 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-26",
+      "Liga": "2. Division - Group 2",
+      "Local": "Hønefoss",
+      "Visitante": "Strommen",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14268.0,
+      "Stake Compuesto": 9753751.51,
+      "Beneficio Compuesto": 4389188.18,
+      "Banca Compuesto": 492076763.87
+    },
+    {
+      "Fecha": "2025-07-26",
+      "Liga": "MLS Next Pro",
+      "Local": "Austin II",
+      "Visitante": "Houston Dynamo FC II",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14277.0,
+      "Stake Compuesto": 9841535.28,
+      "Beneficio Compuesto": 4428690.87,
+      "Banca Compuesto": 496505454.74
+    },
+    {
+      "Fecha": "2025-07-26",
       "Liga": "MLS Next Pro",
       "Local": "New York City II",
       "Visitante": "Philadelphia Union II",
@@ -53640,10 +53382,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14239.0,
-      "Stake Compuesto": 9753751.51,
-      "Beneficio Compuesto": -9753751.51,
-      "Banca Compuesto": 477933824.17
+      "Banca Fijo": 14257.0,
+      "Stake Compuesto": 9930109.09,
+      "Beneficio Compuesto": -9930109.09,
+      "Banca Compuesto": 486575345.65
     },
     {
       "Fecha": "2025-07-27",
@@ -53657,10 +53399,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14248.0,
-      "Stake Compuesto": 9558676.48,
-      "Beneficio Compuesto": 4301404.42,
-      "Banca Compuesto": 482235228.59
+      "Banca Fijo": 14266.0,
+      "Stake Compuesto": 9731506.91,
+      "Beneficio Compuesto": 4379178.11,
+      "Banca Compuesto": 490954523.76
     },
     {
       "Fecha": "2025-07-27",
@@ -53674,10 +53416,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14257.0,
-      "Stake Compuesto": 9644704.57,
-      "Beneficio Compuesto": 4340117.06,
-      "Banca Compuesto": 486575345.65
+      "Banca Fijo": 14275.0,
+      "Stake Compuesto": 9819090.48,
+      "Beneficio Compuesto": 4418590.71,
+      "Banca Compuesto": 495373114.47
     },
     {
       "Fecha": "2025-07-27",
@@ -53691,10 +53433,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14266.0,
-      "Stake Compuesto": 9731506.91,
-      "Beneficio Compuesto": 4379178.11,
-      "Banca Compuesto": 490954523.76
+      "Banca Fijo": 14284.0,
+      "Stake Compuesto": 9907462.29,
+      "Beneficio Compuesto": 4458358.03,
+      "Banca Compuesto": 499831472.5
     },
     {
       "Fecha": "2025-07-27",
@@ -53708,50 +53450,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14275.0,
-      "Stake Compuesto": 9819090.48,
-      "Beneficio Compuesto": 4418590.71,
-      "Banca Compuesto": 495373114.47
-    },
-    {
-      "Fecha": "2025-07-27",
-      "Liga": "MLS Next Pro",
-      "Local": "The Town",
-      "Visitante": "Real Monarchs",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14284.0,
-      "Stake Compuesto": 9907462.29,
-      "Beneficio Compuesto": 4458358.03,
-      "Banca Compuesto": 499831472.5
-    },
-    {
-      "Fecha": "2025-07-28",
-      "Liga": "Ykkönen",
-      "Local": "OLS",
-      "Visitante": "FC jazz",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14293.0,
       "Stake Compuesto": 9996629.45,
       "Beneficio Compuesto": 4498483.25,
       "Banca Compuesto": 504329955.75
     },
     {
-      "Fecha": "2025-07-28",
-      "Liga": "Esiliiga A",
-      "Local": "Tartu Welco",
-      "Visitante": "Nõmme United",
+      "Fecha": "2025-07-27",
+      "Liga": "MLS Next Pro",
+      "Local": "The Town",
+      "Visitante": "Real Monarchs",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase A",
@@ -53766,9 +53474,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-28",
-      "Liga": "MLS Next Pro",
-      "Local": "Tacoma Defiance",
-      "Visitante": "Portland Timbers II",
+      "Liga": "Ykkönen",
+      "Local": "OLS",
+      "Visitante": "FC jazz",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -53782,6 +53490,40 @@ window.dashboardData = {
       "Banca Compuesto": 513448745.68
     },
     {
+      "Fecha": "2025-07-28",
+      "Liga": "Esiliiga A",
+      "Local": "Tartu Welco",
+      "Visitante": "Nõmme United",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14320.0,
+      "Stake Compuesto": 10268974.91,
+      "Beneficio Compuesto": 4621038.71,
+      "Banca Compuesto": 518069784.4
+    },
+    {
+      "Fecha": "2025-07-28",
+      "Liga": "MLS Next Pro",
+      "Local": "Tacoma Defiance",
+      "Visitante": "Portland Timbers II",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14329.0,
+      "Stake Compuesto": 10361395.69,
+      "Beneficio Compuesto": 4662628.06,
+      "Banca Compuesto": 522732412.45
+    },
+    {
       "Fecha": "2025-07-29",
       "Liga": "1. Deild",
       "Local": "Thor Akureyri",
@@ -53793,50 +53535,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14291.0,
-      "Stake Compuesto": 10268974.91,
-      "Beneficio Compuesto": -10268974.91,
-      "Banca Compuesto": 503179770.77
+      "Banca Fijo": 14309.0,
+      "Stake Compuesto": 10454648.25,
+      "Beneficio Compuesto": -10454648.25,
+      "Banca Compuesto": 512277764.21
     },
     {
       "Fecha": "2025-07-29",
       "Liga": "1. Deild",
       "Local": "Njardvik",
       "Visitante": "HK Kopavogur",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14300.0,
-      "Stake Compuesto": 10063595.42,
-      "Beneficio Compuesto": 4528617.94,
-      "Banca Compuesto": 507708388.71
-    },
-    {
-      "Fecha": "2025-07-30",
-      "Liga": "Eliteserien",
-      "Local": "Bodo/Glimt",
-      "Visitante": "Stromsgodset",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14309.0,
-      "Stake Compuesto": 10154167.77,
-      "Beneficio Compuesto": 4569375.5,
-      "Banca Compuesto": 512277764.21
-    },
-    {
-      "Fecha": "2025-07-30",
-      "Liga": "2. Deild",
-      "Local": "Dalvík / Reynir",
-      "Visitante": "Grotta",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -53851,10 +53559,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-07-30",
-      "Liga": "2. Deild",
-      "Local": "Fjardabyggd / Leiknir",
-      "Visitante": "Haukar",
-      "Goles HT": 4.0,
+      "Liga": "Eliteserien",
+      "Local": "Bodo/Glimt",
+      "Visitante": "Stromsgodset",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -53869,6 +53577,40 @@ window.dashboardData = {
     {
       "Fecha": "2025-07-30",
       "Liga": "2. Deild",
+      "Local": "Dalvík / Reynir",
+      "Visitante": "Grotta",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14336.0,
+      "Stake Compuesto": 10430805.17,
+      "Beneficio Compuesto": 4693862.33,
+      "Banca Compuesto": 526234120.79
+    },
+    {
+      "Fecha": "2025-07-30",
+      "Liga": "2. Deild",
+      "Local": "Fjardabyggd / Leiknir",
+      "Visitante": "Haukar",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14345.0,
+      "Stake Compuesto": 10524682.42,
+      "Beneficio Compuesto": 4736107.09,
+      "Banca Compuesto": 530970227.87
+    },
+    {
+      "Fecha": "2025-07-30",
+      "Liga": "2. Deild",
       "Local": "Ægir",
       "Visitante": "Vikingur Olafsiik",
       "Goles HT": 2.0,
@@ -53878,10 +53620,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14336.0,
-      "Stake Compuesto": 10430805.17,
-      "Beneficio Compuesto": 4693862.33,
-      "Banca Compuesto": 526234120.79
+      "Banca Fijo": 14354.0,
+      "Stake Compuesto": 10619404.56,
+      "Beneficio Compuesto": 4778732.05,
+      "Banca Compuesto": 535748959.92
     },
     {
       "Fecha": "2025-07-30",
@@ -53895,10 +53637,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14345.0,
-      "Stake Compuesto": 10524682.42,
-      "Beneficio Compuesto": 4736107.09,
-      "Banca Compuesto": 530970227.87
+      "Banca Fijo": 14363.0,
+      "Stake Compuesto": 10714979.2,
+      "Beneficio Compuesto": 4821740.64,
+      "Banca Compuesto": 540570700.56
     },
     {
       "Fecha": "2025-07-30",
@@ -53912,10 +53654,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14354.0,
-      "Stake Compuesto": 10619404.56,
-      "Beneficio Compuesto": 4778732.05,
-      "Banca Compuesto": 535748959.92
+      "Banca Fijo": 14372.0,
+      "Stake Compuesto": 10811414.01,
+      "Beneficio Compuesto": 4865136.31,
+      "Banca Compuesto": 545435836.87
     },
     {
       "Fecha": "2025-07-30",
@@ -53929,10 +53671,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14363.0,
-      "Stake Compuesto": 10714979.2,
-      "Beneficio Compuesto": 4821740.64,
-      "Banca Compuesto": 540570700.56
+      "Banca Fijo": 14381.0,
+      "Stake Compuesto": 10908716.74,
+      "Beneficio Compuesto": 4908922.53,
+      "Banca Compuesto": 550344759.4
+    },
+    {
+      "Fecha": "2025-08-01",
+      "Liga": "Superliga",
+      "Local": "Vejle",
+      "Visitante": "Odense",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14390.0,
+      "Stake Compuesto": 11006895.19,
+      "Beneficio Compuesto": 4953102.83,
+      "Banca Compuesto": 555297862.23
     },
     {
       "Fecha": "2025-08-01",
@@ -53946,10 +53705,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14372.0,
-      "Stake Compuesto": 10811414.01,
-      "Beneficio Compuesto": 4865136.31,
-      "Banca Compuesto": 545435836.87
+      "Banca Fijo": 14399.0,
+      "Stake Compuesto": 11105957.24,
+      "Beneficio Compuesto": 4997680.76,
+      "Banca Compuesto": 560295543.0
     },
     {
       "Fecha": "2025-08-01",
@@ -53963,10 +53722,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14381.0,
-      "Stake Compuesto": 10908716.74,
-      "Beneficio Compuesto": 4908922.53,
-      "Banca Compuesto": 550344759.4
+      "Banca Fijo": 14408.0,
+      "Stake Compuesto": 11205910.86,
+      "Beneficio Compuesto": 5042659.89,
+      "Banca Compuesto": 565338202.88
     },
     {
       "Fecha": "2025-08-01",
@@ -53980,57 +53739,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14390.0,
-      "Stake Compuesto": 11006895.19,
-      "Beneficio Compuesto": 4953102.83,
-      "Banca Compuesto": 555297862.23
-    },
-    {
-      "Fecha": "2025-08-02",
-      "Liga": "1. Division",
-      "Local": "Asane",
-      "Visitante": "Lillestrom",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14399.0,
-      "Stake Compuesto": 11105957.24,
-      "Beneficio Compuesto": 4997680.76,
-      "Banca Compuesto": 560295543.0
-    },
-    {
-      "Fecha": "2025-08-02",
-      "Liga": "Úrvalsdeild",
-      "Local": "IBV Vestmannaeyjar",
-      "Visitante": "KR Reykjavik",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14408.0,
-      "Stake Compuesto": 11205910.86,
-      "Beneficio Compuesto": 5042659.89,
-      "Banca Compuesto": 565338202.88
-    },
-    {
-      "Fecha": "2025-08-02",
-      "Liga": "Kakkonen - Lohko B",
-      "Local": "TPV",
-      "Visitante": "P-Iirot",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14417.0,
       "Stake Compuesto": 11306764.06,
       "Beneficio Compuesto": 5088043.83,
@@ -54038,9 +53746,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-02",
-      "Liga": "Esiliiga A",
-      "Local": "Nõmme United",
-      "Visitante": "FCI Levadia II",
+      "Liga": "1. Division",
+      "Local": "Asane",
+      "Visitante": "Lillestrom",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -54055,10 +53763,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-02",
-      "Liga": "Meistriliiga",
-      "Local": "Trans Narva",
-      "Visitante": "Flora Tallinn",
-      "Goles HT": 1.0,
+      "Liga": "Úrvalsdeild",
+      "Local": "IBV Vestmannaeyjar",
+      "Visitante": "KR Reykjavik",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -54072,6 +53780,57 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-02",
+      "Liga": "Kakkonen - Lohko B",
+      "Local": "TPV",
+      "Visitante": "P-Iirot",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14444.0,
+      "Stake Compuesto": 11614802.47,
+      "Beneficio Compuesto": 5226661.11,
+      "Banca Compuesto": 585966784.79
+    },
+    {
+      "Fecha": "2025-08-02",
+      "Liga": "Esiliiga A",
+      "Local": "Nõmme United",
+      "Visitante": "FCI Levadia II",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14453.0,
+      "Stake Compuesto": 11719335.7,
+      "Beneficio Compuesto": 5273701.06,
+      "Banca Compuesto": 591240485.85
+    },
+    {
+      "Fecha": "2025-08-02",
+      "Liga": "Meistriliiga",
+      "Local": "Trans Narva",
+      "Visitante": "Flora Tallinn",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14462.0,
+      "Stake Compuesto": 11824809.72,
+      "Beneficio Compuesto": 5321164.37,
+      "Banca Compuesto": 596561650.22
+    },
+    {
+      "Fecha": "2025-08-02",
       "Liga": "2. Division - Group 2",
       "Local": "Ull/Kisa",
       "Visitante": "Rana",
@@ -54082,10 +53841,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14444.0,
-      "Stake Compuesto": 11614802.47,
-      "Beneficio Compuesto": 5226661.11,
-      "Banca Compuesto": 585966784.79
+      "Banca Fijo": 14471.0,
+      "Stake Compuesto": 11931233.0,
+      "Beneficio Compuesto": 5369054.85,
+      "Banca Compuesto": 601930705.08
     },
     {
       "Fecha": "2025-08-02",
@@ -54099,10 +53858,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14453.0,
-      "Stake Compuesto": 11719335.7,
-      "Beneficio Compuesto": 5273701.06,
-      "Banca Compuesto": 591240485.85
+      "Banca Fijo": 14480.0,
+      "Stake Compuesto": 12038614.1,
+      "Beneficio Compuesto": 5417376.35,
+      "Banca Compuesto": 607348081.42
     },
     {
       "Fecha": "2025-08-02",
@@ -54116,10 +53875,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14462.0,
-      "Stake Compuesto": 11824809.72,
-      "Beneficio Compuesto": 5321164.37,
-      "Banca Compuesto": 596561650.22
+      "Banca Fijo": 14489.0,
+      "Stake Compuesto": 12146961.63,
+      "Beneficio Compuesto": 5466132.73,
+      "Banca Compuesto": 612814214.15
     },
     {
       "Fecha": "2025-08-02",
@@ -54133,10 +53892,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14471.0,
-      "Stake Compuesto": 11931233.0,
-      "Beneficio Compuesto": 5369054.85,
-      "Banca Compuesto": 601930705.08
+      "Banca Fijo": 14498.0,
+      "Stake Compuesto": 12256284.28,
+      "Beneficio Compuesto": 5515327.93,
+      "Banca Compuesto": 618329542.08
     },
     {
       "Fecha": "2025-08-02",
@@ -54150,10 +53909,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14480.0,
-      "Stake Compuesto": 12038614.1,
-      "Beneficio Compuesto": 5417376.35,
-      "Banca Compuesto": 607348081.42
+      "Banca Fijo": 14507.0,
+      "Stake Compuesto": 12366590.84,
+      "Beneficio Compuesto": 5564965.88,
+      "Banca Compuesto": 623894507.96
     },
     {
       "Fecha": "2025-08-02",
@@ -54167,10 +53926,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14489.0,
-      "Stake Compuesto": 12146961.63,
-      "Beneficio Compuesto": 5466132.73,
-      "Banca Compuesto": 612814214.15
+      "Banca Fijo": 14516.0,
+      "Stake Compuesto": 12477890.16,
+      "Beneficio Compuesto": 5615050.57,
+      "Banca Compuesto": 629509558.53
     },
     {
       "Fecha": "2025-08-02",
@@ -54184,10 +53943,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14498.0,
-      "Stake Compuesto": 12256284.28,
-      "Beneficio Compuesto": 5515327.93,
-      "Banca Compuesto": 618329542.08
+      "Banca Fijo": 14525.0,
+      "Stake Compuesto": 12590191.17,
+      "Beneficio Compuesto": 5665586.03,
+      "Banca Compuesto": 635175144.56
     },
     {
       "Fecha": "2025-08-03",
@@ -54201,10 +53960,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14507.0,
-      "Stake Compuesto": 12366590.84,
-      "Beneficio Compuesto": 5564965.88,
-      "Banca Compuesto": 623894507.96
+      "Banca Fijo": 14534.0,
+      "Stake Compuesto": 12703502.89,
+      "Beneficio Compuesto": 5716576.3,
+      "Banca Compuesto": 640891720.86
     },
     {
       "Fecha": "2025-08-03",
@@ -54218,10 +53977,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14516.0,
-      "Stake Compuesto": 12477890.16,
-      "Beneficio Compuesto": 5615050.57,
-      "Banca Compuesto": 629509558.53
+      "Banca Fijo": 14543.0,
+      "Stake Compuesto": 12817834.42,
+      "Beneficio Compuesto": 5768025.49,
+      "Banca Compuesto": 646659746.35
     },
     {
       "Fecha": "2025-08-03",
@@ -54235,10 +53994,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14496.0,
-      "Stake Compuesto": 12590191.17,
-      "Beneficio Compuesto": -12590191.17,
-      "Banca Compuesto": 616919367.36
+      "Banca Fijo": 14523.0,
+      "Stake Compuesto": 12933194.93,
+      "Beneficio Compuesto": -12933194.93,
+      "Banca Compuesto": 633726551.42
     },
     {
       "Fecha": "2025-08-03",
@@ -54252,10 +54011,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14505.0,
-      "Stake Compuesto": 12338387.35,
-      "Beneficio Compuesto": 5552274.31,
-      "Banca Compuesto": 622471641.67
+      "Banca Fijo": 14532.0,
+      "Stake Compuesto": 12674531.03,
+      "Beneficio Compuesto": 5703538.96,
+      "Banca Compuesto": 639430090.38
     },
     {
       "Fecha": "2025-08-03",
@@ -54269,10 +54028,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14514.0,
-      "Stake Compuesto": 12449432.83,
-      "Beneficio Compuesto": 5602244.78,
-      "Banca Compuesto": 628073886.44
+      "Banca Fijo": 14541.0,
+      "Stake Compuesto": 12788601.81,
+      "Beneficio Compuesto": 5754870.81,
+      "Banca Compuesto": 645184961.2
     },
     {
       "Fecha": "2025-08-03",
@@ -54286,10 +54045,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14523.0,
-      "Stake Compuesto": 12561477.73,
-      "Beneficio Compuesto": 5652664.98,
-      "Banca Compuesto": 633726551.42
+      "Banca Fijo": 14550.0,
+      "Stake Compuesto": 12903699.22,
+      "Beneficio Compuesto": 5806664.65,
+      "Banca Compuesto": 650991625.85
     },
     {
       "Fecha": "2025-08-03",
@@ -54303,10 +54062,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14532.0,
-      "Stake Compuesto": 12674531.03,
-      "Beneficio Compuesto": 5703538.96,
-      "Banca Compuesto": 639430090.38
+      "Banca Fijo": 14559.0,
+      "Stake Compuesto": 13019832.52,
+      "Beneficio Compuesto": 5858924.63,
+      "Banca Compuesto": 656850550.48
     },
     {
       "Fecha": "2025-08-04",
@@ -54320,10 +54079,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14541.0,
-      "Stake Compuesto": 12788601.81,
-      "Beneficio Compuesto": 5754870.81,
-      "Banca Compuesto": 645184961.2
+      "Banca Fijo": 14568.0,
+      "Stake Compuesto": 13137011.01,
+      "Beneficio Compuesto": 5911654.95,
+      "Banca Compuesto": 662762205.43
     },
     {
       "Fecha": "2025-08-04",
@@ -54337,10 +54096,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14521.0,
-      "Stake Compuesto": 12903699.22,
-      "Beneficio Compuesto": -12903699.22,
-      "Banca Compuesto": 632281261.97
+      "Banca Fijo": 14548.0,
+      "Stake Compuesto": 13255244.11,
+      "Beneficio Compuesto": -13255244.11,
+      "Banca Compuesto": 649506961.33
     },
     {
       "Fecha": "2025-08-04",
@@ -54354,10 +54113,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14530.0,
-      "Stake Compuesto": 12645625.24,
-      "Beneficio Compuesto": 5690531.36,
-      "Banca Compuesto": 637971793.33
+      "Banca Fijo": 14557.0,
+      "Stake Compuesto": 12990139.23,
+      "Beneficio Compuesto": 5845562.65,
+      "Banca Compuesto": 655352523.98
     },
     {
       "Fecha": "2025-08-04",
@@ -54371,10 +54130,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14539.0,
-      "Stake Compuesto": 12759435.87,
-      "Beneficio Compuesto": 5741746.14,
-      "Banca Compuesto": 643713539.47
+      "Banca Fijo": 14566.0,
+      "Stake Compuesto": 13107050.48,
+      "Beneficio Compuesto": 5898172.72,
+      "Banca Compuesto": 661250696.69
     },
     {
       "Fecha": "2025-08-04",
@@ -54388,10 +54147,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14548.0,
-      "Stake Compuesto": 12874270.79,
-      "Beneficio Compuesto": 5793421.86,
-      "Banca Compuesto": 649506961.33
+      "Banca Fijo": 14575.0,
+      "Stake Compuesto": 13225013.93,
+      "Beneficio Compuesto": 5951256.27,
+      "Banca Compuesto": 667201952.96
     },
     {
       "Fecha": "2025-08-05",
@@ -54405,10 +54164,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14557.0,
-      "Stake Compuesto": 12990139.23,
-      "Beneficio Compuesto": 5845562.65,
-      "Banca Compuesto": 655352523.98
+      "Banca Fijo": 14584.0,
+      "Stake Compuesto": 13344039.06,
+      "Beneficio Compuesto": 6004817.58,
+      "Banca Compuesto": 673206770.54
     },
     {
       "Fecha": "2025-08-06",
@@ -54422,10 +54181,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14566.0,
-      "Stake Compuesto": 13107050.48,
-      "Beneficio Compuesto": 5898172.72,
-      "Banca Compuesto": 661250696.69
+      "Banca Fijo": 14593.0,
+      "Stake Compuesto": 13464135.41,
+      "Beneficio Compuesto": 6058860.93,
+      "Banca Compuesto": 679265631.48
     },
     {
       "Fecha": "2025-08-06",
@@ -54439,10 +54198,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14575.0,
-      "Stake Compuesto": 13225013.93,
-      "Beneficio Compuesto": 5951256.27,
-      "Banca Compuesto": 667201952.96
+      "Banca Fijo": 14602.0,
+      "Stake Compuesto": 13585312.63,
+      "Beneficio Compuesto": 6113390.68,
+      "Banca Compuesto": 685379022.16
     },
     {
       "Fecha": "2025-08-06",
@@ -54456,10 +54215,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14584.0,
-      "Stake Compuesto": 13344039.06,
-      "Beneficio Compuesto": 6004817.58,
-      "Banca Compuesto": 673206770.54
+      "Banca Fijo": 14611.0,
+      "Stake Compuesto": 13707580.44,
+      "Beneficio Compuesto": 6168411.2,
+      "Banca Compuesto": 691547433.36
     },
     {
       "Fecha": "2025-08-06",
@@ -54473,10 +54232,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14593.0,
-      "Stake Compuesto": 13464135.41,
-      "Beneficio Compuesto": 6058860.93,
-      "Banca Compuesto": 679265631.48
+      "Banca Fijo": 14620.0,
+      "Stake Compuesto": 13830948.67,
+      "Beneficio Compuesto": 6223926.9,
+      "Banca Compuesto": 697771360.26
     },
     {
       "Fecha": "2025-08-07",
@@ -54490,10 +54249,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14602.0,
-      "Stake Compuesto": 13585312.63,
-      "Beneficio Compuesto": 6113390.68,
-      "Banca Compuesto": 685379022.16
+      "Banca Fijo": 14629.0,
+      "Stake Compuesto": 13955427.21,
+      "Beneficio Compuesto": 6279942.24,
+      "Banca Compuesto": 704051302.5
+    },
+    {
+      "Fecha": "2025-08-08",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Aarhus",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14638.0,
+      "Stake Compuesto": 14081026.05,
+      "Beneficio Compuesto": 6336461.72,
+      "Banca Compuesto": 710387764.22
     },
     {
       "Fecha": "2025-08-08",
@@ -54507,10 +54283,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14611.0,
-      "Stake Compuesto": 13707580.44,
-      "Beneficio Compuesto": 6168411.2,
-      "Banca Compuesto": 691547433.36
+      "Banca Fijo": 14647.0,
+      "Stake Compuesto": 14207755.28,
+      "Beneficio Compuesto": 6393489.88,
+      "Banca Compuesto": 716781254.1
     },
     {
       "Fecha": "2025-08-08",
@@ -54524,10 +54300,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14620.0,
-      "Stake Compuesto": 13830948.67,
-      "Beneficio Compuesto": 6223926.9,
-      "Banca Compuesto": 697771360.26
+      "Banca Fijo": 14656.0,
+      "Stake Compuesto": 14335625.08,
+      "Beneficio Compuesto": 6451031.29,
+      "Banca Compuesto": 723232285.39
     },
     {
       "Fecha": "2025-08-08",
@@ -54541,10 +54317,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14629.0,
-      "Stake Compuesto": 13955427.21,
-      "Beneficio Compuesto": 6279942.24,
-      "Banca Compuesto": 704051302.5
+      "Banca Fijo": 14665.0,
+      "Stake Compuesto": 14464645.71,
+      "Beneficio Compuesto": 6509090.57,
+      "Banca Compuesto": 729741375.96
     },
     {
       "Fecha": "2025-08-08",
@@ -54558,10 +54334,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14638.0,
-      "Stake Compuesto": 14081026.05,
-      "Beneficio Compuesto": 6336461.72,
-      "Banca Compuesto": 710387764.22
+      "Banca Fijo": 14674.0,
+      "Stake Compuesto": 14594827.52,
+      "Beneficio Compuesto": 6567672.38,
+      "Banca Compuesto": 736309048.34
     },
     {
       "Fecha": "2025-08-08",
@@ -54575,10 +54351,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14618.0,
-      "Stake Compuesto": 14207755.28,
-      "Beneficio Compuesto": -14207755.28,
-      "Banca Compuesto": 696180008.94
+      "Banca Fijo": 14654.0,
+      "Stake Compuesto": 14726180.97,
+      "Beneficio Compuesto": -14726180.97,
+      "Banca Compuesto": 721582867.37
     },
     {
       "Fecha": "2025-08-08",
@@ -54592,10 +54368,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14627.0,
-      "Stake Compuesto": 13923600.18,
-      "Beneficio Compuesto": 6265620.08,
-      "Banca Compuesto": 702445629.02
+      "Banca Fijo": 14663.0,
+      "Stake Compuesto": 14431657.35,
+      "Beneficio Compuesto": 6494245.81,
+      "Banca Compuesto": 728077113.18
     },
     {
       "Fecha": "2025-08-09",
@@ -54609,74 +54385,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14636.0,
-      "Stake Compuesto": 14048912.58,
-      "Beneficio Compuesto": 6322010.66,
-      "Banca Compuesto": 708767639.68
-    },
-    {
-      "Fecha": "2025-08-09",
-      "Liga": "2. Deild",
-      "Local": "Haukar",
-      "Visitante": "Ægir",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14645.0,
-      "Stake Compuesto": 14175352.79,
-      "Beneficio Compuesto": 6378908.76,
-      "Banca Compuesto": 715146548.44
-    },
-    {
-      "Fecha": "2025-08-09",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "Reipas",
-      "Visitante": "MyPa",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14654.0,
-      "Stake Compuesto": 14302930.97,
-      "Beneficio Compuesto": 6436318.94,
-      "Banca Compuesto": 721582867.37
-    },
-    {
-      "Fecha": "2025-08-09",
-      "Liga": "Kakkonen - Lohko B",
-      "Local": "Kiffen",
-      "Visitante": "P-Iirot",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14663.0,
-      "Stake Compuesto": 14431657.35,
-      "Beneficio Compuesto": 6494245.81,
-      "Banca Compuesto": 728077113.18
-    },
-    {
-      "Fecha": "2025-08-09",
-      "Liga": "Esiliiga A",
-      "Local": "Elva",
-      "Visitante": "FCI Levadia II",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14672.0,
       "Stake Compuesto": 14561542.26,
       "Beneficio Compuesto": 6552694.02,
@@ -54684,9 +54392,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-09",
-      "Liga": "2. Division - Group 1",
-      "Local": "Sandviken",
-      "Visitante": "Sandnes ULF",
+      "Liga": "2. Deild",
+      "Local": "Haukar",
+      "Visitante": "Ægir",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -54701,10 +54409,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-09",
-      "Liga": "2. Division - Group 2",
-      "Local": "Eidsvold",
-      "Visitante": "Kjelsås",
-      "Goles HT": 2.0,
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "Reipas",
+      "Visitante": "MyPa",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -54718,6 +54426,74 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-09",
+      "Liga": "Kakkonen - Lohko B",
+      "Local": "Kiffen",
+      "Visitante": "P-Iirot",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14699.0,
+      "Stake Compuesto": 14958252.97,
+      "Beneficio Compuesto": 6731213.84,
+      "Banca Compuesto": 754643862.58
+    },
+    {
+      "Fecha": "2025-08-09",
+      "Liga": "Esiliiga A",
+      "Local": "Elva",
+      "Visitante": "FCI Levadia II",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14708.0,
+      "Stake Compuesto": 15092877.25,
+      "Beneficio Compuesto": 6791794.76,
+      "Banca Compuesto": 761435657.34
+    },
+    {
+      "Fecha": "2025-08-09",
+      "Liga": "2. Division - Group 1",
+      "Local": "Sandviken",
+      "Visitante": "Sandnes ULF",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14717.0,
+      "Stake Compuesto": 15228713.15,
+      "Beneficio Compuesto": 6852920.92,
+      "Banca Compuesto": 768288578.26
+    },
+    {
+      "Fecha": "2025-08-09",
+      "Liga": "2. Division - Group 2",
+      "Local": "Eidsvold",
+      "Visitante": "Kjelsås",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14726.0,
+      "Stake Compuesto": 15365771.57,
+      "Beneficio Compuesto": 6914597.2,
+      "Banca Compuesto": 775203175.46
+    },
+    {
+      "Fecha": "2025-08-09",
       "Liga": "Ettan - Norra",
       "Local": "Karlberg",
       "Visitante": "Arlanda",
@@ -54728,10 +54504,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14699.0,
-      "Stake Compuesto": 14958252.97,
-      "Beneficio Compuesto": 6731213.84,
-      "Banca Compuesto": 754643862.58
+      "Banca Fijo": 14735.0,
+      "Stake Compuesto": 15504063.51,
+      "Beneficio Compuesto": 6976828.58,
+      "Banca Compuesto": 782180004.04
     },
     {
       "Fecha": "2025-08-10",
@@ -54745,10 +54521,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14708.0,
-      "Stake Compuesto": 15092877.25,
-      "Beneficio Compuesto": 6791794.76,
-      "Banca Compuesto": 761435657.34
+      "Banca Fijo": 14744.0,
+      "Stake Compuesto": 15643600.08,
+      "Beneficio Compuesto": 7039620.04,
+      "Banca Compuesto": 789219624.08
     },
     {
       "Fecha": "2025-08-10",
@@ -54762,10 +54538,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14717.0,
-      "Stake Compuesto": 15228713.15,
-      "Beneficio Compuesto": 6852920.92,
-      "Banca Compuesto": 768288578.26
+      "Banca Fijo": 14753.0,
+      "Stake Compuesto": 15784392.48,
+      "Beneficio Compuesto": 7102976.62,
+      "Banca Compuesto": 796322600.7
     },
     {
       "Fecha": "2025-08-10",
@@ -54779,10 +54555,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14726.0,
-      "Stake Compuesto": 15365771.57,
-      "Beneficio Compuesto": 6914597.2,
-      "Banca Compuesto": 775203175.46
+      "Banca Fijo": 14762.0,
+      "Stake Compuesto": 15926452.01,
+      "Beneficio Compuesto": 7166903.41,
+      "Banca Compuesto": 803489504.1
     },
     {
       "Fecha": "2025-08-10",
@@ -54796,10 +54572,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14735.0,
-      "Stake Compuesto": 15504063.51,
-      "Beneficio Compuesto": 6976828.58,
-      "Banca Compuesto": 782180004.04
+      "Banca Fijo": 14771.0,
+      "Stake Compuesto": 16069790.08,
+      "Beneficio Compuesto": 7231405.54,
+      "Banca Compuesto": 810720909.64
     },
     {
       "Fecha": "2025-08-10",
@@ -54813,10 +54589,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14744.0,
-      "Stake Compuesto": 15643600.08,
-      "Beneficio Compuesto": 7039620.04,
-      "Banca Compuesto": 789219624.08
+      "Banca Fijo": 14780.0,
+      "Stake Compuesto": 16214418.19,
+      "Beneficio Compuesto": 7296488.19,
+      "Banca Compuesto": 818017397.83
     },
     {
       "Fecha": "2025-08-10",
@@ -54830,10 +54606,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14753.0,
-      "Stake Compuesto": 15784392.48,
-      "Beneficio Compuesto": 7102976.62,
-      "Banca Compuesto": 796322600.7
+      "Banca Fijo": 14789.0,
+      "Stake Compuesto": 16360347.96,
+      "Beneficio Compuesto": 7362156.58,
+      "Banca Compuesto": 825379554.41
     },
     {
       "Fecha": "2025-08-10",
@@ -54847,10 +54623,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14762.0,
-      "Stake Compuesto": 15926452.01,
-      "Beneficio Compuesto": 7166903.41,
-      "Banca Compuesto": 803489504.1
+      "Banca Fijo": 14798.0,
+      "Stake Compuesto": 16507591.09,
+      "Beneficio Compuesto": 7428415.99,
+      "Banca Compuesto": 832807970.4
     },
     {
       "Fecha": "2025-08-10",
@@ -54864,10 +54640,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14771.0,
-      "Stake Compuesto": 16069790.08,
-      "Beneficio Compuesto": 7231405.54,
-      "Banca Compuesto": 810720909.64
+      "Banca Fijo": 14807.0,
+      "Stake Compuesto": 16656159.41,
+      "Beneficio Compuesto": 7495271.73,
+      "Banca Compuesto": 840303242.13
     },
     {
       "Fecha": "2025-08-10",
@@ -54881,10 +54657,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14780.0,
-      "Stake Compuesto": 16214418.19,
-      "Beneficio Compuesto": 7296488.19,
-      "Banca Compuesto": 818017397.83
+      "Banca Fijo": 14816.0,
+      "Stake Compuesto": 16806064.84,
+      "Beneficio Compuesto": 7562729.18,
+      "Banca Compuesto": 847865971.31
     },
     {
       "Fecha": "2025-08-10",
@@ -54898,10 +54674,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14789.0,
-      "Stake Compuesto": 16360347.96,
-      "Beneficio Compuesto": 7362156.58,
-      "Banca Compuesto": 825379554.41
+      "Banca Fijo": 14825.0,
+      "Stake Compuesto": 16957319.43,
+      "Beneficio Compuesto": 7630793.74,
+      "Banca Compuesto": 855496765.05
     },
     {
       "Fecha": "2025-08-10",
@@ -54915,10 +54691,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14798.0,
-      "Stake Compuesto": 16507591.09,
-      "Beneficio Compuesto": 7428415.99,
-      "Banca Compuesto": 832807970.4
+      "Banca Fijo": 14834.0,
+      "Stake Compuesto": 17109935.3,
+      "Beneficio Compuesto": 7699470.89,
+      "Banca Compuesto": 863196235.94
     },
     {
       "Fecha": "2025-08-10",
@@ -54932,10 +54708,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14807.0,
-      "Stake Compuesto": 16656159.41,
-      "Beneficio Compuesto": 7495271.73,
-      "Banca Compuesto": 840303242.13
+      "Banca Fijo": 14843.0,
+      "Stake Compuesto": 17263924.72,
+      "Beneficio Compuesto": 7768766.12,
+      "Banca Compuesto": 870965002.06
     },
     {
       "Fecha": "2025-08-11",
@@ -54949,10 +54725,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14787.0,
-      "Stake Compuesto": 16806064.84,
-      "Beneficio Compuesto": -16806064.84,
-      "Banca Compuesto": 823497177.29
+      "Banca Fijo": 14823.0,
+      "Stake Compuesto": 17419300.04,
+      "Beneficio Compuesto": -17419300.04,
+      "Banca Compuesto": 853545702.02
     },
     {
       "Fecha": "2025-08-11",
@@ -54966,10 +54742,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14796.0,
-      "Stake Compuesto": 16469943.55,
-      "Beneficio Compuesto": 7411474.6,
-      "Banca Compuesto": 830908651.88
+      "Banca Fijo": 14832.0,
+      "Stake Compuesto": 17070914.04,
+      "Beneficio Compuesto": 7681911.32,
+      "Banca Compuesto": 861227613.34
     },
     {
       "Fecha": "2025-08-11",
@@ -54983,10 +54759,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14805.0,
-      "Stake Compuesto": 16618173.04,
-      "Beneficio Compuesto": 7478177.87,
-      "Banca Compuesto": 838386829.75
+      "Banca Fijo": 14841.0,
+      "Stake Compuesto": 17224552.27,
+      "Beneficio Compuesto": 7751048.52,
+      "Banca Compuesto": 868978661.86
     },
     {
       "Fecha": "2025-08-11",
@@ -55000,10 +54776,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14814.0,
-      "Stake Compuesto": 16767736.6,
-      "Beneficio Compuesto": 7545481.47,
-      "Banca Compuesto": 845932311.22
+      "Banca Fijo": 14850.0,
+      "Stake Compuesto": 17379573.24,
+      "Beneficio Compuesto": 7820807.96,
+      "Banca Compuesto": 876799469.81
     },
     {
       "Fecha": "2025-08-11",
@@ -55017,74 +54793,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14823.0,
-      "Stake Compuesto": 16918646.22,
-      "Beneficio Compuesto": 7613390.8,
-      "Banca Compuesto": 853545702.02
-    },
-    {
-      "Fecha": "2025-08-13",
-      "Liga": "1. Deild",
-      "Local": "Selfoss",
-      "Visitante": "HK Kopavogur",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14832.0,
-      "Stake Compuesto": 17070914.04,
-      "Beneficio Compuesto": 7681911.32,
-      "Banca Compuesto": 861227613.34
-    },
-    {
-      "Fecha": "2025-08-13",
-      "Liga": "1. Deild",
-      "Local": "Völsungur",
-      "Visitante": "Thor Akureyri",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14841.0,
-      "Stake Compuesto": 17224552.27,
-      "Beneficio Compuesto": 7751048.52,
-      "Banca Compuesto": 868978661.86
-    },
-    {
-      "Fecha": "2025-08-13",
-      "Liga": "2. Deild",
-      "Local": "Vikingur Olafsiik",
-      "Visitante": "Haukar",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14850.0,
-      "Stake Compuesto": 17379573.24,
-      "Beneficio Compuesto": 7820807.96,
-      "Banca Compuesto": 876799469.81
-    },
-    {
-      "Fecha": "2025-08-13",
-      "Liga": "2. Deild",
-      "Local": "Ægir",
-      "Visitante": "Thróttur Vogar",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14859.0,
       "Stake Compuesto": 17535989.4,
       "Beneficio Compuesto": 7891195.23,
@@ -55092,9 +54800,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-13",
-      "Liga": "2. Deild",
-      "Local": "Dalvík / Reynir",
-      "Visitante": "Kormákur / Hvöt",
+      "Liga": "1. Deild",
+      "Local": "Selfoss",
+      "Visitante": "HK Kopavogur",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -55109,6 +54817,74 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-13",
+      "Liga": "1. Deild",
+      "Local": "Völsungur",
+      "Visitante": "Thor Akureyri",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14877.0,
+      "Stake Compuesto": 17853057.62,
+      "Beneficio Compuesto": 8033875.93,
+      "Banca Compuesto": 900686756.96
+    },
+    {
+      "Fecha": "2025-08-13",
+      "Liga": "2. Deild",
+      "Local": "Vikingur Olafsiik",
+      "Visitante": "Haukar",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14886.0,
+      "Stake Compuesto": 18013735.14,
+      "Beneficio Compuesto": 8106180.81,
+      "Banca Compuesto": 908792937.77
+    },
+    {
+      "Fecha": "2025-08-13",
+      "Liga": "2. Deild",
+      "Local": "Ægir",
+      "Visitante": "Thróttur Vogar",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14895.0,
+      "Stake Compuesto": 18175858.76,
+      "Beneficio Compuesto": 8179136.44,
+      "Banca Compuesto": 916972074.21
+    },
+    {
+      "Fecha": "2025-08-13",
+      "Liga": "2. Deild",
+      "Local": "Dalvík / Reynir",
+      "Visitante": "Kormákur / Hvöt",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 14904.0,
+      "Stake Compuesto": 18339441.48,
+      "Beneficio Compuesto": 8252748.67,
+      "Banca Compuesto": 925224822.88
+    },
+    {
+      "Fecha": "2025-08-13",
       "Liga": "2. Deild",
       "Local": "Fjardabyggd / Leiknir",
       "Visitante": "Höttur / Huginn",
@@ -55119,10 +54895,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14877.0,
-      "Stake Compuesto": 17853057.62,
-      "Beneficio Compuesto": 8033875.93,
-      "Banca Compuesto": 900686756.96
+      "Banca Fijo": 14913.0,
+      "Stake Compuesto": 18504496.46,
+      "Beneficio Compuesto": 8327023.41,
+      "Banca Compuesto": 933551846.28
     },
     {
       "Fecha": "2025-08-13",
@@ -55136,10 +54912,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14886.0,
-      "Stake Compuesto": 18013735.14,
-      "Beneficio Compuesto": 8106180.81,
-      "Banca Compuesto": 908792937.77
+      "Banca Fijo": 14922.0,
+      "Stake Compuesto": 18671036.93,
+      "Beneficio Compuesto": 8401966.62,
+      "Banca Compuesto": 941953812.9
     },
     {
       "Fecha": "2025-08-15",
@@ -55153,10 +54929,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14895.0,
-      "Stake Compuesto": 18175858.76,
-      "Beneficio Compuesto": 8179136.44,
-      "Banca Compuesto": 916972074.21
+      "Banca Fijo": 14931.0,
+      "Stake Compuesto": 18839076.26,
+      "Beneficio Compuesto": 8477584.32,
+      "Banca Compuesto": 950431397.22
     },
     {
       "Fecha": "2025-08-15",
@@ -55170,10 +54946,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14904.0,
-      "Stake Compuesto": 18339441.48,
-      "Beneficio Compuesto": 8252748.67,
-      "Banca Compuesto": 925224822.88
+      "Banca Fijo": 14940.0,
+      "Stake Compuesto": 19008627.94,
+      "Beneficio Compuesto": 8553882.57,
+      "Banca Compuesto": 958985279.79
     },
     {
       "Fecha": "2025-08-15",
@@ -55187,10 +54963,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14913.0,
-      "Stake Compuesto": 18504496.46,
-      "Beneficio Compuesto": 8327023.41,
-      "Banca Compuesto": 933551846.28
+      "Banca Fijo": 14949.0,
+      "Stake Compuesto": 19179705.6,
+      "Beneficio Compuesto": 8630867.52,
+      "Banca Compuesto": 967616147.31
     },
     {
       "Fecha": "2025-08-16",
@@ -55204,10 +54980,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14922.0,
-      "Stake Compuesto": 18671036.93,
-      "Beneficio Compuesto": 8401966.62,
-      "Banca Compuesto": 941953812.9
+      "Banca Fijo": 14958.0,
+      "Stake Compuesto": 19352322.95,
+      "Beneficio Compuesto": 8708545.33,
+      "Banca Compuesto": 976324692.63
     },
     {
       "Fecha": "2025-08-16",
@@ -55221,74 +54997,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14931.0,
-      "Stake Compuesto": 18839076.26,
-      "Beneficio Compuesto": 8477584.32,
-      "Banca Compuesto": 950431397.22
-    },
-    {
-      "Fecha": "2025-08-16",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "PEPO",
-      "Visitante": "JPS",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14940.0,
-      "Stake Compuesto": 19008627.94,
-      "Beneficio Compuesto": 8553882.57,
-      "Banca Compuesto": 958985279.79
-    },
-    {
-      "Fecha": "2025-08-16",
-      "Liga": "Kakkonen - Lohko A",
-      "Local": "Vaajakoski",
-      "Visitante": "Reipas",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14949.0,
-      "Stake Compuesto": 19179705.6,
-      "Beneficio Compuesto": 8630867.52,
-      "Banca Compuesto": 967616147.31
-    },
-    {
-      "Fecha": "2025-08-16",
-      "Liga": "Esiliiga A",
-      "Local": "Luunja",
-      "Visitante": "Nõmme United",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14958.0,
-      "Stake Compuesto": 19352322.95,
-      "Beneficio Compuesto": 8708545.33,
-      "Banca Compuesto": 976324692.63
-    },
-    {
-      "Fecha": "2025-08-16",
-      "Liga": "2. Division - Group 2",
-      "Local": "Ull/Kisa",
-      "Visitante": "Follo",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 14967.0,
       "Stake Compuesto": 19526493.85,
       "Beneficio Compuesto": 8786922.23,
@@ -55296,9 +55004,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-16",
-      "Liga": "2. Division - Group 2",
-      "Local": "Kjelsås",
-      "Visitante": "Strindheim",
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "PEPO",
+      "Visitante": "JPS",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -55313,10 +55021,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-16",
-      "Liga": "Ettan - Norra",
-      "Local": "Örebro Syrianska",
-      "Visitante": "Hammarby Talang",
-      "Goles HT": 1.0,
+      "Liga": "Kakkonen - Lohko A",
+      "Local": "Vaajakoski",
+      "Visitante": "Reipas",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -55330,10 +55038,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-16",
-      "Liga": "Ettan - Norra",
-      "Local": "Stockholm Internazionale",
-      "Visitante": "Karlberg",
-      "Goles HT": 2.0,
+      "Liga": "Esiliiga A",
+      "Local": "Luunja",
+      "Visitante": "Nõmme United",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -55347,6 +55055,74 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-16",
+      "Liga": "2. Division - Group 2",
+      "Local": "Ull/Kisa",
+      "Visitante": "Follo",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15003.0,
+      "Stake Compuesto": 20238994.57,
+      "Beneficio Compuesto": 9107547.56,
+      "Banca Compuesto": 1021057276.3
+    },
+    {
+      "Fecha": "2025-08-16",
+      "Liga": "2. Division - Group 2",
+      "Local": "Kjelsås",
+      "Visitante": "Strindheim",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15012.0,
+      "Stake Compuesto": 20421145.53,
+      "Beneficio Compuesto": 9189515.49,
+      "Banca Compuesto": 1030246791.78
+    },
+    {
+      "Fecha": "2025-08-16",
+      "Liga": "Ettan - Norra",
+      "Local": "Örebro Syrianska",
+      "Visitante": "Hammarby Talang",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15021.0,
+      "Stake Compuesto": 20604935.84,
+      "Beneficio Compuesto": 9272221.13,
+      "Banca Compuesto": 1039519012.91
+    },
+    {
+      "Fecha": "2025-08-16",
+      "Liga": "Ettan - Norra",
+      "Local": "Stockholm Internazionale",
+      "Visitante": "Karlberg",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15030.0,
+      "Stake Compuesto": 20790380.26,
+      "Beneficio Compuesto": 9355671.12,
+      "Banca Compuesto": 1048874684.03
+    },
+    {
+      "Fecha": "2025-08-16",
       "Liga": "MLS Next Pro",
       "Local": "Chicago Fire II",
       "Visitante": "Philadelphia Union II",
@@ -55357,10 +55133,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14974.0,
-      "Stake Compuesto": 20238994.57,
-      "Beneficio Compuesto": -20238994.57,
-      "Banca Compuesto": 991710734.16
+      "Banca Fijo": 15010.0,
+      "Stake Compuesto": 20977493.68,
+      "Beneficio Compuesto": -20977493.68,
+      "Banca Compuesto": 1027897190.35
     },
     {
       "Fecha": "2025-08-16",
@@ -55374,10 +55150,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14983.0,
-      "Stake Compuesto": 19834214.68,
-      "Beneficio Compuesto": 8925396.61,
-      "Banca Compuesto": 1000636130.77
+      "Banca Fijo": 15019.0,
+      "Stake Compuesto": 20557943.81,
+      "Beneficio Compuesto": 9251074.71,
+      "Banca Compuesto": 1037148265.06
     },
     {
       "Fecha": "2025-08-16",
@@ -55391,10 +55167,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 14992.0,
-      "Stake Compuesto": 20012722.62,
-      "Beneficio Compuesto": 9005725.18,
-      "Banca Compuesto": 1009641855.95
+      "Banca Fijo": 15028.0,
+      "Stake Compuesto": 20742965.3,
+      "Beneficio Compuesto": 9334334.39,
+      "Banca Compuesto": 1046482599.44
     },
     {
       "Fecha": "2025-08-17",
@@ -55408,10 +55184,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15001.0,
-      "Stake Compuesto": 20192837.12,
-      "Beneficio Compuesto": 9086776.7,
-      "Banca Compuesto": 1018728632.65
+      "Banca Fijo": 15037.0,
+      "Stake Compuesto": 20929651.99,
+      "Beneficio Compuesto": 9418343.39,
+      "Banca Compuesto": 1055900942.84
     },
     {
       "Fecha": "2025-08-17",
@@ -55425,10 +55201,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15010.0,
-      "Stake Compuesto": 20374572.65,
-      "Beneficio Compuesto": 9168557.69,
-      "Banca Compuesto": 1027897190.35
+      "Banca Fijo": 15046.0,
+      "Stake Compuesto": 21118018.86,
+      "Beneficio Compuesto": 9503108.49,
+      "Banca Compuesto": 1065404051.32
     },
     {
       "Fecha": "2025-08-17",
@@ -55442,10 +55218,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15019.0,
-      "Stake Compuesto": 20557943.81,
-      "Beneficio Compuesto": 9251074.71,
-      "Banca Compuesto": 1037148265.06
+      "Banca Fijo": 15055.0,
+      "Stake Compuesto": 21308081.03,
+      "Beneficio Compuesto": 9588636.46,
+      "Banca Compuesto": 1074992687.79
     },
     {
       "Fecha": "2025-08-17",
@@ -55459,10 +55235,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 14999.0,
-      "Stake Compuesto": 20742965.3,
-      "Beneficio Compuesto": -20742965.3,
-      "Banca Compuesto": 1016405299.76
+      "Banca Fijo": 15035.0,
+      "Stake Compuesto": 21499853.76,
+      "Beneficio Compuesto": -21499853.76,
+      "Banca Compuesto": 1053492834.03
     },
     {
       "Fecha": "2025-08-17",
@@ -55476,10 +55252,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15008.0,
-      "Stake Compuesto": 20328106.0,
-      "Beneficio Compuesto": 9147647.7,
-      "Banca Compuesto": 1025552947.46
+      "Banca Fijo": 15044.0,
+      "Stake Compuesto": 21069856.68,
+      "Beneficio Compuesto": 9481435.51,
+      "Banca Compuesto": 1062974269.54
     },
     {
       "Fecha": "2025-08-17",
@@ -55493,10 +55269,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15017.0,
-      "Stake Compuesto": 20511058.95,
-      "Beneficio Compuesto": 9229976.53,
-      "Banca Compuesto": 1034782923.98
+      "Banca Fijo": 15053.0,
+      "Stake Compuesto": 21259485.39,
+      "Beneficio Compuesto": 9566768.43,
+      "Banca Compuesto": 1072541037.96
     },
     {
       "Fecha": "2025-08-17",
@@ -55510,10 +55286,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15026.0,
-      "Stake Compuesto": 20695658.48,
-      "Beneficio Compuesto": 9313046.32,
-      "Banca Compuesto": 1044095970.3
+      "Banca Fijo": 15062.0,
+      "Stake Compuesto": 21450820.76,
+      "Beneficio Compuesto": 9652869.34,
+      "Banca Compuesto": 1082193907.3
     },
     {
       "Fecha": "2025-08-17",
@@ -55527,10 +55303,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15006.0,
-      "Stake Compuesto": 20881919.41,
-      "Beneficio Compuesto": -20881919.41,
-      "Banca Compuesto": 1023214050.89
+      "Banca Fijo": 15042.0,
+      "Stake Compuesto": 21643878.15,
+      "Beneficio Compuesto": -21643878.15,
+      "Banca Compuesto": 1060550029.16
     },
     {
       "Fecha": "2025-08-17",
@@ -55544,10 +55320,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15015.0,
-      "Stake Compuesto": 20464281.02,
-      "Beneficio Compuesto": 9208926.46,
-      "Banca Compuesto": 1032422977.35
+      "Banca Fijo": 15051.0,
+      "Stake Compuesto": 21211000.58,
+      "Beneficio Compuesto": 9544950.26,
+      "Banca Compuesto": 1070094979.42
     },
     {
       "Fecha": "2025-08-17",
@@ -55561,10 +55337,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15024.0,
-      "Stake Compuesto": 20648459.55,
-      "Beneficio Compuesto": 9291806.8,
-      "Banca Compuesto": 1041714784.15
+      "Banca Fijo": 15060.0,
+      "Stake Compuesto": 21401899.59,
+      "Beneficio Compuesto": 9630854.81,
+      "Banca Compuesto": 1079725834.24
     },
     {
       "Fecha": "2025-08-17",
@@ -55578,10 +55354,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15033.0,
-      "Stake Compuesto": 20834295.68,
-      "Beneficio Compuesto": 9375433.06,
-      "Banca Compuesto": 1051090217.2
+      "Banca Fijo": 15069.0,
+      "Stake Compuesto": 21594516.68,
+      "Beneficio Compuesto": 9717532.51,
+      "Banca Compuesto": 1089443366.74
     },
     {
       "Fecha": "2025-08-18",
@@ -55595,10 +55371,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15042.0,
-      "Stake Compuesto": 21021804.34,
-      "Beneficio Compuesto": 9459811.95,
-      "Banca Compuesto": 1060550029.16
+      "Banca Fijo": 15078.0,
+      "Stake Compuesto": 21788867.33,
+      "Beneficio Compuesto": 9804990.3,
+      "Banca Compuesto": 1099248357.04
     },
     {
       "Fecha": "2025-08-18",
@@ -55612,10 +55388,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15051.0,
-      "Stake Compuesto": 21211000.58,
-      "Beneficio Compuesto": 9544950.26,
-      "Banca Compuesto": 1070094979.42
+      "Banca Fijo": 15087.0,
+      "Stake Compuesto": 21984967.14,
+      "Beneficio Compuesto": 9893235.21,
+      "Banca Compuesto": 1109141592.26
     },
     {
       "Fecha": "2025-08-18",
@@ -55629,10 +55405,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15060.0,
-      "Stake Compuesto": 21401899.59,
-      "Beneficio Compuesto": 9630854.81,
-      "Banca Compuesto": 1079725834.24
+      "Banca Fijo": 15096.0,
+      "Stake Compuesto": 22182831.85,
+      "Beneficio Compuesto": 9982274.33,
+      "Banca Compuesto": 1119123866.59
     },
     {
       "Fecha": "2025-08-18",
@@ -55646,10 +55422,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15069.0,
-      "Stake Compuesto": 21594516.68,
-      "Beneficio Compuesto": 9717532.51,
-      "Banca Compuesto": 1089443366.74
+      "Banca Fijo": 15105.0,
+      "Stake Compuesto": 22382477.33,
+      "Beneficio Compuesto": 10072114.8,
+      "Banca Compuesto": 1129195981.39
     },
     {
       "Fecha": "2025-08-18",
@@ -55663,10 +55439,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15078.0,
-      "Stake Compuesto": 21788867.33,
-      "Beneficio Compuesto": 9804990.3,
-      "Banca Compuesto": 1099248357.04
+      "Banca Fijo": 15114.0,
+      "Stake Compuesto": 22583919.63,
+      "Beneficio Compuesto": 10162763.83,
+      "Banca Compuesto": 1139358745.22
     },
     {
       "Fecha": "2025-08-21",
@@ -55680,10 +55456,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15087.0,
-      "Stake Compuesto": 21984967.14,
-      "Beneficio Compuesto": 9893235.21,
-      "Banca Compuesto": 1109141592.26
+      "Banca Fijo": 15123.0,
+      "Stake Compuesto": 22787174.9,
+      "Beneficio Compuesto": 10254228.71,
+      "Banca Compuesto": 1149612973.93
     },
     {
       "Fecha": "2025-08-22",
@@ -55697,10 +55473,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15096.0,
-      "Stake Compuesto": 22182831.85,
-      "Beneficio Compuesto": 9982274.33,
-      "Banca Compuesto": 1119123866.59
+      "Banca Fijo": 15132.0,
+      "Stake Compuesto": 22992259.48,
+      "Beneficio Compuesto": 10346516.77,
+      "Banca Compuesto": 1159959490.69
     },
     {
       "Fecha": "2025-08-22",
@@ -55714,10 +55490,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15105.0,
-      "Stake Compuesto": 22382477.33,
-      "Beneficio Compuesto": 10072114.8,
-      "Banca Compuesto": 1129195981.39
+      "Banca Fijo": 15141.0,
+      "Stake Compuesto": 23199189.81,
+      "Beneficio Compuesto": 10439635.42,
+      "Banca Compuesto": 1170399126.11
     },
     {
       "Fecha": "2025-08-22",
@@ -55731,10 +55507,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15114.0,
-      "Stake Compuesto": 22583919.63,
-      "Beneficio Compuesto": 10162763.83,
-      "Banca Compuesto": 1139358745.22
+      "Banca Fijo": 15150.0,
+      "Stake Compuesto": 23407982.52,
+      "Beneficio Compuesto": 10533592.13,
+      "Banca Compuesto": 1180932718.24
     },
     {
       "Fecha": "2025-08-23",
@@ -55748,10 +55524,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15123.0,
-      "Stake Compuesto": 22787174.9,
-      "Beneficio Compuesto": 10254228.71,
-      "Banca Compuesto": 1149612973.93
+      "Banca Fijo": 15159.0,
+      "Stake Compuesto": 23618654.36,
+      "Beneficio Compuesto": 10628394.46,
+      "Banca Compuesto": 1191561112.71
+    },
+    {
+      "Fecha": "2025-08-23",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15168.0,
+      "Stake Compuesto": 23831222.25,
+      "Beneficio Compuesto": 10724050.01,
+      "Banca Compuesto": 1202285162.72
     },
     {
       "Fecha": "2025-08-23",
@@ -55765,10 +55558,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15132.0,
-      "Stake Compuesto": 22992259.48,
-      "Beneficio Compuesto": 10346516.77,
-      "Banca Compuesto": 1159959490.69
+      "Banca Fijo": 15177.0,
+      "Stake Compuesto": 24045703.25,
+      "Beneficio Compuesto": 10820566.46,
+      "Banca Compuesto": 1213105729.19
     },
     {
       "Fecha": "2025-08-23",
@@ -55782,91 +55575,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15141.0,
-      "Stake Compuesto": 23199189.81,
-      "Beneficio Compuesto": 10439635.42,
-      "Banca Compuesto": 1170399126.11
-    },
-    {
-      "Fecha": "2025-08-23",
-      "Liga": "2. Deild",
-      "Local": "Vikingur Olafsiik",
-      "Visitante": "Höttur / Huginn",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15150.0,
-      "Stake Compuesto": 23407982.52,
-      "Beneficio Compuesto": 10533592.13,
-      "Banca Compuesto": 1180932718.24
-    },
-    {
-      "Fecha": "2025-08-23",
-      "Liga": "2. Deild",
-      "Local": "Ægir",
-      "Visitante": "Grotta",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15159.0,
-      "Stake Compuesto": 23618654.36,
-      "Beneficio Compuesto": 10628394.46,
-      "Banca Compuesto": 1191561112.71
-    },
-    {
-      "Fecha": "2025-08-23",
-      "Liga": "2. Deild",
-      "Local": "Fjardabyggd / Leiknir",
-      "Visitante": "Kári",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15168.0,
-      "Stake Compuesto": 23831222.25,
-      "Beneficio Compuesto": 10724050.01,
-      "Banca Compuesto": 1202285162.72
-    },
-    {
-      "Fecha": "2025-08-23",
-      "Liga": "2. Deild",
-      "Local": "Vídir",
-      "Visitante": "Kormákur / Hvöt",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15177.0,
-      "Stake Compuesto": 24045703.25,
-      "Beneficio Compuesto": 10820566.46,
-      "Banca Compuesto": 1213105729.19
-    },
-    {
-      "Fecha": "2025-08-23",
-      "Liga": "Ykkönen",
-      "Local": "Rops",
-      "Visitante": "KuPS Akatemia",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 15186.0,
       "Stake Compuesto": 24262114.58,
       "Beneficio Compuesto": 10917951.56,
@@ -55874,9 +55582,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-23",
-      "Liga": "Ykkönen",
-      "Local": "FC jazz",
-      "Visitante": "KPV-j",
+      "Liga": "2. Deild",
+      "Local": "Vikingur Olafsiik",
+      "Visitante": "Höttur / Huginn",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -55891,6 +55599,91 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-08-23",
+      "Liga": "2. Deild",
+      "Local": "Ægir",
+      "Visitante": "Grotta",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15204.0,
+      "Stake Compuesto": 24700797.88,
+      "Beneficio Compuesto": 11115359.04,
+      "Banca Compuesto": 1246155252.92
+    },
+    {
+      "Fecha": "2025-08-23",
+      "Liga": "2. Deild",
+      "Local": "Fjardabyggd / Leiknir",
+      "Visitante": "Kári",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15213.0,
+      "Stake Compuesto": 24923105.06,
+      "Beneficio Compuesto": 11215397.28,
+      "Banca Compuesto": 1257370650.2
+    },
+    {
+      "Fecha": "2025-08-23",
+      "Liga": "2. Deild",
+      "Local": "Vídir",
+      "Visitante": "Kormákur / Hvöt",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15222.0,
+      "Stake Compuesto": 25147413.0,
+      "Beneficio Compuesto": 11316335.85,
+      "Banca Compuesto": 1268686986.05
+    },
+    {
+      "Fecha": "2025-08-23",
+      "Liga": "Ykkönen",
+      "Local": "Rops",
+      "Visitante": "KuPS Akatemia",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15231.0,
+      "Stake Compuesto": 25373739.72,
+      "Beneficio Compuesto": 11418182.87,
+      "Banca Compuesto": 1280105168.92
+    },
+    {
+      "Fecha": "2025-08-23",
+      "Liga": "Ykkönen",
+      "Local": "FC jazz",
+      "Visitante": "KPV-j",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15240.0,
+      "Stake Compuesto": 25602103.38,
+      "Beneficio Compuesto": 11520946.52,
+      "Banca Compuesto": 1291626115.44
+    },
+    {
+      "Fecha": "2025-08-23",
       "Liga": "Esiliiga A",
       "Local": "FC Tallinn",
       "Visitante": "Tartu Welco",
@@ -55901,10 +55694,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15204.0,
-      "Stake Compuesto": 24700797.88,
-      "Beneficio Compuesto": 11115359.04,
-      "Banca Compuesto": 1246155252.92
+      "Banca Fijo": 15249.0,
+      "Stake Compuesto": 25832522.31,
+      "Beneficio Compuesto": 11624635.04,
+      "Banca Compuesto": 1303250750.48
     },
     {
       "Fecha": "2025-08-23",
@@ -55918,10 +55711,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15213.0,
-      "Stake Compuesto": 24923105.06,
-      "Beneficio Compuesto": 11215397.28,
-      "Banca Compuesto": 1257370650.2
+      "Banca Fijo": 15258.0,
+      "Stake Compuesto": 26065015.01,
+      "Beneficio Compuesto": 11729256.75,
+      "Banca Compuesto": 1314980007.24
     },
     {
       "Fecha": "2025-08-23",
@@ -55935,10 +55728,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15222.0,
-      "Stake Compuesto": 25147413.0,
-      "Beneficio Compuesto": 11316335.85,
-      "Banca Compuesto": 1268686986.05
+      "Banca Fijo": 15267.0,
+      "Stake Compuesto": 26299600.14,
+      "Beneficio Compuesto": 11834820.07,
+      "Banca Compuesto": 1326814827.3
     },
     {
       "Fecha": "2025-08-23",
@@ -55952,10 +55745,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15231.0,
-      "Stake Compuesto": 25373739.72,
-      "Beneficio Compuesto": 11418182.87,
-      "Banca Compuesto": 1280105168.92
+      "Banca Fijo": 15276.0,
+      "Stake Compuesto": 26536296.55,
+      "Beneficio Compuesto": 11941333.45,
+      "Banca Compuesto": 1338756160.75
     },
     {
       "Fecha": "2025-08-23",
@@ -55969,10 +55762,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15211.0,
-      "Stake Compuesto": 25602103.38,
-      "Beneficio Compuesto": -25602103.38,
-      "Banca Compuesto": 1254503065.55
+      "Banca Fijo": 15256.0,
+      "Stake Compuesto": 26775123.21,
+      "Beneficio Compuesto": -26775123.21,
+      "Banca Compuesto": 1311981037.53
     },
     {
       "Fecha": "2025-08-24",
@@ -55986,10 +55779,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15220.0,
-      "Stake Compuesto": 25090061.31,
-      "Beneficio Compuesto": 11290527.59,
-      "Banca Compuesto": 1265793593.14
+      "Banca Fijo": 15265.0,
+      "Stake Compuesto": 26239620.75,
+      "Beneficio Compuesto": 11807829.34,
+      "Banca Compuesto": 1323788866.87
     },
     {
       "Fecha": "2025-08-24",
@@ -56003,10 +55796,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15229.0,
-      "Stake Compuesto": 25315871.86,
-      "Beneficio Compuesto": 11392142.34,
-      "Banca Compuesto": 1277185735.47
+      "Banca Fijo": 15274.0,
+      "Stake Compuesto": 26475777.34,
+      "Beneficio Compuesto": 11914099.8,
+      "Banca Compuesto": 1335702966.67
     },
     {
       "Fecha": "2025-08-24",
@@ -56020,10 +55813,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15238.0,
-      "Stake Compuesto": 25543714.71,
-      "Beneficio Compuesto": 11494671.62,
-      "Banca Compuesto": 1288680407.09
+      "Banca Fijo": 15283.0,
+      "Stake Compuesto": 26714059.33,
+      "Beneficio Compuesto": 12021326.7,
+      "Banca Compuesto": 1347724293.37
     },
     {
       "Fecha": "2025-08-24",
@@ -56037,10 +55830,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15247.0,
-      "Stake Compuesto": 25773608.14,
-      "Beneficio Compuesto": 11598123.66,
-      "Banca Compuesto": 1300278530.76
+      "Banca Fijo": 15292.0,
+      "Stake Compuesto": 26954485.87,
+      "Beneficio Compuesto": 12129518.64,
+      "Banca Compuesto": 1359853812.01
     },
     {
       "Fecha": "2025-08-24",
@@ -56054,10 +55847,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15227.0,
-      "Stake Compuesto": 26005570.62,
-      "Beneficio Compuesto": -26005570.62,
-      "Banca Compuesto": 1274272960.14
+      "Banca Fijo": 15272.0,
+      "Stake Compuesto": 27197076.24,
+      "Beneficio Compuesto": -27197076.24,
+      "Banca Compuesto": 1332656735.77
     },
     {
       "Fecha": "2025-08-24",
@@ -56071,10 +55864,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15236.0,
-      "Stake Compuesto": 25485459.2,
-      "Beneficio Compuesto": 11468456.64,
-      "Banca Compuesto": 1285741416.78
+      "Banca Fijo": 15281.0,
+      "Stake Compuesto": 26653134.72,
+      "Beneficio Compuesto": 11993910.62,
+      "Banca Compuesto": 1344650646.39
     },
     {
       "Fecha": "2025-08-24",
@@ -56088,10 +55881,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15245.0,
-      "Stake Compuesto": 25714828.34,
-      "Beneficio Compuesto": 11571672.75,
-      "Banca Compuesto": 1297313089.53
+      "Banca Fijo": 15290.0,
+      "Stake Compuesto": 26893012.93,
+      "Beneficio Compuesto": 12101855.82,
+      "Banca Compuesto": 1356752502.21
     },
     {
       "Fecha": "2025-08-24",
@@ -56105,10 +55898,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15254.0,
-      "Stake Compuesto": 25946261.79,
-      "Beneficio Compuesto": 11675817.81,
-      "Banca Compuesto": 1308988907.34
+      "Banca Fijo": 15299.0,
+      "Stake Compuesto": 27135050.04,
+      "Beneficio Compuesto": 12210772.52,
+      "Banca Compuesto": 1368963274.73
     },
     {
       "Fecha": "2025-08-24",
@@ -56122,10 +55915,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15263.0,
-      "Stake Compuesto": 26179778.15,
-      "Beneficio Compuesto": 11780900.17,
-      "Banca Compuesto": 1320769807.51
+      "Banca Fijo": 15308.0,
+      "Stake Compuesto": 27379265.49,
+      "Beneficio Compuesto": 12320669.47,
+      "Banca Compuesto": 1381283944.2
     },
     {
       "Fecha": "2025-08-25",
@@ -56139,10 +55932,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15272.0,
-      "Stake Compuesto": 26415396.15,
-      "Beneficio Compuesto": 11886928.27,
-      "Banca Compuesto": 1332656735.77
+      "Banca Fijo": 15317.0,
+      "Stake Compuesto": 27625678.88,
+      "Beneficio Compuesto": 12431555.5,
+      "Banca Compuesto": 1393715499.7
     },
     {
       "Fecha": "2025-08-25",
@@ -56156,10 +55949,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15281.0,
-      "Stake Compuesto": 26653134.72,
-      "Beneficio Compuesto": 11993910.62,
-      "Banca Compuesto": 1344650646.39
+      "Banca Fijo": 15326.0,
+      "Stake Compuesto": 27874309.99,
+      "Beneficio Compuesto": 12543439.5,
+      "Banca Compuesto": 1406258939.2
     },
     {
       "Fecha": "2025-08-25",
@@ -56173,10 +55966,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15290.0,
-      "Stake Compuesto": 26893012.93,
-      "Beneficio Compuesto": 12101855.82,
-      "Banca Compuesto": 1356752502.21
+      "Banca Fijo": 15335.0,
+      "Stake Compuesto": 28125178.78,
+      "Beneficio Compuesto": 12656330.45,
+      "Banca Compuesto": 1418915269.65
     },
     {
       "Fecha": "2025-08-26",
@@ -56190,10 +55983,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15299.0,
-      "Stake Compuesto": 27135050.04,
-      "Beneficio Compuesto": 12210772.52,
-      "Banca Compuesto": 1368963274.73
+      "Banca Fijo": 15344.0,
+      "Stake Compuesto": 28378305.39,
+      "Beneficio Compuesto": 12770237.43,
+      "Banca Compuesto": 1431685507.08
     },
     {
       "Fecha": "2025-08-26",
@@ -56207,10 +56000,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15308.0,
-      "Stake Compuesto": 27379265.49,
-      "Beneficio Compuesto": 12320669.47,
-      "Banca Compuesto": 1381283944.2
+      "Banca Fijo": 15353.0,
+      "Stake Compuesto": 28633710.14,
+      "Beneficio Compuesto": 12885169.56,
+      "Banca Compuesto": 1444570676.64
     },
     {
       "Fecha": "2025-08-27",
@@ -56224,10 +56017,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15288.0,
-      "Stake Compuesto": 27625678.88,
-      "Beneficio Compuesto": -27625678.88,
-      "Banca Compuesto": 1353658265.32
+      "Banca Fijo": 15333.0,
+      "Stake Compuesto": 28891413.53,
+      "Beneficio Compuesto": -28891413.53,
+      "Banca Compuesto": 1415679263.11
     },
     {
       "Fecha": "2025-08-28",
@@ -56241,10 +56034,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15297.0,
-      "Stake Compuesto": 27073165.31,
-      "Beneficio Compuesto": 12182924.39,
-      "Banca Compuesto": 1365841189.71
+      "Banca Fijo": 15342.0,
+      "Stake Compuesto": 28313585.26,
+      "Beneficio Compuesto": 12741113.37,
+      "Banca Compuesto": 1428420376.48
     },
     {
       "Fecha": "2025-08-29",
@@ -56258,10 +56051,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15277.0,
-      "Stake Compuesto": 27316823.79,
-      "Beneficio Compuesto": -27316823.79,
-      "Banca Compuesto": 1338524365.91
+      "Banca Fijo": 15322.0,
+      "Stake Compuesto": 28568407.53,
+      "Beneficio Compuesto": -28568407.53,
+      "Banca Compuesto": 1399851968.95
     },
     {
       "Fecha": "2025-08-29",
@@ -56275,10 +56068,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15286.0,
-      "Stake Compuesto": 26770487.32,
-      "Beneficio Compuesto": 12046719.29,
-      "Banca Compuesto": 1350571085.21
+      "Banca Fijo": 15331.0,
+      "Stake Compuesto": 27997039.38,
+      "Beneficio Compuesto": 12598667.72,
+      "Banca Compuesto": 1412450636.67
     },
     {
       "Fecha": "2025-08-30",
@@ -56292,10 +56085,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15295.0,
-      "Stake Compuesto": 27011421.7,
-      "Beneficio Compuesto": 12155139.77,
-      "Banca Compuesto": 1362726224.97
+      "Banca Fijo": 15340.0,
+      "Stake Compuesto": 28249012.73,
+      "Beneficio Compuesto": 12712055.73,
+      "Banca Compuesto": 1425162692.4
     },
     {
       "Fecha": "2025-08-30",
@@ -56309,10 +56102,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15304.0,
-      "Stake Compuesto": 27254524.5,
-      "Beneficio Compuesto": 12264536.02,
-      "Banca Compuesto": 1374990761.0
+      "Banca Fijo": 15349.0,
+      "Stake Compuesto": 28503253.85,
+      "Beneficio Compuesto": 12826464.23,
+      "Banca Compuesto": 1437989156.63
     },
     {
       "Fecha": "2025-08-30",
@@ -56326,10 +56119,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15313.0,
-      "Stake Compuesto": 27499815.22,
-      "Beneficio Compuesto": 12374916.85,
-      "Banca Compuesto": 1387365677.85
+      "Banca Fijo": 15358.0,
+      "Stake Compuesto": 28759783.13,
+      "Beneficio Compuesto": 12941902.41,
+      "Banca Compuesto": 1450931059.04
     },
     {
       "Fecha": "2025-08-30",
@@ -56343,10 +56136,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15293.0,
-      "Stake Compuesto": 27747313.56,
-      "Beneficio Compuesto": -27747313.56,
-      "Banca Compuesto": 1359618364.29
+      "Banca Fijo": 15338.0,
+      "Stake Compuesto": 29018621.18,
+      "Beneficio Compuesto": -29018621.18,
+      "Banca Compuesto": 1421912437.86
     },
     {
       "Fecha": "2025-08-30",
@@ -56360,10 +56153,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15302.0,
-      "Stake Compuesto": 27192367.29,
-      "Beneficio Compuesto": 12236565.28,
-      "Banca Compuesto": 1371854929.57
+      "Banca Fijo": 15347.0,
+      "Stake Compuesto": 28438248.76,
+      "Beneficio Compuesto": 12797211.94,
+      "Banca Compuesto": 1434709649.8
     },
     {
       "Fecha": "2025-08-30",
@@ -56377,10 +56170,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15282.0,
-      "Stake Compuesto": 27437098.59,
-      "Beneficio Compuesto": -27437098.59,
-      "Banca Compuesto": 1344417830.98
+      "Banca Fijo": 15327.0,
+      "Stake Compuesto": 28694193.0,
+      "Beneficio Compuesto": -28694193.0,
+      "Banca Compuesto": 1406015456.8
     },
     {
       "Fecha": "2025-08-30",
@@ -56394,10 +56187,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15291.0,
-      "Stake Compuesto": 26888356.62,
-      "Beneficio Compuesto": 12099760.48,
-      "Banca Compuesto": 1356517591.46
+      "Banca Fijo": 15336.0,
+      "Stake Compuesto": 28120309.14,
+      "Beneficio Compuesto": 12654139.11,
+      "Banca Compuesto": 1418669595.92
     },
     {
       "Fecha": "2025-08-30",
@@ -56411,10 +56204,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15271.0,
-      "Stake Compuesto": 27130351.83,
-      "Beneficio Compuesto": -27130351.83,
-      "Banca Compuesto": 1329387239.63
+      "Banca Fijo": 15316.0,
+      "Stake Compuesto": 28373391.92,
+      "Beneficio Compuesto": -28373391.92,
+      "Banca Compuesto": 1390296204.0
     },
     {
       "Fecha": "2025-08-30",
@@ -56428,10 +56221,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15280.0,
-      "Stake Compuesto": 26587744.79,
-      "Beneficio Compuesto": 11964485.16,
-      "Banca Compuesto": 1341351724.79
+      "Banca Fijo": 15325.0,
+      "Stake Compuesto": 27805924.08,
+      "Beneficio Compuesto": 12512665.84,
+      "Banca Compuesto": 1402808869.83
     },
     {
       "Fecha": "2025-08-30",
@@ -56445,10 +56238,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15289.0,
-      "Stake Compuesto": 26827034.5,
-      "Beneficio Compuesto": 12072165.52,
-      "Banca Compuesto": 1353423890.31
+      "Banca Fijo": 15334.0,
+      "Stake Compuesto": 28056177.4,
+      "Beneficio Compuesto": 12625279.83,
+      "Banca Compuesto": 1415434149.66
     },
     {
       "Fecha": "2025-08-31",
@@ -56462,10 +56255,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15269.0,
-      "Stake Compuesto": 27068477.81,
-      "Beneficio Compuesto": -27068477.81,
-      "Banca Compuesto": 1326355412.5
+      "Banca Fijo": 15314.0,
+      "Stake Compuesto": 28308682.99,
+      "Beneficio Compuesto": -28308682.99,
+      "Banca Compuesto": 1387125466.67
     },
     {
       "Fecha": "2025-08-31",
@@ -56479,10 +56272,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15278.0,
-      "Stake Compuesto": 26527108.25,
-      "Beneficio Compuesto": 11937198.71,
-      "Banca Compuesto": 1338292611.21
+      "Banca Fijo": 15323.0,
+      "Stake Compuesto": 27742509.33,
+      "Beneficio Compuesto": 12484129.2,
+      "Banca Compuesto": 1399609595.87
     },
     {
       "Fecha": "2025-08-31",
@@ -56496,10 +56289,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15287.0,
-      "Stake Compuesto": 26765852.22,
-      "Beneficio Compuesto": 12044633.5,
-      "Banca Compuesto": 1350337244.72
+      "Banca Fijo": 15332.0,
+      "Stake Compuesto": 27992191.92,
+      "Beneficio Compuesto": 12596486.36,
+      "Banca Compuesto": 1412206082.23
     },
     {
       "Fecha": "2025-08-31",
@@ -56513,10 +56306,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15296.0,
-      "Stake Compuesto": 27006744.89,
-      "Beneficio Compuesto": 12153035.2,
-      "Banca Compuesto": 1362490279.92
+      "Banca Fijo": 15341.0,
+      "Stake Compuesto": 28244121.64,
+      "Beneficio Compuesto": 12709854.74,
+      "Banca Compuesto": 1424915936.97
     },
     {
       "Fecha": "2025-08-31",
@@ -56530,10 +56323,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15305.0,
-      "Stake Compuesto": 27249805.6,
-      "Beneficio Compuesto": 12262412.52,
-      "Banca Compuesto": 1374752692.44
+      "Banca Fijo": 15350.0,
+      "Stake Compuesto": 28498318.74,
+      "Beneficio Compuesto": 12824243.43,
+      "Banca Compuesto": 1437740180.4
     },
     {
       "Fecha": "2025-08-31",
@@ -56547,10 +56340,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15314.0,
-      "Stake Compuesto": 27495053.85,
-      "Beneficio Compuesto": 12372774.23,
-      "Banca Compuesto": 1387125466.67
+      "Banca Fijo": 15359.0,
+      "Stake Compuesto": 28754803.61,
+      "Beneficio Compuesto": 12939661.62,
+      "Banca Compuesto": 1450679842.03
     },
     {
       "Fecha": "2025-08-31",
@@ -56564,10 +56357,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15323.0,
-      "Stake Compuesto": 27742509.33,
-      "Beneficio Compuesto": 12484129.2,
-      "Banca Compuesto": 1399609595.87
+      "Banca Fijo": 15368.0,
+      "Stake Compuesto": 29013596.84,
+      "Beneficio Compuesto": 13056118.58,
+      "Banca Compuesto": 1463735960.61
     },
     {
       "Fecha": "2025-08-31",
@@ -56581,10 +56374,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15332.0,
-      "Stake Compuesto": 27992191.92,
-      "Beneficio Compuesto": 12596486.36,
-      "Banca Compuesto": 1412206082.23
+      "Banca Fijo": 15377.0,
+      "Stake Compuesto": 29274719.21,
+      "Beneficio Compuesto": 13173623.65,
+      "Banca Compuesto": 1476909584.25
     },
     {
       "Fecha": "2025-08-31",
@@ -56598,10 +56391,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15341.0,
-      "Stake Compuesto": 28244121.64,
-      "Beneficio Compuesto": 12709854.74,
-      "Banca Compuesto": 1424915936.97
+      "Banca Fijo": 15386.0,
+      "Stake Compuesto": 29538191.69,
+      "Beneficio Compuesto": 13292186.26,
+      "Banca Compuesto": 1490201770.51
     },
     {
       "Fecha": "2025-08-31",
@@ -56615,10 +56408,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15350.0,
-      "Stake Compuesto": 28498318.74,
-      "Beneficio Compuesto": 12824243.43,
-      "Banca Compuesto": 1437740180.4
+      "Banca Fijo": 15395.0,
+      "Stake Compuesto": 29804035.41,
+      "Beneficio Compuesto": 13411815.93,
+      "Banca Compuesto": 1503613586.44
     },
     {
       "Fecha": "2025-08-31",
@@ -56632,10 +56425,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15330.0,
-      "Stake Compuesto": 28754803.61,
-      "Beneficio Compuesto": -28754803.61,
-      "Banca Compuesto": 1408985376.8
+      "Banca Fijo": 15375.0,
+      "Stake Compuesto": 30072271.73,
+      "Beneficio Compuesto": -30072271.73,
+      "Banca Compuesto": 1473541314.72
     },
     {
       "Fecha": "2025-08-31",
@@ -56649,10 +56442,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15339.0,
-      "Stake Compuesto": 28179707.54,
-      "Beneficio Compuesto": 12680868.39,
-      "Banca Compuesto": 1421666245.19
+      "Banca Fijo": 15384.0,
+      "Stake Compuesto": 29470826.29,
+      "Beneficio Compuesto": 13261871.83,
+      "Banca Compuesto": 1486803186.55
     },
     {
       "Fecha": "2025-08-31",
@@ -56666,10 +56459,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15348.0,
-      "Stake Compuesto": 28433324.9,
-      "Beneficio Compuesto": 12794996.21,
-      "Banca Compuesto": 1434461241.39
+      "Banca Fijo": 15393.0,
+      "Stake Compuesto": 29736063.73,
+      "Beneficio Compuesto": 13381228.68,
+      "Banca Compuesto": 1500184415.23
     },
     {
       "Fecha": "2025-09-01",
@@ -56683,10 +56476,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15357.0,
-      "Stake Compuesto": 28689224.83,
-      "Beneficio Compuesto": 12910151.17,
-      "Banca Compuesto": 1447371392.57
+      "Banca Fijo": 15402.0,
+      "Stake Compuesto": 30003688.3,
+      "Beneficio Compuesto": 13501659.74,
+      "Banca Compuesto": 1513686074.96
     },
     {
       "Fecha": "2025-09-01",
@@ -56700,10 +56493,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15366.0,
-      "Stake Compuesto": 28947427.85,
-      "Beneficio Compuesto": 13026342.53,
-      "Banca Compuesto": 1460397735.1
+      "Banca Fijo": 15411.0,
+      "Stake Compuesto": 30273721.5,
+      "Beneficio Compuesto": 13623174.67,
+      "Banca Compuesto": 1527309249.64
     },
     {
       "Fecha": "2025-09-05",
@@ -56717,10 +56510,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15375.0,
-      "Stake Compuesto": 29207954.7,
-      "Beneficio Compuesto": 13143579.62,
-      "Banca Compuesto": 1473541314.72
+      "Banca Fijo": 15420.0,
+      "Stake Compuesto": 30546184.99,
+      "Beneficio Compuesto": 13745783.25,
+      "Banca Compuesto": 1541055032.89
     },
     {
       "Fecha": "2025-09-05",
@@ -56734,101 +56527,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15355.0,
-      "Stake Compuesto": 29470826.29,
-      "Beneficio Compuesto": -29470826.29,
-      "Banca Compuesto": 1444070488.42
+      "Banca Fijo": 15400.0,
+      "Stake Compuesto": 30821100.66,
+      "Beneficio Compuesto": -30821100.66,
+      "Banca Compuesto": 1510233932.23
     },
     {
       "Fecha": "2025-09-05",
       "Liga": "Ykkösliiga",
       "Local": "Turku PS",
       "Visitante": "EIF",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15364.0,
-      "Stake Compuesto": 28881409.77,
-      "Beneficio Compuesto": 12996634.4,
-      "Banca Compuesto": 1457067122.82
-    },
-    {
-      "Fecha": "2025-09-06",
-      "Liga": "1. Deild",
-      "Local": "HK Kopavogur",
-      "Visitante": "Throttur Reykjavik",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15373.0,
-      "Stake Compuesto": 29141342.46,
-      "Beneficio Compuesto": 13113604.11,
-      "Banca Compuesto": 1470180726.92
-    },
-    {
-      "Fecha": "2025-09-06",
-      "Liga": "1. Deild",
-      "Local": "Thor Akureyri",
-      "Visitante": "Fjolnir",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15382.0,
-      "Stake Compuesto": 29403614.54,
-      "Beneficio Compuesto": 13231626.54,
-      "Banca Compuesto": 1483412353.47
-    },
-    {
-      "Fecha": "2025-09-06",
-      "Liga": "2. Deild",
-      "Local": "Vikingur Olafsiik",
-      "Visitante": "Kári",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15391.0,
-      "Stake Compuesto": 29668247.07,
-      "Beneficio Compuesto": 13350711.18,
-      "Banca Compuesto": 1496763064.65
-    },
-    {
-      "Fecha": "2025-09-06",
-      "Liga": "2. Deild",
-      "Local": "Haukar",
-      "Visitante": "Grotta",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15400.0,
-      "Stake Compuesto": 29935261.29,
-      "Beneficio Compuesto": 13470867.58,
-      "Banca Compuesto": 1510233932.23
-    },
-    {
-      "Fecha": "2025-09-06",
-      "Liga": "2. Deild",
-      "Local": "Fjardabyggd / Leiknir",
-      "Visitante": "Vídir",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -56843,10 +56551,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-06",
-      "Liga": "2. Deild",
-      "Local": "Ægir",
-      "Visitante": "Dalvík / Reynir",
-      "Goles HT": 2.0,
+      "Liga": "1. Deild",
+      "Local": "HK Kopavogur",
+      "Visitante": "Throttur Reykjavik",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -56860,13 +56568,13 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-06",
-      "Liga": "2. Division - Group 2",
-      "Local": "Strommen",
-      "Visitante": "Alta",
-      "Goles HT": 3.0,
+      "Liga": "1. Deild",
+      "Local": "Thor Akureyri",
+      "Visitante": "Fjolnir",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -56877,9 +56585,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-06",
-      "Liga": "2. Division - Group 2",
-      "Local": "Ull/Kisa",
-      "Visitante": "Stjørdals-Blink",
+      "Liga": "2. Deild",
+      "Local": "Vikingur Olafsiik",
+      "Visitante": "Kári",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -56894,6 +56602,91 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-06",
+      "Liga": "2. Deild",
+      "Local": "Haukar",
+      "Visitante": "Grotta",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15445.0,
+      "Stake Compuesto": 31306814.82,
+      "Beneficio Compuesto": 14088066.67,
+      "Banca Compuesto": 1579428807.9
+    },
+    {
+      "Fecha": "2025-09-06",
+      "Liga": "2. Deild",
+      "Local": "Fjardabyggd / Leiknir",
+      "Visitante": "Vídir",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15454.0,
+      "Stake Compuesto": 31588576.16,
+      "Beneficio Compuesto": 14214859.27,
+      "Banca Compuesto": 1593643667.17
+    },
+    {
+      "Fecha": "2025-09-06",
+      "Liga": "2. Deild",
+      "Local": "Ægir",
+      "Visitante": "Dalvík / Reynir",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15463.0,
+      "Stake Compuesto": 31872873.34,
+      "Beneficio Compuesto": 14342793.0,
+      "Banca Compuesto": 1607986460.18
+    },
+    {
+      "Fecha": "2025-09-06",
+      "Liga": "2. Division - Group 2",
+      "Local": "Strommen",
+      "Visitante": "Alta",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15472.0,
+      "Stake Compuesto": 32159729.2,
+      "Beneficio Compuesto": 14471878.14,
+      "Banca Compuesto": 1622458338.32
+    },
+    {
+      "Fecha": "2025-09-06",
+      "Liga": "2. Division - Group 2",
+      "Local": "Ull/Kisa",
+      "Visitante": "Stjørdals-Blink",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15481.0,
+      "Stake Compuesto": 32449166.77,
+      "Beneficio Compuesto": 14602125.04,
+      "Banca Compuesto": 1637060463.36
+    },
+    {
+      "Fecha": "2025-09-06",
       "Liga": "Ettan - Norra",
       "Local": "Karlberg",
       "Visitante": "Stocksund",
@@ -56904,10 +56697,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15445.0,
-      "Stake Compuesto": 31306814.82,
-      "Beneficio Compuesto": 14088066.67,
-      "Banca Compuesto": 1579428807.9
+      "Banca Fijo": 15490.0,
+      "Stake Compuesto": 32741209.27,
+      "Beneficio Compuesto": 14733544.17,
+      "Banca Compuesto": 1651794007.53
     },
     {
       "Fecha": "2025-09-06",
@@ -56921,10 +56714,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15425.0,
-      "Stake Compuesto": 31588576.16,
-      "Beneficio Compuesto": -31588576.16,
-      "Banca Compuesto": 1547840231.74
+      "Banca Fijo": 15470.0,
+      "Stake Compuesto": 33035880.15,
+      "Beneficio Compuesto": -33035880.15,
+      "Banca Compuesto": 1618758127.38
     },
     {
       "Fecha": "2025-09-07",
@@ -56938,10 +56731,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15434.0,
-      "Stake Compuesto": 30956804.63,
-      "Beneficio Compuesto": 13930562.09,
-      "Banca Compuesto": 1561770793.83
+      "Banca Fijo": 15479.0,
+      "Stake Compuesto": 32375162.55,
+      "Beneficio Compuesto": 14568823.15,
+      "Banca Compuesto": 1633326950.53
     },
     {
       "Fecha": "2025-09-07",
@@ -56955,10 +56748,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15443.0,
-      "Stake Compuesto": 31235415.88,
-      "Beneficio Compuesto": 14055937.14,
-      "Banca Compuesto": 1575826730.97
+      "Banca Fijo": 15488.0,
+      "Stake Compuesto": 32666539.01,
+      "Beneficio Compuesto": 14699942.55,
+      "Banca Compuesto": 1648026893.08
     },
     {
       "Fecha": "2025-09-07",
@@ -56972,10 +56765,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15452.0,
-      "Stake Compuesto": 31516534.62,
-      "Beneficio Compuesto": 14182440.58,
-      "Banca Compuesto": 1590009171.55
+      "Banca Fijo": 15497.0,
+      "Stake Compuesto": 32960537.86,
+      "Beneficio Compuesto": 14832242.04,
+      "Banca Compuesto": 1662859135.12
     },
     {
       "Fecha": "2025-09-12",
@@ -56989,10 +56782,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15461.0,
-      "Stake Compuesto": 31800183.43,
-      "Beneficio Compuesto": 14310082.54,
-      "Banca Compuesto": 1604319254.1
+      "Banca Fijo": 15506.0,
+      "Stake Compuesto": 33257182.7,
+      "Beneficio Compuesto": 14965732.22,
+      "Banca Compuesto": 1677824867.34
     },
     {
       "Fecha": "2025-09-12",
@@ -57006,10 +56799,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15470.0,
-      "Stake Compuesto": 32086385.08,
-      "Beneficio Compuesto": 14438873.29,
-      "Banca Compuesto": 1618758127.38
+      "Banca Fijo": 15515.0,
+      "Stake Compuesto": 33556497.35,
+      "Beneficio Compuesto": 15100423.81,
+      "Banca Compuesto": 1692925291.14
     },
     {
       "Fecha": "2025-09-13",
@@ -57023,10 +56816,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15479.0,
-      "Stake Compuesto": 32375162.55,
-      "Beneficio Compuesto": 14568823.15,
-      "Banca Compuesto": 1633326950.53
+      "Banca Fijo": 15524.0,
+      "Stake Compuesto": 33858505.82,
+      "Beneficio Compuesto": 15236327.62,
+      "Banca Compuesto": 1708161618.76
     },
     {
       "Fecha": "2025-09-13",
@@ -57040,91 +56833,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15488.0,
-      "Stake Compuesto": 32666539.01,
-      "Beneficio Compuesto": 14699942.55,
-      "Banca Compuesto": 1648026893.08
-    },
-    {
-      "Fecha": "2025-09-13",
-      "Liga": "1. Deild",
-      "Local": "Völsungur",
-      "Visitante": "HK Kopavogur",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15497.0,
-      "Stake Compuesto": 32960537.86,
-      "Beneficio Compuesto": 14832242.04,
-      "Banca Compuesto": 1662859135.12
-    },
-    {
-      "Fecha": "2025-09-13",
-      "Liga": "2. Deild",
-      "Local": "Vídir",
-      "Visitante": "Ægir",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15506.0,
-      "Stake Compuesto": 33257182.7,
-      "Beneficio Compuesto": 14965732.22,
-      "Banca Compuesto": 1677824867.34
-    },
-    {
-      "Fecha": "2025-09-13",
-      "Liga": "2. Deild",
-      "Local": "Höttur / Huginn",
-      "Visitante": "Kormákur / Hvöt",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15515.0,
-      "Stake Compuesto": 33556497.35,
-      "Beneficio Compuesto": 15100423.81,
-      "Banca Compuesto": 1692925291.14
-    },
-    {
-      "Fecha": "2025-09-13",
-      "Liga": "Veikkausliiga",
-      "Local": "SJK",
-      "Visitante": "HJK Helsinki",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15524.0,
-      "Stake Compuesto": 33858505.82,
-      "Beneficio Compuesto": 15236327.62,
-      "Banca Compuesto": 1708161618.76
-    },
-    {
-      "Fecha": "2025-09-13",
-      "Liga": "Ykkönen",
-      "Local": "OLS",
-      "Visitante": "KuPS Akatemia",
-      "Goles HT": 5.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 15533.0,
       "Stake Compuesto": 34163232.38,
       "Beneficio Compuesto": 15373454.57,
@@ -57132,9 +56840,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-13",
-      "Liga": "Esiliiga A",
-      "Local": "Elva",
-      "Visitante": "Nõmme United",
+      "Liga": "1. Deild",
+      "Local": "Völsungur",
+      "Visitante": "HK Kopavogur",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -57149,10 +56857,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-13",
-      "Liga": "Meistriliiga",
-      "Local": "Tammeka",
-      "Visitante": "FC Levadia Tallinn",
-      "Goles HT": 2.0,
+      "Liga": "2. Deild",
+      "Local": "Vídir",
+      "Visitante": "Ægir",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -57166,6 +56874,91 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-09-13",
+      "Liga": "2. Deild",
+      "Local": "Höttur / Huginn",
+      "Visitante": "Kormákur / Hvöt",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15560.0,
+      "Stake Compuesto": 35093966.22,
+      "Beneficio Compuesto": 15792284.8,
+      "Banca Compuesto": 1770490595.79
+    },
+    {
+      "Fecha": "2025-09-13",
+      "Liga": "Veikkausliiga",
+      "Local": "SJK",
+      "Visitante": "HJK Helsinki",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15569.0,
+      "Stake Compuesto": 35409811.92,
+      "Beneficio Compuesto": 15934415.36,
+      "Banca Compuesto": 1786425011.16
+    },
+    {
+      "Fecha": "2025-09-13",
+      "Liga": "Ykkönen",
+      "Local": "OLS",
+      "Visitante": "KuPS Akatemia",
+      "Goles HT": 5.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15578.0,
+      "Stake Compuesto": 35728500.22,
+      "Beneficio Compuesto": 16077825.1,
+      "Banca Compuesto": 1802502836.26
+    },
+    {
+      "Fecha": "2025-09-13",
+      "Liga": "Esiliiga A",
+      "Local": "Elva",
+      "Visitante": "Nõmme United",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15587.0,
+      "Stake Compuesto": 36050056.73,
+      "Beneficio Compuesto": 16222525.53,
+      "Banca Compuesto": 1818725361.78
+    },
+    {
+      "Fecha": "2025-09-13",
+      "Liga": "Meistriliiga",
+      "Local": "Tammeka",
+      "Visitante": "FC Levadia Tallinn",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15596.0,
+      "Stake Compuesto": 36374507.24,
+      "Beneficio Compuesto": 16368528.26,
+      "Banca Compuesto": 1835093890.04
+    },
+    {
+      "Fecha": "2025-09-13",
       "Liga": "2. Division - Group 1",
       "Local": "Arendal",
       "Visitante": "Vard",
@@ -57176,10 +56969,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15531.0,
-      "Stake Compuesto": 35093966.22,
-      "Beneficio Compuesto": -35093966.22,
-      "Banca Compuesto": 1719604344.77
+      "Banca Fijo": 15576.0,
+      "Stake Compuesto": 36701877.8,
+      "Beneficio Compuesto": -36701877.8,
+      "Banca Compuesto": 1798392012.24
     },
     {
       "Fecha": "2025-09-13",
@@ -57193,10 +56986,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15540.0,
-      "Stake Compuesto": 34392086.9,
-      "Beneficio Compuesto": 15476439.1,
-      "Banca Compuesto": 1735080783.88
+      "Banca Fijo": 15585.0,
+      "Stake Compuesto": 35967840.24,
+      "Beneficio Compuesto": 16185528.11,
+      "Banca Compuesto": 1814577540.35
     },
     {
       "Fecha": "2025-09-13",
@@ -57210,10 +57003,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15549.0,
-      "Stake Compuesto": 34701615.68,
-      "Beneficio Compuesto": 15615727.05,
-      "Banca Compuesto": 1750696510.93
+      "Banca Fijo": 15594.0,
+      "Stake Compuesto": 36291550.81,
+      "Beneficio Compuesto": 16331197.86,
+      "Banca Compuesto": 1830908738.21
     },
     {
       "Fecha": "2025-09-13",
@@ -57227,10 +57020,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15558.0,
-      "Stake Compuesto": 35013930.22,
-      "Beneficio Compuesto": 15756268.6,
-      "Banca Compuesto": 1766452779.53
+      "Banca Fijo": 15603.0,
+      "Stake Compuesto": 36618174.76,
+      "Beneficio Compuesto": 16478178.64,
+      "Banca Compuesto": 1847386916.85
     },
     {
       "Fecha": "2025-09-13",
@@ -57244,10 +57037,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15538.0,
-      "Stake Compuesto": 35329055.59,
-      "Beneficio Compuesto": -35329055.59,
-      "Banca Compuesto": 1731123723.94
+      "Banca Fijo": 15583.0,
+      "Stake Compuesto": 36947738.34,
+      "Beneficio Compuesto": -36947738.34,
+      "Banca Compuesto": 1810439178.52
     },
     {
       "Fecha": "2025-09-13",
@@ -57261,10 +57054,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15518.0,
-      "Stake Compuesto": 34622474.48,
-      "Beneficio Compuesto": -34622474.48,
-      "Banca Compuesto": 1696501249.46
+      "Banca Fijo": 15563.0,
+      "Stake Compuesto": 36208783.57,
+      "Beneficio Compuesto": -36208783.57,
+      "Banca Compuesto": 1774230394.95
     },
     {
       "Fecha": "2025-09-13",
@@ -57278,10 +57071,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15527.0,
-      "Stake Compuesto": 33930024.99,
-      "Beneficio Compuesto": 15268511.25,
-      "Banca Compuesto": 1711769760.71
+      "Banca Fijo": 15572.0,
+      "Stake Compuesto": 35484607.9,
+      "Beneficio Compuesto": 15968073.55,
+      "Banca Compuesto": 1790198468.5
     },
     {
       "Fecha": "2025-09-13",
@@ -57295,10 +57088,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15536.0,
-      "Stake Compuesto": 34235395.21,
-      "Beneficio Compuesto": 15405927.85,
-      "Banca Compuesto": 1727175688.55
+      "Banca Fijo": 15581.0,
+      "Stake Compuesto": 35803969.37,
+      "Beneficio Compuesto": 16111786.22,
+      "Banca Compuesto": 1806310254.72
     },
     {
       "Fecha": "2025-09-13",
@@ -57312,10 +57105,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15545.0,
-      "Stake Compuesto": 34543513.77,
-      "Beneficio Compuesto": 15544581.2,
-      "Banca Compuesto": 1742720269.75
+      "Banca Fijo": 15590.0,
+      "Stake Compuesto": 36126205.09,
+      "Beneficio Compuesto": 16256792.29,
+      "Banca Compuesto": 1822567047.01
     },
     {
       "Fecha": "2025-09-14",
@@ -57329,10 +57122,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15554.0,
-      "Stake Compuesto": 34854405.39,
-      "Beneficio Compuesto": 15684482.43,
-      "Banca Compuesto": 1758404752.18
+      "Banca Fijo": 15599.0,
+      "Stake Compuesto": 36451340.94,
+      "Beneficio Compuesto": 16403103.42,
+      "Banca Compuesto": 1838970150.43
+    },
+    {
+      "Fecha": "2025-09-14",
+      "Liga": "Superliga",
+      "Local": "Silkeborg",
+      "Visitante": "Odense",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15608.0,
+      "Stake Compuesto": 36779403.01,
+      "Beneficio Compuesto": 16550731.35,
+      "Banca Compuesto": 1855520881.79
     },
     {
       "Fecha": "2025-09-14",
@@ -57346,10 +57156,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15563.0,
-      "Stake Compuesto": 35168095.04,
-      "Beneficio Compuesto": 15825642.77,
-      "Banca Compuesto": 1774230394.95
+      "Banca Fijo": 15617.0,
+      "Stake Compuesto": 37110417.64,
+      "Beneficio Compuesto": 16699687.94,
+      "Banca Compuesto": 1872220569.72
     },
     {
       "Fecha": "2025-09-14",
@@ -57363,10 +57173,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15572.0,
-      "Stake Compuesto": 35484607.9,
-      "Beneficio Compuesto": 15968073.55,
-      "Banca Compuesto": 1790198468.5
+      "Banca Fijo": 15626.0,
+      "Stake Compuesto": 37444411.39,
+      "Beneficio Compuesto": 16849985.13,
+      "Banca Compuesto": 1889070554.85
     },
     {
       "Fecha": "2025-09-14",
@@ -57380,10 +57190,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15552.0,
-      "Stake Compuesto": 35803969.37,
-      "Beneficio Compuesto": -35803969.37,
-      "Banca Compuesto": 1754394499.13
+      "Banca Fijo": 15606.0,
+      "Stake Compuesto": 37781411.1,
+      "Beneficio Compuesto": -37781411.1,
+      "Banca Compuesto": 1851289143.75
     },
     {
       "Fecha": "2025-09-14",
@@ -57397,10 +57207,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15561.0,
-      "Stake Compuesto": 35087889.98,
-      "Beneficio Compuesto": 15789550.49,
-      "Banca Compuesto": 1770184049.62
+      "Banca Fijo": 15615.0,
+      "Stake Compuesto": 37025782.88,
+      "Beneficio Compuesto": 16661602.29,
+      "Banca Compuesto": 1867950746.05
     },
     {
       "Fecha": "2025-09-14",
@@ -57414,10 +57224,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15570.0,
-      "Stake Compuesto": 35403680.99,
-      "Beneficio Compuesto": 15931656.45,
-      "Banca Compuesto": 1786115706.07
+      "Banca Fijo": 15624.0,
+      "Stake Compuesto": 37359014.92,
+      "Beneficio Compuesto": 16811556.71,
+      "Banca Compuesto": 1884762302.76
     },
     {
       "Fecha": "2025-09-14",
@@ -57431,10 +57241,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15579.0,
-      "Stake Compuesto": 35722314.12,
-      "Beneficio Compuesto": 16075041.35,
-      "Banca Compuesto": 1802190747.42
+      "Banca Fijo": 15633.0,
+      "Stake Compuesto": 37695246.06,
+      "Beneficio Compuesto": 16962860.72,
+      "Banca Compuesto": 1901725163.49
     },
     {
       "Fecha": "2025-09-14",
@@ -57448,10 +57258,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15588.0,
-      "Stake Compuesto": 36043814.95,
-      "Beneficio Compuesto": 16219716.73,
-      "Banca Compuesto": 1818410464.15
+      "Banca Fijo": 15642.0,
+      "Stake Compuesto": 38034503.27,
+      "Beneficio Compuesto": 17115526.47,
+      "Banca Compuesto": 1918840689.96
     },
     {
       "Fecha": "2025-09-14",
@@ -57465,10 +57275,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15597.0,
-      "Stake Compuesto": 36368209.28,
-      "Beneficio Compuesto": 16365694.18,
-      "Banca Compuesto": 1834776158.33
+      "Banca Fijo": 15651.0,
+      "Stake Compuesto": 38376813.8,
+      "Beneficio Compuesto": 17269566.21,
+      "Banca Compuesto": 1936110256.17
     },
     {
       "Fecha": "2025-09-14",
@@ -57482,10 +57292,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15606.0,
-      "Stake Compuesto": 36695523.17,
-      "Beneficio Compuesto": 16512985.42,
-      "Banca Compuesto": 1851289143.75
+      "Banca Fijo": 15660.0,
+      "Stake Compuesto": 38722205.12,
+      "Beneficio Compuesto": 17424992.31,
+      "Banca Compuesto": 1953535248.47
     },
     {
       "Fecha": "2025-09-15",
@@ -57499,10 +57309,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15615.0,
-      "Stake Compuesto": 37025782.88,
-      "Beneficio Compuesto": 16661602.29,
-      "Banca Compuesto": 1867950746.05
+      "Banca Fijo": 15669.0,
+      "Stake Compuesto": 39070704.97,
+      "Beneficio Compuesto": 17581817.24,
+      "Banca Compuesto": 1971117065.71
     },
     {
       "Fecha": "2025-09-15",
@@ -57516,10 +57326,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15624.0,
-      "Stake Compuesto": 37359014.92,
-      "Beneficio Compuesto": 16811556.71,
-      "Banca Compuesto": 1884762302.76
+      "Banca Fijo": 15678.0,
+      "Stake Compuesto": 39422341.31,
+      "Beneficio Compuesto": 17740053.59,
+      "Banca Compuesto": 1988857119.3
     },
     {
       "Fecha": "2025-09-15",
@@ -57533,10 +57343,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15633.0,
-      "Stake Compuesto": 37695246.06,
-      "Beneficio Compuesto": 16962860.72,
-      "Banca Compuesto": 1901725163.49
+      "Banca Fijo": 15687.0,
+      "Stake Compuesto": 39777142.39,
+      "Beneficio Compuesto": 17899714.07,
+      "Banca Compuesto": 2006756833.38
     },
     {
       "Fecha": "2025-09-17",
@@ -57550,10 +57360,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15613.0,
-      "Stake Compuesto": 38034503.27,
-      "Beneficio Compuesto": -38034503.27,
-      "Banca Compuesto": 1863690660.22
+      "Banca Fijo": 15667.0,
+      "Stake Compuesto": 40135136.67,
+      "Beneficio Compuesto": -40135136.67,
+      "Banca Compuesto": 1966621696.71
     },
     {
       "Fecha": "2025-09-17",
@@ -57567,10 +57377,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15622.0,
-      "Stake Compuesto": 37273813.2,
-      "Beneficio Compuesto": 16773215.94,
-      "Banca Compuesto": 1880463876.16
+      "Banca Fijo": 15676.0,
+      "Stake Compuesto": 39332433.93,
+      "Beneficio Compuesto": 17699595.27,
+      "Banca Compuesto": 1984321291.98
     },
     {
       "Fecha": "2025-09-18",
@@ -57584,10 +57394,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15631.0,
-      "Stake Compuesto": 37609277.52,
-      "Beneficio Compuesto": 16924174.89,
-      "Banca Compuesto": 1897388051.04
+      "Banca Fijo": 15685.0,
+      "Stake Compuesto": 39686425.84,
+      "Beneficio Compuesto": 17858891.63,
+      "Banca Compuesto": 2002180183.61
     },
     {
       "Fecha": "2025-09-18",
@@ -57601,10 +57411,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15640.0,
-      "Stake Compuesto": 37947761.02,
-      "Beneficio Compuesto": 17076492.46,
-      "Banca Compuesto": 1914464543.5
+      "Banca Fijo": 15694.0,
+      "Stake Compuesto": 40043603.67,
+      "Beneficio Compuesto": 18019621.65,
+      "Banca Compuesto": 2020199805.26
     },
     {
       "Fecha": "2025-09-18",
@@ -57618,10 +57428,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15649.0,
-      "Stake Compuesto": 38289290.87,
-      "Beneficio Compuesto": 17230180.89,
-      "Banca Compuesto": 1931694724.4
+      "Banca Fijo": 15703.0,
+      "Stake Compuesto": 40403996.11,
+      "Beneficio Compuesto": 18181798.25,
+      "Banca Compuesto": 2038381603.51
     },
     {
       "Fecha": "2025-09-19",
@@ -57635,10 +57445,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15629.0,
-      "Stake Compuesto": 38633894.49,
-      "Beneficio Compuesto": -38633894.49,
-      "Banca Compuesto": 1893060829.91
+      "Banca Fijo": 15683.0,
+      "Stake Compuesto": 40767632.07,
+      "Beneficio Compuesto": -40767632.07,
+      "Banca Compuesto": 1997613971.44
     },
     {
       "Fecha": "2025-09-19",
@@ -57652,10 +57462,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15638.0,
-      "Stake Compuesto": 37861216.6,
-      "Beneficio Compuesto": 17037547.47,
-      "Banca Compuesto": 1910098377.38
+      "Banca Fijo": 15692.0,
+      "Stake Compuesto": 39952279.43,
+      "Beneficio Compuesto": 17978525.74,
+      "Banca Compuesto": 2015592497.18
     },
     {
       "Fecha": "2025-09-19",
@@ -57669,10 +57479,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15647.0,
-      "Stake Compuesto": 38201967.55,
-      "Beneficio Compuesto": 17190885.4,
-      "Banca Compuesto": 1927289262.77
+      "Banca Fijo": 15701.0,
+      "Stake Compuesto": 40311849.94,
+      "Beneficio Compuesto": 18140332.47,
+      "Banca Compuesto": 2033732829.65
     },
     {
       "Fecha": "2025-09-20",
@@ -57686,10 +57496,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15656.0,
-      "Stake Compuesto": 38545785.26,
-      "Beneficio Compuesto": 17345603.36,
-      "Banca Compuesto": 1944634866.14
+      "Banca Fijo": 15710.0,
+      "Stake Compuesto": 40674656.59,
+      "Beneficio Compuesto": 18303595.47,
+      "Banca Compuesto": 2052036425.12
     },
     {
       "Fecha": "2025-09-20",
@@ -57703,10 +57513,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15665.0,
-      "Stake Compuesto": 38892697.32,
-      "Beneficio Compuesto": 17501713.8,
-      "Banca Compuesto": 1962136579.93
+      "Banca Fijo": 15719.0,
+      "Stake Compuesto": 41040728.5,
+      "Beneficio Compuesto": 18468327.83,
+      "Banca Compuesto": 2070504752.95
     },
     {
       "Fecha": "2025-09-20",
@@ -57720,10 +57530,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15674.0,
-      "Stake Compuesto": 39242731.6,
-      "Beneficio Compuesto": 17659229.22,
-      "Banca Compuesto": 1979795809.15
+      "Banca Fijo": 15728.0,
+      "Stake Compuesto": 41410095.06,
+      "Beneficio Compuesto": 18634542.78,
+      "Banca Compuesto": 2089139295.72
     },
     {
       "Fecha": "2025-09-20",
@@ -57737,10 +57547,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15683.0,
-      "Stake Compuesto": 39595916.18,
-      "Beneficio Compuesto": 17818162.28,
-      "Banca Compuesto": 1997613971.44
+      "Banca Fijo": 15737.0,
+      "Stake Compuesto": 41782785.91,
+      "Beneficio Compuesto": 18802253.66,
+      "Banca Compuesto": 2107941549.38
     },
     {
       "Fecha": "2025-09-20",
@@ -57754,10 +57564,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15692.0,
-      "Stake Compuesto": 39952279.43,
-      "Beneficio Compuesto": 17978525.74,
-      "Banca Compuesto": 2015592497.18
+      "Banca Fijo": 15746.0,
+      "Stake Compuesto": 42158830.99,
+      "Beneficio Compuesto": 18971473.94,
+      "Banca Compuesto": 2126913023.33
     },
     {
       "Fecha": "2025-09-20",
@@ -57771,10 +57581,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15701.0,
-      "Stake Compuesto": 40311849.94,
-      "Beneficio Compuesto": 18140332.47,
-      "Banca Compuesto": 2033732829.65
+      "Banca Fijo": 15755.0,
+      "Stake Compuesto": 42538260.47,
+      "Beneficio Compuesto": 19142217.21,
+      "Banca Compuesto": 2146055240.54
     },
     {
       "Fecha": "2025-09-20",
@@ -57788,10 +57598,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15710.0,
-      "Stake Compuesto": 40674656.59,
-      "Beneficio Compuesto": 18303595.47,
-      "Banca Compuesto": 2052036425.12
+      "Banca Fijo": 15764.0,
+      "Stake Compuesto": 42921104.81,
+      "Beneficio Compuesto": 19314497.16,
+      "Banca Compuesto": 2165369737.7
     },
     {
       "Fecha": "2025-09-20",
@@ -57805,10 +57615,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15719.0,
-      "Stake Compuesto": 41040728.5,
-      "Beneficio Compuesto": 18468327.83,
-      "Banca Compuesto": 2070504752.95
+      "Banca Fijo": 15773.0,
+      "Stake Compuesto": 43307394.75,
+      "Beneficio Compuesto": 19488327.64,
+      "Banca Compuesto": 2184858065.34
     },
     {
       "Fecha": "2025-09-21",
@@ -57822,10 +57632,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15728.0,
-      "Stake Compuesto": 41410095.06,
-      "Beneficio Compuesto": 18634542.78,
-      "Banca Compuesto": 2089139295.72
+      "Banca Fijo": 15782.0,
+      "Stake Compuesto": 43697161.31,
+      "Beneficio Compuesto": 19663722.59,
+      "Banca Compuesto": 2204521787.93
+    },
+    {
+      "Fecha": "2025-09-21",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Silkeborg",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15791.0,
+      "Stake Compuesto": 44090435.76,
+      "Beneficio Compuesto": 19840696.09,
+      "Banca Compuesto": 2224362484.02
     },
     {
       "Fecha": "2025-09-21",
@@ -57839,10 +57666,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15737.0,
-      "Stake Compuesto": 41782785.91,
-      "Beneficio Compuesto": 18802253.66,
-      "Banca Compuesto": 2107941549.38
+      "Banca Fijo": 15800.0,
+      "Stake Compuesto": 44487249.68,
+      "Beneficio Compuesto": 20019262.36,
+      "Banca Compuesto": 2244381746.38
     },
     {
       "Fecha": "2025-09-21",
@@ -57856,10 +57683,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15717.0,
-      "Stake Compuesto": 42158830.99,
-      "Beneficio Compuesto": -42158830.99,
-      "Banca Compuesto": 2065782718.4
+      "Banca Fijo": 15780.0,
+      "Stake Compuesto": 44887634.93,
+      "Beneficio Compuesto": -44887634.93,
+      "Banca Compuesto": 2199494111.45
     },
     {
       "Fecha": "2025-09-21",
@@ -57873,10 +57700,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15726.0,
-      "Stake Compuesto": 41315654.37,
-      "Beneficio Compuesto": 18592044.47,
-      "Banca Compuesto": 2084374762.86
+      "Banca Fijo": 15789.0,
+      "Stake Compuesto": 43989882.23,
+      "Beneficio Compuesto": 19795447.0,
+      "Banca Compuesto": 2219289558.45
     },
     {
       "Fecha": "2025-09-21",
@@ -57890,10 +57717,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15735.0,
-      "Stake Compuesto": 41687495.26,
-      "Beneficio Compuesto": 18759372.87,
-      "Banca Compuesto": 2103134135.73
+      "Banca Fijo": 15798.0,
+      "Stake Compuesto": 44385791.17,
+      "Beneficio Compuesto": 19973606.03,
+      "Banca Compuesto": 2239263164.48
     },
     {
       "Fecha": "2025-09-21",
@@ -57907,10 +57734,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15715.0,
-      "Stake Compuesto": 42062682.71,
-      "Beneficio Compuesto": -42062682.71,
-      "Banca Compuesto": 2061071453.01
+      "Banca Fijo": 15778.0,
+      "Stake Compuesto": 44785263.29,
+      "Beneficio Compuesto": -44785263.29,
+      "Banca Compuesto": 2194477901.19
     },
     {
       "Fecha": "2025-09-21",
@@ -57924,10 +57751,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15724.0,
-      "Stake Compuesto": 41221429.06,
-      "Beneficio Compuesto": 18549643.08,
-      "Banca Compuesto": 2079621096.09
+      "Banca Fijo": 15787.0,
+      "Stake Compuesto": 43889558.02,
+      "Beneficio Compuesto": 19750301.11,
+      "Banca Compuesto": 2214228202.3
     },
     {
       "Fecha": "2025-09-21",
@@ -57941,10 +57768,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15733.0,
-      "Stake Compuesto": 41592421.92,
-      "Beneficio Compuesto": 18716589.86,
-      "Banca Compuesto": 2098337685.95
+      "Banca Fijo": 15796.0,
+      "Stake Compuesto": 44284564.05,
+      "Beneficio Compuesto": 19928053.82,
+      "Banca Compuesto": 2234156256.12
     },
     {
       "Fecha": "2025-09-22",
@@ -57958,135 +57785,16 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15713.0,
-      "Stake Compuesto": 41966753.72,
-      "Beneficio Compuesto": -41966753.72,
-      "Banca Compuesto": 2056370932.24
+      "Banca Fijo": 15776.0,
+      "Stake Compuesto": 44683125.12,
+      "Beneficio Compuesto": -44683125.12,
+      "Banca Compuesto": 2189473131.0
     },
     {
       "Fecha": "2025-09-22",
       "Liga": "Esiliiga A",
       "Local": "Flora II",
       "Visitante": "FCI Levadia II",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15722.0,
-      "Stake Compuesto": 41127418.64,
-      "Beneficio Compuesto": 18507338.39,
-      "Banca Compuesto": 2074878270.63
-    },
-    {
-      "Fecha": "2025-09-22",
-      "Liga": "Esiliiga A",
-      "Local": "Nõmme Kalju II",
-      "Visitante": "Nõmme United",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15731.0,
-      "Stake Compuesto": 41497565.41,
-      "Beneficio Compuesto": 18673904.44,
-      "Banca Compuesto": 2093552175.06
-    },
-    {
-      "Fecha": "2025-09-22",
-      "Liga": "Ettan - Norra",
-      "Local": "Hammarby Talang",
-      "Visitante": "Sollentuna",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15740.0,
-      "Stake Compuesto": 41871043.5,
-      "Beneficio Compuesto": 18841969.58,
-      "Banca Compuesto": 2112394144.64
-    },
-    {
-      "Fecha": "2025-09-22",
-      "Liga": "MLS Next Pro",
-      "Local": "Tacoma Defiance",
-      "Visitante": "Colorado Rapids II",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15749.0,
-      "Stake Compuesto": 42247882.89,
-      "Beneficio Compuesto": 19011547.3,
-      "Banca Compuesto": 2131405691.94
-    },
-    {
-      "Fecha": "2025-09-24",
-      "Liga": "Meistriliiga",
-      "Local": "Flora Tallinn",
-      "Visitante": "FC Levadia Tallinn",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15758.0,
-      "Stake Compuesto": 42628113.84,
-      "Beneficio Compuesto": 19182651.23,
-      "Banca Compuesto": 2150588343.17
-    },
-    {
-      "Fecha": "2025-09-26",
-      "Liga": "Ykkönen",
-      "Local": "FC jazz",
-      "Visitante": "EPS",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15767.0,
-      "Stake Compuesto": 43011766.86,
-      "Beneficio Compuesto": 19355295.09,
-      "Banca Compuesto": 2169943638.25
-    },
-    {
-      "Fecha": "2025-09-26",
-      "Liga": "Ykkönen",
-      "Local": "PKKU",
-      "Visitante": "Inter Turku II",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Visitante",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15776.0,
-      "Stake Compuesto": 43398872.77,
-      "Beneficio Compuesto": 19529492.74,
-      "Banca Compuesto": 2189473131.0
-    },
-    {
-      "Fecha": "2025-09-26",
-      "Liga": "MLS Next Pro",
-      "Local": "Toronto II",
-      "Visitante": "Philadelphia Union II",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -58100,11 +57808,11 @@ window.dashboardData = {
       "Banca Compuesto": 2209178389.18
     },
     {
-      "Fecha": "2025-09-27",
-      "Liga": "Úrvalsdeild",
-      "Local": "IA Akranes",
-      "Visitante": "KR Reykjavik",
-      "Goles HT": 1.0,
+      "Fecha": "2025-09-22",
+      "Liga": "Esiliiga A",
+      "Local": "Nõmme Kalju II",
+      "Visitante": "Nõmme United",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Visitante",
@@ -58117,14 +57825,14 @@ window.dashboardData = {
       "Banca Compuesto": 2229060994.68
     },
     {
-      "Fecha": "2025-09-27",
-      "Liga": "1. Deild",
-      "Local": "Keflavik",
-      "Visitante": "HK Kopavogur",
+      "Fecha": "2025-09-22",
+      "Liga": "Ettan - Norra",
+      "Local": "Hammarby Talang",
+      "Visitante": "Sollentuna",
       "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
-      "Sustento": "Visitante",
+      "Sustento": "Local",
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
@@ -58134,11 +57842,11 @@ window.dashboardData = {
       "Banca Compuesto": 2249122543.63
     },
     {
-      "Fecha": "2025-09-27",
-      "Liga": "Veikkausliiga",
-      "Local": "SJK",
-      "Visitante": "Inter Turku",
-      "Goles HT": 2.0,
+      "Fecha": "2025-09-22",
+      "Liga": "MLS Next Pro",
+      "Local": "Tacoma Defiance",
+      "Visitante": "Colorado Rapids II",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -58151,10 +57859,10 @@ window.dashboardData = {
       "Banca Compuesto": 2269364646.53
     },
     {
-      "Fecha": "2025-09-27",
-      "Liga": "Ykkönen",
-      "Local": "Rops",
-      "Visitante": "Atlantis",
+      "Fecha": "2025-09-24",
+      "Liga": "Meistriliiga",
+      "Local": "Flora Tallinn",
+      "Visitante": "FC Levadia Tallinn",
       "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -58168,6 +57876,125 @@ window.dashboardData = {
       "Banca Compuesto": 2289788928.34
     },
     {
+      "Fecha": "2025-09-26",
+      "Liga": "Ykkönen",
+      "Local": "FC jazz",
+      "Visitante": "EPS",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15830.0,
+      "Stake Compuesto": 45795778.57,
+      "Beneficio Compuesto": 20608100.36,
+      "Banca Compuesto": 2310397028.7
+    },
+    {
+      "Fecha": "2025-09-26",
+      "Liga": "Ykkönen",
+      "Local": "PKKU",
+      "Visitante": "Inter Turku II",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15839.0,
+      "Stake Compuesto": 46207940.57,
+      "Beneficio Compuesto": 20793573.26,
+      "Banca Compuesto": 2331190601.96
+    },
+    {
+      "Fecha": "2025-09-26",
+      "Liga": "MLS Next Pro",
+      "Local": "Toronto II",
+      "Visitante": "Philadelphia Union II",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15848.0,
+      "Stake Compuesto": 46623812.04,
+      "Beneficio Compuesto": 20980715.42,
+      "Banca Compuesto": 2352171317.38
+    },
+    {
+      "Fecha": "2025-09-27",
+      "Liga": "Úrvalsdeild",
+      "Local": "IA Akranes",
+      "Visitante": "KR Reykjavik",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15857.0,
+      "Stake Compuesto": 47043426.35,
+      "Beneficio Compuesto": 21169541.86,
+      "Banca Compuesto": 2373340859.23
+    },
+    {
+      "Fecha": "2025-09-27",
+      "Liga": "1. Deild",
+      "Local": "Keflavik",
+      "Visitante": "HK Kopavogur",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15866.0,
+      "Stake Compuesto": 47466817.18,
+      "Beneficio Compuesto": 21360067.73,
+      "Banca Compuesto": 2394700926.96
+    },
+    {
+      "Fecha": "2025-09-27",
+      "Liga": "Veikkausliiga",
+      "Local": "SJK",
+      "Visitante": "Inter Turku",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15875.0,
+      "Stake Compuesto": 47894018.54,
+      "Beneficio Compuesto": 21552308.34,
+      "Banca Compuesto": 2416253235.31
+    },
+    {
+      "Fecha": "2025-09-27",
+      "Liga": "Ykkönen",
+      "Local": "Rops",
+      "Visitante": "Atlantis",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15884.0,
+      "Stake Compuesto": 48325064.71,
+      "Beneficio Compuesto": 21746279.12,
+      "Banca Compuesto": 2437999514.43
+    },
+    {
       "Fecha": "2025-09-27",
       "Liga": "Esiliiga A",
       "Local": "FCI Levadia II",
@@ -58179,10 +58006,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15830.0,
-      "Stake Compuesto": 45795778.57,
-      "Beneficio Compuesto": 20608100.36,
-      "Banca Compuesto": 2310397028.7
+      "Banca Fijo": 15893.0,
+      "Stake Compuesto": 48759990.29,
+      "Beneficio Compuesto": 21941995.63,
+      "Banca Compuesto": 2459941510.05
     },
     {
       "Fecha": "2025-09-27",
@@ -58196,10 +58023,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15839.0,
-      "Stake Compuesto": 46207940.57,
-      "Beneficio Compuesto": 20793573.26,
-      "Banca Compuesto": 2331190601.96
+      "Banca Fijo": 15902.0,
+      "Stake Compuesto": 49198830.2,
+      "Beneficio Compuesto": 22139473.59,
+      "Banca Compuesto": 2482080983.65
     },
     {
       "Fecha": "2025-09-27",
@@ -58213,10 +58040,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15848.0,
-      "Stake Compuesto": 46623812.04,
-      "Beneficio Compuesto": 20980715.42,
-      "Banca Compuesto": 2352171317.38
+      "Banca Fijo": 15911.0,
+      "Stake Compuesto": 49641619.67,
+      "Beneficio Compuesto": 22338728.85,
+      "Banca Compuesto": 2504419712.5
     },
     {
       "Fecha": "2025-09-27",
@@ -58230,10 +58057,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15857.0,
-      "Stake Compuesto": 47043426.35,
-      "Beneficio Compuesto": 21169541.86,
-      "Banca Compuesto": 2373340859.23
+      "Banca Fijo": 15920.0,
+      "Stake Compuesto": 50088394.25,
+      "Beneficio Compuesto": 22539777.41,
+      "Banca Compuesto": 2526959489.91
     },
     {
       "Fecha": "2025-09-27",
@@ -58247,10 +58074,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15837.0,
-      "Stake Compuesto": 47466817.18,
-      "Beneficio Compuesto": -47466817.18,
-      "Banca Compuesto": 2325874042.05
+      "Banca Fijo": 15900.0,
+      "Stake Compuesto": 50539189.8,
+      "Beneficio Compuesto": -50539189.8,
+      "Banca Compuesto": 2476420300.11
     },
     {
       "Fecha": "2025-09-27",
@@ -58264,10 +58091,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15846.0,
-      "Stake Compuesto": 46517480.84,
-      "Beneficio Compuesto": 20932866.38,
-      "Banca Compuesto": 2346806908.43
+      "Banca Fijo": 15909.0,
+      "Stake Compuesto": 49528406.0,
+      "Beneficio Compuesto": 22287782.7,
+      "Banca Compuesto": 2498708082.81
     },
     {
       "Fecha": "2025-09-27",
@@ -58281,10 +58108,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15855.0,
-      "Stake Compuesto": 46936138.17,
-      "Beneficio Compuesto": 21121262.18,
-      "Banca Compuesto": 2367928170.6
+      "Banca Fijo": 15918.0,
+      "Stake Compuesto": 49974161.66,
+      "Beneficio Compuesto": 22488372.75,
+      "Banca Compuesto": 2521196455.56
     },
     {
       "Fecha": "2025-09-27",
@@ -58298,10 +58125,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15864.0,
-      "Stake Compuesto": 47358563.41,
-      "Beneficio Compuesto": 21311353.54,
-      "Banca Compuesto": 2389239524.14
+      "Banca Fijo": 15927.0,
+      "Stake Compuesto": 50423929.11,
+      "Beneficio Compuesto": 22690768.1,
+      "Banca Compuesto": 2543887223.66
     },
     {
       "Fecha": "2025-09-27",
@@ -58315,10 +58142,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15873.0,
-      "Stake Compuesto": 47784790.48,
-      "Beneficio Compuesto": 21503155.72,
-      "Banca Compuesto": 2410742679.85
+      "Banca Fijo": 15936.0,
+      "Stake Compuesto": 50877744.47,
+      "Beneficio Compuesto": 22894985.01,
+      "Banca Compuesto": 2566782208.67
     },
     {
       "Fecha": "2025-09-27",
@@ -58332,10 +58159,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15882.0,
-      "Stake Compuesto": 48214853.6,
-      "Beneficio Compuesto": 21696684.12,
-      "Banca Compuesto": 2432439363.97
+      "Banca Fijo": 15945.0,
+      "Stake Compuesto": 51335644.17,
+      "Beneficio Compuesto": 23101039.88,
+      "Banca Compuesto": 2589883248.55
     },
     {
       "Fecha": "2025-09-27",
@@ -58349,10 +58176,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15891.0,
-      "Stake Compuesto": 48648787.28,
-      "Beneficio Compuesto": 21891954.28,
-      "Banca Compuesto": 2454331318.25
+      "Banca Fijo": 15954.0,
+      "Stake Compuesto": 51797664.97,
+      "Beneficio Compuesto": 23308949.24,
+      "Banca Compuesto": 2613192197.79
+    },
+    {
+      "Fecha": "2025-09-28",
+      "Liga": "Superliga",
+      "Local": "Brondby",
+      "Visitante": "Odense",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 15963.0,
+      "Stake Compuesto": 52263843.96,
+      "Beneficio Compuesto": 23518729.78,
+      "Banca Compuesto": 2636710927.57
     },
     {
       "Fecha": "2025-09-28",
@@ -58366,10 +58210,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15900.0,
-      "Stake Compuesto": 49086626.36,
-      "Beneficio Compuesto": 22088981.86,
-      "Banca Compuesto": 2476420300.11
+      "Banca Fijo": 15972.0,
+      "Stake Compuesto": 52734218.55,
+      "Beneficio Compuesto": 23730398.35,
+      "Banca Compuesto": 2660441325.92
     },
     {
       "Fecha": "2025-09-28",
@@ -58383,10 +58227,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15909.0,
-      "Stake Compuesto": 49528406.0,
-      "Beneficio Compuesto": 22287782.7,
-      "Banca Compuesto": 2498708082.81
+      "Banca Fijo": 15981.0,
+      "Stake Compuesto": 53208826.52,
+      "Beneficio Compuesto": 23943971.93,
+      "Banca Compuesto": 2684385297.85
     },
     {
       "Fecha": "2025-09-28",
@@ -58400,10 +58244,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15918.0,
-      "Stake Compuesto": 49974161.66,
-      "Beneficio Compuesto": 22488372.75,
-      "Banca Compuesto": 2521196455.56
+      "Banca Fijo": 15990.0,
+      "Stake Compuesto": 53687705.96,
+      "Beneficio Compuesto": 24159467.68,
+      "Banca Compuesto": 2708544765.53
     },
     {
       "Fecha": "2025-09-28",
@@ -58417,10 +58261,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15927.0,
-      "Stake Compuesto": 50423929.11,
-      "Beneficio Compuesto": 22690768.1,
-      "Banca Compuesto": 2543887223.66
+      "Banca Fijo": 15999.0,
+      "Stake Compuesto": 54170895.31,
+      "Beneficio Compuesto": 24376902.89,
+      "Banca Compuesto": 2732921668.42
     },
     {
       "Fecha": "2025-09-28",
@@ -58434,10 +58278,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15936.0,
-      "Stake Compuesto": 50877744.47,
-      "Beneficio Compuesto": 22894985.01,
-      "Banca Compuesto": 2566782208.67
+      "Banca Fijo": 16008.0,
+      "Stake Compuesto": 54658433.37,
+      "Beneficio Compuesto": 24596295.02,
+      "Banca Compuesto": 2757517963.43
     },
     {
       "Fecha": "2025-09-28",
@@ -58451,10 +58295,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15945.0,
-      "Stake Compuesto": 51335644.17,
-      "Beneficio Compuesto": 23101039.88,
-      "Banca Compuesto": 2589883248.55
+      "Banca Fijo": 16017.0,
+      "Stake Compuesto": 55150359.27,
+      "Beneficio Compuesto": 24817661.67,
+      "Banca Compuesto": 2782335625.11
     },
     {
       "Fecha": "2025-09-28",
@@ -58468,10 +58312,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15954.0,
-      "Stake Compuesto": 51797664.97,
-      "Beneficio Compuesto": 23308949.24,
-      "Banca Compuesto": 2613192197.79
+      "Banca Fijo": 16026.0,
+      "Stake Compuesto": 55646712.5,
+      "Beneficio Compuesto": 25041020.63,
+      "Banca Compuesto": 2807376645.73
     },
     {
       "Fecha": "2025-09-28",
@@ -58485,10 +58329,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15963.0,
-      "Stake Compuesto": 52263843.96,
-      "Beneficio Compuesto": 23518729.78,
-      "Banca Compuesto": 2636710927.57
+      "Banca Fijo": 16035.0,
+      "Stake Compuesto": 56147532.91,
+      "Beneficio Compuesto": 25266389.81,
+      "Banca Compuesto": 2832643035.54
     },
     {
       "Fecha": "2025-09-29",
@@ -58502,10 +58346,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15972.0,
-      "Stake Compuesto": 52734218.55,
-      "Beneficio Compuesto": 23730398.35,
-      "Banca Compuesto": 2660441325.92
+      "Banca Fijo": 16044.0,
+      "Stake Compuesto": 56652860.71,
+      "Beneficio Compuesto": 25493787.32,
+      "Banca Compuesto": 2858136822.86
     },
     {
       "Fecha": "2025-09-29",
@@ -58519,10 +58363,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15981.0,
-      "Stake Compuesto": 53208826.52,
-      "Beneficio Compuesto": 23943971.93,
-      "Banca Compuesto": 2684385297.85
+      "Banca Fijo": 16053.0,
+      "Stake Compuesto": 57162736.46,
+      "Beneficio Compuesto": 25723231.41,
+      "Banca Compuesto": 2883860054.27
     },
     {
       "Fecha": "2025-10-02",
@@ -58536,10 +58380,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15990.0,
-      "Stake Compuesto": 53687705.96,
-      "Beneficio Compuesto": 24159467.68,
-      "Banca Compuesto": 2708544765.53
+      "Banca Fijo": 16062.0,
+      "Stake Compuesto": 57677201.09,
+      "Beneficio Compuesto": 25954740.49,
+      "Banca Compuesto": 2909814794.76
     },
     {
       "Fecha": "2025-10-03",
@@ -58553,10 +58397,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15999.0,
-      "Stake Compuesto": 54170895.31,
-      "Beneficio Compuesto": 24376902.89,
-      "Banca Compuesto": 2732921668.42
+      "Banca Fijo": 16071.0,
+      "Stake Compuesto": 58196295.9,
+      "Beneficio Compuesto": 26188333.15,
+      "Banca Compuesto": 2936003127.91
     },
     {
       "Fecha": "2025-10-03",
@@ -58570,10 +58414,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16008.0,
-      "Stake Compuesto": 54658433.37,
-      "Beneficio Compuesto": 24596295.02,
-      "Banca Compuesto": 2757517963.43
+      "Banca Fijo": 16080.0,
+      "Stake Compuesto": 58720062.56,
+      "Beneficio Compuesto": 26424028.15,
+      "Banca Compuesto": 2962427156.06
     },
     {
       "Fecha": "2025-10-03",
@@ -58587,10 +58431,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16017.0,
-      "Stake Compuesto": 55150359.27,
-      "Beneficio Compuesto": 24817661.67,
-      "Banca Compuesto": 2782335625.11
+      "Banca Fijo": 16089.0,
+      "Stake Compuesto": 59248543.12,
+      "Beneficio Compuesto": 26661844.4,
+      "Banca Compuesto": 2989089000.47
     },
     {
       "Fecha": "2025-10-03",
@@ -58604,10 +58448,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15997.0,
-      "Stake Compuesto": 55646712.5,
-      "Beneficio Compuesto": -55646712.5,
-      "Banca Compuesto": 2726688912.6
+      "Banca Fijo": 16069.0,
+      "Stake Compuesto": 59781780.01,
+      "Beneficio Compuesto": -59781780.01,
+      "Banca Compuesto": 2929307220.46
     },
     {
       "Fecha": "2025-10-04",
@@ -58621,10 +58465,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15977.0,
-      "Stake Compuesto": 54533778.25,
-      "Beneficio Compuesto": -54533778.25,
-      "Banca Compuesto": 2672155134.35
+      "Banca Fijo": 16049.0,
+      "Stake Compuesto": 58586144.41,
+      "Beneficio Compuesto": -58586144.41,
+      "Banca Compuesto": 2870721076.05
     },
     {
       "Fecha": "2025-10-04",
@@ -58638,10 +58482,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15986.0,
-      "Stake Compuesto": 53443102.69,
-      "Beneficio Compuesto": 24049396.21,
-      "Banca Compuesto": 2696204530.56
+      "Banca Fijo": 16058.0,
+      "Stake Compuesto": 57414421.52,
+      "Beneficio Compuesto": 25836489.68,
+      "Banca Compuesto": 2896557565.73
     },
     {
       "Fecha": "2025-10-04",
@@ -58655,10 +58499,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15995.0,
-      "Stake Compuesto": 53924090.61,
-      "Beneficio Compuesto": 24265840.78,
-      "Banca Compuesto": 2720470371.34
+      "Banca Fijo": 16067.0,
+      "Stake Compuesto": 57931151.31,
+      "Beneficio Compuesto": 26069018.09,
+      "Banca Compuesto": 2922626583.82
     },
     {
       "Fecha": "2025-10-04",
@@ -58672,10 +58516,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16004.0,
-      "Stake Compuesto": 54409407.43,
-      "Beneficio Compuesto": 24484233.34,
-      "Banca Compuesto": 2744954604.68
+      "Banca Fijo": 16076.0,
+      "Stake Compuesto": 58452531.68,
+      "Beneficio Compuesto": 26303639.25,
+      "Banca Compuesto": 2948930223.08
     },
     {
       "Fecha": "2025-10-04",
@@ -58689,10 +58533,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15984.0,
-      "Stake Compuesto": 54899092.09,
-      "Beneficio Compuesto": -54899092.09,
-      "Banca Compuesto": 2690055512.58
+      "Banca Fijo": 16056.0,
+      "Stake Compuesto": 58978604.46,
+      "Beneficio Compuesto": -58978604.46,
+      "Banca Compuesto": 2889951618.62
     },
     {
       "Fecha": "2025-10-04",
@@ -58706,10 +58550,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15993.0,
-      "Stake Compuesto": 53801110.25,
-      "Beneficio Compuesto": 24210499.61,
-      "Banca Compuesto": 2714266012.2
+      "Banca Fijo": 16065.0,
+      "Stake Compuesto": 57799032.37,
+      "Beneficio Compuesto": 26009564.57,
+      "Banca Compuesto": 2915961183.18
     },
     {
       "Fecha": "2025-10-04",
@@ -58723,10 +58567,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16002.0,
-      "Stake Compuesto": 54285320.24,
-      "Beneficio Compuesto": 24428394.11,
-      "Banca Compuesto": 2738694406.31
+      "Banca Fijo": 16074.0,
+      "Stake Compuesto": 58319223.66,
+      "Beneficio Compuesto": 26243650.65,
+      "Banca Compuesto": 2942204833.83
     },
     {
       "Fecha": "2025-10-04",
@@ -58740,10 +58584,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16011.0,
-      "Stake Compuesto": 54773888.13,
-      "Beneficio Compuesto": 24648249.66,
-      "Banca Compuesto": 2763342655.96
+      "Banca Fijo": 16083.0,
+      "Stake Compuesto": 58844096.68,
+      "Beneficio Compuesto": 26479843.5,
+      "Banca Compuesto": 2968684677.34
     },
     {
       "Fecha": "2025-10-04",
@@ -58757,10 +58601,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15991.0,
-      "Stake Compuesto": 55266853.12,
-      "Beneficio Compuesto": -55266853.12,
-      "Banca Compuesto": 2708075802.84
+      "Banca Fijo": 16063.0,
+      "Stake Compuesto": 59373693.55,
+      "Beneficio Compuesto": -59373693.55,
+      "Banca Compuesto": 2909310983.79
     },
     {
       "Fecha": "2025-10-04",
@@ -58774,10 +58618,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 15971.0,
-      "Stake Compuesto": 54161516.06,
-      "Beneficio Compuesto": -54161516.06,
-      "Banca Compuesto": 2653914286.79
+      "Banca Fijo": 16043.0,
+      "Stake Compuesto": 58186219.68,
+      "Beneficio Compuesto": -58186219.68,
+      "Banca Compuesto": 2851124764.11
     },
     {
       "Fecha": "2025-10-05",
@@ -58791,142 +58635,6 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15980.0,
-      "Stake Compuesto": 53078285.74,
-      "Beneficio Compuesto": 23885228.58,
-      "Banca Compuesto": 2677799515.37
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "Úrvalsdeild",
-      "Local": "Vikingur Reykjavik",
-      "Visitante": "FH hafnarfjordur",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15989.0,
-      "Stake Compuesto": 53555990.31,
-      "Beneficio Compuesto": 24100195.64,
-      "Banca Compuesto": 2701899711.01
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "Ykkönen",
-      "Local": "OLS",
-      "Visitante": "JJK",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 15998.0,
-      "Stake Compuesto": 54037994.22,
-      "Beneficio Compuesto": 24317097.4,
-      "Banca Compuesto": 2726216808.41
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "Meistriliiga",
-      "Local": "FC Levadia Tallinn",
-      "Visitante": "Tammeka",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16007.0,
-      "Stake Compuesto": 54524336.17,
-      "Beneficio Compuesto": 24535951.28,
-      "Banca Compuesto": 2750752759.68
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "2. Division - Group 2",
-      "Local": "Strommen",
-      "Visitante": "Levanger",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16016.0,
-      "Stake Compuesto": 55015055.19,
-      "Beneficio Compuesto": 24756774.84,
-      "Banca Compuesto": 2775509534.52
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "Ettan - Norra",
-      "Local": "Hammarby Talang",
-      "Visitante": "Arlanda",
-      "Goles HT": 1.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16025.0,
-      "Stake Compuesto": 55510190.69,
-      "Beneficio Compuesto": 24979585.81,
-      "Banca Compuesto": 2800489120.33
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "MLS Next Pro",
-      "Local": "Philadelphia Union II",
-      "Visitante": "New York City II",
-      "Goles HT": 4.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase B",
-      "Sustento": "Local",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16034.0,
-      "Stake Compuesto": 56009782.41,
-      "Beneficio Compuesto": 25204402.08,
-      "Banca Compuesto": 2825693522.41
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "MLS Next Pro",
-      "Local": "Portland Timbers II",
-      "Visitante": "St. Louis City II",
-      "Goles HT": 2.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16043.0,
-      "Stake Compuesto": 56513870.45,
-      "Beneficio Compuesto": 25431241.7,
-      "Banca Compuesto": 2851124764.11
-    },
-    {
-      "Fecha": "2025-10-05",
-      "Liga": "MLS Next Pro",
-      "Local": "Real Monarchs",
-      "Visitante": "Vancouver Whitecaps II",
-      "Goles HT": 3.0,
-      "Resultado": "GANADA",
-      "Clase": "Clase A",
-      "Sustento": "Ambos",
-      "Cuota": 1.45,
-      "Stake Fijo": 20.0,
-      "Beneficio Fijo": 9.0,
       "Banca Fijo": 16052.0,
       "Stake Compuesto": 57022495.28,
       "Beneficio Compuesto": 25660122.88,
@@ -58934,10 +58642,10 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-10-05",
-      "Liga": "MLS Next Pro",
-      "Local": "Tacoma Defiance",
-      "Visitante": "Houston Dynamo FC II",
-      "Goles HT": 4.0,
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "FC Midtjylland",
+      "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -58951,9 +58659,9 @@ window.dashboardData = {
     },
     {
       "Fecha": "2025-10-05",
-      "Liga": "MLS Next Pro",
-      "Local": "The Town",
-      "Visitante": "Austin II",
+      "Liga": "Úrvalsdeild",
+      "Local": "Vikingur Reykjavik",
+      "Visitante": "FH hafnarfjordur",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -58967,11 +58675,11 @@ window.dashboardData = {
       "Banca Compuesto": 2928800034.53
     },
     {
-      "Fecha": "2025-10-08",
-      "Liga": "2. Division - Group 2",
-      "Local": "Alta",
-      "Visitante": "Stjørdals-Blink",
-      "Goles HT": 2.0,
+      "Fecha": "2025-10-05",
+      "Liga": "Ykkönen",
+      "Local": "OLS",
+      "Visitante": "JJK",
+      "Goles HT": 3.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -58984,11 +58692,11 @@ window.dashboardData = {
       "Banca Compuesto": 2955159234.84
     },
     {
-      "Fecha": "2025-10-11",
-      "Liga": "2. Division - Group 1",
-      "Local": "Sotra",
-      "Visitante": "Vard",
-      "Goles HT": 1.0,
+      "Fecha": "2025-10-05",
+      "Liga": "Meistriliiga",
+      "Local": "FC Levadia Tallinn",
+      "Visitante": "Tammeka",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -59001,11 +58709,11 @@ window.dashboardData = {
       "Banca Compuesto": 2981755667.96
     },
     {
-      "Fecha": "2025-10-11",
+      "Fecha": "2025-10-05",
       "Liga": "2. Division - Group 2",
-      "Local": "Eidsvold",
-      "Visitante": "Asker",
-      "Goles HT": 1.0,
+      "Local": "Strommen",
+      "Visitante": "Levanger",
+      "Goles HT": 2.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
       "Sustento": "Local",
@@ -59018,10 +58726,10 @@ window.dashboardData = {
       "Banca Compuesto": 3008591468.97
     },
     {
-      "Fecha": "2025-10-11",
-      "Liga": "2. Division - Group 2",
-      "Local": "Kjelsås",
-      "Visitante": "Ull/Kisa",
+      "Fecha": "2025-10-05",
+      "Liga": "Ettan - Norra",
+      "Local": "Hammarby Talang",
+      "Visitante": "Arlanda",
       "Goles HT": 1.0,
       "Resultado": "GANADA",
       "Clase": "Clase B",
@@ -59035,6 +58743,159 @@ window.dashboardData = {
       "Banca Compuesto": 3035668792.19
     },
     {
+      "Fecha": "2025-10-05",
+      "Liga": "MLS Next Pro",
+      "Local": "Philadelphia Union II",
+      "Visitante": "New York City II",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16115.0,
+      "Stake Compuesto": 60713375.84,
+      "Beneficio Compuesto": 27321019.13,
+      "Banca Compuesto": 3062989811.32
+    },
+    {
+      "Fecha": "2025-10-05",
+      "Liga": "MLS Next Pro",
+      "Local": "Portland Timbers II",
+      "Visitante": "St. Louis City II",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16124.0,
+      "Stake Compuesto": 61259796.23,
+      "Beneficio Compuesto": 27566908.3,
+      "Banca Compuesto": 3090556719.62
+    },
+    {
+      "Fecha": "2025-10-05",
+      "Liga": "MLS Next Pro",
+      "Local": "Real Monarchs",
+      "Visitante": "Vancouver Whitecaps II",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16133.0,
+      "Stake Compuesto": 61811134.39,
+      "Beneficio Compuesto": 27815010.48,
+      "Banca Compuesto": 3118371730.1
+    },
+    {
+      "Fecha": "2025-10-05",
+      "Liga": "MLS Next Pro",
+      "Local": "Tacoma Defiance",
+      "Visitante": "Houston Dynamo FC II",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16142.0,
+      "Stake Compuesto": 62367434.6,
+      "Beneficio Compuesto": 28065345.57,
+      "Banca Compuesto": 3146437075.67
+    },
+    {
+      "Fecha": "2025-10-05",
+      "Liga": "MLS Next Pro",
+      "Local": "The Town",
+      "Visitante": "Austin II",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16151.0,
+      "Stake Compuesto": 62928741.51,
+      "Beneficio Compuesto": 28317933.68,
+      "Banca Compuesto": 3174755009.35
+    },
+    {
+      "Fecha": "2025-10-08",
+      "Liga": "2. Division - Group 2",
+      "Local": "Alta",
+      "Visitante": "Stjørdals-Blink",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16160.0,
+      "Stake Compuesto": 63495100.19,
+      "Beneficio Compuesto": 28572795.08,
+      "Banca Compuesto": 3203327804.43
+    },
+    {
+      "Fecha": "2025-10-11",
+      "Liga": "2. Division - Group 1",
+      "Local": "Sotra",
+      "Visitante": "Vard",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16169.0,
+      "Stake Compuesto": 64066556.09,
+      "Beneficio Compuesto": 28829950.24,
+      "Banca Compuesto": 3232157754.67
+    },
+    {
+      "Fecha": "2025-10-11",
+      "Liga": "2. Division - Group 2",
+      "Local": "Eidsvold",
+      "Visitante": "Asker",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16178.0,
+      "Stake Compuesto": 64643155.09,
+      "Beneficio Compuesto": 29089419.79,
+      "Banca Compuesto": 3261247174.47
+    },
+    {
+      "Fecha": "2025-10-11",
+      "Liga": "2. Division - Group 2",
+      "Local": "Kjelsås",
+      "Visitante": "Ull/Kisa",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16187.0,
+      "Stake Compuesto": 65224943.49,
+      "Beneficio Compuesto": 29351224.57,
+      "Banca Compuesto": 3290598399.04
+    },
+    {
       "Fecha": "2025-10-11",
       "Liga": "Ettan - Norra",
       "Local": "Karlberg",
@@ -59046,10 +58907,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16086.0,
-      "Stake Compuesto": 60713375.84,
-      "Beneficio Compuesto": -60713375.84,
-      "Banca Compuesto": 2974955416.35
+      "Banca Fijo": 16167.0,
+      "Stake Compuesto": 65811967.98,
+      "Beneficio Compuesto": -65811967.98,
+      "Banca Compuesto": 3224786431.06
     },
     {
       "Fecha": "2025-10-11",
@@ -59063,10 +58924,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16095.0,
-      "Stake Compuesto": 59499108.33,
-      "Beneficio Compuesto": 26774598.75,
-      "Banca Compuesto": 3001730015.09
+      "Banca Fijo": 16176.0,
+      "Stake Compuesto": 64495728.62,
+      "Beneficio Compuesto": 29023077.88,
+      "Banca Compuesto": 3253809508.93
     },
     {
       "Fecha": "2025-10-12",
@@ -59080,10 +58941,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16104.0,
-      "Stake Compuesto": 60034600.3,
-      "Beneficio Compuesto": 27015570.14,
-      "Banca Compuesto": 3028745585.23
+      "Banca Fijo": 16185.0,
+      "Stake Compuesto": 65076190.18,
+      "Beneficio Compuesto": 29284285.58,
+      "Banca Compuesto": 3283093794.52
     },
     {
       "Fecha": "2025-10-12",
@@ -59097,10 +58958,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16113.0,
-      "Stake Compuesto": 60574911.7,
-      "Beneficio Compuesto": 27258710.27,
-      "Banca Compuesto": 3056004295.5
+      "Banca Fijo": 16194.0,
+      "Stake Compuesto": 65661875.89,
+      "Beneficio Compuesto": 29547844.15,
+      "Banca Compuesto": 3312641638.67
     },
     {
       "Fecha": "2025-10-12",
@@ -59114,10 +58975,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16122.0,
-      "Stake Compuesto": 61120085.91,
-      "Beneficio Compuesto": 27504038.66,
-      "Banca Compuesto": 3083508334.16
+      "Banca Fijo": 16203.0,
+      "Stake Compuesto": 66252832.77,
+      "Beneficio Compuesto": 29813774.75,
+      "Banca Compuesto": 3342455413.41
     },
     {
       "Fecha": "2025-10-18",
@@ -59131,10 +58992,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16131.0,
-      "Stake Compuesto": 61670166.68,
-      "Beneficio Compuesto": 27751575.01,
-      "Banca Compuesto": 3111259909.16
+      "Banca Fijo": 16212.0,
+      "Stake Compuesto": 66849108.27,
+      "Beneficio Compuesto": 30082098.72,
+      "Banca Compuesto": 3372537512.13
     },
     {
       "Fecha": "2025-10-18",
@@ -59148,10 +59009,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16140.0,
-      "Stake Compuesto": 62225198.18,
-      "Beneficio Compuesto": 28001339.18,
-      "Banca Compuesto": 3139261248.35
+      "Banca Fijo": 16221.0,
+      "Stake Compuesto": 67450750.24,
+      "Beneficio Compuesto": 30352837.61,
+      "Banca Compuesto": 3402890349.74
     },
     {
       "Fecha": "2025-10-18",
@@ -59165,10 +59026,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16149.0,
-      "Stake Compuesto": 62785224.97,
-      "Beneficio Compuesto": 28253351.24,
-      "Banca Compuesto": 3167514599.58
+      "Banca Fijo": 16230.0,
+      "Stake Compuesto": 68057806.99,
+      "Beneficio Compuesto": 30626013.15,
+      "Banca Compuesto": 3433516362.89
     },
     {
       "Fecha": "2025-10-18",
@@ -59182,10 +59043,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16158.0,
-      "Stake Compuesto": 63350291.99,
-      "Beneficio Compuesto": 28507631.4,
-      "Banca Compuesto": 3196022230.98
+      "Banca Fijo": 16239.0,
+      "Stake Compuesto": 68670327.26,
+      "Beneficio Compuesto": 30901647.27,
+      "Banca Compuesto": 3464418010.16
     },
     {
       "Fecha": "2025-10-18",
@@ -59199,10 +59060,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16167.0,
-      "Stake Compuesto": 63920444.62,
-      "Beneficio Compuesto": 28764200.08,
-      "Banca Compuesto": 3224786431.06
+      "Banca Fijo": 16248.0,
+      "Stake Compuesto": 69288360.2,
+      "Beneficio Compuesto": 31179762.09,
+      "Banca Compuesto": 3495597772.25
+    },
+    {
+      "Fecha": "2025-10-19",
+      "Liga": "Superliga",
+      "Local": "Viborg",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16257.0,
+      "Stake Compuesto": 69911955.44,
+      "Beneficio Compuesto": 31460379.95,
+      "Banca Compuesto": 3527058152.2
     },
     {
       "Fecha": "2025-10-19",
@@ -59216,10 +59094,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16176.0,
-      "Stake Compuesto": 64495728.62,
-      "Beneficio Compuesto": 29023077.88,
-      "Banca Compuesto": 3253809508.93
+      "Banca Fijo": 16266.0,
+      "Stake Compuesto": 70541163.04,
+      "Beneficio Compuesto": 31743523.37,
+      "Banca Compuesto": 3558801675.57
     },
     {
       "Fecha": "2025-10-19",
@@ -59233,10 +59111,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16185.0,
-      "Stake Compuesto": 65076190.18,
-      "Beneficio Compuesto": 29284285.58,
-      "Banca Compuesto": 3283093794.52
+      "Banca Fijo": 16275.0,
+      "Stake Compuesto": 71176033.51,
+      "Beneficio Compuesto": 32029215.08,
+      "Banca Compuesto": 3590830890.65
     },
     {
       "Fecha": "2025-10-19",
@@ -59250,10 +59128,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16194.0,
-      "Stake Compuesto": 65661875.89,
-      "Beneficio Compuesto": 29547844.15,
-      "Banca Compuesto": 3312641638.67
+      "Banca Fijo": 16284.0,
+      "Stake Compuesto": 71816617.81,
+      "Beneficio Compuesto": 32317478.02,
+      "Banca Compuesto": 3623148368.66
     },
     {
       "Fecha": "2025-10-19",
@@ -59267,10 +59145,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16203.0,
-      "Stake Compuesto": 66252832.77,
-      "Beneficio Compuesto": 29813774.75,
-      "Banca Compuesto": 3342455413.41
+      "Banca Fijo": 16293.0,
+      "Stake Compuesto": 72462967.37,
+      "Beneficio Compuesto": 32608335.32,
+      "Banca Compuesto": 3655756703.98
     },
     {
       "Fecha": "2025-10-19",
@@ -59284,10 +59162,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16212.0,
-      "Stake Compuesto": 66849108.27,
-      "Beneficio Compuesto": 30082098.72,
-      "Banca Compuesto": 3372537512.13
+      "Banca Fijo": 16302.0,
+      "Stake Compuesto": 73115134.08,
+      "Beneficio Compuesto": 32901810.34,
+      "Banca Compuesto": 3688658514.32
     },
     {
       "Fecha": "2025-10-19",
@@ -59301,10 +59179,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16192.0,
-      "Stake Compuesto": 67450750.24,
-      "Beneficio Compuesto": -67450750.24,
-      "Banca Compuesto": 3305086761.89
+      "Banca Fijo": 16282.0,
+      "Stake Compuesto": 73773170.29,
+      "Beneficio Compuesto": -73773170.29,
+      "Banca Compuesto": 3614885344.03
     },
     {
       "Fecha": "2025-10-19",
@@ -59318,10 +59196,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16201.0,
-      "Stake Compuesto": 66101735.24,
-      "Beneficio Compuesto": 29745780.86,
-      "Banca Compuesto": 3334832542.75
+      "Banca Fijo": 16291.0,
+      "Stake Compuesto": 72297706.88,
+      "Beneficio Compuesto": 32533968.1,
+      "Banca Compuesto": 3647419312.13
     },
     {
       "Fecha": "2025-10-19",
@@ -59335,10 +59213,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16210.0,
-      "Stake Compuesto": 66696650.85,
-      "Beneficio Compuesto": 30013492.88,
-      "Banca Compuesto": 3364846035.63
+      "Banca Fijo": 16300.0,
+      "Stake Compuesto": 72948386.24,
+      "Beneficio Compuesto": 32826773.81,
+      "Banca Compuesto": 3680246085.94
     },
     {
       "Fecha": "2025-10-19",
@@ -59352,10 +59230,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16219.0,
-      "Stake Compuesto": 67296920.71,
-      "Beneficio Compuesto": 30283614.32,
-      "Banca Compuesto": 3395129649.95
+      "Banca Fijo": 16309.0,
+      "Stake Compuesto": 73604921.72,
+      "Beneficio Compuesto": 33122214.77,
+      "Banca Compuesto": 3713368300.71
     },
     {
       "Fecha": "2025-10-19",
@@ -59369,10 +59247,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16228.0,
-      "Stake Compuesto": 67902593.0,
-      "Beneficio Compuesto": 30556166.85,
-      "Banca Compuesto": 3425685816.8
+      "Banca Fijo": 16318.0,
+      "Stake Compuesto": 74267366.01,
+      "Beneficio Compuesto": 33420314.71,
+      "Banca Compuesto": 3746788615.42
     },
     {
       "Fecha": "2025-10-19",
@@ -59386,10 +59264,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16237.0,
-      "Stake Compuesto": 68513716.34,
-      "Beneficio Compuesto": 30831172.35,
-      "Banca Compuesto": 3456516989.16
+      "Banca Fijo": 16327.0,
+      "Stake Compuesto": 74935772.31,
+      "Beneficio Compuesto": 33721097.54,
+      "Banca Compuesto": 3780509712.96
     },
     {
       "Fecha": "2025-10-20",
@@ -59403,10 +59281,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16217.0,
-      "Stake Compuesto": 69130339.78,
-      "Beneficio Compuesto": -69130339.78,
-      "Banca Compuesto": 3387386649.37
+      "Banca Fijo": 16307.0,
+      "Stake Compuesto": 75610194.26,
+      "Beneficio Compuesto": -75610194.26,
+      "Banca Compuesto": 3704899518.7
     },
     {
       "Fecha": "2025-10-20",
@@ -59420,10 +59298,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16226.0,
-      "Stake Compuesto": 67747732.99,
-      "Beneficio Compuesto": 30486479.84,
-      "Banca Compuesto": 3417873129.22
+      "Banca Fijo": 16316.0,
+      "Stake Compuesto": 74097990.37,
+      "Beneficio Compuesto": 33344095.67,
+      "Banca Compuesto": 3738243614.37
     },
     {
       "Fecha": "2025-10-20",
@@ -59437,10 +59315,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16235.0,
-      "Stake Compuesto": 68357462.58,
-      "Beneficio Compuesto": 30760858.16,
-      "Banca Compuesto": 3448633987.38
+      "Banca Fijo": 16325.0,
+      "Stake Compuesto": 74764872.29,
+      "Beneficio Compuesto": 33644192.53,
+      "Banca Compuesto": 3771887806.89
     },
     {
       "Fecha": "2025-10-20",
@@ -59454,10 +59332,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16244.0,
-      "Stake Compuesto": 68972679.75,
-      "Beneficio Compuesto": 31037705.89,
-      "Banca Compuesto": 3479671693.27
+      "Banca Fijo": 16334.0,
+      "Stake Compuesto": 75437756.14,
+      "Beneficio Compuesto": 33946990.26,
+      "Banca Compuesto": 3805834797.16
     },
     {
       "Fecha": "2025-10-22",
@@ -59471,10 +59349,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16253.0,
-      "Stake Compuesto": 69593433.87,
-      "Beneficio Compuesto": 31317045.24,
-      "Banca Compuesto": 3510988738.51
+      "Banca Fijo": 16343.0,
+      "Stake Compuesto": 76116695.94,
+      "Beneficio Compuesto": 34252513.17,
+      "Banca Compuesto": 3840087310.33
     },
     {
       "Fecha": "2025-10-22",
@@ -59488,10 +59366,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16262.0,
-      "Stake Compuesto": 70219774.77,
-      "Beneficio Compuesto": 31598898.65,
-      "Banca Compuesto": 3542587637.15
+      "Banca Fijo": 16352.0,
+      "Stake Compuesto": 76801746.21,
+      "Beneficio Compuesto": 34560785.79,
+      "Banca Compuesto": 3874648096.12
     },
     {
       "Fecha": "2025-10-22",
@@ -59505,10 +59383,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16271.0,
-      "Stake Compuesto": 70851752.74,
-      "Beneficio Compuesto": 31883288.73,
-      "Banca Compuesto": 3574470925.89
+      "Banca Fijo": 16361.0,
+      "Stake Compuesto": 77492961.92,
+      "Beneficio Compuesto": 34871832.87,
+      "Banca Compuesto": 3909519928.99
     },
     {
       "Fecha": "2025-10-23",
@@ -59522,10 +59400,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16251.0,
-      "Stake Compuesto": 71489418.52,
-      "Beneficio Compuesto": -71489418.52,
-      "Banca Compuesto": 3502981507.37
+      "Banca Fijo": 16341.0,
+      "Stake Compuesto": 78190398.58,
+      "Beneficio Compuesto": -78190398.58,
+      "Banca Compuesto": 3831329530.41
     },
     {
       "Fecha": "2025-10-23",
@@ -59539,10 +59417,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16260.0,
-      "Stake Compuesto": 70059630.15,
-      "Beneficio Compuesto": 31526833.57,
-      "Banca Compuesto": 3534508340.93
+      "Banca Fijo": 16350.0,
+      "Stake Compuesto": 76626590.61,
+      "Beneficio Compuesto": 34481965.77,
+      "Banca Compuesto": 3865811496.18
     },
     {
       "Fecha": "2025-10-23",
@@ -59556,10 +59434,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16269.0,
-      "Stake Compuesto": 70690166.82,
-      "Beneficio Compuesto": 31810575.07,
-      "Banca Compuesto": 3566318916.0
+      "Banca Fijo": 16359.0,
+      "Stake Compuesto": 77316229.92,
+      "Beneficio Compuesto": 34792303.47,
+      "Banca Compuesto": 3900603799.65
     },
     {
       "Fecha": "2025-10-23",
@@ -59573,10 +59451,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16278.0,
-      "Stake Compuesto": 71326378.32,
-      "Beneficio Compuesto": 32096870.24,
-      "Banca Compuesto": 3598415786.25
+      "Banca Fijo": 16368.0,
+      "Stake Compuesto": 78012075.99,
+      "Beneficio Compuesto": 35105434.2,
+      "Banca Compuesto": 3935709233.85
     },
     {
       "Fecha": "2025-10-23",
@@ -59590,10 +59468,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16287.0,
-      "Stake Compuesto": 71968315.72,
-      "Beneficio Compuesto": 32385742.08,
-      "Banca Compuesto": 3630801528.32
+      "Banca Fijo": 16377.0,
+      "Stake Compuesto": 78714184.68,
+      "Beneficio Compuesto": 35421383.1,
+      "Banca Compuesto": 3971130616.95
     },
     {
       "Fecha": "2025-10-25",
@@ -59607,10 +59485,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16296.0,
-      "Stake Compuesto": 72616030.57,
-      "Beneficio Compuesto": 32677213.75,
-      "Banca Compuesto": 3663478742.08
+      "Banca Fijo": 16386.0,
+      "Stake Compuesto": 79422612.34,
+      "Beneficio Compuesto": 35740175.55,
+      "Banca Compuesto": 4006870792.5
     },
     {
       "Fecha": "2025-10-25",
@@ -59624,10 +59502,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16305.0,
-      "Stake Compuesto": 73269574.84,
-      "Beneficio Compuesto": 32971308.68,
-      "Banca Compuesto": 3696450050.76
+      "Banca Fijo": 16395.0,
+      "Stake Compuesto": 80137415.85,
+      "Beneficio Compuesto": 36061837.13,
+      "Banca Compuesto": 4042932629.64
     },
     {
       "Fecha": "2025-10-25",
@@ -59641,10 +59519,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16314.0,
-      "Stake Compuesto": 73929001.02,
-      "Beneficio Compuesto": 33268050.46,
-      "Banca Compuesto": 3729718101.21
+      "Banca Fijo": 16404.0,
+      "Stake Compuesto": 80858652.59,
+      "Beneficio Compuesto": 36386393.67,
+      "Banca Compuesto": 4079319023.3
     },
     {
       "Fecha": "2025-10-25",
@@ -59658,10 +59536,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16323.0,
-      "Stake Compuesto": 74594362.02,
-      "Beneficio Compuesto": 33567462.91,
-      "Banca Compuesto": 3763285564.12
+      "Banca Fijo": 16413.0,
+      "Stake Compuesto": 81586380.47,
+      "Beneficio Compuesto": 36713871.21,
+      "Banca Compuesto": 4116032894.51
     },
     {
       "Fecha": "2025-10-25",
@@ -59675,10 +59553,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16332.0,
-      "Stake Compuesto": 75265711.28,
-      "Beneficio Compuesto": 33869570.08,
-      "Banca Compuesto": 3797155134.2
+      "Banca Fijo": 16422.0,
+      "Stake Compuesto": 82320657.89,
+      "Beneficio Compuesto": 37044296.05,
+      "Banca Compuesto": 4153077190.56
     },
     {
       "Fecha": "2025-10-25",
@@ -59692,10 +59570,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16341.0,
-      "Stake Compuesto": 75943102.68,
-      "Beneficio Compuesto": 34174396.21,
-      "Banca Compuesto": 3831329530.41
+      "Banca Fijo": 16431.0,
+      "Stake Compuesto": 83061543.81,
+      "Beneficio Compuesto": 37377694.72,
+      "Banca Compuesto": 4190454885.28
     },
     {
       "Fecha": "2025-10-25",
@@ -59709,10 +59587,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16350.0,
-      "Stake Compuesto": 76626590.61,
-      "Beneficio Compuesto": 34481965.77,
-      "Banca Compuesto": 3865811496.18
+      "Banca Fijo": 16440.0,
+      "Stake Compuesto": 83809097.71,
+      "Beneficio Compuesto": 37714093.97,
+      "Banca Compuesto": 4228168979.24
     },
     {
       "Fecha": "2025-10-25",
@@ -59726,10 +59604,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16330.0,
-      "Stake Compuesto": 77316229.92,
-      "Beneficio Compuesto": -77316229.92,
-      "Banca Compuesto": 3788495266.26
+      "Banca Fijo": 16420.0,
+      "Stake Compuesto": 84563379.58,
+      "Beneficio Compuesto": -84563379.58,
+      "Banca Compuesto": 4143605599.66
     },
     {
       "Fecha": "2025-10-25",
@@ -59743,10 +59621,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16339.0,
-      "Stake Compuesto": 75769905.33,
-      "Beneficio Compuesto": 34096457.4,
-      "Banca Compuesto": 3822591723.66
+      "Banca Fijo": 16429.0,
+      "Stake Compuesto": 82872111.99,
+      "Beneficio Compuesto": 37292450.4,
+      "Banca Compuesto": 4180898050.06
     },
     {
       "Fecha": "2025-10-25",
@@ -59760,10 +59638,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16348.0,
-      "Stake Compuesto": 76451834.47,
-      "Beneficio Compuesto": 34403325.51,
-      "Banca Compuesto": 3856995049.17
+      "Banca Fijo": 16438.0,
+      "Stake Compuesto": 83617961.0,
+      "Beneficio Compuesto": 37628082.45,
+      "Banca Compuesto": 4218526132.51
     },
     {
       "Fecha": "2025-10-25",
@@ -59777,10 +59655,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16328.0,
-      "Stake Compuesto": 77139900.98,
-      "Beneficio Compuesto": -77139900.98,
-      "Banca Compuesto": 3779855148.19
+      "Banca Fijo": 16418.0,
+      "Stake Compuesto": 84370522.65,
+      "Beneficio Compuesto": -84370522.65,
+      "Banca Compuesto": 4134155609.86
     },
     {
       "Fecha": "2025-10-26",
@@ -59794,10 +59672,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16337.0,
-      "Stake Compuesto": 75597102.96,
-      "Beneficio Compuesto": 34018696.33,
-      "Banca Compuesto": 3813873844.52
+      "Banca Fijo": 16427.0,
+      "Stake Compuesto": 82683112.2,
+      "Beneficio Compuesto": 37207400.49,
+      "Banca Compuesto": 4171363010.35
     },
     {
       "Fecha": "2025-10-26",
@@ -59811,10 +59689,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16346.0,
-      "Stake Compuesto": 76277476.89,
-      "Beneficio Compuesto": 34324864.6,
-      "Banca Compuesto": 3848198709.12
+      "Banca Fijo": 16436.0,
+      "Stake Compuesto": 83427260.21,
+      "Beneficio Compuesto": 37542267.09,
+      "Banca Compuesto": 4208905277.44
+    },
+    {
+      "Fecha": "2025-10-26",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Viborg",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
+      "Banca Fijo": 16416.0,
+      "Stake Compuesto": 84178105.55,
+      "Beneficio Compuesto": -84178105.55,
+      "Banca Compuesto": 4124727171.89
     },
     {
       "Fecha": "2025-10-26",
@@ -59828,10 +59723,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16355.0,
-      "Stake Compuesto": 76963974.18,
-      "Beneficio Compuesto": 34633788.38,
-      "Banca Compuesto": 3882832497.5
+      "Banca Fijo": 16425.0,
+      "Stake Compuesto": 82494543.44,
+      "Beneficio Compuesto": 37122544.55,
+      "Banca Compuesto": 4161849716.44
     },
     {
       "Fecha": "2025-10-26",
@@ -59845,10 +59740,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16364.0,
-      "Stake Compuesto": 77656649.95,
-      "Beneficio Compuesto": 34945492.48,
-      "Banca Compuesto": 3917777989.98
+      "Banca Fijo": 16434.0,
+      "Stake Compuesto": 83236994.33,
+      "Beneficio Compuesto": 37456647.45,
+      "Banca Compuesto": 4199306363.89
     },
     {
       "Fecha": "2025-10-26",
@@ -59862,10 +59757,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16373.0,
-      "Stake Compuesto": 78355559.8,
-      "Beneficio Compuesto": 35260001.91,
-      "Banca Compuesto": 3953037991.89
+      "Banca Fijo": 16443.0,
+      "Stake Compuesto": 83986127.28,
+      "Beneficio Compuesto": 37793757.27,
+      "Banca Compuesto": 4237100121.16
     },
     {
       "Fecha": "2025-10-26",
@@ -59879,10 +59774,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16382.0,
-      "Stake Compuesto": 79060759.84,
-      "Beneficio Compuesto": 35577341.93,
-      "Banca Compuesto": 3988615333.82
+      "Banca Fijo": 16452.0,
+      "Stake Compuesto": 84742002.42,
+      "Beneficio Compuesto": 38133901.09,
+      "Banca Compuesto": 4275234022.25
     },
     {
       "Fecha": "2025-10-26",
@@ -59896,10 +59791,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16391.0,
-      "Stake Compuesto": 79772306.68,
-      "Beneficio Compuesto": 35897538.0,
-      "Banca Compuesto": 4024512871.82
+      "Banca Fijo": 16461.0,
+      "Stake Compuesto": 85504680.45,
+      "Beneficio Compuesto": 38477106.2,
+      "Banca Compuesto": 4313711128.45
     },
     {
       "Fecha": "2025-10-27",
@@ -59913,10 +59808,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": -20.0,
-      "Banca Fijo": 16371.0,
-      "Stake Compuesto": 80490257.44,
-      "Beneficio Compuesto": -80490257.44,
-      "Banca Compuesto": 3944022614.38
+      "Banca Fijo": 16441.0,
+      "Stake Compuesto": 86274222.57,
+      "Beneficio Compuesto": -86274222.57,
+      "Banca Compuesto": 4227436905.88
     },
     {
       "Fecha": "2025-10-27",
@@ -59930,10 +59825,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16380.0,
-      "Stake Compuesto": 78880452.29,
-      "Beneficio Compuesto": 35496203.53,
-      "Banca Compuesto": 3979518817.91
+      "Banca Fijo": 16450.0,
+      "Stake Compuesto": 84548738.12,
+      "Beneficio Compuesto": 38046932.15,
+      "Banca Compuesto": 4265483838.03
     },
     {
       "Fecha": "2025-10-27",
@@ -59947,10 +59842,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16389.0,
-      "Stake Compuesto": 79590376.36,
-      "Beneficio Compuesto": 35815669.36,
-      "Banca Compuesto": 4015334487.27
+      "Banca Fijo": 16459.0,
+      "Stake Compuesto": 85309676.76,
+      "Beneficio Compuesto": 38389354.54,
+      "Banca Compuesto": 4303873192.58
     },
     {
       "Fecha": "2025-10-29",
@@ -59964,10 +59859,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16398.0,
-      "Stake Compuesto": 80306689.75,
-      "Beneficio Compuesto": 36138010.39,
-      "Banca Compuesto": 4051472497.66
+      "Banca Fijo": 16468.0,
+      "Stake Compuesto": 86077463.85,
+      "Beneficio Compuesto": 38734858.73,
+      "Banca Compuesto": 4342608051.31
     },
     {
       "Fecha": "2025-11-01",
@@ -59981,10 +59876,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16407.0,
-      "Stake Compuesto": 81029449.95,
-      "Beneficio Compuesto": 36463252.48,
-      "Banca Compuesto": 4087935750.14
+      "Banca Fijo": 16477.0,
+      "Stake Compuesto": 86852161.03,
+      "Beneficio Compuesto": 39083472.46,
+      "Banca Compuesto": 4381691523.77
     },
     {
       "Fecha": "2025-11-01",
@@ -59998,10 +59893,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16416.0,
-      "Stake Compuesto": 81758715.0,
-      "Beneficio Compuesto": 36791421.75,
-      "Banca Compuesto": 4124727171.89
+      "Banca Fijo": 16486.0,
+      "Stake Compuesto": 87633830.48,
+      "Beneficio Compuesto": 39435223.71,
+      "Banca Compuesto": 4421126747.49
+    },
+    {
+      "Fecha": "2025-11-01",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "FC Fredericia",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16495.0,
+      "Stake Compuesto": 88422534.95,
+      "Beneficio Compuesto": 39790140.73,
+      "Banca Compuesto": 4460916888.21
     },
     {
       "Fecha": "2025-11-01",
@@ -60015,10 +59927,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16425.0,
-      "Stake Compuesto": 82494543.44,
-      "Beneficio Compuesto": 37122544.55,
-      "Banca Compuesto": 4161849716.44
+      "Banca Fijo": 16504.0,
+      "Stake Compuesto": 89218337.76,
+      "Beneficio Compuesto": 40148251.99,
+      "Banca Compuesto": 4501065140.21
     },
     {
       "Fecha": "2025-11-01",
@@ -60032,10 +59944,27 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16434.0,
-      "Stake Compuesto": 83236994.33,
-      "Beneficio Compuesto": 37456647.45,
-      "Banca Compuesto": 4199306363.89
+      "Banca Fijo": 16513.0,
+      "Stake Compuesto": 90021302.8,
+      "Beneficio Compuesto": 40509586.26,
+      "Banca Compuesto": 4541574726.47
+    },
+    {
+      "Fecha": "2025-11-02",
+      "Liga": "Superliga",
+      "Local": "FC Nordsjaelland",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16522.0,
+      "Stake Compuesto": 90831494.53,
+      "Beneficio Compuesto": 40874172.54,
+      "Banca Compuesto": 4582448899.01
     },
     {
       "Fecha": "2025-11-02",
@@ -60049,10 +59978,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16443.0,
-      "Stake Compuesto": 83986127.28,
-      "Beneficio Compuesto": 37793757.27,
-      "Banca Compuesto": 4237100121.16
+      "Banca Fijo": 16531.0,
+      "Stake Compuesto": 91648977.98,
+      "Beneficio Compuesto": 41242040.09,
+      "Banca Compuesto": 4623690939.1
     },
     {
       "Fecha": "2025-11-02",
@@ -60066,10 +59995,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16452.0,
-      "Stake Compuesto": 84742002.42,
-      "Beneficio Compuesto": 38133901.09,
-      "Banca Compuesto": 4275234022.25
+      "Banca Fijo": 16540.0,
+      "Stake Compuesto": 92473818.78,
+      "Beneficio Compuesto": 41613218.45,
+      "Banca Compuesto": 4665304157.55
     },
     {
       "Fecha": "2025-11-03",
@@ -60083,10 +60012,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16461.0,
-      "Stake Compuesto": 85504680.45,
-      "Beneficio Compuesto": 38477106.2,
-      "Banca Compuesto": 4313711128.45
+      "Banca Fijo": 16549.0,
+      "Stake Compuesto": 93306083.15,
+      "Beneficio Compuesto": 41987737.42,
+      "Banca Compuesto": 4707291894.97
     },
     {
       "Fecha": "2025-11-03",
@@ -60100,10 +60029,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16470.0,
-      "Stake Compuesto": 86274222.57,
-      "Beneficio Compuesto": 38823400.16,
-      "Banca Compuesto": 4352534528.61
+      "Banca Fijo": 16558.0,
+      "Stake Compuesto": 94145837.9,
+      "Beneficio Compuesto": 42365627.05,
+      "Banca Compuesto": 4749657522.02
     },
     {
       "Fecha": "2025-11-03",
@@ -60117,10 +60046,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16479.0,
-      "Stake Compuesto": 87050690.57,
-      "Beneficio Compuesto": 39172810.76,
-      "Banca Compuesto": 4391707339.36
+      "Banca Fijo": 16567.0,
+      "Stake Compuesto": 94993150.44,
+      "Beneficio Compuesto": 42746917.7,
+      "Banca Compuesto": 4792404439.72
     },
     {
       "Fecha": "2025-11-06",
@@ -60134,10 +60063,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16488.0,
-      "Stake Compuesto": 87834146.79,
-      "Beneficio Compuesto": 39525366.05,
-      "Banca Compuesto": 4431232705.42
+      "Banca Fijo": 16576.0,
+      "Stake Compuesto": 95848088.79,
+      "Beneficio Compuesto": 43131639.96,
+      "Banca Compuesto": 4835536079.68
     },
     {
       "Fecha": "2025-11-08",
@@ -60151,10 +60080,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16497.0,
-      "Stake Compuesto": 88624654.11,
-      "Beneficio Compuesto": 39881094.35,
-      "Banca Compuesto": 4471113799.77
+      "Banca Fijo": 16585.0,
+      "Stake Compuesto": 96710721.59,
+      "Beneficio Compuesto": 43519824.72,
+      "Banca Compuesto": 4879055904.4
     },
     {
       "Fecha": "2025-11-08",
@@ -60168,10 +60097,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16506.0,
-      "Stake Compuesto": 89422276.0,
-      "Beneficio Compuesto": 40240024.2,
-      "Banca Compuesto": 4511353823.97
+      "Banca Fijo": 16594.0,
+      "Stake Compuesto": 97581118.09,
+      "Beneficio Compuesto": 43911503.14,
+      "Banca Compuesto": 4922967407.54
     },
     {
       "Fecha": "2025-11-09",
@@ -60185,10 +60114,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16515.0,
-      "Stake Compuesto": 90227076.48,
-      "Beneficio Compuesto": 40602184.42,
-      "Banca Compuesto": 4551956008.38
+      "Banca Fijo": 16603.0,
+      "Stake Compuesto": 98459348.15,
+      "Beneficio Compuesto": 44306706.67,
+      "Banca Compuesto": 4967274114.2
     },
     {
       "Fecha": "2025-11-09",
@@ -60202,10 +60131,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16524.0,
-      "Stake Compuesto": 91039120.17,
-      "Beneficio Compuesto": 40967604.08,
-      "Banca Compuesto": 4592923612.46
+      "Banca Fijo": 16612.0,
+      "Stake Compuesto": 99345482.28,
+      "Beneficio Compuesto": 44705467.03,
+      "Banca Compuesto": 5011979581.23
     },
     {
       "Fecha": "2025-11-09",
@@ -60219,10 +60148,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16533.0,
-      "Stake Compuesto": 91858472.25,
-      "Beneficio Compuesto": 41336312.51,
-      "Banca Compuesto": 4634259924.97
+      "Banca Fijo": 16621.0,
+      "Stake Compuesto": 100239591.62,
+      "Beneficio Compuesto": 45107816.23,
+      "Banca Compuesto": 5057087397.46
     },
     {
       "Fecha": "2025-11-09",
@@ -60236,10 +60165,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16542.0,
-      "Stake Compuesto": 92685198.5,
-      "Beneficio Compuesto": 41708339.32,
-      "Banca Compuesto": 4675968264.29
+      "Banca Fijo": 16630.0,
+      "Stake Compuesto": 101141747.95,
+      "Beneficio Compuesto": 45513786.58,
+      "Banca Compuesto": 5102601184.04
     },
     {
       "Fecha": "2025-11-09",
@@ -60253,10 +60182,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16551.0,
-      "Stake Compuesto": 93519365.29,
-      "Beneficio Compuesto": 42083714.38,
-      "Banca Compuesto": 4718051978.67
+      "Banca Fijo": 16639.0,
+      "Stake Compuesto": 102052023.68,
+      "Beneficio Compuesto": 45923410.66,
+      "Banca Compuesto": 5148524594.7
     },
     {
       "Fecha": "2025-11-09",
@@ -60270,10 +60199,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16560.0,
-      "Stake Compuesto": 94361039.57,
-      "Beneficio Compuesto": 42462467.81,
-      "Banca Compuesto": 4760514446.48
+      "Banca Fijo": 16648.0,
+      "Stake Compuesto": 102970491.89,
+      "Beneficio Compuesto": 46336721.35,
+      "Banca Compuesto": 5194861316.05
     },
     {
       "Fecha": "2025-11-09",
@@ -60287,10 +60216,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16569.0,
-      "Stake Compuesto": 95210288.93,
-      "Beneficio Compuesto": 42844630.02,
-      "Banca Compuesto": 4803359076.5
+      "Banca Fijo": 16657.0,
+      "Stake Compuesto": 103897226.32,
+      "Beneficio Compuesto": 46753751.84,
+      "Banca Compuesto": 5241615067.89
     },
     {
       "Fecha": "2025-11-09",
@@ -60304,10 +60233,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16578.0,
-      "Stake Compuesto": 96067181.53,
-      "Beneficio Compuesto": 43230231.69,
-      "Banca Compuesto": 4846589308.19
+      "Banca Fijo": 16666.0,
+      "Stake Compuesto": 104832301.36,
+      "Beneficio Compuesto": 47174535.61,
+      "Banca Compuesto": 5288789603.5
     },
     {
       "Fecha": "2025-11-21",
@@ -60321,10 +60250,44 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16587.0,
-      "Stake Compuesto": 96931786.16,
-      "Beneficio Compuesto": 43619303.77,
-      "Banca Compuesto": 4890208611.96
+      "Banca Fijo": 16675.0,
+      "Stake Compuesto": 105775792.07,
+      "Beneficio Compuesto": 47599106.43,
+      "Banca Compuesto": 5336388709.94
+    },
+    {
+      "Fecha": "2025-11-23",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Brondby",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
+      "Banca Fijo": 16655.0,
+      "Stake Compuesto": 106727774.2,
+      "Beneficio Compuesto": -106727774.2,
+      "Banca Compuesto": 5229660935.74
+    },
+    {
+      "Fecha": "2025-11-24",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Odense",
+      "Goles HT": 0.0,
+      "Resultado": "PERDIDA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": -20.0,
+      "Banca Fijo": 16635.0,
+      "Stake Compuesto": 104593218.71,
+      "Beneficio Compuesto": -104593218.71,
+      "Banca Compuesto": 5125067717.02
     },
     {
       "Fecha": "2025-11-30",
@@ -60338,10 +60301,10 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16596.0,
-      "Stake Compuesto": 97804172.24,
-      "Beneficio Compuesto": 44011877.51,
-      "Banca Compuesto": 4934220489.47
+      "Banca Fijo": 16644.0,
+      "Stake Compuesto": 102501354.34,
+      "Beneficio Compuesto": 46125609.45,
+      "Banca Compuesto": 5171193326.47
     },
     {
       "Fecha": "2025-11-30",
@@ -60355,160 +60318,287 @@ window.dashboardData = {
       "Cuota": 1.45,
       "Stake Fijo": 20.0,
       "Beneficio Fijo": 9.0,
-      "Banca Fijo": 16605.0,
-      "Stake Compuesto": 98684409.79,
-      "Beneficio Compuesto": 44407984.41,
-      "Banca Compuesto": 4978628473.87
+      "Banca Fijo": 16653.0,
+      "Stake Compuesto": 103423866.53,
+      "Beneficio Compuesto": 46540739.94,
+      "Banca Compuesto": 5217734066.41
+    },
+    {
+      "Fecha": "2025-12-05",
+      "Liga": "Superliga",
+      "Local": "FC Fredericia",
+      "Visitante": "Odense",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16662.0,
+      "Stake Compuesto": 104354681.33,
+      "Beneficio Compuesto": 46959606.6,
+      "Banca Compuesto": 5264693673.01
+    },
+    {
+      "Fecha": "2025-12-07",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Sonderjyske",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16671.0,
+      "Stake Compuesto": 105293873.46,
+      "Beneficio Compuesto": 47382243.06,
+      "Banca Compuesto": 5312075916.07
+    },
+    {
+      "Fecha": "2026-02-09",
+      "Liga": "Superliga",
+      "Local": "Aarhus",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16680.0,
+      "Stake Compuesto": 106241518.32,
+      "Beneficio Compuesto": 47808683.24,
+      "Banca Compuesto": 5359884599.31
+    },
+    {
+      "Fecha": "2026-02-14",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "FC Nordsjaelland",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16689.0,
+      "Stake Compuesto": 107197691.99,
+      "Beneficio Compuesto": 48238961.39,
+      "Banca Compuesto": 5408123560.71
+    },
+    {
+      "Fecha": "2026-03-01",
+      "Liga": "Superliga",
+      "Local": "Sonderjyske",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16698.0,
+      "Stake Compuesto": 108162471.21,
+      "Beneficio Compuesto": 48673112.05,
+      "Banca Compuesto": 5456796672.75
+    },
+    {
+      "Fecha": "2026-03-01",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Randers FC",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16707.0,
+      "Stake Compuesto": 109135933.46,
+      "Beneficio Compuesto": 49111170.05,
+      "Banca Compuesto": 5505907842.81
+    },
+    {
+      "Fecha": "2026-03-20",
+      "Liga": "Superliga",
+      "Local": "Vejle",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16716.0,
+      "Stake Compuesto": 110118156.86,
+      "Beneficio Compuesto": 49553170.59,
+      "Banca Compuesto": 5555461013.39
+    },
+    {
+      "Fecha": "2026-03-22",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "FC Fredericia",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16725.0,
+      "Stake Compuesto": 111109220.27,
+      "Beneficio Compuesto": 49999149.12,
+      "Banca Compuesto": 5605460162.51
+    },
+    {
+      "Fecha": "2026-04-05",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Silkeborg",
+      "Goles HT": 4.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16734.0,
+      "Stake Compuesto": 112109203.25,
+      "Beneficio Compuesto": 50449141.46,
+      "Banca Compuesto": 5655909303.98
+    },
+    {
+      "Fecha": "2026-04-12",
+      "Liga": "Superliga",
+      "Local": "Silkeborg",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16743.0,
+      "Stake Compuesto": 113118186.08,
+      "Beneficio Compuesto": 50903183.74,
+      "Banca Compuesto": 5706812487.71
+    },
+    {
+      "Fecha": "2026-04-22",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Odense",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase A",
+      "Sustento": "Ambos",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16752.0,
+      "Stake Compuesto": 114136249.75,
+      "Beneficio Compuesto": 51361312.39,
+      "Banca Compuesto": 5758173800.1
+    },
+    {
+      "Fecha": "2026-04-26",
+      "Liga": "Superliga",
+      "Local": "FC Fredericia",
+      "Visitante": "Odense",
+      "Goles HT": 2.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16761.0,
+      "Stake Compuesto": 115163476.0,
+      "Beneficio Compuesto": 51823564.2,
+      "Banca Compuesto": 5809997364.3
+    },
+    {
+      "Fecha": "2026-04-27",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Vejle",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16770.0,
+      "Stake Compuesto": 116199947.29,
+      "Beneficio Compuesto": 52289976.28,
+      "Banca Compuesto": 5862287340.58
+    },
+    {
+      "Fecha": "2026-05-11",
+      "Liga": "Superliga",
+      "Local": "Randers FC",
+      "Visitante": "Odense",
+      "Goles HT": 1.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Visitante",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16779.0,
+      "Stake Compuesto": 117245746.81,
+      "Beneficio Compuesto": 52760586.07,
+      "Banca Compuesto": 5915047926.65
+    },
+    {
+      "Fecha": "2026-05-17",
+      "Liga": "Superliga",
+      "Local": "FC Copenhagen",
+      "Visitante": "Randers FC",
+      "Goles HT": 3.0,
+      "Resultado": "GANADA",
+      "Clase": "Clase B",
+      "Sustento": "Local",
+      "Cuota": 1.45,
+      "Stake Fijo": 20.0,
+      "Beneficio Fijo": 9.0,
+      "Banca Fijo": 16788.0,
+      "Stake Compuesto": 118300958.53,
+      "Beneficio Compuesto": 53235431.34,
+      "Banca Compuesto": 5968283357.99
     }
   ],
   "backtest_summary": {
-    "total": 2997,
-    "aciertos": 2605,
-    "fallos": 392,
-    "win_rate": "86.9%",
-    "total_a": 318,
-    "aciertos_a": 293,
+    "total": 3027,
+    "aciertos": 2632,
+    "fallos": 395,
+    "win_rate": "87.0%",
+    "total_a": 320,
+    "aciertos_a": 295,
     "fallos_a": 25,
-    "win_rate_a": "92.1%",
-    "total_b": 2679,
-    "aciertos_b": 2312,
-    "fallos_b": 367,
+    "win_rate_a": "92.2%",
+    "total_b": 2707,
+    "aciertos_b": 2337,
+    "fallos_b": 370,
     "win_rate_b": "86.3%",
     "banca_inicial": 1000.0,
-    "banca_final_fijo": 16605.0,
-    "rendimiento_fijo": "+1560.5%",
-    "banca_final_compuesto": 4978628473.87,
-    "rendimiento_compuesto": "+497862747.4%"
+    "banca_final_fijo": 16788.0,
+    "rendimiento_fijo": "+1578.8%",
+    "banca_final_compuesto": 5968283357.99,
+    "rendimiento_compuesto": "+596828235.8%"
   },
   "picks": [
-    {
-      "match_id": 1504451,
-      "league_id": 564,
-      "tier": 3,
-      "fecha": "2026-06-08",
-      "hora": "17:00",
-      "liga": "Ettan - Södra",
-      "local": "Angelholms FF",
-      "visitante": "Olympic",
-      "probabilidad": "100.0%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "cuota_recomendada": 1.29,
-      "bookmaker_recomendado": "BetVictor",
-      "otras_cuotas": {
-        "10Bet": 1.25,
-        "William Hill": 1.25,
-        "Marathonbet": 1.28,
-        "Betfair": 1.25,
-        "1xBet": 1.28
-      },
-      "local_stats": {
-        "ht_05_pct": "60.0%",
-        "ht_15_pct": "40.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "40.0%",
-        "avg_goals_ht_general": "0.60",
-        "avg_goals_ht_rol": "0.20",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Skövde AIK",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-14",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-18",
-            "rival": "Kristianstad",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-24",
-            "rival": "Jonkopings Sodra",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-02",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "60.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.80",
-        "avg_goals_ht_rol": "0.80",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Kristianstad",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-14",
-            "rival": "Tvååker",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-17",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-03",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      }
-    },
     {
       "match_id": 1550468,
       "league_id": 492,
@@ -61273,18 +61363,10 @@ window.dashboardData = {
         "ht_15_pct": "50.0%",
         "bts_pct": "75.0%",
         "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.86",
+        "avg_goals_ht_general": "1.00",
         "avg_goals_ht_rol": "1.00",
         "racha_ht": "4/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-02",
-            "rival": "Atlantis",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
           {
             "fecha": "2026-05-09",
             "rival": "PEPO",
@@ -61316,132 +61398,18 @@ window.dashboardData = {
             "goles_contra_ht": 0,
             "total_ht": 2,
             "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      }
-    },
-    {
-      "match_id": 1504463,
-      "league_id": 564,
-      "tier": 3,
-      "fecha": "2026-06-13",
-      "hora": "11:00",
-      "liga": "Ettan - Södra",
-      "local": "Olympic",
-      "visitante": "Laholm",
-      "probabilidad": "100.0%",
-      "clase": "Clase B",
-      "sustento": "Local",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "local_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "80.0%",
-        "bts_pct": "80.0%",
-        "rendimiento_ht": "80.0%",
-        "avg_goals_ht_general": "0.80",
-        "avg_goals_ht_rol": "0.80",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Kristianstad",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
           },
           {
-            "fecha": "2026-05-14",
-            "rival": "Tvååker",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-17",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-03",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "visitante_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "66.7%",
-        "avg_goals_ht_general": "0.55",
-        "avg_goals_ht_rol": "0.50",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-13",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 2,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-18",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-24",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "AFC Malmo",
+            "fecha": "2026-06-08",
+            "rival": "PuiU Helsinki",
             "goles_favor_ht": 2,
-            "goles_contra_ht": 2,
-            "total_ht": 4,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-04",
-            "rival": "Hässleholms IF",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 2,
-            "total_ht": 3,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
             "local": true
           }
         ],
         "sequia_ht": false,
-        "is_candidate": false
+        "is_candidate": true
       }
     },
     {
@@ -61708,18 +61676,10 @@ window.dashboardData = {
         "ht_15_pct": "83.3%",
         "bts_pct": "100.0%",
         "rendimiento_ht": "66.7%",
-        "avg_goals_ht_general": "1.00",
+        "avg_goals_ht_general": "1.18",
         "avg_goals_ht_rol": "1.17",
         "racha_ht": "5/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Stockholm Internazionale",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          },
           {
             "fecha": "2026-05-14",
             "rival": "IF Karlstad",
@@ -61750,6 +61710,14 @@ window.dashboardData = {
             "goles_favor_ht": 1,
             "goles_contra_ht": 0,
             "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-08",
+            "rival": "Järfälla",
+            "goles_favor_ht": 3,
+            "goles_contra_ht": 1,
+            "total_ht": 4,
             "local": false
           }
         ],
@@ -62554,9 +62522,14 @@ window.dashboardData = {
       "probabilidad": "100.0%",
       "clase": "Clase B",
       "sustento": "Local",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.25,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.2,
+        "Marathonbet": 1.19,
+        "Betfair": 1.2,
+        "1xBet": 1.19
+      },
       "local_stats": {
         "ht_05_pct": "100.0%",
         "ht_15_pct": "75.0%",
@@ -62676,9 +62649,14 @@ window.dashboardData = {
       "probabilidad": "100.0%",
       "clase": "Clase B",
       "sustento": "Visitante",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.21,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.18,
+        "Marathonbet": 1.15,
+        "Betfair": 1.17,
+        "1xBet": 1.15
+      },
       "local_stats": {
         "ht_05_pct": "50.0%",
         "ht_15_pct": "25.0%",
@@ -62798,9 +62776,14 @@ window.dashboardData = {
       "probabilidad": "100.0%",
       "clase": "Clase B",
       "sustento": "Visitante",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.27,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.22,
+        "Marathonbet": 1.18,
+        "Betfair": 1.22,
+        "1xBet": 1.18
+      },
       "local_stats": {
         "ht_05_pct": "80.0%",
         "ht_15_pct": "40.0%",
@@ -63153,128 +63136,6 @@ window.dashboardData = {
       }
     },
     {
-      "match_id": 1513160,
-      "league_id": 909,
-      "tier": 3,
-      "fecha": "2026-06-14",
-      "hora": "22:00",
-      "liga": "MLS Next Pro",
-      "local": "FC Cincinnati II",
-      "visitante": "Columbus Crew II",
-      "probabilidad": "83.3%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
-      "local_stats": {
-        "ht_05_pct": "66.7%",
-        "ht_15_pct": "33.3%",
-        "bts_pct": "50.0%",
-        "rendimiento_ht": "41.7%",
-        "avg_goals_ht_general": "0.25",
-        "avg_goals_ht_rol": "0.33",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-10",
-            "rival": "Columbus Crew II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-14",
-            "rival": "Huntsville City",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-17",
-            "rival": "Chattanooga",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 3,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "New York City II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-07",
-            "rival": "New England II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "83.3%",
-        "ht_15_pct": "83.3%",
-        "bts_pct": "83.3%",
-        "rendimiento_ht": "66.7%",
-        "avg_goals_ht_general": "0.80",
-        "avg_goals_ht_rol": "0.83",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-04-18",
-            "rival": "New England II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-04-26",
-            "rival": "New York RB II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 3,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-03",
-            "rival": "Inter Miami II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-10",
-            "rival": "FC Cincinnati II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "New York City II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      }
-    },
-    {
       "match_id": 1543401,
       "league_id": 166,
       "tier": 3,
@@ -63398,378 +63259,6 @@ window.dashboardData = {
     }
   ],
   "picks_history": [
-    {
-      "match_id": 1513145,
-      "fecha": "2026-06-08",
-      "hora": "00:00",
-      "liga": "MLS Next Pro",
-      "local": "The Town",
-      "visitante": "Real Monarchs",
-      "probabilidad": "75.0%",
-      "clase": "Clase A",
-      "sustento": "Ambos",
-      "status": "HT",
-      "goles_ht": null,
-      "resultado_apuesta": null,
-      "marcador_ht": null,
-      "local_stats": {
-        "ht_05_pct": "75.0%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "50.0%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "1.50",
-        "avg_goals_ht_rol": "1.50",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-04-13",
-            "rival": "Minnesota United II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-04-20",
-            "rival": "Los Angeles FC II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-02",
-            "rival": "Ventura County",
-            "goles_favor_ht": 3,
-            "goles_contra_ht": 0,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-09",
-            "rival": "Vancouver Whitecaps II",
-            "goles_favor_ht": 3,
-            "goles_contra_ht": 0,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-18",
-            "rival": "Portland Timbers II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          }
-        ],
-        "is_candidate": true
-      },
-      "visitante_stats": {
-        "ht_05_pct": "75.0%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "50.0%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.89",
-        "avg_goals_ht_rol": "1.00",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-03",
-            "rival": "Portland Timbers II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-10",
-            "rival": "Los Angeles FC II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 2,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-21",
-            "rival": "Colorado Rapids II",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-24",
-            "rival": "Vancouver Whitecaps II",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "Sporting KC II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          }
-        ],
-        "is_candidate": true
-      },
-      "league_id": 909,
-      "tier": 3
-    },
-    {
-      "match_id": 1513148,
-      "fecha": "2026-06-08",
-      "hora": "00:30",
-      "liga": "MLS Next Pro",
-      "local": "Austin II",
-      "visitante": "Los Angeles FC II",
-      "probabilidad": "100.0%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "status": "1H",
-      "goles_ht": null,
-      "resultado_apuesta": null,
-      "marcador_ht": null,
-      "local_stats": {
-        "ht_05_pct": "75.0%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "50.0%",
-        "rendimiento_ht": "37.5%",
-        "avg_goals_ht_general": "0.88",
-        "avg_goals_ht_rol": "0.75",
-        "racha_ht": "3/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-03",
-            "rival": "North Texas",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-11",
-            "rival": "Tacoma Defiance",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-14",
-            "rival": "Colorado Rapids II",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-18",
-            "rival": "St. Louis City II",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Sporting KC II",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "100.0%",
-        "bts_pct": "100.0%",
-        "rendimiento_ht": "100.0%",
-        "avg_goals_ht_general": "0.88",
-        "avg_goals_ht_rol": "1.00",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-04-20",
-            "rival": "The Town",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-04-27",
-            "rival": "Tacoma Defiance",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 3,
-            "total_ht": 4,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-04",
-            "rival": "Vancouver Whitecaps II",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 1,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-10",
-            "rival": "Real Monarchs",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 1,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-17",
-            "rival": "Ventura County",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          }
-        ],
-        "is_candidate": true
-      },
-      "league_id": 909,
-      "tier": 3
-    },
-    {
-      "match_id": 1504451,
-      "fecha": "2026-06-08",
-      "hora": "17:00",
-      "liga": "Ettan - Södra",
-      "local": "Angelholms FF",
-      "visitante": "Olympic",
-      "probabilidad": "100.0%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "status": "NS",
-      "goles_ht": null,
-      "resultado_apuesta": null,
-      "marcador_ht": null,
-      "local_stats": {
-        "ht_05_pct": "60.0%",
-        "ht_15_pct": "40.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "40.0%",
-        "avg_goals_ht_general": "0.60",
-        "avg_goals_ht_rol": "0.20",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Skövde AIK",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-14",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-18",
-            "rival": "Kristianstad",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-24",
-            "rival": "Jonkopings Sodra",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-02",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          }
-        ],
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "60.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.80",
-        "avg_goals_ht_rol": "0.80",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Kristianstad",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-14",
-            "rival": "Tvååker",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-17",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-03",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          }
-        ],
-        "is_candidate": true
-      },
-      "league_id": 564,
-      "tier": 3,
-      "cuota_recomendada": 1.29,
-      "bookmaker_recomendado": "BetVictor",
-      "otras_cuotas": {
-        "10Bet": 1.25,
-        "William Hill": 1.25,
-        "Marathonbet": 1.28,
-        "Betfair": 1.25,
-        "1xBet": 1.28
-      }
-    },
     {
       "match_id": 1550468,
       "league_id": 492,
@@ -66000,9 +65489,14 @@ window.dashboardData = {
       "goles_ht": null,
       "resultado_apuesta": null,
       "marcador_ht": null,
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.25,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.2,
+        "Marathonbet": 1.19,
+        "Betfair": 1.2,
+        "1xBet": 1.19
+      },
       "local_stats": {
         "ht_05_pct": "100.0%",
         "ht_15_pct": "75.0%",
@@ -66126,9 +65620,14 @@ window.dashboardData = {
       "goles_ht": null,
       "resultado_apuesta": null,
       "marcador_ht": null,
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.21,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.18,
+        "Marathonbet": 1.15,
+        "Betfair": 1.17,
+        "1xBet": 1.15
+      },
       "local_stats": {
         "ht_05_pct": "50.0%",
         "ht_15_pct": "25.0%",
@@ -66252,9 +65751,14 @@ window.dashboardData = {
       "goles_ht": null,
       "resultado_apuesta": null,
       "marcador_ht": null,
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.27,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.22,
+        "Marathonbet": 1.18,
+        "Betfair": 1.22,
+        "1xBet": 1.18
+      },
       "local_stats": {
         "ht_05_pct": "80.0%",
         "ht_15_pct": "40.0%",
@@ -66865,6 +66369,378 @@ window.dashboardData = {
         "sequia_ht": false,
         "is_candidate": true
       }
+    },
+    {
+      "match_id": 1504451,
+      "fecha": "2026-06-08",
+      "hora": "17:00",
+      "liga": "Ettan - Södra",
+      "local": "Angelholms FF",
+      "visitante": "Olympic",
+      "probabilidad": "100.0%",
+      "clase": "Clase B",
+      "sustento": "Visitante",
+      "status": "FT",
+      "goles_ht": 1,
+      "resultado_apuesta": "GANADA",
+      "marcador_ht": "1 - 0",
+      "local_stats": {
+        "ht_05_pct": "60.0%",
+        "ht_15_pct": "40.0%",
+        "bts_pct": "60.0%",
+        "rendimiento_ht": "40.0%",
+        "avg_goals_ht_general": "0.60",
+        "avg_goals_ht_rol": "0.20",
+        "racha_ht": "4/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-09",
+            "rival": "Skövde AIK",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-14",
+            "rival": "Atvidabergs FF",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-18",
+            "rival": "Kristianstad",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-24",
+            "rival": "Jonkopings Sodra",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-02",
+            "rival": "Rosengård",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": false
+          }
+        ],
+        "is_candidate": false
+      },
+      "visitante_stats": {
+        "ht_05_pct": "100.0%",
+        "ht_15_pct": "60.0%",
+        "bts_pct": "60.0%",
+        "rendimiento_ht": "50.0%",
+        "avg_goals_ht_general": "0.80",
+        "avg_goals_ht_rol": "0.80",
+        "racha_ht": "5/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-09",
+            "rival": "Kristianstad",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-14",
+            "rival": "Tvååker",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-17",
+            "rival": "Atvidabergs FF",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 2,
+            "total_ht": 2,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-23",
+            "rival": "Rosengård",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-03",
+            "rival": "Lund",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": true
+          }
+        ],
+        "is_candidate": true
+      },
+      "league_id": 564,
+      "tier": 3,
+      "cuota_recomendada": 1.29,
+      "bookmaker_recomendado": "BetVictor",
+      "otras_cuotas": {
+        "10Bet": 1.25,
+        "William Hill": 1.25,
+        "Marathonbet": 1.28,
+        "Betfair": 1.25,
+        "1xBet": 1.28
+      }
+    },
+    {
+      "match_id": 1513148,
+      "fecha": "2026-06-08",
+      "hora": "00:30",
+      "liga": "MLS Next Pro",
+      "local": "Austin II",
+      "visitante": "Los Angeles FC II",
+      "probabilidad": "100.0%",
+      "clase": "Clase B",
+      "sustento": "Visitante",
+      "status": "FT",
+      "goles_ht": 0,
+      "resultado_apuesta": "PERDIDA",
+      "marcador_ht": "0 - 0",
+      "local_stats": {
+        "ht_05_pct": "75.0%",
+        "ht_15_pct": "50.0%",
+        "bts_pct": "50.0%",
+        "rendimiento_ht": "37.5%",
+        "avg_goals_ht_general": "0.88",
+        "avg_goals_ht_rol": "0.75",
+        "racha_ht": "3/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-03",
+            "rival": "North Texas",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-11",
+            "rival": "Tacoma Defiance",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-14",
+            "rival": "Colorado Rapids II",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-18",
+            "rival": "St. Louis City II",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-23",
+            "rival": "Sporting KC II",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": false
+          }
+        ],
+        "is_candidate": false
+      },
+      "visitante_stats": {
+        "ht_05_pct": "100.0%",
+        "ht_15_pct": "100.0%",
+        "bts_pct": "100.0%",
+        "rendimiento_ht": "100.0%",
+        "avg_goals_ht_general": "0.88",
+        "avg_goals_ht_rol": "1.00",
+        "racha_ht": "5/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-04-20",
+            "rival": "The Town",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": true
+          },
+          {
+            "fecha": "2026-04-27",
+            "rival": "Tacoma Defiance",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 3,
+            "total_ht": 4,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-04",
+            "rival": "Vancouver Whitecaps II",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 1,
+            "total_ht": 3,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-10",
+            "rival": "Real Monarchs",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 1,
+            "total_ht": 3,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-17",
+            "rival": "Ventura County",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": true
+          }
+        ],
+        "is_candidate": true
+      },
+      "league_id": 909,
+      "tier": 3
+    },
+    {
+      "match_id": 1513145,
+      "fecha": "2026-06-08",
+      "hora": "00:00",
+      "liga": "MLS Next Pro",
+      "local": "The Town",
+      "visitante": "Real Monarchs",
+      "probabilidad": "75.0%",
+      "clase": "Clase A",
+      "sustento": "Ambos",
+      "status": "FT",
+      "goles_ht": 3,
+      "resultado_apuesta": "GANADA",
+      "marcador_ht": "3 - 0",
+      "local_stats": {
+        "ht_05_pct": "75.0%",
+        "ht_15_pct": "50.0%",
+        "bts_pct": "50.0%",
+        "rendimiento_ht": "50.0%",
+        "avg_goals_ht_general": "1.50",
+        "avg_goals_ht_rol": "1.50",
+        "racha_ht": "4/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-04-13",
+            "rival": "Minnesota United II",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": true
+          },
+          {
+            "fecha": "2026-04-20",
+            "rival": "Los Angeles FC II",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-02",
+            "rival": "Ventura County",
+            "goles_favor_ht": 3,
+            "goles_contra_ht": 0,
+            "total_ht": 3,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-09",
+            "rival": "Vancouver Whitecaps II",
+            "goles_favor_ht": 3,
+            "goles_contra_ht": 0,
+            "total_ht": 3,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-18",
+            "rival": "Portland Timbers II",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": true
+          }
+        ],
+        "is_candidate": true
+      },
+      "visitante_stats": {
+        "ht_05_pct": "75.0%",
+        "ht_15_pct": "50.0%",
+        "bts_pct": "50.0%",
+        "rendimiento_ht": "50.0%",
+        "avg_goals_ht_general": "0.89",
+        "avg_goals_ht_rol": "1.00",
+        "racha_ht": "5/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-03",
+            "rival": "Portland Timbers II",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-10",
+            "rival": "Los Angeles FC II",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 2,
+            "total_ht": 3,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-21",
+            "rival": "Colorado Rapids II",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-24",
+            "rival": "Vancouver Whitecaps II",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-30",
+            "rival": "Sporting KC II",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": true
+          }
+        ],
+        "is_candidate": true
+      },
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1513147,
