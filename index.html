@@ -286,6 +286,7 @@
                                     <th class="pb-3">Visitante</th>
                                     <th class="pb-3 text-center">Goles HT</th>
                                     <th class="pb-3 text-center">Resultado</th>
+                                    <th class="pb-3 text-center">Detalle</th>
                                 </tr>
                             </thead>
                             <tbody id="backtest-table-body" class="divide-y divide-white/5">
@@ -537,6 +538,86 @@
                 
                 <div class="flex justify-end pt-2">
                     <button onclick="closeModal()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-blue-500/15">
+                        Entendido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLE DE BACKTEST (HISTÓRICO) -->
+    <div id="modal-backtest" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/85 transition-opacity duration-300">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div class="glass-modal w-full max-w-2xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative text-left my-8">
+                <button onclick="closeBacktestModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="text-center md:text-left">
+                    <span class="inline-block px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2" id="modal-backtest-league-pill">
+                        Liga
+                    </span>
+                    <h3 class="text-2xl font-extrabold text-white flex flex-col md:flex-row items-center gap-3 justify-center md:justify-start">
+                        <span id="modal-backtest-home-team">Equipo Local</span>
+                        <span class="text-gray-500 font-light text-xl flex items-center justify-center">vs</span>
+                        <span id="modal-backtest-away-team">Equipo Visitante</span>
+                    </h3>
+                    <p class="text-sm text-gray-400 mt-1" id="modal-backtest-date">Fecha del partido</p>
+                </div>
+                
+                <!-- Detalles de Cierre -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Información del Pick -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                        <h4 class="text-sm font-bold text-blue-400 flex items-center gap-1.5">
+                            <i data-lucide="info" class="w-4 h-4"></i> Datos del Partido
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-400">Clase de Pick:</span> <span class="text-white font-semibold" id="modal-backtest-class">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Sustento:</span> <span class="text-white" id="modal-backtest-sustento">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Goles en HT:</span> <span class="text-white font-bold" id="modal-backtest-goals">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Resultado Apuesta:</span> <span class="px-2 py-0.5 rounded text-xs font-bold" id="modal-backtest-result">--</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cuotas y Mercado -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                        <h4 class="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i> Cuotas de Cierre
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-400">Cuota Real (HT Over 0.5):</span> <span class="text-white font-bold" id="modal-backtest-odd">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Casa de Apuesta (Cierre):</span> <span class="text-white" id="modal-backtest-bookmaker">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Mercado Evaluado:</span> <span class="text-gray-300">Más de 0.5 goles HT</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulación Financiera del Capital -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-4">
+                    <h4 class="text-sm font-bold text-purple-400 flex items-center gap-1.5">
+                        <i data-lucide="wallet" class="w-4 h-4"></i> Simulación Financiera (Banca después de este pick)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Stake Fijo -->
+                        <div class="border-t md:border-t-0 md:border-r border-white/10 pt-3 md:pt-0 md:pr-4 space-y-1">
+                            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Stake Fijo ($20)</h5>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Monto Apostado:</span> <span class="text-white">$20.00</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Beneficio Neto:</span> <span class="font-semibold" id="modal-backtest-flat-profit">--</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Banca Acumulada:</span> <span class="text-emerald-400 font-bold" id="modal-backtest-flat-bank">--</span></div>
+                        </div>
+                        <!-- Stake Compuesto -->
+                        <div class="space-y-1">
+                            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Stake Compuesto (2%)</h5>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Monto Apostado:</span> <span class="text-white" id="modal-backtest-comp-stake">--</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Beneficio Neto:</span> <span class="font-semibold" id="modal-backtest-comp-profit">--</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Banca Acumulada:</span> <span class="text-emerald-400 font-bold" id="modal-backtest-comp-bank">--</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end pt-2">
+                    <button onclick="closeBacktestModal()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-blue-500/15">
                         Entendido
                     </button>
                 </div>
@@ -1217,6 +1298,57 @@
             document.getElementById('modal-sustento').classList.add('hidden');
         }
 
+        function showBacktestDetail(idx) {
+            const r = filteredBacktest[idx];
+            if (!r) return;
+            
+            document.getElementById('modal-backtest-league-pill').innerText = r.Liga;
+            document.getElementById('modal-backtest-home-team').innerText = r.Local;
+            document.getElementById('modal-backtest-away-team').innerText = r.Visitante;
+            document.getElementById('modal-backtest-date').innerText = `Fecha: ${r.Fecha}`;
+            
+            // Clase de pick
+            document.getElementById('modal-backtest-class').innerText = r.Clase;
+            document.getElementById('modal-backtest-sustento').innerText = r.Sustento === 'Ambos' ? 'Ambos Equipos Candidatos' : `${r.Sustento} Candidato`;
+            document.getElementById('modal-backtest-goals').innerText = `${r['Goles HT']} gol(es)`;
+            
+            // Resultado
+            const resEl = document.getElementById('modal-backtest-result');
+            resEl.innerText = r.Resultado;
+            if (r.Resultado === 'GANADA') {
+                resEl.className = "px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold rounded-full";
+            } else {
+                resEl.className = "px-2.5 py-0.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-bold rounded-full";
+            }
+            
+            // Cuota y bookmaker
+            document.getElementById('modal-backtest-odd').innerText = r.Cuota ? parseFloat(r.Cuota).toFixed(2) : '1.45';
+            document.getElementById('modal-backtest-bookmaker').innerText = r.Bookmaker || 'Por determinar';
+            
+            // Simulación Financiera - Stake Fijo
+            const flatPft = parseFloat(r['Beneficio Fijo']) || 0.0;
+            const flatPftEl = document.getElementById('modal-backtest-flat-profit');
+            flatPftEl.innerText = `${flatPft >= 0 ? '+$' : '-$'}${Math.abs(flatPft).toFixed(2)}`;
+            flatPftEl.className = flatPft >= 0 ? "text-emerald-400 font-semibold" : "text-rose-400 font-semibold";
+            document.getElementById('modal-backtest-flat-bank').innerText = `$${(parseFloat(r['Banca Fijo']) || 1000).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            // Simulación Financiera - Stake Compuesto
+            const compStk = parseFloat(r['Stake Compuesto']) || 20.0;
+            const compPft = parseFloat(r['Beneficio Compuesto']) || 0.0;
+            const compPftEl = document.getElementById('modal-backtest-comp-profit');
+            compPftEl.innerText = `${compPft >= 0 ? '+$' : '-$'}${Math.abs(compPft).toFixed(2)}`;
+            compPftEl.className = compPft >= 0 ? "text-emerald-400 font-semibold" : "text-rose-400 font-semibold";
+            document.getElementById('modal-backtest-comp-stake').innerText = `$${compStk.toFixed(2)}`;
+            document.getElementById('modal-backtest-comp-bank').innerText = `$${(parseFloat(r['Banca Compuesto']) || 1000).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            document.getElementById('modal-backtest').classList.remove('hidden');
+            lucide.createIcons();
+        }
+        
+        function closeBacktestModal() {
+            document.getElementById('modal-backtest').classList.add('hidden');
+        }
+
         // --- BACKTEST TABLE & SEARCH & PAGINATION & SELECTOR ---
         function renderBacktestTable() {
             const tbody = document.getElementById('backtest-table-body');
@@ -1227,14 +1359,14 @@
             const pageData = filteredBacktest.slice(start, end);
             
             if (pageData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-gray-500">No se encontraron partidos.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-gray-500">No se encontraron partidos.</td></tr>`;
                 document.getElementById('backtest-pagination-info').innerText = "0 de 0 partidos";
                 document.getElementById('backtest-prev').disabled = true;
                 document.getElementById('backtest-next').disabled = true;
                 return;
             }
             
-            pageData.forEach(r => {
+            pageData.forEach((r, idx) => {
                 const tr = document.createElement('tr');
                 tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
                 
@@ -1244,9 +1376,10 @@
                     ? `<span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold rounded-full">Premium (A)</span>`
                     : `<span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-bold rounded-full">Valor (B)</span>`;
                 
+                const globalIdx = start + idx;
                 tr.innerHTML = `
                     <td class="py-3 text-xs md:text-sm">${r.Fecha}</td>
-                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
+                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5 font-sans">
                         ${r.Liga} ${classBadge}
                     </td>
                     <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${r.Local}</td>
@@ -1257,6 +1390,11 @@
                         <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold ${resultBadgeClass}">
                             ${r.Resultado}
                         </span>
+                    </td>
+                    <td class="py-3 text-center">
+                        <button onclick="showBacktestDetail(${globalIdx})" class="p-1.5 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all" title="Ver detalles y simulación de banca">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                        </button>
                     </td>
                 `;
                 tbody.appendChild(tr);
