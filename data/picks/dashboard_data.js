@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-07 21:32:34",
+  "last_updated": "2026-06-07 21:46:13",
   "leagues": [
     {
       "league_id": 39,
@@ -9,7 +9,8 @@ window.dashboardData = {
       "over_25_pct": 55.0,
       "partidos_jugados": 380,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 40,
@@ -19,7 +20,8 @@ window.dashboardData = {
       "over_25_pct": 50.4,
       "partidos_jugados": 557,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 41,
@@ -29,7 +31,8 @@ window.dashboardData = {
       "over_25_pct": 50.6,
       "partidos_jugados": 557,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 61,
@@ -39,7 +42,8 @@ window.dashboardData = {
       "over_25_pct": 52.9,
       "partidos_jugados": 309,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 71,
@@ -49,7 +53,8 @@ window.dashboardData = {
       "over_25_pct": 50.3,
       "partidos_jugados": 177,
       "partidos_restantes": 203,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 72,
@@ -59,7 +64,8 @@ window.dashboardData = {
       "over_25_pct": 42.5,
       "partidos_jugados": 113,
       "partidos_restantes": 267,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 75,
@@ -69,7 +75,8 @@ window.dashboardData = {
       "over_25_pct": 46.7,
       "partidos_jugados": 90,
       "partidos_restantes": 100,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     },
     {
       "league_id": 78,
@@ -79,7 +86,8 @@ window.dashboardData = {
       "over_25_pct": 63.5,
       "partidos_jugados": 308,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 1
     },
     {
       "league_id": 79,
@@ -89,7 +97,8 @@ window.dashboardData = {
       "over_25_pct": 57.5,
       "partidos_jugados": 308,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 80,
@@ -99,7 +108,8 @@ window.dashboardData = {
       "over_25_pct": 63.7,
       "partidos_jugados": 380,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 2
     },
     {
       "league_id": 83,
@@ -109,7 +119,8 @@ window.dashboardData = {
       "over_25_pct": 54.8,
       "partidos_jugados": 310,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     },
     {
       "league_id": 84,
@@ -119,7 +130,8 @@ window.dashboardData = {
       "over_25_pct": 67.4,
       "partidos_jugados": 307,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 86,
@@ -129,7 +141,8 @@ window.dashboardData = {
       "over_25_pct": 68.0,
       "partidos_jugados": 306,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 87,
@@ -139,7 +152,8 @@ window.dashboardData = {
       "over_25_pct": 61.8,
       "partidos_jugados": 306,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 88,
@@ -149,7 +163,8 @@ window.dashboardData = {
       "over_25_pct": 61.7,
       "partidos_jugados": 309,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 1
     },
     {
       "league_id": 89,
@@ -159,7 +174,8 @@ window.dashboardData = {
       "over_25_pct": 63.1,
       "partidos_jugados": 392,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 2
     },
     {
       "league_id": 94,
@@ -169,7 +185,8 @@ window.dashboardData = {
       "over_25_pct": 53.6,
       "partidos_jugados": 308,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 103,
@@ -179,7 +196,8 @@ window.dashboardData = {
       "over_25_pct": 55.1,
       "partidos_jugados": 89,
       "partidos_restantes": 151,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 104,
@@ -189,7 +207,8 @@ window.dashboardData = {
       "over_25_pct": 71.2,
       "partidos_jugados": 80,
       "partidos_restantes": 160,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 2
     },
     {
       "league_id": 113,
@@ -199,7 +218,8 @@ window.dashboardData = {
       "over_25_pct": 56.8,
       "partidos_jugados": 81,
       "partidos_restantes": 159,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 114,
@@ -209,7 +229,8 @@ window.dashboardData = {
       "over_25_pct": 62.5,
       "partidos_jugados": 80,
       "partidos_restantes": 160,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 119,
@@ -219,7 +240,8 @@ window.dashboardData = {
       "over_25_pct": 60.4,
       "partidos_jugados": 193,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 2
     },
     {
       "league_id": 120,
@@ -229,7 +251,8 @@ window.dashboardData = {
       "over_25_pct": 54.7,
       "partidos_jugados": 192,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 135,
@@ -239,7 +262,8 @@ window.dashboardData = {
       "over_25_pct": 45.8,
       "partidos_jugados": 380,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 140,
@@ -249,7 +273,8 @@ window.dashboardData = {
       "over_25_pct": 50.0,
       "partidos_jugados": 380,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 1
     },
     {
       "league_id": 164,
@@ -259,7 +284,8 @@ window.dashboardData = {
       "over_25_pct": 73.2,
       "partidos_jugados": 56,
       "partidos_restantes": 76,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 2
     },
     {
       "league_id": 165,
@@ -269,7 +295,8 @@ window.dashboardData = {
       "over_25_pct": 66.0,
       "partidos_jugados": 47,
       "partidos_restantes": 85,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 166,
@@ -279,7 +306,8 @@ window.dashboardData = {
       "over_25_pct": 72.2,
       "partidos_jugados": 36,
       "partidos_restantes": 96,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 179,
@@ -289,7 +317,8 @@ window.dashboardData = {
       "over_25_pct": 52.1,
       "partidos_jugados": 234,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 180,
@@ -299,7 +328,8 @@ window.dashboardData = {
       "over_25_pct": 44.9,
       "partidos_jugados": 186,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 207,
@@ -309,7 +339,8 @@ window.dashboardData = {
       "over_25_pct": 66.8,
       "partidos_jugados": 230,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 2
     },
     {
       "league_id": 208,
@@ -319,7 +350,8 @@ window.dashboardData = {
       "over_25_pct": 61.7,
       "partidos_jugados": 180,
       "partidos_restantes": 0,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 244,
@@ -329,7 +361,8 @@ window.dashboardData = {
       "over_25_pct": 41.4,
       "partidos_jugados": 58,
       "partidos_restantes": 74,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 2
     },
     {
       "league_id": 245,
@@ -339,7 +372,8 @@ window.dashboardData = {
       "over_25_pct": 61.7,
       "partidos_jugados": 60,
       "partidos_restantes": 72,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 247,
@@ -349,7 +383,8 @@ window.dashboardData = {
       "over_25_pct": 69.2,
       "partidos_jugados": 39,
       "partidos_restantes": 51,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 248,
@@ -359,7 +394,8 @@ window.dashboardData = {
       "over_25_pct": 59.0,
       "partidos_jugados": 39,
       "partidos_restantes": 51,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     },
     {
       "league_id": 249,
@@ -369,7 +405,8 @@ window.dashboardData = {
       "over_25_pct": 84.6,
       "partidos_jugados": 78,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 253,
@@ -379,7 +416,8 @@ window.dashboardData = {
       "over_25_pct": 62.4,
       "partidos_jugados": 218,
       "partidos_restantes": 292,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 1
     },
     {
       "league_id": 328,
@@ -389,7 +427,8 @@ window.dashboardData = {
       "over_25_pct": 68.2,
       "partidos_jugados": 66,
       "partidos_restantes": 114,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 329,
@@ -399,7 +438,8 @@ window.dashboardData = {
       "over_25_pct": 65.2,
       "partidos_jugados": 69,
       "partidos_restantes": 111,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     },
     {
       "league_id": 368,
@@ -409,7 +449,8 @@ window.dashboardData = {
       "over_25_pct": 73.8,
       "partidos_jugados": 84,
       "partidos_restantes": 0,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 473,
@@ -419,7 +460,8 @@ window.dashboardData = {
       "over_25_pct": 55.6,
       "partidos_jugados": 63,
       "partidos_restantes": 119,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     },
     {
       "league_id": 474,
@@ -429,7 +471,8 @@ window.dashboardData = {
       "over_25_pct": 69.8,
       "partidos_jugados": 63,
       "partidos_restantes": 119,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 489,
@@ -439,7 +482,8 @@ window.dashboardData = {
       "over_25_pct": 59.1,
       "partidos_jugados": 88,
       "partidos_restantes": 205,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     },
     {
       "league_id": 492,
@@ -449,7 +493,8 @@ window.dashboardData = {
       "over_25_pct": 65.4,
       "partidos_jugados": 319,
       "partidos_restantes": 1,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 563,
@@ -459,7 +504,8 @@ window.dashboardData = {
       "over_25_pct": 60.5,
       "partidos_jugados": 86,
       "partidos_restantes": 154,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 564,
@@ -469,7 +515,8 @@ window.dashboardData = {
       "over_25_pct": 61.6,
       "partidos_jugados": 86,
       "partidos_restantes": 154,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 702,
@@ -479,7 +526,8 @@ window.dashboardData = {
       "over_25_pct": 69.2,
       "partidos_jugados": 305,
       "partidos_restantes": 1,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 909,
@@ -489,7 +537,8 @@ window.dashboardData = {
       "over_25_pct": 70.1,
       "partidos_jugados": 189,
       "partidos_restantes": 229,
-      "Estado": "APROBADA"
+      "Estado": "APROBADA",
+      "tier": 3
     },
     {
       "league_id": 1087,
@@ -499,7 +548,8 @@ window.dashboardData = {
       "over_25_pct": 37.5,
       "partidos_jugados": 48,
       "partidos_restantes": 87,
-      "Estado": "RECHAZADA"
+      "Estado": "RECHAZADA",
+      "tier": 3
     }
   ],
   "teams": [
@@ -39349,6 +39399,8 @@ window.dashboardData = {
   "picks": [
     {
       "match_id": 1504451,
+      "league_id": 564,
+      "tier": 3,
       "fecha": "2026-06-08",
       "hora": "17:00",
       "liga": "Ettan - Södra",
@@ -39475,6 +39527,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1550468,
+      "league_id": 492,
+      "tier": 3,
       "fecha": "2026-06-10",
       "hora": "16:30",
       "liga": "Tweede Divisie",
@@ -39554,6 +39608,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1543395,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-10",
       "hora": "19:15",
       "liga": "2. Deild",
@@ -39674,6 +39730,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1543393,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-10",
       "hora": "19:15",
       "liga": "2. Deild",
@@ -39794,6 +39852,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1541620,
+      "league_id": 247,
+      "tier": 3,
       "fecha": "2026-06-11",
       "hora": "16:00",
       "liga": "Kakkonen - Lohko A",
@@ -39914,6 +39974,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1517192,
+      "league_id": 245,
+      "tier": 3,
       "fecha": "2026-06-12",
       "hora": "15:30",
       "liga": "Ykkönen",
@@ -40034,6 +40096,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1517191,
+      "league_id": 245,
+      "tier": 3,
       "fecha": "2026-06-12",
       "hora": "15:30",
       "liga": "Ykkönen",
@@ -40154,6 +40218,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1541621,
+      "league_id": 247,
+      "tier": 3,
       "fecha": "2026-06-12",
       "hora": "16:00",
       "liga": "Kakkonen - Lohko A",
@@ -40274,6 +40340,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1504463,
+      "league_id": 564,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "11:00",
       "liga": "Ettan - Södra",
@@ -40394,6 +40462,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1541623,
+      "league_id": 247,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "13:00",
       "liga": "Kakkonen - Lohko A",
@@ -40514,6 +40584,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1504460,
+      "league_id": 564,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "14:00",
       "liga": "Ettan - Södra",
@@ -40634,6 +40706,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1505185,
+      "league_id": 563,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "14:00",
       "liga": "Ettan - Norra",
@@ -40754,6 +40828,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1543397,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "16:00",
       "liga": "2. Deild",
@@ -40874,6 +40950,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1519574,
+      "league_id": 328,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "17:00",
       "liga": "Esiliiga A",
@@ -40994,6 +41072,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1513153,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-13",
       "hora": "23:00",
       "liga": "MLS Next Pro",
@@ -41114,6 +41194,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1513150,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "00:00",
       "liga": "MLS Next Pro",
@@ -41234,6 +41316,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1519575,
+      "league_id": 328,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "09:30",
       "liga": "Esiliiga A",
@@ -41354,6 +41438,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1496260,
+      "league_id": 474,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "13:00",
       "liga": "2. Division - Group 2",
@@ -41474,6 +41560,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1495861,
+      "league_id": 104,
+      "tier": 2,
       "fecha": "2026-06-14",
       "hora": "14:00",
       "liga": "1. Division",
@@ -41594,6 +41682,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1495856,
+      "league_id": 104,
+      "tier": 2,
       "fecha": "2026-06-14",
       "hora": "14:00",
       "liga": "1. Division",
@@ -41714,6 +41804,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1495857,
+      "league_id": 104,
+      "tier": 2,
       "fecha": "2026-06-14",
       "hora": "14:00",
       "liga": "1. Division",
@@ -41834,6 +41926,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1543400,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "16:00",
       "liga": "2. Deild",
@@ -41954,6 +42048,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1513159,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "20:00",
       "liga": "MLS Next Pro",
@@ -42074,6 +42170,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1513160,
+      "league_id": 909,
+      "tier": 3,
       "fecha": "2026-06-14",
       "hora": "22:00",
       "liga": "MLS Next Pro",
@@ -42194,6 +42292,8 @@ window.dashboardData = {
     },
     {
       "match_id": 1543401,
+      "league_id": 166,
+      "tier": 3,
       "fecha": "2026-06-15",
       "hora": "19:15",
       "liga": "2. Deild",
@@ -42434,7 +42534,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1513148,
@@ -42556,7 +42658,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1504451,
@@ -42684,7 +42788,9 @@ window.dashboardData = {
         "Marathonbet": 1.28,
         "Betfair": 1.25,
         "1xBet": 1.28
-      }
+      },
+      "league_id": 564,
+      "tier": 3
     },
     {
       "match_id": 1550468,
@@ -42767,7 +42873,9 @@ window.dashboardData = {
         "racha_detalles": [],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 492,
+      "tier": 3
     },
     {
       "match_id": 1543395,
@@ -42889,7 +42997,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1543392,
@@ -43011,7 +43121,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1543393,
@@ -43135,7 +43247,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1541620,
@@ -43257,7 +43371,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 247,
+      "tier": 3
     },
     {
       "match_id": 1517192,
@@ -43379,7 +43495,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 245,
+      "tier": 3
     },
     {
       "match_id": 1517191,
@@ -43503,7 +43621,9 @@ window.dashboardData = {
         ],
         "sequia_ht": true,
         "is_candidate": false
-      }
+      },
+      "league_id": 245,
+      "tier": 3
     },
     {
       "match_id": 1541621,
@@ -43625,7 +43745,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 247,
+      "tier": 3
     },
     {
       "match_id": 1504463,
@@ -43749,7 +43871,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 564,
+      "tier": 3
     },
     {
       "match_id": 1541623,
@@ -43873,7 +43997,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 247,
+      "tier": 3
     },
     {
       "match_id": 1504460,
@@ -43997,7 +44123,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 564,
+      "tier": 3
     },
     {
       "match_id": 1505185,
@@ -44121,7 +44249,9 @@ window.dashboardData = {
         ],
         "sequia_ht": true,
         "is_candidate": false
-      }
+      },
+      "league_id": 563,
+      "tier": 3
     },
     {
       "match_id": 1543397,
@@ -44245,7 +44375,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1519574,
@@ -44369,7 +44501,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 328,
+      "tier": 3
     },
     {
       "match_id": 1513153,
@@ -44493,7 +44627,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1513150,
@@ -44617,7 +44753,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1519575,
@@ -44741,7 +44879,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 328,
+      "tier": 3
     },
     {
       "match_id": 1496260,
@@ -44865,7 +45005,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 474,
+      "tier": 3
     },
     {
       "match_id": 1495861,
@@ -44989,7 +45131,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 120,
+      "tier": 2
     },
     {
       "match_id": 1495856,
@@ -45113,7 +45257,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 120,
+      "tier": 2
     },
     {
       "match_id": 1495857,
@@ -45237,7 +45383,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 120,
+      "tier": 2
     },
     {
       "match_id": 1543400,
@@ -45361,7 +45509,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1513159,
@@ -45485,7 +45635,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1513160,
@@ -45609,7 +45761,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1543401,
@@ -45733,7 +45887,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1513147,
@@ -45855,7 +46011,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1495781,
@@ -45977,7 +46135,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 120,
+      "tier": 2
     },
     {
       "match_id": 1504453,
@@ -46099,7 +46259,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 564,
+      "tier": 3
     },
     {
       "match_id": 1504452,
@@ -46221,7 +46383,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 564,
+      "tier": 3
     },
     {
       "match_id": 1513142,
@@ -46343,7 +46507,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1550467,
@@ -46426,7 +46592,9 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "league_id": 492,
+      "tier": 3
     },
     {
       "match_id": 1543387,
@@ -46548,7 +46716,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 166,
+      "tier": 3
     },
     {
       "match_id": 1514199,
@@ -46670,7 +46840,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 165,
+      "tier": 3
     },
     {
       "match_id": 1513136,
@@ -46792,7 +46964,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 909,
+      "tier": 3
     },
     {
       "match_id": 1541502,
@@ -46914,7 +47088,9 @@ window.dashboardData = {
       },
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "league_id": 248,
+      "tier": 3
     }
   ]
 };
