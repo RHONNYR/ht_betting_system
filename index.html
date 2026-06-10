@@ -1405,6 +1405,9 @@
             document.getElementById('backtest-pagination-info').innerText = `Mostrando ${start + 1}-${Math.min(end, totalCount)} de ${totalCount} partidos`;
             document.getElementById('backtest-prev').disabled = backtestPage === 0;
             document.getElementById('backtest-next').disabled = end >= totalCount;
+            
+            // Re-renderizar iconos dinámicos de Lucide (como el ojo de detalle)
+            lucide.createIcons();
         }
 
         function prevBacktestPage() {
