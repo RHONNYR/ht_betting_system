@@ -50,6 +50,26 @@ class ApiFootballClient:
         }
         return self._get_json('odds', params=params).get('response', [])
 
+    def fetch_odds_for_league_season(self, league_id, season, **extra_params):
+        params = {
+            'league': int(league_id),
+            'season': int(season),
+        }
+        params.update({k: v for k, v in extra_params.items() if v is not None})
+        payload = self._get_json('odds', params=params)
+        odds = payload.get('response', [])
+
+        paging = payload.get('paging') or {}
+        total_pages = int(paging.get('total') or 1)
+        for page in range(2, total_pages + 1):
+            page_params = dict(params)
+            page_params['page'] = page
+            page_payload = self._get_json('odds', params=page_params)
+            odds.extend(page_payload.get('response', []))
+            time.sleep(self.pause_seconds)
+
+        return odds
+
     def download_fixtures_for_target(self, league_key, season_year):
         if league_key not in settings.API_FOOTBALL_LEAGUE_TARGETS:
             raise KeyError(f"No hay mapeo API-Football para league_key={league_key}")
