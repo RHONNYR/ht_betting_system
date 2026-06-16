@@ -111,6 +111,65 @@ API_FOOTBALL_LEAGUE_TARGETS = {
     'denmark2': {'api_id': 120, 'country': 'Denmark', 'league_name': '1. Division'},
 }
 
+# Niveles de Liquidez de Mercado (Categorización de Ligas)
+# Tier 1: Alta (Fácil de apostar / Muchos mercados en vivo y pre-partido con límites altos)
+# Tier 2: Media (Segundas divisiones sólidas, ligas principales nórdicas y suizas)
+# Tier 3: Exótica / Baja (Ligas regionales, juveniles y mercados muy pequeños con límites bajos)
+API_FOOTBALL_LEAGUE_TIERS = {
+    39: 1,   # England Premier League
+    40: 1,   # England Championship
+    140: 1,  # Spain La Liga
+    135: 1,  # Italy Serie A
+    61: 1,   # France Ligue 1
+    94: 1,   # Portugal Primeira Liga
+    71: 1,   # Brazil Serie A
+    78: 1,   # Germany Bundesliga
+    79: 1,   # Germany 2. Bundesliga
+    253: 1,  # USA MLS
+    88: 1,   # Netherlands Eredivisie
+    
+    41: 2,   # England League One
+    72: 2,   # Brazil Serie B
+    80: 2,   # Germany 3. Liga
+    89: 2,   # Netherlands Eerste Divisie
+    103: 2,  # Norway Eliteserien
+    104: 2,  # Norway 1. Division
+    207: 2,  # Switzerland Super League
+    208: 2,  # Switzerland Challenge League
+    164: 2,  # Iceland Úrvalsdeild
+    244: 2,  # Finland Veikkausliiga
+    179: 2,  # Scotland Premiership
+    180: 2,  # Scotland Championship
+    113: 2,  # Sweden Allsvenskan
+    114: 2,  # Sweden Superettan
+    119: 2,  # Denmark Superliga
+    120: 2,  # Denmark 1. Division
+    
+    702: 3,  # England Premier League 2 Division One
+    75: 3,   # Brazil Serie C
+    84: 3,   # Germany Regionalliga Nord
+    87: 3,   # Germany Regionalliga West
+    86: 3,   # Germany Regionalliga SudWest
+    83: 3,   # Germany Regionalliga Bayern
+    909: 3,  # USA MLS Next Pro
+    489: 3,  # USA USL League One
+    492: 3,  # Netherlands Tweede Divisie
+    473: 3,  # Norway 2. Division Group 1
+    474: 3,  # Norway 2. Division Group 2
+    165: 3,  # Iceland 1. Deild
+    166: 3,  # Iceland 2. Deild
+    329: 3,  # Estonia Meistriliiga
+    328: 3,  # Estonia Esiliiga A
+    1087: 3, # Finland Ykkösliiga
+    245: 3,  # Finland Ykkönen
+    247: 3,  # Finland Kakkonen A
+    248: 3,  # Finland Kakkonen B
+    249: 3,  # Finland Kakkonen C
+    368: 3,  # Singapore Premier League
+    563: 3,  # Sweden Ettan Norra
+    564: 3,  # Sweden Ettan Södra
+}
+
 API_LEAGUES = {
     str(info['api_id']): info['league_name']
     for info in API_FOOTBALL_LEAGUE_TARGETS.values()
@@ -227,4 +286,11 @@ GITHUB_ENABLED = os.environ.get("GITHUB_ENABLED", "True").lower() == "true"
 GITHUB_TOKEN = clean_secret(os.environ.get("GITHUB_TOKEN") or os.environ.get("GITHUB_TOKEN", ""))
 GITHUB_REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER", "rhonnyr").strip()
 GITHUB_REPO_NAME = os.environ.get("GITHUB_REPO_NAME", "ht_betting_system").strip()
+
+# ==========================================
+# CONFIGURACIÓN DEL BOT DE TELEGRAM
+# ==========================================
+TELEGRAM_BOT_TOKEN = clean_secret(os.environ.get("TELEGRAM_BOT_TOKEN") or "TU_BOT_TOKEN_AQUI")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID") or "TU_CHAT_ID_AQUI"
+
 
