@@ -31,5 +31,7 @@ jobs:
         GITHUB_ENABLED: "True"
         GITHUB_REPO_OWNER: "rhonnyr"
         GITHUB_REPO_NAME: "ht_betting_system"
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: |
         python run_sheets_pipeline.py
