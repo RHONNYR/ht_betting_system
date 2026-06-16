@@ -1,5 +1,16 @@
 import os
 import sys
+import socket
+
+# Parche DNS para evitar bloqueo/enrutamiento erróneo de proveedores de internet en Venezuela.
+# Fuerza la resolución de api.github.com hacia una IP funcional de GitHub (140.82.114.6).
+orig_getaddrinfo = socket.getaddrinfo
+def custom_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    if host == 'api.github.com':
+        return orig_getaddrinfo('140.82.114.6', port, family, type, proto, flags)
+    return orig_getaddrinfo(host, port, family, type, proto, flags)
+socket.getaddrinfo = custom_getaddrinfo
+
 import datetime as dt
 import json
 import base64
@@ -15,8 +26,44 @@ from src.core.sports_analyzer import (
 )
 from src.data.google_sheets_client import GoogleSheetsClient
 
+def download_latest_picks_history_from_github():
+    token = getattr(settings, 'GITHUB_TOKEN', '').strip()
+    owner = getattr(settings, 'GITHUB_REPO_OWNER', '').strip()
+    repo = getattr(settings, 'GITHUB_REPO_NAME', '').strip()
+    enabled = getattr(settings, 'GITHUB_ENABLED', False)
+    
+    if not enabled or not token or not owner or not repo:
+        return
+        
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/data/picks/picks_history.json"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3.raw"
+    }
+    try:
+        print("[GitHub Sync] Descargando la versión más reciente de picks_history.json desde GitHub...")
+        r = requests.get(url, headers=headers, timeout=15)
+        if r.status_code == 200:
+            dest_dir = os.path.join('data', 'picks')
+            os.makedirs(dest_dir, exist_ok=True)
+            dest_path = os.path.join(dest_dir, 'picks_history.json')
+            with open(dest_path, 'wb') as f:
+                f.write(r.content)
+            print("[GitHub Sync] ¡Base de datos de picks local sincronizada correctamente con GitHub!")
+        elif r.status_code == 404:
+            print("[GitHub Sync] picks_history.json no existe en el repositorio remoto aún.")
+        else:
+            print(f"[GitHub Sync] Advertencia: No se pudo descargar picks_history.json (HTTP {r.status_code})")
+    except Exception as e:
+        print(f"[GitHub Sync] No se pudo conectar a GitHub para sincronizar: {e}")
+
 def main():
     print("=== INICIANDO PIPELINE HT 0.5+ CON GOOGLE SHEETS ===")
+    
+    # Sincronizar base de datos de picks desde GitHub antes de comenzar (si no estamos en GitHub Actions)
+    if os.environ.get("GITHUB_ACTIONS") != "true":
+        download_latest_picks_history_from_github()
+        
     print(f"DEBUG: Key length = {len(settings.API_FOOTBALL_KEY)}, Key prefix = {settings.API_FOOTBALL_KEY[:6]}..., Key suffix = ...{settings.API_FOOTBALL_KEY[-6:] if settings.API_FOOTBALL_KEY else ''}")
     print(f"DEBUG: Token length = {len(settings.GITHUB_TOKEN)}, Token prefix = {settings.GITHUB_TOKEN[:6]}..., Token suffix = ...{settings.GITHUB_TOKEN[-6:] if settings.GITHUB_TOKEN else ''}")
     
@@ -53,6 +100,13 @@ def main():
                 # Intentar descargar de la API
                 df_season = extractor.get_fixtures_for_season(league_id, season)
                 if not df_season.empty:
+                    # Intentar descargar y cruzar cuotas reales para esta liga y temporada
+                    try:
+                        df_odds = extractor.get_odds_for_season(league_id, season)
+                        if not df_odds.empty:
+                            df_season = pd.merge(df_season, df_odds, on='match_id', how='left')
+                    except Exception as e:
+                        print(f"\nNo se pudieron cruzar cuotas reales para liga ID {league_id} temporada {season}: {e}")
                     all_fixtures_list.append(df_season)
                 # Pequeña pausa para no sobrepasar el rate limit
                 sys.stdout.write(".")
@@ -280,6 +334,30 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
         except Exception as e:
             print(f"Error al leer picks_history.json: {e}")
             
+    # Helper maps to resolve missing tiers and league_ids
+    name_to_tier = {}
+    name_to_id = {}
+    for info in settings.API_FOOTBALL_LEAGUE_TARGETS.values():
+        api_id = info['api_id']
+        tier = settings.API_FOOTBALL_LEAGUE_TIERS.get(api_id, 3)
+        name_to_tier[info['league_name']] = tier
+        name_to_id[info['league_name']] = api_id
+
+    # Backfill missing league_id and tier in existing history
+    for item in history:
+        if 'league_id' not in item or item['league_id'] is None:
+            liga_name = item.get('liga')
+            if liga_name in name_to_id:
+                item['league_id'] = name_to_id[liga_name]
+        
+        if 'tier' not in item or item['tier'] is None:
+            l_id = item.get('league_id')
+            if l_id is not None and int(l_id) in settings.API_FOOTBALL_LEAGUE_TIERS:
+                item['tier'] = settings.API_FOOTBALL_LEAGUE_TIERS[int(l_id)]
+            else:
+                liga_name = item.get('liga')
+                item['tier'] = name_to_tier.get(liga_name, 3)
+
     # Map of existing history by match_id for easy update
     history_map = {int(p['match_id']): p for p in history if p.get('match_id') is not None}
     
@@ -334,7 +412,7 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                     # Fetch team stats at the time of the pick to store historically
                     home_stats = {
                         'ht_05_pct': 'N/A', 'ht_15_pct': 'N/A', 'bts_pct': 'N/A', 'rendimiento_ht': 'N/A',
-                        'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'is_candidate': False
+                        'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'sequia_ht': False, 'is_candidate': False
                     }
                     if not df_local.empty:
                         home_row = df_local[df_local['team_name'] == home]
@@ -349,12 +427,13 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                                 'avg_goals_ht_rol': f"{h_rec['avg_goals_ht_rol']:.2f}" if isinstance(h_rec['avg_goals_ht_rol'], (int, float)) else 'N/A',
                                 'racha_ht': h_rec['racha_ht'],
                                 'racha_detalles': h_rec['racha_detalles'] if isinstance(h_rec.get('racha_detalles'), list) else [],
+                                'sequia_ht': bool(h_rec.get('sequia_ht', False)),
                                 'is_candidate': bool(h_rec['is_candidate'])
                             }
                             
                     away_stats = {
                         'ht_05_pct': 'N/A', 'ht_15_pct': 'N/A', 'bts_pct': 'N/A', 'rendimiento_ht': 'N/A',
-                        'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'is_candidate': False
+                        'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'sequia_ht': False, 'is_candidate': False
                     }
                     if not df_away.empty:
                         away_row = df_away[df_away['team_name'] == away]
@@ -369,11 +448,17 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                                 'avg_goals_ht_rol': f"{a_rec['avg_goals_ht_rol']:.2f}" if isinstance(a_rec['avg_goals_ht_rol'], (int, float)) else 'N/A',
                                 'racha_ht': a_rec['racha_ht'],
                                 'racha_detalles': a_rec['racha_detalles'] if isinstance(a_rec.get('racha_detalles'), list) else [],
+                                'sequia_ht': bool(a_rec.get('sequia_ht', False)),
                                 'is_candidate': bool(a_rec['is_candidate'])
                             }
                             
+                    league_id_val = int(r.get('league_id')) if pd.notna(r.get('league_id')) else name_to_id.get(r.get('Liga'), 0)
+                    tier_val = settings.API_FOOTBALL_LEAGUE_TIERS.get(league_id_val, name_to_tier.get(r.get('Liga'), 3))
+
                     new_pick = {
                         'match_id': m_id,
+                        'league_id': league_id_val,
+                        'tier': tier_val,
                         'fecha': r.get('Fecha', 'N/A'),
                         'hora': r.get('Hora', 'N/A'),
                         'liga': r.get('Liga', 'N/A'),
@@ -395,9 +480,28 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                     history.append(new_pick)
                     history_map[m_id] = new_pick
                 else:
-                    # Update odds if they were default / Por determinar
+                    # Keep the highest recommended odd recorded at any moment
                     existing_pick = history_map[m_id]
-                    if existing_pick.get('bookmaker_recomendado') == 'Por determinar' or existing_pick.get('cuota_recomendada') == settings.DEFAULT_HT_O05_ODDS:
+                    old_cuota = existing_pick.get('cuota_recomendada')
+                    
+                    try:
+                        old_cuota_val = float(old_cuota) if old_cuota is not None else 0.0
+                    except (ValueError, TypeError):
+                        old_cuota_val = 0.0
+                        
+                    try:
+                        new_cuota_val = float(cuota_rec) if cuota_rec is not None else 0.0
+                    except (ValueError, TypeError):
+                        new_cuota_val = 0.0
+                        
+                    is_default_or_missing = (
+                        'cuota_recomendada' not in existing_pick
+                        or 'bookmaker_recomendado' not in existing_pick
+                        or existing_pick.get('bookmaker_recomendado') == 'Por determinar'
+                        or old_cuota_val == settings.DEFAULT_HT_O05_ODDS
+                    )
+                    
+                    if is_default_or_missing or new_cuota_val > old_cuota_val:
                         existing_pick['cuota_recomendada'] = cuota_rec
                         existing_pick['bookmaker_recomendado'] = bm_rec
                         existing_pick['otras_cuotas'] = otras
@@ -485,6 +589,15 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
     """
     import json
     
+    # Helper maps for resolving tiers and league_ids
+    name_to_tier = {}
+    name_to_id = {}
+    for info in settings.API_FOOTBALL_LEAGUE_TARGETS.values():
+        api_id = info['api_id']
+        tier = settings.API_FOOTBALL_LEAGUE_TIERS.get(api_id, 3)
+        name_to_tier[info['league_name']] = tier
+        name_to_id[info['league_name']] = api_id
+
     # 1. Ligas
     leagues_data = []
     if not df_leagues.empty:
@@ -496,8 +609,11 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
         if 'over_25_pct' in df_l_copy.columns:
             df_l_copy['over_25_pct'] = (df_l_copy['over_25_pct'] * 100).round(1)
         
+        # Resolve tier dynamically
+        df_l_copy['tier'] = df_l_copy['league_id'].map(settings.API_FOOTBALL_LEAGUE_TIERS).fillna(3).astype(int)
+        
         # Columnas a exportar incluyendo los nuevos conteos de partidos
-        export_cols = ['league_id', 'league_name', 'season', 'over_15_pct', 'over_25_pct', 'partidos_jugados', 'partidos_restantes', 'Estado']
+        export_cols = ['league_id', 'league_name', 'season', 'over_15_pct', 'over_25_pct', 'partidos_jugados', 'partidos_restantes', 'Estado', 'tier']
         # Fallback por si alguna no existe
         export_cols = [c for c in export_cols if c in df_l_copy.columns]
         leagues_data = df_l_copy[export_cols].to_dict(orient='records')
@@ -519,11 +635,20 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
     backtest_summary = {
         "total": 0, "aciertos": 0, "fallos": 0, "win_rate": "0.0%",
         "total_a": 0, "aciertos_a": 0, "fallos_a": 0, "win_rate_a": "0.0%",
-        "total_b": 0, "aciertos_b": 0, "fallos_b": 0, "win_rate_b": "0.0%"
+        "total_b": 0, "aciertos_b": 0, "fallos_b": 0, "win_rate_b": "0.0%",
+        "banca_inicial": settings.INITIAL_BANKROLL,
+        "banca_final_fijo": settings.INITIAL_BANKROLL,
+        "rendimiento_fijo": "+0.0%",
+        "banca_final_compuesto": settings.INITIAL_BANKROLL,
+        "rendimiento_compuesto": "+0.0%"
     }
     if not df_backtest.empty:
-        # Usar columnas seguras
-        backtest_cols = ['Fecha', 'Liga', 'Local', 'Visitante', 'Goles HT', 'Resultado', 'Clase', 'Sustento']
+        # Usar columnas seguras incluyendo las nuevas de simulación de banca
+        backtest_cols = [
+            'Fecha', 'Liga', 'Local', 'Visitante', 'Goles HT', 'Resultado', 'Clase', 'Sustento',
+            'Cuota', 'Bookmaker', 'Stake Fijo', 'Beneficio Fijo', 'Banca Fijo',
+            'Stake Compuesto', 'Beneficio Compuesto', 'Banca Compuesto'
+        ]
         backtest_cols = [c for c in backtest_cols if c in df_backtest.columns]
         backtest_data = df_backtest[backtest_cols].to_dict(orient='records')
         
@@ -546,6 +671,14 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
         fallos_b = int((df_b['Resultado'] == 'PERDIDA').sum()) if total_b > 0 else 0
         win_rate_b = f"{(aciertos_b / total_b * 100):.1f}%" if total_b > 0 else "0.0%"
         
+        initial_bank = settings.INITIAL_BANKROLL
+        final_row = df_backtest.iloc[-1]
+        final_bank_flat = float(final_row.get('Banca Fijo', initial_bank))
+        final_bank_comp = float(final_row.get('Banca Compuesto', initial_bank))
+        
+        yield_flat = ((final_bank_flat - initial_bank) / initial_bank) * 100
+        yield_comp = ((final_bank_comp - initial_bank) / initial_bank) * 100
+        
         backtest_summary = {
             "total": total,
             "aciertos": aciertos,
@@ -558,7 +691,12 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
             "total_b": total_b,
             "aciertos_b": aciertos_b,
             "fallos_b": fallos_b,
-            "win_rate_b": win_rate_b
+            "win_rate_b": win_rate_b,
+            "banca_inicial": initial_bank,
+            "banca_final_fijo": round(final_bank_flat, 2),
+            "rendimiento_fijo": f"{yield_flat:+.1f}%",
+            "banca_final_compuesto": round(final_bank_comp, 2),
+            "rendimiento_compuesto": f"{yield_comp:+.1f}%"
         }
         
     # 4. Picks de hoy con sustento detallado
@@ -571,7 +709,7 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
             # Obtener métricas detalladas del local
             home_stats = {
                 'ht_05_pct': 'N/A', 'ht_15_pct': 'N/A', 'bts_pct': 'N/A', 'rendimiento_ht': 'N/A',
-                'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'is_candidate': False
+                'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'sequia_ht': False, 'is_candidate': False
             }
             if not df_local.empty:
                 home_row = df_local[df_local['team_name'] == home]
@@ -586,13 +724,14 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
                         'avg_goals_ht_rol': f"{h_rec['avg_goals_ht_rol']:.2f}" if isinstance(h_rec['avg_goals_ht_rol'], (int, float)) else 'N/A',
                         'racha_ht': h_rec['racha_ht'],
                         'racha_detalles': h_rec['racha_detalles'] if isinstance(h_rec.get('racha_detalles'), list) else [],
+                        'sequia_ht': bool(h_rec.get('sequia_ht', False)),
                         'is_candidate': bool(h_rec['is_candidate'])
                     }
                     
             # Obtener métricas detalladas del visitante
             away_stats = {
                 'ht_05_pct': 'N/A', 'ht_15_pct': 'N/A', 'bts_pct': 'N/A', 'rendimiento_ht': 'N/A',
-                'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'is_candidate': False
+                'avg_goals_ht_general': 'N/A', 'avg_goals_ht_rol': 'N/A', 'racha_ht': 'N/A', 'racha_detalles': [], 'sequia_ht': False, 'is_candidate': False
             }
             if not df_away.empty:
                 away_row = df_away[df_away['team_name'] == away]
@@ -607,11 +746,17 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
                         'avg_goals_ht_rol': f"{a_rec['avg_goals_ht_rol']:.2f}" if isinstance(a_rec['avg_goals_ht_rol'], (int, float)) else 'N/A',
                         'racha_ht': a_rec['racha_ht'],
                         'racha_detalles': a_rec['racha_detalles'] if isinstance(a_rec.get('racha_detalles'), list) else [],
+                        'sequia_ht': bool(a_rec.get('sequia_ht', False)),
                         'is_candidate': bool(a_rec['is_candidate'])
                     }
                     
+            league_id_val = int(r.get('league_id')) if pd.notna(r.get('league_id')) else name_to_id.get(r.get('Liga'), 0)
+            tier_val = settings.API_FOOTBALL_LEAGUE_TIERS.get(league_id_val, name_to_tier.get(r.get('Liga'), 3))
+            
             picks_data.append({
                 'match_id': int(r.get('match_id', 0)) if r.get('match_id') is not None else 0,
+                'league_id': league_id_val,
+                'tier': tier_val,
                 'fecha': r.get('Fecha', 'N/A'),
                 'hora': r.get('Hora', 'N/A'),
                 'liga': r.get('Liga', 'N/A'),
@@ -638,11 +783,25 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
             try:
                 with open(history_file, 'r', encoding='utf-8') as f:
                     picks_history = json.load(f)
+                
+                # Backfill fallback history
+                for item in picks_history:
+                    if 'league_id' not in item or item['league_id'] is None:
+                        liga_name = item.get('liga')
+                        if liga_name in name_to_id:
+                            item['league_id'] = name_to_id[liga_name]
+                    if 'tier' not in item or item['tier'] is None:
+                        l_id = item.get('league_id')
+                        if l_id is not None and int(l_id) in settings.API_FOOTBALL_LEAGUE_TIERS:
+                            item['tier'] = settings.API_FOOTBALL_LEAGUE_TIERS[int(l_id)]
+                        else:
+                            liga_name = item.get('liga')
+                            item['tier'] = name_to_tier.get(liga_name, 3)
             except Exception as e:
-                print(f"Error al leer picks_history.json (fallback): {e}")
+                print(f"Error al leer/saneamiento picks_history.json (fallback): {e}")
 
     dashboard_payload = {
-        'last_updated': dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        'last_updated': dt.datetime.now(dt.timezone(dt.timedelta(hours=-4))).strftime("%Y-%m-%d %H:%M:%S"),
         'leagues': leagues_data,
         'teams': teams_data,
         'backtest': backtest_data,
@@ -660,11 +819,26 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
     print(f"Datos de dashboard en JS guardados en: {js_filepath}")
 
     # Subida automática a GitHub Pages si está habilitado
-    if getattr(settings, 'GITHUB_ENABLED', False):
+    # Se desactiva en el entorno de GitHub Actions para evitar conflictos de commits,
+    # ya que allí usaremos Git tradicional para persistir todo (base de datos, caché parquet, etc.)
+    if getattr(settings, 'GITHUB_ENABLED', False) and os.environ.get("GITHUB_ACTIONS") != "true":
         print("[GitHub] Sincronización automática a GitHub activada.")
         upload_file_to_github(js_filepath, 'data/picks/dashboard_data.js')
         local_html = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dashboard.html')
         upload_file_to_github(local_html, 'index.html')
+        upload_file_to_github(os.path.join('data', 'picks', 'picks_history.json'), 'data/picks/picks_history.json')
+        # Subir estado de Telegram enviado
+        telegram_state = os.path.join('data', 'picks', 'telegram_sent_state.json')
+        if os.path.exists(telegram_state):
+            upload_file_to_github(telegram_state, 'data/picks/telegram_sent_state.json')
+
+    # Ejecutar alertas de Telegram
+    try:
+        from src.scanner.telegram_notifier import run_telegram_notifications
+        run_telegram_notifications()
+    except Exception as e:
+        print(f"[Telegram Notifier] Error al ejecutar alertas de Telegram: {e}")
+
 
 if __name__ == "__main__":
     main()
