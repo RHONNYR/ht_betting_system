@@ -190,15 +190,31 @@
                     <span class="w-2 h-2 bg-amber-400 rounded-full"></span>
                     Selecciones (Próximos 7 Días) de los Equipos Aprobados
                 </h3>
-                <!-- Filtro por Clase -->
-                <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 self-stretch sm:self-auto">
-                    <button onclick="filterPicksByClass('all')" id="btn-pick-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos</button>
-                    <button onclick="filterPicksByClass('Clase A')" id="btn-pick-filter-a" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
-                        <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i> Premium (A)
-                    </button>
-                    <button onclick="filterPicksByClass('Clase B')" id="btn-pick-filter-b" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
-                        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-400"></i> Valor (B)
-                    </button>
+                <div class="flex flex-col sm:flex-row gap-3 self-stretch sm:self-auto flex-wrap">
+                    <!-- Filtro por Clase -->
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1">
+                        <button onclick="filterPicksByClass('all')" id="btn-pick-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos Clase</button>
+                        <button onclick="filterPicksByClass('Clase A')" id="btn-pick-filter-a" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400 animate-pulse"></i> Premium (A)
+                        </button>
+                        <button onclick="filterPicksByClass('Clase B')" id="btn-pick-filter-b" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-400"></i> Valor (B)
+                        </button>
+                    </div>
+
+                    <!-- Filtro por Liquidez (Tier) -->
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1">
+                        <button onclick="filterPicksByTier('all')" id="btn-tier-filter-all" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1">Todos Tier</button>
+                        <button onclick="filterPicksByTier(1)" id="btn-tier-filter-1" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Tier 1 (Alta)
+                        </button>
+                        <button onclick="filterPicksByTier(2)" id="btn-tier-filter-2" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-blue-400"></span> Tier 2 (Media)
+                        </button>
+                        <button onclick="filterPicksByTier(3)" id="btn-tier-filter-3" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Tier 3 (Exótica)
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -270,6 +286,7 @@
                                     <th class="pb-3">Visitante</th>
                                     <th class="pb-3 text-center">Goles HT</th>
                                     <th class="pb-3 text-center">Resultado</th>
+                                    <th class="pb-3 text-center">Detalle</th>
                                 </tr>
                             </thead>
                             <tbody id="backtest-table-body" class="divide-y divide-white/5">
@@ -285,6 +302,41 @@
                             <button id="backtest-prev" onclick="prevBacktestPage()" class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 text-white disabled:opacity-50 disabled:hover:bg-white/5">Anterior</button>
                             <button id="backtest-next" onclick="nextBacktestPage()" class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 text-white disabled:opacity-50 disabled:hover:bg-white/5">Siguiente</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LINE CHART OF BANKROLL EVOLUTION -->
+            <div class="glass-card p-6 rounded-2xl w-full mt-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-200">Evolución de la Banca (Simulado 2 Años)</h3>
+                        <p class="text-gray-400 text-xs mt-0.5">Simulación en base a los partidos cruzados en el backtesting (Orden cronológico)</p>
+                    </div>
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 self-stretch sm:self-auto flex-wrap">
+                        <button onclick="setBankrollMethod('flat')" id="btn-bank-method-flat" class="px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all">Stake Fijo ($20)</button>
+                        <button onclick="setBankrollMethod('compound')" id="btn-bank-method-compound" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all">Stake Compuesto (2%)</button>
+                    </div>
+                </div>
+                <div class="h-80 w-full relative">
+                    <canvas id="bankrollChart"></canvas>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-4 border-t border-white/5 text-center">
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Banca Final Fijo</span>
+                        <span class="text-lg font-extrabold text-blue-400" id="stat-bank-flat">$1,000.00</span>
+                    </div>
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Rendimiento Fijo</span>
+                        <span class="text-lg font-extrabold text-blue-400" id="stat-yield-flat">+0.0%</span>
+                    </div>
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Banca Final Compuesto</span>
+                        <span class="text-lg font-extrabold text-emerald-400" id="stat-bank-compound">$1,000.00</span>
+                    </div>
+                    <div class="bg-white/[0.01] border border-white/5 p-3 rounded-xl">
+                        <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Rendimiento Compuesto</span>
+                        <span class="text-lg font-extrabold text-emerald-400" id="stat-yield-compound">+0.0%</span>
                     </div>
                 </div>
             </div>
@@ -371,6 +423,35 @@
 
         <!-- SECTION: HISTORIAL DE PICKS -->
         <section id="section-history" class="hidden space-y-6">
+            <!-- PANEL DE EVALUACIÓN Y RACHA -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Racha Card -->
+                <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Racha Actual del Sistema</span>
+                        <h2 class="text-3xl font-extrabold mt-1" id="system-current-streak">--</h2>
+                        <p class="text-xs text-gray-400 mt-1">Picks consecutivos del mismo resultado</p>
+                    </div>
+                    <div class="p-4 rounded-xl flex items-center justify-center" id="system-streak-icon-container">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                </div>
+                
+                <!-- Últimos 10 Resultados Form Row -->
+                <div class="glass-card p-6 rounded-2xl md:col-span-2 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold uppercase text-gray-400 tracking-wider">Historial de Forma Reciente (Últimos 10 Picks Resueltos)</span>
+                        <div class="flex items-center gap-2 mt-3" id="system-form-row">
+                            <!-- Burbujas cargadas dinámicamente -->
+                        </div>
+                    </div>
+                    <div class="text-xs text-gray-400 mt-2 flex justify-between">
+                        <span>Izquierda: Más antiguo • Derecha: Más reciente</span>
+                        <span id="system-streak-winrate-10">Win Rate (Últimos 10): --%</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="glass-card p-6 rounded-2xl space-y-4">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
@@ -408,56 +489,138 @@
     </div>
 
     <!-- MODAL: SUSTENTO DEL PICK -->
-    <div id="modal-sustento" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 transition-opacity duration-300">
-        <div class="glass-modal w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            
-            <div class="text-center md:text-left">
-                <span class="inline-block px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2" id="modal-league-pill">
-                    Liga
-                </span>
-                <h3 class="text-2xl font-extrabold text-white flex flex-col md:flex-row items-center gap-3 justify-center md:justify-start">
-                    <span id="modal-home-team">Equipo Local</span>
-                    <span class="text-gray-500 font-light text-xl">vs</span>
-                    <span id="modal-away-team">Equipo Visitante</span>
-                </h3>
-                <p class="text-sm text-gray-400 mt-1">Comparación estadística detallada (Primer Tiempo / HT)</p>
-            </div>
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-center text-sm border-collapse">
-                    <thead>
-                        <tr class="border-b border-white/10 text-gray-400 font-semibold bg-white/5">
-                            <th class="py-3 px-4 text-left">Filtro Estadístico</th>
-                            <th class="py-3 px-2" id="modal-home-header">Local (Casa)</th>
-                            <th class="py-3 px-2">Umbral</th>
-                            <th class="py-3 px-2" id="modal-away-header">Visitante (Fuera)</th>
-                            <th class="py-3 px-2">Umbral</th>
-                            <th class="py-3 px-2">Evaluación</th>
-                        </tr>
-                    </thead>
-                    <tbody id="modal-table-body" class="divide-y divide-white/5 font-medium">
+    <div id="modal-sustento" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/85 transition-opacity duration-300">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div class="glass-modal w-full max-w-4xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative text-left my-8">
+                <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="text-center md:text-left">
+                    <span class="inline-block px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2" id="modal-league-pill">
+                        Liga
+                    </span>
+                    <h3 class="text-2xl font-extrabold text-white flex flex-col md:flex-row items-center gap-3 justify-center md:justify-start">
+                        <span id="modal-home-team">Equipo Local</span>
+                        <span class="text-gray-500 font-light text-xl">vs</span>
+                        <span id="modal-away-team">Equipo Visitante</span>
+                    </h3>
+                    <p class="text-sm text-gray-400 mt-1">Comparación estadística detallada (Primer Tiempo / HT)</p>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-center text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-gray-400 font-semibold bg-white/5">
+                                <th class="py-3 px-4 text-left">Filtro Estadístico</th>
+                                <th class="py-3 px-2" id="modal-home-header">Local (Casa)</th>
+                                <th class="py-3 px-2">Umbral</th>
+                                <th class="py-3 px-2" id="modal-away-header">Visitante (Fuera)</th>
+                                <th class="py-3 px-2">Umbral</th>
+                                <th class="py-3 px-2">Evaluación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modal-table-body" class="divide-y divide-white/5 font-medium">
+                            <!-- Rellenado dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Comparativa de Cuotas -->
+                <div class="border-t border-white/10 pt-4" id="modal-odds-container">
+                    <h4 class="text-sm font-bold text-gray-300 mb-2.5 flex items-center gap-1.5">
+                        <i data-lucide="percent" class="w-4 h-4 text-blue-400"></i> Comparativa de Cuotas (HT Over 0.5)
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="modal-odds-grid">
                         <!-- Rellenado dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- Comparativa de Cuotas -->
-            <div class="border-t border-white/10 pt-4" id="modal-odds-container">
-                <h4 class="text-sm font-bold text-gray-300 mb-2.5 flex items-center gap-1.5">
-                    <i data-lucide="percent" class="w-4 h-4 text-blue-400"></i> Comparativa de Cuotas (HT Over 0.5)
-                </h4>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="modal-odds-grid">
-                    <!-- Rellenado dinámicamente -->
+                    </div>
+                </div>
+                
+                <div class="flex justify-end pt-2">
+                    <button onclick="closeModal()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-blue-500/15">
+                        Entendido
+                    </button>
                 </div>
             </div>
-            
-            <div class="flex justify-end pt-2">
-                <button onclick="closeModal()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-blue-500/15">
-                    Entendido
+        </div>
+    </div>
+
+    <!-- MODAL DETALLE DE BACKTEST (HISTÓRICO) -->
+    <div id="modal-backtest" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/85 transition-opacity duration-300">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div class="glass-modal w-full max-w-2xl rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl relative text-left my-8">
+                <button onclick="closeBacktestModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
+                
+                <div class="text-center md:text-left">
+                    <span class="inline-block px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-full text-xs font-semibold uppercase tracking-wider mb-2" id="modal-backtest-league-pill">
+                        Liga
+                    </span>
+                    <h3 class="text-2xl font-extrabold text-white flex flex-col md:flex-row items-center gap-3 justify-center md:justify-start">
+                        <span id="modal-backtest-home-team">Equipo Local</span>
+                        <span class="text-gray-500 font-light text-xl flex items-center justify-center">vs</span>
+                        <span id="modal-backtest-away-team">Equipo Visitante</span>
+                    </h3>
+                    <p class="text-sm text-gray-400 mt-1" id="modal-backtest-date">Fecha del partido</p>
+                </div>
+                
+                <!-- Detalles de Cierre -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Información del Pick -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                        <h4 class="text-sm font-bold text-blue-400 flex items-center gap-1.5">
+                            <i data-lucide="info" class="w-4 h-4"></i> Datos del Partido
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-400">Clase de Pick:</span> <span class="text-white font-semibold" id="modal-backtest-class">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Sustento:</span> <span class="text-white" id="modal-backtest-sustento">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Goles en HT:</span> <span class="text-white font-bold" id="modal-backtest-goals">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Resultado Apuesta:</span> <span class="px-2 py-0.5 rounded text-xs font-bold" id="modal-backtest-result">--</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cuotas y Mercado -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                        <h4 class="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i> Cuotas de Cierre
+                        </h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-400">Cuota Real (HT Over 0.5):</span> <span class="text-white font-bold" id="modal-backtest-odd">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Casa de Apuesta (Cierre):</span> <span class="text-white" id="modal-backtest-bookmaker">--</span></div>
+                            <div class="flex justify-between"><span class="text-gray-400">Mercado Evaluado:</span> <span class="text-gray-300">Más de 0.5 goles HT</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulación Financiera del Capital -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-4">
+                    <h4 class="text-sm font-bold text-purple-400 flex items-center gap-1.5">
+                        <i data-lucide="wallet" class="w-4 h-4"></i> Simulación Financiera (Banca después de este pick)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Stake Fijo -->
+                        <div class="border-t md:border-t-0 md:border-r border-white/10 pt-3 md:pt-0 md:pr-4 space-y-1">
+                            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Stake Fijo ($20)</h5>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Monto Apostado:</span> <span class="text-white">$20.00</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Beneficio Neto:</span> <span class="font-semibold" id="modal-backtest-flat-profit">--</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Banca Acumulada:</span> <span class="text-emerald-400 font-bold" id="modal-backtest-flat-bank">--</span></div>
+                        </div>
+                        <!-- Stake Compuesto -->
+                        <div class="space-y-1">
+                            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Stake Compuesto (2%)</h5>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Monto Apostado:</span> <span class="text-white" id="modal-backtest-comp-stake">--</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Beneficio Neto:</span> <span class="font-semibold" id="modal-backtest-comp-profit">--</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-400">Banca Acumulada:</span> <span class="text-emerald-400 font-bold" id="modal-backtest-comp-bank">--</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end pt-2">
+                    <button onclick="closeBacktestModal()" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-blue-500/15">
+                        Entendido
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -479,7 +642,8 @@
         
         let leaguesData = [];
         let chartInstance = null;
-        let currentPickFilter = 'all';
+        let currentClassFilter = 'all';
+        let currentTierFilter = 'all';
 
         // Cargar datos
         window.addEventListener('DOMContentLoaded', () => {
@@ -491,7 +655,7 @@
             const data = window.dashboardData;
             
             // Cargar actualización
-            document.getElementById('update-time').innerText = data.last_updated || 'Desconocido';
+            document.getElementById('update-time').innerText = data.last_updated ? data.last_updated + ' (VET)' : 'Desconocido';
             
             // Cargar KPIs
             const picks = data.picks || [];
@@ -519,6 +683,7 @@
             // Cargar Backtest
             renderBacktestTable();
             renderChart(data.backtest_summary);
+            initBankrollSimulation();
             
             // Cargar Equipos
             renderTeamsTable();
@@ -587,6 +752,50 @@
             return html;
         }
 
+        // Helper para convertir hora UTC a la hora de Venezuela (America/Caracas)
+        function formatLocalTime(dateStr, timeStr) {
+            if (!dateStr || dateStr === 'N/A' || !timeStr || timeStr === 'N/A') {
+                return { date: dateStr, time: timeStr, tz: 'VET' };
+            }
+            try {
+                // Parsear como string UTC
+                const utcString = `${dateStr}T${timeStr}:00Z`;
+                const dateObj = new Date(utcString);
+                if (isNaN(dateObj.getTime())) {
+                    return { date: dateStr, time: timeStr, tz: 'VET' };
+                }
+                
+                // Formatear forzando la zona horaria de Venezuela (America/Caracas)
+                const formatter = new Intl.DateTimeFormat('es-VE', {
+                    timeZone: 'America/Caracas',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+                
+                const parts = formatter.formatToParts(dateObj);
+                let year = '', month = '', day = '', hour = '', minute = '';
+                for (const part of parts) {
+                    if (part.type === 'year') year = part.value;
+                    if (part.type === 'month') month = part.value;
+                    if (part.type === 'day') day = part.value;
+                    if (part.type === 'hour') hour = part.value;
+                    if (part.type === 'minute') minute = part.value;
+                }
+                
+                const localDate = `${year}-${month}-${day}`;
+                const localTime = `${hour}:${minute}`;
+                const tzStr = 'VET'; // Sello de Venezuela Time
+                
+                return { date: localDate, time: localTime, tz: tzStr };
+            } catch (e) {
+                return { date: dateStr, time: timeStr, tz: 'VET' };
+            }
+        }
+
         // --- SECTION PICKS ---
         function renderPicks(picks) {
             const grid = document.getElementById('picks-grid');
@@ -627,14 +836,32 @@
                     sustentoLabel = '<span class="text-[11px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>Solo Visitante</span>';
                 }
                 
+                // Detección de sequía HT
+                let droughtWarning = '';
+                if (pick.local_stats.sequia_ht || pick.visitante_stats.sequia_ht) {
+                    const droughtTeams = [];
+                    if (pick.local_stats.sequia_ht) droughtTeams.push('Local');
+                    if (pick.visitante_stats.sequia_ht) droughtTeams.push('Visitante');
+                    const teamsStr = droughtTeams.join(' y ');
+                    droughtWarning = `
+                        <div class="px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-xl text-xs flex items-center gap-1.5 cursor-help" title="Alerta: El equipo ${teamsStr} viene de 2 o más partidos consecutivos con 0-0 al descanso en sus encuentros recientes.">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-400 animate-bounce flex-shrink-0"></i>
+                            <span class="font-semibold text-amber-300">Alerta de Sequía HT (${teamsStr})</span>
+                        </div>
+                    `;
+                }
+                
+                // Conversión de hora local
+                const localInfo = formatLocalTime(pick.fecha, pick.hora);
+                
                 card.innerHTML = `
                     <div class="space-y-4">
                         <div class="flex justify-between items-start border-b border-white/5 pb-3">
-                            <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1">
-                                <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga}
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1.5 flex-wrap">
+                                <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga} ${getTierBadgeHtml(pick.tier)}
                             </span>
                             <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
-                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${pick.fecha || ''} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${pick.hora} (UTC)
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${localInfo.date} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${localInfo.time} (${localInfo.tz})
                             </span>
                         </div>
                         
@@ -642,6 +869,8 @@
                             ${classBadge}
                             ${sustentoLabel}
                         </div>
+                        
+                        ${droughtWarning}
                         
                         <div class="py-2 text-center">
                             <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
@@ -678,27 +907,78 @@
             lucide.createIcons();
         }
 
+        function getTierBadgeHtml(tier) {
+            const tierVal = parseInt(tier) || 3;
+            if (tierVal === 1) {
+                return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400" title="Tier 1: Alta liquidez">
+                        Tier 1
+                    </span>
+                `;
+            } else if (tierVal === 2) {
+                return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-500/10 border border-blue-500/25 text-blue-400" title="Tier 2: Liquidez media">
+                        Tier 2
+                    </span>
+                `;
+            } else {
+                return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-500/10 border border-amber-500/25 text-amber-500" title="Tier 3: Liquidez exótica/baja">
+                        Tier 3
+                    </span>
+                `;
+            }
+        }
+
+        function applyUnifiedFilters() {
+            const allPicks = window.dashboardData.picks || [];
+            const filtered = allPicks.filter(p => {
+                const matchClass = currentClassFilter === 'all' || p.clase === currentClassFilter;
+                const matchTier = currentTierFilter === 'all' || parseInt(p.tier) === parseInt(currentTierFilter);
+                return matchClass && matchTier;
+            });
+            renderPicks(filtered);
+        }
+
         function filterPicksByClass(clase) {
-            currentPickFilter = clase;
+            currentClassFilter = clase;
             
             // Update filter buttons style
             ['all', 'a', 'b'].forEach(f => {
                 const btn = document.getElementById(`btn-pick-filter-${f}`);
-                btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
+                if (btn) btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
             });
             
             const activeBtnId = clase === 'all' ? 'btn-pick-filter-all' : (clase === 'Clase A' ? 'btn-pick-filter-a' : 'btn-pick-filter-b');
-            document.getElementById(activeBtnId).className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
+            const activeBtn = document.getElementById(activeBtnId);
+            if (activeBtn) activeBtn.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
             
-            const allPicks = window.dashboardData.picks;
-            const filtered = clase === 'all' ? allPicks : allPicks.filter(p => p.clase === clase);
-            renderPicks(filtered);
+            applyUnifiedFilters();
+        }
+
+        function filterPicksByTier(tier) {
+            currentTierFilter = tier;
+            
+            // Update tier filter buttons style
+            ['all', '1', '2', '3'].forEach(t => {
+                const btn = document.getElementById(`btn-tier-filter-${t}`);
+                if (btn) btn.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all flex items-center gap-1";
+            });
+            
+            const activeBtnId = tier === 'all' ? 'btn-tier-filter-all' : `btn-tier-filter-${tier}`;
+            const activeBtn = document.getElementById(activeBtnId);
+            if (activeBtn) activeBtn.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all flex items-center gap-1";
+            
+            applyUnifiedFilters();
         }
 
         // Helper to check if a value meets criteria
         function meetsThreshold(key, valStr) {
+            if (key === 'sequia_ht') {
+                return !valStr; // Favorable si no hay sequía (false)
+            }
             if (!valStr || valStr === 'N/A') return false;
-            const valNum = parseFloat(valStr.replace('%', ''));
+            const valNum = parseFloat(String(valStr).replace('%', ''));
             if (key === 'ht_05_pct') return valNum >= 75.0;
             if (key === 'ht_15_pct') return valNum >= 40.0;
             if (key === 'bts_pct') return valNum >= 40.0;
@@ -711,6 +991,9 @@
 
         // --- HISTORY TABLE ---
         function renderHistoryTable() {
+            // Calcular racha actual del sistema y forma de los últimos 10
+            calculateSystemStreakAndForm();
+
             const tbody = document.getElementById('history-table-body');
             tbody.innerHTML = '';
             
@@ -742,10 +1025,13 @@
                 
                 const marcador = pick.marcador_ht !== null ? pick.marcador_ht : '-';
                 
+                // Conversión de hora local
+                const localInfo = formatLocalTime(pick.fecha, pick.hora);
+
                 tr.innerHTML = `
-                    <td class="py-3 text-xs md:text-sm">${pick.fecha} <span class="text-gray-500 text-[11px] font-light">${pick.hora}</span></td>
-                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
-                        ${pick.liga} ${classBadge}
+                    <td class="py-3 text-xs md:text-sm">${localInfo.date} <span class="text-gray-500 text-[11px] font-light">${localInfo.time} (${localInfo.tz})</span></td>
+                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5 flex-wrap">
+                        <span class="truncate max-w-[120px]" title="${pick.liga}">${pick.liga}</span> ${getTierBadgeHtml(pick.tier)} ${classBadge}
                     </td>
                     <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${pick.local}</td>
                     <td class="py-3 text-center text-gray-500 text-xs px-4">vs</td>
@@ -769,16 +1055,104 @@
             lucide.createIcons();
         }
 
+        // Función para calcular la racha actual del sistema y la forma
+        function calculateSystemStreakAndForm() {
+            const history = window.dashboardData.picks_history || [];
+            
+            // Filtrar solo picks con resultado resuelto
+            const resolved = history.filter(p => p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA');
+            
+            const streakEl = document.getElementById('system-current-streak');
+            const streakIconContainer = document.getElementById('system-streak-icon-container');
+            const formRow = document.getElementById('system-form-row');
+            const streakWinrateEl = document.getElementById('system-streak-winrate-10');
+            
+            if (resolved.length === 0) {
+                if (streakEl) streakEl.innerText = "Sin picks";
+                if (formRow) formRow.innerHTML = '<span class="text-xs text-gray-500">No hay picks resueltos en el historial.</span>';
+                return;
+            }
+            
+            // 1. Calcular racha activa (del pick más reciente hacia atrás)
+            const firstResult = resolved[0].resultado_apuesta;
+            let streakCount = 0;
+            for (let i = 0; i < resolved.length; i++) {
+                if (resolved[i].resultado_apuesta === firstResult) {
+                    streakCount++;
+                } else {
+                    break;
+                }
+            }
+            
+            if (streakEl) {
+                if (firstResult === 'GANADA') {
+                    streakEl.className = "text-3xl font-extrabold mt-1 text-emerald-400";
+                    streakEl.innerText = `${streakCount} GANADAS`;
+                    if (streakIconContainer) {
+                        streakIconContainer.className = "p-4 bg-emerald-500/10 text-emerald-400 rounded-xl";
+                        streakIconContainer.innerHTML = '<i data-lucide="trending-up" class="w-8 h-8"></i>';
+                    }
+                } else {
+                    streakEl.className = "text-3xl font-extrabold mt-1 text-rose-500";
+                    streakEl.innerText = `${streakCount} PERDIDAS`;
+                    if (streakIconContainer) {
+                        streakIconContainer.className = "p-4 bg-rose-500/10 text-rose-500 rounded-xl";
+                        streakIconContainer.innerHTML = '<i data-lucide="trending-down" class="w-8 h-8"></i>';
+                    }
+                }
+            }
+            
+            // 2. Renderizar últimas 10 (orden cronológico ascendente: más antiguo izquierda, más reciente derecha)
+            const last10 = resolved.slice(0, 10).reverse();
+            if (formRow) {
+                formRow.innerHTML = '';
+                last10.forEach(pick => {
+                    const circle = document.createElement('div');
+                    const isWin = pick.resultado_apuesta === 'GANADA';
+                    const bgClass = isWin 
+                        ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400' 
+                        : 'bg-rose-500/10 border-rose-500/25 text-rose-400/75';
+                    
+                    circle.className = `w-10 h-10 rounded-full border flex items-center justify-center font-bold text-sm cursor-help hover:scale-110 transition-transform ${bgClass}`;
+                    
+                    const localInfo = formatLocalTime(pick.fecha, pick.hora);
+                    const teamsStr = `${pick.local} vs ${pick.visitante}`;
+                    const scoreStr = pick.marcador_ht ? `(HT: ${pick.marcador_ht})` : '';
+                    circle.title = `${localInfo.date} ${localInfo.time}\n${teamsStr}\nResultado: ${pick.resultado_apuesta} ${scoreStr}`;
+                    circle.innerText = isWin ? '✓' : '✗';
+                    
+                    formRow.appendChild(circle);
+                });
+            }
+            
+            // 3. Win Rate de los últimos 10
+            if (streakWinrateEl) {
+                const winsInLast10 = last10.filter(p => p.resultado_apuesta === 'GANADA').length;
+                const totalInLast10 = last10.length;
+                const rate = totalInLast10 > 0 ? ((winsInLast10 / totalInLast10) * 100).toFixed(1) : 0;
+                streakWinrateEl.innerText = `Win Rate (Últimos ${totalInLast10}): ${rate}%`;
+            }
+            
+            lucide.createIcons();
+        }
+
         // --- MODAL LOGIC ---
         function openModal(pickIndex, isHistory = false) {
             const pick = isHistory 
                 ? window.dashboardData.picks_history[pickIndex] 
                 : window.dashboardData.picks[pickIndex];
             
-            document.getElementById('modal-league-pill').innerText = pick.liga;
+            document.getElementById('modal-league-pill').innerHTML = `${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
             document.getElementById('modal-home-team').innerText = pick.local;
             document.getElementById('modal-away-team').innerText = pick.visitante;
             
+            // Actualizar la hora local en el subtítulo del modal
+            const localInfo = formatLocalTime(pick.fecha, pick.hora);
+            const subtitleEl = document.querySelector('#modal-sustento p.text-gray-400');
+            if (subtitleEl) {
+                subtitleEl.innerText = `Comparación estadística detallada (Primer Tiempo / HT) • ${localInfo.date} ${localInfo.time} (${localInfo.tz})`;
+            }
+
             // Update headers based on candidate status
             const homeHeader = document.getElementById('modal-home-header');
             const awayHeader = document.getElementById('modal-away-header');
@@ -805,7 +1179,8 @@
                 { label: 'Rendimiento HT (Anotó+Encajó)', key: 'rendimiento_ht', threshold: '>= 50.0%', valH: pick.local_stats.rendimiento_ht, valA: pick.visitante_stats.rendimiento_ht },
                 { label: 'Media Goles HT (General)', key: 'avg_goals_ht_general', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_general, valA: pick.visitante_stats.avg_goals_ht_general },
                 { label: 'Media Goles HT (Rol en Casa/Fuera)', key: 'avg_goals_ht_rol', threshold: '>= 0.80', valH: pick.local_stats.avg_goals_ht_rol, valA: pick.visitante_stats.avg_goals_ht_rol },
-                { label: 'Racha HT (Últimos 5)', key: 'racha_ht', threshold: '>= 4/5', valH: pick.local_stats.racha_ht, valA: pick.visitante_stats.racha_ht }
+                { label: 'Racha HT (Últimos 5)', key: 'racha_ht', threshold: '>= 4/5', valH: pick.local_stats.racha_ht, valA: pick.visitante_stats.racha_ht },
+                { label: '¿Viene de 2+ partidos seguidos 0-0 al descanso?', key: 'sequia_ht', threshold: 'No', valH: pick.local_stats.sequia_ht, valA: pick.visitante_stats.sequia_ht }
             ];
             
             filters.forEach(f => {
@@ -820,6 +1195,13 @@
                 let hValHtml = '';
                 let aValHtml = '';
                 
+                let formattedValH = f.valH;
+                let formattedValA = f.valA;
+                if (f.key === 'sequia_ht') {
+                    formattedValH = f.valH ? 'Sí (Alerta ⚠️)' : 'No (Favorable)';
+                    formattedValA = f.valA ? 'Sí (Alerta ⚠️)' : 'No (Favorable)';
+                }
+
                 if (f.key === 'racha_ht') {
                     hValHtml = pick.local_stats.is_candidate
                         ? `<div class="flex justify-center">${renderStreakCircles(pick.local_stats.racha_detalles, f.valH)}</div>`
@@ -830,12 +1212,12 @@
                         : `<div class="flex justify-center opacity-50">${renderStreakCircles(pick.visitante_stats.racha_detalles, f.valA)}</div>`;
                 } else {
                     hValHtml = pick.local_stats.is_candidate
-                        ? `<span class="font-bold ${hMeets ? 'text-emerald-400' : 'text-amber-400'}">${f.valH}</span>`
-                        : `<span class="text-gray-500 opacity-60 font-medium">${f.valH}</span>`;
+                        ? `<span class="font-bold ${hMeets ? 'text-emerald-400' : 'text-amber-400'}">${formattedValH}</span>`
+                        : `<span class="text-gray-500 opacity-60 font-medium">${formattedValH}</span>`;
                         
                     aValHtml = pick.visitante_stats.is_candidate
-                        ? `<span class="font-bold ${aMeets ? 'text-emerald-400' : 'text-amber-400'}">${f.valA}</span>`
-                        : `<span class="text-gray-500 opacity-60 font-medium">${f.valA}</span>`;
+                        ? `<span class="font-bold ${aMeets ? 'text-emerald-400' : 'text-amber-400'}">${formattedValA}</span>`
+                        : `<span class="text-gray-500 opacity-60 font-medium">${formattedValA}</span>`;
                 }
                 
                 // Icono e indicación de cumplimiento general
@@ -916,6 +1298,57 @@
             document.getElementById('modal-sustento').classList.add('hidden');
         }
 
+        function showBacktestDetail(idx) {
+            const r = filteredBacktest[idx];
+            if (!r) return;
+            
+            document.getElementById('modal-backtest-league-pill').innerText = r.Liga;
+            document.getElementById('modal-backtest-home-team').innerText = r.Local;
+            document.getElementById('modal-backtest-away-team').innerText = r.Visitante;
+            document.getElementById('modal-backtest-date').innerText = `Fecha: ${r.Fecha}`;
+            
+            // Clase de pick
+            document.getElementById('modal-backtest-class').innerText = r.Clase;
+            document.getElementById('modal-backtest-sustento').innerText = r.Sustento === 'Ambos' ? 'Ambos Equipos Candidatos' : `${r.Sustento} Candidato`;
+            document.getElementById('modal-backtest-goals').innerText = `${r['Goles HT']} gol(es)`;
+            
+            // Resultado
+            const resEl = document.getElementById('modal-backtest-result');
+            resEl.innerText = r.Resultado;
+            if (r.Resultado === 'GANADA') {
+                resEl.className = "px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold rounded-full";
+            } else {
+                resEl.className = "px-2.5 py-0.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs font-bold rounded-full";
+            }
+            
+            // Cuota y bookmaker
+            document.getElementById('modal-backtest-odd').innerText = r.Cuota ? parseFloat(r.Cuota).toFixed(2) : '1.45';
+            document.getElementById('modal-backtest-bookmaker').innerText = r.Bookmaker || 'Por determinar';
+            
+            // Simulación Financiera - Stake Fijo
+            const flatPft = parseFloat(r['Beneficio Fijo']) || 0.0;
+            const flatPftEl = document.getElementById('modal-backtest-flat-profit');
+            flatPftEl.innerText = `${flatPft >= 0 ? '+$' : '-$'}${Math.abs(flatPft).toFixed(2)}`;
+            flatPftEl.className = flatPft >= 0 ? "text-emerald-400 font-semibold" : "text-rose-400 font-semibold";
+            document.getElementById('modal-backtest-flat-bank').innerText = `$${(parseFloat(r['Banca Fijo']) || 1000).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            // Simulación Financiera - Stake Compuesto
+            const compStk = parseFloat(r['Stake Compuesto']) || 20.0;
+            const compPft = parseFloat(r['Beneficio Compuesto']) || 0.0;
+            const compPftEl = document.getElementById('modal-backtest-comp-profit');
+            compPftEl.innerText = `${compPft >= 0 ? '+$' : '-$'}${Math.abs(compPft).toFixed(2)}`;
+            compPftEl.className = compPft >= 0 ? "text-emerald-400 font-semibold" : "text-rose-400 font-semibold";
+            document.getElementById('modal-backtest-comp-stake').innerText = `$${compStk.toFixed(2)}`;
+            document.getElementById('modal-backtest-comp-bank').innerText = `$${(parseFloat(r['Banca Compuesto']) || 1000).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            document.getElementById('modal-backtest').classList.remove('hidden');
+            lucide.createIcons();
+        }
+        
+        function closeBacktestModal() {
+            document.getElementById('modal-backtest').classList.add('hidden');
+        }
+
         // --- BACKTEST TABLE & SEARCH & PAGINATION & SELECTOR ---
         function renderBacktestTable() {
             const tbody = document.getElementById('backtest-table-body');
@@ -926,14 +1359,14 @@
             const pageData = filteredBacktest.slice(start, end);
             
             if (pageData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-gray-500">No se encontraron partidos.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-gray-500">No se encontraron partidos.</td></tr>`;
                 document.getElementById('backtest-pagination-info').innerText = "0 de 0 partidos";
                 document.getElementById('backtest-prev').disabled = true;
                 document.getElementById('backtest-next').disabled = true;
                 return;
             }
             
-            pageData.forEach(r => {
+            pageData.forEach((r, idx) => {
                 const tr = document.createElement('tr');
                 tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
                 
@@ -943,9 +1376,10 @@
                     ? `<span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold rounded-full">Premium (A)</span>`
                     : `<span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-bold rounded-full">Valor (B)</span>`;
                 
+                const globalIdx = start + idx;
                 tr.innerHTML = `
                     <td class="py-3 text-xs md:text-sm">${r.Fecha}</td>
-                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5">
+                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5 font-sans">
                         ${r.Liga} ${classBadge}
                     </td>
                     <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${r.Local}</td>
@@ -957,6 +1391,11 @@
                             ${r.Resultado}
                         </span>
                     </td>
+                    <td class="py-3 text-center">
+                        <button onclick="showBacktestDetail(${globalIdx})" class="p-1.5 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded-lg transition-all" title="Ver detalles y simulación de banca">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                        </button>
+                    </td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -966,6 +1405,9 @@
             document.getElementById('backtest-pagination-info').innerText = `Mostrando ${start + 1}-${Math.min(end, totalCount)} de ${totalCount} partidos`;
             document.getElementById('backtest-prev').disabled = backtestPage === 0;
             document.getElementById('backtest-next').disabled = end >= totalCount;
+            
+            // Re-renderizar iconos dinámicos de Lucide (como el ojo de detalle)
+            lucide.createIcons();
         }
 
         function prevBacktestPage() {
@@ -998,6 +1440,9 @@
             );
             backtestPage = 0;
             renderBacktestTable();
+            
+            // Actualizar simulación de banca
+            initBankrollSimulation();
         }
 
         function updateBacktestChartAndTable() {
@@ -1069,6 +1514,159 @@
                         },
                         tooltip: {
                             enabled: true
+                        }
+                    }
+                }
+            });
+        }
+
+        let bankrollChartInstance = null;
+        let activeBankrollMethod = 'flat'; // 'flat' or 'compound'
+
+        function initBankrollSimulation() {
+            const results = calculateBankrollEvolutionJS(filteredBacktest);
+            
+            document.getElementById('stat-bank-flat').innerText = `$${results.finalFlat.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stat-yield-flat').innerText = `${results.yieldFlat >= 0 ? '+' : ''}${results.yieldFlat}%`;
+            document.getElementById('stat-bank-compound').innerText = `$${results.finalComp.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stat-yield-compound').innerText = `${results.yieldComp >= 0 ? '+' : ''}${results.yieldComp}%`;
+            
+            renderBankrollChart(results);
+        }
+
+        function calculateBankrollEvolutionJS(matchesList) {
+            const sorted = [...matchesList].sort((a, b) => new Date(a.Fecha) - new Date(b.Fecha));
+            
+            const initialBank = window.dashboardData.backtest_summary.banca_inicial || 1000;
+            const flatStakePct = 0.02; // 2%
+            
+            let bankFlat = initialBank;
+            let bankComp = initialBank;
+            
+            const dataFlat = [initialBank];
+            const dataComp = [initialBank];
+            const labels = ['Inicio'];
+            
+            sorted.forEach((m, idx) => {
+                const odd = parseFloat(m.Cuota) || 1.45;
+                const isWin = m.Resultado === 'GANADA';
+                
+                // Flat
+                const stkFlat = initialBank * flatStakePct;
+                const pftFlat = isWin ? stkFlat * (odd - 1.0) : -stkFlat;
+                bankFlat += pftFlat;
+                dataFlat.push(Math.round(bankFlat * 100) / 100);
+                
+                // Compound
+                const stkComp = bankComp * flatStakePct;
+                const pftComp = isWin ? stkComp * (odd - 1.0) : -stkComp;
+                bankComp += pftComp;
+                dataComp.push(Math.round(bankComp * 100) / 100);
+                
+                labels.push(m.Fecha);
+            });
+            
+            return {
+                labels,
+                flat: dataFlat,
+                compound: dataComp,
+                finalFlat: Math.round(bankFlat * 100) / 100,
+                finalComp: Math.round(bankComp * 100) / 100,
+                yieldFlat: ((bankFlat - initialBank) / initialBank * 100).toFixed(1),
+                yieldComp: ((bankComp - initialBank) / initialBank * 100).toFixed(1)
+            };
+        }
+
+        function setBankrollMethod(method) {
+            activeBankrollMethod = method;
+            
+            const btnFlat = document.getElementById('btn-bank-method-flat');
+            const btnComp = document.getElementById('btn-bank-method-compound');
+            
+            if (method === 'flat') {
+                btnFlat.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all";
+                btnComp.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+            } else {
+                btnFlat.className = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+                btnComp.className = "px-3 py-1.5 rounded-lg text-white bg-blue-600 transition-all";
+            }
+            
+            initBankrollSimulation();
+        }
+
+        function renderBankrollChart(results) {
+            const ctx = document.getElementById('bankrollChart').getContext('2d');
+            
+            if (bankrollChartInstance) {
+                bankrollChartInstance.destroy();
+            }
+            
+            const isFlat = activeBankrollMethod === 'flat';
+            const chartData = isFlat ? results.flat : results.compound;
+            const lineColor = isFlat ? '#3b82f6' : '#10b981';
+            const fillGradient = ctx.createLinearGradient(0, 0, 0, 320);
+            
+            if (isFlat) {
+                fillGradient.addColorStop(0, 'rgba(59, 130, 246, 0.2)');
+                fillGradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+            } else {
+                fillGradient.addColorStop(0, 'rgba(16, 185, 129, 0.2)');
+                fillGradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+            }
+            
+            bankrollChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: results.labels,
+                    datasets: [{
+                        label: isFlat ? 'Banca con Stake Fijo ($20)' : 'Banca con Stake Compuesto (2%)',
+                        data: chartData,
+                        borderColor: lineColor,
+                        borderWidth: 2,
+                        backgroundColor: fillGradient,
+                        fill: true,
+                        tension: 0.1,
+                        pointRadius: chartData.length > 500 ? 0 : 2,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `Banca: $${context.raw.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                maxTicksLimit: 12
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                callback: function(value) {
+                                    return `$${value}`;
+                                }
+                            }
                         }
                     }
                 }
@@ -1204,7 +1802,10 @@
             card.innerHTML = `
                 <div class="flex justify-between items-start">
                     <div>
-                        <h4 class="font-bold text-white text-base">${l.league_name}</h4>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h4 class="font-bold text-white text-base">${l.league_name}</h4>
+                            ${getTierBadgeHtml(l.tier)}
+                        </div>
                         <p class="text-gray-400 text-xs mt-0.5">Temporada ${l.season}</p>
                     </div>
                     <span class="px-2 py-0.5 rounded-full text-xs font-extrabold border ${badgeClass}">${l.Estado}</span>
