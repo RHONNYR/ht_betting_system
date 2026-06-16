@@ -1,6 +1,60 @@
 import pandas as pd
 import numpy as np
 
+def _calculate_bankroll_evolution(backtest_rows):
+    df_res = pd.DataFrame(backtest_rows)
+    if not df_res.empty:
+        # Sort chronologically by date
+        df_res = df_res.sort_values(by='Fecha').reset_index(drop=True)
+        
+        # Calculate bankroll evolution
+        from config import settings
+        initial_bank = settings.INITIAL_BANKROLL
+        flat_stake_pct = settings.FLAT_STAKE_PCT
+        
+        bank_flat = initial_bank
+        bank_compound = initial_bank
+        
+        flat_stakes = []
+        flat_profits = []
+        flat_banks = []
+        
+        comp_stakes = []
+        comp_profits = []
+        comp_banks = []
+        
+        for idx, r in df_res.iterrows():
+            c_val = r['Cuota']
+            is_win = r['Resultado'] == 'GANADA'
+            
+            # 1. Flat Stake
+            stk_flat = initial_bank * flat_stake_pct
+            pft_flat = stk_flat * (c_val - 1.0) if is_win else -stk_flat
+            bank_flat += pft_flat
+            
+            flat_stakes.append(round(stk_flat, 2))
+            flat_profits.append(round(pft_flat, 2))
+            flat_banks.append(round(bank_flat, 2))
+            
+            # 2. Compound Stake
+            stk_comp = bank_compound * flat_stake_pct
+            pft_comp = stk_comp * (c_val - 1.0) if is_win else -stk_comp
+            bank_compound += pft_comp
+            
+            comp_stakes.append(round(stk_comp, 2))
+            comp_profits.append(round(pft_comp, 2))
+            comp_banks.append(round(bank_compound, 2))
+            
+        df_res['Stake Fijo'] = flat_stakes
+        df_res['Beneficio Fijo'] = flat_profits
+        df_res['Banca Fijo'] = flat_banks
+        
+        df_res['Stake Compuesto'] = comp_stakes
+        df_res['Beneficio Compuesto'] = comp_profits
+        df_res['Banca Compuesto'] = comp_banks
+        
+    return df_res
+
 def filter_phase_1_leagues(fixtures_df, seasons_to_evaluate):
     """
     Fase 1: Selección de Ligas (Nivel Torneo).
@@ -141,10 +195,15 @@ def calculate_team_metrics(fixtures_df, season_year, approved_league_ids):
             t_general = league_matches[(league_matches['home_team_name'] == team) | (league_matches['away_team_name'] == team)].sort_values('date')
             if len(t_general) < 5:
                 continue
-                      # Racha reciente HT: En los últimos 5 partidos jugados en general,
+            
+            # Racha reciente HT: En los últimos 5 partidos jugados en general,
             # ¿en cuántos anotó o encajó al menos un gol en la primera mitad?
             t_recent = t_general.tail(5)
             racha_ht = (t_recent['ht_total_goals'] > 0).sum()
+            
+            # Detección de sequía HT: ¿los últimos 2 partidos jugados terminaron 0-0 al descanso?
+            t_last_2 = t_general.tail(2)
+            sequia_ht = len(t_last_2) >= 2 and (t_last_2['ht_total_goals'] == 0).all()
             
             # Detalles de la racha de 5 partidos
             racha_detalles = []
@@ -206,6 +265,7 @@ def calculate_team_metrics(fixtures_df, season_year, approved_league_ids):
                     'avg_goals_ht_rol': home_avg_goals_ht,
                     'racha_ht': f"{racha_ht}/5",
                     'racha_detalles': racha_detalles,
+                    'sequia_ht': bool(sequia_ht),
                     'is_candidate': is_local_candidate
                 })
                 
@@ -248,6 +308,7 @@ def calculate_team_metrics(fixtures_df, season_year, approved_league_ids):
                     'avg_goals_ht_rol': away_avg_goals_ht,
                     'racha_ht': f"{racha_ht}/5",
                     'racha_detalles': racha_detalles,
+                    'sequia_ht': bool(sequia_ht),
                     'is_candidate': is_away_candidate
                 })
                 
@@ -312,6 +373,8 @@ def run_backtest_simulation(fixtures_df, league_current_season_map):
                             pass
                     elif hasattr(date_parsed, 'strftime'):
                         date_parsed = date_parsed.strftime("%Y-%m-%d")
+                    cuota_val = float(match.get('cuota_cierre')) if pd.notna(match.get('cuota_cierre')) else 1.45
+                    bookmaker_val = match.get('bookmaker_cierre') if pd.notna(match.get('bookmaker_cierre')) else 'Por determinar'
                     backtest_rows.append({
                         'Fecha': date_parsed,
                         'Liga': match['league_name'],
@@ -320,9 +383,11 @@ def run_backtest_simulation(fixtures_df, league_current_season_map):
                         'Goles HT': ht_goals,
                         'Resultado': result,
                         'Clase': clase,
-                        'Sustento': sustento
+                        'Sustento': sustento,
+                        'Cuota': cuota_val,
+                        'Bookmaker': bookmaker_val
                     })
-        return pd.DataFrame(backtest_rows)
+        return _calculate_bankroll_evolution(backtest_rows)
 
     print("Iniciando simulación de backtesting dinámica (últimas 2 temporadas por liga)...")
     backtest_rows = []
@@ -395,6 +460,8 @@ def run_backtest_simulation(fixtures_df, league_current_season_map):
                 elif hasattr(date_parsed, 'strftime'):
                     date_parsed = date_parsed.strftime("%Y-%m-%d")
                 
+                cuota_val = float(match.get('cuota_cierre')) if pd.notna(match.get('cuota_cierre')) else 1.45
+                bookmaker_val = match.get('bookmaker_cierre') if pd.notna(match.get('bookmaker_cierre')) else 'Por determinar'
                 backtest_rows.append({
                     'Fecha': date_parsed,
                     'Liga': match['league_name'],
@@ -403,10 +470,12 @@ def run_backtest_simulation(fixtures_df, league_current_season_map):
                     'Goles HT': ht_goals,
                     'Resultado': result,
                     'Clase': clase,
-                    'Sustento': sustento
+                    'Sustento': sustento,
+                    'Cuota': cuota_val,
+                    'Bookmaker': bookmaker_val
                 })
                 
-    return pd.DataFrame(backtest_rows)
+    return _calculate_bankroll_evolution(backtest_rows)
 
 def find_today_picks(upcoming_fixtures_df, df_local_candidates, df_away_candidates):
     """
@@ -469,6 +538,7 @@ def find_today_picks(upcoming_fixtures_df, df_local_candidates, df_away_candidat
                 
             picks.append({
                 'match_id': int(match['match_id']),
+                'league_id': int(match['league_id']),
                 'Fecha': date_str,
                 'Hora': time_str,
                 'Liga': match['league_name'],
