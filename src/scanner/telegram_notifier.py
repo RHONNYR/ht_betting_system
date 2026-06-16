@@ -61,6 +61,8 @@ def run_telegram_notifications():
         state["sent_upcoming"] = []
     if "sent_resolved" not in state:
         state["sent_resolved"] = []
+    if "sent_reminders" not in state:
+        state["sent_reminders"] = []
         
     updated_state = False
     
@@ -124,6 +126,66 @@ def run_telegram_notifications():
             if success:
                 state["sent_upcoming"].append(str(match_id))
                 updated_state = True
+                
+    # 2.5. Process Kickoff Reminders
+    print("[Telegram Notifier] Procesando recordatorios de partidos cercanos...")
+    dt_now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+    for p in picks:
+        match_id = p.get('match_id')
+        if not match_id:
+            continue
+            
+        res_bet = p.get('resultado_apuesta')
+        is_pending = res_bet is None or res_bet == 'PENDIENTE' or res_bet == ''
+        
+        if is_pending:
+            try:
+                date_str = p.get('fecha')
+                time_str = p.get('hora')
+                dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+                time_diff = dt_kickoff - dt_now
+                seconds_to_kickoff = time_diff.total_seconds()
+                
+                # Send reminder if match starts in 2 hours (7200 seconds) or less
+                if 0 <= seconds_to_kickoff <= 7200 and str(match_id) not in state["sent_reminders"]:
+                    # Format kickoff time to VET (UTC-4)
+                    dt_vet = dt_kickoff - datetime.timedelta(hours=4)
+                    fecha_vet = dt_vet.strftime("%Y-%m-%d")
+                    hora_vet = dt_vet.strftime("%H:%M")
+                    
+                    tier = int(p.get('tier', 3))
+                    tier_names = {1: "Tier 1 (Alta Liquidez)", 2: "Tier 2 (Media Liquidez)", 3: "Tier 3 (Exótica)"}
+                    tier_name = tier_names.get(tier, f"Tier {tier}")
+                    
+                    # Suggest dynamic stakes
+                    if tier == 1:
+                        stake_pct = "2.0%"
+                        stake_usd = 20.0
+                    elif tier == 2:
+                        stake_pct = "1.0%"
+                        stake_usd = 10.0
+                    else:
+                        stake_pct = "0.5%"
+                        stake_usd = 5.0
+                        
+                    msg = (
+                        f"⏰ <b>RECORDATORIO DE PARTIDO (Empieza pronto)</b>\n\n"
+                        f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
+                        f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
+                        f"⏰ <b>Kickoff:</b> {hora_vet} (VET) | Fecha: {fecha_vet}\n"
+                        f"📈 <b>Clase:</b> {p.get('clase')} (Prob: {p.get('probabilidad')})\n"
+                        f"💵 <b>Cuota Recomendada:</b> {p.get('cuota_recomendada')} ({p.get('bookmaker_recomendado')})\n\n"
+                        f"⚖️ <b>Stake Sugerido:</b> {stake_pct} (Ref: ${stake_usd:.2f})\n"
+                        f"<i>Asegúrate de colocar tu apuesta antes del inicio.</i>"
+                    )
+                    
+                    print(f"   -> Enviando recordatorio para: {p.get('local')} vs {p.get('visitante')}")
+                    success = send_telegram_message(token, chat_id, msg)
+                    if success:
+                        state["sent_reminders"].append(str(match_id))
+                        updated_state = True
+            except Exception as e:
+                print(f"[Telegram Notifier] Error al calcular recordatorio para match_id {match_id}: {e}")
                 
     # 3. Process Resolved Picks
     print("[Telegram Notifier] Procesando resultados de partidos recientes...")
