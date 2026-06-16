@@ -70734,7 +70734,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1513160,
@@ -70860,7 +70861,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1513159,
@@ -70986,7 +70988,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 33
     },
     {
       "match_id": 1543400,
@@ -71112,7 +71115,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 9
     },
     {
       "match_id": 1495861,
@@ -71243,7 +71247,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1495856,
@@ -71374,7 +71379,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": 6
     },
     {
       "match_id": 1495857,
@@ -71505,7 +71511,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": 39
     },
     {
       "match_id": 1496260,
@@ -71631,7 +71638,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": 26
     },
     {
       "match_id": 1519575,
@@ -71757,7 +71765,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1513150,
@@ -71883,7 +71892,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": 43
     },
     {
       "match_id": 1513153,
@@ -72009,7 +72019,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": 40
     },
     {
       "match_id": 1519574,
@@ -72135,7 +72146,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 35
     },
     {
       "match_id": 1543397,
@@ -72261,7 +72273,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 11
     },
     {
       "match_id": 1504460,
@@ -72390,7 +72403,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": true
-      }
+      },
+      "minuto_primer_gol": 6
     },
     {
       "match_id": 1505185,
@@ -72519,7 +72533,8 @@ window.dashboardData = {
         ],
         "sequia_ht": true,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 9
     },
     {
       "match_id": 1541623,
@@ -72645,7 +72660,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 23
     },
     {
       "match_id": 1504463,
@@ -72771,7 +72787,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 9
     },
     {
       "match_id": 1541621,
@@ -72895,7 +72912,8 @@ window.dashboardData = {
       "tier": 3,
       "cuota_recomendada": 1.2,
       "bookmaker_recomendado": "Superbet",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1517192,
@@ -73019,7 +73037,8 @@ window.dashboardData = {
       "tier": 3,
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "minuto_primer_gol": 5
     },
     {
       "match_id": 1517191,
@@ -73145,7 +73164,8 @@ window.dashboardData = {
         ],
         "sequia_ht": true,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1541620,
@@ -73272,7 +73292,8 @@ window.dashboardData = {
       "otras_cuotas": {
         "Betfair": 1.14,
         "1xBet": 1.17
-      }
+      },
+      "minuto_primer_gol": 11
     },
     {
       "match_id": 1543395,
@@ -73396,7 +73417,8 @@ window.dashboardData = {
       "tier": 3,
       "cuota_recomendada": 1.45,
       "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {}
+      "otras_cuotas": {},
+      "minuto_primer_gol": 34
     },
     {
       "match_id": 1543392,
@@ -73517,7 +73539,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 166,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1543393,
@@ -73646,7 +73669,8 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 45
     },
     {
       "match_id": 1550468,
@@ -73734,7 +73758,8 @@ window.dashboardData = {
         "racha_detalles": [],
         "sequia_ht": false,
         "is_candidate": false
-      }
+      },
+      "minuto_primer_gol": 13
     },
     {
       "match_id": 1504451,
@@ -73864,7 +73889,8 @@ window.dashboardData = {
         "Marathonbet": 1.28,
         "Betfair": 1.25,
         "1xBet": 1.28
-      }
+      },
+      "minuto_primer_gol": 45
     },
     {
       "match_id": 1513148,
@@ -73985,7 +74011,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 909,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1513145,
@@ -74106,7 +74133,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 909,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 28
     },
     {
       "match_id": 1513147,
@@ -74227,7 +74255,8 @@ window.dashboardData = {
         "is_candidate": false
       },
       "league_id": 909,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 10
     },
     {
       "match_id": 1495781,
@@ -74348,7 +74377,8 @@ window.dashboardData = {
         "is_candidate": false
       },
       "league_id": 120,
-      "tier": 2
+      "tier": 2,
+      "minuto_primer_gol": 18
     },
     {
       "match_id": 1504453,
@@ -74469,7 +74499,8 @@ window.dashboardData = {
         "is_candidate": false
       },
       "league_id": 564,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 19
     },
     {
       "match_id": 1504452,
@@ -74590,7 +74621,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 564,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 12
     },
     {
       "match_id": 1513142,
@@ -74711,7 +74743,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 909,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": null
     },
     {
       "match_id": 1543387,
@@ -74832,7 +74865,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 166,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 32
     },
     {
       "match_id": 1514199,
@@ -74953,7 +74987,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 165,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 24
     },
     {
       "match_id": 1513136,
@@ -75074,7 +75109,8 @@ window.dashboardData = {
         "is_candidate": true
       },
       "league_id": 909,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 16
     },
     {
       "match_id": 1541502,
@@ -75195,7 +75231,8 @@ window.dashboardData = {
         "is_candidate": false
       },
       "league_id": 248,
-      "tier": 3
+      "tier": 3,
+      "minuto_primer_gol": 23
     }
   ]
 };
