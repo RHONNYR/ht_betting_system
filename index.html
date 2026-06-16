@@ -452,6 +452,43 @@
                 </div>
             </div>
 
+            <!-- TABLA DE RENDIMIENTO POR LIGA (COLLAPSIBLE) -->
+            <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
+                <div class="flex justify-between items-center cursor-pointer select-none" onclick="toggleLeaguePerformanceTable()">
+                    <div>
+                        <h4 class="font-bold text-base text-gray-200 flex items-center gap-2">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-emerald-400"></i>
+                            Efectividad y Rendimiento por Liga (Historial de Picks)
+                        </h4>
+                        <p class="text-gray-400 text-xs mt-0.5 font-light">Métricas de acierto, beneficio neto y ROI acumuladas del sistema para cada liga operada.</p>
+                    </div>
+                    <span class="text-xs text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl">
+                        <span id="league-perf-toggle-text">Mostrar</span>
+                        <i data-lucide="chevron-down" id="league-perf-toggle-icon" class="w-4 h-4 transition-transform duration-200"></i>
+                    </span>
+                </div>
+                
+                <div id="league-performance-container" class="hidden overflow-x-auto pt-2">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead>
+                            <tr class="border-b border-white/10 text-gray-400 font-semibold text-xs md:text-sm">
+                                <th class="pb-3 pl-2">Liga</th>
+                                <th class="pb-3 text-center">Tier (Liquidez)</th>
+                                <th class="pb-3 text-center">Picks Totales</th>
+                                <th class="pb-3 text-center">Record (G - P)</th>
+                                <th class="pb-3 text-center">Win Rate (%)</th>
+                                <th class="pb-3 text-center">Beneficio Neto ($)</th>
+                                <th class="pb-3 text-center">ROI (%)</th>
+                                <th class="pb-3 text-center pr-2">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="league-performance-table-body" class="divide-y divide-white/5 text-gray-300">
+                            <!-- Cargado dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <div class="glass-card p-6 rounded-2xl space-y-4">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
@@ -460,6 +497,72 @@
                             Historial de Picks y Resultados
                         </h3>
                         <p class="text-gray-400 text-xs mt-0.5">Registro histórico de todos los picks recomendados y sus resultados oficiales (Primer Tiempo).</p>
+                    </div>
+                </div>
+                
+                <!-- Contenedores de Filtros del Historial y Evaluación Dinámica -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-4">
+                    <!-- Filtros Grid -->
+                    <div class="grid grid-cols-2 gap-3 bg-white/5 p-4 rounded-xl border border-white/5 lg:col-span-1">
+                        <div class="col-span-2">
+                            <label for="history-filter-league" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Liga</label>
+                            <select id="history-filter-league" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                <option value="all">Todas las Ligas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="history-filter-tier" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Tier (Liquidez)</label>
+                            <select id="history-filter-tier" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                <option value="all">Todos</option>
+                                <option value="1">Tier 1</option>
+                                <option value="2">Tier 2</option>
+                                <option value="3">Tier 3</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="history-filter-class" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Clase</label>
+                            <select id="history-filter-class" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                <option value="all">Todos</option>
+                                <option value="Clase A">Clase A</option>
+                                <option value="Clase B">Clase B</option>
+                            </select>
+                        </div>
+                        <div class="col-span-2">
+                            <label for="history-filter-result" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Resultado</label>
+                            <select id="history-filter-result" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                <option value="all">Todos</option>
+                                <option value="GANADA">GANADAS</option>
+                                <option value="PERDIDA">PERDIDAS</option>
+                                <option value="PENDIENTE">PENDIENTES</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Evaluación Dinámica -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 bg-white/5 p-4 rounded-xl border border-white/5 lg:col-span-2 text-center items-center">
+                        <div class="p-2 bg-black/20 rounded-lg">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Total Picks</span>
+                            <span class="text-base font-extrabold text-white" id="hist-stats-count">--</span>
+                        </div>
+                        <div class="p-2 bg-black/20 rounded-lg">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Récord (G - P)</span>
+                            <span class="text-base font-extrabold text-white" id="hist-stats-record">--</span>
+                        </div>
+                        <div class="p-2 bg-black/20 rounded-lg col-span-2 sm:col-span-1">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Efectividad</span>
+                            <span class="text-base font-extrabold text-emerald-400" id="hist-stats-winrate">--</span>
+                        </div>
+                        <div class="p-2 bg-black/20 rounded-lg">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Neto (Ref)</span>
+                            <span class="text-base font-extrabold text-white" id="hist-stats-profit">--</span>
+                        </div>
+                        <div class="p-2 bg-black/20 rounded-lg">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">ROI (Ref)</span>
+                            <span class="text-base font-extrabold text-white" id="hist-stats-roi">--</span>
+                        </div>
+                        <div class="col-span-2 sm:col-span-3 lg:col-span-5 text-[10px] text-gray-500 text-left px-1">
+                            * Las métricas de Neto y ROI usan el <b>Stake de Referencia Dinámico</b> (Tier 1: $20, Tier 2: $10, Tier 3: $5).
+                        </div>
                     </div>
                 </div>
                 
@@ -644,6 +747,7 @@
         let chartInstance = null;
         let currentClassFilter = 'all';
         let currentTierFilter = 'all';
+        let leaguePerfCollapsed = true;
 
         // Cargar datos
         window.addEventListener('DOMContentLoaded', () => {
@@ -993,6 +1097,9 @@
         function renderHistoryTable() {
             // Calcular racha actual del sistema y forma de los últimos 10
             calculateSystemStreakAndForm();
+            
+            // Calcular y renderizar rendimiento por liga
+            renderLeaguePerformanceTable();
 
             const tbody = document.getElementById('history-table-body');
             tbody.innerHTML = '';
@@ -1003,8 +1110,96 @@
                 tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-gray-500">No hay picks registrados en el historial todavía. Se registrarán cuando pase la fecha de juego o se actualicen resultados.</td></tr>`;
                 return;
             }
+
+            // Populate league filter dropdown dynamically (once)
+            const leagueSelect = document.getElementById('history-filter-league');
+            if (leagueSelect && leagueSelect.options.length <= 1) {
+                const uniqueLeagues = [...new Set(history.map(p => p.liga))].sort();
+                uniqueLeagues.forEach(league => {
+                    const opt = document.createElement('option');
+                    opt.value = league;
+                    opt.innerText = league;
+                    leagueSelect.appendChild(opt);
+                });
+            }
+
+            // Get selected filter values
+            const filterLeague = document.getElementById('history-filter-league').value;
+            const filterTier = document.getElementById('history-filter-tier').value;
+            const filterClass = document.getElementById('history-filter-class').value;
+            const filterResult = document.getElementById('history-filter-result').value;
+
+            // Apply filters
+            const filtered = history.filter(p => {
+                const matchLeague = (filterLeague === 'all' || p.liga === filterLeague);
+                const matchTier = (filterTier === 'all' || String(p.tier) === filterTier);
+                const matchClass = (filterClass === 'all' || p.clase === filterClass);
+                
+                let matchResult = false;
+                if (filterResult === 'all') {
+                    matchResult = true;
+                } else if (filterResult === 'PENDIENTE') {
+                    matchResult = !p.resultado_apuesta || p.resultado_apuesta === 'PENDIENTE';
+                } else {
+                    matchResult = p.resultado_apuesta === filterResult;
+                }
+                
+                return matchLeague && matchTier && matchClass && matchResult;
+            });
+
+            // Calculate statistics dynamically for the filtered picks
+            const totalCount = filtered.length;
+            const resolvedBets = filtered.filter(p => p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA');
+            const wins = resolvedBets.filter(p => p.resultado_apuesta === 'GANADA').length;
+            const losses = resolvedBets.filter(p => p.resultado_apuesta === 'PERDIDA').length;
             
-            history.forEach((pick, index) => {
+            const winRate = resolvedBets.length > 0 ? (wins / resolvedBets.length * 100) : 0.0;
+            
+            // Calculate financial reference using dynamic stakes (Tier 1: $20, Tier 2: $10, Tier 3: $5)
+            let totalStaked = 0.0;
+            let netProfit = 0.0;
+            resolvedBets.forEach(p => {
+                const tier = parseInt(p.tier) || 3;
+                let stake = 20.0;
+                if (tier === 1) stake = 20.0;
+                else if (tier === 2) stake = 10.0;
+                else stake = 5.0;
+                
+                const odds = parseFloat(p.cuota_recomendada) || 1.45;
+                if (p.resultado_apuesta === 'GANADA') {
+                    netProfit += stake * (odds - 1.0);
+                } else {
+                    netProfit -= stake;
+                }
+                totalStaked += stake;
+            });
+            
+            const roi = totalStaked > 0 ? (netProfit / totalStaked * 100) : 0.0;
+
+            // Update stats indicators
+            document.getElementById('hist-stats-count').innerText = totalCount;
+            document.getElementById('hist-stats-record').innerText = `${wins}G - ${losses}P`;
+            
+            const winrateEl = document.getElementById('hist-stats-winrate');
+            winrateEl.innerText = `${winRate.toFixed(1)}%`;
+            winrateEl.className = winRate >= 80 ? 'text-lg font-extrabold text-emerald-400' : 'text-lg font-extrabold text-amber-400';
+            
+            const profitSign = netProfit >= 0 ? '+' : '';
+            const profitEl = document.getElementById('hist-stats-profit');
+            profitEl.innerText = `${profitSign}$${netProfit.toFixed(2)}`;
+            profitEl.className = netProfit >= 0 ? 'text-lg font-extrabold text-emerald-400' : 'text-lg font-extrabold text-rose-400';
+            
+            const roiSign = roi >= 0 ? '+' : '';
+            const roiEl = document.getElementById('hist-stats-roi');
+            roiEl.innerText = `${roiSign}${roi.toFixed(1)}%`;
+            roiEl.className = roi >= 0 ? 'text-lg font-extrabold text-emerald-400' : 'text-lg font-extrabold text-rose-400';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-gray-500">No hay picks que coincidan con los filtros seleccionados.</td></tr>`;
+                return;
+            }
+            
+            filtered.forEach((pick) => {
                 const tr = document.createElement('tr');
                 tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
                 
@@ -1027,6 +1222,9 @@
                 
                 // Conversión de hora local
                 const localInfo = formatLocalTime(pick.fecha, pick.hora);
+                
+                // Buscar el índice original en picks_history para que el Modal abra el partido correcto
+                const origIndex = history.findIndex(p => p.match_id === pick.match_id);
 
                 tr.innerHTML = `
                     <td class="py-3 text-xs md:text-sm">${localInfo.date} <span class="text-gray-500 text-[11px] font-light">${localInfo.time} (${localInfo.tz})</span></td>
@@ -1045,13 +1243,150 @@
                     <td class="py-3 text-center font-extrabold text-white text-base">${marcador}</td>
                     <td class="py-3 text-center">${resultBadge}</td>
                     <td class="py-3 text-center">
-                        <button onclick="openModal(${index}, true)" class="p-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-lg transition-all" title="Ver Análisis">
+                        <button onclick="openModal(${origIndex}, true)" class="p-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-lg transition-all" title="Ver Análisis">
                             <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
                         </button>
                     </td>
                 `;
                 tbody.appendChild(tr);
             });
+            lucide.createIcons();
+        }
+
+        // Función para colapsar/mostrar la tabla de rendimiento por liga
+        function toggleLeaguePerformanceTable() {
+            leaguePerfCollapsed = !leaguePerfCollapsed;
+            const container = document.getElementById('league-performance-container');
+            const icon = document.getElementById('league-perf-toggle-icon');
+            const text = document.getElementById('league-perf-toggle-text');
+            
+            if (leaguePerfCollapsed) {
+                if (container) container.classList.add('hidden');
+                if (icon) icon.classList.remove('rotate-180');
+                if (text) text.innerText = 'Mostrar';
+            } else {
+                if (container) container.classList.remove('hidden');
+                if (icon) icon.classList.add('rotate-180');
+                if (text) text.innerText = 'Ocultar';
+            }
+        }
+
+        // Función para aplicar filtro de liga desde la tabla de rendimiento
+        function selectLeagueFilter(leagueName) {
+            const leagueSelect = document.getElementById('history-filter-league');
+            if (leagueSelect) {
+                leagueSelect.value = leagueName;
+                renderHistoryTable();
+                
+                // Hacer scroll suave hacia los filtros del historial
+                leagueSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Función para calcular y renderizar la tabla de efectividad por liga
+        function renderLeaguePerformanceTable() {
+            const tbody = document.getElementById('league-performance-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            
+            const history = window.dashboardData.picks_history || [];
+            
+            // Si la tabla de rendimiento por liga ya está abierta, no queremos alterar el colapso
+            const container = document.getElementById('league-performance-container');
+            if (container) {
+                if (leaguePerfCollapsed) {
+                    container.classList.add('hidden');
+                } else {
+                    container.classList.remove('hidden');
+                }
+            }
+            
+            if (history.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="py-4 text-center text-gray-500 text-xs">No hay picks registrados en el historial todavía.</td></tr>`;
+                return;
+            }
+            
+            // Agrupar métricas por liga
+            const leagueData = {};
+            history.forEach(p => {
+                const liga = p.liga;
+                const tier = p.tier || 3;
+                const result = p.resultado_apuesta;
+                
+                if (!leagueData[liga]) {
+                    leagueData[liga] = {
+                        name: liga,
+                        tier: tier,
+                        total: 0,
+                        wins: 0,
+                        losses: 0,
+                        resolved: 0,
+                        profit: 0.0,
+                        staked: 0.0
+                    };
+                }
+                
+                leagueData[liga].total++;
+                if (result === 'GANADA' || result === 'PERDIDA') {
+                    leagueData[liga].resolved++;
+                    let stake = 20.0;
+                    if (parseInt(tier) === 1) stake = 20.0;
+                    else if (parseInt(tier) === 2) stake = 10.0;
+                    else stake = 5.0;
+                    
+                    const odds = parseFloat(p.cuota_recomendada) || 1.45;
+                    
+                    if (result === 'GANADA') {
+                        leagueData[liga].wins++;
+                        leagueData[liga].profit += stake * (odds - 1.0);
+                    } else {
+                        leagueData[liga].losses++;
+                        leagueData[liga].profit -= stake;
+                    }
+                    leagueData[liga].staked += stake;
+                }
+            });
+            
+            // Convertir a array y ordenar por beneficio neto descendente
+            const sortedLeagues = Object.values(leagueData).sort((a, b) => b.profit - a.profit);
+            
+            if (sortedLeagues.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="py-4 text-center text-gray-500 text-xs">No hay picks con resultados resueltos todavía.</td></tr>`;
+                return;
+            }
+            
+            sortedLeagues.forEach(data => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-white/5 transition-colors border-b border-white/5";
+                
+                const winRate = data.resolved > 0 ? (data.wins / data.resolved * 100) : 0.0;
+                const roi = data.staked > 0 ? (data.profit / data.staked * 100) : 0.0;
+                
+                const profitSign = data.profit >= 0 ? '+' : '';
+                const profitColor = data.profit >= 0 ? 'text-emerald-400' : 'text-rose-400';
+                
+                const roiSign = roi >= 0 ? '+' : '';
+                const roiColor = roi >= 0 ? 'text-emerald-400' : 'text-rose-400';
+                
+                const winRateColor = winRate >= 80 ? 'text-emerald-400 font-bold' : (winRate >= 65 ? 'text-amber-400 font-semibold' : 'text-gray-400');
+                
+                tr.innerHTML = `
+                    <td class="py-2.5 font-semibold text-white text-xs md:text-sm text-left pl-2">${data.name}</td>
+                    <td class="py-2.5 text-center">${getTierBadgeHtml(data.tier)}</td>
+                    <td class="py-2.5 text-center text-gray-400 text-xs">${data.total} <span class="text-[10px]">(${data.resolved} res)</span></td>
+                    <td class="py-2.5 text-center font-medium text-xs">${data.wins}G - ${data.losses}P</td>
+                    <td class="py-2.5 text-center ${winRateColor} text-xs md:text-sm">${winRate.toFixed(1)}%</td>
+                    <td class="py-2.5 text-center ${profitColor} font-bold text-xs md:text-sm">${profitSign}$${data.profit.toFixed(2)}</td>
+                    <td class="py-2.5 text-center ${roiColor} font-semibold text-xs md:text-sm">${roiSign}${roi.toFixed(1)}%</td>
+                    <td class="py-2.5 text-center pr-2">
+                        <button onclick="selectLeagueFilter('${data.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-md text-[10px] font-semibold transition-all">
+                            Filtrar Historial
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
             lucide.createIcons();
         }
 
