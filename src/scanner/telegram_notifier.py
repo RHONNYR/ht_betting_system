@@ -134,6 +134,21 @@ def run_telegram_notifications():
             
         res_bet = p.get('resultado_apuesta')
         if res_bet in ['GANADA', 'PERDIDA', 'CANCELADO'] and str(match_id) not in state["sent_resolved"]:
+            # Format kickoff time from UTC to VET (UTC-4)
+            date_str = p.get('fecha')
+            time_str = p.get('hora')
+            
+            fecha_vet = date_str
+            hora_vet = time_str
+            
+            try:
+                dt_utc = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+                dt_vet = dt_utc - datetime.timedelta(hours=4)
+                fecha_vet = dt_vet.strftime("%Y-%m-%d")
+                hora_vet = dt_vet.strftime("%H:%M")
+            except Exception:
+                pass
+                
             tier = int(p.get('tier', 3))
             
             # Dynamic stakes reference
@@ -151,8 +166,6 @@ def run_telegram_notifications():
             if res_bet == 'GANADA':
                 status_icon = "✅"
                 profit = stake_usd * (odds_val - 1.0)
-                profit_str = f"<b><font color='#10B981'>+${profit:.2f}</font></b>"
-                # Telegram HTML parser doesn't support font tags, so we'll use emoji and bold instead:
                 profit_str = f"<b>+${profit:.2f}</b>"
             elif res_bet == 'PERDIDA':
                 status_icon = "❌"
@@ -165,6 +178,7 @@ def run_telegram_notifications():
                 f"🏁 <b>RESULTADO DE PICK HT OVER 0.5</b>\n\n"
                 f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
                 f"🏆 <b>Liga:</b> {p.get('liga')}\n"
+                f"📅 <b>Fecha:</b> {fecha_vet} {hora_vet} (VET)\n"
                 f"📊 <b>Clase:</b> {p.get('clase')} (Tier {tier})\n"
                 f"⏱️ <b>Marcador HT:</b> {p.get('marcador_ht') or 'N/A'}\n\n"
                 f"✨ <b>Resultado:</b> {status_icon} <b>{res_bet}</b>\n"
