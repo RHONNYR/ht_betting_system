@@ -231,16 +231,57 @@
 
         <!-- SECTION: BACKTESTING -->
         <section id="section-backtest" class="hidden space-y-6">
+            <!-- FILTROS DE BACKTESTING -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-blue-400 flex items-center gap-2">
+                            <i data-lucide="filter" class="w-5 h-5 text-blue-400"></i>
+                            Filtros de Backtesting Histórico (2,997 Partidos)
+                        </h3>
+                        <p class="text-gray-400 text-xs mt-0.5 font-light">Filtra la base de datos de backtesting por liga, nivel de liquidez, clase de pick o búsqueda rápida para evaluar resultados.</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                    <div>
+                        <label for="backtest-filter-league" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Liga</label>
+                        <select id="backtest-filter-league" onchange="filterBacktestTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="all">Todas las Ligas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="backtest-filter-tier" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Tier (Liquidez)</label>
+                        <select id="backtest-filter-tier" onchange="filterBacktestTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="all">Todos los Tiers</option>
+                            <option value="1">Tier 1 (Alta)</option>
+                            <option value="2">Tier 2 (Media)</option>
+                            <option value="3">Tier 3 (Exótica)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="backtest-filter-class" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Clase</label>
+                        <select id="backtest-filter-class" onchange="filterBacktestTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="all">Todas las Clases</option>
+                            <option value="Clase A">Premium (Clase A)</option>
+                            <option value="Clase B">Valor (Clase B)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="search-backtest" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Búsqueda rápida</label>
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-2.5 top-2.5 w-3.5 h-3.5 text-gray-500"></i>
+                            <input type="text" id="search-backtest" oninput="filterBacktestTable()" placeholder="Buscar equipo..." class="w-full pl-8 pr-2.5 py-1.5 bg-black/40 border border-white/10 rounded-lg text-xs focus:outline-none focus:border-blue-500 text-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- CHART -->
                 <div class="glass-card p-6 rounded-2xl lg:col-span-1 flex flex-col justify-between">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-bold text-lg text-gray-200">Win Rate Simulado</h3>
-                        <select id="backtest-class-selector" onchange="updateBacktestChartAndTable()" class="bg-white/5 border border-white/10 text-gray-300 rounded-xl px-2 py-1 text-xs focus:outline-none focus:border-blue-500">
-                            <option value="all">Global</option>
-                            <option value="Clase A">Premium (Clase A)</option>
-                            <option value="Clase B">Valor (Clase B)</option>
-                        </select>
                     </div>
                     <div class="relative w-48 h-48 mx-auto mb-4">
                         <canvas id="backtestChart"></canvas>
@@ -267,12 +308,8 @@
 
                 <!-- TABLE -->
                 <div class="glass-card p-6 rounded-2xl lg:col-span-2 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div class="flex justify-between items-center border-b border-white/5 pb-2">
                         <h3 class="font-bold text-lg text-gray-200">Historial de Partidos Cruzados</h3>
-                        <div class="relative w-full sm:w-64">
-                            <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-gray-500"></i>
-                            <input type="text" id="search-backtest" oninput="filterBacktestTable()" placeholder="Buscar equipo o liga..." class="w-full pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-blue-500 text-white">
-                        </div>
                     </div>
                     
                     <div class="overflow-x-auto">
@@ -338,6 +375,43 @@
                         <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block">Rendimiento Compuesto</span>
                         <span class="text-lg font-extrabold text-emerald-400" id="stat-yield-compound">+0.0%</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- TABLA DE RENDIMIENTO POR LIGA EN BACKTESTING (COLLAPSIBLE) -->
+            <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
+                <div class="flex justify-between items-center cursor-pointer select-none" onclick="toggleBacktestLeaguePerformanceTable()">
+                    <div>
+                        <h4 class="font-bold text-base text-gray-200 flex items-center gap-2">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-emerald-400"></i>
+                            Rendimiento por Liga en Backtesting (2 Años Históricos)
+                        </h4>
+                        <p class="text-gray-400 text-xs mt-0.5 font-light">Métricas de acierto, beneficio neto estimado y ROI simuladas para cada liga en el backtest global (usando stakes dinámicos).</p>
+                    </div>
+                    <span class="text-xs text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl">
+                        <span id="backtest-league-perf-toggle-text">Mostrar</span>
+                        <i data-lucide="chevron-down" id="backtest-league-perf-toggle-icon" class="w-4 h-4 transition-transform duration-200"></i>
+                    </span>
+                </div>
+                
+                <div id="backtest-league-performance-container" class="hidden overflow-x-auto pt-2">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead>
+                            <tr class="border-b border-white/10 text-gray-400 font-semibold text-xs md:text-sm">
+                                <th class="pb-3 pl-2">Liga</th>
+                                <th class="pb-3 text-center">Tier (Liquidez)</th>
+                                <th class="pb-3 text-center">Partidos Totales</th>
+                                <th class="pb-3 text-center">Record (G - P)</th>
+                                <th class="pb-3 text-center">Win Rate (%)</th>
+                                <th class="pb-3 text-center">Beneficio Neto ($)</th>
+                                <th class="pb-3 text-center">ROI (%)</th>
+                                <th class="pb-3 text-center pr-2">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="backtest-league-performance-table-body" class="divide-y divide-white/5 text-gray-300">
+                            <!-- Cargado dinámicamente -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -748,6 +822,7 @@
         let currentClassFilter = 'all';
         let currentTierFilter = 'all';
         let leaguePerfCollapsed = true;
+        let backtestLeaguePerfCollapsed = true;
 
         // Cargar datos
         window.addEventListener('DOMContentLoaded', () => {
@@ -785,9 +860,22 @@
             renderPicks(picks);
             
             // Cargar Backtest
+            // Llenar dropdown de ligas del backtest
+            const backtestLeagueSelect = document.getElementById('backtest-filter-league');
+            if (backtestLeagueSelect) {
+                const uniqueLeagues = [...new Set(backtestData.map(p => p.Liga))].sort();
+                uniqueLeagues.forEach(league => {
+                    const opt = document.createElement('option');
+                    opt.value = league;
+                    opt.innerText = league;
+                    backtestLeagueSelect.appendChild(opt);
+                });
+            }
+
             renderBacktestTable();
-            renderChart(data.backtest_summary);
+            updateBacktestSummaryAndChart();
             initBankrollSimulation();
+            renderBacktestLeaguePerformanceTable();
             
             // Cargar Equipos
             renderTeamsTable();
@@ -1761,57 +1849,206 @@
 
         function filterBacktestTable() {
             const query = document.getElementById('search-backtest').value.toLowerCase();
-            const selectedClass = document.getElementById('backtest-class-selector').value;
+            const selectedClass = document.getElementById('backtest-filter-class').value;
+            const selectedLeague = document.getElementById('backtest-filter-league').value;
+            const selectedTier = document.getElementById('backtest-filter-tier').value;
             
-            let baseData = backtestData;
-            if (selectedClass !== 'all') {
-                baseData = backtestData.filter(r => r.Clase === selectedClass);
-            }
+            // Obtener mapeo de ligas a tiers
+            const leagueNameMap = {};
+            (leaguesData || []).forEach(l => {
+                leagueNameMap[l.league_name] = l.tier;
+            });
             
-            filteredBacktest = baseData.filter(r => 
-                r.Local.toLowerCase().includes(query) || 
-                r.Visitante.toLowerCase().includes(query) || 
-                r.Liga.toLowerCase().includes(query)
-            );
+            filteredBacktest = backtestData.filter(r => {
+                const tier = leagueNameMap[r.Liga] || 3;
+                
+                const matchClass = selectedClass === 'all' || r.Clase === selectedClass;
+                const matchLeague = selectedLeague === 'all' || r.Liga === selectedLeague;
+                const matchTier = selectedTier === 'all' || String(tier) === selectedTier;
+                const matchQuery = r.Local.toLowerCase().includes(query) || 
+                                   r.Visitante.toLowerCase().includes(query) || 
+                                   r.Liga.toLowerCase().includes(query);
+                                   
+                return matchClass && matchLeague && matchTier && matchQuery;
+            });
+            
             backtestPage = 0;
             renderBacktestTable();
             
+            // Actualizar resumen y el gráfico de Win Rate dinámicamente
+            updateBacktestSummaryAndChart();
+            
             // Actualizar simulación de banca
             initBankrollSimulation();
+            
+            // Actualizar tabla de rendimiento por liga
+            renderBacktestLeaguePerformanceTable();
         }
 
-        function updateBacktestChartAndTable() {
-            const selectedClass = document.getElementById('backtest-class-selector').value;
-            const summary = window.dashboardData.backtest_summary;
+        function updateBacktestSummaryAndChart() {
+            const resolved = filteredBacktest;
+            const total = resolved.length;
+            const wins = resolved.filter(r => r.Resultado === 'GANADA').length;
+            const losses = resolved.filter(r => r.Resultado === 'PERDIDA').length;
+            const winRateStr = total > 0 ? ((wins / total) * 100).toFixed(1) + '%' : '0.0%';
             
-            let targetSummary = {};
-            if (selectedClass === 'all') {
-                targetSummary = {
-                    total: summary.total,
-                    aciertos: summary.aciertos,
-                    fallos: summary.fallos,
-                    win_rate: summary.win_rate
-                };
-            } else if (selectedClass === 'Clase A') {
-                targetSummary = {
-                    total: summary.total_a,
-                    aciertos: summary.aciertos_a,
-                    fallos: summary.fallos_a,
-                    win_rate: summary.win_rate_a
-                };
+            const summary = {
+                total,
+                aciertos: wins,
+                fallos: losses,
+                win_rate: winRateStr
+            };
+            
+            renderChart(summary);
+        }
+
+        // Función para colapsar/mostrar la tabla de rendimiento por liga en Backtesting
+        function toggleBacktestLeaguePerformanceTable() {
+            backtestLeaguePerfCollapsed = !backtestLeaguePerfCollapsed;
+            const container = document.getElementById('backtest-league-performance-container');
+            const icon = document.getElementById('backtest-league-perf-toggle-icon');
+            const text = document.getElementById('backtest-league-perf-toggle-text');
+            
+            if (backtestLeaguePerfCollapsed) {
+                if (container) container.classList.add('hidden');
+                if (icon) icon.classList.remove('rotate-180');
+                if (text) text.innerText = 'Mostrar';
             } else {
-                targetSummary = {
-                    total: summary.total_b,
-                    aciertos: summary.aciertos_b,
-                    fallos: summary.fallos_b,
-                    win_rate: summary.win_rate_b
-                };
+                if (container) container.classList.remove('hidden');
+                if (icon) icon.classList.add('rotate-180');
+                if (text) text.innerText = 'Ocultar';
+            }
+        }
+
+        // Función para aplicar filtro de liga desde la tabla de rendimiento de Backtesting
+        function selectBacktestLeagueFilter(leagueName) {
+            const leagueSelect = document.getElementById('backtest-filter-league');
+            if (leagueSelect) {
+                leagueSelect.value = leagueName;
+                filterBacktestTable();
+                
+                // Hacer scroll suave hacia los filtros
+                leagueSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Función para calcular y renderizar la tabla de efectividad por liga en Backtesting
+        function renderBacktestLeaguePerformanceTable() {
+            const tbody = document.getElementById('backtest-league-performance-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            
+            const list = backtestData || [];
+            
+            // Si el contenedor ya está abierto, asegurar que se mantenga el colapso correcto
+            const container = document.getElementById('backtest-league-performance-container');
+            if (container) {
+                if (backtestLeaguePerfCollapsed) {
+                    container.classList.add('hidden');
+                } else {
+                    container.classList.remove('hidden');
+                }
             }
             
-            // Re-filtrar tabla y resetear búsqueda
-            document.getElementById('search-backtest').value = '';
-            filterBacktestTable();
-            renderChart(targetSummary);
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="py-4 text-center text-gray-500 text-xs">No hay datos de backtesting disponibles.</td></tr>`;
+                return;
+            }
+            
+            // Obtener mapeo de ligas a tiers
+            const leagueNameMap = {};
+            (leaguesData || []).forEach(l => {
+                leagueNameMap[l.league_name] = l.tier;
+            });
+            
+            // Obtener filtros activos (Clase y Tier) para la agrupación
+            const filterClass = document.getElementById('backtest-filter-class').value;
+            const filterTier = document.getElementById('backtest-filter-tier').value;
+            
+            // Agrupar
+            const leagueData = {};
+            list.forEach(r => {
+                const liga = r.Liga;
+                const tier = leagueNameMap[liga] || 3;
+                const clase = r.Clase;
+                
+                // Aplicar filtros de Clase y Tier para la tabla de efectividad
+                if (filterClass !== 'all' && clase !== filterClass) return;
+                if (filterTier !== 'all' && String(tier) !== filterTier) return;
+                
+                if (!leagueData[liga]) {
+                    leagueData[liga] = {
+                        name: liga,
+                        tier: tier,
+                        total: 0,
+                        wins: 0,
+                        losses: 0,
+                        profit: 0.0,
+                        staked: 0.0
+                    };
+                }
+                
+                leagueData[liga].total++;
+                
+                let stake = 20.0;
+                if (parseInt(tier) === 1) stake = 20.0;
+                else if (parseInt(tier) === 2) stake = 10.0;
+                else stake = 5.0;
+                
+                const odds = parseFloat(r.Cuota) || 1.45;
+                const isWin = r.Resultado === 'GANADA';
+                
+                if (isWin) {
+                    leagueData[liga].wins++;
+                    leagueData[liga].profit += stake * (odds - 1.0);
+                } else {
+                    leagueData[liga].losses++;
+                    leagueData[liga].profit -= stake;
+                }
+                leagueData[liga].staked += stake;
+            });
+            
+            // Convertir a array y ordenar por beneficio neto descendente
+            const sortedLeagues = Object.values(leagueData).sort((a, b) => b.profit - a.profit);
+            
+            if (sortedLeagues.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="py-4 text-center text-gray-500 text-xs">No hay ligas que coincidan con la clase/tier seleccionados.</td></tr>`;
+                return;
+            }
+            
+            sortedLeagues.forEach(data => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-white/5 transition-colors border-b border-white/5";
+                
+                const winRate = data.total > 0 ? (data.wins / data.total * 100) : 0.0;
+                const roi = data.staked > 0 ? (data.profit / data.staked * 100) : 0.0;
+                
+                const profitSign = data.profit >= 0 ? '+' : '';
+                const profitColor = data.profit >= 0 ? 'text-emerald-400' : 'text-rose-400';
+                
+                const roiSign = roi >= 0 ? '+' : '';
+                const roiColor = roi >= 0 ? 'text-emerald-400' : 'text-rose-400';
+                
+                const winRateColor = winRate >= 80 ? 'text-emerald-400 font-bold' : (winRate >= 65 ? 'text-amber-400 font-semibold' : 'text-gray-400');
+                
+                tr.innerHTML = `
+                    <td class="py-2.5 font-semibold text-white text-xs md:text-sm text-left pl-2">${data.name}</td>
+                    <td class="py-2.5 text-center">${getTierBadgeHtml(data.tier)}</td>
+                    <td class="py-2.5 text-center text-gray-400 text-xs">${data.total}</td>
+                    <td class="py-2.5 text-center font-medium text-xs">${data.wins}G - ${data.losses}P</td>
+                    <td class="py-2.5 text-center ${winRateColor} text-xs md:text-sm">${winRate.toFixed(1)}%</td>
+                    <td class="py-2.5 text-center ${profitColor} font-bold text-xs md:text-sm">${profitSign}$${data.profit.toFixed(2)}</td>
+                    <td class="py-2.5 text-center ${roiColor} font-semibold text-xs md:text-sm">${roiSign}${roi.toFixed(1)}%</td>
+                    <td class="py-2.5 text-center pr-2">
+                        <button onclick="selectBacktestLeagueFilter('${data.name.replace(/'/g, "\\'")}')" class="px-2 py-1 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-md text-[10px] font-semibold transition-all">
+                            Filtrar Backtest
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            lucide.createIcons();
         }
 
         // --- CHART JS ---
