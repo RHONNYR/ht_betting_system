@@ -191,7 +191,7 @@ class ApiSportsExtractor:
             if not response_list:
                 print(f"No se encontraron cuotas para partido ID {fixture_id} en la API.")
                 return fallback_odds
-                
+            
             bookmakers = response_list[0].get('bookmakers', [])
             odds_by_bookmaker = {}
             
@@ -229,4 +229,74 @@ class ApiSportsExtractor:
         except Exception as e:
             print(f"Error al obtener cuotas para partido ID {fixture_id}: {e}")
             return fallback_odds
+
+    def get_odds_for_season(self, league_id, season_year):
+        """
+        Descarga todas las cuotas para una liga y temporada específica,
+        utilizando una base de datos local como caché inteligente en parquet.
+        """
+        cache_file = os.path.join(self.db_dir, f"odds_{league_id}_{season_year}.parquet")
+        
+        # Determinar si cargamos desde la base de datos local
+        if os.path.exists(cache_file):
+            try:
+                df = pd.read_parquet(cache_file)
+                if not df.empty:
+                    print(f"Cargando cuotas reales para liga ID {league_id} temporada {season_year} desde Caché Local...")
+                    return df
+            except Exception as e:
+                print(f"Error al leer la base de datos local de cuotas ({cache_file}): {e}. Descargando de nuevo...")
+
+        # Si no se usa la base de datos local, descargar desde la API
+        print(f"Descargando cuotas en masa para la liga ID {league_id}, temporada {season_year} desde la API-Sports...")
+        
+        try:
+            # 6 es el ID del mercado 'Goals Over/Under First Half'
+            raw_odds = self.client.fetch_odds_for_league_season(league_id, season_year, bet=6)
+        except Exception as e:
+            print(f"Error al descargar cuotas para liga ID {league_id} temporada {season_year}: {e}")
+            raw_odds = []
+            
+        rows = []
+        for item in raw_odds:
+            fixture = item.get('fixture') or {}
+            fixture_id = fixture.get('id')
+            bookmakers = item.get('bookmakers', [])
+            
+            odds_by_bookmaker = {}
+            for bm in bookmakers:
+                bm_name = bm.get('name')
+                for bet in bm.get('bets', []):
+                    if bet.get('id') == 6 or ("First Half" in bet.get('name', '') and "Over/Under" in bet.get('name', '')):
+                        for val in bet.get('values', []):
+                            if val.get('value') == 'Over 0.5':
+                                try:
+                                    odd_val = float(val.get('odd'))
+                                    odds_by_bookmaker[bm_name] = odd_val
+                                except:
+                                    pass
+                                break
+            
+            if odds_by_bookmaker:
+                best_bm = max(odds_by_bookmaker, key=odds_by_bookmaker.get)
+                best_odd = odds_by_bookmaker[best_bm]
+                otras = {k: v for k, v in odds_by_bookmaker.items() if k != best_bm}
+                
+                rows.append({
+                    'match_id': int(fixture_id),
+                    'cuota_cierre': float(best_odd),
+                    'bookmaker_cierre': best_bm,
+                    'otras_cuotas_cierre': json.dumps(otras, ensure_ascii=False)
+                })
+                
+        df = pd.DataFrame(rows)
+        # Guardar en la base de datos local
+        if not df.empty:
+            try:
+                df.to_parquet(cache_file, index=False)
+                print(f"Cuotas guardadas exitosamente en Caché Local: {cache_file}")
+            except Exception as e:
+                print(f"Error al guardar cuotas en la base de datos local: {e}")
+                
+        return df
 
