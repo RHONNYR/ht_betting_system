@@ -395,6 +395,100 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                     elif status_short in ['PST', 'CANC', 'ABD']:
                         pick['status'] = 'CANCELADO'
                         pick['resultado_apuesta'] = 'CANCELADO'
+
+    # 2.5. Real-Time API Update for pending/active picks
+    pending_ids = []
+    now_utc = dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
+    for m_id, pick in history_map.items():
+        current_status = pick.get('status', 'NS')
+        # Check matches that are not final/cancelled, or whose outcome is still undetermined
+        if current_status not in ['FT', 'AET', 'PEN', 'CANCELADO'] or pick.get('resultado_apuesta') is None:
+            # Query if kickoff time is in the past, or starting within 15 minutes
+            date_str = pick.get('fecha')
+            time_str = pick.get('hora')
+            try:
+                dt_kickoff = dt.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+                if dt_kickoff <= now_utc + dt.timedelta(minutes=15):
+                    pending_ids.append(m_id)
+            except Exception:
+                pending_ids.append(m_id)
+
+    if pending_ids:
+        print(f"[API Live Update] Detectados {len(pending_ids)} partidos pendientes que ya iniciaron o están por iniciar. Consultando API...")
+        token = (os.environ.get("API_FOOTBALL_KEY") or settings.API_FOOTBALL_KEY).strip()
+        base_url = settings.API_FOOTBALL_BASE_URL.rstrip('/')
+        headers = {'x-apisports-key': token}
+        
+        fetched_fixtures = []
+        # Query in batches of 20
+        for i in range(0, len(pending_ids), 20):
+            batch = pending_ids[i:i+20]
+            ids_str = ",".join(str(x) for x in batch)
+            url = f"{base_url}/fixtures"
+            try:
+                r = requests.get(url, headers=headers, params={'ids': ids_str}, timeout=15)
+                if r.status_code == 200:
+                    payload = r.json()
+                    fetched_fixtures.extend(payload.get('response', []))
+                else:
+                    print(f"[API Live Update] Error en consulta (HTTP {r.status_code}): {r.text}")
+            except Exception as e:
+                print(f"[API Live Update] Excepción al consultar API para IDs {ids_str}: {e}")
+                
+        print(f"[API Live Update] Obtenidos {len(fetched_fixtures)} fixtures en tiempo real.")
+        for item in fetched_fixtures:
+            fixture = item.get('fixture') or {}
+            m_id = fixture.get('id')
+            if m_id is not None and int(m_id) in history_map:
+                pick = history_map[int(m_id)]
+                status_info = fixture.get('status') or {}
+                status_short = status_info.get('short', 'NS')
+                
+                score = item.get('score') or {}
+                halftime = score.get('halftime') or {}
+                goals = item.get('goals') or {}
+                
+                pick['status'] = status_short
+                
+                # If first half has completed or match is finished
+                is_ht_over = status_short in ['HT', '2H', 'ET', 'FT', 'AET', 'PEN']
+                
+                goles_ht = None
+                resultado = None
+                marcador_ht = None
+                
+                # Check if we won during 1H (live score > 0)
+                if status_short == '1H':
+                    g_home = goals.get('home')
+                    g_away = goals.get('away')
+                    if g_home is not None and g_away is not None:
+                        total_live = int(g_home + g_away)
+                        if total_live > 0:
+                            goles_ht = total_live
+                            resultado = "GANADA"
+                            marcador_ht = f"{int(g_home)} - {int(g_away)} (En vivo)"
+                
+                elif is_ht_over:
+                    ht_home = halftime.get('home')
+                    ht_away = halftime.get('away')
+                    if ht_home is not None and ht_away is not None:
+                        total_ht = int(ht_home + ht_away)
+                        goles_ht = total_ht
+                        resultado = "GANADA" if total_ht > 0 else "PERDIDA"
+                        marcador_ht = f"{int(ht_home)} - {int(ht_away)}"
+                    else:
+                        if status_short in ['FT', 'AET', 'PEN']:
+                            pick['resultado_apuesta'] = 'DESCONOCIDO'
+                            
+                elif status_short in ['PST', 'CANC', 'ABD']:
+                    pick['status'] = 'CANCELADO'
+                    resultado = 'CANCELADO'
+                    
+                if resultado is not None:
+                    pick['goles_ht'] = goles_ht
+                    pick['resultado_apuesta'] = resultado
+                    pick['marcador_ht'] = marcador_ht
+                    print(f"[API Live Update] Partido ID {m_id} ({pick['local']} vs {pick['visitante']}) actualizado: Status={status_short}, Marcador HT={marcador_ht}, Resultado={resultado}")
     
     # 3. Add or update picks from df_picks
     if not df_picks.empty:
