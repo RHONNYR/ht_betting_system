@@ -2,10 +2,57 @@ import json
 import os
 import sys
 import datetime
+import base64
 import requests
 
 sys.path.append('.')
 from config import settings
+
+def upload_file_to_github(local_file_path, repo_file_path):
+    token = getattr(settings, 'GITHUB_TOKEN', '').strip()
+    owner = getattr(settings, 'GITHUB_REPO_OWNER', '').strip()
+    repo = getattr(settings, 'GITHUB_REPO_NAME', '').strip()
+    enabled = getattr(settings, 'GITHUB_ENABLED', False)
+    
+    if not enabled or not token or not owner or not repo:
+        return False
+        
+    if not os.path.exists(local_file_path):
+        return False
+        
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{repo_file_path}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    
+    sha = None
+    try:
+        r_get = requests.get(url, headers=headers, timeout=15)
+        if r_get.status_code == 200:
+            sha = r_get.json().get("sha")
+    except Exception:
+        pass
+        
+    try:
+        with open(local_file_path, "rb") as f:
+            content_bytes = f.read()
+        content_base64 = base64.b64encode(content_bytes).decode("utf-8")
+    except Exception:
+        return False
+        
+    payload = {
+        "message": f"Actualización de estado de Telegram ({repo_file_path})",
+        "content": content_base64
+    }
+    if sha:
+        payload["sha"] = sha
+        
+    try:
+        r_put = requests.put(url, headers=headers, json=payload, timeout=20)
+        return r_put.status_code in [200, 201]
+    except Exception:
+        return False
 
 def send_telegram_message(token, chat_id, text):
     url = f"https://api.telegram.org/bot{token}/sendMessage"
