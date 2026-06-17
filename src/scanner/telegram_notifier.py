@@ -94,6 +94,18 @@ def run_telegram_notifications():
     with open(history_file, 'r', encoding='utf-8') as f:
         picks = json.load(f)
         
+    # Define current time in UTC (naive)
+    dt_now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+    
+    # Sort picks chronologically (ascending, oldest kickoff first)
+    def parse_dt(p):
+        try:
+            return datetime.datetime.strptime(f"{p.get('fecha', '1970-01-01')} {p.get('hora', '00:00')}", "%Y-%m-%d %H:%M")
+        except Exception:
+            return datetime.datetime.min
+
+    picks = sorted(picks, key=parse_dt)
+        
     state_file = os.path.join('data', 'picks', 'telegram_sent_state.json')
     if os.path.exists(state_file):
         try:
@@ -125,10 +137,21 @@ def run_telegram_notifications():
         is_pending = res_bet is None or res_bet == 'PENDIENTE' or res_bet == ''
         
         if is_pending and str(match_id) not in state["sent_upcoming"]:
-            # Format kickoff time from UTC to VET (UTC-4)
             date_str = p.get('fecha')
             time_str = p.get('hora')
             
+            # Safeguard: skip upcoming picks that already started
+            try:
+                dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+                if dt_kickoff < dt_now:
+                    print(f"   -> El partido {match_id} ya comenzó ({date_str} {time_str}). Marcando como sent_upcoming en silencio.")
+                    state["sent_upcoming"].append(str(match_id))
+                    updated_state = True
+                    continue
+            except Exception:
+                pass
+
+            # Format kickoff time from UTC to VET (UTC-4)
             fecha_vet = date_str
             hora_vet = time_str
             
@@ -176,7 +199,6 @@ def run_telegram_notifications():
                 
     # 2.5. Process Kickoff Reminders
     print("[Telegram Notifier] Procesando recordatorios de partidos cercanos...")
-    dt_now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
     for p in picks:
         match_id = p.get('match_id')
         if not match_id:
@@ -243,10 +265,21 @@ def run_telegram_notifications():
             
         res_bet = p.get('resultado_apuesta')
         if res_bet in ['GANADA', 'PERDIDA', 'CANCELADO'] and str(match_id) not in state["sent_resolved"]:
-            # Format kickoff time from UTC to VET (UTC-4)
             date_str = p.get('fecha')
             time_str = p.get('hora')
             
+            # Safeguard: only send results for matches played in the last 2 days
+            try:
+                dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+                if (dt_now - dt_kickoff).days > 2:
+                    print(f"   -> El resultado del partido {match_id} ({date_str}) es de hace más de 2 días. Marcando como sent_resolved en silencio.")
+                    state["sent_resolved"].append(str(match_id))
+                    updated_state = True
+                    continue
+            except Exception:
+                pass
+
+            # Format kickoff time from UTC to VET (UTC-4)
             fecha_vet = date_str
             hora_vet = time_str
             
