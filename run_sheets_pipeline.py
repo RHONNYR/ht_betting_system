@@ -314,7 +314,7 @@ def save_backup_locally(df_leagues, df_local, df_away, df_backtest, df_picks):
     except Exception as e:
         print(f"Error al guardar copia de respaldo local: {e}")
 
-def update_picks_history(df_picks, df_local, df_away, all_fixtures):
+def update_picks_history(df_picks, df_local, df_away, all_fixtures, league_recent_wr=None):
     """
     Saves a persistent record of all recommended picks in data/picks/picks_history.json.
     Updates the results (scores and betting outcome) of played matches from all_fixtures.
@@ -549,13 +549,17 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                     league_id_val = int(r.get('league_id')) if pd.notna(r.get('league_id')) else name_to_id.get(r.get('Liga'), 0)
                     tier_val = settings.API_FOOTBALL_LEAGUE_TIERS.get(league_id_val, name_to_tier.get(r.get('Liga'), 3))
 
+                    liga_name = r.get('Liga', 'N/A')
+                    recent_wr = league_recent_wr.get(liga_name, 1.0) if league_recent_wr else 1.0
+                    is_drawdown = recent_wr < 0.70
+                    
                     new_pick = {
                         'match_id': m_id,
                         'league_id': league_id_val,
                         'tier': tier_val,
                         'fecha': r.get('Fecha', 'N/A'),
                         'hora': r.get('Hora', 'N/A'),
-                        'liga': r.get('Liga', 'N/A'),
+                        'liga': liga_name,
                         'local': home,
                         'visitante': away,
                         'probabilidad': r.get('Probabilidad HT 0.5+ Combinada', '0.0%'),
@@ -569,7 +573,9 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                         'bookmaker_recomendado': bm_rec,
                         'otras_cuotas': otras,
                         'local_stats': home_stats,
-                        'visitante_stats': away_stats
+                        'visitante_stats': away_stats,
+                        'league_recent_win_rate': recent_wr,
+                        'is_drawdown': is_drawdown
                     }
                     history.append(new_pick)
                     history_map[m_id] = new_pick
@@ -600,6 +606,13 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures):
                         existing_pick['bookmaker_recomendado'] = bm_rec
                         existing_pick['otras_cuotas'] = otras
                 
+    # Update league recent win rates and drawdown status for all history records
+    for pick in history:
+        liga_name = pick.get('liga')
+        recent_wr = league_recent_wr.get(liga_name, 1.0) if league_recent_wr else 1.0
+        pick['league_recent_win_rate'] = recent_wr
+        pick['is_drawdown'] = recent_wr < 0.70
+
     # Sort history: pending matches by date/time ascending, followed by finished matches descending (newest results first)
     pending_picks = [p for p in history if p.get('resultado_apuesta') is None]
     finished_picks = [p for p in history if p.get('resultado_apuesta') is not None]
@@ -683,6 +696,24 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
     """
     import json
     
+    # Calculate recent win rates for leagues from backtest
+    league_recent_wr = {}
+    if not df_backtest.empty:
+        try:
+            grouped = df_backtest.groupby('Liga')
+            for league_name, df_league in grouped:
+                df_league_sorted = df_league.sort_values(by='Fecha')
+                recent_matches = df_league_sorted.tail(10)
+                if len(recent_matches) >= 5:
+                    wins = (recent_matches['Resultado'] == 'GANADA').sum()
+                    league_recent_wr[league_name] = round(float(wins / len(recent_matches)), 3)
+                else:
+                    wins = (df_league_sorted['Resultado'] == 'GANADA').sum()
+                    total = len(df_league_sorted)
+                    league_recent_wr[league_name] = round(float(wins / total), 3) if total > 0 else 1.0
+        except Exception as e:
+            print(f"Error al calcular recent win rates de ligas: {e}")
+
     # Helper maps for resolving tiers and league_ids
     name_to_tier = {}
     name_to_id = {}
@@ -847,13 +878,17 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
             league_id_val = int(r.get('league_id')) if pd.notna(r.get('league_id')) else name_to_id.get(r.get('Liga'), 0)
             tier_val = settings.API_FOOTBALL_LEAGUE_TIERS.get(league_id_val, name_to_tier.get(r.get('Liga'), 3))
             
+            liga_name = r.get('Liga', 'N/A')
+            recent_wr = league_recent_wr.get(liga_name, 1.0)
+            is_drawdown = recent_wr < 0.70
+
             picks_data.append({
                 'match_id': int(r.get('match_id', 0)) if r.get('match_id') is not None else 0,
                 'league_id': league_id_val,
                 'tier': tier_val,
                 'fecha': r.get('Fecha', 'N/A'),
                 'hora': r.get('Hora', 'N/A'),
-                'liga': r.get('Liga', 'N/A'),
+                'liga': liga_name,
                 'local': home,
                 'visitante': away,
                 'probabilidad': r.get('Probabilidad HT 0.5+ Combinada', '0.0%'),
@@ -863,13 +898,15 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
                 'bookmaker_recomendado': r.get('Bookmaker Recomendado', 'Por determinar'),
                 'otras_cuotas': r.get('Otras Cuotas', {}),
                 'local_stats': home_stats,
-                'visitante_stats': away_stats
+                'visitante_stats': away_stats,
+                'league_recent_win_rate': recent_wr,
+                'is_drawdown': is_drawdown
             })
             
     # Actualizar o cargar picks_history
     picks_history = []
     if all_fixtures is not None:
-        picks_history = update_picks_history(df_picks, df_local, df_away, all_fixtures)
+        picks_history = update_picks_history(df_picks, df_local, df_away, all_fixtures, league_recent_wr)
     else:
         # Fallback si no se pasa all_fixtures
         history_file = os.path.join('data', 'picks', 'picks_history.json')
@@ -901,7 +938,8 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
         'backtest': backtest_data,
         'backtest_summary': backtest_summary,
         'picks': picks_data,
-        'picks_history': picks_history
+        'picks_history': picks_history,
+        'league_recent_win_rates': league_recent_wr
     }
     
     output_dir = os.path.join('data', 'picks')
