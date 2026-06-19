@@ -7,6 +7,7 @@ import requests
 
 sys.path.append('.')
 from config import settings
+from src.scanner.visual_generator import generate_pick_infographic
 
 def upload_file_to_github(local_file_path, repo_file_path):
     token = getattr(settings, 'GITHUB_TOKEN', '').strip()
@@ -52,6 +53,26 @@ def upload_file_to_github(local_file_path, repo_file_path):
         r_put = requests.put(url, headers=headers, json=payload, timeout=20)
         return r_put.status_code in [200, 201]
     except Exception:
+        return False
+
+def send_telegram_photo(token, chat_id, photo_path, caption):
+    url = f"https://api.telegram.org/bot{token}/sendPhoto"
+    try:
+        with open(photo_path, 'rb') as f:
+            files = {'photo': f}
+            data = {
+                'chat_id': chat_id,
+                'caption': caption,
+                'parse_mode': 'HTML'
+            }
+            r = requests.post(url, data=data, files=files, timeout=20)
+            if r.status_code == 200:
+                return True
+            else:
+                print(f"[Telegram] Error al enviar foto (HTTP {r.status_code}): {r.text}")
+                return False
+    except Exception as e:
+        print(f"[Telegram] Excepción al enviar foto: {e}")
         return False
 
 def send_telegram_message(token, chat_id, text):
@@ -170,17 +191,51 @@ def run_telegram_notifications():
             # Suggest dynamic stakes
             if tier == 1:
                 stake_pct = "2.0%"
-                stake_usd = 20.0
+                stake_usd_tier = 20.0
             elif tier == 2:
                 stake_pct = "1.0%"
-                stake_usd = 10.0
+                stake_usd_tier = 10.0
             else:
                 stake_pct = "0.5%"
-                stake_usd = 5.0
+                stake_usd_tier = 5.0
+                
+            # Kelly stake sizing (1/10 Kelly)
+            prob_str = p.get('probabilidad', '0.0%').replace('%', '')
+            try:
+                prob_val = float(prob_str) / 100.0
+            except:
+                prob_val = 0.75
+                
+            odds = p.get('cuota_recomendada')
+            try:
+                odds_val = float(odds) if odds is not None else 1.45
+            except:
+                odds_val = 1.45
+                
+            b_val = odds_val - 1.0
+            kelly_f = (prob_val * b_val - (1.0 - prob_val)) / b_val if b_val > 0 else 0.0
+            stake_f = kelly_f * 0.10  # 1/10 Kelly
+            
+            is_drawdown = p.get('is_drawdown', False)
+            if is_drawdown:
+                stake_f = stake_f * 0.5  # Cut stake in half
+                
+            # Clamp Kelly stake between 0.5% and 3.0%
+            stake_f = max(0.005, min(0.03, stake_f))
+            
+            ref_bankroll = 1000.0
+            stake_usd_kelly = stake_f * ref_bankroll
+            
+            # Format drawdown warning prefix if applicable
+            drawdown_alert = ""
+            if is_drawdown:
+                recent_wr = p.get('league_recent_win_rate', 1.0) * 100
+                drawdown_alert = f"⚠️ <b>ALERTA RACHA NEGATIVA EN LIGA ({recent_wr:.1f}% WR)</b>\n<i>Esta liga está en racha de pérdidas reciente. Se recomienda precaución o reducir stake.</i>\n\n"
                 
             # Formulate HTML message
             msg = (
                 f"🆕 <b>NUEVO PICK DETECTADO (HT Over 0.5)</b>\n\n"
+                f"{drawdown_alert}"
                 f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
                 f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
                 f"📅 <b>Fecha:</b> {fecha_vet} (VET)\n"
@@ -188,11 +243,32 @@ def run_telegram_notifications():
                 f"📈 <b>Clase:</b> {p.get('clase')} (Prob: {p.get('probabilidad')})\n"
                 f"📊 <b>Sustento:</b> {p.get('sustento')}\n"
                 f"💵 <b>Cuota Recomendada:</b> {p.get('cuota_recomendada')} ({p.get('bookmaker_recomendado')})\n\n"
-                f"⚖️ <b>Stake Sugerido:</b> {stake_pct} de la banca (Ref: ${stake_usd:.2f})\n"
+                f"⚖️ <b>Stake Sugerido (Tier):</b> {stake_pct} (Ref: ${stake_usd_tier:.2f})\n"
+                f"📊 <b>Stake Kelly Dinámico (1/10 Kelly):</b> {stake_f*100:.2f}% (Ref: ${stake_usd_kelly:.2f})\n"
             )
             
             print(f"   -> Enviando alerta de pick para: {p.get('local')} vs {p.get('visitante')}")
-            success = send_telegram_message(token, chat_id, msg)
+            
+            # Generate infographic image in a temporary path
+            temp_dir = os.path.join('data', 'picks', 'temp_infographics')
+            os.makedirs(temp_dir, exist_ok=True)
+            temp_path = os.path.join(temp_dir, f"pick_{match_id}.png")
+            
+            img_success = generate_pick_infographic(p, temp_path)
+            
+            success = False
+            if img_success and os.path.exists(temp_path):
+                # Try sending photo first
+                success = send_telegram_photo(token, chat_id, temp_path, msg)
+                try:
+                    os.remove(temp_path)
+                except:
+                    pass
+            
+            # Fallback to text message if photo failed
+            if not success:
+                success = send_telegram_message(token, chat_id, msg)
+                
             if success:
                 state["sent_upcoming"].append(str(match_id))
                 updated_state = True
@@ -229,22 +305,55 @@ def run_telegram_notifications():
                     # Suggest dynamic stakes
                     if tier == 1:
                         stake_pct = "2.0%"
-                        stake_usd = 20.0
+                        stake_usd_tier = 20.0
                     elif tier == 2:
                         stake_pct = "1.0%"
-                        stake_usd = 10.0
+                        stake_usd_tier = 10.0
                     else:
                         stake_pct = "0.5%"
-                        stake_usd = 5.0
+                        stake_usd_tier = 5.0
+                        
+                    # Kelly stake sizing (1/10 Kelly)
+                    prob_str = p.get('probabilidad', '0.0%').replace('%', '')
+                    try:
+                        prob_val = float(prob_str) / 100.0
+                    except:
+                        prob_val = 0.75
+                        
+                    odds = p.get('cuota_recomendada')
+                    try:
+                        odds_val = float(odds) if odds is not None else 1.45
+                    except:
+                        odds_val = 1.45
+                        
+                    b_val = odds_val - 1.0
+                    kelly_f = (prob_val * b_val - (1.0 - prob_val)) / b_val if b_val > 0 else 0.0
+                    stake_f = kelly_f * 0.10  # 1/10 Kelly
+                    
+                    is_drawdown = p.get('is_drawdown', False)
+                    if is_drawdown:
+                        stake_f = stake_f * 0.5  # Cut stake in half
+                        
+                    stake_f = max(0.005, min(0.03, stake_f))
+                    ref_bankroll = 1000.0
+                    stake_usd_kelly = stake_f * ref_bankroll
+                    
+                    # Format drawdown warning prefix if applicable
+                    drawdown_alert = ""
+                    if is_drawdown:
+                        recent_wr = p.get('league_recent_win_rate', 1.0) * 100
+                        drawdown_alert = f"⚠️ <b>ALERTA RACHA NEGATIVA EN LIGA ({recent_wr:.1f}% WR)</b>\n\n"
                         
                     msg = (
                         f"⏰ <b>RECORDATORIO DE PARTIDO (Empieza pronto)</b>\n\n"
+                        f"{drawdown_alert}"
                         f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
                         f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
                         f"⏰ <b>Kickoff:</b> {hora_vet} (VET) | Fecha: {fecha_vet}\n"
                         f"📈 <b>Clase:</b> {p.get('clase')} (Prob: {p.get('probabilidad')})\n"
                         f"💵 <b>Cuota Recomendada:</b> {p.get('cuota_recomendada')} ({p.get('bookmaker_recomendado')})\n\n"
-                        f"⚖️ <b>Stake Sugerido:</b> {stake_pct} (Ref: ${stake_usd:.2f})\n"
+                        f"⚖️ <b>Stake Sugerido (Tier):</b> {stake_pct} (Ref: ${stake_usd_tier:.2f})\n"
+                        f"📊 <b>Stake Kelly Dinámico (1/10 Kelly):</b> {stake_f*100:.2f}% (Ref: ${stake_usd_kelly:.2f})\n\n"
                         f"<i>Asegúrate de colocar tu apuesta antes del inicio.</i>"
                     )
                     
@@ -301,6 +410,13 @@ def run_telegram_notifications():
             else:
                 stake_usd = 5.0
                 
+            is_drawdown = p.get('is_drawdown', False)
+            if is_drawdown:
+                stake_usd = stake_usd * 0.5
+                drawdown_suffix = " (Stake reducido por Drawdown Guard)"
+            else:
+                drawdown_suffix = ""
+                
             odds = p.get('cuota_recomendada')
             odds_val = float(odds) if odds is not None else 1.45
             
@@ -325,7 +441,7 @@ def run_telegram_notifications():
                 f"⏱️ <b>Marcador HT:</b> {p.get('marcador_ht') or 'N/A'}\n\n"
                 f"✨ <b>Resultado:</b> {status_icon} <b>{res_bet}</b>\n"
                 f"💰 <b>Cuota:</b> {odds_val:.2f}\n"
-                f"💵 <b>Balance:</b> {profit_str} (Stake: ${stake_usd:.2f})\n"
+                f"💵 <b>Balance:</b> {profit_str} (Stake: ${stake_usd:.2f}{drawdown_suffix})\n"
             )
             
             print(f"   -> Enviando alerta de resultado para: {p.get('local')} vs {p.get('visitante')} ({res_bet})")
