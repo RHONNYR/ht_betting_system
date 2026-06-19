@@ -8,3 +8,5 @@ xlsxwriter
 openpyxl
 gspread
 gspread-formatting
+matplotlib
+pillow
