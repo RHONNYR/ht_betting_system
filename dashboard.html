@@ -2378,6 +2378,7 @@
             const dataTiers = [initialBank];
             const dataKelly = [initialBank];
             const labels = ['Inicio'];
+            const details = []; // details array for tooltips
             
             sorted.forEach((p, idx) => {
                 const isWin = p.resultado_apuesta === 'GANADA';
@@ -2418,8 +2419,20 @@
                 bankKelly += profitKelly;
                 dataKelly.push(Math.round(bankKelly * 100) / 100);
                 
-                // Label
-                labels.push(p.local && p.visitante ? `${p.local.substring(0,8)} vs ${p.visitante.substring(0,8)}` : p.fecha);
+                // Label (X-axis) - Just the Date (e.g. 06-20)
+                const shortDate = p.fecha ? p.fecha.substring(5) : '';
+                labels.push(shortDate);
+                
+                // Store match details for custom tooltips
+                details.push({
+                    partido: `${p.local} vs ${p.visitante}`,
+                    liga: p.liga,
+                    fecha: p.fecha,
+                    hora: p.hora,
+                    resultado: p.resultado_apuesta,
+                    goles_ht: p.marcador_ht,
+                    cuota: odds
+                });
             });
             
             return {
@@ -2427,6 +2440,7 @@
                 flat: dataFlat,
                 tiers: dataTiers,
                 kelly: dataKelly,
+                details: details,
                 finalFlat: bankFlat,
                 finalTiers: bankTiers,
                 finalKelly: bankKelly
@@ -2515,8 +2529,20 @@
                             mode: 'index',
                             intersect: false,
                             callbacks: {
+                                title: function(context) {
+                                    const index = context[0].dataIndex;
+                                    if (index === 0) return 'Inicio de Simulación';
+                                    const d = results.details[index - 1];
+                                    return d.partido;
+                                },
                                 label: function(context) {
-                                    return `Banca: $${context.raw.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                                    const index = context.dataIndex;
+                                    let labelText = `Banca: $${context.raw.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                                    if (index > 0) {
+                                        const d = results.details[index - 1];
+                                        labelText += ` | Liga: ${d.liga} (${d.fecha}) | HT: ${d.goles_ht || '-'} | Cuota: ${d.cuota}`;
+                                    }
+                                    return labelText;
                                 }
                             }
                         }
