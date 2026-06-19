@@ -683,6 +683,7 @@
                         <span id="modal-away-team">Equipo Visitante</span>
                     </h3>
                     <p class="text-sm text-gray-400 mt-1">Comparación estadística detallada (Primer Tiempo / HT)</p>
+                    <div id="modal-drawdown-alert" class="mt-2.5"></div>
                 </div>
                 
                 <div class="overflow-x-auto">
@@ -1042,9 +1043,41 @@
                         </div>
                     `;
                 }
+
+                // Detección de Drawdown Guard
+                let drawdownAlert = '';
+                if (pick.is_drawdown) {
+                    const wrPercent = ((pick.league_recent_win_rate || 1.0) * 100).toFixed(1);
+                    drawdownAlert = `
+                        <div class="px-3 py-1.5 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs flex items-center gap-1.5 cursor-help" title="Alerta: Esta liga está en racha de pérdidas reciente (Win Rate últimos 10 partidos: ${wrPercent}%). Se ha reducido el stake en un 50% para mitigar riesgo.">
+                            <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-red-400 animate-pulse flex-shrink-0"></i>
+                            <span class="font-semibold text-red-400">Drawdown Guard Activo (${wrPercent}% WR)</span>
+                        </div>
+                    `;
+                }
                 
                 // Conversión de hora local
                 const localInfo = formatLocalTime(pick.fecha, pick.hora);
+
+                // Calcular Stake Kelly
+                const probVal = parseFloat(pick.probabilidad || '0.0') / 100.0 || 0.75;
+                const oddsVal = parseFloat(pick.cuota_recomendada) || 1.45;
+                const bVal = oddsVal - 1.0;
+                const kellyF = bVal > 0 ? (probVal * bVal - (1.0 - probVal)) / bVal : 0.0;
+                let stakeF = kellyF * 0.10; // 1/10 Kelly
+                if (pick.is_drawdown) {
+                    stakeF = stakeF * 0.5; // Cut stake in half
+                }
+                const clampedStakeF = Math.max(0.005, Math.min(0.03, stakeF));
+                const kellyStakePct = (clampedStakeF * 100).toFixed(2);
+                const kellyStakeUsd = (clampedStakeF * 1000.0).toFixed(2);
+
+                const tierStakePct = pick.tier === 1 ? '2.00%' : pick.tier === 2 ? '1.00%' : '0.50%';
+                let finalTierStakeUsd = pick.tier === 1 ? 20.0 : pick.tier === 2 ? 10.0 : 5.0;
+                if (pick.is_drawdown) {
+                    finalTierStakeUsd = finalTierStakeUsd * 0.5;
+                }
+                const finalTierStakePct = pick.is_drawdown ? (pick.tier === 1 ? '1.00%' : pick.tier === 2 ? '0.50%' : '0.25%') : tierStakePct;
                 
                 card.innerHTML = `
                     <div class="space-y-4">
@@ -1063,6 +1096,7 @@
                         </div>
                         
                         ${droughtWarning}
+                        ${drawdownAlert}
                         
                         <div class="py-2 text-center">
                             <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
@@ -1086,6 +1120,17 @@
                                 <span class="text-base font-extrabold text-blue-400 mt-0.5">${pick.cuota_recomendada || '1.45'}</span>
                                 <span class="text-[10px] text-gray-400 font-medium truncate block mt-0.5" title="${pick.bookmaker_recomendado || 'Por determinar'}">${pick.bookmaker_recomendado || 'Por determinar'}</span>
                                 ${renderOtherOddsTooltip(pick.otras_cuotas)}
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 border-t border-white/5 pt-3">
+                            <div class="flex flex-col bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-center">
+                                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Stake Sugerido (Tier)</span>
+                                <span class="text-sm font-extrabold text-gray-200 mt-0.5">${finalTierStakePct} ($${finalTierStakeUsd.toFixed(2)})</span>
+                            </div>
+                            <div class="flex flex-col bg-purple-500/5 border border-purple-500/10 rounded-xl px-3 py-2 text-center relative group/kelly cursor-help" title="Stake dinámico basado en Criterio de Kelly (Fraccional 1/10) ajustado según la cuota y la probabilidad.">
+                                <span class="text-[10px] text-purple-400 font-semibold uppercase tracking-wider">Stake Kelly (1/10)</span>
+                                <span class="text-sm font-extrabold text-purple-300 mt-0.5">${kellyStakePct}% ($${kellyStakeUsd})</span>
                             </div>
                         </div>
                     </div>
@@ -1574,6 +1619,25 @@
             const subtitleEl = document.querySelector('#modal-sustento p.text-gray-400');
             if (subtitleEl) {
                 subtitleEl.innerText = `Comparación estadística detallada (Primer Tiempo / HT) • ${localInfo.date} ${localInfo.time} (${localInfo.tz})`;
+            }
+
+            // Drawdown Guard Alert inside Modal
+            const drawdownAlertEl = document.getElementById('modal-drawdown-alert');
+            if (drawdownAlertEl) {
+                if (pick.is_drawdown) {
+                    const wrPercent = ((pick.league_recent_win_rate || 1.0) * 100).toFixed(1);
+                    drawdownAlertEl.innerHTML = `
+                        <div class="px-4 py-2.5 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-xs flex items-center gap-2">
+                            <i data-lucide="shield-alert" class="w-4 h-4 text-red-400 animate-pulse flex-shrink-0"></i>
+                            <div>
+                                <span class="font-bold text-red-300">Drawdown Guard Activo (${wrPercent}% WR reciente)</span><br/>
+                                <span class="text-gray-400">Esta liga ha tenido un rendimiento por debajo del 70% en sus últimos 10 partidos. Se recomienda reducir el stake de entrada un 50% o no operar.</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    drawdownAlertEl.innerHTML = '';
+                }
             }
 
             // Update headers based on candidate status
