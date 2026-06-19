@@ -526,6 +526,28 @@
                 </div>
             </div>
 
+            <!-- GRÁFICO DE EVOLUCIÓN DE BANCA REAL -->
+            <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h4 class="font-bold text-base text-gray-200 flex items-center gap-2">
+                            <i data-lucide="line-chart" class="w-5 h-5 text-purple-400"></i>
+                            Evolución Real de la Banca
+                        </h4>
+                        <p class="text-gray-400 text-xs mt-0.5 font-light">Evolución de una banca inicial de $1,000 en base a los resultados reales de esta temporada.</p>
+                    </div>
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs">
+                        <button onclick="changeRealStakingMode('flat')" id="real-stake-btn-flat" class="px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white transition-all">Stake Plano ($20)</button>
+                        <button onclick="changeRealStakingMode('tiers')" id="real-stake-btn-tiers" class="px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white transition-all">Stakes por Tier</button>
+                        <button onclick="changeRealStakingMode('kelly')" id="real-stake-btn-kelly" class="px-3 py-1.5 rounded-lg font-medium text-white bg-blue-500/25 border border-blue-500/20 transition-all">Stakes Kelly (1/10)</button>
+                    </div>
+                </div>
+                
+                <div class="h-[280px] w-full">
+                    <canvas id="realBankrollChart"></canvas>
+                </div>
+            </div>
+
             <!-- TABLA DE RENDIMIENTO POR LIGA (COLLAPSIBLE) -->
             <div class="glass-card p-6 rounded-2xl border border-white/5 space-y-4">
                 <div class="flex justify-between items-center cursor-pointer select-none" onclick="toggleLeaguePerformanceTable()">
@@ -1384,6 +1406,11 @@
                 tbody.appendChild(tr);
             });
             lucide.createIcons();
+            
+            // Actualizar gráfico de evolución de banca real
+            if (typeof updateRealBankrollChart === 'function') {
+                updateRealBankrollChart();
+            }
         }
 
         // Función para colapsar/mostrar la tabla de rendimiento por liga
@@ -2291,6 +2318,217 @@
                             ticks: {
                                 color: 'rgba(255, 255, 255, 0.4)',
                                 maxTicksLimit: 12
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                callback: function(value) {
+                                    return `$${value}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        let realBankrollChartInstance = null;
+        let activeRealStakingMode = 'kelly'; // 'flat', 'tiers', or 'kelly'
+
+        function changeRealStakingMode(mode) {
+            activeRealStakingMode = mode;
+            
+            // Update button styles
+            const btnFlat = document.getElementById('real-stake-btn-flat');
+            const btnTiers = document.getElementById('real-stake-btn-tiers');
+            const btnKelly = document.getElementById('real-stake-btn-kelly');
+            
+            const activeClass = "px-3 py-1.5 rounded-lg font-medium text-white bg-blue-500/25 border border-blue-500/20 transition-all";
+            const inactiveClass = "px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white transition-all";
+            
+            if (btnFlat) btnFlat.className = mode === 'flat' ? activeClass : inactiveClass;
+            if (btnTiers) btnTiers.className = mode === 'tiers' ? activeClass : inactiveClass;
+            if (btnKelly) btnKelly.className = mode === 'kelly' ? activeClass : inactiveClass;
+            
+            updateRealBankrollChart();
+        }
+
+        function calculateRealBankrollEvolutionJS(picksList) {
+            // Filter resolved picks
+            const resolved = picksList.filter(p => p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA');
+            
+            // Sort chronologically
+            const sorted = [...resolved].sort((a, b) => {
+                const dateA = a.fecha + ' ' + (a.hora || '00:00');
+                const dateB = b.fecha + ' ' + (b.hora || '00:00');
+                return new Date(dateA) - new Date(dateB);
+            });
+            
+            const initialBank = 1000.0;
+            
+            let bankFlat = initialBank;
+            let bankTiers = initialBank;
+            let bankKelly = initialBank;
+            
+            const dataFlat = [initialBank];
+            const dataTiers = [initialBank];
+            const dataKelly = [initialBank];
+            const labels = ['Inicio'];
+            
+            sorted.forEach((p, idx) => {
+                const isWin = p.resultado_apuesta === 'GANADA';
+                const odds = parseFloat(p.cuota_recomendada) || 1.45;
+                const bVal = odds - 1.0;
+                const tier = parseInt(p.tier) || 3;
+                const isDd = p.is_drawdown === true;
+                
+                // 1. Flat Stake ($20)
+                const stakeFlat = 20.0;
+                const profitFlat = isWin ? stakeFlat * bVal : -stakeFlat;
+                bankFlat += profitFlat;
+                dataFlat.push(Math.round(bankFlat * 100) / 100);
+                
+                // 2. Tiers Stake
+                let stakeTiers = 5.0;
+                if (tier === 1) stakeTiers = 20.0;
+                else if (tier === 2) stakeTiers = 10.0;
+                
+                if (isDd) stakeTiers *= 0.5;
+                const profitTiers = isWin ? stakeTiers * bVal : -stakeTiers;
+                bankTiers += profitTiers;
+                dataTiers.push(Math.round(bankTiers * 100) / 100);
+                
+                // 3. Kelly Stake (1/10 Kelly)
+                const probStr = (p.probabilidad || '0.0%').replace('%', '');
+                let probVal = parseFloat(probStr) / 100.0;
+                if (isNaN(probVal)) probVal = 0.75;
+                
+                const kellyF = bVal > 0 ? (probVal * bVal - (1.0 - probVal)) / bVal : 0.0;
+                let stakeF = kellyF * 0.10; // 1/10 Kelly
+                if (isDd) stakeF *= 0.5;
+                
+                // Clamp between 0.5% and 3.0%
+                stakeF = Math.max(0.005, Math.min(0.03, stakeF));
+                const stakeKelly = stakeF * 1000.0;
+                const profitKelly = isWin ? stakeKelly * bVal : -stakeKelly;
+                bankKelly += profitKelly;
+                dataKelly.push(Math.round(bankKelly * 100) / 100);
+                
+                // Label
+                labels.push(p.local && p.visitante ? `${p.local.substring(0,8)} vs ${p.visitante.substring(0,8)}` : p.fecha);
+            });
+            
+            return {
+                labels,
+                flat: dataFlat,
+                tiers: dataTiers,
+                kelly: dataKelly,
+                finalFlat: bankFlat,
+                finalTiers: bankTiers,
+                finalKelly: bankKelly
+            };
+        }
+
+        function updateRealBankrollChart() {
+            const history = window.dashboardData.picks_history || [];
+            
+            // Get selected filter values (re-used from renderHistoryTable)
+            const filterLeague = document.getElementById('history-filter-league').value;
+            const filterTier = document.getElementById('history-filter-tier').value;
+            const filterClass = document.getElementById('history-filter-class').value;
+            const filterResult = document.getElementById('history-filter-result').value;
+            
+            const filtered = history.filter(p => {
+                const matchLeague = (filterLeague === 'all' || p.liga === filterLeague);
+                const matchTier = (filterTier === 'all' || String(p.tier) === filterTier);
+                const matchClass = (filterClass === 'all' || p.clase === filterClass);
+                
+                let matchResult = false;
+                if (filterResult === 'all') {
+                    matchResult = true;
+                } else if (filterResult === 'PENDIENTE') {
+                    matchResult = !p.resultado_apuesta || p.resultado_apuesta === 'PENDIENTE';
+                } else {
+                    matchResult = p.resultado_apuesta === filterResult;
+                }
+                
+                return matchLeague && matchTier && matchClass && matchResult;
+            });
+            
+            const results = calculateRealBankrollEvolutionJS(filtered);
+            
+            const canvas = document.getElementById('realBankrollChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (realBankrollChartInstance) {
+                realBankrollChartInstance.destroy();
+            }
+            
+            let chartData = results.kelly;
+            let labelText = 'Stake Kelly (1/10)';
+            let color = '#a855f7'; // Purple 500
+            
+            if (activeRealStakingMode === 'flat') {
+                chartData = results.flat;
+                labelText = 'Stake Plano ($20)';
+                color = '#3b82f6'; // Blue 500
+            } else if (activeRealStakingMode === 'tiers') {
+                chartData = results.tiers;
+                labelText = 'Stakes por Tier';
+                color = '#10b981'; // Emerald 500
+            }
+            
+            const fillGradient = ctx.createLinearGradient(0, 0, 0, 280);
+            const rgbColor = activeRealStakingMode === 'flat' ? '59, 130, 246' : activeRealStakingMode === 'tiers' ? '16, 185, 129' : '168, 85, 247';
+            fillGradient.addColorStop(0, `rgba(${rgbColor}, 0.15)`);
+            fillGradient.addColorStop(1, `rgba(${rgbColor}, 0.0)`);
+            
+            realBankrollChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: results.labels,
+                    datasets: [{
+                        label: labelText,
+                        data: chartData,
+                        borderColor: color,
+                        borderWidth: 2,
+                        backgroundColor: fillGradient,
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: chartData.length > 100 ? 0 : 3,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: color
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `Banca: $${context.raw.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                maxTicksLimit: 10
                             }
                         },
                         y: {
