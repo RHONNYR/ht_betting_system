@@ -94,6 +94,46 @@ def send_telegram_message(token, chat_id, text):
         print(f"[Telegram] Excepción al enviar mensaje: {e}")
         return False
 
+def check_and_send_recess_reminder(token, chat_id, state):
+    """
+    Checks if the current date is in June, July, or August and if the recess reminder
+    for the current year has already been sent. If not, sends a calendar reminder
+    about the upcoming winter league starts.
+    """
+    now = datetime.datetime.now()
+    current_year = now.year
+    current_month = now.month
+    
+    # Only run in June, July or August
+    if current_month not in [6, 7, 8]:
+        return False
+        
+    sent_year = state.get("sent_recess_reminder_year")
+    if sent_year == current_year:
+        return False
+        
+    print(f"[Telegram Notifier] Enviando recordatorio estacional de reinicio de ligas para el año {current_year}...")
+    
+    msg = (
+        f"📢 <b>CALENDARIO DE REINICIO DE LIGAS (TEMPORADA {current_year}/{current_year+1})</b>\n\n"
+        f"El sistema cuantitativo ha identificado las siguientes ligas europeas principales que se encuentran en receso de verano y sus fechas estimadas de inicio:\n\n"
+        f"🇬🇧 <b>Premier League (Tier 1)</b> - Reinicio: Agosto {current_year}\n"
+        f"🇪🇸 <b>La Liga (Tier 1)</b> - Reinicio: Agosto {current_year}\n"
+        f"🇩🇪 <b>Bundesliga (Tier 1)</b> - Reinicio: Agosto {current_year}\n"
+        f"🇵🇹 <b>Primeira Liga (Tier 1)</b> - Reinicio: Agosto {current_year}\n"
+        f"🇬🇧 <b>Championship (Tier 1)</b> - Reinicio: Agosto {current_year}\n"
+        f"🇳🇱 <b>Eredivisie (Tier 1)</b> - Reinicio: Agosto {current_year}\n"
+        f"🏴 <b>Premiership Escocia (Tier 2)</b> - Reinicio: Agosto {current_year}\n"
+        f"🇨🇭 <b>Super League Suiza (Tier 2)</b> - Reinicio: Agosto {current_year}\n\n"
+        f"<i>El sistema activará automáticamente el escaneo de cuotas y el radar de equipos candidatos tan pronto como comiencen los primeros partidos oficiales de pretemporada y liga en Agosto.</i>"
+    )
+    
+    success = send_telegram_message(token, chat_id, msg)
+    if success:
+        state["sent_recess_reminder_year"] = current_year
+        return True
+    return False
+
 def run_telegram_notifications():
     # 1. Resolve Bot Token and Chat ID
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or getattr(settings, 'TELEGRAM_BOT_TOKEN', '').strip()
@@ -450,7 +490,12 @@ def run_telegram_notifications():
                 state["sent_resolved"].append(str(match_id))
                 updated_state = True
                 
-    # 4. Save updated state if changes occurred
+    # 4. Check for recess/off-season reminder
+    recess_reminder_sent = check_and_send_recess_reminder(token, chat_id, state)
+    if recess_reminder_sent:
+        updated_state = True
+        
+    # 5. Save updated state if changes occurred
     if updated_state:
         os.makedirs(os.path.dirname(state_file), exist_ok=True)
         with open(state_file, 'w', encoding='utf-8') as f:
