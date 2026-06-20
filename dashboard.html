@@ -476,6 +476,24 @@
                 </div>
             </div>
 
+            <!-- Ligas en Receso (Off-Season) -->
+            <div class="glass-card p-6 rounded-2xl space-y-4 bg-white/[0.02]">
+                <div>
+                    <h3 class="font-bold text-lg text-blue-400 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-blue-400"></i>
+                        Ligas en Receso / Próximas a Empezar (Off-Season)
+                    </h3>
+                    <p class="text-gray-400 text-xs mt-0.5">Ligas del sistema cuyas temporadas actuales han finalizado y están programadas para reiniciarse próximamente.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="recess-leagues-grid">
+                    <!-- Se cargan dinámicamente -->
+                </div>
+                <div id="no-recess-leagues-message" class="hidden text-center py-8 glass-card rounded-xl text-gray-500 text-sm">
+                    No hay ligas registradas en receso en la temporada actual.
+                </div>
+            </div>
+
             <!-- Ligas Rechazadas -->
             <div class="glass-card p-6 rounded-2xl space-y-4 bg-white/[0.01]">
                 <div>
@@ -2655,20 +2673,91 @@
         }
 
         // --- SECTION LEAGUES ---
+        function isWinterLeague(l) {
+            const winterIds = [39, 40, 41, 78, 79, 80, 83, 84, 86, 87, 94, 140, 179, 180, 207, 208, 368, 492];
+            if (winterIds.includes(l.league_id)) return true;
+            
+            const name = l.league_name.toLowerCase();
+            const winterKeywords = ['premier league', 'championship', 'league one', 'bundesliga', 'la liga', 'primeira liga', 'premiership', 'super league', 'challenge league', 'tweede divisie', 'regionalliga'];
+            return winterKeywords.some(keyword => name.includes(keyword)) && !name.includes('kakkonen');
+        }
+
+        function createRecessLeagueCard(l) {
+            const card = document.createElement('div');
+            const isWinter = isWinterLeague(l);
+            const isApproved = l.Estado === 'APROBADA';
+            
+            const badgeClass = isApproved 
+                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
+                : 'bg-red-500/10 border-red-500/20 text-rose-400';
+            
+            const statusBadge = isWinter 
+                ? `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-500/10 border-blue-500/30 text-blue-400 flex items-center gap-1">⏳ Reinicia en Agosto</span>`
+                : `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-500/10 border-slate-500/30 text-slate-400 flex items-center gap-1">🏁 Finalizada</span>`;
+
+            card.className = `glass-card p-5 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/30 transition-all duration-300 opacity-85 hover:opacity-100`;
+            card.innerHTML = `
+                <div class="flex justify-between items-start gap-2">
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h4 class="font-bold text-gray-300 text-base">${l.league_name}</h4>
+                            ${getTierBadgeHtml(l.tier)}
+                        </div>
+                        <p class="text-gray-500 text-xs mt-0.5">Temporada ${l.season}</p>
+                    </div>
+                    ${statusBadge}
+                </div>
+                
+                <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-white/5 text-xs">
+                    <div>
+                        <span class="text-gray-500 font-medium block">Over 1.5 FT</span>
+                        <span class="text-sm font-bold text-gray-400">${l.over_15_pct}% <span class="text-[10px] text-gray-500 font-normal">(Min 80%)</span></span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 font-medium block">Over 2.5 FT</span>
+                        <span class="text-sm font-bold text-gray-400">${l.over_25_pct}% <span class="text-[10px] text-gray-500 font-normal">(Min 60%)</span></span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-white/5 text-xs">
+                    <div>
+                        <span class="text-gray-500 font-medium block">Partidos Jugados</span>
+                        <span class="text-sm font-bold text-gray-400">${l.partidos_jugados || 0}</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-500 font-medium block">Estado Previo</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold border ${badgeClass} inline-block mt-0.5">${l.Estado}</span>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
         function renderLeaguesGrid() {
             const approvedGrid = document.getElementById('approved-leagues-grid');
             const rejectedGrid = document.getElementById('rejected-leagues-grid');
+            const recessGrid = document.getElementById('recess-leagues-grid');
             
             approvedGrid.innerHTML = '';
             rejectedGrid.innerHTML = '';
+            recessGrid.innerHTML = '';
             
-            const approved = leaguesData.filter(l => l.Estado === 'APROBADA');
+            const approved = leaguesData.filter(l => l.Estado === 'APROBADA' && (l.partidos_restantes || 0) > 0);
             // Ordenar por partidos restantes de mayor a menor
             approved.sort((a, b) => (b.partidos_restantes || 0) - (a.partidos_restantes || 0));
             
-            const rejected = leaguesData.filter(l => l.Estado === 'RECHAZADA');
+            const rejected = leaguesData.filter(l => l.Estado === 'RECHAZADA' && (l.partidos_restantes || 0) > 0);
             // Ordenar por partidos restantes de mayor a menor
             rejected.sort((a, b) => (b.partidos_restantes || 0) - (a.partidos_restantes || 0));
+
+            const recess = leaguesData.filter(l => (l.partidos_restantes || 0) === 0);
+            // Ordenar por tier y luego alfabéticamente
+            recess.sort((a, b) => {
+                const tierA = parseInt(a.tier) || 3;
+                const tierB = parseInt(b.tier) || 3;
+                if (tierA !== tierB) return tierA - tierB;
+                return a.league_name.localeCompare(b.league_name);
+            });
             
             if (approved.length === 0) {
                 document.getElementById('no-approved-leagues-message').classList.remove('hidden');
@@ -2685,6 +2774,15 @@
                 document.getElementById('no-rejected-leagues-message').classList.add('hidden');
                 rejected.forEach(l => {
                     rejectedGrid.appendChild(createLeagueCard(l));
+                });
+            }
+
+            if (recess.length === 0) {
+                document.getElementById('no-recess-leagues-message').classList.remove('hidden');
+            } else {
+                document.getElementById('no-recess-leagues-message').classList.add('hidden');
+                recess.forEach(l => {
+                    recessGrid.appendChild(createRecessLeagueCard(l));
                 });
             }
             
