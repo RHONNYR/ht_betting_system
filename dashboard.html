@@ -218,6 +218,19 @@
                 </div>
             </div>
             
+            <!-- ADVERTENCIA DE TIERS Y RIESGO DE DESLIZAMIENTO -->
+            <div class="glass-card p-4 rounded-xl border border-rose-500/20 bg-rose-950/10 text-xs flex items-start gap-3 text-gray-300">
+                <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5 animate-pulse"></i>
+                <div>
+                    <span class="font-bold text-rose-300">Control de Deslizamiento (Slippage) y Gestión de Capital:</span>
+                    <ul class="list-disc pl-4 mt-1 space-y-1 text-gray-400">
+                        <li><strong class="text-white">Tier 1 y Tier 2 (Recomendado):</strong> Tienen alta/media liquidez. Es más fácil entrar a la cuota recomendada sin que se desplome.</li>
+                        <li><strong class="text-white">Tier 3 (Exóticas):</strong> Tienen alta volatilidad en sus cuotas y límites de apuesta bajos. Monitorea la cuota y reduce el stake a la mitad si la cuota ha caído más de un 10%.</li>
+                        <li><strong class="text-white">Stakes Kelly:</strong> La simulación asume stakes del 1/10 Kelly (reducidos al 50% en ligas en <span class="text-red-400">Drawdown Guard</span>).</li>
+                    </ul>
+                </div>
+            </div>
+
             <div id="picks-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Se cargan dinámicamente -->
             </div>
@@ -243,11 +256,25 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
                     <div>
                         <label for="backtest-filter-league" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Liga</label>
                         <select id="backtest-filter-league" onchange="filterBacktestTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
                             <option value="all">Todas las Ligas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="backtest-filter-region" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Región</label>
+                        <select id="backtest-filter-region" onchange="filterBacktestTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="all">Todas las Regiones</option>
+                            <option value="Inglaterra">Inglaterra</option>
+                            <option value="España">España</option>
+                            <option value="Alemania">Alemania</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Escandinavia / Bálticos">Escandinavia / Bálticos</option>
+                            <option value="Norteamérica (USA)">Norteamérica (USA)</option>
+                            <option value="Sudamérica (Brasil)">Sudamérica (Brasil)</option>
+                            <option value="Otros">Otros</option>
                         </select>
                     </div>
                     <div>
@@ -624,6 +651,20 @@
                                 <option value="all">Todas las Ligas</option>
                             </select>
                         </div>
+                        <div class="col-span-2">
+                            <label for="history-filter-region" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Región</label>
+                            <select id="history-filter-region" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                <option value="all">Todas las Regiones</option>
+                                <option value="Inglaterra">Inglaterra</option>
+                                <option value="España">España</option>
+                                <option value="Alemania">Alemania</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Escandinavia / Bálticos">Escandinavia / Bálticos</option>
+                                <option value="Norteamérica (USA)">Norteamérica (USA)</option>
+                                <option value="Sudamérica (Brasil)">Sudamérica (Brasil)</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
                         <div>
                             <label for="history-filter-tier" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Tier (Liquidez)</label>
                             <select id="history-filter-tier" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors">
@@ -677,6 +718,24 @@
                         <div class="col-span-2 sm:col-span-3 lg:col-span-5 text-[10px] text-gray-500 text-left px-1">
                             * Las métricas de Neto y ROI usan el <b>Stake de Referencia Dinámico</b> (Tier 1: $20, Tier 2: $10, Tier 3: $5).
                         </div>
+                    </div>
+                </div>
+
+                <!-- Panel de Métricas CLV (Valor de Cierre / Market Beat) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/5 p-4 rounded-xl border border-white/5 text-center items-center my-4">
+                    <div class="flex items-center justify-between px-4 py-2 bg-black/20 rounded-lg border border-blue-500/10">
+                        <div class="text-left">
+                            <span class="text-[10px] uppercase text-gray-400 font-semibold block">Margen de Valor Promedio vs Mercado (+CLV)</span>
+                            <span class="text-xs text-gray-500 font-light">Diferencia entre la cuota recomendada y el promedio de casas de apuestas</span>
+                        </div>
+                        <span class="text-lg font-extrabold text-blue-400" id="hist-stats-clv-avg">--%</span>
+                    </div>
+                    <div class="flex items-center justify-between px-4 py-2 bg-black/20 rounded-lg border border-emerald-500/10">
+                        <div class="text-left">
+                            <span class="text-[10px] uppercase text-gray-400 font-semibold block">Frecuencia de Captura de Valor (+CLV Frec.)</span>
+                            <span class="text-xs text-gray-500 font-light">Porcentaje de picks donde nuestra cuota superó la media de otras casas</span>
+                        </div>
+                        <span class="text-lg font-extrabold text-emerald-400" id="hist-stats-clv-freq">--%</span>
                     </div>
                 </div>
                 
@@ -1095,6 +1154,17 @@
                         </div>
                     `;
                 }
+
+                // Detección de riesgo de deslizamiento (Tier 3)
+                let tierWarning = '';
+                if (parseInt(pick.tier) === 3) {
+                    tierWarning = `
+                        <div class="px-3 py-1.5 bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-xl text-xs flex items-center gap-1.5 cursor-help animate-pulse" title="Advertencia de Deslizamiento (Slippage): Esta liga es exótica (Tier 3). La cuota puede caer rápidamente y los límites de apuesta suelen ser bajos. ¡Entrar con precaución!">
+                            <i data-lucide="alert-octagon" class="w-3.5 h-3.5 text-rose-400 flex-shrink-0 animate-bounce"></i>
+                            <span class="font-semibold text-rose-300">Riesgo de Deslizamiento (Tier 3)</span>
+                        </div>
+                    `;
+                }
                 
                 // Conversión de hora local
                 const localInfo = formatLocalTime(pick.fecha, pick.hora);
@@ -1137,6 +1207,7 @@
                         
                         ${droughtWarning}
                         ${drawdownAlert}
+                        ${tierWarning}
                         
                         <div class="py-2 text-center">
                             <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
@@ -1298,6 +1369,7 @@
 
             // Get selected filter values
             const filterLeague = document.getElementById('history-filter-league').value;
+            const filterRegion = document.getElementById('history-filter-region').value;
             const filterTier = document.getElementById('history-filter-tier').value;
             const filterClass = document.getElementById('history-filter-class').value;
             const filterResult = document.getElementById('history-filter-result').value;
@@ -1305,6 +1377,7 @@
             // Apply filters
             const filtered = history.filter(p => {
                 const matchLeague = (filterLeague === 'all' || p.liga === filterLeague);
+                const matchRegion = (filterRegion === 'all' || getLeagueRegion(p.liga) === filterRegion);
                 const matchTier = (filterTier === 'all' || String(p.tier) === filterTier);
                 const matchClass = (filterClass === 'all' || p.clase === filterClass);
                 
@@ -1317,7 +1390,7 @@
                     matchResult = p.resultado_apuesta === filterResult;
                 }
                 
-                return matchLeague && matchTier && matchClass && matchResult;
+                return matchLeague && matchRegion && matchTier && matchClass && matchResult;
             });
 
             // Calculate statistics dynamically for the filtered picks
@@ -1349,6 +1422,30 @@
             
             const roi = totalStaked > 0 ? (netProfit / totalStaked * 100) : 0.0;
 
+            // Calculate CLV metrics (Market Beat proxy)
+            let totalClvBeat = 0.0;
+            let clvCount = 0;
+            let clvBeatCount = 0;
+            
+            filtered.forEach(p => {
+                const odds = parseFloat(p.cuota_recomendada) || 1.45;
+                const otras = p.otras_cuotas || {};
+                const otherOddsVals = Object.values(otras).map(v => parseFloat(v)).filter(v => !isNaN(v) && v > 0);
+                
+                if (otherOddsVals.length > 0) {
+                    const avgOtherOdds = otherOddsVals.reduce((sum, val) => sum + val, 0.0) / otherOddsVals.length;
+                    const clvBeatPct = ((odds - avgOtherOdds) / avgOtherOdds) * 100.0;
+                    totalClvBeat += clvBeatPct;
+                    clvCount++;
+                    if (odds > avgOtherOdds) {
+                        clvBeatCount++;
+                    }
+                }
+            });
+            
+            const clvAvg = clvCount > 0 ? (totalClvBeat / clvCount) : 0.0;
+            const clvFreq = clvCount > 0 ? (clvBeatCount / clvCount * 100.0) : 0.0;
+
             // Update stats indicators
             document.getElementById('hist-stats-count').innerText = totalCount;
             document.getElementById('hist-stats-record').innerText = `${wins}G - ${losses}P`;
@@ -1366,6 +1463,17 @@
             const roiEl = document.getElementById('hist-stats-roi');
             roiEl.innerText = `${roiSign}${roi.toFixed(1)}%`;
             roiEl.className = roi >= 0 ? 'text-lg font-extrabold text-emerald-400' : 'text-lg font-extrabold text-rose-400';
+
+            const clvAvgEl = document.getElementById('hist-stats-clv-avg');
+            const clvFreqEl = document.getElementById('hist-stats-clv-freq');
+            if (clvAvgEl) {
+                clvAvgEl.innerText = `${clvAvg >= 0 ? '+' : ''}${clvAvg.toFixed(2)}%`;
+                clvAvgEl.className = clvAvg >= 0 ? 'text-lg font-extrabold text-blue-400' : 'text-lg font-extrabold text-rose-400';
+            }
+            if (clvFreqEl) {
+                clvFreqEl.innerText = `${clvFreq.toFixed(1)}%`;
+                clvFreqEl.className = clvFreq >= 70.0 ? 'text-lg font-extrabold text-emerald-400' : 'text-lg font-extrabold text-amber-400';
+            }
 
             if (filtered.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="10" class="py-8 text-center text-gray-500">No hay picks que coincidan con los filtros seleccionados.</td></tr>`;
@@ -1960,6 +2068,7 @@
             const query = document.getElementById('search-backtest').value.toLowerCase();
             const selectedClass = document.getElementById('backtest-filter-class').value;
             const selectedLeague = document.getElementById('backtest-filter-league').value;
+            const selectedRegion = document.getElementById('backtest-filter-region').value;
             const selectedTier = document.getElementById('backtest-filter-tier').value;
             
             // Obtener mapeo de ligas a tiers
@@ -1973,12 +2082,13 @@
                 
                 const matchClass = selectedClass === 'all' || r.Clase === selectedClass;
                 const matchLeague = selectedLeague === 'all' || r.Liga === selectedLeague;
+                const matchRegion = selectedRegion === 'all' || getLeagueRegion(r.Liga) === selectedRegion;
                 const matchTier = selectedTier === 'all' || String(tier) === selectedTier;
                 const matchQuery = r.Local.toLowerCase().includes(query) || 
                                    r.Visitante.toLowerCase().includes(query) || 
                                    r.Liga.toLowerCase().includes(query);
                                    
-                return matchClass && matchLeague && matchTier && matchQuery;
+                return matchClass && matchLeague && matchTier && matchRegion && matchQuery;
             });
             
             backtestPage = 0;
@@ -2470,12 +2580,14 @@
             
             // Get selected filter values (re-used from renderHistoryTable)
             const filterLeague = document.getElementById('history-filter-league').value;
+            const filterRegion = document.getElementById('history-filter-region').value;
             const filterTier = document.getElementById('history-filter-tier').value;
             const filterClass = document.getElementById('history-filter-class').value;
             const filterResult = document.getElementById('history-filter-result').value;
             
             const filtered = history.filter(p => {
                 const matchLeague = (filterLeague === 'all' || p.liga === filterLeague);
+                const matchRegion = (filterRegion === 'all' || getLeagueRegion(p.liga) === filterRegion);
                 const matchTier = (filterTier === 'all' || String(p.tier) === filterTier);
                 const matchClass = (filterClass === 'all' || p.clase === filterClass);
                 
@@ -2488,7 +2600,7 @@
                     matchResult = p.resultado_apuesta === filterResult;
                 }
                 
-                return matchLeague && matchTier && matchClass && matchResult;
+                return matchLeague && matchRegion && matchTier && matchClass && matchResult;
             });
             
             const results = calculateRealBankrollEvolutionJS(filtered);
@@ -2637,13 +2749,23 @@
             
             filteredTeams.forEach(t => {
                 const tr = document.createElement('tr');
-                tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
+                const tier = (leaguesData.find(l => l.league_name === t.league_name) || {}).tier || 3;
+                let tierBorderClass = 'border-l-4 border-l-slate-700 bg-white/[0.005] opacity-80';
+                if (tier === 1) tierBorderClass = 'border-l-4 border-l-emerald-500/80 bg-emerald-500/[0.01]';
+                else if (tier === 2) tierBorderClass = 'border-l-4 border-l-blue-500/80 bg-blue-500/[0.01]';
+                
+                tr.className = `border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors ${tierBorderClass}`;
                 
                 const roleClass = t.role === 'Local' ? 'bg-blue-500/10 text-blue-400' : 'bg-purple-500/10 text-purple-400';
                 
                 tr.innerHTML = `
-                    <td class="py-3.5 font-bold text-white">${t.team_name}</td>
-                    <td class="py-3.5 text-xs md:text-sm">${t.league_name}</td>
+                    <td class="py-3.5 font-bold text-white pl-3">${t.team_name}</td>
+                    <td class="py-3.5 text-xs md:text-sm">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span>${t.league_name}</span>
+                            ${getTierBadgeHtml(tier)}
+                        </div>
+                    </td>
                     <td class="py-3.5 text-center">
                         <span class="inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${roleClass}">${t.role}</span>
                     </td>
@@ -2670,6 +2792,24 @@
                 t.league_name.toLowerCase().includes(query)
             );
             renderTeamsTable();
+        }
+
+        function getLeagueRegion(leagueName) {
+            if (!leagueName) return 'Otros';
+            const name = leagueName.toLowerCase();
+            if (name.includes('premier league') || name.includes('championship') || name.includes('league one') || name.includes('league two')) {
+                if (name.includes('wales') || name.includes('galés')) return 'Otros';
+                return 'Inglaterra';
+            }
+            if (name.includes('la liga') || name.includes('segunda divisi')) return 'España';
+            if (name.includes('bundesliga') || name.includes('3. liga') || name.includes('regionalliga')) return 'Alemania';
+            if (name.includes('primeira liga')) return 'Portugal';
+            if (name.includes('serie a') || name.includes('serie b') || name.includes('serie c')) return 'Sudamérica (Brasil)';
+            if (name.includes('major league') || name.includes('mls') || name.includes('usl')) return 'Norteamérica (USA)';
+            if (name.includes('eliteserien') || name.includes('allsvenskan') || name.includes('superettan') || name.includes('veikkausliiga') || name.includes('ykk') || name.includes('kakkonen') || name.includes('deild') || name.includes('rvalsdeild') || name.includes('ettan') || name.includes('division')) {
+                return 'Escandinavia / Bálticos';
+            }
+            return 'Otros';
         }
 
         // --- SECTION LEAGUES ---
