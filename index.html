@@ -179,6 +179,9 @@
             <button onclick="switchTab('history')" id="tab-btn-history" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all">
                 <i data-lucide="history" class="w-4 h-4"></i> Historial de Picks
             </button>
+            <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all">
+                <i data-lucide="calculator" class="w-4 h-4"></i> Simulador Interactivo
+            </button>
         </nav>
 
         <!-- CONTENT SECTIONS -->
@@ -762,6 +765,131 @@
                 </div>
             </div>
         </section>
+
+        <!-- SECTION: SIMULADOR INTERACTIVO (SANDBOX) -->
+        <section id="section-simulator" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Panel de Control y Ajustes -->
+                <div class="glass-card p-6 rounded-2xl lg:col-span-1 space-y-5">
+                    <div>
+                        <h3 class="font-bold text-lg text-blue-400 flex items-center gap-2">
+                            <i data-lucide="sliders" class="w-5 h-5 text-blue-400"></i>
+                            Ajustes del Simulador
+                        </h3>
+                        <p class="text-gray-400 text-xs mt-0.5 font-light">Modifica la banca o stakes base para recalcular la evolución.</p>
+                    </div>
+                    
+                    <div class="space-y-4 pt-2 border-t border-white/5">
+                        <div>
+                            <label for="sim-input-bankroll" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Banca Inicial ($)</label>
+                            <input type="number" id="sim-input-bankroll" oninput="runSimulation()" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" value="1000">
+                        </div>
+                        <div>
+                            <label for="sim-input-flat-stake" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Stake Plano Fijo ($)</label>
+                            <input type="number" id="sim-input-flat-stake" oninput="runSimulation()" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" value="20">
+                        </div>
+                        <div>
+                            <label for="sim-input-kelly-fraction" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Fracción de Kelly (Coeficiente)</label>
+                            <select id="sim-input-kelly-fraction" onchange="runSimulation()" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors">
+                                <option value="0.05">1/20 Kelly (0.05)</option>
+                                <option value="0.10" selected>1/10 Kelly (0.10)</option>
+                                <option value="0.20">1/5 Kelly (0.20)</option>
+                                <option value="0.50">1/2 Kelly (0.50)</option>
+                                <option value="1.00">Kelly Completo (1.00)</option>
+                            </select>
+                        </div>
+                        <div class="pt-2">
+                            <button onclick="resetSimulation()" class="w-full py-2 bg-rose-500/10 border border-rose-500/20 hover:bg-rose-500/20 text-rose-400 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all">
+                                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Restablecer Valores
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Panel de Métricas de Simulación -->
+                <div class="glass-card p-6 rounded-2xl lg:col-span-2 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-200 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-emerald-400"></i>
+                            Rendimiento Simulado
+                        </h3>
+                        <p class="text-gray-400 text-xs mt-0.5 font-light">Resultados financieros proyectados después de tus iteraciones.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-2">
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-xl text-center">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Banca Final (Fijo)</span>
+                            <span class="text-xl font-extrabold text-blue-400 mt-1 block" id="sim-stats-bank-flat">$1,000.00</span>
+                            <span class="text-xs font-bold text-blue-400 mt-0.5 inline-block" id="sim-stats-roi-flat">+0.0% ROI</span>
+                        </div>
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-xl text-center">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Banca Final (Tiers)</span>
+                            <span class="text-xl font-extrabold text-emerald-400 mt-1 block" id="sim-stats-bank-tiers">$1,000.00</span>
+                            <span class="text-xs font-bold text-emerald-400 mt-0.5 inline-block" id="sim-stats-roi-tiers">+0.0% ROI</span>
+                        </div>
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-xl text-center">
+                            <span class="text-[9px] uppercase text-gray-400 font-semibold block">Banca Final (Kelly)</span>
+                            <span class="text-xl font-extrabold text-purple-400 mt-1 block" id="sim-stats-bank-kelly">$1,000.00</span>
+                            <span class="text-xs font-bold text-purple-400 mt-0.5 inline-block" id="sim-stats-roi-kelly">+0.0% ROI</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-left text-[10px] text-gray-500 px-1 border-t border-white/5 pt-3">
+                        * Tiers Stake utiliza: Tier 1 = $20, Tier 2 = $10, Tier 3 = $5. Los tres sistemas aplican reducción a la mitad si la liga está en Drawdown Guard (a menos que se fuerce un stake manual).
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LINE CHART OF SIMULATION EVOLUTION -->
+            <div class="glass-card p-6 rounded-2xl w-full">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-200">Evolución de la Banca Simulada</h3>
+                        <p class="text-gray-400 text-xs mt-0.5">Gráfico interactivo de crecimiento financiero adaptado a tus cambios.</p>
+                    </div>
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 self-stretch sm:self-auto flex-wrap">
+                        <button onclick="changeSimChartMode('kelly')" id="sim-chart-btn-kelly" class="px-3 py-1.5 rounded-lg text-white bg-blue-500/25 border border-blue-500/20 transition-all">Stake Kelly</button>
+                        <button onclick="changeSimChartMode('tiers')" id="sim-chart-btn-tiers" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all">Stake por Tiers</button>
+                        <button onclick="changeSimChartMode('flat')" id="sim-chart-btn-flat" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all">Stake Plano</button>
+                    </div>
+                </div>
+                <div class="h-80 w-full relative">
+                    <canvas id="simBankrollChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- INTERACTIVE PICKS TABLE -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div>
+                    <h3 class="font-bold text-lg text-gray-200 flex items-center gap-2">
+                        <i data-lucide="edit-3" class="w-5 h-5 text-blue-400"></i>
+                        Registro de Picks y Variables Editables
+                    </h3>
+                    <p class="text-gray-400 text-xs mt-0.5 font-light">Modifica la cuota, resultado o ingresa un stake manual para ver el recálculo inmediato.</p>
+                </div>
+                
+                <div class="overflow-x-auto pt-2">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead>
+                            <tr class="border-b border-white/10 text-gray-400 font-semibold text-xs md:text-sm">
+                                <th class="pb-3 pl-2">Fecha</th>
+                                <th class="pb-3">Liga</th>
+                                <th class="pb-3">Partido</th>
+                                <th class="pb-3 text-center">Cuota Orig.</th>
+                                <th class="pb-3 text-center">Cuota Simulada</th>
+                                <th class="pb-3 text-center">Resultado Orig.</th>
+                                <th class="pb-3 text-center">Resultado Simulado</th>
+                                <th class="pb-3 text-center">Stake Manual ($)</th>
+                                <th class="pb-3 text-center">Beneficio Sim.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sim-table-body" class="divide-y divide-white/5 text-xs md:text-sm">
+                            <!-- Se carga dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- MODAL: SUSTENTO DEL PICK -->
@@ -923,6 +1051,11 @@
         let currentTierFilter = 'all';
         let leaguePerfCollapsed = true;
         let backtestLeaguePerfCollapsed = true;
+        
+        // Variables de estado del Simulador Sandbox
+        let simulatedPicksData = [];
+        let simBankrollChartInstance = null;
+        let activeSimChartMode = 'kelly';
 
         // Cargar datos
         window.addEventListener('DOMContentLoaded', () => {
@@ -989,13 +1122,13 @@
 
         function switchTab(tab) {
             // Ocultar todas las secciones
-            ['picks', 'backtest', 'teams', 'leagues', 'history'].forEach(s => {
+            ['picks', 'backtest', 'teams', 'leagues', 'history', 'simulator'].forEach(s => {
                 const el = document.getElementById(`section-${s}`);
                 if (el) el.classList.add('hidden');
             });
             
             // Reset botones de tabs
-            ['picks', 'backtest', 'teams', 'leagues', 'history'].forEach(t => {
+            ['picks', 'backtest', 'teams', 'leagues', 'history', 'simulator'].forEach(t => {
                 const btn = document.getElementById(`tab-btn-${t}`);
                 if (btn) {
                     btn.className = "px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-gray-400 hover:text-white flex items-center gap-2 transition-all";
@@ -1011,6 +1144,13 @@
             
             if (tab === 'history') {
                 renderHistoryTable();
+            } else if (tab === 'simulator') {
+                if (simulatedPicksData.length === 0) {
+                    initSimulatorData();
+                    renderSimTable();
+                } else {
+                    runSimulation();
+                }
             }
             
             activeTab = tab;
@@ -2970,6 +3110,449 @@
                 </div>
             `;
             return card;
+        }
+
+        // ==========================================
+        // SIMULADOR INTERACTIVO (SANDBOX) LOGIC
+        // ==========================================
+
+        function initSimulatorData() {
+            const data = window.dashboardData || {};
+            const history = data.picks_history || [];
+            
+            // Filtrar solo los resueltos (GANADA / PERDIDA)
+            const resolved = history.filter(p => p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA');
+            
+            // Clonar e inicializar variables simuladas
+            simulatedPicksData = resolved.map((p, idx) => {
+                const probStr = (p.probabilidad || '0.0%').replace('%', '');
+                let probVal = parseFloat(probStr) / 100.0;
+                if (isNaN(probVal)) probVal = 0.75;
+                
+                return {
+                    id: p.match_id || `sim-${idx}`,
+                    fecha: p.fecha,
+                    hora: p.hora,
+                    liga: p.liga,
+                    local: p.local,
+                    visitante: p.visitante,
+                    cuota_original: parseFloat(p.cuota_recomendada) || 1.45,
+                    cuota_simulada: parseFloat(p.cuota_recomendada) || 1.45,
+                    resultado_original: p.resultado_apuesta,
+                    resultado_simulado: p.resultado_apuesta,
+                    stake_override: null,
+                    tier: parseInt(p.tier) || 3,
+                    clase: p.clase,
+                    probabilidad: probVal,
+                    is_drawdown: p.is_drawdown === true
+                };
+            });
+
+            // Ordenar cronológicamente
+            simulatedPicksData.sort((a, b) => {
+                const dateA = a.fecha + ' ' + (a.hora || '00:00');
+                const dateB = b.fecha + ' ' + (b.hora || '00:00');
+                return new Date(dateA) - new Date(dateB);
+            });
+
+            // Sincronizar inputs iniciales
+            const inputBank = document.getElementById('sim-input-bankroll');
+            const inputFlat = document.getElementById('sim-input-flat-stake');
+            const inputKelly = document.getElementById('sim-input-kelly-fraction');
+            
+            if (inputBank) inputBank.value = 1000;
+            if (inputFlat) inputFlat.value = 20;
+            if (inputKelly) inputKelly.value = "0.10";
+            
+            runSimulation();
+        }
+
+        function runSimulation() {
+            const inputBank = document.getElementById('sim-input-bankroll');
+            const inputFlat = document.getElementById('sim-input-flat-stake');
+            const inputKelly = document.getElementById('sim-input-kelly-fraction');
+
+            const initialBank = inputBank ? (parseFloat(inputBank.value) || 1000.0) : 1000.0;
+            const globalFlatStake = inputFlat ? (parseFloat(inputFlat.value) || 20.0) : 20.0;
+            const globalKellyFraction = inputKelly ? (parseFloat(inputKelly.value) || 0.10) : 0.10;
+
+            let bankFlat = initialBank;
+            let bankTiers = initialBank;
+            let bankKelly = initialBank;
+
+            const dataFlat = [initialBank];
+            const dataTiers = [initialBank];
+            const dataKelly = [initialBank];
+            const labels = ['Inicio'];
+            const details = [];
+
+            simulatedPicksData.forEach((p) => {
+                const isWin = p.resultado_simulado === 'GANADA';
+                const odds = parseFloat(p.cuota_simulada) || 1.45;
+                const bVal = odds - 1.0;
+                const tier = p.tier;
+                const isDd = p.is_drawdown === true;
+
+                // --- 1. FLAT STAKE ---
+                let stakeFlat = p.stake_override !== null ? p.stake_override : globalFlatStake;
+                if (isNaN(stakeFlat) || stakeFlat < 0) stakeFlat = globalFlatStake;
+                const profitFlat = isWin ? stakeFlat * bVal : -stakeFlat;
+                bankFlat += profitFlat;
+                dataFlat.push(Math.round(bankFlat * 100) / 100);
+
+                // --- 2. TIERS STAKE ---
+                let stakeTiers;
+                if (p.stake_override !== null) {
+                    stakeTiers = p.stake_override;
+                } else {
+                    let baseTiers = globalFlatStake * 0.25;
+                    if (tier === 1) baseTiers = globalFlatStake;
+                    else if (tier === 2) baseTiers = globalFlatStake * 0.5;
+                    
+                    if (isDd) baseTiers *= 0.5;
+                    stakeTiers = baseTiers;
+                }
+                if (isNaN(stakeTiers) || stakeTiers < 0) stakeTiers = 0;
+                const profitTiers = isWin ? stakeTiers * bVal : -stakeTiers;
+                bankTiers += profitTiers;
+                dataTiers.push(Math.round(bankTiers * 100) / 100);
+
+                // --- 3. KELLY STAKE ---
+                let stakeKelly;
+                if (p.stake_override !== null) {
+                    stakeKelly = p.stake_override;
+                } else {
+                    const kellyF = bVal > 0 ? (p.probabilidad * bVal - (1.0 - p.probabilidad)) / bVal : 0.0;
+                    let stakeF = kellyF * globalKellyFraction;
+                    if (isDd) stakeF *= 0.5;
+                    // Clamp 0.5% a 3%
+                    stakeF = Math.max(0.005, Math.min(0.03, stakeF));
+                    stakeKelly = stakeF * initialBank;
+                }
+                if (isNaN(stakeKelly) || stakeKelly < 0) stakeKelly = 0;
+                const profitKelly = isWin ? stakeKelly * bVal : -stakeKelly;
+                bankKelly += profitKelly;
+                dataKelly.push(Math.round(bankKelly * 100) / 100);
+
+                // Guardar calculados
+                p.calc_stake_flat = stakeFlat;
+                p.calc_profit_flat = profitFlat;
+                
+                p.calc_stake_tiers = stakeTiers;
+                p.calc_profit_tiers = profitTiers;
+
+                p.calc_stake_kelly = stakeKelly;
+                p.calc_profit_kelly = profitKelly;
+
+                const shortDate = p.fecha ? p.fecha.substring(5) : '';
+                labels.push(shortDate);
+                details.push({
+                    partido: `${p.local} vs ${p.visitante}`,
+                    liga: p.liga,
+                    fecha: p.fecha,
+                    hora: p.hora,
+                    resultado: p.resultado_simulado,
+                    cuota: odds
+                });
+            });
+
+            // Calcular ROIs
+            let totalStakedFlat = 0;
+            let totalStakedTiers = 0;
+            let totalStakedKelly = 0;
+            simulatedPicksData.forEach(p => {
+                totalStakedFlat += p.calc_stake_flat;
+                totalStakedTiers += p.calc_stake_tiers;
+                totalStakedKelly += p.calc_stake_kelly;
+            });
+
+            const realRoiFlat = totalStakedFlat > 0 ? ((bankFlat - initialBank) / totalStakedFlat * 100.0) : 0.0;
+            const realRoiTiers = totalStakedTiers > 0 ? ((bankTiers - initialBank) / totalStakedTiers * 100.0) : 0.0;
+            const realRoiKelly = totalStakedKelly > 0 ? ((bankKelly - initialBank) / totalStakedKelly * 100.0) : 0.0;
+
+            const updateMetric = (bankId, roiId, bankVal, roiVal) => {
+                const bEl = document.getElementById(bankId);
+                const rEl = document.getElementById(roiId);
+                if (bEl) {
+                    bEl.innerText = `$${bankVal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                }
+                if (rEl) {
+                    rEl.innerText = `${roiVal >= 0 ? '+' : ''}${roiVal.toFixed(1)}% ROI`;
+                    rEl.className = roiVal >= 0 ? 'text-xs font-bold text-emerald-400 mt-0.5 inline-block' : 'text-xs font-bold text-rose-400 mt-0.5 inline-block';
+                }
+            };
+
+            updateMetric('sim-stats-bank-flat', 'sim-stats-roi-flat', bankFlat, realRoiFlat);
+            updateMetric('sim-stats-bank-tiers', 'sim-stats-roi-tiers', bankTiers, realRoiTiers);
+            updateMetric('sim-stats-bank-kelly', 'sim-stats-roi-kelly', bankKelly, realRoiKelly);
+
+            // Redibujar gráfico
+            renderSimChart(labels, dataFlat, dataTiers, dataKelly, details);
+
+            // Actualizar tabla sin perder foco si ya está dibujada
+            const tbody = document.getElementById('sim-table-body');
+            if (tbody && tbody.children.length > 0) {
+                updateSimTableValues();
+            }
+        }
+
+        function renderSimChart(labels, dataFlat, dataTiers, dataKelly, details) {
+            const canvas = document.getElementById('simBankrollChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            if (simBankrollChartInstance) {
+                simBankrollChartInstance.destroy();
+            }
+
+            let chartData = dataKelly;
+            let labelText = 'Stake Kelly (1/10)';
+            let color = '#a855f7';
+            
+            if (activeSimChartMode === 'flat') {
+                chartData = dataFlat;
+                labelText = 'Stake Plano Fijo';
+                color = '#3b82f6';
+            } else if (activeSimChartMode === 'tiers') {
+                chartData = dataTiers;
+                labelText = 'Stakes por Tier';
+                color = '#10b981';
+            }
+
+            const fillGradient = ctx.createLinearGradient(0, 0, 0, 280);
+            const rgbColor = activeSimChartMode === 'flat' ? '59, 130, 246' : activeSimChartMode === 'tiers' ? '16, 185, 129' : '168, 85, 247';
+            fillGradient.addColorStop(0, `rgba(${rgbColor}, 0.15)`);
+            fillGradient.addColorStop(1, `rgba(${rgbColor}, 0.0)`);
+
+            simBankrollChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: labelText,
+                        data: chartData,
+                        borderColor: color,
+                        borderWidth: 2,
+                        backgroundColor: fillGradient,
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: chartData.length > 100 ? 0 : 3,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: color
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                title: function(context) {
+                                    const index = context[0].dataIndex;
+                                    if (index === 0) return 'Inicio de Simulación';
+                                    const d = details[index - 1];
+                                    return d.partido;
+                                },
+                                label: function(context) {
+                                    const index = context.dataIndex;
+                                    let labelText = `Banca: $${context.raw.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                                    if (index > 0) {
+                                        const d = details[index - 1];
+                                        labelText += ` | Liga: ${d.liga} (${d.fecha}) | Resultado: ${d.resultado} | Cuota: ${d.cuota}`;
+                                    }
+                                    return labelText;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                maxTicksLimit: 10
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.4)',
+                                callback: function(value) {
+                                    return `$${value}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function changeSimChartMode(mode) {
+            activeSimChartMode = mode;
+            
+            const btnFlat = document.getElementById('sim-chart-btn-flat');
+            const btnTiers = document.getElementById('sim-chart-btn-tiers');
+            const btnKelly = document.getElementById('sim-chart-btn-kelly');
+            
+            const activeClass = "px-3 py-1.5 rounded-lg text-white bg-blue-500/25 border border-blue-500/20 transition-all";
+            const inactiveClass = "px-3 py-1.5 rounded-lg text-gray-400 hover:text-white transition-all";
+            
+            if (btnFlat) btnFlat.className = mode === 'flat' ? activeClass : inactiveClass;
+            if (btnTiers) btnTiers.className = mode === 'tiers' ? activeClass : inactiveClass;
+            if (btnKelly) btnKelly.className = mode === 'kelly' ? activeClass : inactiveClass;
+            
+            runSimulation();
+            updateSimTableValues();
+        }
+
+        function renderSimTable() {
+            const tbody = document.getElementById('sim-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            if (simulatedPicksData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="py-8 text-center text-gray-500">No hay picks resueltos en el historial para simular.</td></tr>`;
+                return;
+            }
+
+            simulatedPicksData.forEach((pick) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-white/5 hover:bg-white/5 text-gray-300 transition-colors";
+
+                const localInfo = formatLocalTime(pick.fecha, pick.hora);
+                const oddsOrig = pick.cuota_original.toFixed(2);
+
+                let origResultBadge = '';
+                if (pick.resultado_original === 'GANADA') {
+                    origResultBadge = `<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">GANADA</span>`;
+                } else {
+                    origResultBadge = `<span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 border border-rose-500/20 text-rose-400">PERDIDA</span>`;
+                }
+
+                const selectOutcome = `
+                    <select onchange="updateSimOutcome('${pick.id}', this.value)" class="bg-black/50 border border-white/10 rounded px-1.5 py-0.5 text-center text-xs text-white focus:outline-none focus:border-blue-500">
+                        <option value="GANADA" ${pick.resultado_simulado === 'GANADA' ? 'selected' : ''}>GANADA</option>
+                        <option value="PERDIDA" ${pick.resultado_simulado === 'PERDIDA' ? 'selected' : ''}>PERDIDA</option>
+                    </select>
+                `;
+
+                const stakeOverrideVal = pick.stake_override !== null ? pick.stake_override : '';
+                const stakeInput = `
+                    <input type="number" step="1" min="0" placeholder="Auto" class="w-16 bg-black/50 border border-white/10 rounded px-1.5 py-0.5 text-center text-xs text-white focus:outline-none focus:border-blue-500" value="${stakeOverrideVal}" oninput="updateSimStake('${pick.id}', this.value)">
+                `;
+
+                let calcStake = 0;
+                let calcProfit = 0;
+                if (activeSimChartMode === 'flat') {
+                    calcStake = pick.calc_stake_flat;
+                    calcProfit = pick.calc_profit_flat;
+                } else if (activeSimChartMode === 'tiers') {
+                    calcStake = pick.calc_stake_tiers;
+                    calcProfit = pick.calc_profit_tiers;
+                } else {
+                    calcStake = pick.calc_stake_kelly;
+                    calcProfit = pick.calc_profit_kelly;
+                }
+
+                const profitSign = calcProfit >= 0 ? '+' : '';
+                const profitColorClass = calcProfit >= 0 ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold';
+                const profitText = `${profitSign}$${calcProfit.toFixed(2)}`;
+
+                tr.innerHTML = `
+                    <td class="py-3 pl-2 text-xs">${localInfo.date} <span class="text-gray-500 text-[10px] font-light">${localInfo.time}</span></td>
+                    <td class="py-3 text-xs font-semibold">${pick.liga}</td>
+                    <td class="py-3 text-xs">${pick.local} <span class="text-gray-500">vs</span> ${pick.visitante}</td>
+                    <td class="py-3 text-center text-xs text-gray-400">${oddsOrig}</td>
+                    <td class="py-3 text-center">
+                        <input type="number" step="0.01" min="1.01" class="w-16 bg-black/50 border border-white/10 rounded px-1.5 py-0.5 text-center text-xs text-white focus:outline-none focus:border-blue-500" value="${pick.cuota_simulada.toFixed(2)}" oninput="updateSimOdd('${pick.id}', this.value)">
+                    </td>
+                    <td class="py-3 text-center text-xs">${origResultBadge}</td>
+                    <td class="py-3 text-center">${selectOutcome}</td>
+                    <td class="py-3 text-center">${stakeInput}</td>
+                    <td class="py-3 text-center text-xs">
+                        <span id="sim-profit-${pick.id}" class="${profitColorClass}">${profitText}</span>
+                        <div id="sim-stake-${pick.id}" class="text-[10px] text-gray-500">Stake: $${calcStake.toFixed(2)}</div>
+                    </td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateSimTableValues() {
+            simulatedPicksData.forEach((pick) => {
+                let calcStake = 0;
+                let calcProfit = 0;
+                if (activeSimChartMode === 'flat') {
+                    calcStake = pick.calc_stake_flat;
+                    calcProfit = pick.calc_profit_flat;
+                } else if (activeSimChartMode === 'tiers') {
+                    calcStake = pick.calc_stake_tiers;
+                    calcProfit = pick.calc_profit_tiers;
+                } else {
+                    calcStake = pick.calc_stake_kelly;
+                    calcProfit = pick.calc_profit_kelly;
+                }
+
+                const profitSign = calcProfit >= 0 ? '+' : '';
+                const profitColorClass = calcProfit >= 0 ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold';
+                const profitText = `${profitSign}$${calcProfit.toFixed(2)}`;
+
+                const profitEl = document.getElementById(`sim-profit-${pick.id}`);
+                const stakeEl = document.getElementById(`sim-stake-${pick.id}`);
+
+                if (profitEl) {
+                    profitEl.className = profitColorClass;
+                    profitEl.innerText = profitText;
+                }
+                if (stakeEl) {
+                    stakeEl.innerText = `Stake: $${calcStake.toFixed(2)}`;
+                }
+            });
+        }
+
+        function updateSimOdd(id, value) {
+            const parsed = parseFloat(value);
+            const pick = simulatedPicksData.find(p => p.id === id);
+            if (pick) {
+                pick.cuota_simulada = isNaN(parsed) || parsed < 1.01 ? 1.01 : parsed;
+                runSimulation();
+            }
+        }
+
+        function updateSimOutcome(id, value) {
+            const pick = simulatedPicksData.find(p => p.id === id);
+            if (pick) {
+                pick.resultado_simulado = value;
+                runSimulation();
+            }
+        }
+
+        function updateSimStake(id, value) {
+            const pick = simulatedPicksData.find(p => p.id === id);
+            if (pick) {
+                if (value === '' || value === null || typeof value === 'undefined') {
+                    pick.stake_override = null;
+                } else {
+                    const parsed = parseFloat(value);
+                    pick.stake_override = isNaN(parsed) || parsed < 0 ? null : parsed;
+                }
+                runSimulation();
+            }
+        }
+
+        function resetSimulation() {
+            initSimulatorData();
+            renderSimTable();
         }
     </script>
 </body>
