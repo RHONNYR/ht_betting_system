@@ -486,6 +486,71 @@
 
         <!-- SECTION: LIGAS FILTRO -->
         <section id="section-leagues" class="hidden space-y-8">
+            <!-- Semáforo de Ligas / Recomendaciones en Vivo -->
+            <div class="glass-card p-6 rounded-2xl space-y-4 border border-white/5 bg-white/[0.01]">
+                <div class="flex justify-between items-center cursor-pointer" onclick="toggleLeagueTrafficLight()">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="activity" class="w-5 h-5 text-blue-400"></i>
+                        <div>
+                            <h3 class="font-bold text-lg text-white flex items-center gap-1.5">
+                                Semáforo de Ligas / Recomendaciones en Vivo
+                            </h3>
+                            <p class="text-gray-400 text-xs mt-0.5">Clasificación dinámica según el estado actual de la temporada (últimas 10 rondas y picks reales).</p>
+                        </div>
+                    </div>
+                    <button class="p-1 hover:bg-white/10 rounded-lg transition-all" id="traffic-light-toggle-btn">
+                        <i data-lucide="chevron-up" class="w-5 h-5 text-gray-400"></i>
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2" id="traffic-light-content">
+                    <!-- Column 1: Claves 🟢 -->
+                    <div class="glass-card p-4 rounded-xl border border-emerald-500/10 bg-emerald-500/[0.01] space-y-3">
+                        <div class="flex items-center justify-between border-b border-emerald-500/10 pb-2">
+                            <span class="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                                Ligas Claves (Recomendadas)
+                            </span>
+                            <span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20" id="green-leagues-count">0</span>
+                        </div>
+                        <p class="text-gray-400 text-[10px] font-light">Ligas en excelente momento de acierto y parámetros en regla. Se sugiere operar con **Stake Normal (100%)**.</p>
+                        <div class="space-y-2 max-h-[250px] overflow-y-auto pr-1" id="green-leagues-list">
+                            <!-- Dinámico -->
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2: Neutras 🟡 -->
+                    <div class="glass-card p-4 rounded-xl border border-amber-500/10 bg-amber-500/[0.01] space-y-3">
+                        <div class="flex items-center justify-between border-b border-amber-500/10 pb-2">
+                            <span class="text-sm font-bold text-amber-400 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                                Ligas Neutras (Estables)
+                            </span>
+                            <span class="px-2 py-0.5 text-[10px] font-bold bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20" id="yellow-leagues-count">0</span>
+                        </div>
+                        <p class="text-gray-400 text-[10px] font-light">Ligas estables de rendimiento medio en rango de equilibrio. Se sugiere operar con precaución estándar.</p>
+                        <div class="space-y-2 max-h-[250px] overflow-y-auto pr-1" id="yellow-leagues-list">
+                            <!-- Dinámico -->
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3: Alerta 🔴 -->
+                    <div class="glass-card p-4 rounded-xl border border-rose-500/10 bg-rose-500/[0.01] space-y-3">
+                        <div class="flex items-center justify-between border-b border-rose-500/10 pb-2">
+                            <span class="text-sm font-bold text-rose-400 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block animate-pulse"></span>
+                                Ligas en Alerta (Pausar/Reducir)
+                            </span>
+                            <span class="px-2 py-0.5 text-[10px] font-bold bg-rose-500/10 text-rose-400 rounded-full border border-rose-500/20" id="red-leagues-count">0</span>
+                        </div>
+                        <p class="text-gray-400 text-[10px] font-light">Ligas con parámetros caídos o baja efectividad en picks en vivo. Se sugiere **PAUSAR o REDUCIR STAKE al 50%**.</p>
+                        <div class="space-y-2 max-h-[250px] overflow-y-auto pr-1" id="red-leagues-list">
+                            <!-- Dinámico -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Ligas Aprobadas -->
             <div class="glass-card p-6 rounded-2xl space-y-4">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
@@ -1362,6 +1427,7 @@
                                 <div class="flex items-center gap-1.5 flex-wrap">
                                     <span class="text-xs font-bold text-white">${pick.liga}</span>
                                     ${getTierBadgeHtml(pick.tier)}
+                                    ${getLeagueStatusBadgeHtml(pick.liga, pick.league_id)}
                                 </div>
                                 <span class="text-[10px] text-gray-400 font-light flex items-center gap-1">
                                     <span>${getLeagueFlagHtml(pick.liga, pick.league_id)}</span>
@@ -1688,6 +1754,7 @@
                                 <span class="truncate max-w-[120px] text-white" title="${pick.liga}">${pick.liga}</span>
                                 ${getTierBadgeHtml(pick.tier)}
                                 ${classBadge}
+                                ${getLeagueStatusBadgeHtml(pick.liga, pick.league_id)}
                             </div>
                             <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
                                 <span>${getLeagueFlagHtml(pick.liga, pick.league_id)}</span>
@@ -3009,6 +3076,149 @@
             renderTeamsTable();
         }
 
+        // --- LEAGUE TRAFFIC LIGHT / SEMAFORO ---
+        let trafficLightCollapsed = false;
+        function toggleLeagueTrafficLight() {
+            trafficLightCollapsed = !trafficLightCollapsed;
+            const content = document.getElementById('traffic-light-content');
+            const btn = document.getElementById('traffic-light-toggle-btn');
+            if (trafficLightCollapsed) {
+                content.classList.add('hidden');
+                btn.innerHTML = `<i data-lucide="chevron-down" class="w-5 h-5 text-gray-400"></i>`;
+            } else {
+                content.classList.remove('hidden');
+                btn.innerHTML = `<i data-lucide="chevron-up" class="w-5 h-5 text-gray-400"></i>`;
+            }
+            lucide.createIcons();
+        }
+
+        function getLeagueStatus(leagueName, leagueId) {
+            const leagues = window.dashboardData.leagues || [];
+            const recentRates = window.dashboardData.league_current_season_recent_rates || {};
+            const picksHistory = window.dashboardData.picks_history || [];
+            
+            const l = leagues.find(x => x.league_id === parseInt(leagueId)) || leagues.find(x => x.league_name === leagueName);
+            if (!l) return { status: 'yellow', label: 'Neutral', textClass: 'text-amber-400', bgClass: 'bg-amber-500/10 border-amber-500/20', dot: '🟡', recentWR: 1.0, totalResolved: 0, realWR: null };
+            
+            // 1. Parámetros generales
+            const isApproved = l.Estado === 'APROBADA';
+            
+            // 2. Racha de candidatos de la temporada en curso (últimos 10 partidos)
+            const recentWR = recentRates[l.league_name] !== undefined ? recentRates[l.league_name] : 1.0;
+            
+            // 3. Picks reales ejecutados
+            const resolvedPicks = picksHistory.filter(p => p.league_id === l.league_id && (p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA'));
+            const totalResolved = resolvedPicks.length;
+            const wins = resolvedPicks.filter(p => p.resultado_apuesta === 'GANADA').length;
+            const realWR = totalResolved > 0 ? (wins / totalResolved) : null;
+            
+            // Lógica del semáforo
+            let status = 'yellow';
+            let label = 'Neutral';
+            let textClass = 'text-amber-400';
+            let bgClass = 'bg-amber-500/10 border-amber-500/20';
+            let dot = '🟡';
+            
+            // Condición para alerta (Rojo):
+            // - Si está rechazada por parámetros anuales
+            // - O si la racha actual de candidatos de la temporada es < 75%
+            // - O si tiene picks reales (>= 3) y el win rate real es < 70%
+            if (!isApproved || recentWR < 0.75 || (realWR !== null && totalResolved >= 3 && realWR < 0.70)) {
+                status = 'red';
+                label = 'Alerta';
+                textClass = 'text-rose-400';
+                bgClass = 'bg-rose-500/10 border-rose-500/20';
+                dot = '🔴';
+            }
+            // Condición para clave (Verde):
+            // - Debe estar aprobada
+            // - Y tener una racha actual de candidatos en la temporada de >= 0.82
+            // - Y si tiene picks reales (>= 3), el win rate real debe ser >= 75%
+            else if (isApproved && recentWR >= 0.82 && (realWR === null || totalResolved < 3 || realWR >= 0.75)) {
+                status = 'green';
+                label = 'Clave';
+                textClass = 'text-emerald-400';
+                bgClass = 'bg-emerald-500/10 border-emerald-500/20';
+                dot = '🟢';
+            }
+            
+            return { status, label, textClass, bgClass, dot, recentWR, totalResolved, realWR };
+        }
+
+        function getLeagueStatusBadgeHtml(leagueName, leagueId) {
+            const analysis = getLeagueStatus(leagueName, leagueId);
+            return `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${analysis.bgClass} ${analysis.textClass}">${analysis.dot} ${analysis.label}</span>`;
+        }
+
+        function populateLeaguesTrafficLight() {
+            const greenList = document.getElementById('green-leagues-list');
+            const yellowList = document.getElementById('yellow-leagues-list');
+            const redList = document.getElementById('red-leagues-list');
+            
+            if (!greenList || !yellowList || !redList) return;
+            
+            greenList.innerHTML = '';
+            yellowList.innerHTML = '';
+            redList.innerHTML = '';
+            
+            let greenCount = 0;
+            let yellowCount = 0;
+            let redCount = 0;
+            
+            (leaguesData || []).forEach(l => {
+                const analysis = getLeagueStatus(l.league_name, l.league_id);
+                
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between p-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs hover:bg-white/[0.05] transition-all";
+                
+                // Formatear WR real si existe
+                const realWrText = analysis.realWR !== null 
+                    ? `<span class="text-[10px] text-emerald-400 font-semibold">Real: ${(analysis.realWR * 100).toFixed(0)}% (${analysis.totalResolved}p)</span>` 
+                    : `<span class="text-[9px] text-gray-500 font-light">Sin picks jugados</span>`;
+                    
+                const trendText = `<span class="text-[10px] text-gray-400 font-medium">Racha: ${(analysis.recentWR * 100).toFixed(0)}%</span>`;
+                
+                item.innerHTML = `
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="mr-1">${getLeagueFlagHtml(l.league_name, l.league_id)}</span>
+                        <span class="font-semibold text-white truncate" title="${l.league_name}">${l.league_name}</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 shrink-0 text-right">
+                        <div class="flex flex-col items-end">
+                            ${trendText}
+                            ${realWrText}
+                        </div>
+                    </div>
+                `;
+                
+                if (analysis.status === 'green') {
+                    greenList.appendChild(item);
+                    greenCount++;
+                } else if (analysis.status === 'red') {
+                    redList.appendChild(item);
+                    redCount++;
+                } else {
+                    yellowList.appendChild(item);
+                    yellowCount++;
+                }
+            });
+            
+            // Si están vacíos, agregar mensaje
+            if (greenCount === 0) {
+                greenList.innerHTML = `<p class="text-center text-gray-500 text-[10px] py-4">No hay ligas claves actualmente.</p>`;
+            }
+            if (yellowCount === 0) {
+                yellowList.innerHTML = `<p class="text-center text-gray-500 text-[10px] py-4">No hay ligas neutras.</p>`;
+            }
+            if (redCount === 0) {
+                redList.innerHTML = `<p class="text-center text-gray-500 text-[10px] py-4">No hay ligas en alerta.</p>`;
+            }
+            
+            document.getElementById('green-leagues-count').innerText = greenCount;
+            document.getElementById('yellow-leagues-count').innerText = yellowCount;
+            document.getElementById('red-leagues-count').innerText = redCount;
+        }
+
         function getLeagueRegion(leagueName) {
             if (!leagueName) return 'Otros';
             const name = leagueName.toLowerCase();
@@ -3133,6 +3343,7 @@
                                 <span>${l.league_name}</span>
                             </h4>
                             ${getTierBadgeHtml(l.tier)}
+                            ${getLeagueStatusBadgeHtml(l.league_name, l.league_id)}
                         </div>
                         <p class="text-gray-500 text-xs mt-0.5">${getLeagueCountry(l.league_name, l.league_id).name} | Temporada ${l.season}</p>
                     </div>
@@ -3217,6 +3428,7 @@
                 });
             }
             
+            populateLeaguesTrafficLight();
             lucide.createIcons();
         }
         
@@ -3237,6 +3449,7 @@
                                 <span>${l.league_name}</span>
                             </h4>
                             ${getTierBadgeHtml(l.tier)}
+                            ${getLeagueStatusBadgeHtml(l.league_name, l.league_id)}
                         </div>
                         <p class="text-gray-400 text-xs mt-0.5">${getLeagueCountry(l.league_name, l.league_id).name} | Temporada ${l.season}</p>
                     </div>
