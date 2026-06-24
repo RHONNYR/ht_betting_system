@@ -3165,7 +3165,10 @@
             let yellowCount = 0;
             let redCount = 0;
             
-            (leaguesData || []).forEach(l => {
+            // Filtrar SOLO ligas activas (con partidos restantes en la temporada actual)
+            const activeLeagues = (leaguesData || []).filter(l => (l.partidos_restantes || 0) > 0);
+            
+            activeLeagues.forEach(l => {
                 const analysis = getLeagueStatus(l.league_name, l.league_id);
                 
                 const item = document.createElement('div');
