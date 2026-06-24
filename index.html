@@ -1064,8 +1064,14 @@
                 return;
             }
 
-            const data = window.dashboardData;
-            
+            // Cargar datos locales iniciales
+            loadDashboardData(window.dashboardData);
+
+            // Intentar cargar la última versión de los datos directamente desde GitHub en segundo plano
+            fetchNewerDataFromGitHub();
+        });
+
+        function loadDashboardData(data) {
             // Cargar actualización
             document.getElementById('update-time').innerText = data.last_updated ? data.last_updated + ' (VET)' : 'Desconocido';
             
@@ -1092,10 +1098,10 @@
             // Cargar Picks
             renderPicks(picks);
             
-            // Cargar Backtest
             // Llenar dropdown de ligas del backtest
             const backtestLeagueSelect = document.getElementById('backtest-filter-league');
             if (backtestLeagueSelect) {
+                backtestLeagueSelect.innerHTML = '<option value="all">Todas las Ligas (Backtest)</option>';
                 const uniqueLeagues = [...new Set(backtestData.map(p => p.Liga))].sort();
                 uniqueLeagues.forEach(league => {
                     const opt = document.createElement('option');
@@ -1116,9 +1122,29 @@
             // Cargar Ligas
             renderLeaguesGrid();
             
+            // Llenar dropdown de ligas del historial
+            const leagueSelect = document.getElementById('history-filter-league');
+            if (leagueSelect) {
+                leagueSelect.innerHTML = '<option value="all">Todas las Ligas</option>';
+                const history = data.picks_history || [];
+                const uniqueLeagues = [...new Set(history.map(p => p.liga))].sort();
+                uniqueLeagues.forEach(league => {
+                    const opt = document.createElement('option');
+                    opt.value = league;
+                    opt.innerText = league;
+                    leagueSelect.appendChild(opt);
+                });
+            }
+
             // Cargar Historial
             renderHistoryTable();
-        });
+
+            // Si el simulador ya estaba inicializado, actualizarlo con los nuevos datos reales
+            if (simulatedPicksData.length > 0) {
+                initSimulatorData();
+                renderSimTable();
+            }
+        }
 
         function switchTab(tab) {
             // Ocultar todas las secciones
@@ -3554,6 +3580,71 @@
             initSimulatorData();
             renderSimTable();
         }
+
+        function fetchNewerDataFromGitHub() {
+            const url = 'https://raw.githubusercontent.com/rhonnyr/ht_betting_system/main/data/picks/dashboard_data.js?nocache=' + Date.now();
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.text();
+                })
+                .then(text => {
+                    const jsonStart = text.indexOf('{');
+                    const jsonEnd = text.lastIndexOf('}');
+                    if (jsonStart !== -1 && jsonEnd !== -1) {
+                        const jsonText = text.substring(jsonStart, jsonEnd + 1);
+                        const freshData = JSON.parse(jsonText);
+                        
+                        const localUpdated = window.dashboardData ? window.dashboardData.last_updated : '';
+                        const remoteUpdated = freshData.last_updated;
+                        
+                        if (remoteUpdated && remoteUpdated !== localUpdated) {
+                            console.log(`[Auto-Update] Nueva data disponible en la nube: ${remoteUpdated} (Local: ${localUpdated})`);
+                            window.dashboardData = freshData;
+                            
+                            loadDashboardData(freshData);
+                            
+                            showToastNotification(`Datos actualizados automáticamente desde la nube (${remoteUpdated})`);
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.warn('[Auto-Update] No se pudo comprobar actualizaciones en la nube (modo offline/sin internet):', err);
+                });
+        }
+
+        function showToastNotification(message) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            
+            const toast = document.createElement('div');
+            toast.className = "flex items-center gap-3 bg-blue-600/90 backdrop-blur-md border border-blue-500/30 text-white px-5 py-3 rounded-2xl shadow-2xl opacity-0 translate-y-4 transition-all duration-500 pointer-events-auto max-w-sm mb-3";
+            toast.innerHTML = `
+                <i data-lucide="sparkles" class="w-5 h-5 text-amber-300 animate-pulse"></i>
+                <div class="text-xs font-semibold">${message}</div>
+                <button onclick="this.parentElement.remove()" class="text-white/70 hover:text-white ml-auto">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+            `;
+            container.appendChild(toast);
+            lucide.createIcons();
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.remove('opacity-0', 'translate-y-4');
+                toast.classList.add('opacity-100', 'translate-y-0');
+            }, 50);
+            
+            // Auto remove after 6 seconds
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 500);
+            }, 6000);
+        }
     </script>
+    
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none"></div>
 </body>
 </html>
