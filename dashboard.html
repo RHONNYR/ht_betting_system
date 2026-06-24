@@ -3830,6 +3830,14 @@
                 return;
             }
 
+            // Ordenar por estatus: Clave (green) -> Neutral (yellow) -> Alerta (red)
+            filteredActive.sort((a, b) => {
+                const statusA = getLeagueStatus(a.league_name, a.league_id).status;
+                const statusB = getLeagueStatus(b.league_name, b.league_id).status;
+                const score = { 'green': 1, 'yellow': 2, 'red': 3 };
+                return (score[statusA] || 2) - (score[statusB] || 2);
+            });
+
             filteredActive.forEach(l => {
                 const analysis = getLeagueStatus(l.league_name, l.league_id);
                 
@@ -3868,18 +3876,18 @@
                     <div class="flex justify-between items-start gap-2">
                         <div class="flex items-center gap-2 truncate">
                             <span>${getLeagueFlagHtml(l.league_name, l.league_id)}</span>
-                            <span class="font-bold text-white truncate" title="${l.league_name}">${l.league_name}</span>
+                            <span class="font-bold text-white text-sm truncate" title="${l.league_name}">${l.league_name}</span>
                             ${getTierBadgeHtml(l.tier)}
                         </div>
-                        <span class="px-2 py-0.5 rounded-full text-[9px] font-bold border ${badgeClass}">${dot} ${analysis.label}</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold border ${badgeClass}">${dot} ${analysis.label}</span>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-2 py-1.5 border-y border-white/5 text-[10px] text-gray-400">
+                    <div class="grid grid-cols-2 gap-2 py-1.5 border-y border-white/5 text-xs text-gray-400">
                         <div>Racha Reciente: <span class="font-bold text-white">${(analysis.recentWR * 100).toFixed(0)}%</span></div>
                         <div>Picks Resueltos: ${realWrDisplay}</div>
                     </div>
                     
-                    <p class="text-[10px] text-gray-300 font-light leading-relaxed">
+                    <p class="text-xs text-gray-300 font-light leading-relaxed">
                         <strong>Visión del Tutor:</strong> ${adviceText}
                     </p>
                 `;
