@@ -1359,7 +1359,9 @@
                     <div class="space-y-4">
                         <div class="flex justify-between items-start border-b border-white/5 pb-3">
                             <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1.5 flex-wrap">
-                                <i data-lucide="globe" class="w-3.5 h-3.5"></i> ${pick.liga} ${getTierBadgeHtml(pick.tier)}
+                                <span class="mr-0.5 text-sm">${getLeagueCountry(pick.liga).flag}</span>
+                                <span>${pick.liga}</span>
+                                ${getTierBadgeHtml(pick.tier)}
                             </span>
                             <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
                                 <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${localInfo.date} <i data-lucide="clock" class="w-3.5 h-3.5 ml-1"></i> ${localInfo.time} (${localInfo.tz})
@@ -1676,7 +1678,17 @@
                 tr.innerHTML = `
                     <td class="py-3 text-xs md:text-sm">${localInfo.date} <span class="text-gray-500 text-[11px] font-light">${localInfo.time} (${localInfo.tz})</span></td>
                     <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5 flex-wrap">
-                        <span class="truncate max-w-[120px]" title="${pick.liga}">${pick.liga}</span> ${getTierBadgeHtml(pick.tier)} ${classBadge}
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-1 flex-wrap">
+                                <span class="truncate max-w-[120px] text-white" title="${pick.liga}">${pick.liga}</span>
+                                ${getTierBadgeHtml(pick.tier)}
+                                ${classBadge}
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
+                                <span>${getLeagueCountry(pick.liga).flag}</span>
+                                <span>${getLeagueCountry(pick.liga).name}</span>
+                            </span>
+                        </div>
                     </td>
                     <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${pick.local}</td>
                     <td class="py-3 text-center text-gray-500 text-xs px-4">vs</td>
@@ -1823,7 +1835,15 @@
                 const winRateColor = winRate >= 80 ? 'text-emerald-400 font-bold' : (winRate >= 65 ? 'text-amber-400 font-semibold' : 'text-gray-400');
                 
                 tr.innerHTML = `
-                    <td class="py-2.5 font-semibold text-white text-xs md:text-sm text-left pl-2">${data.name}</td>
+                    <td class="py-2.5 text-left pl-2">
+                        <div class="flex flex-col">
+                            <span class="font-semibold text-white text-xs md:text-sm">${data.name}</span>
+                            <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
+                                <span>${getLeagueCountry(data.name).flag}</span>
+                                <span>${getLeagueCountry(data.name).name}</span>
+                            </span>
+                        </div>
+                    </td>
                     <td class="py-2.5 text-center">${getTierBadgeHtml(data.tier)}</td>
                     <td class="py-2.5 text-center text-gray-400 text-xs">${data.total} <span class="text-[10px]">(${data.resolved} res)</span></td>
                     <td class="py-2.5 text-center font-medium text-xs">${data.wins}G - ${data.losses}P</td>
@@ -1929,7 +1949,7 @@
                 ? window.dashboardData.picks_history[pickIndex] 
                 : window.dashboardData.picks[pickIndex];
             
-            document.getElementById('modal-league-pill').innerHTML = `${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
+            document.getElementById('modal-league-pill').innerHTML = `<span class="mr-1">${getLeagueCountry(pick.liga).flag}</span> ${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
             document.getElementById('modal-home-team').innerText = pick.local;
             document.getElementById('modal-away-team').innerText = pick.visitante;
             
@@ -2417,7 +2437,15 @@
                 const winRateColor = winRate >= 80 ? 'text-emerald-400 font-bold' : (winRate >= 65 ? 'text-amber-400 font-semibold' : 'text-gray-400');
                 
                 tr.innerHTML = `
-                    <td class="py-2.5 font-semibold text-white text-xs md:text-sm text-left pl-2">${data.name}</td>
+                    <td class="py-2.5 text-left pl-2">
+                        <div class="flex flex-col">
+                            <span class="font-semibold text-white text-xs md:text-sm">${data.name}</span>
+                            <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
+                                <span>${getLeagueCountry(data.name).flag}</span>
+                                <span>${getLeagueCountry(data.name).name}</span>
+                            </span>
+                        </div>
+                    </td>
                     <td class="py-2.5 text-center">${getTierBadgeHtml(data.tier)}</td>
                     <td class="py-2.5 text-center text-gray-400 text-xs">${data.total}</td>
                     <td class="py-2.5 text-center font-medium text-xs">${data.wins}G - ${data.losses}P</td>
@@ -2927,9 +2955,15 @@
                 tr.innerHTML = `
                     <td class="py-3.5 font-bold text-white pl-3">${t.team_name}</td>
                     <td class="py-3.5 text-xs md:text-sm">
-                        <div class="flex items-center gap-1.5 flex-wrap">
-                            <span>${t.league_name}</span>
-                            ${getTierBadgeHtml(tier)}
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <span class="font-semibold text-white">${t.league_name}</span>
+                                ${getTierBadgeHtml(tier)}
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
+                                <span>${getLeagueCountry(t.league_name).flag}</span>
+                                <span>${getLeagueCountry(t.league_name).name}</span>
+                            </span>
                         </div>
                     </td>
                     <td class="py-3.5 text-center">
@@ -2978,6 +3012,65 @@
             return 'Otros';
         }
 
+        function getLeagueCountry(leagueName) {
+            if (!leagueName) return { name: 'Otros', flag: '🏳️' };
+            const name = leagueName.toLowerCase();
+            
+            // Inglaterra / Reino Unido
+            if (name.includes('premier league') || name.includes('championship') || name.includes('league one') || name.includes('league two') || name.includes('premiership')) {
+                if (name.includes('scotland') || name.includes('escocia')) return { name: 'Escocia', flag: '🏴\u200d󠁢󠁳󠁣󠁴󠁿' };
+                if (name.includes('wales') || name.includes('galés')) return { name: 'Gales', flag: '🏴\u200d󠁢󠁷󠁬󠁳󠁿' };
+                return { name: 'Inglaterra', flag: '🏴\u200d󠁢󠁥󠁮󠁧󠁿' };
+            }
+            
+            // España
+            if (name.includes('la liga') || name.includes('segunda divisi') || name.includes('primera division (espa')) return { name: 'España', flag: '🇪🇸' };
+            
+            // Alemania
+            if (name.includes('bundesliga') || name.includes('3. liga') || name.includes('regionalliga')) return { name: 'Alemania', flag: '🇩🇪' };
+            
+            // Portugal
+            if (name.includes('primeira liga') || name.includes('segunda liga')) return { name: 'Portugal', flag: '🇵🇹' };
+            
+            // Brasil
+            if (name.includes('serie a') || name.includes('serie b') || name.includes('serie c') || name.includes('paulista') || name.includes('carioca')) {
+                if (name.includes('italy') || name.includes('italia')) return { name: 'Italia', flag: '🇮🇹' };
+                return { name: 'Brasil', flag: '🇧🇷' };
+            }
+            
+            // Italia
+            if (name.includes('serie a - italia') || name.includes('serie b - italia')) return { name: 'Italia', flag: '🇮🇹' };
+            
+            // USA / MLS
+            if (name.includes('major league') || name.includes('mls') || name.includes('usl')) return { name: 'USA', flag: '🇺🇸' };
+            
+            // Suecia
+            if (name.includes('allsvenskan') || name.includes('superettan') || name.includes('ettan') || name.includes('damallsvenskan')) return { name: 'Suecia', flag: '🇸🇪' };
+            
+            // Noruega
+            if (name.includes('eliteserien') || name.includes('1. division') || name.includes('2. division') || name.includes('3. division')) {
+                if (name.includes('denmark') || name.includes('dinamarca')) return { name: 'Dinamarca', flag: '🇩🇰' };
+                return { name: 'Noruega', flag: '🇳🇴' };
+            }
+            
+            // Finlandia
+            if (name.includes('veikkausliiga') || name.includes('ykk') || name.includes('kakkonen')) return { name: 'Finlandia', flag: '🇫🇮' };
+            
+            // Islandia
+            if (name.includes('rvalsdeild') || name.includes('deild')) return { name: 'Islandia', flag: '🇮🇸' };
+            
+            // Estonia
+            if (name.includes('esiliiga') || name.includes('meistriliiga')) return { name: 'Estonia', flag: '🇪🇪' };
+            
+            // Holanda
+            if (name.includes('eredivisie') || name.includes('erste divisie') || name.includes('tweede divisie')) return { name: 'Holanda', flag: '🇳🇱' };
+            
+            // Suiza
+            if (name.includes('super league') || name.includes('challenge league')) return { name: 'Suiza', flag: '🇨🇭' };
+            
+            return { name: 'Otros', flag: '🏳️' };
+        }
+
         // --- SECTION LEAGUES ---
         function isWinterLeague(l) {
             const winterIds = [39, 40, 41, 78, 79, 80, 83, 84, 86, 87, 94, 140, 179, 180, 207, 208, 368, 492];
@@ -3006,10 +3099,13 @@
                 <div class="flex justify-between items-start gap-2">
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h4 class="font-bold text-gray-300 text-base">${l.league_name}</h4>
+                            <h4 class="font-bold text-gray-300 text-base flex items-center gap-1.5">
+                                <span>${getLeagueCountry(l.league_name).flag}</span>
+                                <span>${l.league_name}</span>
+                            </h4>
                             ${getTierBadgeHtml(l.tier)}
                         </div>
-                        <p class="text-gray-500 text-xs mt-0.5">Temporada ${l.season}</p>
+                        <p class="text-gray-500 text-xs mt-0.5">${getLeagueCountry(l.league_name).name} | Temporada ${l.season}</p>
                     </div>
                     ${statusBadge}
                 </div>
@@ -3107,10 +3203,13 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h4 class="font-bold text-white text-base">${l.league_name}</h4>
+                            <h4 class="font-bold text-white text-base flex items-center gap-1.5">
+                                <span>${getLeagueCountry(l.league_name).flag}</span>
+                                <span>${l.league_name}</span>
+                            </h4>
                             ${getTierBadgeHtml(l.tier)}
                         </div>
-                        <p class="text-gray-400 text-xs mt-0.5">Temporada ${l.season}</p>
+                        <p class="text-gray-400 text-xs mt-0.5">${getLeagueCountry(l.league_name).name} | Temporada ${l.season}</p>
                     </div>
                     <span class="px-2 py-0.5 rounded-full text-xs font-extrabold border ${badgeClass}">${l.Estado}</span>
                 </div>
@@ -3495,7 +3594,15 @@
 
                 tr.innerHTML = `
                     <td class="py-3 pl-2 text-xs">${localInfo.date} <span class="text-gray-500 text-[10px] font-light">${localInfo.time}</span></td>
-                    <td class="py-3 text-xs font-semibold">${pick.liga}</td>
+                    <td class="py-3 text-xs">
+                        <div class="flex flex-col">
+                            <span class="font-semibold text-white">${pick.liga}</span>
+                            <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
+                                <span>${getLeagueCountry(pick.liga).flag}</span>
+                                <span>${getLeagueCountry(pick.liga).name}</span>
+                            </span>
+                        </div>
+                    </td>
                     <td class="py-3 text-xs">${pick.local} <span class="text-gray-500">vs</span> ${pick.visitante}</td>
                     <td class="py-3 text-center text-xs text-gray-400">${oddsOrig}</td>
                     <td class="py-3 text-center">
