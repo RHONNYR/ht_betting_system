@@ -1359,7 +1359,7 @@
                     <div class="space-y-4">
                         <div class="flex justify-between items-start border-b border-white/5 pb-3">
                             <span class="text-xs font-semibold px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 flex items-center gap-1.5 flex-wrap">
-                                <span class="mr-0.5 text-sm">${getLeagueCountry(pick.liga).flag}</span>
+                                <span class="mr-1 flex items-center justify-center">${getLeagueFlagHtml(pick.liga)}</span>
                                 <span>${pick.liga}</span>
                                 ${getTierBadgeHtml(pick.tier)}
                             </span>
@@ -1685,7 +1685,7 @@
                                 ${classBadge}
                             </div>
                             <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueCountry(pick.liga).flag}</span>
+                                <span>${getLeagueFlagHtml(pick.liga)}</span>
                                 <span>${getLeagueCountry(pick.liga).name}</span>
                             </span>
                         </div>
@@ -1839,7 +1839,7 @@
                         <div class="flex flex-col">
                             <span class="font-semibold text-white text-xs md:text-sm">${data.name}</span>
                             <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueCountry(data.name).flag}</span>
+                                <span>${getLeagueFlagHtml(data.name)}</span>
                                 <span>${getLeagueCountry(data.name).name}</span>
                             </span>
                         </div>
@@ -1949,7 +1949,7 @@
                 ? window.dashboardData.picks_history[pickIndex] 
                 : window.dashboardData.picks[pickIndex];
             
-            document.getElementById('modal-league-pill').innerHTML = `<span class="mr-1">${getLeagueCountry(pick.liga).flag}</span> ${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
+            document.getElementById('modal-league-pill').innerHTML = `<span class="mr-1.5 align-middle">${getLeagueFlagHtml(pick.liga)}</span> ${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
             document.getElementById('modal-home-team').innerText = pick.local;
             document.getElementById('modal-away-team').innerText = pick.visitante;
             
@@ -2441,7 +2441,7 @@
                         <div class="flex flex-col">
                             <span class="font-semibold text-white text-xs md:text-sm">${data.name}</span>
                             <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueCountry(data.name).flag}</span>
+                                <span>${getLeagueFlagHtml(data.name)}</span>
                                 <span>${getLeagueCountry(data.name).name}</span>
                             </span>
                         </div>
@@ -2961,7 +2961,7 @@
                                 ${getTierBadgeHtml(tier)}
                             </div>
                             <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueCountry(t.league_name).flag}</span>
+                                <span>${getLeagueFlagHtml(t.league_name)}</span>
                                 <span>${getLeagueCountry(t.league_name).name}</span>
                             </span>
                         </div>
@@ -3013,62 +3013,70 @@
         }
 
         function getLeagueCountry(leagueName) {
-            if (!leagueName) return { name: 'Otros', flag: '🏳️' };
+            if (!leagueName) return { name: 'Otros', code: 'un' };
             const name = leagueName.toLowerCase();
             
             // Inglaterra / Reino Unido
             if (name.includes('premier league') || name.includes('championship') || name.includes('league one') || name.includes('league two') || name.includes('premiership')) {
-                if (name.includes('scotland') || name.includes('escocia')) return { name: 'Escocia', flag: '🏴\u200d󠁢󠁳󠁣󠁴󠁿' };
-                if (name.includes('wales') || name.includes('galés')) return { name: 'Gales', flag: '🏴\u200d󠁢󠁷󠁬󠁳󠁿' };
-                return { name: 'Inglaterra', flag: '🏴\u200d󠁢󠁥󠁮󠁧󠁿' };
+                if (name.includes('scotland') || name.includes('escocia')) return { name: 'Escocia', code: 'gb' };
+                if (name.includes('wales') || name.includes('galés')) return { name: 'Gales', code: 'gb' };
+                return { name: 'Inglaterra', code: 'gb' };
             }
             
             // España
-            if (name.includes('la liga') || name.includes('segunda divisi') || name.includes('primera division (espa')) return { name: 'España', flag: '🇪🇸' };
+            if (name.includes('la liga') || name.includes('segunda divisi') || name.includes('primera division (espa')) return { name: 'España', code: 'es' };
             
             // Alemania
-            if (name.includes('bundesliga') || name.includes('3. liga') || name.includes('regionalliga')) return { name: 'Alemania', flag: '🇩🇪' };
+            if (name.includes('bundesliga') || name.includes('3. liga') || name.includes('regionalliga')) return { name: 'Alemania', code: 'de' };
             
             // Portugal
-            if (name.includes('primeira liga') || name.includes('segunda liga')) return { name: 'Portugal', flag: '🇵🇹' };
+            if (name.includes('primeira liga') || name.includes('segunda liga')) return { name: 'Portugal', code: 'pt' };
             
             // Brasil
             if (name.includes('serie a') || name.includes('serie b') || name.includes('serie c') || name.includes('paulista') || name.includes('carioca')) {
-                if (name.includes('italy') || name.includes('italia')) return { name: 'Italia', flag: '🇮🇹' };
-                return { name: 'Brasil', flag: '🇧🇷' };
+                if (name.includes('italy') || name.includes('italia')) return { name: 'Italia', code: 'it' };
+                return { name: 'Brasil', code: 'br' };
             }
             
             // Italia
-            if (name.includes('serie a - italia') || name.includes('serie b - italia')) return { name: 'Italia', flag: '🇮🇹' };
+            if (name.includes('serie a - italia') || name.includes('serie b - italia')) return { name: 'Italia', code: 'it' };
             
             // USA / MLS
-            if (name.includes('major league') || name.includes('mls') || name.includes('usl')) return { name: 'USA', flag: '🇺🇸' };
+            if (name.includes('major league') || name.includes('mls') || name.includes('usl')) return { name: 'USA', code: 'us' };
             
             // Suecia
-            if (name.includes('allsvenskan') || name.includes('superettan') || name.includes('ettan') || name.includes('damallsvenskan')) return { name: 'Suecia', flag: '🇸🇪' };
+            if (name.includes('allsvenskan') || name.includes('superettan') || name.includes('ettan') || name.includes('damallsvenskan')) return { name: 'Suecia', code: 'se' };
             
             // Noruega
             if (name.includes('eliteserien') || name.includes('1. division') || name.includes('2. division') || name.includes('3. division')) {
-                if (name.includes('denmark') || name.includes('dinamarca')) return { name: 'Dinamarca', flag: '🇩🇰' };
-                return { name: 'Noruega', flag: '🇳🇴' };
+                if (name.includes('denmark') || name.includes('dinamarca')) return { name: 'Dinamarca', code: 'dk' };
+                return { name: 'Noruega', code: 'no' };
             }
             
             // Finlandia
-            if (name.includes('veikkausliiga') || name.includes('ykk') || name.includes('kakkonen')) return { name: 'Finlandia', flag: '🇫🇮' };
+            if (name.includes('veikkausliiga') || name.includes('ykk') || name.includes('kakkonen')) return { name: 'Finlandia', code: 'fi' };
             
             // Islandia
-            if (name.includes('rvalsdeild') || name.includes('deild')) return { name: 'Islandia', flag: '🇮🇸' };
+            if (name.includes('rvalsdeild') || name.includes('deild')) return { name: 'Islandia', code: 'is' };
             
             // Estonia
-            if (name.includes('esiliiga') || name.includes('meistriliiga')) return { name: 'Estonia', flag: '🇪🇪' };
+            if (name.includes('esiliiga') || name.includes('meistriliiga')) return { name: 'Estonia', code: 'ee' };
             
             // Holanda
-            if (name.includes('eredivisie') || name.includes('erste divisie') || name.includes('tweede divisie')) return { name: 'Holanda', flag: '🇳🇱' };
+            if (name.includes('eredivisie') || name.includes('erste divisie') || name.includes('tweede divisie')) return { name: 'Holanda', code: 'nl' };
             
             // Suiza
-            if (name.includes('super league') || name.includes('challenge league')) return { name: 'Suiza', flag: '🇨🇭' };
+            if (name.includes('super league') || name.includes('challenge league')) return { name: 'Suiza', code: 'ch' };
             
-            return { name: 'Otros', flag: '🏳️' };
+            return { name: 'Otros', code: 'un' };
+        }
+
+        function getLeagueFlagHtml(leagueName) {
+            const country = getLeagueCountry(leagueName);
+            if (country.code === 'un') {
+                return `<i data-lucide="globe" class="w-3.5 h-3.5 text-gray-500 inline-block align-middle"></i>`;
+            }
+            return `<img src="https://flagcdn.com/w20/${country.code}.png" class="w-4 h-3 inline-block object-contain rounded-sm shadow-sm align-middle mb-0.5" alt="${country.name}">`;
         }
 
         // --- SECTION LEAGUES ---
@@ -3100,7 +3108,7 @@
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
                             <h4 class="font-bold text-gray-300 text-base flex items-center gap-1.5">
-                                <span>${getLeagueCountry(l.league_name).flag}</span>
+                                <span>${getLeagueFlagHtml(l.league_name)}</span>
                                 <span>${l.league_name}</span>
                             </h4>
                             ${getTierBadgeHtml(l.tier)}
@@ -3204,7 +3212,7 @@
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
                             <h4 class="font-bold text-white text-base flex items-center gap-1.5">
-                                <span>${getLeagueCountry(l.league_name).flag}</span>
+                                <span>${getLeagueFlagHtml(l.league_name)}</span>
                                 <span>${l.league_name}</span>
                             </h4>
                             ${getTierBadgeHtml(l.tier)}
@@ -3598,7 +3606,7 @@
                         <div class="flex flex-col">
                             <span class="font-semibold text-white">${pick.liga}</span>
                             <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueCountry(pick.liga).flag}</span>
+                                <span>${getLeagueFlagHtml(pick.liga)}</span>
                                 <span>${getLeagueCountry(pick.liga).name}</span>
                             </span>
                         </div>
