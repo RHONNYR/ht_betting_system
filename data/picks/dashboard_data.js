@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-24 12:57:28",
+  "last_updated": "2026-06-24 13:55:27",
   "leagues": [
     {
       "league_id": 40,
@@ -433,6 +433,7 @@ window.dashboardData = {
   ],
   "teams": [
     {
+      "league_id": 78,
       "league_name": "Bundesliga",
       "team_name": "Bayern München",
       "role": "Local",
@@ -487,6 +488,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 78,
       "league_name": "Bundesliga",
       "team_name": "1899 Hoffenheim",
       "role": "Local",
@@ -541,6 +543,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Rot-Weiß Essen",
       "role": "Local",
@@ -595,6 +598,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Energie Cottbus",
       "role": "Local",
@@ -649,6 +653,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Hoffenheim II",
       "role": "Local",
@@ -703,6 +708,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Alemannia Aachen",
       "role": "Local",
@@ -757,6 +763,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Hansa Rostock",
       "role": "Local",
@@ -811,6 +818,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "Kickers Emden",
       "role": "Local",
@@ -865,6 +873,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "Weiche Flensburg",
       "role": "Local",
@@ -919,6 +928,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "VfB Oldenburg",
       "role": "Local",
@@ -973,6 +983,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "SV Meppen",
       "role": "Local",
@@ -1027,6 +1038,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "SV Drochtersen/Assel",
       "role": "Local",
@@ -1081,6 +1093,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "SSV Jeddeloh",
       "role": "Local",
@@ -1135,6 +1148,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "TSV Steinbach",
       "role": "Local",
@@ -1189,6 +1203,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "SGV Freiberg",
       "role": "Local",
@@ -1243,6 +1258,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "Kickers Offenbach",
       "role": "Local",
@@ -1297,6 +1313,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "FSV Frankfurt",
       "role": "Local",
@@ -1351,6 +1368,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "FC Astoria Walldorf",
       "role": "Local",
@@ -1405,6 +1423,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "Freiburg II",
       "role": "Local",
@@ -1459,6 +1478,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 87,
       "league_name": "Regionalliga - West",
       "team_name": "Sportfreunde Siegen",
       "role": "Local",
@@ -1513,6 +1533,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 87,
       "league_name": "Regionalliga - West",
       "team_name": "Fortuna Köln",
       "role": "Local",
@@ -1567,6 +1588,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 87,
       "league_name": "Regionalliga - West",
       "team_name": "Schalke 04 II",
       "role": "Local",
@@ -1621,6 +1643,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 104,
       "league_name": "1. Division",
       "team_name": "ODD Ballklubb",
       "role": "Local",
@@ -1675,6 +1698,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 104,
       "league_name": "1. Division",
       "team_name": "Ranheim",
       "role": "Local",
@@ -1729,6 +1753,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "KR Reykjavik",
       "role": "Local",
@@ -1783,6 +1808,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Valur Reykjavik",
       "role": "Local",
@@ -1837,6 +1863,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Fram Reykjavik",
       "role": "Local",
@@ -1891,6 +1918,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Breidablik",
       "role": "Local",
@@ -1945,6 +1973,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Stjarnan",
       "role": "Local",
@@ -1999,6 +2028,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 165,
       "league_name": "1. Deild",
       "team_name": "Afturelding",
       "role": "Local",
@@ -2053,6 +2083,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 166,
       "league_name": "2. Deild",
       "team_name": "Fjolnir",
       "role": "Local",
@@ -2107,6 +2138,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 166,
       "league_name": "2. Deild",
       "team_name": "Fjardabyggd / Leiknir",
       "role": "Local",
@@ -2161,6 +2193,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 166,
       "league_name": "2. Deild",
       "team_name": "Kormákur / Hvöt",
       "role": "Local",
@@ -2215,6 +2248,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 245,
       "league_name": "Ykkönen",
       "team_name": "SalPa",
       "role": "Local",
@@ -2269,6 +2303,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "PPJ",
       "role": "Local",
@@ -2323,6 +2358,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "Atlantis",
       "role": "Local",
@@ -2377,6 +2413,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "Reipas",
       "role": "Local",
@@ -2431,6 +2468,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "Kiffen",
       "role": "Local",
@@ -2485,6 +2523,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 248,
       "league_name": "Kakkonen - Lohko B",
       "team_name": "ÅIFK",
       "role": "Local",
@@ -2539,6 +2578,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "OsPa",
       "role": "Local",
@@ -2593,6 +2633,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "SJK-juniorit",
       "role": "Local",
@@ -2647,6 +2688,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "Kuopion Elo",
       "role": "Local",
@@ -2701,6 +2743,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "Kraft",
       "role": "Local",
@@ -2755,6 +2798,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "TP-47",
       "role": "Local",
@@ -2809,6 +2853,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "FC Dallas",
       "role": "Local",
@@ -2863,6 +2908,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "Nashville SC",
       "role": "Local",
@@ -2917,6 +2963,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "San Jose Earthquakes",
       "role": "Local",
@@ -2971,6 +3018,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "Portland Timbers",
       "role": "Local",
@@ -3025,6 +3073,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "San Diego",
       "role": "Local",
@@ -3079,6 +3128,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "Real Salt Lake",
       "role": "Local",
@@ -3133,6 +3183,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "New York City FC",
       "role": "Local",
@@ -3187,6 +3238,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "Inter Miami",
       "role": "Local",
@@ -3241,6 +3293,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 328,
       "league_name": "Esiliiga A",
       "team_name": "Tartu Welco",
       "role": "Local",
@@ -3295,6 +3348,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 368,
       "league_name": "Premier League",
       "team_name": "Balestier Khalsa",
       "role": "Local",
@@ -3349,6 +3403,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 474,
       "league_name": "2. Division - Group 2",
       "team_name": "Levanger",
       "role": "Local",
@@ -3403,6 +3458,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 474,
       "league_name": "2. Division - Group 2",
       "team_name": "Tromsdalen Uil",
       "role": "Local",
@@ -3457,6 +3513,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 474,
       "league_name": "2. Division - Group 2",
       "team_name": "Skeid",
       "role": "Local",
@@ -3511,6 +3568,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 492,
       "league_name": "Tweede Divisie",
       "team_name": "Rijnsburgse Boys",
       "role": "Local",
@@ -3565,6 +3623,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 492,
       "league_name": "Tweede Divisie",
       "team_name": "HHC",
       "role": "Local",
@@ -3619,6 +3678,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 492,
       "league_name": "Tweede Divisie",
       "team_name": "Sparta Rotterdam II",
       "role": "Local",
@@ -3673,6 +3733,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 564,
       "league_name": "Ettan - Södra",
       "team_name": "Atvidabergs FF",
       "role": "Local",
@@ -3727,6 +3788,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 564,
       "league_name": "Ettan - Södra",
       "team_name": "Trelleborg",
       "role": "Local",
@@ -3781,6 +3843,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 564,
       "league_name": "Ettan - Södra",
       "team_name": "Olympic",
       "role": "Local",
@@ -3835,6 +3898,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Aston Villa U21",
       "role": "Local",
@@ -3889,6 +3953,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Norwich City U21",
       "role": "Local",
@@ -3943,6 +4008,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Ipswich Town U21",
       "role": "Local",
@@ -3997,6 +4063,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Newcastle United U21",
       "role": "Local",
@@ -4051,6 +4118,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Leicester City U21",
       "role": "Local",
@@ -4105,6 +4173,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Sunderland U21",
       "role": "Local",
@@ -4159,6 +4228,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Manchester United U21",
       "role": "Local",
@@ -4213,6 +4283,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Manchester City U21",
       "role": "Local",
@@ -4267,6 +4338,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Liverpool U21",
       "role": "Local",
@@ -4321,6 +4393,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Fulham U21",
       "role": "Local",
@@ -4375,6 +4448,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Crystal Palace U21",
       "role": "Local",
@@ -4429,6 +4503,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "St. Louis City II",
       "role": "Local",
@@ -4483,6 +4558,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "New York RB II",
       "role": "Local",
@@ -4537,6 +4613,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "The Town",
       "role": "Local",
@@ -4591,6 +4668,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "Chicago Fire II",
       "role": "Local",
@@ -4645,6 +4723,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 78,
       "league_name": "Bundesliga",
       "team_name": "Bayern München",
       "role": "Visitante",
@@ -4699,6 +4778,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 78,
       "league_name": "Bundesliga",
       "team_name": "Bayer Leverkusen",
       "role": "Visitante",
@@ -4753,6 +4833,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 78,
       "league_name": "Bundesliga",
       "team_name": "1899 Hoffenheim",
       "role": "Visitante",
@@ -4807,6 +4888,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 78,
       "league_name": "Bundesliga",
       "team_name": "VfB Stuttgart",
       "role": "Visitante",
@@ -4861,6 +4943,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Hoffenheim II",
       "role": "Visitante",
@@ -4915,6 +4998,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 80,
       "league_name": "3. Liga",
       "team_name": "Alemannia Aachen",
       "role": "Visitante",
@@ -4969,6 +5053,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "Kickers Emden",
       "role": "Visitante",
@@ -5023,6 +5108,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "Weiche Flensburg",
       "role": "Visitante",
@@ -5077,6 +5163,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "SV Meppen",
       "role": "Visitante",
@@ -5131,6 +5218,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "Hannover 96 II",
       "role": "Visitante",
@@ -5185,6 +5273,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 84,
       "league_name": "Regionalliga - Nord",
       "team_name": "SSV Jeddeloh",
       "role": "Visitante",
@@ -5239,6 +5328,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "FC 08 Homburg",
       "role": "Visitante",
@@ -5293,6 +5383,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "TSV Steinbach",
       "role": "Visitante",
@@ -5347,6 +5438,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "SGV Freiberg",
       "role": "Visitante",
@@ -5401,6 +5493,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "Kickers Offenbach",
       "role": "Visitante",
@@ -5455,6 +5548,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "FSV Frankfurt",
       "role": "Visitante",
@@ -5509,6 +5603,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 86,
       "league_name": "Regionalliga - SudWest",
       "team_name": "Freiburg II",
       "role": "Visitante",
@@ -5563,6 +5658,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 87,
       "league_name": "Regionalliga - West",
       "team_name": "Borussia M'gladbach II",
       "role": "Visitante",
@@ -5617,6 +5713,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 87,
       "league_name": "Regionalliga - West",
       "team_name": "Schalke 04 II",
       "role": "Visitante",
@@ -5671,6 +5768,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 87,
       "league_name": "Regionalliga - West",
       "team_name": "Borussia Dortmund II",
       "role": "Visitante",
@@ -5725,6 +5823,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 104,
       "league_name": "1. Division",
       "team_name": "Haugesund",
       "role": "Visitante",
@@ -5779,6 +5878,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 104,
       "league_name": "1. Division",
       "team_name": "Ranheim",
       "role": "Visitante",
@@ -5833,6 +5933,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "KR Reykjavik",
       "role": "Visitante",
@@ -5887,6 +5988,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Valur Reykjavik",
       "role": "Visitante",
@@ -5941,6 +6043,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Breidablik",
       "role": "Visitante",
@@ -5995,6 +6098,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 164,
       "league_name": "Úrvalsdeild",
       "team_name": "Stjarnan",
       "role": "Visitante",
@@ -6049,6 +6153,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 165,
       "league_name": "1. Deild",
       "team_name": "Throttur Reykjavik",
       "role": "Visitante",
@@ -6103,6 +6208,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 166,
       "league_name": "2. Deild",
       "team_name": "Dalvík / Reynir",
       "role": "Visitante",
@@ -6157,6 +6263,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 245,
       "league_name": "Ykkönen",
       "team_name": "OLS",
       "role": "Visitante",
@@ -6211,6 +6318,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "PPJ",
       "role": "Visitante",
@@ -6265,6 +6373,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "Atlantis",
       "role": "Visitante",
@@ -6319,6 +6428,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 247,
       "league_name": "Kakkonen - Lohko A",
       "team_name": "Reipas",
       "role": "Visitante",
@@ -6373,6 +6483,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 248,
       "league_name": "Kakkonen - Lohko B",
       "team_name": "ÅIFK",
       "role": "Visitante",
@@ -6427,6 +6538,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 248,
       "league_name": "Kakkonen - Lohko B",
       "team_name": "Ilves II",
       "role": "Visitante",
@@ -6481,6 +6593,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "OsPa",
       "role": "Visitante",
@@ -6535,6 +6648,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "SJK-juniorit",
       "role": "Visitante",
@@ -6589,6 +6703,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "GBK",
       "role": "Visitante",
@@ -6643,6 +6758,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "Kuopion Elo",
       "role": "Visitante",
@@ -6697,6 +6813,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 249,
       "league_name": "Kakkonen - Lohko C",
       "team_name": "JBK",
       "role": "Visitante",
@@ -6751,6 +6868,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "FC Cincinnati",
       "role": "Visitante",
@@ -6805,6 +6923,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "San Jose Earthquakes",
       "role": "Visitante",
@@ -6859,6 +6978,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "San Diego",
       "role": "Visitante",
@@ -6913,6 +7033,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "Real Salt Lake",
       "role": "Visitante",
@@ -6967,6 +7088,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 253,
       "league_name": "Major League Soccer",
       "team_name": "CF Montreal",
       "role": "Visitante",
@@ -7021,6 +7143,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 328,
       "league_name": "Esiliiga A",
       "team_name": "Nõmme Kalju II",
       "role": "Visitante",
@@ -7075,6 +7198,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 368,
       "league_name": "Premier League",
       "team_name": "Balestier Khalsa",
       "role": "Visitante",
@@ -7129,6 +7253,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 474,
       "league_name": "2. Division - Group 2",
       "team_name": "Kjelsås",
       "role": "Visitante",
@@ -7183,6 +7308,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 474,
       "league_name": "2. Division - Group 2",
       "team_name": "Levanger",
       "role": "Visitante",
@@ -7237,6 +7363,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 474,
       "league_name": "2. Division - Group 2",
       "team_name": "Hønefoss",
       "role": "Visitante",
@@ -7291,6 +7418,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 492,
       "league_name": "Tweede Divisie",
       "team_name": "Rijnsburgse Boys",
       "role": "Visitante",
@@ -7345,6 +7473,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 492,
       "league_name": "Tweede Divisie",
       "team_name": "Sparta Rotterdam II",
       "role": "Visitante",
@@ -7399,6 +7528,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 564,
       "league_name": "Ettan - Södra",
       "team_name": "Hässleholms IF",
       "role": "Visitante",
@@ -7453,6 +7583,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 564,
       "league_name": "Ettan - Södra",
       "team_name": "Trelleborg",
       "role": "Visitante",
@@ -7507,6 +7638,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 564,
       "league_name": "Ettan - Södra",
       "team_name": "Olympic",
       "role": "Visitante",
@@ -7561,6 +7693,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Norwich City U21",
       "role": "Visitante",
@@ -7615,6 +7748,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Ipswich Town U21",
       "role": "Visitante",
@@ -7669,6 +7803,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Leicester City U21",
       "role": "Visitante",
@@ -7723,6 +7858,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "West Ham United U21",
       "role": "Visitante",
@@ -7777,6 +7913,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Sunderland U21",
       "role": "Visitante",
@@ -7831,6 +7968,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Manchester United U21",
       "role": "Visitante",
@@ -7885,6 +8023,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Manchester City U21",
       "role": "Visitante",
@@ -7939,6 +8078,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Tottenham Hotspur U21",
       "role": "Visitante",
@@ -7993,6 +8133,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Blackburn Rovers U21",
       "role": "Visitante",
@@ -8047,6 +8188,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
       "league_name": "Premier League 2 Division One",
       "team_name": "Fulham U21",
       "role": "Visitante",
@@ -8101,6 +8243,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "Chattanooga",
       "role": "Visitante",
@@ -8155,6 +8298,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "Crown Legacy",
       "role": "Visitante",
@@ -8209,6 +8353,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "The Town",
       "role": "Visitante",
@@ -8263,6 +8408,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "Chicago Fire II",
       "role": "Visitante",
@@ -8317,6 +8463,7 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "Huntsville City",
       "role": "Visitante",
@@ -8388,7 +8535,8 @@ window.dashboardData = {
       "Banca Fijo": 1009.0,
       "Stake Compuesto": 20.0,
       "Beneficio Compuesto": 9.0,
-      "Banca Compuesto": 1009.0
+      "Banca Compuesto": 1009.0,
+      "league_id": 368
     },
     {
       "Fecha": "2023-02-26",
@@ -8406,7 +8554,8 @@ window.dashboardData = {
       "Banca Fijo": 1018.0,
       "Stake Compuesto": 20.18,
       "Beneficio Compuesto": 9.08,
-      "Banca Compuesto": 1018.08
+      "Banca Compuesto": 1018.08,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-03",
@@ -8424,7 +8573,8 @@ window.dashboardData = {
       "Banca Fijo": 1027.0,
       "Stake Compuesto": 20.36,
       "Beneficio Compuesto": 9.16,
-      "Banca Compuesto": 1027.24
+      "Banca Compuesto": 1027.24,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-04",
@@ -8442,7 +8592,8 @@ window.dashboardData = {
       "Banca Fijo": 1036.0,
       "Stake Compuesto": 20.54,
       "Beneficio Compuesto": 9.25,
-      "Banca Compuesto": 1036.49
+      "Banca Compuesto": 1036.49,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-09",
@@ -8460,7 +8611,8 @@ window.dashboardData = {
       "Banca Fijo": 1045.0,
       "Stake Compuesto": 20.73,
       "Beneficio Compuesto": 9.33,
-      "Banca Compuesto": 1045.82
+      "Banca Compuesto": 1045.82,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-10",
@@ -8478,7 +8630,8 @@ window.dashboardData = {
       "Banca Fijo": 1054.0,
       "Stake Compuesto": 20.92,
       "Beneficio Compuesto": 9.41,
-      "Banca Compuesto": 1055.23
+      "Banca Compuesto": 1055.23,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-14",
@@ -8496,7 +8649,8 @@ window.dashboardData = {
       "Banca Fijo": 1063.0,
       "Stake Compuesto": 21.1,
       "Beneficio Compuesto": 9.5,
-      "Banca Compuesto": 1064.73
+      "Banca Compuesto": 1064.73,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-15",
@@ -8514,7 +8668,8 @@ window.dashboardData = {
       "Banca Fijo": 1072.0,
       "Stake Compuesto": 21.29,
       "Beneficio Compuesto": 9.58,
-      "Banca Compuesto": 1074.31
+      "Banca Compuesto": 1074.31,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-18",
@@ -8532,7 +8687,8 @@ window.dashboardData = {
       "Banca Fijo": 1081.0,
       "Stake Compuesto": 21.49,
       "Beneficio Compuesto": 9.67,
-      "Banca Compuesto": 1083.98
+      "Banca Compuesto": 1083.98,
+      "league_id": 368
     },
     {
       "Fecha": "2023-03-31",
@@ -8550,7 +8706,8 @@ window.dashboardData = {
       "Banca Fijo": 1090.0,
       "Stake Compuesto": 21.68,
       "Beneficio Compuesto": 9.76,
-      "Banca Compuesto": 1093.73
+      "Banca Compuesto": 1093.73,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-01",
@@ -8568,7 +8725,8 @@ window.dashboardData = {
       "Banca Fijo": 1099.0,
       "Stake Compuesto": 21.87,
       "Beneficio Compuesto": 9.84,
-      "Banca Compuesto": 1103.58
+      "Banca Compuesto": 1103.58,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-05",
@@ -8586,7 +8744,8 @@ window.dashboardData = {
       "Banca Fijo": 1108.0,
       "Stake Compuesto": 22.07,
       "Beneficio Compuesto": 9.93,
-      "Banca Compuesto": 1113.51
+      "Banca Compuesto": 1113.51,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-08",
@@ -8604,7 +8763,8 @@ window.dashboardData = {
       "Banca Fijo": 1117.0,
       "Stake Compuesto": 22.27,
       "Beneficio Compuesto": 10.02,
-      "Banca Compuesto": 1123.53
+      "Banca Compuesto": 1123.53,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-10",
@@ -8622,7 +8782,8 @@ window.dashboardData = {
       "Banca Fijo": 1126.0,
       "Stake Compuesto": 22.47,
       "Beneficio Compuesto": 10.11,
-      "Banca Compuesto": 1133.64
+      "Banca Compuesto": 1133.64,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-10",
@@ -8640,7 +8801,8 @@ window.dashboardData = {
       "Banca Fijo": 1135.0,
       "Stake Compuesto": 22.67,
       "Beneficio Compuesto": 10.2,
-      "Banca Compuesto": 1143.85
+      "Banca Compuesto": 1143.85,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-12",
@@ -8658,7 +8820,8 @@ window.dashboardData = {
       "Banca Fijo": 1144.0,
       "Stake Compuesto": 22.88,
       "Beneficio Compuesto": 10.29,
-      "Banca Compuesto": 1154.14
+      "Banca Compuesto": 1154.14,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-15",
@@ -8676,7 +8839,8 @@ window.dashboardData = {
       "Banca Fijo": 1153.0,
       "Stake Compuesto": 23.08,
       "Beneficio Compuesto": 10.39,
-      "Banca Compuesto": 1164.53
+      "Banca Compuesto": 1164.53,
+      "league_id": 368
     },
     {
       "Fecha": "2023-04-16",
@@ -8694,7 +8858,8 @@ window.dashboardData = {
       "Banca Fijo": 1162.0,
       "Stake Compuesto": 23.29,
       "Beneficio Compuesto": 10.48,
-      "Banca Compuesto": 1175.01
+      "Banca Compuesto": 1175.01,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-05",
@@ -8712,7 +8877,8 @@ window.dashboardData = {
       "Banca Fijo": 1171.0,
       "Stake Compuesto": 23.5,
       "Beneficio Compuesto": 10.58,
-      "Banca Compuesto": 1185.58
+      "Banca Compuesto": 1185.58,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-06",
@@ -8730,7 +8896,8 @@ window.dashboardData = {
       "Banca Fijo": 1180.0,
       "Stake Compuesto": 23.71,
       "Beneficio Compuesto": 10.67,
-      "Banca Compuesto": 1196.25
+      "Banca Compuesto": 1196.25,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-07",
@@ -8748,7 +8915,8 @@ window.dashboardData = {
       "Banca Fijo": 1189.0,
       "Stake Compuesto": 23.93,
       "Beneficio Compuesto": 10.77,
-      "Banca Compuesto": 1207.02
+      "Banca Compuesto": 1207.02,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-13",
@@ -8766,7 +8934,8 @@ window.dashboardData = {
       "Banca Fijo": 1198.0,
       "Stake Compuesto": 24.14,
       "Beneficio Compuesto": 10.86,
-      "Banca Compuesto": 1217.88
+      "Banca Compuesto": 1217.88,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-20",
@@ -8784,7 +8953,8 @@ window.dashboardData = {
       "Banca Fijo": 1207.0,
       "Stake Compuesto": 24.36,
       "Beneficio Compuesto": 10.96,
-      "Banca Compuesto": 1228.84
+      "Banca Compuesto": 1228.84,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-21",
@@ -8802,7 +8972,8 @@ window.dashboardData = {
       "Banca Fijo": 1216.0,
       "Stake Compuesto": 24.58,
       "Beneficio Compuesto": 11.06,
-      "Banca Compuesto": 1239.9
+      "Banca Compuesto": 1239.9,
+      "league_id": 368
     },
     {
       "Fecha": "2023-05-26",
@@ -8820,7 +8991,8 @@ window.dashboardData = {
       "Banca Fijo": 1225.0,
       "Stake Compuesto": 24.8,
       "Beneficio Compuesto": 11.16,
-      "Banca Compuesto": 1251.06
+      "Banca Compuesto": 1251.06,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-01",
@@ -8838,7 +9010,8 @@ window.dashboardData = {
       "Banca Fijo": 1234.0,
       "Stake Compuesto": 25.02,
       "Beneficio Compuesto": 11.26,
-      "Banca Compuesto": 1262.32
+      "Banca Compuesto": 1262.32,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-07",
@@ -8856,7 +9029,8 @@ window.dashboardData = {
       "Banca Fijo": 1214.0,
       "Stake Compuesto": 25.25,
       "Beneficio Compuesto": -25.25,
-      "Banca Compuesto": 1237.08
+      "Banca Compuesto": 1237.08,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-10",
@@ -8874,7 +9048,8 @@ window.dashboardData = {
       "Banca Fijo": 1223.0,
       "Stake Compuesto": 24.74,
       "Beneficio Compuesto": 11.13,
-      "Banca Compuesto": 1248.21
+      "Banca Compuesto": 1248.21,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-11",
@@ -8892,7 +9067,8 @@ window.dashboardData = {
       "Banca Fijo": 1232.0,
       "Stake Compuesto": 24.96,
       "Beneficio Compuesto": 11.23,
-      "Banca Compuesto": 1259.44
+      "Banca Compuesto": 1259.44,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-11",
@@ -8910,7 +9086,8 @@ window.dashboardData = {
       "Banca Fijo": 1241.0,
       "Stake Compuesto": 25.19,
       "Beneficio Compuesto": 11.33,
-      "Banca Compuesto": 1270.78
+      "Banca Compuesto": 1270.78,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-23",
@@ -8928,7 +9105,8 @@ window.dashboardData = {
       "Banca Fijo": 1250.0,
       "Stake Compuesto": 25.42,
       "Beneficio Compuesto": 11.44,
-      "Banca Compuesto": 1282.22
+      "Banca Compuesto": 1282.22,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-25",
@@ -8946,7 +9124,8 @@ window.dashboardData = {
       "Banca Fijo": 1259.0,
       "Stake Compuesto": 25.64,
       "Beneficio Compuesto": 11.54,
-      "Banca Compuesto": 1293.76
+      "Banca Compuesto": 1293.76,
+      "league_id": 368
     },
     {
       "Fecha": "2023-06-27",
@@ -8964,7 +9143,8 @@ window.dashboardData = {
       "Banca Fijo": 1239.0,
       "Stake Compuesto": 25.88,
       "Beneficio Compuesto": -25.88,
-      "Banca Compuesto": 1267.88
+      "Banca Compuesto": 1267.88,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-01",
@@ -8982,7 +9162,8 @@ window.dashboardData = {
       "Banca Fijo": 1248.0,
       "Stake Compuesto": 25.36,
       "Beneficio Compuesto": 11.41,
-      "Banca Compuesto": 1279.29
+      "Banca Compuesto": 1279.29,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-01",
@@ -9000,7 +9181,8 @@ window.dashboardData = {
       "Banca Fijo": 1257.0,
       "Stake Compuesto": 25.59,
       "Beneficio Compuesto": 11.51,
-      "Banca Compuesto": 1290.8
+      "Banca Compuesto": 1290.8,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-02",
@@ -9018,7 +9200,8 @@ window.dashboardData = {
       "Banca Fijo": 1237.0,
       "Stake Compuesto": 25.82,
       "Beneficio Compuesto": -25.82,
-      "Banca Compuesto": 1264.99
+      "Banca Compuesto": 1264.99,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-06",
@@ -9036,7 +9219,8 @@ window.dashboardData = {
       "Banca Fijo": 1246.0,
       "Stake Compuesto": 25.3,
       "Beneficio Compuesto": 11.38,
-      "Banca Compuesto": 1276.37
+      "Banca Compuesto": 1276.37,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-07",
@@ -9054,7 +9238,8 @@ window.dashboardData = {
       "Banca Fijo": 1226.0,
       "Stake Compuesto": 25.53,
       "Beneficio Compuesto": -25.53,
-      "Banca Compuesto": 1250.85
+      "Banca Compuesto": 1250.85,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-08",
@@ -9072,7 +9257,8 @@ window.dashboardData = {
       "Banca Fijo": 1235.0,
       "Stake Compuesto": 25.02,
       "Beneficio Compuesto": 11.26,
-      "Banca Compuesto": 1262.1
+      "Banca Compuesto": 1262.1,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-11",
@@ -9090,7 +9276,8 @@ window.dashboardData = {
       "Banca Fijo": 1244.0,
       "Stake Compuesto": 25.24,
       "Beneficio Compuesto": 11.36,
-      "Banca Compuesto": 1273.46
+      "Banca Compuesto": 1273.46,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-12",
@@ -9108,7 +9295,8 @@ window.dashboardData = {
       "Banca Fijo": 1253.0,
       "Stake Compuesto": 25.47,
       "Beneficio Compuesto": 11.46,
-      "Banca Compuesto": 1284.92
+      "Banca Compuesto": 1284.92,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-16",
@@ -9126,7 +9314,8 @@ window.dashboardData = {
       "Banca Fijo": 1233.0,
       "Stake Compuesto": 25.7,
       "Beneficio Compuesto": -25.7,
-      "Banca Compuesto": 1259.23
+      "Banca Compuesto": 1259.23,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-16",
@@ -9144,7 +9333,8 @@ window.dashboardData = {
       "Banca Fijo": 1242.0,
       "Stake Compuesto": 25.18,
       "Beneficio Compuesto": 11.33,
-      "Banca Compuesto": 1270.56
+      "Banca Compuesto": 1270.56,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-20",
@@ -9162,7 +9352,8 @@ window.dashboardData = {
       "Banca Fijo": 1251.0,
       "Stake Compuesto": 25.41,
       "Beneficio Compuesto": 11.44,
-      "Banca Compuesto": 1281.99
+      "Banca Compuesto": 1281.99,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-21",
@@ -9180,7 +9371,8 @@ window.dashboardData = {
       "Banca Fijo": 1260.0,
       "Stake Compuesto": 25.64,
       "Beneficio Compuesto": 11.54,
-      "Banca Compuesto": 1293.53
+      "Banca Compuesto": 1293.53,
+      "league_id": 368
     },
     {
       "Fecha": "2023-07-28",
@@ -9198,7 +9390,8 @@ window.dashboardData = {
       "Banca Fijo": 1269.0,
       "Stake Compuesto": 25.87,
       "Beneficio Compuesto": 11.64,
-      "Banca Compuesto": 1305.17
+      "Banca Compuesto": 1305.17,
+      "league_id": 84
     },
     {
       "Fecha": "2023-07-29",
@@ -9216,7 +9409,8 @@ window.dashboardData = {
       "Banca Fijo": 1249.0,
       "Stake Compuesto": 26.1,
       "Beneficio Compuesto": -26.1,
-      "Banca Compuesto": 1279.07
+      "Banca Compuesto": 1279.07,
+      "league_id": 79
     },
     {
       "Fecha": "2023-07-31",
@@ -9234,7 +9428,8 @@ window.dashboardData = {
       "Banca Fijo": 1258.0,
       "Stake Compuesto": 25.58,
       "Beneficio Compuesto": 11.51,
-      "Banca Compuesto": 1290.58
+      "Banca Compuesto": 1290.58,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-03",
@@ -9252,7 +9447,8 @@ window.dashboardData = {
       "Banca Fijo": 1267.0,
       "Stake Compuesto": 25.81,
       "Beneficio Compuesto": 11.62,
-      "Banca Compuesto": 1302.2
+      "Banca Compuesto": 1302.2,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-04",
@@ -9270,7 +9466,8 @@ window.dashboardData = {
       "Banca Fijo": 1247.0,
       "Stake Compuesto": 26.04,
       "Beneficio Compuesto": -26.04,
-      "Banca Compuesto": 1276.15
+      "Banca Compuesto": 1276.15,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-04",
@@ -9288,7 +9485,8 @@ window.dashboardData = {
       "Banca Fijo": 1256.0,
       "Stake Compuesto": 25.52,
       "Beneficio Compuesto": 11.49,
-      "Banca Compuesto": 1287.64
+      "Banca Compuesto": 1287.64,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-05",
@@ -9306,7 +9504,8 @@ window.dashboardData = {
       "Banca Fijo": 1265.0,
       "Stake Compuesto": 25.75,
       "Beneficio Compuesto": 11.59,
-      "Banca Compuesto": 1299.23
+      "Banca Compuesto": 1299.23,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-06",
@@ -9324,7 +9523,8 @@ window.dashboardData = {
       "Banca Fijo": 1274.0,
       "Stake Compuesto": 25.98,
       "Beneficio Compuesto": 11.69,
-      "Banca Compuesto": 1310.92
+      "Banca Compuesto": 1310.92,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-06",
@@ -9342,7 +9542,8 @@ window.dashboardData = {
       "Banca Fijo": 1283.0,
       "Stake Compuesto": 26.22,
       "Beneficio Compuesto": 11.8,
-      "Banca Compuesto": 1322.72
+      "Banca Compuesto": 1322.72,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-11",
@@ -9360,7 +9561,8 @@ window.dashboardData = {
       "Banca Fijo": 1292.0,
       "Stake Compuesto": 26.45,
       "Beneficio Compuesto": 11.9,
-      "Banca Compuesto": 1334.62
+      "Banca Compuesto": 1334.62,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-11",
@@ -9378,7 +9580,8 @@ window.dashboardData = {
       "Banca Fijo": 1301.0,
       "Stake Compuesto": 26.69,
       "Beneficio Compuesto": 12.01,
-      "Banca Compuesto": 1346.63
+      "Banca Compuesto": 1346.63,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-11",
@@ -9396,7 +9599,8 @@ window.dashboardData = {
       "Banca Fijo": 1310.0,
       "Stake Compuesto": 26.93,
       "Beneficio Compuesto": 12.12,
-      "Banca Compuesto": 1358.75
+      "Banca Compuesto": 1358.75,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-11",
@@ -9414,7 +9618,8 @@ window.dashboardData = {
       "Banca Fijo": 1290.0,
       "Stake Compuesto": 27.18,
       "Beneficio Compuesto": -27.18,
-      "Banca Compuesto": 1331.58
+      "Banca Compuesto": 1331.58,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-11",
@@ -9432,7 +9637,8 @@ window.dashboardData = {
       "Banca Fijo": 1299.0,
       "Stake Compuesto": 26.63,
       "Beneficio Compuesto": 11.98,
-      "Banca Compuesto": 1343.56
+      "Banca Compuesto": 1343.56,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-12",
@@ -9450,7 +9656,8 @@ window.dashboardData = {
       "Banca Fijo": 1279.0,
       "Stake Compuesto": 26.87,
       "Beneficio Compuesto": -26.87,
-      "Banca Compuesto": 1316.69
+      "Banca Compuesto": 1316.69,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-12",
@@ -9468,7 +9675,8 @@ window.dashboardData = {
       "Banca Fijo": 1288.0,
       "Stake Compuesto": 26.33,
       "Beneficio Compuesto": 11.85,
-      "Banca Compuesto": 1328.54
+      "Banca Compuesto": 1328.54,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-12",
@@ -9486,7 +9694,8 @@ window.dashboardData = {
       "Banca Fijo": 1297.0,
       "Stake Compuesto": 26.57,
       "Beneficio Compuesto": 11.96,
-      "Banca Compuesto": 1340.5
+      "Banca Compuesto": 1340.5,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-13",
@@ -9504,7 +9713,8 @@ window.dashboardData = {
       "Banca Fijo": 1306.0,
       "Stake Compuesto": 26.81,
       "Beneficio Compuesto": 12.06,
-      "Banca Compuesto": 1352.56
+      "Banca Compuesto": 1352.56,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-13",
@@ -9522,7 +9732,8 @@ window.dashboardData = {
       "Banca Fijo": 1315.0,
       "Stake Compuesto": 27.05,
       "Beneficio Compuesto": 12.17,
-      "Banca Compuesto": 1364.74
+      "Banca Compuesto": 1364.74,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-14",
@@ -9540,7 +9751,8 @@ window.dashboardData = {
       "Banca Fijo": 1324.0,
       "Stake Compuesto": 27.29,
       "Beneficio Compuesto": 12.28,
-      "Banca Compuesto": 1377.02
+      "Banca Compuesto": 1377.02,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-14",
@@ -9558,7 +9770,8 @@ window.dashboardData = {
       "Banca Fijo": 1333.0,
       "Stake Compuesto": 27.54,
       "Beneficio Compuesto": 12.39,
-      "Banca Compuesto": 1389.41
+      "Banca Compuesto": 1389.41,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-14",
@@ -9576,7 +9789,8 @@ window.dashboardData = {
       "Banca Fijo": 1342.0,
       "Stake Compuesto": 27.79,
       "Beneficio Compuesto": 12.5,
-      "Banca Compuesto": 1401.92
+      "Banca Compuesto": 1401.92,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-18",
@@ -9594,7 +9808,8 @@ window.dashboardData = {
       "Banca Fijo": 1351.0,
       "Stake Compuesto": 28.04,
       "Beneficio Compuesto": 12.62,
-      "Banca Compuesto": 1414.53
+      "Banca Compuesto": 1414.53,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-18",
@@ -9612,7 +9827,8 @@ window.dashboardData = {
       "Banca Fijo": 1360.0,
       "Stake Compuesto": 28.29,
       "Beneficio Compuesto": 12.73,
-      "Banca Compuesto": 1427.27
+      "Banca Compuesto": 1427.27,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-18",
@@ -9630,7 +9846,8 @@ window.dashboardData = {
       "Banca Fijo": 1369.0,
       "Stake Compuesto": 28.55,
       "Beneficio Compuesto": 12.85,
-      "Banca Compuesto": 1440.11
+      "Banca Compuesto": 1440.11,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-18",
@@ -9648,7 +9865,8 @@ window.dashboardData = {
       "Banca Fijo": 1378.0,
       "Stake Compuesto": 28.8,
       "Beneficio Compuesto": 12.96,
-      "Banca Compuesto": 1453.07
+      "Banca Compuesto": 1453.07,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-18",
@@ -9666,7 +9884,8 @@ window.dashboardData = {
       "Banca Fijo": 1387.0,
       "Stake Compuesto": 29.06,
       "Beneficio Compuesto": 13.08,
-      "Banca Compuesto": 1466.15
+      "Banca Compuesto": 1466.15,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-18",
@@ -9684,7 +9903,8 @@ window.dashboardData = {
       "Banca Fijo": 1396.0,
       "Stake Compuesto": 29.32,
       "Beneficio Compuesto": 13.2,
-      "Banca Compuesto": 1479.34
+      "Banca Compuesto": 1479.34,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-18",
@@ -9702,7 +9922,8 @@ window.dashboardData = {
       "Banca Fijo": 1405.0,
       "Stake Compuesto": 29.59,
       "Beneficio Compuesto": 13.31,
-      "Banca Compuesto": 1492.66
+      "Banca Compuesto": 1492.66,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-19",
@@ -9720,7 +9941,8 @@ window.dashboardData = {
       "Banca Fijo": 1414.0,
       "Stake Compuesto": 29.85,
       "Beneficio Compuesto": 13.43,
-      "Banca Compuesto": 1506.09
+      "Banca Compuesto": 1506.09,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-19",
@@ -9738,7 +9960,8 @@ window.dashboardData = {
       "Banca Fijo": 1423.0,
       "Stake Compuesto": 30.12,
       "Beneficio Compuesto": 13.55,
-      "Banca Compuesto": 1519.65
+      "Banca Compuesto": 1519.65,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-19",
@@ -9756,7 +9979,8 @@ window.dashboardData = {
       "Banca Fijo": 1432.0,
       "Stake Compuesto": 30.39,
       "Beneficio Compuesto": 13.68,
-      "Banca Compuesto": 1533.32
+      "Banca Compuesto": 1533.32,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-19",
@@ -9774,7 +9998,8 @@ window.dashboardData = {
       "Banca Fijo": 1441.0,
       "Stake Compuesto": 30.67,
       "Beneficio Compuesto": 13.8,
-      "Banca Compuesto": 1547.12
+      "Banca Compuesto": 1547.12,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-19",
@@ -9792,7 +10017,8 @@ window.dashboardData = {
       "Banca Fijo": 1450.0,
       "Stake Compuesto": 30.94,
       "Beneficio Compuesto": 13.92,
-      "Banca Compuesto": 1561.05
+      "Banca Compuesto": 1561.05,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-19",
@@ -9810,7 +10036,8 @@ window.dashboardData = {
       "Banca Fijo": 1459.0,
       "Stake Compuesto": 31.22,
       "Beneficio Compuesto": 14.05,
-      "Banca Compuesto": 1575.1
+      "Banca Compuesto": 1575.1,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-19",
@@ -9828,7 +10055,8 @@ window.dashboardData = {
       "Banca Fijo": 1468.0,
       "Stake Compuesto": 31.5,
       "Beneficio Compuesto": 14.18,
-      "Banca Compuesto": 1589.27
+      "Banca Compuesto": 1589.27,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-19",
@@ -9846,7 +10074,8 @@ window.dashboardData = {
       "Banca Fijo": 1477.0,
       "Stake Compuesto": 31.79,
       "Beneficio Compuesto": 14.3,
-      "Banca Compuesto": 1603.58
+      "Banca Compuesto": 1603.58,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-19",
@@ -9864,7 +10093,8 @@ window.dashboardData = {
       "Banca Fijo": 1486.0,
       "Stake Compuesto": 32.07,
       "Beneficio Compuesto": 14.43,
-      "Banca Compuesto": 1618.01
+      "Banca Compuesto": 1618.01,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-19",
@@ -9882,7 +10112,8 @@ window.dashboardData = {
       "Banca Fijo": 1495.0,
       "Stake Compuesto": 32.36,
       "Beneficio Compuesto": 14.56,
-      "Banca Compuesto": 1632.57
+      "Banca Compuesto": 1632.57,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-19",
@@ -9900,7 +10131,8 @@ window.dashboardData = {
       "Banca Fijo": 1504.0,
       "Stake Compuesto": 32.65,
       "Beneficio Compuesto": 14.69,
-      "Banca Compuesto": 1647.26
+      "Banca Compuesto": 1647.26,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-20",
@@ -9918,7 +10150,8 @@ window.dashboardData = {
       "Banca Fijo": 1513.0,
       "Stake Compuesto": 32.95,
       "Beneficio Compuesto": 14.83,
-      "Banca Compuesto": 1662.09
+      "Banca Compuesto": 1662.09,
+      "league_id": 368
     },
     {
       "Fecha": "2023-08-21",
@@ -9936,7 +10169,8 @@ window.dashboardData = {
       "Banca Fijo": 1522.0,
       "Stake Compuesto": 33.24,
       "Beneficio Compuesto": 14.96,
-      "Banca Compuesto": 1677.05
+      "Banca Compuesto": 1677.05,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-21",
@@ -9954,7 +10188,8 @@ window.dashboardData = {
       "Banca Fijo": 1531.0,
       "Stake Compuesto": 33.54,
       "Beneficio Compuesto": 15.09,
-      "Banca Compuesto": 1692.14
+      "Banca Compuesto": 1692.14,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-25",
@@ -9972,7 +10207,8 @@ window.dashboardData = {
       "Banca Fijo": 1540.0,
       "Stake Compuesto": 33.84,
       "Beneficio Compuesto": 15.23,
-      "Banca Compuesto": 1707.37
+      "Banca Compuesto": 1707.37,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-25",
@@ -9990,7 +10226,8 @@ window.dashboardData = {
       "Banca Fijo": 1520.0,
       "Stake Compuesto": 34.15,
       "Beneficio Compuesto": -34.15,
-      "Banca Compuesto": 1673.22
+      "Banca Compuesto": 1673.22,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-25",
@@ -10008,7 +10245,8 @@ window.dashboardData = {
       "Banca Fijo": 1529.0,
       "Stake Compuesto": 33.46,
       "Beneficio Compuesto": 15.06,
-      "Banca Compuesto": 1688.28
+      "Banca Compuesto": 1688.28,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-25",
@@ -10026,7 +10264,8 @@ window.dashboardData = {
       "Banca Fijo": 1538.0,
       "Stake Compuesto": 33.77,
       "Beneficio Compuesto": 15.19,
-      "Banca Compuesto": 1703.48
+      "Banca Compuesto": 1703.48,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-25",
@@ -10044,7 +10283,8 @@ window.dashboardData = {
       "Banca Fijo": 1518.0,
       "Stake Compuesto": 34.07,
       "Beneficio Compuesto": -34.07,
-      "Banca Compuesto": 1669.41
+      "Banca Compuesto": 1669.41,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-25",
@@ -10062,7 +10302,8 @@ window.dashboardData = {
       "Banca Fijo": 1527.0,
       "Stake Compuesto": 33.39,
       "Beneficio Compuesto": 15.02,
-      "Banca Compuesto": 1684.43
+      "Banca Compuesto": 1684.43,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-25",
@@ -10080,7 +10321,8 @@ window.dashboardData = {
       "Banca Fijo": 1536.0,
       "Stake Compuesto": 33.69,
       "Beneficio Compuesto": 15.16,
-      "Banca Compuesto": 1699.59
+      "Banca Compuesto": 1699.59,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-25",
@@ -10098,7 +10340,8 @@ window.dashboardData = {
       "Banca Fijo": 1516.0,
       "Stake Compuesto": 33.99,
       "Beneficio Compuesto": -33.99,
-      "Banca Compuesto": 1665.6
+      "Banca Compuesto": 1665.6,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-26",
@@ -10116,7 +10359,8 @@ window.dashboardData = {
       "Banca Fijo": 1525.0,
       "Stake Compuesto": 33.31,
       "Beneficio Compuesto": 14.99,
-      "Banca Compuesto": 1680.59
+      "Banca Compuesto": 1680.59,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-26",
@@ -10134,7 +10378,8 @@ window.dashboardData = {
       "Banca Fijo": 1534.0,
       "Stake Compuesto": 33.61,
       "Beneficio Compuesto": 15.13,
-      "Banca Compuesto": 1695.72
+      "Banca Compuesto": 1695.72,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-26",
@@ -10152,7 +10397,8 @@ window.dashboardData = {
       "Banca Fijo": 1543.0,
       "Stake Compuesto": 33.91,
       "Beneficio Compuesto": 15.26,
-      "Banca Compuesto": 1710.98
+      "Banca Compuesto": 1710.98,
+      "league_id": 78
     },
     {
       "Fecha": "2023-08-26",
@@ -10170,7 +10416,8 @@ window.dashboardData = {
       "Banca Fijo": 1552.0,
       "Stake Compuesto": 34.22,
       "Beneficio Compuesto": 15.4,
-      "Banca Compuesto": 1726.38
+      "Banca Compuesto": 1726.38,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-26",
@@ -10188,7 +10435,8 @@ window.dashboardData = {
       "Banca Fijo": 1561.0,
       "Stake Compuesto": 34.53,
       "Beneficio Compuesto": 15.54,
-      "Banca Compuesto": 1741.91
+      "Banca Compuesto": 1741.91,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-26",
@@ -10206,7 +10454,8 @@ window.dashboardData = {
       "Banca Fijo": 1570.0,
       "Stake Compuesto": 34.84,
       "Beneficio Compuesto": 15.68,
-      "Banca Compuesto": 1757.59
+      "Banca Compuesto": 1757.59,
+      "league_id": 84
     },
     {
       "Fecha": "2023-08-26",
@@ -10224,7 +10473,8 @@ window.dashboardData = {
       "Banca Fijo": 1579.0,
       "Stake Compuesto": 35.15,
       "Beneficio Compuesto": 15.82,
-      "Banca Compuesto": 1773.41
+      "Banca Compuesto": 1773.41,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-26",
@@ -10242,7 +10492,8 @@ window.dashboardData = {
       "Banca Fijo": 1588.0,
       "Stake Compuesto": 35.47,
       "Beneficio Compuesto": 15.96,
-      "Banca Compuesto": 1789.37
+      "Banca Compuesto": 1789.37,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-26",
@@ -10260,7 +10511,8 @@ window.dashboardData = {
       "Banca Fijo": 1597.0,
       "Stake Compuesto": 35.79,
       "Beneficio Compuesto": 16.1,
-      "Banca Compuesto": 1805.47
+      "Banca Compuesto": 1805.47,
+      "league_id": 492
     },
     {
       "Fecha": "2023-08-26",
@@ -10278,7 +10530,8 @@ window.dashboardData = {
       "Banca Fijo": 1606.0,
       "Stake Compuesto": 36.11,
       "Beneficio Compuesto": 16.25,
-      "Banca Compuesto": 1821.72
+      "Banca Compuesto": 1821.72,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-27",
@@ -10296,7 +10549,8 @@ window.dashboardData = {
       "Banca Fijo": 1615.0,
       "Stake Compuesto": 36.43,
       "Beneficio Compuesto": 16.4,
-      "Banca Compuesto": 1838.12
+      "Banca Compuesto": 1838.12,
+      "league_id": 79
     },
     {
       "Fecha": "2023-08-27",
@@ -10314,7 +10568,8 @@ window.dashboardData = {
       "Banca Fijo": 1624.0,
       "Stake Compuesto": 36.76,
       "Beneficio Compuesto": 16.54,
-      "Banca Compuesto": 1854.66
+      "Banca Compuesto": 1854.66,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-28",
@@ -10332,7 +10587,8 @@ window.dashboardData = {
       "Banca Fijo": 1604.0,
       "Stake Compuesto": 37.09,
       "Beneficio Compuesto": -37.09,
-      "Banca Compuesto": 1817.57
+      "Banca Compuesto": 1817.57,
+      "league_id": 702
     },
     {
       "Fecha": "2023-08-29",
@@ -10350,7 +10606,8 @@ window.dashboardData = {
       "Banca Fijo": 1584.0,
       "Stake Compuesto": 36.35,
       "Beneficio Compuesto": -36.35,
-      "Banca Compuesto": 1781.22
+      "Banca Compuesto": 1781.22,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-01",
@@ -10368,7 +10625,8 @@ window.dashboardData = {
       "Banca Fijo": 1593.0,
       "Stake Compuesto": 35.62,
       "Beneficio Compuesto": 16.03,
-      "Banca Compuesto": 1797.25
+      "Banca Compuesto": 1797.25,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-01",
@@ -10386,7 +10644,8 @@ window.dashboardData = {
       "Banca Fijo": 1602.0,
       "Stake Compuesto": 35.94,
       "Beneficio Compuesto": 16.18,
-      "Banca Compuesto": 1813.42
+      "Banca Compuesto": 1813.42,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-01",
@@ -10404,7 +10663,8 @@ window.dashboardData = {
       "Banca Fijo": 1611.0,
       "Stake Compuesto": 36.27,
       "Beneficio Compuesto": 16.32,
-      "Banca Compuesto": 1829.74
+      "Banca Compuesto": 1829.74,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-01",
@@ -10422,7 +10682,8 @@ window.dashboardData = {
       "Banca Fijo": 1620.0,
       "Stake Compuesto": 36.59,
       "Beneficio Compuesto": 16.47,
-      "Banca Compuesto": 1846.21
+      "Banca Compuesto": 1846.21,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-01",
@@ -10440,7 +10701,8 @@ window.dashboardData = {
       "Banca Fijo": 1629.0,
       "Stake Compuesto": 36.92,
       "Beneficio Compuesto": 16.62,
-      "Banca Compuesto": 1862.83
+      "Banca Compuesto": 1862.83,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-01",
@@ -10458,7 +10720,8 @@ window.dashboardData = {
       "Banca Fijo": 1609.0,
       "Stake Compuesto": 37.26,
       "Beneficio Compuesto": -37.26,
-      "Banca Compuesto": 1825.57
+      "Banca Compuesto": 1825.57,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-02",
@@ -10476,7 +10739,8 @@ window.dashboardData = {
       "Banca Fijo": 1618.0,
       "Stake Compuesto": 36.51,
       "Beneficio Compuesto": 16.43,
-      "Banca Compuesto": 1842.0
+      "Banca Compuesto": 1842.0,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-02",
@@ -10494,7 +10758,8 @@ window.dashboardData = {
       "Banca Fijo": 1627.0,
       "Stake Compuesto": 36.84,
       "Beneficio Compuesto": 16.58,
-      "Banca Compuesto": 1858.58
+      "Banca Compuesto": 1858.58,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-02",
@@ -10512,7 +10777,8 @@ window.dashboardData = {
       "Banca Fijo": 1636.0,
       "Stake Compuesto": 37.17,
       "Beneficio Compuesto": 16.73,
-      "Banca Compuesto": 1875.31
+      "Banca Compuesto": 1875.31,
+      "league_id": 79
     },
     {
       "Fecha": "2023-09-02",
@@ -10530,7 +10796,8 @@ window.dashboardData = {
       "Banca Fijo": 1616.0,
       "Stake Compuesto": 37.51,
       "Beneficio Compuesto": -37.51,
-      "Banca Compuesto": 1837.8
+      "Banca Compuesto": 1837.8,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-02",
@@ -10548,7 +10815,8 @@ window.dashboardData = {
       "Banca Fijo": 1625.0,
       "Stake Compuesto": 36.76,
       "Beneficio Compuesto": 16.54,
-      "Banca Compuesto": 1854.34
+      "Banca Compuesto": 1854.34,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-02",
@@ -10566,7 +10834,8 @@ window.dashboardData = {
       "Banca Fijo": 1634.0,
       "Stake Compuesto": 37.09,
       "Beneficio Compuesto": 16.69,
-      "Banca Compuesto": 1871.03
+      "Banca Compuesto": 1871.03,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-02",
@@ -10584,7 +10853,8 @@ window.dashboardData = {
       "Banca Fijo": 1614.0,
       "Stake Compuesto": 37.42,
       "Beneficio Compuesto": -37.42,
-      "Banca Compuesto": 1833.61
+      "Banca Compuesto": 1833.61,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-02",
@@ -10602,7 +10872,8 @@ window.dashboardData = {
       "Banca Fijo": 1623.0,
       "Stake Compuesto": 36.67,
       "Beneficio Compuesto": 16.5,
-      "Banca Compuesto": 1850.11
+      "Banca Compuesto": 1850.11,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-02",
@@ -10620,7 +10891,8 @@ window.dashboardData = {
       "Banca Fijo": 1632.0,
       "Stake Compuesto": 37.0,
       "Beneficio Compuesto": 16.65,
-      "Banca Compuesto": 1866.76
+      "Banca Compuesto": 1866.76,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-02",
@@ -10638,7 +10910,8 @@ window.dashboardData = {
       "Banca Fijo": 1641.0,
       "Stake Compuesto": 37.34,
       "Beneficio Compuesto": 16.8,
-      "Banca Compuesto": 1883.56
+      "Banca Compuesto": 1883.56,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-03",
@@ -10656,7 +10929,8 @@ window.dashboardData = {
       "Banca Fijo": 1650.0,
       "Stake Compuesto": 37.67,
       "Beneficio Compuesto": 16.95,
-      "Banca Compuesto": 1900.52
+      "Banca Compuesto": 1900.52,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-03",
@@ -10674,7 +10948,8 @@ window.dashboardData = {
       "Banca Fijo": 1659.0,
       "Stake Compuesto": 38.01,
       "Beneficio Compuesto": 17.1,
-      "Banca Compuesto": 1917.62
+      "Banca Compuesto": 1917.62,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-03",
@@ -10692,7 +10967,8 @@ window.dashboardData = {
       "Banca Fijo": 1668.0,
       "Stake Compuesto": 38.35,
       "Beneficio Compuesto": 17.26,
-      "Banca Compuesto": 1934.88
+      "Banca Compuesto": 1934.88,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-03",
@@ -10710,7 +10986,8 @@ window.dashboardData = {
       "Banca Fijo": 1677.0,
       "Stake Compuesto": 38.7,
       "Beneficio Compuesto": 17.41,
-      "Banca Compuesto": 1952.29
+      "Banca Compuesto": 1952.29,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-09",
@@ -10728,7 +11005,8 @@ window.dashboardData = {
       "Banca Fijo": 1686.0,
       "Stake Compuesto": 39.05,
       "Beneficio Compuesto": 17.57,
-      "Banca Compuesto": 1969.86
+      "Banca Compuesto": 1969.86,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-09",
@@ -10746,7 +11024,8 @@ window.dashboardData = {
       "Banca Fijo": 1695.0,
       "Stake Compuesto": 39.4,
       "Beneficio Compuesto": 17.73,
-      "Banca Compuesto": 1987.59
+      "Banca Compuesto": 1987.59,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-09",
@@ -10764,7 +11043,8 @@ window.dashboardData = {
       "Banca Fijo": 1704.0,
       "Stake Compuesto": 39.75,
       "Beneficio Compuesto": 17.89,
-      "Banca Compuesto": 2005.48
+      "Banca Compuesto": 2005.48,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-09",
@@ -10782,7 +11062,8 @@ window.dashboardData = {
       "Banca Fijo": 1713.0,
       "Stake Compuesto": 40.11,
       "Beneficio Compuesto": 18.05,
-      "Banca Compuesto": 2023.53
+      "Banca Compuesto": 2023.53,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-10",
@@ -10800,7 +11081,8 @@ window.dashboardData = {
       "Banca Fijo": 1722.0,
       "Stake Compuesto": 40.47,
       "Beneficio Compuesto": 18.21,
-      "Banca Compuesto": 2041.74
+      "Banca Compuesto": 2041.74,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-15",
@@ -10818,7 +11100,8 @@ window.dashboardData = {
       "Banca Fijo": 1702.0,
       "Stake Compuesto": 40.83,
       "Beneficio Compuesto": -40.83,
-      "Banca Compuesto": 2000.91
+      "Banca Compuesto": 2000.91,
+      "league_id": 368
     },
     {
       "Fecha": "2023-09-16",
@@ -10836,7 +11119,8 @@ window.dashboardData = {
       "Banca Fijo": 1711.0,
       "Stake Compuesto": 40.02,
       "Beneficio Compuesto": 18.01,
-      "Banca Compuesto": 2018.92
+      "Banca Compuesto": 2018.92,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-16",
@@ -10854,7 +11138,8 @@ window.dashboardData = {
       "Banca Fijo": 1720.0,
       "Stake Compuesto": 40.38,
       "Beneficio Compuesto": 18.17,
-      "Banca Compuesto": 2037.09
+      "Banca Compuesto": 2037.09,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-16",
@@ -10872,7 +11157,8 @@ window.dashboardData = {
       "Banca Fijo": 1729.0,
       "Stake Compuesto": 40.74,
       "Beneficio Compuesto": 18.33,
-      "Banca Compuesto": 2055.42
+      "Banca Compuesto": 2055.42,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-16",
@@ -10890,7 +11176,8 @@ window.dashboardData = {
       "Banca Fijo": 1738.0,
       "Stake Compuesto": 41.11,
       "Beneficio Compuesto": 18.5,
-      "Banca Compuesto": 2073.92
+      "Banca Compuesto": 2073.92,
+      "league_id": 79
     },
     {
       "Fecha": "2023-09-16",
@@ -10908,7 +11195,8 @@ window.dashboardData = {
       "Banca Fijo": 1747.0,
       "Stake Compuesto": 41.48,
       "Beneficio Compuesto": 18.67,
-      "Banca Compuesto": 2092.58
+      "Banca Compuesto": 2092.58,
+      "league_id": 368
     },
     {
       "Fecha": "2023-09-16",
@@ -10926,7 +11214,8 @@ window.dashboardData = {
       "Banca Fijo": 1756.0,
       "Stake Compuesto": 41.85,
       "Beneficio Compuesto": 18.83,
-      "Banca Compuesto": 2111.42
+      "Banca Compuesto": 2111.42,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-16",
@@ -10944,7 +11233,8 @@ window.dashboardData = {
       "Banca Fijo": 1765.0,
       "Stake Compuesto": 42.23,
       "Beneficio Compuesto": 19.0,
-      "Banca Compuesto": 2130.42
+      "Banca Compuesto": 2130.42,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-16",
@@ -10962,7 +11252,8 @@ window.dashboardData = {
       "Banca Fijo": 1774.0,
       "Stake Compuesto": 42.61,
       "Beneficio Compuesto": 19.17,
-      "Banca Compuesto": 2149.59
+      "Banca Compuesto": 2149.59,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-17",
@@ -10980,7 +11271,8 @@ window.dashboardData = {
       "Banca Fijo": 1783.0,
       "Stake Compuesto": 42.99,
       "Beneficio Compuesto": 19.35,
-      "Banca Compuesto": 2168.94
+      "Banca Compuesto": 2168.94,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-17",
@@ -10998,7 +11290,8 @@ window.dashboardData = {
       "Banca Fijo": 1792.0,
       "Stake Compuesto": 43.38,
       "Beneficio Compuesto": 19.52,
-      "Banca Compuesto": 2188.46
+      "Banca Compuesto": 2188.46,
+      "league_id": 79
     },
     {
       "Fecha": "2023-09-17",
@@ -11016,7 +11309,8 @@ window.dashboardData = {
       "Banca Fijo": 1801.0,
       "Stake Compuesto": 43.77,
       "Beneficio Compuesto": 19.7,
-      "Banca Compuesto": 2208.16
+      "Banca Compuesto": 2208.16,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-17",
@@ -11034,7 +11328,8 @@ window.dashboardData = {
       "Banca Fijo": 1810.0,
       "Stake Compuesto": 44.16,
       "Beneficio Compuesto": 19.87,
-      "Banca Compuesto": 2228.03
+      "Banca Compuesto": 2228.03,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-19",
@@ -11052,7 +11347,8 @@ window.dashboardData = {
       "Banca Fijo": 1819.0,
       "Stake Compuesto": 44.56,
       "Beneficio Compuesto": 20.05,
-      "Banca Compuesto": 2248.08
+      "Banca Compuesto": 2248.08,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-22",
@@ -11070,7 +11366,8 @@ window.dashboardData = {
       "Banca Fijo": 1828.0,
       "Stake Compuesto": 44.96,
       "Beneficio Compuesto": 20.23,
-      "Banca Compuesto": 2268.31
+      "Banca Compuesto": 2268.31,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-23",
@@ -11088,7 +11385,8 @@ window.dashboardData = {
       "Banca Fijo": 1808.0,
       "Stake Compuesto": 45.37,
       "Beneficio Compuesto": -45.37,
-      "Banca Compuesto": 2222.95
+      "Banca Compuesto": 2222.95,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-23",
@@ -11106,7 +11404,8 @@ window.dashboardData = {
       "Banca Fijo": 1817.0,
       "Stake Compuesto": 44.46,
       "Beneficio Compuesto": 20.01,
-      "Banca Compuesto": 2242.95
+      "Banca Compuesto": 2242.95,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-23",
@@ -11124,7 +11423,8 @@ window.dashboardData = {
       "Banca Fijo": 1826.0,
       "Stake Compuesto": 44.86,
       "Beneficio Compuesto": 20.19,
-      "Banca Compuesto": 2263.14
+      "Banca Compuesto": 2263.14,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-23",
@@ -11142,7 +11442,8 @@ window.dashboardData = {
       "Banca Fijo": 1835.0,
       "Stake Compuesto": 45.26,
       "Beneficio Compuesto": 20.37,
-      "Banca Compuesto": 2283.51
+      "Banca Compuesto": 2283.51,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-23",
@@ -11160,7 +11461,8 @@ window.dashboardData = {
       "Banca Fijo": 1844.0,
       "Stake Compuesto": 45.67,
       "Beneficio Compuesto": 20.55,
-      "Banca Compuesto": 2304.06
+      "Banca Compuesto": 2304.06,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-23",
@@ -11178,7 +11480,8 @@ window.dashboardData = {
       "Banca Fijo": 1853.0,
       "Stake Compuesto": 46.08,
       "Beneficio Compuesto": 20.74,
-      "Banca Compuesto": 2324.8
+      "Banca Compuesto": 2324.8,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-23",
@@ -11196,7 +11499,8 @@ window.dashboardData = {
       "Banca Fijo": 1862.0,
       "Stake Compuesto": 46.5,
       "Beneficio Compuesto": 20.92,
-      "Banca Compuesto": 2345.72
+      "Banca Compuesto": 2345.72,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-23",
@@ -11214,7 +11518,8 @@ window.dashboardData = {
       "Banca Fijo": 1871.0,
       "Stake Compuesto": 46.91,
       "Beneficio Compuesto": 21.11,
-      "Banca Compuesto": 2366.83
+      "Banca Compuesto": 2366.83,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-24",
@@ -11232,7 +11537,8 @@ window.dashboardData = {
       "Banca Fijo": 1880.0,
       "Stake Compuesto": 47.34,
       "Beneficio Compuesto": 21.3,
-      "Banca Compuesto": 2388.13
+      "Banca Compuesto": 2388.13,
+      "league_id": 79
     },
     {
       "Fecha": "2023-09-24",
@@ -11250,7 +11556,8 @@ window.dashboardData = {
       "Banca Fijo": 1889.0,
       "Stake Compuesto": 47.76,
       "Beneficio Compuesto": 21.49,
-      "Banca Compuesto": 2409.63
+      "Banca Compuesto": 2409.63,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-24",
@@ -11268,7 +11575,8 @@ window.dashboardData = {
       "Banca Fijo": 1898.0,
       "Stake Compuesto": 48.19,
       "Beneficio Compuesto": 21.69,
-      "Banca Compuesto": 2431.31
+      "Banca Compuesto": 2431.31,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-24",
@@ -11286,7 +11594,8 @@ window.dashboardData = {
       "Banca Fijo": 1907.0,
       "Stake Compuesto": 48.63,
       "Beneficio Compuesto": 21.88,
-      "Banca Compuesto": 2453.2
+      "Banca Compuesto": 2453.2,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-25",
@@ -11304,7 +11613,8 @@ window.dashboardData = {
       "Banca Fijo": 1916.0,
       "Stake Compuesto": 49.06,
       "Beneficio Compuesto": 22.08,
-      "Banca Compuesto": 2475.27
+      "Banca Compuesto": 2475.27,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-25",
@@ -11322,7 +11632,8 @@ window.dashboardData = {
       "Banca Fijo": 1925.0,
       "Stake Compuesto": 49.51,
       "Beneficio Compuesto": 22.28,
-      "Banca Compuesto": 2497.55
+      "Banca Compuesto": 2497.55,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-25",
@@ -11340,7 +11651,8 @@ window.dashboardData = {
       "Banca Fijo": 1934.0,
       "Stake Compuesto": 49.95,
       "Beneficio Compuesto": 22.48,
-      "Banca Compuesto": 2520.03
+      "Banca Compuesto": 2520.03,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-29",
@@ -11358,7 +11670,8 @@ window.dashboardData = {
       "Banca Fijo": 1943.0,
       "Stake Compuesto": 50.4,
       "Beneficio Compuesto": 22.68,
-      "Banca Compuesto": 2542.71
+      "Banca Compuesto": 2542.71,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-29",
@@ -11376,7 +11689,8 @@ window.dashboardData = {
       "Banca Fijo": 1952.0,
       "Stake Compuesto": 50.85,
       "Beneficio Compuesto": 22.88,
-      "Banca Compuesto": 2565.59
+      "Banca Compuesto": 2565.59,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-29",
@@ -11394,7 +11708,8 @@ window.dashboardData = {
       "Banca Fijo": 1932.0,
       "Stake Compuesto": 51.31,
       "Beneficio Compuesto": -51.31,
-      "Banca Compuesto": 2514.28
+      "Banca Compuesto": 2514.28,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-29",
@@ -11412,7 +11727,8 @@ window.dashboardData = {
       "Banca Fijo": 1941.0,
       "Stake Compuesto": 50.29,
       "Beneficio Compuesto": 22.63,
-      "Banca Compuesto": 2536.91
+      "Banca Compuesto": 2536.91,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-29",
@@ -11430,7 +11746,8 @@ window.dashboardData = {
       "Banca Fijo": 1950.0,
       "Stake Compuesto": 50.74,
       "Beneficio Compuesto": 22.83,
-      "Banca Compuesto": 2559.74
+      "Banca Compuesto": 2559.74,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-29",
@@ -11448,7 +11765,8 @@ window.dashboardData = {
       "Banca Fijo": 1959.0,
       "Stake Compuesto": 51.19,
       "Beneficio Compuesto": 23.04,
-      "Banca Compuesto": 2582.78
+      "Banca Compuesto": 2582.78,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-30",
@@ -11466,7 +11784,8 @@ window.dashboardData = {
       "Banca Fijo": 1968.0,
       "Stake Compuesto": 51.66,
       "Beneficio Compuesto": 23.25,
-      "Banca Compuesto": 2606.03
+      "Banca Compuesto": 2606.03,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-30",
@@ -11484,7 +11803,8 @@ window.dashboardData = {
       "Banca Fijo": 1977.0,
       "Stake Compuesto": 52.12,
       "Beneficio Compuesto": 23.45,
-      "Banca Compuesto": 2629.48
+      "Banca Compuesto": 2629.48,
+      "league_id": 78
     },
     {
       "Fecha": "2023-09-30",
@@ -11502,7 +11822,8 @@ window.dashboardData = {
       "Banca Fijo": 1986.0,
       "Stake Compuesto": 52.59,
       "Beneficio Compuesto": 23.67,
-      "Banca Compuesto": 2653.15
+      "Banca Compuesto": 2653.15,
+      "league_id": 79
     },
     {
       "Fecha": "2023-09-30",
@@ -11520,7 +11841,8 @@ window.dashboardData = {
       "Banca Fijo": 1995.0,
       "Stake Compuesto": 53.06,
       "Beneficio Compuesto": 23.88,
-      "Banca Compuesto": 2677.02
+      "Banca Compuesto": 2677.02,
+      "league_id": 79
     },
     {
       "Fecha": "2023-09-30",
@@ -11538,7 +11860,8 @@ window.dashboardData = {
       "Banca Fijo": 2004.0,
       "Stake Compuesto": 53.54,
       "Beneficio Compuesto": 24.09,
-      "Banca Compuesto": 2701.12
+      "Banca Compuesto": 2701.12,
+      "league_id": 84
     },
     {
       "Fecha": "2023-09-30",
@@ -11556,7 +11879,8 @@ window.dashboardData = {
       "Banca Fijo": 2013.0,
       "Stake Compuesto": 54.02,
       "Beneficio Compuesto": 24.31,
-      "Banca Compuesto": 2725.43
+      "Banca Compuesto": 2725.43,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-30",
@@ -11574,7 +11898,8 @@ window.dashboardData = {
       "Banca Fijo": 1993.0,
       "Stake Compuesto": 54.51,
       "Beneficio Compuesto": -54.51,
-      "Banca Compuesto": 2670.92
+      "Banca Compuesto": 2670.92,
+      "league_id": 492
     },
     {
       "Fecha": "2023-09-30",
@@ -11592,7 +11917,8 @@ window.dashboardData = {
       "Banca Fijo": 2002.0,
       "Stake Compuesto": 53.42,
       "Beneficio Compuesto": 24.04,
-      "Banca Compuesto": 2694.96
+      "Banca Compuesto": 2694.96,
+      "league_id": 702
     },
     {
       "Fecha": "2023-09-30",
@@ -11610,7 +11936,8 @@ window.dashboardData = {
       "Banca Fijo": 2011.0,
       "Stake Compuesto": 53.9,
       "Beneficio Compuesto": 24.25,
-      "Banca Compuesto": 2719.21
+      "Banca Compuesto": 2719.21,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-01",
@@ -11628,7 +11955,8 @@ window.dashboardData = {
       "Banca Fijo": 2020.0,
       "Stake Compuesto": 54.38,
       "Beneficio Compuesto": 24.47,
-      "Banca Compuesto": 2743.68
+      "Banca Compuesto": 2743.68,
+      "league_id": 79
     },
     {
       "Fecha": "2023-10-02",
@@ -11646,7 +11974,8 @@ window.dashboardData = {
       "Banca Fijo": 2029.0,
       "Stake Compuesto": 54.87,
       "Beneficio Compuesto": 24.69,
-      "Banca Compuesto": 2768.38
+      "Banca Compuesto": 2768.38,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-06",
@@ -11664,7 +11993,8 @@ window.dashboardData = {
       "Banca Fijo": 2038.0,
       "Stake Compuesto": 55.37,
       "Beneficio Compuesto": 24.92,
-      "Banca Compuesto": 2793.29
+      "Banca Compuesto": 2793.29,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-06",
@@ -11682,7 +12012,8 @@ window.dashboardData = {
       "Banca Fijo": 2018.0,
       "Stake Compuesto": 55.87,
       "Beneficio Compuesto": -55.87,
-      "Banca Compuesto": 2737.43
+      "Banca Compuesto": 2737.43,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-07",
@@ -11700,7 +12031,8 @@ window.dashboardData = {
       "Banca Fijo": 1998.0,
       "Stake Compuesto": 54.75,
       "Beneficio Compuesto": -54.75,
-      "Banca Compuesto": 2682.68
+      "Banca Compuesto": 2682.68,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-07",
@@ -11718,7 +12050,8 @@ window.dashboardData = {
       "Banca Fijo": 2007.0,
       "Stake Compuesto": 53.65,
       "Beneficio Compuesto": 24.14,
-      "Banca Compuesto": 2706.82
+      "Banca Compuesto": 2706.82,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-07",
@@ -11736,7 +12069,8 @@ window.dashboardData = {
       "Banca Fijo": 2016.0,
       "Stake Compuesto": 54.14,
       "Beneficio Compuesto": 24.36,
-      "Banca Compuesto": 2731.18
+      "Banca Compuesto": 2731.18,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-07",
@@ -11754,7 +12088,8 @@ window.dashboardData = {
       "Banca Fijo": 2025.0,
       "Stake Compuesto": 54.62,
       "Beneficio Compuesto": 24.58,
-      "Banca Compuesto": 2755.76
+      "Banca Compuesto": 2755.76,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-07",
@@ -11772,7 +12107,8 @@ window.dashboardData = {
       "Banca Fijo": 2034.0,
       "Stake Compuesto": 55.12,
       "Beneficio Compuesto": 24.8,
-      "Banca Compuesto": 2780.57
+      "Banca Compuesto": 2780.57,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-07",
@@ -11790,7 +12126,8 @@ window.dashboardData = {
       "Banca Fijo": 2043.0,
       "Stake Compuesto": 55.61,
       "Beneficio Compuesto": 25.03,
-      "Banca Compuesto": 2805.59
+      "Banca Compuesto": 2805.59,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-07",
@@ -11808,7 +12145,8 @@ window.dashboardData = {
       "Banca Fijo": 2052.0,
       "Stake Compuesto": 56.11,
       "Beneficio Compuesto": 25.25,
-      "Banca Compuesto": 2830.84
+      "Banca Compuesto": 2830.84,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-08",
@@ -11826,7 +12164,8 @@ window.dashboardData = {
       "Banca Fijo": 2061.0,
       "Stake Compuesto": 56.62,
       "Beneficio Compuesto": 25.48,
-      "Banca Compuesto": 2856.32
+      "Banca Compuesto": 2856.32,
+      "league_id": 79
     },
     {
       "Fecha": "2023-10-08",
@@ -11844,7 +12183,8 @@ window.dashboardData = {
       "Banca Fijo": 2041.0,
       "Stake Compuesto": 57.13,
       "Beneficio Compuesto": -57.13,
-      "Banca Compuesto": 2799.19
+      "Banca Compuesto": 2799.19,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-14",
@@ -11862,7 +12202,8 @@ window.dashboardData = {
       "Banca Fijo": 2050.0,
       "Stake Compuesto": 55.98,
       "Beneficio Compuesto": 25.19,
-      "Banca Compuesto": 2824.39
+      "Banca Compuesto": 2824.39,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-14",
@@ -11880,7 +12221,8 @@ window.dashboardData = {
       "Banca Fijo": 2030.0,
       "Stake Compuesto": 56.49,
       "Beneficio Compuesto": -56.49,
-      "Banca Compuesto": 2767.9
+      "Banca Compuesto": 2767.9,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-14",
@@ -11898,7 +12240,8 @@ window.dashboardData = {
       "Banca Fijo": 2039.0,
       "Stake Compuesto": 55.36,
       "Beneficio Compuesto": 24.91,
-      "Banca Compuesto": 2792.81
+      "Banca Compuesto": 2792.81,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-14",
@@ -11916,7 +12259,8 @@ window.dashboardData = {
       "Banca Fijo": 2048.0,
       "Stake Compuesto": 55.86,
       "Beneficio Compuesto": 25.14,
-      "Banca Compuesto": 2817.94
+      "Banca Compuesto": 2817.94,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-14",
@@ -11934,7 +12278,8 @@ window.dashboardData = {
       "Banca Fijo": 2057.0,
       "Stake Compuesto": 56.36,
       "Beneficio Compuesto": 25.36,
-      "Banca Compuesto": 2843.31
+      "Banca Compuesto": 2843.31,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-21",
@@ -11952,7 +12297,8 @@ window.dashboardData = {
       "Banca Fijo": 2066.0,
       "Stake Compuesto": 56.87,
       "Beneficio Compuesto": 25.59,
-      "Banca Compuesto": 2868.9
+      "Banca Compuesto": 2868.9,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-21",
@@ -11970,7 +12316,8 @@ window.dashboardData = {
       "Banca Fijo": 2075.0,
       "Stake Compuesto": 57.38,
       "Beneficio Compuesto": 25.82,
-      "Banca Compuesto": 2894.72
+      "Banca Compuesto": 2894.72,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-21",
@@ -11988,7 +12335,8 @@ window.dashboardData = {
       "Banca Fijo": 2084.0,
       "Stake Compuesto": 57.89,
       "Beneficio Compuesto": 26.05,
-      "Banca Compuesto": 2920.77
+      "Banca Compuesto": 2920.77,
+      "league_id": 79
     },
     {
       "Fecha": "2023-10-21",
@@ -12006,7 +12354,8 @@ window.dashboardData = {
       "Banca Fijo": 2093.0,
       "Stake Compuesto": 58.42,
       "Beneficio Compuesto": 26.29,
-      "Banca Compuesto": 2947.06
+      "Banca Compuesto": 2947.06,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-22",
@@ -12024,7 +12373,8 @@ window.dashboardData = {
       "Banca Fijo": 2102.0,
       "Stake Compuesto": 58.94,
       "Beneficio Compuesto": 26.52,
-      "Banca Compuesto": 2973.58
+      "Banca Compuesto": 2973.58,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-22",
@@ -12042,7 +12392,8 @@ window.dashboardData = {
       "Banca Fijo": 2111.0,
       "Stake Compuesto": 59.47,
       "Beneficio Compuesto": 26.76,
-      "Banca Compuesto": 3000.34
+      "Banca Compuesto": 3000.34,
+      "league_id": 79
     },
     {
       "Fecha": "2023-10-22",
@@ -12060,7 +12411,8 @@ window.dashboardData = {
       "Banca Fijo": 2120.0,
       "Stake Compuesto": 60.01,
       "Beneficio Compuesto": 27.0,
-      "Banca Compuesto": 3027.34
+      "Banca Compuesto": 3027.34,
+      "league_id": 79
     },
     {
       "Fecha": "2023-10-22",
@@ -12078,7 +12430,8 @@ window.dashboardData = {
       "Banca Fijo": 2129.0,
       "Stake Compuesto": 60.55,
       "Beneficio Compuesto": 27.25,
-      "Banca Compuesto": 3054.59
+      "Banca Compuesto": 3054.59,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-22",
@@ -12096,7 +12449,8 @@ window.dashboardData = {
       "Banca Fijo": 2138.0,
       "Stake Compuesto": 61.09,
       "Beneficio Compuesto": 27.49,
-      "Banca Compuesto": 3082.08
+      "Banca Compuesto": 3082.08,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-27",
@@ -12114,7 +12468,8 @@ window.dashboardData = {
       "Banca Fijo": 2118.0,
       "Stake Compuesto": 61.64,
       "Beneficio Compuesto": -61.64,
-      "Banca Compuesto": 3020.44
+      "Banca Compuesto": 3020.44,
+      "league_id": 84
     },
     {
       "Fecha": "2023-10-27",
@@ -12132,7 +12487,8 @@ window.dashboardData = {
       "Banca Fijo": 2127.0,
       "Stake Compuesto": 60.41,
       "Beneficio Compuesto": 27.18,
-      "Banca Compuesto": 3047.62
+      "Banca Compuesto": 3047.62,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-27",
@@ -12150,7 +12506,8 @@ window.dashboardData = {
       "Banca Fijo": 2136.0,
       "Stake Compuesto": 60.95,
       "Beneficio Compuesto": 27.43,
-      "Banca Compuesto": 3075.05
+      "Banca Compuesto": 3075.05,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-27",
@@ -12168,7 +12525,8 @@ window.dashboardData = {
       "Banca Fijo": 2145.0,
       "Stake Compuesto": 61.5,
       "Beneficio Compuesto": 27.68,
-      "Banca Compuesto": 3102.73
+      "Banca Compuesto": 3102.73,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-27",
@@ -12186,7 +12544,8 @@ window.dashboardData = {
       "Banca Fijo": 2154.0,
       "Stake Compuesto": 62.05,
       "Beneficio Compuesto": 27.92,
-      "Banca Compuesto": 3130.65
+      "Banca Compuesto": 3130.65,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-28",
@@ -12204,7 +12563,8 @@ window.dashboardData = {
       "Banca Fijo": 2163.0,
       "Stake Compuesto": 62.61,
       "Beneficio Compuesto": 28.18,
-      "Banca Compuesto": 3158.83
+      "Banca Compuesto": 3158.83,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-28",
@@ -12222,7 +12582,8 @@ window.dashboardData = {
       "Banca Fijo": 2172.0,
       "Stake Compuesto": 63.18,
       "Beneficio Compuesto": 28.43,
-      "Banca Compuesto": 3187.26
+      "Banca Compuesto": 3187.26,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-28",
@@ -12240,7 +12601,8 @@ window.dashboardData = {
       "Banca Fijo": 2181.0,
       "Stake Compuesto": 63.75,
       "Beneficio Compuesto": 28.69,
-      "Banca Compuesto": 3215.94
+      "Banca Compuesto": 3215.94,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-28",
@@ -12258,7 +12620,8 @@ window.dashboardData = {
       "Banca Fijo": 2190.0,
       "Stake Compuesto": 64.32,
       "Beneficio Compuesto": 28.94,
-      "Banca Compuesto": 3244.89
+      "Banca Compuesto": 3244.89,
+      "league_id": 79
     },
     {
       "Fecha": "2023-10-28",
@@ -12276,7 +12639,8 @@ window.dashboardData = {
       "Banca Fijo": 2199.0,
       "Stake Compuesto": 64.9,
       "Beneficio Compuesto": 29.2,
-      "Banca Compuesto": 3274.09
+      "Banca Compuesto": 3274.09,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-28",
@@ -12294,7 +12658,8 @@ window.dashboardData = {
       "Banca Fijo": 2208.0,
       "Stake Compuesto": 65.48,
       "Beneficio Compuesto": 29.47,
-      "Banca Compuesto": 3303.56
+      "Banca Compuesto": 3303.56,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-28",
@@ -12312,7 +12677,8 @@ window.dashboardData = {
       "Banca Fijo": 2217.0,
       "Stake Compuesto": 66.07,
       "Beneficio Compuesto": 29.73,
-      "Banca Compuesto": 3333.29
+      "Banca Compuesto": 3333.29,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-28",
@@ -12330,7 +12696,8 @@ window.dashboardData = {
       "Banca Fijo": 2226.0,
       "Stake Compuesto": 66.67,
       "Beneficio Compuesto": 30.0,
-      "Banca Compuesto": 3363.29
+      "Banca Compuesto": 3363.29,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-28",
@@ -12348,7 +12715,8 @@ window.dashboardData = {
       "Banca Fijo": 2235.0,
       "Stake Compuesto": 67.27,
       "Beneficio Compuesto": 30.27,
-      "Banca Compuesto": 3393.56
+      "Banca Compuesto": 3393.56,
+      "league_id": 492
     },
     {
       "Fecha": "2023-10-29",
@@ -12366,7 +12734,8 @@ window.dashboardData = {
       "Banca Fijo": 2244.0,
       "Stake Compuesto": 67.87,
       "Beneficio Compuesto": 30.54,
-      "Banca Compuesto": 3424.1
+      "Banca Compuesto": 3424.1,
+      "league_id": 78
     },
     {
       "Fecha": "2023-10-29",
@@ -12384,7 +12753,8 @@ window.dashboardData = {
       "Banca Fijo": 2253.0,
       "Stake Compuesto": 68.48,
       "Beneficio Compuesto": 30.82,
-      "Banca Compuesto": 3454.92
+      "Banca Compuesto": 3454.92,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-30",
@@ -12402,7 +12772,8 @@ window.dashboardData = {
       "Banca Fijo": 2262.0,
       "Stake Compuesto": 69.1,
       "Beneficio Compuesto": 31.09,
-      "Banca Compuesto": 3486.01
+      "Banca Compuesto": 3486.01,
+      "league_id": 702
     },
     {
       "Fecha": "2023-10-30",
@@ -12420,7 +12791,8 @@ window.dashboardData = {
       "Banca Fijo": 2271.0,
       "Stake Compuesto": 69.72,
       "Beneficio Compuesto": 31.37,
-      "Banca Compuesto": 3517.39
+      "Banca Compuesto": 3517.39,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-03",
@@ -12438,7 +12810,8 @@ window.dashboardData = {
       "Banca Fijo": 2280.0,
       "Stake Compuesto": 70.35,
       "Beneficio Compuesto": 31.66,
-      "Banca Compuesto": 3549.04
+      "Banca Compuesto": 3549.04,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-03",
@@ -12456,7 +12829,8 @@ window.dashboardData = {
       "Banca Fijo": 2289.0,
       "Stake Compuesto": 70.98,
       "Beneficio Compuesto": 31.94,
-      "Banca Compuesto": 3580.98
+      "Banca Compuesto": 3580.98,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-03",
@@ -12474,7 +12848,8 @@ window.dashboardData = {
       "Banca Fijo": 2298.0,
       "Stake Compuesto": 71.62,
       "Beneficio Compuesto": 32.23,
-      "Banca Compuesto": 3613.21
+      "Banca Compuesto": 3613.21,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-03",
@@ -12492,7 +12867,8 @@ window.dashboardData = {
       "Banca Fijo": 2307.0,
       "Stake Compuesto": 72.26,
       "Beneficio Compuesto": 32.52,
-      "Banca Compuesto": 3645.73
+      "Banca Compuesto": 3645.73,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-03",
@@ -12510,7 +12886,8 @@ window.dashboardData = {
       "Banca Fijo": 2316.0,
       "Stake Compuesto": 72.91,
       "Beneficio Compuesto": 32.81,
-      "Banca Compuesto": 3678.54
+      "Banca Compuesto": 3678.54,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-03",
@@ -12528,7 +12905,8 @@ window.dashboardData = {
       "Banca Fijo": 2325.0,
       "Stake Compuesto": 73.57,
       "Beneficio Compuesto": 33.11,
-      "Banca Compuesto": 3711.65
+      "Banca Compuesto": 3711.65,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-04",
@@ -12546,7 +12924,8 @@ window.dashboardData = {
       "Banca Fijo": 2334.0,
       "Stake Compuesto": 74.23,
       "Beneficio Compuesto": 33.4,
-      "Banca Compuesto": 3745.06
+      "Banca Compuesto": 3745.06,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-04",
@@ -12564,7 +12943,8 @@ window.dashboardData = {
       "Banca Fijo": 2343.0,
       "Stake Compuesto": 74.9,
       "Beneficio Compuesto": 33.71,
-      "Banca Compuesto": 3778.76
+      "Banca Compuesto": 3778.76,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-04",
@@ -12582,7 +12962,8 @@ window.dashboardData = {
       "Banca Fijo": 2352.0,
       "Stake Compuesto": 75.58,
       "Beneficio Compuesto": 34.01,
-      "Banca Compuesto": 3812.77
+      "Banca Compuesto": 3812.77,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-04",
@@ -12600,7 +12981,8 @@ window.dashboardData = {
       "Banca Fijo": 2332.0,
       "Stake Compuesto": 76.26,
       "Beneficio Compuesto": -76.26,
-      "Banca Compuesto": 3736.51
+      "Banca Compuesto": 3736.51,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-04",
@@ -12618,7 +13000,8 @@ window.dashboardData = {
       "Banca Fijo": 2341.0,
       "Stake Compuesto": 74.73,
       "Beneficio Compuesto": 33.63,
-      "Banca Compuesto": 3770.14
+      "Banca Compuesto": 3770.14,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-04",
@@ -12636,7 +13019,8 @@ window.dashboardData = {
       "Banca Fijo": 2321.0,
       "Stake Compuesto": 75.4,
       "Beneficio Compuesto": -75.4,
-      "Banca Compuesto": 3694.74
+      "Banca Compuesto": 3694.74,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-04",
@@ -12654,7 +13038,8 @@ window.dashboardData = {
       "Banca Fijo": 2330.0,
       "Stake Compuesto": 73.89,
       "Beneficio Compuesto": 33.25,
-      "Banca Compuesto": 3727.99
+      "Banca Compuesto": 3727.99,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-04",
@@ -12672,7 +13057,8 @@ window.dashboardData = {
       "Banca Fijo": 2339.0,
       "Stake Compuesto": 74.56,
       "Beneficio Compuesto": 33.55,
-      "Banca Compuesto": 3761.54
+      "Banca Compuesto": 3761.54,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-04",
@@ -12690,7 +13076,8 @@ window.dashboardData = {
       "Banca Fijo": 2348.0,
       "Stake Compuesto": 75.23,
       "Beneficio Compuesto": 33.85,
-      "Banca Compuesto": 3795.4
+      "Banca Compuesto": 3795.4,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-04",
@@ -12708,7 +13095,8 @@ window.dashboardData = {
       "Banca Fijo": 2357.0,
       "Stake Compuesto": 75.91,
       "Beneficio Compuesto": 34.16,
-      "Banca Compuesto": 3829.56
+      "Banca Compuesto": 3829.56,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-04",
@@ -12726,7 +13114,8 @@ window.dashboardData = {
       "Banca Fijo": 2366.0,
       "Stake Compuesto": 76.59,
       "Beneficio Compuesto": 34.47,
-      "Banca Compuesto": 3864.02
+      "Banca Compuesto": 3864.02,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-05",
@@ -12744,7 +13133,8 @@ window.dashboardData = {
       "Banca Fijo": 2375.0,
       "Stake Compuesto": 77.28,
       "Beneficio Compuesto": 34.78,
-      "Banca Compuesto": 3898.8
+      "Banca Compuesto": 3898.8,
+      "league_id": 79
     },
     {
       "Fecha": "2023-11-05",
@@ -12762,7 +13152,8 @@ window.dashboardData = {
       "Banca Fijo": 2355.0,
       "Stake Compuesto": 77.98,
       "Beneficio Compuesto": -77.98,
-      "Banca Compuesto": 3820.82
+      "Banca Compuesto": 3820.82,
+      "league_id": 79
     },
     {
       "Fecha": "2023-11-05",
@@ -12780,7 +13171,8 @@ window.dashboardData = {
       "Banca Fijo": 2364.0,
       "Stake Compuesto": 76.42,
       "Beneficio Compuesto": 34.39,
-      "Banca Compuesto": 3855.21
+      "Banca Compuesto": 3855.21,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-05",
@@ -12798,7 +13190,8 @@ window.dashboardData = {
       "Banca Fijo": 2344.0,
       "Stake Compuesto": 77.1,
       "Beneficio Compuesto": -77.1,
-      "Banca Compuesto": 3778.11
+      "Banca Compuesto": 3778.11,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-05",
@@ -12816,7 +13209,8 @@ window.dashboardData = {
       "Banca Fijo": 2353.0,
       "Stake Compuesto": 75.56,
       "Beneficio Compuesto": 34.0,
-      "Banca Compuesto": 3812.11
+      "Banca Compuesto": 3812.11,
+      "league_id": 702
     },
     {
       "Fecha": "2023-11-10",
@@ -12834,7 +13228,8 @@ window.dashboardData = {
       "Banca Fijo": 2362.0,
       "Stake Compuesto": 76.24,
       "Beneficio Compuesto": 34.31,
-      "Banca Compuesto": 3846.42
+      "Banca Compuesto": 3846.42,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-10",
@@ -12852,7 +13247,8 @@ window.dashboardData = {
       "Banca Fijo": 2371.0,
       "Stake Compuesto": 76.93,
       "Beneficio Compuesto": 34.62,
-      "Banca Compuesto": 3881.04
+      "Banca Compuesto": 3881.04,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-11",
@@ -12870,7 +13266,8 @@ window.dashboardData = {
       "Banca Fijo": 2380.0,
       "Stake Compuesto": 77.62,
       "Beneficio Compuesto": 34.93,
-      "Banca Compuesto": 3915.97
+      "Banca Compuesto": 3915.97,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-11",
@@ -12888,7 +13285,8 @@ window.dashboardData = {
       "Banca Fijo": 2389.0,
       "Stake Compuesto": 78.32,
       "Beneficio Compuesto": 35.24,
-      "Banca Compuesto": 3951.21
+      "Banca Compuesto": 3951.21,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-11",
@@ -12906,7 +13304,8 @@ window.dashboardData = {
       "Banca Fijo": 2398.0,
       "Stake Compuesto": 79.02,
       "Beneficio Compuesto": 35.56,
-      "Banca Compuesto": 3986.77
+      "Banca Compuesto": 3986.77,
+      "league_id": 79
     },
     {
       "Fecha": "2023-11-11",
@@ -12924,7 +13323,8 @@ window.dashboardData = {
       "Banca Fijo": 2378.0,
       "Stake Compuesto": 79.74,
       "Beneficio Compuesto": -79.74,
-      "Banca Compuesto": 3907.03
+      "Banca Compuesto": 3907.03,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-11",
@@ -12942,7 +13342,8 @@ window.dashboardData = {
       "Banca Fijo": 2358.0,
       "Stake Compuesto": 78.14,
       "Beneficio Compuesto": -78.14,
-      "Banca Compuesto": 3828.89
+      "Banca Compuesto": 3828.89,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-11",
@@ -12960,7 +13361,8 @@ window.dashboardData = {
       "Banca Fijo": 2367.0,
       "Stake Compuesto": 76.58,
       "Beneficio Compuesto": 34.46,
-      "Banca Compuesto": 3863.35
+      "Banca Compuesto": 3863.35,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-11",
@@ -12978,7 +13380,8 @@ window.dashboardData = {
       "Banca Fijo": 2376.0,
       "Stake Compuesto": 77.27,
       "Beneficio Compuesto": 34.77,
-      "Banca Compuesto": 3898.12
+      "Banca Compuesto": 3898.12,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-11",
@@ -12996,7 +13399,8 @@ window.dashboardData = {
       "Banca Fijo": 2385.0,
       "Stake Compuesto": 77.96,
       "Beneficio Compuesto": 35.08,
-      "Banca Compuesto": 3933.21
+      "Banca Compuesto": 3933.21,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-12",
@@ -13014,7 +13418,8 @@ window.dashboardData = {
       "Banca Fijo": 2394.0,
       "Stake Compuesto": 78.66,
       "Beneficio Compuesto": 35.4,
-      "Banca Compuesto": 3968.61
+      "Banca Compuesto": 3968.61,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-12",
@@ -13032,7 +13437,8 @@ window.dashboardData = {
       "Banca Fijo": 2403.0,
       "Stake Compuesto": 79.37,
       "Beneficio Compuesto": 35.72,
-      "Banca Compuesto": 4004.32
+      "Banca Compuesto": 4004.32,
+      "league_id": 79
     },
     {
       "Fecha": "2023-11-18",
@@ -13050,7 +13456,8 @@ window.dashboardData = {
       "Banca Fijo": 2383.0,
       "Stake Compuesto": 80.09,
       "Beneficio Compuesto": -80.09,
-      "Banca Compuesto": 3924.24
+      "Banca Compuesto": 3924.24,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-18",
@@ -13068,7 +13475,8 @@ window.dashboardData = {
       "Banca Fijo": 2392.0,
       "Stake Compuesto": 78.48,
       "Beneficio Compuesto": 35.32,
-      "Banca Compuesto": 3959.56
+      "Banca Compuesto": 3959.56,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-18",
@@ -13086,7 +13494,8 @@ window.dashboardData = {
       "Banca Fijo": 2401.0,
       "Stake Compuesto": 79.19,
       "Beneficio Compuesto": 35.64,
-      "Banca Compuesto": 3995.19
+      "Banca Compuesto": 3995.19,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-19",
@@ -13104,7 +13513,8 @@ window.dashboardData = {
       "Banca Fijo": 2410.0,
       "Stake Compuesto": 79.9,
       "Beneficio Compuesto": 35.96,
-      "Banca Compuesto": 4031.15
+      "Banca Compuesto": 4031.15,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-21",
@@ -13122,7 +13532,8 @@ window.dashboardData = {
       "Banca Fijo": 2419.0,
       "Stake Compuesto": 80.62,
       "Beneficio Compuesto": 36.28,
-      "Banca Compuesto": 4067.43
+      "Banca Compuesto": 4067.43,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-24",
@@ -13140,7 +13551,8 @@ window.dashboardData = {
       "Banca Fijo": 2428.0,
       "Stake Compuesto": 81.35,
       "Beneficio Compuesto": 36.61,
-      "Banca Compuesto": 4104.04
+      "Banca Compuesto": 4104.04,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-24",
@@ -13158,7 +13570,8 @@ window.dashboardData = {
       "Banca Fijo": 2437.0,
       "Stake Compuesto": 82.08,
       "Beneficio Compuesto": 36.94,
-      "Banca Compuesto": 4140.97
+      "Banca Compuesto": 4140.97,
+      "league_id": 79
     },
     {
       "Fecha": "2023-11-25",
@@ -13176,7 +13589,8 @@ window.dashboardData = {
       "Banca Fijo": 2446.0,
       "Stake Compuesto": 82.82,
       "Beneficio Compuesto": 37.27,
-      "Banca Compuesto": 4178.24
+      "Banca Compuesto": 4178.24,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-25",
@@ -13194,7 +13608,8 @@ window.dashboardData = {
       "Banca Fijo": 2455.0,
       "Stake Compuesto": 83.56,
       "Beneficio Compuesto": 37.6,
-      "Banca Compuesto": 4215.84
+      "Banca Compuesto": 4215.84,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-25",
@@ -13212,7 +13627,8 @@ window.dashboardData = {
       "Banca Fijo": 2464.0,
       "Stake Compuesto": 84.32,
       "Beneficio Compuesto": 37.94,
-      "Banca Compuesto": 4253.79
+      "Banca Compuesto": 4253.79,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-25",
@@ -13230,7 +13646,8 @@ window.dashboardData = {
       "Banca Fijo": 2473.0,
       "Stake Compuesto": 85.08,
       "Beneficio Compuesto": 38.28,
-      "Banca Compuesto": 4292.07
+      "Banca Compuesto": 4292.07,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-25",
@@ -13248,7 +13665,8 @@ window.dashboardData = {
       "Banca Fijo": 2482.0,
       "Stake Compuesto": 85.84,
       "Beneficio Compuesto": 38.63,
-      "Banca Compuesto": 4330.7
+      "Banca Compuesto": 4330.7,
+      "league_id": 492
     },
     {
       "Fecha": "2023-11-26",
@@ -13266,7 +13684,8 @@ window.dashboardData = {
       "Banca Fijo": 2491.0,
       "Stake Compuesto": 86.61,
       "Beneficio Compuesto": 38.98,
-      "Banca Compuesto": 4369.68
+      "Banca Compuesto": 4369.68,
+      "league_id": 78
     },
     {
       "Fecha": "2023-11-26",
@@ -13284,7 +13703,8 @@ window.dashboardData = {
       "Banca Fijo": 2500.0,
       "Stake Compuesto": 87.39,
       "Beneficio Compuesto": 39.33,
-      "Banca Compuesto": 4409.0
+      "Banca Compuesto": 4409.0,
+      "league_id": 79
     },
     {
       "Fecha": "2023-11-26",
@@ -13302,7 +13722,8 @@ window.dashboardData = {
       "Banca Fijo": 2509.0,
       "Stake Compuesto": 88.18,
       "Beneficio Compuesto": 39.68,
-      "Banca Compuesto": 4448.68
+      "Banca Compuesto": 4448.68,
+      "league_id": 84
     },
     {
       "Fecha": "2023-11-26",
@@ -13320,7 +13741,8 @@ window.dashboardData = {
       "Banca Fijo": 2518.0,
       "Stake Compuesto": 88.97,
       "Beneficio Compuesto": 40.04,
-      "Banca Compuesto": 4488.72
+      "Banca Compuesto": 4488.72,
+      "league_id": 84
     },
     {
       "Fecha": "2023-12-01",
@@ -13338,7 +13760,8 @@ window.dashboardData = {
       "Banca Fijo": 2527.0,
       "Stake Compuesto": 89.77,
       "Beneficio Compuesto": 40.4,
-      "Banca Compuesto": 4529.12
+      "Banca Compuesto": 4529.12,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-01",
@@ -13356,7 +13779,8 @@ window.dashboardData = {
       "Banca Fijo": 2536.0,
       "Stake Compuesto": 90.58,
       "Beneficio Compuesto": 40.76,
-      "Banca Compuesto": 4569.88
+      "Banca Compuesto": 4569.88,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-02",
@@ -13374,7 +13798,8 @@ window.dashboardData = {
       "Banca Fijo": 2516.0,
       "Stake Compuesto": 91.4,
       "Beneficio Compuesto": -91.4,
-      "Banca Compuesto": 4478.49
+      "Banca Compuesto": 4478.49,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-02",
@@ -13392,7 +13817,8 @@ window.dashboardData = {
       "Banca Fijo": 2525.0,
       "Stake Compuesto": 89.57,
       "Beneficio Compuesto": 40.31,
-      "Banca Compuesto": 4518.79
+      "Banca Compuesto": 4518.79,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-02",
@@ -13410,7 +13836,8 @@ window.dashboardData = {
       "Banca Fijo": 2534.0,
       "Stake Compuesto": 90.38,
       "Beneficio Compuesto": 40.67,
-      "Banca Compuesto": 4559.46
+      "Banca Compuesto": 4559.46,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-02",
@@ -13428,7 +13855,8 @@ window.dashboardData = {
       "Banca Fijo": 2543.0,
       "Stake Compuesto": 91.19,
       "Beneficio Compuesto": 41.04,
-      "Banca Compuesto": 4600.5
+      "Banca Compuesto": 4600.5,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-02",
@@ -13446,7 +13874,8 @@ window.dashboardData = {
       "Banca Fijo": 2552.0,
       "Stake Compuesto": 92.01,
       "Beneficio Compuesto": 41.4,
-      "Banca Compuesto": 4641.9
+      "Banca Compuesto": 4641.9,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-02",
@@ -13464,7 +13893,8 @@ window.dashboardData = {
       "Banca Fijo": 2561.0,
       "Stake Compuesto": 92.84,
       "Beneficio Compuesto": 41.78,
-      "Banca Compuesto": 4683.68
+      "Banca Compuesto": 4683.68,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-03",
@@ -13482,7 +13912,8 @@ window.dashboardData = {
       "Banca Fijo": 2570.0,
       "Stake Compuesto": 93.67,
       "Beneficio Compuesto": 42.15,
-      "Banca Compuesto": 4725.83
+      "Banca Compuesto": 4725.83,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-03",
@@ -13500,7 +13931,8 @@ window.dashboardData = {
       "Banca Fijo": 2579.0,
       "Stake Compuesto": 94.52,
       "Beneficio Compuesto": 42.53,
-      "Banca Compuesto": 4768.36
+      "Banca Compuesto": 4768.36,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-03",
@@ -13518,7 +13950,8 @@ window.dashboardData = {
       "Banca Fijo": 2588.0,
       "Stake Compuesto": 95.37,
       "Beneficio Compuesto": 42.92,
-      "Banca Compuesto": 4811.28
+      "Banca Compuesto": 4811.28,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-04",
@@ -13536,7 +13969,8 @@ window.dashboardData = {
       "Banca Fijo": 2597.0,
       "Stake Compuesto": 96.23,
       "Beneficio Compuesto": 43.3,
-      "Banca Compuesto": 4854.58
+      "Banca Compuesto": 4854.58,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-04",
@@ -13554,7 +13988,8 @@ window.dashboardData = {
       "Banca Fijo": 2606.0,
       "Stake Compuesto": 97.09,
       "Beneficio Compuesto": 43.69,
-      "Banca Compuesto": 4898.27
+      "Banca Compuesto": 4898.27,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-08",
@@ -13572,7 +14007,8 @@ window.dashboardData = {
       "Banca Fijo": 2615.0,
       "Stake Compuesto": 97.97,
       "Beneficio Compuesto": 44.08,
-      "Banca Compuesto": 4942.36
+      "Banca Compuesto": 4942.36,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-09",
@@ -13590,7 +14026,8 @@ window.dashboardData = {
       "Banca Fijo": 2624.0,
       "Stake Compuesto": 98.85,
       "Beneficio Compuesto": 44.48,
-      "Banca Compuesto": 4986.84
+      "Banca Compuesto": 4986.84,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-09",
@@ -13608,7 +14045,8 @@ window.dashboardData = {
       "Banca Fijo": 2633.0,
       "Stake Compuesto": 99.74,
       "Beneficio Compuesto": 44.88,
-      "Banca Compuesto": 5031.72
+      "Banca Compuesto": 5031.72,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-09",
@@ -13626,7 +14064,8 @@ window.dashboardData = {
       "Banca Fijo": 2642.0,
       "Stake Compuesto": 100.63,
       "Beneficio Compuesto": 45.29,
-      "Banca Compuesto": 5077.0
+      "Banca Compuesto": 5077.0,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-09",
@@ -13644,7 +14083,8 @@ window.dashboardData = {
       "Banca Fijo": 2622.0,
       "Stake Compuesto": 101.54,
       "Beneficio Compuesto": -101.54,
-      "Banca Compuesto": 4975.46
+      "Banca Compuesto": 4975.46,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-09",
@@ -13662,7 +14102,8 @@ window.dashboardData = {
       "Banca Fijo": 2631.0,
       "Stake Compuesto": 99.51,
       "Beneficio Compuesto": 44.78,
-      "Banca Compuesto": 5020.24
+      "Banca Compuesto": 5020.24,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-09",
@@ -13680,7 +14121,8 @@ window.dashboardData = {
       "Banca Fijo": 2640.0,
       "Stake Compuesto": 100.4,
       "Beneficio Compuesto": 45.18,
-      "Banca Compuesto": 5065.42
+      "Banca Compuesto": 5065.42,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-09",
@@ -13698,7 +14140,8 @@ window.dashboardData = {
       "Banca Fijo": 2649.0,
       "Stake Compuesto": 101.31,
       "Beneficio Compuesto": 45.59,
-      "Banca Compuesto": 5111.01
+      "Banca Compuesto": 5111.01,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-09",
@@ -13716,7 +14159,8 @@ window.dashboardData = {
       "Banca Fijo": 2658.0,
       "Stake Compuesto": 102.22,
       "Beneficio Compuesto": 46.0,
-      "Banca Compuesto": 5157.01
+      "Banca Compuesto": 5157.01,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-15",
@@ -13734,7 +14178,8 @@ window.dashboardData = {
       "Banca Fijo": 2667.0,
       "Stake Compuesto": 103.14,
       "Beneficio Compuesto": 46.41,
-      "Banca Compuesto": 5203.43
+      "Banca Compuesto": 5203.43,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-15",
@@ -13752,7 +14197,8 @@ window.dashboardData = {
       "Banca Fijo": 2676.0,
       "Stake Compuesto": 104.07,
       "Beneficio Compuesto": 46.83,
-      "Banca Compuesto": 5250.26
+      "Banca Compuesto": 5250.26,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-15",
@@ -13770,7 +14216,8 @@ window.dashboardData = {
       "Banca Fijo": 2685.0,
       "Stake Compuesto": 105.01,
       "Beneficio Compuesto": 47.25,
-      "Banca Compuesto": 5297.51
+      "Banca Compuesto": 5297.51,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-16",
@@ -13788,7 +14235,8 @@ window.dashboardData = {
       "Banca Fijo": 2694.0,
       "Stake Compuesto": 105.95,
       "Beneficio Compuesto": 47.68,
-      "Banca Compuesto": 5345.19
+      "Banca Compuesto": 5345.19,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-16",
@@ -13806,7 +14254,8 @@ window.dashboardData = {
       "Banca Fijo": 2703.0,
       "Stake Compuesto": 106.9,
       "Beneficio Compuesto": 48.11,
-      "Banca Compuesto": 5393.29
+      "Banca Compuesto": 5393.29,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-16",
@@ -13824,7 +14273,8 @@ window.dashboardData = {
       "Banca Fijo": 2683.0,
       "Stake Compuesto": 107.87,
       "Beneficio Compuesto": -107.87,
-      "Banca Compuesto": 5285.43
+      "Banca Compuesto": 5285.43,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-16",
@@ -13842,7 +14292,8 @@ window.dashboardData = {
       "Banca Fijo": 2692.0,
       "Stake Compuesto": 105.71,
       "Beneficio Compuesto": 47.57,
-      "Banca Compuesto": 5333.0
+      "Banca Compuesto": 5333.0,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-16",
@@ -13860,7 +14311,8 @@ window.dashboardData = {
       "Banca Fijo": 2701.0,
       "Stake Compuesto": 106.66,
       "Beneficio Compuesto": 48.0,
-      "Banca Compuesto": 5380.99
+      "Banca Compuesto": 5380.99,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-16",
@@ -13878,7 +14330,8 @@ window.dashboardData = {
       "Banca Fijo": 2681.0,
       "Stake Compuesto": 107.62,
       "Beneficio Compuesto": -107.62,
-      "Banca Compuesto": 5273.37
+      "Banca Compuesto": 5273.37,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-16",
@@ -13896,7 +14349,8 @@ window.dashboardData = {
       "Banca Fijo": 2690.0,
       "Stake Compuesto": 105.47,
       "Beneficio Compuesto": 47.46,
-      "Banca Compuesto": 5320.83
+      "Banca Compuesto": 5320.83,
+      "league_id": 492
     },
     {
       "Fecha": "2023-12-16",
@@ -13914,7 +14368,8 @@ window.dashboardData = {
       "Banca Fijo": 2699.0,
       "Stake Compuesto": 106.42,
       "Beneficio Compuesto": 47.89,
-      "Banca Compuesto": 5368.72
+      "Banca Compuesto": 5368.72,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-16",
@@ -13932,7 +14387,8 @@ window.dashboardData = {
       "Banca Fijo": 2679.0,
       "Stake Compuesto": 107.37,
       "Beneficio Compuesto": -107.37,
-      "Banca Compuesto": 5261.35
+      "Banca Compuesto": 5261.35,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-17",
@@ -13950,7 +14406,8 @@ window.dashboardData = {
       "Banca Fijo": 2688.0,
       "Stake Compuesto": 105.23,
       "Beneficio Compuesto": 47.35,
-      "Banca Compuesto": 5308.7
+      "Banca Compuesto": 5308.7,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-17",
@@ -13968,7 +14425,8 @@ window.dashboardData = {
       "Banca Fijo": 2697.0,
       "Stake Compuesto": 106.17,
       "Beneficio Compuesto": 47.78,
-      "Banca Compuesto": 5356.48
+      "Banca Compuesto": 5356.48,
+      "league_id": 79
     },
     {
       "Fecha": "2023-12-17",
@@ -13986,7 +14444,8 @@ window.dashboardData = {
       "Banca Fijo": 2706.0,
       "Stake Compuesto": 107.13,
       "Beneficio Compuesto": 48.21,
-      "Banca Compuesto": 5404.69
+      "Banca Compuesto": 5404.69,
+      "league_id": 84
     },
     {
       "Fecha": "2023-12-18",
@@ -14004,7 +14463,8 @@ window.dashboardData = {
       "Banca Fijo": 2715.0,
       "Stake Compuesto": 108.09,
       "Beneficio Compuesto": 48.64,
-      "Banca Compuesto": 5453.33
+      "Banca Compuesto": 5453.33,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-18",
@@ -14022,7 +14482,8 @@ window.dashboardData = {
       "Banca Fijo": 2695.0,
       "Stake Compuesto": 109.07,
       "Beneficio Compuesto": -109.07,
-      "Banca Compuesto": 5344.26
+      "Banca Compuesto": 5344.26,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-18",
@@ -14040,7 +14501,8 @@ window.dashboardData = {
       "Banca Fijo": 2704.0,
       "Stake Compuesto": 106.89,
       "Beneficio Compuesto": 48.1,
-      "Banca Compuesto": 5392.36
+      "Banca Compuesto": 5392.36,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-18",
@@ -14058,7 +14520,8 @@ window.dashboardData = {
       "Banca Fijo": 2713.0,
       "Stake Compuesto": 107.85,
       "Beneficio Compuesto": 48.53,
-      "Banca Compuesto": 5440.89
+      "Banca Compuesto": 5440.89,
+      "league_id": 702
     },
     {
       "Fecha": "2023-12-19",
@@ -14076,7 +14539,8 @@ window.dashboardData = {
       "Banca Fijo": 2722.0,
       "Stake Compuesto": 108.82,
       "Beneficio Compuesto": 48.97,
-      "Banca Compuesto": 5489.86
+      "Banca Compuesto": 5489.86,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-20",
@@ -14094,7 +14558,8 @@ window.dashboardData = {
       "Banca Fijo": 2731.0,
       "Stake Compuesto": 109.8,
       "Beneficio Compuesto": 49.41,
-      "Banca Compuesto": 5539.27
+      "Banca Compuesto": 5539.27,
+      "league_id": 78
     },
     {
       "Fecha": "2023-12-20",
@@ -14112,7 +14577,8 @@ window.dashboardData = {
       "Banca Fijo": 2740.0,
       "Stake Compuesto": 110.79,
       "Beneficio Compuesto": 49.85,
-      "Banca Compuesto": 5589.12
+      "Banca Compuesto": 5589.12,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-08",
@@ -14130,7 +14596,8 @@ window.dashboardData = {
       "Banca Fijo": 2749.0,
       "Stake Compuesto": 111.78,
       "Beneficio Compuesto": 50.3,
-      "Banca Compuesto": 5639.42
+      "Banca Compuesto": 5639.42,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-12",
@@ -14148,7 +14615,8 @@ window.dashboardData = {
       "Banca Fijo": 2758.0,
       "Stake Compuesto": 112.79,
       "Beneficio Compuesto": 50.75,
-      "Banca Compuesto": 5690.18
+      "Banca Compuesto": 5690.18,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-12",
@@ -14166,7 +14634,8 @@ window.dashboardData = {
       "Banca Fijo": 2738.0,
       "Stake Compuesto": 113.8,
       "Beneficio Compuesto": -113.8,
-      "Banca Compuesto": 5576.37
+      "Banca Compuesto": 5576.37,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-12",
@@ -14184,7 +14653,8 @@ window.dashboardData = {
       "Banca Fijo": 2747.0,
       "Stake Compuesto": 111.53,
       "Beneficio Compuesto": 50.19,
-      "Banca Compuesto": 5626.56
+      "Banca Compuesto": 5626.56,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-12",
@@ -14202,7 +14672,8 @@ window.dashboardData = {
       "Banca Fijo": 2756.0,
       "Stake Compuesto": 112.53,
       "Beneficio Compuesto": 50.64,
-      "Banca Compuesto": 5677.2
+      "Banca Compuesto": 5677.2,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-12",
@@ -14220,7 +14691,8 @@ window.dashboardData = {
       "Banca Fijo": 2765.0,
       "Stake Compuesto": 113.54,
       "Beneficio Compuesto": 51.09,
-      "Banca Compuesto": 5728.3
+      "Banca Compuesto": 5728.3,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-12",
@@ -14238,7 +14710,8 @@ window.dashboardData = {
       "Banca Fijo": 2774.0,
       "Stake Compuesto": 114.57,
       "Beneficio Compuesto": 51.55,
-      "Banca Compuesto": 5779.85
+      "Banca Compuesto": 5779.85,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-13",
@@ -14256,7 +14729,8 @@ window.dashboardData = {
       "Banca Fijo": 2783.0,
       "Stake Compuesto": 115.6,
       "Beneficio Compuesto": 52.02,
-      "Banca Compuesto": 5831.87
+      "Banca Compuesto": 5831.87,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-13",
@@ -14274,7 +14748,8 @@ window.dashboardData = {
       "Banca Fijo": 2792.0,
       "Stake Compuesto": 116.64,
       "Beneficio Compuesto": 52.49,
-      "Banca Compuesto": 5884.36
+      "Banca Compuesto": 5884.36,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-13",
@@ -14292,7 +14767,8 @@ window.dashboardData = {
       "Banca Fijo": 2801.0,
       "Stake Compuesto": 117.69,
       "Beneficio Compuesto": 52.96,
-      "Banca Compuesto": 5937.31
+      "Banca Compuesto": 5937.31,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-13",
@@ -14310,7 +14786,8 @@ window.dashboardData = {
       "Banca Fijo": 2781.0,
       "Stake Compuesto": 118.75,
       "Beneficio Compuesto": -118.75,
-      "Banca Compuesto": 5818.57
+      "Banca Compuesto": 5818.57,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-13",
@@ -14328,7 +14805,8 @@ window.dashboardData = {
       "Banca Fijo": 2790.0,
       "Stake Compuesto": 116.37,
       "Beneficio Compuesto": 52.37,
-      "Banca Compuesto": 5870.94
+      "Banca Compuesto": 5870.94,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-14",
@@ -14346,7 +14824,8 @@ window.dashboardData = {
       "Banca Fijo": 2799.0,
       "Stake Compuesto": 117.42,
       "Beneficio Compuesto": 52.84,
-      "Banca Compuesto": 5923.77
+      "Banca Compuesto": 5923.77,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-14",
@@ -14364,7 +14843,8 @@ window.dashboardData = {
       "Banca Fijo": 2808.0,
       "Stake Compuesto": 118.48,
       "Beneficio Compuesto": 53.31,
-      "Banca Compuesto": 5977.09
+      "Banca Compuesto": 5977.09,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-15",
@@ -14382,7 +14862,8 @@ window.dashboardData = {
       "Banca Fijo": 2817.0,
       "Stake Compuesto": 119.54,
       "Beneficio Compuesto": 53.79,
-      "Banca Compuesto": 6030.88
+      "Banca Compuesto": 6030.88,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-15",
@@ -14400,7 +14881,8 @@ window.dashboardData = {
       "Banca Fijo": 2797.0,
       "Stake Compuesto": 120.62,
       "Beneficio Compuesto": -120.62,
-      "Banca Compuesto": 5910.26
+      "Banca Compuesto": 5910.26,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-19",
@@ -14418,7 +14900,8 @@ window.dashboardData = {
       "Banca Fijo": 2806.0,
       "Stake Compuesto": 118.21,
       "Beneficio Compuesto": 53.19,
-      "Banca Compuesto": 5963.46
+      "Banca Compuesto": 5963.46,
+      "league_id": 79
     },
     {
       "Fecha": "2024-01-20",
@@ -14436,7 +14919,8 @@ window.dashboardData = {
       "Banca Fijo": 2815.0,
       "Stake Compuesto": 119.27,
       "Beneficio Compuesto": 53.67,
-      "Banca Compuesto": 6017.13
+      "Banca Compuesto": 6017.13,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-20",
@@ -14454,7 +14938,8 @@ window.dashboardData = {
       "Banca Fijo": 2824.0,
       "Stake Compuesto": 120.34,
       "Beneficio Compuesto": 54.15,
-      "Banca Compuesto": 6071.28
+      "Banca Compuesto": 6071.28,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-20",
@@ -14472,7 +14957,8 @@ window.dashboardData = {
       "Banca Fijo": 2833.0,
       "Stake Compuesto": 121.43,
       "Beneficio Compuesto": 54.64,
-      "Banca Compuesto": 6125.92
+      "Banca Compuesto": 6125.92,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-20",
@@ -14490,7 +14976,8 @@ window.dashboardData = {
       "Banca Fijo": 2842.0,
       "Stake Compuesto": 122.52,
       "Beneficio Compuesto": 55.13,
-      "Banca Compuesto": 6181.06
+      "Banca Compuesto": 6181.06,
+      "league_id": 79
     },
     {
       "Fecha": "2024-01-20",
@@ -14508,7 +14995,8 @@ window.dashboardData = {
       "Banca Fijo": 2851.0,
       "Stake Compuesto": 123.62,
       "Beneficio Compuesto": 55.63,
-      "Banca Compuesto": 6236.69
+      "Banca Compuesto": 6236.69,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-21",
@@ -14526,7 +15014,8 @@ window.dashboardData = {
       "Banca Fijo": 2860.0,
       "Stake Compuesto": 124.73,
       "Beneficio Compuesto": 56.13,
-      "Banca Compuesto": 6292.82
+      "Banca Compuesto": 6292.82,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-21",
@@ -14544,7 +15033,8 @@ window.dashboardData = {
       "Banca Fijo": 2869.0,
       "Stake Compuesto": 125.86,
       "Beneficio Compuesto": 56.64,
-      "Banca Compuesto": 6349.45
+      "Banca Compuesto": 6349.45,
+      "league_id": 79
     },
     {
       "Fecha": "2024-01-21",
@@ -14562,7 +15052,8 @@ window.dashboardData = {
       "Banca Fijo": 2878.0,
       "Stake Compuesto": 126.99,
       "Beneficio Compuesto": 57.15,
-      "Banca Compuesto": 6406.6
+      "Banca Compuesto": 6406.6,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-26",
@@ -14580,7 +15071,8 @@ window.dashboardData = {
       "Banca Fijo": 2887.0,
       "Stake Compuesto": 128.13,
       "Beneficio Compuesto": 57.66,
-      "Banca Compuesto": 6464.26
+      "Banca Compuesto": 6464.26,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-26",
@@ -14598,7 +15090,8 @@ window.dashboardData = {
       "Banca Fijo": 2896.0,
       "Stake Compuesto": 129.29,
       "Beneficio Compuesto": 58.18,
-      "Banca Compuesto": 6522.43
+      "Banca Compuesto": 6522.43,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-26",
@@ -14616,7 +15109,8 @@ window.dashboardData = {
       "Banca Fijo": 2876.0,
       "Stake Compuesto": 130.45,
       "Beneficio Compuesto": -130.45,
-      "Banca Compuesto": 6391.99
+      "Banca Compuesto": 6391.99,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-27",
@@ -14634,7 +15128,8 @@ window.dashboardData = {
       "Banca Fijo": 2885.0,
       "Stake Compuesto": 127.84,
       "Beneficio Compuesto": 57.53,
-      "Banca Compuesto": 6449.51
+      "Banca Compuesto": 6449.51,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-27",
@@ -14652,7 +15147,8 @@ window.dashboardData = {
       "Banca Fijo": 2894.0,
       "Stake Compuesto": 128.99,
       "Beneficio Compuesto": 58.05,
-      "Banca Compuesto": 6507.56
+      "Banca Compuesto": 6507.56,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-27",
@@ -14670,7 +15166,8 @@ window.dashboardData = {
       "Banca Fijo": 2874.0,
       "Stake Compuesto": 130.15,
       "Beneficio Compuesto": -130.15,
-      "Banca Compuesto": 6377.41
+      "Banca Compuesto": 6377.41,
+      "league_id": 78
     },
     {
       "Fecha": "2024-01-27",
@@ -14688,7 +15185,8 @@ window.dashboardData = {
       "Banca Fijo": 2883.0,
       "Stake Compuesto": 127.55,
       "Beneficio Compuesto": 57.4,
-      "Banca Compuesto": 6434.8
+      "Banca Compuesto": 6434.8,
+      "league_id": 79
     },
     {
       "Fecha": "2024-01-27",
@@ -14706,7 +15204,8 @@ window.dashboardData = {
       "Banca Fijo": 2863.0,
       "Stake Compuesto": 128.7,
       "Beneficio Compuesto": -128.7,
-      "Banca Compuesto": 6306.11
+      "Banca Compuesto": 6306.11,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-27",
@@ -14724,7 +15223,8 @@ window.dashboardData = {
       "Banca Fijo": 2843.0,
       "Stake Compuesto": 126.12,
       "Beneficio Compuesto": -126.12,
-      "Banca Compuesto": 6179.99
+      "Banca Compuesto": 6179.99,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-27",
@@ -14742,7 +15242,8 @@ window.dashboardData = {
       "Banca Fijo": 2852.0,
       "Stake Compuesto": 123.6,
       "Beneficio Compuesto": 55.62,
-      "Banca Compuesto": 6235.61
+      "Banca Compuesto": 6235.61,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-27",
@@ -14760,7 +15261,8 @@ window.dashboardData = {
       "Banca Fijo": 2832.0,
       "Stake Compuesto": 124.71,
       "Beneficio Compuesto": -124.71,
-      "Banca Compuesto": 6110.89
+      "Banca Compuesto": 6110.89,
+      "league_id": 492
     },
     {
       "Fecha": "2024-01-27",
@@ -14778,7 +15280,8 @@ window.dashboardData = {
       "Banca Fijo": 2841.0,
       "Stake Compuesto": 122.22,
       "Beneficio Compuesto": 55.0,
-      "Banca Compuesto": 6165.89
+      "Banca Compuesto": 6165.89,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-27",
@@ -14796,7 +15299,8 @@ window.dashboardData = {
       "Banca Fijo": 2850.0,
       "Stake Compuesto": 123.32,
       "Beneficio Compuesto": 55.49,
-      "Banca Compuesto": 6221.39
+      "Banca Compuesto": 6221.39,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-27",
@@ -14814,7 +15318,8 @@ window.dashboardData = {
       "Banca Fijo": 2859.0,
       "Stake Compuesto": 124.43,
       "Beneficio Compuesto": 55.99,
-      "Banca Compuesto": 6277.38
+      "Banca Compuesto": 6277.38,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-28",
@@ -14832,7 +15337,8 @@ window.dashboardData = {
       "Banca Fijo": 2868.0,
       "Stake Compuesto": 125.55,
       "Beneficio Compuesto": 56.5,
-      "Banca Compuesto": 6333.87
+      "Banca Compuesto": 6333.87,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-29",
@@ -14850,7 +15356,8 @@ window.dashboardData = {
       "Banca Fijo": 2877.0,
       "Stake Compuesto": 126.68,
       "Beneficio Compuesto": 57.0,
-      "Banca Compuesto": 6390.88
+      "Banca Compuesto": 6390.88,
+      "league_id": 702
     },
     {
       "Fecha": "2024-01-29",
@@ -14868,7 +15375,8 @@ window.dashboardData = {
       "Banca Fijo": 2886.0,
       "Stake Compuesto": 127.82,
       "Beneficio Compuesto": 57.52,
-      "Banca Compuesto": 6448.4
+      "Banca Compuesto": 6448.4,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-02",
@@ -14886,7 +15394,8 @@ window.dashboardData = {
       "Banca Fijo": 2866.0,
       "Stake Compuesto": 128.97,
       "Beneficio Compuesto": -128.97,
-      "Banca Compuesto": 6319.43
+      "Banca Compuesto": 6319.43,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-02",
@@ -14904,7 +15413,8 @@ window.dashboardData = {
       "Banca Fijo": 2875.0,
       "Stake Compuesto": 126.39,
       "Beneficio Compuesto": 56.87,
-      "Banca Compuesto": 6376.3
+      "Banca Compuesto": 6376.3,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-03",
@@ -14922,7 +15432,8 @@ window.dashboardData = {
       "Banca Fijo": 2884.0,
       "Stake Compuesto": 127.53,
       "Beneficio Compuesto": 57.39,
-      "Banca Compuesto": 6433.69
+      "Banca Compuesto": 6433.69,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-03",
@@ -14940,7 +15451,8 @@ window.dashboardData = {
       "Banca Fijo": 2864.0,
       "Stake Compuesto": 128.67,
       "Beneficio Compuesto": -128.67,
-      "Banca Compuesto": 6305.02
+      "Banca Compuesto": 6305.02,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-03",
@@ -14958,7 +15470,8 @@ window.dashboardData = {
       "Banca Fijo": 2873.0,
       "Stake Compuesto": 126.1,
       "Beneficio Compuesto": 56.75,
-      "Banca Compuesto": 6361.76
+      "Banca Compuesto": 6361.76,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-03",
@@ -14976,7 +15489,8 @@ window.dashboardData = {
       "Banca Fijo": 2882.0,
       "Stake Compuesto": 127.24,
       "Beneficio Compuesto": 57.26,
-      "Banca Compuesto": 6419.02
+      "Banca Compuesto": 6419.02,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-03",
@@ -14994,7 +15508,8 @@ window.dashboardData = {
       "Banca Fijo": 2891.0,
       "Stake Compuesto": 128.38,
       "Beneficio Compuesto": 57.77,
-      "Banca Compuesto": 6476.79
+      "Banca Compuesto": 6476.79,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-03",
@@ -15012,7 +15527,8 @@ window.dashboardData = {
       "Banca Fijo": 2900.0,
       "Stake Compuesto": 129.54,
       "Beneficio Compuesto": 58.29,
-      "Banca Compuesto": 6535.08
+      "Banca Compuesto": 6535.08,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-04",
@@ -15030,7 +15546,8 @@ window.dashboardData = {
       "Banca Fijo": 2909.0,
       "Stake Compuesto": 130.7,
       "Beneficio Compuesto": 58.82,
-      "Banca Compuesto": 6593.9
+      "Banca Compuesto": 6593.9,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-04",
@@ -15048,7 +15565,8 @@ window.dashboardData = {
       "Banca Fijo": 2918.0,
       "Stake Compuesto": 131.88,
       "Beneficio Compuesto": 59.35,
-      "Banca Compuesto": 6653.24
+      "Banca Compuesto": 6653.24,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-04",
@@ -15066,7 +15584,8 @@ window.dashboardData = {
       "Banca Fijo": 2927.0,
       "Stake Compuesto": 133.06,
       "Beneficio Compuesto": 59.88,
-      "Banca Compuesto": 6713.12
+      "Banca Compuesto": 6713.12,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-04",
@@ -15084,7 +15603,8 @@ window.dashboardData = {
       "Banca Fijo": 2936.0,
       "Stake Compuesto": 134.26,
       "Beneficio Compuesto": 60.42,
-      "Banca Compuesto": 6773.54
+      "Banca Compuesto": 6773.54,
+      "league_id": 84
     },
     {
       "Fecha": "2024-02-09",
@@ -15102,7 +15622,8 @@ window.dashboardData = {
       "Banca Fijo": 2945.0,
       "Stake Compuesto": 135.47,
       "Beneficio Compuesto": 60.96,
-      "Banca Compuesto": 6834.5
+      "Banca Compuesto": 6834.5,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-09",
@@ -15120,7 +15641,8 @@ window.dashboardData = {
       "Banca Fijo": 2954.0,
       "Stake Compuesto": 136.69,
       "Beneficio Compuesto": 61.51,
-      "Banca Compuesto": 6896.01
+      "Banca Compuesto": 6896.01,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-09",
@@ -15138,7 +15660,8 @@ window.dashboardData = {
       "Banca Fijo": 2963.0,
       "Stake Compuesto": 137.92,
       "Beneficio Compuesto": 62.06,
-      "Banca Compuesto": 6958.07
+      "Banca Compuesto": 6958.07,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-09",
@@ -15156,7 +15679,8 @@ window.dashboardData = {
       "Banca Fijo": 2943.0,
       "Stake Compuesto": 139.16,
       "Beneficio Compuesto": -139.16,
-      "Banca Compuesto": 6818.91
+      "Banca Compuesto": 6818.91,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-10",
@@ -15174,7 +15698,8 @@ window.dashboardData = {
       "Banca Fijo": 2923.0,
       "Stake Compuesto": 136.38,
       "Beneficio Compuesto": -136.38,
-      "Banca Compuesto": 6682.53
+      "Banca Compuesto": 6682.53,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-10",
@@ -15192,7 +15717,8 @@ window.dashboardData = {
       "Banca Fijo": 2932.0,
       "Stake Compuesto": 133.65,
       "Beneficio Compuesto": 60.14,
-      "Banca Compuesto": 6742.68
+      "Banca Compuesto": 6742.68,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-10",
@@ -15210,7 +15736,8 @@ window.dashboardData = {
       "Banca Fijo": 2912.0,
       "Stake Compuesto": 134.85,
       "Beneficio Compuesto": -134.85,
-      "Banca Compuesto": 6607.82
+      "Banca Compuesto": 6607.82,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-11",
@@ -15228,7 +15755,8 @@ window.dashboardData = {
       "Banca Fijo": 2892.0,
       "Stake Compuesto": 132.16,
       "Beneficio Compuesto": -132.16,
-      "Banca Compuesto": 6475.67
+      "Banca Compuesto": 6475.67,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-11",
@@ -15246,7 +15774,8 @@ window.dashboardData = {
       "Banca Fijo": 2901.0,
       "Stake Compuesto": 129.51,
       "Beneficio Compuesto": 58.28,
-      "Banca Compuesto": 6533.95
+      "Banca Compuesto": 6533.95,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-11",
@@ -15264,7 +15793,8 @@ window.dashboardData = {
       "Banca Fijo": 2910.0,
       "Stake Compuesto": 130.68,
       "Beneficio Compuesto": 58.81,
-      "Banca Compuesto": 6592.75
+      "Banca Compuesto": 6592.75,
+      "league_id": 84
     },
     {
       "Fecha": "2024-02-11",
@@ -15282,7 +15812,8 @@ window.dashboardData = {
       "Banca Fijo": 2919.0,
       "Stake Compuesto": 131.86,
       "Beneficio Compuesto": 59.33,
-      "Banca Compuesto": 6652.09
+      "Banca Compuesto": 6652.09,
+      "league_id": 84
     },
     {
       "Fecha": "2024-02-11",
@@ -15300,7 +15831,8 @@ window.dashboardData = {
       "Banca Fijo": 2928.0,
       "Stake Compuesto": 133.04,
       "Beneficio Compuesto": 59.87,
-      "Banca Compuesto": 6711.96
+      "Banca Compuesto": 6711.96,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-11",
@@ -15318,7 +15850,8 @@ window.dashboardData = {
       "Banca Fijo": 2937.0,
       "Stake Compuesto": 134.24,
       "Beneficio Compuesto": 60.41,
-      "Banca Compuesto": 6772.37
+      "Banca Compuesto": 6772.37,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-16",
@@ -15336,7 +15869,8 @@ window.dashboardData = {
       "Banca Fijo": 2946.0,
       "Stake Compuesto": 135.45,
       "Beneficio Compuesto": 60.95,
-      "Banca Compuesto": 6833.32
+      "Banca Compuesto": 6833.32,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-16",
@@ -15354,7 +15888,8 @@ window.dashboardData = {
       "Banca Fijo": 2955.0,
       "Stake Compuesto": 136.67,
       "Beneficio Compuesto": 61.5,
-      "Banca Compuesto": 6894.82
+      "Banca Compuesto": 6894.82,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-16",
@@ -15372,7 +15907,8 @@ window.dashboardData = {
       "Banca Fijo": 2935.0,
       "Stake Compuesto": 137.9,
       "Beneficio Compuesto": -137.9,
-      "Banca Compuesto": 6756.92
+      "Banca Compuesto": 6756.92,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-17",
@@ -15390,7 +15926,8 @@ window.dashboardData = {
       "Banca Fijo": 2944.0,
       "Stake Compuesto": 135.14,
       "Beneficio Compuesto": 60.81,
-      "Banca Compuesto": 6817.73
+      "Banca Compuesto": 6817.73,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-17",
@@ -15408,7 +15945,8 @@ window.dashboardData = {
       "Banca Fijo": 2924.0,
       "Stake Compuesto": 136.35,
       "Beneficio Compuesto": -136.35,
-      "Banca Compuesto": 6681.38
+      "Banca Compuesto": 6681.38,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-17",
@@ -15426,7 +15964,8 @@ window.dashboardData = {
       "Banca Fijo": 2933.0,
       "Stake Compuesto": 133.63,
       "Beneficio Compuesto": 60.13,
-      "Banca Compuesto": 6741.51
+      "Banca Compuesto": 6741.51,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-17",
@@ -15444,7 +15983,8 @@ window.dashboardData = {
       "Banca Fijo": 2942.0,
       "Stake Compuesto": 134.83,
       "Beneficio Compuesto": 60.67,
-      "Banca Compuesto": 6802.18
+      "Banca Compuesto": 6802.18,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-17",
@@ -15462,7 +16002,8 @@ window.dashboardData = {
       "Banca Fijo": 2951.0,
       "Stake Compuesto": 136.04,
       "Beneficio Compuesto": 61.22,
-      "Banca Compuesto": 6863.4
+      "Banca Compuesto": 6863.4,
+      "league_id": 84
     },
     {
       "Fecha": "2024-02-17",
@@ -15480,7 +16021,8 @@ window.dashboardData = {
       "Banca Fijo": 2960.0,
       "Stake Compuesto": 137.27,
       "Beneficio Compuesto": 61.77,
-      "Banca Compuesto": 6925.17
+      "Banca Compuesto": 6925.17,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-17",
@@ -15498,7 +16040,8 @@ window.dashboardData = {
       "Banca Fijo": 2969.0,
       "Stake Compuesto": 138.5,
       "Beneficio Compuesto": 62.33,
-      "Banca Compuesto": 6987.5
+      "Banca Compuesto": 6987.5,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-17",
@@ -15516,7 +16059,8 @@ window.dashboardData = {
       "Banca Fijo": 2978.0,
       "Stake Compuesto": 139.75,
       "Beneficio Compuesto": 62.89,
-      "Banca Compuesto": 7050.39
+      "Banca Compuesto": 7050.39,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-17",
@@ -15534,7 +16078,8 @@ window.dashboardData = {
       "Banca Fijo": 2987.0,
       "Stake Compuesto": 141.01,
       "Beneficio Compuesto": 63.45,
-      "Banca Compuesto": 7113.84
+      "Banca Compuesto": 7113.84,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-17",
@@ -15552,7 +16097,8 @@ window.dashboardData = {
       "Banca Fijo": 2967.0,
       "Stake Compuesto": 142.28,
       "Beneficio Compuesto": -142.28,
-      "Banca Compuesto": 6971.56
+      "Banca Compuesto": 6971.56,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-17",
@@ -15570,7 +16116,8 @@ window.dashboardData = {
       "Banca Fijo": 2976.0,
       "Stake Compuesto": 139.43,
       "Beneficio Compuesto": 62.74,
-      "Banca Compuesto": 7034.31
+      "Banca Compuesto": 7034.31,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-18",
@@ -15588,7 +16135,8 @@ window.dashboardData = {
       "Banca Fijo": 2985.0,
       "Stake Compuesto": 140.69,
       "Beneficio Compuesto": 63.31,
-      "Banca Compuesto": 7097.62
+      "Banca Compuesto": 7097.62,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-18",
@@ -15606,7 +16154,8 @@ window.dashboardData = {
       "Banca Fijo": 2994.0,
       "Stake Compuesto": 141.95,
       "Beneficio Compuesto": 63.88,
-      "Banca Compuesto": 7161.5
+      "Banca Compuesto": 7161.5,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-18",
@@ -15624,7 +16173,8 @@ window.dashboardData = {
       "Banca Fijo": 3003.0,
       "Stake Compuesto": 143.23,
       "Beneficio Compuesto": 64.45,
-      "Banca Compuesto": 7225.95
+      "Banca Compuesto": 7225.95,
+      "league_id": 84
     },
     {
       "Fecha": "2024-02-19",
@@ -15642,7 +16192,8 @@ window.dashboardData = {
       "Banca Fijo": 3012.0,
       "Stake Compuesto": 144.52,
       "Beneficio Compuesto": 65.03,
-      "Banca Compuesto": 7290.98
+      "Banca Compuesto": 7290.98,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-19",
@@ -15660,7 +16211,8 @@ window.dashboardData = {
       "Banca Fijo": 3021.0,
       "Stake Compuesto": 145.82,
       "Beneficio Compuesto": 65.62,
-      "Banca Compuesto": 7356.6
+      "Banca Compuesto": 7356.6,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-19",
@@ -15678,7 +16230,8 @@ window.dashboardData = {
       "Banca Fijo": 3030.0,
       "Stake Compuesto": 147.13,
       "Beneficio Compuesto": 66.21,
-      "Banca Compuesto": 7422.81
+      "Banca Compuesto": 7422.81,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-22",
@@ -15696,7 +16249,8 @@ window.dashboardData = {
       "Banca Fijo": 3039.0,
       "Stake Compuesto": 148.46,
       "Beneficio Compuesto": 66.81,
-      "Banca Compuesto": 7489.62
+      "Banca Compuesto": 7489.62,
+      "league_id": 253
     },
     {
       "Fecha": "2024-02-23",
@@ -15714,7 +16268,8 @@ window.dashboardData = {
       "Banca Fijo": 3048.0,
       "Stake Compuesto": 149.79,
       "Beneficio Compuesto": 67.41,
-      "Banca Compuesto": 7557.02
+      "Banca Compuesto": 7557.02,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-23",
@@ -15732,7 +16287,8 @@ window.dashboardData = {
       "Banca Fijo": 3057.0,
       "Stake Compuesto": 151.14,
       "Beneficio Compuesto": 68.01,
-      "Banca Compuesto": 7625.04
+      "Banca Compuesto": 7625.04,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-24",
@@ -15750,7 +16306,8 @@ window.dashboardData = {
       "Banca Fijo": 3066.0,
       "Stake Compuesto": 152.5,
       "Beneficio Compuesto": 68.63,
-      "Banca Compuesto": 7693.66
+      "Banca Compuesto": 7693.66,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-24",
@@ -15768,7 +16325,8 @@ window.dashboardData = {
       "Banca Fijo": 3075.0,
       "Stake Compuesto": 153.87,
       "Beneficio Compuesto": 69.24,
-      "Banca Compuesto": 7762.9
+      "Banca Compuesto": 7762.9,
+      "league_id": 79
     },
     {
       "Fecha": "2024-02-24",
@@ -15786,7 +16344,8 @@ window.dashboardData = {
       "Banca Fijo": 3055.0,
       "Stake Compuesto": 155.26,
       "Beneficio Compuesto": -155.26,
-      "Banca Compuesto": 7607.65
+      "Banca Compuesto": 7607.65,
+      "league_id": 84
     },
     {
       "Fecha": "2024-02-24",
@@ -15804,7 +16363,8 @@ window.dashboardData = {
       "Banca Fijo": 3064.0,
       "Stake Compuesto": 152.15,
       "Beneficio Compuesto": 68.47,
-      "Banca Compuesto": 7676.12
+      "Banca Compuesto": 7676.12,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-24",
@@ -15822,7 +16382,8 @@ window.dashboardData = {
       "Banca Fijo": 3073.0,
       "Stake Compuesto": 153.52,
       "Beneficio Compuesto": 69.09,
-      "Banca Compuesto": 7745.2
+      "Banca Compuesto": 7745.2,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-24",
@@ -15840,7 +16401,8 @@ window.dashboardData = {
       "Banca Fijo": 3082.0,
       "Stake Compuesto": 154.9,
       "Beneficio Compuesto": 69.71,
-      "Banca Compuesto": 7814.91
+      "Banca Compuesto": 7814.91,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-25",
@@ -15858,7 +16420,8 @@ window.dashboardData = {
       "Banca Fijo": 3091.0,
       "Stake Compuesto": 156.3,
       "Beneficio Compuesto": 70.33,
-      "Banca Compuesto": 7885.24
+      "Banca Compuesto": 7885.24,
+      "league_id": 78
     },
     {
       "Fecha": "2024-02-26",
@@ -15876,7 +16439,8 @@ window.dashboardData = {
       "Banca Fijo": 3071.0,
       "Stake Compuesto": 157.7,
       "Beneficio Compuesto": -157.7,
-      "Banca Compuesto": 7727.54
+      "Banca Compuesto": 7727.54,
+      "league_id": 253
     },
     {
       "Fecha": "2024-02-26",
@@ -15894,7 +16458,8 @@ window.dashboardData = {
       "Banca Fijo": 3080.0,
       "Stake Compuesto": 154.55,
       "Beneficio Compuesto": 69.55,
-      "Banca Compuesto": 7797.08
+      "Banca Compuesto": 7797.08,
+      "league_id": 702
     },
     {
       "Fecha": "2024-02-27",
@@ -15912,7 +16477,8 @@ window.dashboardData = {
       "Banca Fijo": 3089.0,
       "Stake Compuesto": 155.94,
       "Beneficio Compuesto": 70.17,
-      "Banca Compuesto": 7867.26
+      "Banca Compuesto": 7867.26,
+      "league_id": 492
     },
     {
       "Fecha": "2024-02-28",
@@ -15930,7 +16496,8 @@ window.dashboardData = {
       "Banca Fijo": 3098.0,
       "Stake Compuesto": 157.35,
       "Beneficio Compuesto": 70.81,
-      "Banca Compuesto": 7938.06
+      "Banca Compuesto": 7938.06,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-01",
@@ -15948,7 +16515,8 @@ window.dashboardData = {
       "Banca Fijo": 3107.0,
       "Stake Compuesto": 158.76,
       "Beneficio Compuesto": 71.44,
-      "Banca Compuesto": 8009.51
+      "Banca Compuesto": 8009.51,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-01",
@@ -15966,7 +16534,8 @@ window.dashboardData = {
       "Banca Fijo": 3116.0,
       "Stake Compuesto": 160.19,
       "Beneficio Compuesto": 72.09,
-      "Banca Compuesto": 8081.59
+      "Banca Compuesto": 8081.59,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-01",
@@ -15984,7 +16553,8 @@ window.dashboardData = {
       "Banca Fijo": 3125.0,
       "Stake Compuesto": 161.63,
       "Beneficio Compuesto": 72.73,
-      "Banca Compuesto": 8154.33
+      "Banca Compuesto": 8154.33,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-01",
@@ -16002,7 +16572,8 @@ window.dashboardData = {
       "Banca Fijo": 3134.0,
       "Stake Compuesto": 163.09,
       "Beneficio Compuesto": 73.39,
-      "Banca Compuesto": 8227.71
+      "Banca Compuesto": 8227.71,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-01",
@@ -16020,7 +16591,8 @@ window.dashboardData = {
       "Banca Fijo": 3143.0,
       "Stake Compuesto": 164.55,
       "Beneficio Compuesto": 74.05,
-      "Banca Compuesto": 8301.76
+      "Banca Compuesto": 8301.76,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-02",
@@ -16038,7 +16610,8 @@ window.dashboardData = {
       "Banca Fijo": 3152.0,
       "Stake Compuesto": 166.04,
       "Beneficio Compuesto": 74.72,
-      "Banca Compuesto": 8376.48
+      "Banca Compuesto": 8376.48,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-02",
@@ -16056,7 +16629,8 @@ window.dashboardData = {
       "Banca Fijo": 3161.0,
       "Stake Compuesto": 167.53,
       "Beneficio Compuesto": 75.39,
-      "Banca Compuesto": 8451.87
+      "Banca Compuesto": 8451.87,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-02",
@@ -16074,7 +16648,8 @@ window.dashboardData = {
       "Banca Fijo": 3170.0,
       "Stake Compuesto": 169.04,
       "Beneficio Compuesto": 76.07,
-      "Banca Compuesto": 8527.94
+      "Banca Compuesto": 8527.94,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-02",
@@ -16092,7 +16667,8 @@ window.dashboardData = {
       "Banca Fijo": 3179.0,
       "Stake Compuesto": 170.56,
       "Beneficio Compuesto": 76.75,
-      "Banca Compuesto": 8604.69
+      "Banca Compuesto": 8604.69,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-02",
@@ -16110,7 +16686,8 @@ window.dashboardData = {
       "Banca Fijo": 3188.0,
       "Stake Compuesto": 172.09,
       "Beneficio Compuesto": 77.44,
-      "Banca Compuesto": 8682.13
+      "Banca Compuesto": 8682.13,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-02",
@@ -16128,7 +16705,8 @@ window.dashboardData = {
       "Banca Fijo": 3197.0,
       "Stake Compuesto": 173.64,
       "Beneficio Compuesto": 78.14,
-      "Banca Compuesto": 8760.27
+      "Banca Compuesto": 8760.27,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-02",
@@ -16146,7 +16724,8 @@ window.dashboardData = {
       "Banca Fijo": 3206.0,
       "Stake Compuesto": 175.21,
       "Beneficio Compuesto": 78.84,
-      "Banca Compuesto": 8839.11
+      "Banca Compuesto": 8839.11,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-02",
@@ -16164,7 +16743,8 @@ window.dashboardData = {
       "Banca Fijo": 3215.0,
       "Stake Compuesto": 176.78,
       "Beneficio Compuesto": 79.55,
-      "Banca Compuesto": 8918.66
+      "Banca Compuesto": 8918.66,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-02",
@@ -16182,7 +16762,8 @@ window.dashboardData = {
       "Banca Fijo": 3224.0,
       "Stake Compuesto": 178.37,
       "Beneficio Compuesto": 80.27,
-      "Banca Compuesto": 8998.93
+      "Banca Compuesto": 8998.93,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-02",
@@ -16200,7 +16781,8 @@ window.dashboardData = {
       "Banca Fijo": 3233.0,
       "Stake Compuesto": 179.98,
       "Beneficio Compuesto": 80.99,
-      "Banca Compuesto": 9079.92
+      "Banca Compuesto": 9079.92,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-02",
@@ -16218,7 +16800,8 @@ window.dashboardData = {
       "Banca Fijo": 3242.0,
       "Stake Compuesto": 181.6,
       "Beneficio Compuesto": 81.72,
-      "Banca Compuesto": 9161.64
+      "Banca Compuesto": 9161.64,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-02",
@@ -16236,7 +16819,8 @@ window.dashboardData = {
       "Banca Fijo": 3251.0,
       "Stake Compuesto": 183.23,
       "Beneficio Compuesto": 82.45,
-      "Banca Compuesto": 9244.09
+      "Banca Compuesto": 9244.09,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-02",
@@ -16254,7 +16838,8 @@ window.dashboardData = {
       "Banca Fijo": 3260.0,
       "Stake Compuesto": 184.88,
       "Beneficio Compuesto": 83.2,
-      "Banca Compuesto": 9327.29
+      "Banca Compuesto": 9327.29,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-03",
@@ -16272,7 +16857,8 @@ window.dashboardData = {
       "Banca Fijo": 3269.0,
       "Stake Compuesto": 186.55,
       "Beneficio Compuesto": 83.95,
-      "Banca Compuesto": 9411.24
+      "Banca Compuesto": 9411.24,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-03",
@@ -16290,7 +16876,8 @@ window.dashboardData = {
       "Banca Fijo": 3278.0,
       "Stake Compuesto": 188.22,
       "Beneficio Compuesto": 84.7,
-      "Banca Compuesto": 9495.94
+      "Banca Compuesto": 9495.94,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-04",
@@ -16308,7 +16895,8 @@ window.dashboardData = {
       "Banca Fijo": 3258.0,
       "Stake Compuesto": 189.92,
       "Beneficio Compuesto": -189.92,
-      "Banca Compuesto": 9306.02
+      "Banca Compuesto": 9306.02,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-04",
@@ -16326,7 +16914,8 @@ window.dashboardData = {
       "Banca Fijo": 3267.0,
       "Stake Compuesto": 186.12,
       "Beneficio Compuesto": 83.75,
-      "Banca Compuesto": 9389.77
+      "Banca Compuesto": 9389.77,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-06",
@@ -16344,7 +16933,8 @@ window.dashboardData = {
       "Banca Fijo": 3276.0,
       "Stake Compuesto": 187.8,
       "Beneficio Compuesto": 84.51,
-      "Banca Compuesto": 9474.28
+      "Banca Compuesto": 9474.28,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-08",
@@ -16362,7 +16952,8 @@ window.dashboardData = {
       "Banca Fijo": 3285.0,
       "Stake Compuesto": 189.49,
       "Beneficio Compuesto": 85.27,
-      "Banca Compuesto": 9559.55
+      "Banca Compuesto": 9559.55,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-08",
@@ -16380,7 +16971,8 @@ window.dashboardData = {
       "Banca Fijo": 3294.0,
       "Stake Compuesto": 191.19,
       "Beneficio Compuesto": 86.04,
-      "Banca Compuesto": 9645.59
+      "Banca Compuesto": 9645.59,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-08",
@@ -16398,7 +16990,8 @@ window.dashboardData = {
       "Banca Fijo": 3303.0,
       "Stake Compuesto": 192.91,
       "Beneficio Compuesto": 86.81,
-      "Banca Compuesto": 9732.4
+      "Banca Compuesto": 9732.4,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-08",
@@ -16416,7 +17009,8 @@ window.dashboardData = {
       "Banca Fijo": 3312.0,
       "Stake Compuesto": 194.65,
       "Beneficio Compuesto": 87.59,
-      "Banca Compuesto": 9819.99
+      "Banca Compuesto": 9819.99,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-08",
@@ -16434,7 +17028,8 @@ window.dashboardData = {
       "Banca Fijo": 3321.0,
       "Stake Compuesto": 196.4,
       "Beneficio Compuesto": 88.38,
-      "Banca Compuesto": 9908.37
+      "Banca Compuesto": 9908.37,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-09",
@@ -16452,7 +17047,8 @@ window.dashboardData = {
       "Banca Fijo": 3330.0,
       "Stake Compuesto": 198.17,
       "Beneficio Compuesto": 89.18,
-      "Banca Compuesto": 9997.54
+      "Banca Compuesto": 9997.54,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-09",
@@ -16470,7 +17066,8 @@ window.dashboardData = {
       "Banca Fijo": 3339.0,
       "Stake Compuesto": 199.95,
       "Beneficio Compuesto": 89.98,
-      "Banca Compuesto": 10087.52
+      "Banca Compuesto": 10087.52,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-09",
@@ -16488,7 +17085,8 @@ window.dashboardData = {
       "Banca Fijo": 3348.0,
       "Stake Compuesto": 201.75,
       "Beneficio Compuesto": 90.79,
-      "Banca Compuesto": 10178.31
+      "Banca Compuesto": 10178.31,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-09",
@@ -16506,7 +17104,8 @@ window.dashboardData = {
       "Banca Fijo": 3357.0,
       "Stake Compuesto": 203.57,
       "Beneficio Compuesto": 91.6,
-      "Banca Compuesto": 10269.91
+      "Banca Compuesto": 10269.91,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-09",
@@ -16524,7 +17123,8 @@ window.dashboardData = {
       "Banca Fijo": 3366.0,
       "Stake Compuesto": 205.4,
       "Beneficio Compuesto": 92.43,
-      "Banca Compuesto": 10362.34
+      "Banca Compuesto": 10362.34,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-09",
@@ -16542,7 +17142,8 @@ window.dashboardData = {
       "Banca Fijo": 3346.0,
       "Stake Compuesto": 207.25,
       "Beneficio Compuesto": -207.25,
-      "Banca Compuesto": 10155.1
+      "Banca Compuesto": 10155.1,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-09",
@@ -16560,7 +17161,8 @@ window.dashboardData = {
       "Banca Fijo": 3355.0,
       "Stake Compuesto": 203.1,
       "Beneficio Compuesto": 91.4,
-      "Banca Compuesto": 10246.49
+      "Banca Compuesto": 10246.49,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-09",
@@ -16578,7 +17180,8 @@ window.dashboardData = {
       "Banca Fijo": 3364.0,
       "Stake Compuesto": 204.93,
       "Beneficio Compuesto": 92.22,
-      "Banca Compuesto": 10338.71
+      "Banca Compuesto": 10338.71,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-09",
@@ -16596,7 +17199,8 @@ window.dashboardData = {
       "Banca Fijo": 3373.0,
       "Stake Compuesto": 206.77,
       "Beneficio Compuesto": 93.05,
-      "Banca Compuesto": 10431.76
+      "Banca Compuesto": 10431.76,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-09",
@@ -16614,7 +17218,8 @@ window.dashboardData = {
       "Banca Fijo": 3382.0,
       "Stake Compuesto": 208.64,
       "Beneficio Compuesto": 93.89,
-      "Banca Compuesto": 10525.64
+      "Banca Compuesto": 10525.64,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-10",
@@ -16632,7 +17237,8 @@ window.dashboardData = {
       "Banca Fijo": 3391.0,
       "Stake Compuesto": 210.51,
       "Beneficio Compuesto": 94.73,
-      "Banca Compuesto": 10620.38
+      "Banca Compuesto": 10620.38,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-10",
@@ -16650,7 +17256,8 @@ window.dashboardData = {
       "Banca Fijo": 3400.0,
       "Stake Compuesto": 212.41,
       "Beneficio Compuesto": 95.58,
-      "Banca Compuesto": 10715.96
+      "Banca Compuesto": 10715.96,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-10",
@@ -16668,7 +17275,8 @@ window.dashboardData = {
       "Banca Fijo": 3409.0,
       "Stake Compuesto": 214.32,
       "Beneficio Compuesto": 96.44,
-      "Banca Compuesto": 10812.4
+      "Banca Compuesto": 10812.4,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-10",
@@ -16686,7 +17294,8 @@ window.dashboardData = {
       "Banca Fijo": 3418.0,
       "Stake Compuesto": 216.25,
       "Beneficio Compuesto": 97.31,
-      "Banca Compuesto": 10909.71
+      "Banca Compuesto": 10909.71,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-10",
@@ -16704,7 +17313,8 @@ window.dashboardData = {
       "Banca Fijo": 3427.0,
       "Stake Compuesto": 218.19,
       "Beneficio Compuesto": 98.19,
-      "Banca Compuesto": 11007.9
+      "Banca Compuesto": 11007.9,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-11",
@@ -16722,7 +17332,8 @@ window.dashboardData = {
       "Banca Fijo": 3436.0,
       "Stake Compuesto": 220.16,
       "Beneficio Compuesto": 99.07,
-      "Banca Compuesto": 11106.97
+      "Banca Compuesto": 11106.97,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-11",
@@ -16740,7 +17351,8 @@ window.dashboardData = {
       "Banca Fijo": 3445.0,
       "Stake Compuesto": 222.14,
       "Beneficio Compuesto": 99.96,
-      "Banca Compuesto": 11206.94
+      "Banca Compuesto": 11206.94,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-11",
@@ -16758,7 +17370,8 @@ window.dashboardData = {
       "Banca Fijo": 3454.0,
       "Stake Compuesto": 224.14,
       "Beneficio Compuesto": 100.86,
-      "Banca Compuesto": 11307.8
+      "Banca Compuesto": 11307.8,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-11",
@@ -16776,7 +17389,8 @@ window.dashboardData = {
       "Banca Fijo": 3463.0,
       "Stake Compuesto": 226.16,
       "Beneficio Compuesto": 101.77,
-      "Banca Compuesto": 11409.57
+      "Banca Compuesto": 11409.57,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-15",
@@ -16794,7 +17408,8 @@ window.dashboardData = {
       "Banca Fijo": 3443.0,
       "Stake Compuesto": 228.19,
       "Beneficio Compuesto": -228.19,
-      "Banca Compuesto": 11181.38
+      "Banca Compuesto": 11181.38,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-15",
@@ -16812,7 +17427,8 @@ window.dashboardData = {
       "Banca Fijo": 3452.0,
       "Stake Compuesto": 223.63,
       "Beneficio Compuesto": 100.63,
-      "Banca Compuesto": 11282.01
+      "Banca Compuesto": 11282.01,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-15",
@@ -16830,7 +17446,8 @@ window.dashboardData = {
       "Banca Fijo": 3461.0,
       "Stake Compuesto": 225.64,
       "Beneficio Compuesto": 101.54,
-      "Banca Compuesto": 11383.55
+      "Banca Compuesto": 11383.55,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-15",
@@ -16848,7 +17465,8 @@ window.dashboardData = {
       "Banca Fijo": 3470.0,
       "Stake Compuesto": 227.67,
       "Beneficio Compuesto": 102.45,
-      "Banca Compuesto": 11486.0
+      "Banca Compuesto": 11486.0,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-15",
@@ -16866,7 +17484,8 @@ window.dashboardData = {
       "Banca Fijo": 3479.0,
       "Stake Compuesto": 229.72,
       "Beneficio Compuesto": 103.37,
-      "Banca Compuesto": 11589.37
+      "Banca Compuesto": 11589.37,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-15",
@@ -16884,7 +17503,8 @@ window.dashboardData = {
       "Banca Fijo": 3488.0,
       "Stake Compuesto": 231.79,
       "Beneficio Compuesto": 104.3,
-      "Banca Compuesto": 11693.68
+      "Banca Compuesto": 11693.68,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-15",
@@ -16902,7 +17522,8 @@ window.dashboardData = {
       "Banca Fijo": 3497.0,
       "Stake Compuesto": 233.87,
       "Beneficio Compuesto": 105.24,
-      "Banca Compuesto": 11798.92
+      "Banca Compuesto": 11798.92,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-16",
@@ -16920,7 +17541,8 @@ window.dashboardData = {
       "Banca Fijo": 3506.0,
       "Stake Compuesto": 235.98,
       "Beneficio Compuesto": 106.19,
-      "Banca Compuesto": 11905.11
+      "Banca Compuesto": 11905.11,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-16",
@@ -16938,7 +17560,8 @@ window.dashboardData = {
       "Banca Fijo": 3515.0,
       "Stake Compuesto": 238.1,
       "Beneficio Compuesto": 107.15,
-      "Banca Compuesto": 12012.26
+      "Banca Compuesto": 12012.26,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-16",
@@ -16956,7 +17579,8 @@ window.dashboardData = {
       "Banca Fijo": 3524.0,
       "Stake Compuesto": 240.25,
       "Beneficio Compuesto": 108.11,
-      "Banca Compuesto": 12120.37
+      "Banca Compuesto": 12120.37,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-16",
@@ -16974,7 +17598,8 @@ window.dashboardData = {
       "Banca Fijo": 3504.0,
       "Stake Compuesto": 242.41,
       "Beneficio Compuesto": -242.41,
-      "Banca Compuesto": 11877.96
+      "Banca Compuesto": 11877.96,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-16",
@@ -16992,7 +17617,8 @@ window.dashboardData = {
       "Banca Fijo": 3513.0,
       "Stake Compuesto": 237.56,
       "Beneficio Compuesto": 106.9,
-      "Banca Compuesto": 11984.86
+      "Banca Compuesto": 11984.86,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-16",
@@ -17010,7 +17636,8 @@ window.dashboardData = {
       "Banca Fijo": 3522.0,
       "Stake Compuesto": 239.7,
       "Beneficio Compuesto": 107.86,
-      "Banca Compuesto": 12092.73
+      "Banca Compuesto": 12092.73,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-16",
@@ -17028,7 +17655,8 @@ window.dashboardData = {
       "Banca Fijo": 3531.0,
       "Stake Compuesto": 241.85,
       "Beneficio Compuesto": 108.83,
-      "Banca Compuesto": 12201.56
+      "Banca Compuesto": 12201.56,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-16",
@@ -17046,7 +17674,8 @@ window.dashboardData = {
       "Banca Fijo": 3511.0,
       "Stake Compuesto": 244.03,
       "Beneficio Compuesto": -244.03,
-      "Banca Compuesto": 11957.53
+      "Banca Compuesto": 11957.53,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-16",
@@ -17064,7 +17693,8 @@ window.dashboardData = {
       "Banca Fijo": 3520.0,
       "Stake Compuesto": 239.15,
       "Beneficio Compuesto": 107.62,
-      "Banca Compuesto": 12065.15
+      "Banca Compuesto": 12065.15,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-16",
@@ -17082,7 +17712,8 @@ window.dashboardData = {
       "Banca Fijo": 3529.0,
       "Stake Compuesto": 241.3,
       "Beneficio Compuesto": 108.59,
-      "Banca Compuesto": 12173.73
+      "Banca Compuesto": 12173.73,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-16",
@@ -17100,7 +17731,8 @@ window.dashboardData = {
       "Banca Fijo": 3538.0,
       "Stake Compuesto": 243.47,
       "Beneficio Compuesto": 109.56,
-      "Banca Compuesto": 12283.3
+      "Banca Compuesto": 12283.3,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-17",
@@ -17118,7 +17750,8 @@ window.dashboardData = {
       "Banca Fijo": 3547.0,
       "Stake Compuesto": 245.67,
       "Beneficio Compuesto": 110.55,
-      "Banca Compuesto": 12393.85
+      "Banca Compuesto": 12393.85,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-17",
@@ -17136,7 +17769,8 @@ window.dashboardData = {
       "Banca Fijo": 3556.0,
       "Stake Compuesto": 247.88,
       "Beneficio Compuesto": 111.54,
-      "Banca Compuesto": 12505.39
+      "Banca Compuesto": 12505.39,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-17",
@@ -17154,7 +17788,8 @@ window.dashboardData = {
       "Banca Fijo": 3565.0,
       "Stake Compuesto": 250.11,
       "Beneficio Compuesto": 112.55,
-      "Banca Compuesto": 12617.94
+      "Banca Compuesto": 12617.94,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-17",
@@ -17172,7 +17807,8 @@ window.dashboardData = {
       "Banca Fijo": 3574.0,
       "Stake Compuesto": 252.36,
       "Beneficio Compuesto": 113.56,
-      "Banca Compuesto": 12731.5
+      "Banca Compuesto": 12731.5,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-17",
@@ -17190,7 +17826,8 @@ window.dashboardData = {
       "Banca Fijo": 3583.0,
       "Stake Compuesto": 254.63,
       "Beneficio Compuesto": 114.58,
-      "Banca Compuesto": 12846.08
+      "Banca Compuesto": 12846.08,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-17",
@@ -17208,7 +17845,8 @@ window.dashboardData = {
       "Banca Fijo": 3592.0,
       "Stake Compuesto": 256.92,
       "Beneficio Compuesto": 115.61,
-      "Banca Compuesto": 12961.7
+      "Banca Compuesto": 12961.7,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-18",
@@ -17226,7 +17864,8 @@ window.dashboardData = {
       "Banca Fijo": 3601.0,
       "Stake Compuesto": 259.23,
       "Beneficio Compuesto": 116.66,
-      "Banca Compuesto": 13078.35
+      "Banca Compuesto": 13078.35,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-18",
@@ -17244,7 +17883,8 @@ window.dashboardData = {
       "Banca Fijo": 3610.0,
       "Stake Compuesto": 261.57,
       "Beneficio Compuesto": 117.71,
-      "Banca Compuesto": 13196.06
+      "Banca Compuesto": 13196.06,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-18",
@@ -17262,7 +17902,8 @@ window.dashboardData = {
       "Banca Fijo": 3619.0,
       "Stake Compuesto": 263.92,
       "Beneficio Compuesto": 118.76,
-      "Banca Compuesto": 13314.82
+      "Banca Compuesto": 13314.82,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-22",
@@ -17280,7 +17921,8 @@ window.dashboardData = {
       "Banca Fijo": 3628.0,
       "Stake Compuesto": 266.3,
       "Beneficio Compuesto": 119.83,
-      "Banca Compuesto": 13434.66
+      "Banca Compuesto": 13434.66,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-22",
@@ -17298,7 +17940,8 @@ window.dashboardData = {
       "Banca Fijo": 3637.0,
       "Stake Compuesto": 268.69,
       "Beneficio Compuesto": 120.91,
-      "Banca Compuesto": 13555.57
+      "Banca Compuesto": 13555.57,
+      "league_id": 702
     },
     {
       "Fecha": "2024-03-23",
@@ -17316,7 +17959,8 @@ window.dashboardData = {
       "Banca Fijo": 3646.0,
       "Stake Compuesto": 271.11,
       "Beneficio Compuesto": 122.0,
-      "Banca Compuesto": 13677.57
+      "Banca Compuesto": 13677.57,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-23",
@@ -17334,7 +17978,8 @@ window.dashboardData = {
       "Banca Fijo": 3655.0,
       "Stake Compuesto": 273.55,
       "Beneficio Compuesto": 123.1,
-      "Banca Compuesto": 13800.67
+      "Banca Compuesto": 13800.67,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-23",
@@ -17352,7 +17997,8 @@ window.dashboardData = {
       "Banca Fijo": 3664.0,
       "Stake Compuesto": 276.01,
       "Beneficio Compuesto": 124.21,
-      "Banca Compuesto": 13924.87
+      "Banca Compuesto": 13924.87,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-23",
@@ -17370,7 +18016,8 @@ window.dashboardData = {
       "Banca Fijo": 3673.0,
       "Stake Compuesto": 278.5,
       "Beneficio Compuesto": 125.32,
-      "Banca Compuesto": 14050.2
+      "Banca Compuesto": 14050.2,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-23",
@@ -17388,7 +18035,8 @@ window.dashboardData = {
       "Banca Fijo": 3682.0,
       "Stake Compuesto": 281.0,
       "Beneficio Compuesto": 126.45,
-      "Banca Compuesto": 14176.65
+      "Banca Compuesto": 14176.65,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-23",
@@ -17406,7 +18054,8 @@ window.dashboardData = {
       "Banca Fijo": 3662.0,
       "Stake Compuesto": 283.53,
       "Beneficio Compuesto": -283.53,
-      "Banca Compuesto": 13893.12
+      "Banca Compuesto": 13893.12,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-24",
@@ -17424,7 +18073,8 @@ window.dashboardData = {
       "Banca Fijo": 3671.0,
       "Stake Compuesto": 277.86,
       "Beneficio Compuesto": 125.04,
-      "Banca Compuesto": 14018.15
+      "Banca Compuesto": 14018.15,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-24",
@@ -17442,7 +18092,8 @@ window.dashboardData = {
       "Banca Fijo": 3680.0,
       "Stake Compuesto": 280.36,
       "Beneficio Compuesto": 126.16,
-      "Banca Compuesto": 14144.32
+      "Banca Compuesto": 14144.32,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-24",
@@ -17460,7 +18111,8 @@ window.dashboardData = {
       "Banca Fijo": 3660.0,
       "Stake Compuesto": 282.89,
       "Beneficio Compuesto": -282.89,
-      "Banca Compuesto": 13861.43
+      "Banca Compuesto": 13861.43,
+      "league_id": 84
     },
     {
       "Fecha": "2024-03-24",
@@ -17478,7 +18130,8 @@ window.dashboardData = {
       "Banca Fijo": 3669.0,
       "Stake Compuesto": 277.23,
       "Beneficio Compuesto": 124.75,
-      "Banca Compuesto": 13986.18
+      "Banca Compuesto": 13986.18,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-25",
@@ -17496,7 +18149,8 @@ window.dashboardData = {
       "Banca Fijo": 3678.0,
       "Stake Compuesto": 279.72,
       "Beneficio Compuesto": 125.88,
-      "Banca Compuesto": 14112.06
+      "Banca Compuesto": 14112.06,
+      "league_id": 909
     },
     {
       "Fecha": "2024-03-30",
@@ -17514,7 +18168,8 @@ window.dashboardData = {
       "Banca Fijo": 3687.0,
       "Stake Compuesto": 282.24,
       "Beneficio Compuesto": 127.01,
-      "Banca Compuesto": 14239.07
+      "Banca Compuesto": 14239.07,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-30",
@@ -17532,7 +18187,8 @@ window.dashboardData = {
       "Banca Fijo": 3696.0,
       "Stake Compuesto": 284.78,
       "Beneficio Compuesto": 128.15,
-      "Banca Compuesto": 14367.22
+      "Banca Compuesto": 14367.22,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-30",
@@ -17550,7 +18206,8 @@ window.dashboardData = {
       "Banca Fijo": 3676.0,
       "Stake Compuesto": 287.34,
       "Beneficio Compuesto": -287.34,
-      "Banca Compuesto": 14079.88
+      "Banca Compuesto": 14079.88,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-30",
@@ -17568,7 +18225,8 @@ window.dashboardData = {
       "Banca Fijo": 3685.0,
       "Stake Compuesto": 281.6,
       "Beneficio Compuesto": 126.72,
-      "Banca Compuesto": 14206.59
+      "Banca Compuesto": 14206.59,
+      "league_id": 78
     },
     {
       "Fecha": "2024-03-30",
@@ -17586,7 +18244,8 @@ window.dashboardData = {
       "Banca Fijo": 3694.0,
       "Stake Compuesto": 284.13,
       "Beneficio Compuesto": 127.86,
-      "Banca Compuesto": 14334.45
+      "Banca Compuesto": 14334.45,
+      "league_id": 79
     },
     {
       "Fecha": "2024-03-30",
@@ -17604,7 +18263,8 @@ window.dashboardData = {
       "Banca Fijo": 3703.0,
       "Stake Compuesto": 286.69,
       "Beneficio Compuesto": 129.01,
-      "Banca Compuesto": 14463.46
+      "Banca Compuesto": 14463.46,
+      "league_id": 253
     },
     {
       "Fecha": "2024-03-30",
@@ -17622,7 +18282,8 @@ window.dashboardData = {
       "Banca Fijo": 3712.0,
       "Stake Compuesto": 289.27,
       "Beneficio Compuesto": 130.17,
-      "Banca Compuesto": 14593.63
+      "Banca Compuesto": 14593.63,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-30",
@@ -17640,7 +18301,8 @@ window.dashboardData = {
       "Banca Fijo": 3721.0,
       "Stake Compuesto": 291.87,
       "Beneficio Compuesto": 131.34,
-      "Banca Compuesto": 14724.98
+      "Banca Compuesto": 14724.98,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-30",
@@ -17658,7 +18320,8 @@ window.dashboardData = {
       "Banca Fijo": 3730.0,
       "Stake Compuesto": 294.5,
       "Beneficio Compuesto": 132.52,
-      "Banca Compuesto": 14857.5
+      "Banca Compuesto": 14857.5,
+      "league_id": 328
     },
     {
       "Fecha": "2024-03-30",
@@ -17676,7 +18339,8 @@ window.dashboardData = {
       "Banca Fijo": 3739.0,
       "Stake Compuesto": 297.15,
       "Beneficio Compuesto": 133.72,
-      "Banca Compuesto": 14991.22
+      "Banca Compuesto": 14991.22,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-30",
@@ -17694,7 +18358,8 @@ window.dashboardData = {
       "Banca Fijo": 3748.0,
       "Stake Compuesto": 299.82,
       "Beneficio Compuesto": 134.92,
-      "Banca Compuesto": 15126.14
+      "Banca Compuesto": 15126.14,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-30",
@@ -17712,7 +18377,8 @@ window.dashboardData = {
       "Banca Fijo": 3728.0,
       "Stake Compuesto": 302.52,
       "Beneficio Compuesto": -302.52,
-      "Banca Compuesto": 14823.62
+      "Banca Compuesto": 14823.62,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-30",
@@ -17730,7 +18396,8 @@ window.dashboardData = {
       "Banca Fijo": 3737.0,
       "Stake Compuesto": 296.47,
       "Beneficio Compuesto": 133.41,
-      "Banca Compuesto": 14957.03
+      "Banca Compuesto": 14957.03,
+      "league_id": 492
     },
     {
       "Fecha": "2024-03-30",
@@ -17748,7 +18415,8 @@ window.dashboardData = {
       "Banca Fijo": 3746.0,
       "Stake Compuesto": 299.14,
       "Beneficio Compuesto": 134.61,
-      "Banca Compuesto": 15091.64
+      "Banca Compuesto": 15091.64,
+      "league_id": 563
     },
     {
       "Fecha": "2024-03-31",
@@ -17766,7 +18434,8 @@ window.dashboardData = {
       "Banca Fijo": 3755.0,
       "Stake Compuesto": 301.83,
       "Beneficio Compuesto": 135.82,
-      "Banca Compuesto": 15227.47
+      "Banca Compuesto": 15227.47,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-01",
@@ -17784,7 +18453,8 @@ window.dashboardData = {
       "Banca Fijo": 3764.0,
       "Stake Compuesto": 304.55,
       "Beneficio Compuesto": 137.05,
-      "Banca Compuesto": 15364.52
+      "Banca Compuesto": 15364.52,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-01",
@@ -17802,7 +18472,8 @@ window.dashboardData = {
       "Banca Fijo": 3773.0,
       "Stake Compuesto": 307.29,
       "Beneficio Compuesto": 138.28,
-      "Banca Compuesto": 15502.8
+      "Banca Compuesto": 15502.8,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-05",
@@ -17820,7 +18491,8 @@ window.dashboardData = {
       "Banca Fijo": 3782.0,
       "Stake Compuesto": 310.06,
       "Beneficio Compuesto": 139.53,
-      "Banca Compuesto": 15642.32
+      "Banca Compuesto": 15642.32,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-05",
@@ -17838,7 +18510,8 @@ window.dashboardData = {
       "Banca Fijo": 3791.0,
       "Stake Compuesto": 312.85,
       "Beneficio Compuesto": 140.78,
-      "Banca Compuesto": 15783.1
+      "Banca Compuesto": 15783.1,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-05",
@@ -17856,7 +18529,8 @@ window.dashboardData = {
       "Banca Fijo": 3800.0,
       "Stake Compuesto": 315.66,
       "Beneficio Compuesto": 142.05,
-      "Banca Compuesto": 15925.15
+      "Banca Compuesto": 15925.15,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-06",
@@ -17874,7 +18548,8 @@ window.dashboardData = {
       "Banca Fijo": 3809.0,
       "Stake Compuesto": 318.5,
       "Beneficio Compuesto": 143.33,
-      "Banca Compuesto": 16068.48
+      "Banca Compuesto": 16068.48,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-06",
@@ -17892,7 +18567,8 @@ window.dashboardData = {
       "Banca Fijo": 3818.0,
       "Stake Compuesto": 321.37,
       "Beneficio Compuesto": 144.62,
-      "Banca Compuesto": 16213.09
+      "Banca Compuesto": 16213.09,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-06",
@@ -17910,7 +18586,8 @@ window.dashboardData = {
       "Banca Fijo": 3827.0,
       "Stake Compuesto": 324.26,
       "Beneficio Compuesto": 145.92,
-      "Banca Compuesto": 16359.01
+      "Banca Compuesto": 16359.01,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-06",
@@ -17928,7 +18605,8 @@ window.dashboardData = {
       "Banca Fijo": 3836.0,
       "Stake Compuesto": 327.18,
       "Beneficio Compuesto": 147.23,
-      "Banca Compuesto": 16506.24
+      "Banca Compuesto": 16506.24,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-06",
@@ -17946,7 +18624,8 @@ window.dashboardData = {
       "Banca Fijo": 3845.0,
       "Stake Compuesto": 330.12,
       "Beneficio Compuesto": 148.56,
-      "Banca Compuesto": 16654.8
+      "Banca Compuesto": 16654.8,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-06",
@@ -17964,7 +18643,8 @@ window.dashboardData = {
       "Banca Fijo": 3854.0,
       "Stake Compuesto": 333.1,
       "Beneficio Compuesto": 149.89,
-      "Banca Compuesto": 16804.69
+      "Banca Compuesto": 16804.69,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-06",
@@ -17982,7 +18662,8 @@ window.dashboardData = {
       "Banca Fijo": 3863.0,
       "Stake Compuesto": 336.09,
       "Beneficio Compuesto": 151.24,
-      "Banca Compuesto": 16955.93
+      "Banca Compuesto": 16955.93,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-06",
@@ -18000,7 +18681,8 @@ window.dashboardData = {
       "Banca Fijo": 3872.0,
       "Stake Compuesto": 339.12,
       "Beneficio Compuesto": 152.6,
-      "Banca Compuesto": 17108.54
+      "Banca Compuesto": 17108.54,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-06",
@@ -18018,7 +18700,8 @@ window.dashboardData = {
       "Banca Fijo": 3881.0,
       "Stake Compuesto": 342.17,
       "Beneficio Compuesto": 153.98,
-      "Banca Compuesto": 17262.51
+      "Banca Compuesto": 17262.51,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-06",
@@ -18036,7 +18719,8 @@ window.dashboardData = {
       "Banca Fijo": 3890.0,
       "Stake Compuesto": 345.25,
       "Beneficio Compuesto": 155.36,
-      "Banca Compuesto": 17417.88
+      "Banca Compuesto": 17417.88,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-06",
@@ -18054,7 +18738,8 @@ window.dashboardData = {
       "Banca Fijo": 3899.0,
       "Stake Compuesto": 348.36,
       "Beneficio Compuesto": 156.76,
-      "Banca Compuesto": 17574.64
+      "Banca Compuesto": 17574.64,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-06",
@@ -18072,7 +18757,8 @@ window.dashboardData = {
       "Banca Fijo": 3908.0,
       "Stake Compuesto": 351.49,
       "Beneficio Compuesto": 158.17,
-      "Banca Compuesto": 17732.81
+      "Banca Compuesto": 17732.81,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-06",
@@ -18090,7 +18776,8 @@ window.dashboardData = {
       "Banca Fijo": 3917.0,
       "Stake Compuesto": 354.66,
       "Beneficio Compuesto": 159.6,
-      "Banca Compuesto": 17892.4
+      "Banca Compuesto": 17892.4,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-06",
@@ -18108,7 +18795,8 @@ window.dashboardData = {
       "Banca Fijo": 3926.0,
       "Stake Compuesto": 357.85,
       "Beneficio Compuesto": 161.03,
-      "Banca Compuesto": 18053.44
+      "Banca Compuesto": 18053.44,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-06",
@@ -18126,7 +18814,8 @@ window.dashboardData = {
       "Banca Fijo": 3935.0,
       "Stake Compuesto": 361.07,
       "Beneficio Compuesto": 162.48,
-      "Banca Compuesto": 18215.92
+      "Banca Compuesto": 18215.92,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-07",
@@ -18144,7 +18833,8 @@ window.dashboardData = {
       "Banca Fijo": 3944.0,
       "Stake Compuesto": 364.32,
       "Beneficio Compuesto": 163.94,
-      "Banca Compuesto": 18379.86
+      "Banca Compuesto": 18379.86,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-07",
@@ -18162,7 +18852,8 @@ window.dashboardData = {
       "Banca Fijo": 3953.0,
       "Stake Compuesto": 367.6,
       "Beneficio Compuesto": 165.42,
-      "Banca Compuesto": 18545.28
+      "Banca Compuesto": 18545.28,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-07",
@@ -18180,7 +18871,8 @@ window.dashboardData = {
       "Banca Fijo": 3962.0,
       "Stake Compuesto": 370.91,
       "Beneficio Compuesto": 166.91,
-      "Banca Compuesto": 18712.19
+      "Banca Compuesto": 18712.19,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-07",
@@ -18198,7 +18890,8 @@ window.dashboardData = {
       "Banca Fijo": 3971.0,
       "Stake Compuesto": 374.24,
       "Beneficio Compuesto": 168.41,
-      "Banca Compuesto": 18880.6
+      "Banca Compuesto": 18880.6,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-07",
@@ -18216,7 +18909,8 @@ window.dashboardData = {
       "Banca Fijo": 3980.0,
       "Stake Compuesto": 377.61,
       "Beneficio Compuesto": 169.93,
-      "Banca Compuesto": 19050.52
+      "Banca Compuesto": 19050.52,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-07",
@@ -18234,7 +18928,8 @@ window.dashboardData = {
       "Banca Fijo": 3960.0,
       "Stake Compuesto": 381.01,
       "Beneficio Compuesto": -381.01,
-      "Banca Compuesto": 18669.51
+      "Banca Compuesto": 18669.51,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-07",
@@ -18252,7 +18947,8 @@ window.dashboardData = {
       "Banca Fijo": 3969.0,
       "Stake Compuesto": 373.39,
       "Beneficio Compuesto": 168.03,
-      "Banca Compuesto": 18837.54
+      "Banca Compuesto": 18837.54,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-07",
@@ -18270,7 +18966,8 @@ window.dashboardData = {
       "Banca Fijo": 3978.0,
       "Stake Compuesto": 376.75,
       "Beneficio Compuesto": 169.54,
-      "Banca Compuesto": 19007.07
+      "Banca Compuesto": 19007.07,
+      "league_id": 328
     },
     {
       "Fecha": "2024-04-07",
@@ -18288,7 +18985,8 @@ window.dashboardData = {
       "Banca Fijo": 3987.0,
       "Stake Compuesto": 380.14,
       "Beneficio Compuesto": 171.06,
-      "Banca Compuesto": 19178.14
+      "Banca Compuesto": 19178.14,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-07",
@@ -18306,7 +19004,8 @@ window.dashboardData = {
       "Banca Fijo": 3996.0,
       "Stake Compuesto": 383.56,
       "Beneficio Compuesto": 172.6,
-      "Banca Compuesto": 19350.74
+      "Banca Compuesto": 19350.74,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-08",
@@ -18324,7 +19023,8 @@ window.dashboardData = {
       "Banca Fijo": 4005.0,
       "Stake Compuesto": 387.01,
       "Beneficio Compuesto": 174.16,
-      "Banca Compuesto": 19524.9
+      "Banca Compuesto": 19524.9,
+      "league_id": 473
     },
     {
       "Fecha": "2024-04-08",
@@ -18342,7 +19042,8 @@ window.dashboardData = {
       "Banca Fijo": 4014.0,
       "Stake Compuesto": 390.5,
       "Beneficio Compuesto": 175.72,
-      "Banca Compuesto": 19700.62
+      "Banca Compuesto": 19700.62,
+      "league_id": 563
     },
     {
       "Fecha": "2024-04-08",
@@ -18360,7 +19061,8 @@ window.dashboardData = {
       "Banca Fijo": 4023.0,
       "Stake Compuesto": 394.01,
       "Beneficio Compuesto": 177.31,
-      "Banca Compuesto": 19877.93
+      "Banca Compuesto": 19877.93,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-08",
@@ -18378,7 +19080,8 @@ window.dashboardData = {
       "Banca Fijo": 4032.0,
       "Stake Compuesto": 397.56,
       "Beneficio Compuesto": 178.9,
-      "Banca Compuesto": 20056.83
+      "Banca Compuesto": 20056.83,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-08",
@@ -18396,7 +19099,8 @@ window.dashboardData = {
       "Banca Fijo": 4041.0,
       "Stake Compuesto": 401.14,
       "Beneficio Compuesto": 180.51,
-      "Banca Compuesto": 20237.34
+      "Banca Compuesto": 20237.34,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-08",
@@ -18414,7 +19118,8 @@ window.dashboardData = {
       "Banca Fijo": 4050.0,
       "Stake Compuesto": 404.75,
       "Beneficio Compuesto": 182.14,
-      "Banca Compuesto": 20419.48
+      "Banca Compuesto": 20419.48,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-08",
@@ -18432,7 +19137,8 @@ window.dashboardData = {
       "Banca Fijo": 4059.0,
       "Stake Compuesto": 408.39,
       "Beneficio Compuesto": 183.78,
-      "Banca Compuesto": 20603.25
+      "Banca Compuesto": 20603.25,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-08",
@@ -18450,7 +19156,8 @@ window.dashboardData = {
       "Banca Fijo": 4068.0,
       "Stake Compuesto": 412.07,
       "Beneficio Compuesto": 185.43,
-      "Banca Compuesto": 20788.68
+      "Banca Compuesto": 20788.68,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-08",
@@ -18468,7 +19175,8 @@ window.dashboardData = {
       "Banca Fijo": 4077.0,
       "Stake Compuesto": 415.77,
       "Beneficio Compuesto": 187.1,
-      "Banca Compuesto": 20975.78
+      "Banca Compuesto": 20975.78,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-10",
@@ -18486,7 +19194,8 @@ window.dashboardData = {
       "Banca Fijo": 4086.0,
       "Stake Compuesto": 419.52,
       "Beneficio Compuesto": 188.78,
-      "Banca Compuesto": 21164.56
+      "Banca Compuesto": 21164.56,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-10",
@@ -18504,7 +19213,8 @@ window.dashboardData = {
       "Banca Fijo": 4066.0,
       "Stake Compuesto": 423.29,
       "Beneficio Compuesto": -423.29,
-      "Banca Compuesto": 20741.27
+      "Banca Compuesto": 20741.27,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-12",
@@ -18522,7 +19232,8 @@ window.dashboardData = {
       "Banca Fijo": 4046.0,
       "Stake Compuesto": 414.83,
       "Beneficio Compuesto": -414.83,
-      "Banca Compuesto": 20326.44
+      "Banca Compuesto": 20326.44,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-12",
@@ -18540,7 +19251,8 @@ window.dashboardData = {
       "Banca Fijo": 4055.0,
       "Stake Compuesto": 406.53,
       "Beneficio Compuesto": 182.94,
-      "Banca Compuesto": 20509.38
+      "Banca Compuesto": 20509.38,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-12",
@@ -18558,7 +19270,8 @@ window.dashboardData = {
       "Banca Fijo": 4064.0,
       "Stake Compuesto": 410.19,
       "Beneficio Compuesto": 184.58,
-      "Banca Compuesto": 20693.97
+      "Banca Compuesto": 20693.97,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-12",
@@ -18576,7 +19289,8 @@ window.dashboardData = {
       "Banca Fijo": 4073.0,
       "Stake Compuesto": 413.88,
       "Beneficio Compuesto": 186.25,
-      "Banca Compuesto": 20880.21
+      "Banca Compuesto": 20880.21,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-12",
@@ -18594,7 +19308,8 @@ window.dashboardData = {
       "Banca Fijo": 4082.0,
       "Stake Compuesto": 417.6,
       "Beneficio Compuesto": 187.92,
-      "Banca Compuesto": 21068.13
+      "Banca Compuesto": 21068.13,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-12",
@@ -18612,7 +19327,8 @@ window.dashboardData = {
       "Banca Fijo": 4091.0,
       "Stake Compuesto": 421.36,
       "Beneficio Compuesto": 189.61,
-      "Banca Compuesto": 21257.75
+      "Banca Compuesto": 21257.75,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-12",
@@ -18630,7 +19346,8 @@ window.dashboardData = {
       "Banca Fijo": 4071.0,
       "Stake Compuesto": 425.15,
       "Beneficio Compuesto": -425.15,
-      "Banca Compuesto": 20832.59
+      "Banca Compuesto": 20832.59,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-12",
@@ -18648,7 +19365,8 @@ window.dashboardData = {
       "Banca Fijo": 4080.0,
       "Stake Compuesto": 416.65,
       "Beneficio Compuesto": 187.49,
-      "Banca Compuesto": 21020.09
+      "Banca Compuesto": 21020.09,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-13",
@@ -18666,7 +19384,8 @@ window.dashboardData = {
       "Banca Fijo": 4060.0,
       "Stake Compuesto": 420.4,
       "Beneficio Compuesto": -420.4,
-      "Banca Compuesto": 20599.68
+      "Banca Compuesto": 20599.68,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-13",
@@ -18684,7 +19403,8 @@ window.dashboardData = {
       "Banca Fijo": 4069.0,
       "Stake Compuesto": 411.99,
       "Beneficio Compuesto": 185.4,
-      "Banca Compuesto": 20785.08
+      "Banca Compuesto": 20785.08,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-13",
@@ -18702,7 +19422,8 @@ window.dashboardData = {
       "Banca Fijo": 4078.0,
       "Stake Compuesto": 415.7,
       "Beneficio Compuesto": 187.07,
-      "Banca Compuesto": 20972.15
+      "Banca Compuesto": 20972.15,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-13",
@@ -18720,7 +19441,8 @@ window.dashboardData = {
       "Banca Fijo": 4087.0,
       "Stake Compuesto": 419.44,
       "Beneficio Compuesto": 188.75,
-      "Banca Compuesto": 21160.9
+      "Banca Compuesto": 21160.9,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-13",
@@ -18738,7 +19460,8 @@ window.dashboardData = {
       "Banca Fijo": 4096.0,
       "Stake Compuesto": 423.22,
       "Beneficio Compuesto": 190.45,
-      "Banca Compuesto": 21351.34
+      "Banca Compuesto": 21351.34,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-13",
@@ -18756,7 +19479,8 @@ window.dashboardData = {
       "Banca Fijo": 4076.0,
       "Stake Compuesto": 427.03,
       "Beneficio Compuesto": -427.03,
-      "Banca Compuesto": 20924.32
+      "Banca Compuesto": 20924.32,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-13",
@@ -18774,7 +19498,8 @@ window.dashboardData = {
       "Banca Fijo": 4085.0,
       "Stake Compuesto": 418.49,
       "Beneficio Compuesto": 188.32,
-      "Banca Compuesto": 21112.64
+      "Banca Compuesto": 21112.64,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-13",
@@ -18792,7 +19517,8 @@ window.dashboardData = {
       "Banca Fijo": 4094.0,
       "Stake Compuesto": 422.25,
       "Beneficio Compuesto": 190.01,
-      "Banca Compuesto": 21302.65
+      "Banca Compuesto": 21302.65,
+      "league_id": 247
     },
     {
       "Fecha": "2024-04-13",
@@ -18810,7 +19536,8 @@ window.dashboardData = {
       "Banca Fijo": 4074.0,
       "Stake Compuesto": 426.05,
       "Beneficio Compuesto": -426.05,
-      "Banca Compuesto": 20876.6
+      "Banca Compuesto": 20876.6,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-13",
@@ -18828,7 +19555,8 @@ window.dashboardData = {
       "Banca Fijo": 4083.0,
       "Stake Compuesto": 417.53,
       "Beneficio Compuesto": 187.89,
-      "Banca Compuesto": 21064.49
+      "Banca Compuesto": 21064.49,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-13",
@@ -18846,7 +19574,8 @@ window.dashboardData = {
       "Banca Fijo": 4063.0,
       "Stake Compuesto": 421.29,
       "Beneficio Compuesto": -421.29,
-      "Banca Compuesto": 20643.2
+      "Banca Compuesto": 20643.2,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-13",
@@ -18864,7 +19593,8 @@ window.dashboardData = {
       "Banca Fijo": 4043.0,
       "Stake Compuesto": 412.86,
       "Beneficio Compuesto": -412.86,
-      "Banca Compuesto": 20230.33
+      "Banca Compuesto": 20230.33,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-13",
@@ -18882,7 +19612,8 @@ window.dashboardData = {
       "Banca Fijo": 4052.0,
       "Stake Compuesto": 404.61,
       "Beneficio Compuesto": 182.07,
-      "Banca Compuesto": 20412.41
+      "Banca Compuesto": 20412.41,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-13",
@@ -18900,7 +19631,8 @@ window.dashboardData = {
       "Banca Fijo": 4061.0,
       "Stake Compuesto": 408.25,
       "Beneficio Compuesto": 183.71,
-      "Banca Compuesto": 20596.12
+      "Banca Compuesto": 20596.12,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-14",
@@ -18918,7 +19650,8 @@ window.dashboardData = {
       "Banca Fijo": 4070.0,
       "Stake Compuesto": 411.92,
       "Beneficio Compuesto": 185.37,
-      "Banca Compuesto": 20781.48
+      "Banca Compuesto": 20781.48,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-14",
@@ -18936,7 +19669,8 @@ window.dashboardData = {
       "Banca Fijo": 4079.0,
       "Stake Compuesto": 415.63,
       "Beneficio Compuesto": 187.03,
-      "Banca Compuesto": 20968.52
+      "Banca Compuesto": 20968.52,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-14",
@@ -18954,7 +19688,8 @@ window.dashboardData = {
       "Banca Fijo": 4059.0,
       "Stake Compuesto": 419.37,
       "Beneficio Compuesto": -419.37,
-      "Banca Compuesto": 20549.15
+      "Banca Compuesto": 20549.15,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-14",
@@ -18972,7 +19707,8 @@ window.dashboardData = {
       "Banca Fijo": 4068.0,
       "Stake Compuesto": 410.98,
       "Beneficio Compuesto": 184.94,
-      "Banca Compuesto": 20734.09
+      "Banca Compuesto": 20734.09,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-14",
@@ -18990,7 +19726,8 @@ window.dashboardData = {
       "Banca Fijo": 4077.0,
       "Stake Compuesto": 414.68,
       "Beneficio Compuesto": 186.61,
-      "Banca Compuesto": 20920.69
+      "Banca Compuesto": 20920.69,
+      "league_id": 328
     },
     {
       "Fecha": "2024-04-14",
@@ -19008,7 +19745,8 @@ window.dashboardData = {
       "Banca Fijo": 4086.0,
       "Stake Compuesto": 418.41,
       "Beneficio Compuesto": 188.29,
-      "Banca Compuesto": 21108.98
+      "Banca Compuesto": 21108.98,
+      "league_id": 563
     },
     {
       "Fecha": "2024-04-14",
@@ -19026,7 +19764,8 @@ window.dashboardData = {
       "Banca Fijo": 4095.0,
       "Stake Compuesto": 422.18,
       "Beneficio Compuesto": 189.98,
-      "Banca Compuesto": 21298.96
+      "Banca Compuesto": 21298.96,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-14",
@@ -19044,7 +19783,8 @@ window.dashboardData = {
       "Banca Fijo": 4104.0,
       "Stake Compuesto": 425.98,
       "Beneficio Compuesto": 191.69,
-      "Banca Compuesto": 21490.65
+      "Banca Compuesto": 21490.65,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-15",
@@ -19062,7 +19802,8 @@ window.dashboardData = {
       "Banca Fijo": 4113.0,
       "Stake Compuesto": 429.81,
       "Beneficio Compuesto": 193.42,
-      "Banca Compuesto": 21684.07
+      "Banca Compuesto": 21684.07,
+      "league_id": 328
     },
     {
       "Fecha": "2024-04-15",
@@ -19080,7 +19821,8 @@ window.dashboardData = {
       "Banca Fijo": 4122.0,
       "Stake Compuesto": 433.68,
       "Beneficio Compuesto": 195.16,
-      "Banca Compuesto": 21879.23
+      "Banca Compuesto": 21879.23,
+      "league_id": 473
     },
     {
       "Fecha": "2024-04-15",
@@ -19098,7 +19840,8 @@ window.dashboardData = {
       "Banca Fijo": 4131.0,
       "Stake Compuesto": 437.58,
       "Beneficio Compuesto": 196.91,
-      "Banca Compuesto": 22076.14
+      "Banca Compuesto": 22076.14,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-15",
@@ -19116,7 +19859,8 @@ window.dashboardData = {
       "Banca Fijo": 4140.0,
       "Stake Compuesto": 441.52,
       "Beneficio Compuesto": 198.69,
-      "Banca Compuesto": 22274.82
+      "Banca Compuesto": 22274.82,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-15",
@@ -19134,7 +19878,8 @@ window.dashboardData = {
       "Banca Fijo": 4149.0,
       "Stake Compuesto": 445.5,
       "Beneficio Compuesto": 200.47,
-      "Banca Compuesto": 22475.3
+      "Banca Compuesto": 22475.3,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-15",
@@ -19152,7 +19897,8 @@ window.dashboardData = {
       "Banca Fijo": 4158.0,
       "Stake Compuesto": 449.51,
       "Beneficio Compuesto": 202.28,
-      "Banca Compuesto": 22677.57
+      "Banca Compuesto": 22677.57,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-15",
@@ -19170,7 +19916,8 @@ window.dashboardData = {
       "Banca Fijo": 4167.0,
       "Stake Compuesto": 453.55,
       "Beneficio Compuesto": 204.1,
-      "Banca Compuesto": 22881.67
+      "Banca Compuesto": 22881.67,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-15",
@@ -19188,7 +19935,8 @@ window.dashboardData = {
       "Banca Fijo": 4176.0,
       "Stake Compuesto": 457.63,
       "Beneficio Compuesto": 205.94,
-      "Banca Compuesto": 23087.61
+      "Banca Compuesto": 23087.61,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-19",
@@ -19206,7 +19954,8 @@ window.dashboardData = {
       "Banca Fijo": 4185.0,
       "Stake Compuesto": 461.75,
       "Beneficio Compuesto": 207.79,
-      "Banca Compuesto": 23295.4
+      "Banca Compuesto": 23295.4,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-19",
@@ -19224,7 +19973,8 @@ window.dashboardData = {
       "Banca Fijo": 4194.0,
       "Stake Compuesto": 465.91,
       "Beneficio Compuesto": 209.66,
-      "Banca Compuesto": 23505.05
+      "Banca Compuesto": 23505.05,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-19",
@@ -19242,7 +19992,8 @@ window.dashboardData = {
       "Banca Fijo": 4174.0,
       "Stake Compuesto": 470.1,
       "Beneficio Compuesto": -470.1,
-      "Banca Compuesto": 23034.95
+      "Banca Compuesto": 23034.95,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-19",
@@ -19260,7 +20011,8 @@ window.dashboardData = {
       "Banca Fijo": 4154.0,
       "Stake Compuesto": 460.7,
       "Beneficio Compuesto": -460.7,
-      "Banca Compuesto": 22574.25
+      "Banca Compuesto": 22574.25,
+      "league_id": 563
     },
     {
       "Fecha": "2024-04-19",
@@ -19278,7 +20030,8 @@ window.dashboardData = {
       "Banca Fijo": 4163.0,
       "Stake Compuesto": 451.49,
       "Beneficio Compuesto": 203.17,
-      "Banca Compuesto": 22777.42
+      "Banca Compuesto": 22777.42,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-19",
@@ -19296,7 +20049,8 @@ window.dashboardData = {
       "Banca Fijo": 4172.0,
       "Stake Compuesto": 455.55,
       "Beneficio Compuesto": 205.0,
-      "Banca Compuesto": 22982.42
+      "Banca Compuesto": 22982.42,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-20",
@@ -19314,7 +20068,8 @@ window.dashboardData = {
       "Banca Fijo": 4181.0,
       "Stake Compuesto": 459.65,
       "Beneficio Compuesto": 206.84,
-      "Banca Compuesto": 23189.26
+      "Banca Compuesto": 23189.26,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-20",
@@ -19332,7 +20087,8 @@ window.dashboardData = {
       "Banca Fijo": 4190.0,
       "Stake Compuesto": 463.79,
       "Beneficio Compuesto": 208.7,
-      "Banca Compuesto": 23397.96
+      "Banca Compuesto": 23397.96,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-20",
@@ -19350,7 +20106,8 @@ window.dashboardData = {
       "Banca Fijo": 4199.0,
       "Stake Compuesto": 467.96,
       "Beneficio Compuesto": 210.58,
-      "Banca Compuesto": 23608.55
+      "Banca Compuesto": 23608.55,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-20",
@@ -19368,7 +20125,8 @@ window.dashboardData = {
       "Banca Fijo": 4208.0,
       "Stake Compuesto": 472.17,
       "Beneficio Compuesto": 212.48,
-      "Banca Compuesto": 23821.02
+      "Banca Compuesto": 23821.02,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-20",
@@ -19386,7 +20144,8 @@ window.dashboardData = {
       "Banca Fijo": 4217.0,
       "Stake Compuesto": 476.42,
       "Beneficio Compuesto": 214.39,
-      "Banca Compuesto": 24035.41
+      "Banca Compuesto": 24035.41,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-20",
@@ -19404,7 +20163,8 @@ window.dashboardData = {
       "Banca Fijo": 4226.0,
       "Stake Compuesto": 480.71,
       "Beneficio Compuesto": 216.32,
-      "Banca Compuesto": 24251.73
+      "Banca Compuesto": 24251.73,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-20",
@@ -19422,7 +20182,8 @@ window.dashboardData = {
       "Banca Fijo": 4235.0,
       "Stake Compuesto": 485.03,
       "Beneficio Compuesto": 218.27,
-      "Banca Compuesto": 24470.0
+      "Banca Compuesto": 24470.0,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-20",
@@ -19440,7 +20201,8 @@ window.dashboardData = {
       "Banca Fijo": 4244.0,
       "Stake Compuesto": 489.4,
       "Beneficio Compuesto": 220.23,
-      "Banca Compuesto": 24690.23
+      "Banca Compuesto": 24690.23,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-20",
@@ -19458,7 +20220,8 @@ window.dashboardData = {
       "Banca Fijo": 4253.0,
       "Stake Compuesto": 493.8,
       "Beneficio Compuesto": 222.21,
-      "Banca Compuesto": 24912.44
+      "Banca Compuesto": 24912.44,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-20",
@@ -19476,7 +20239,8 @@ window.dashboardData = {
       "Banca Fijo": 4262.0,
       "Stake Compuesto": 498.25,
       "Beneficio Compuesto": 224.21,
-      "Banca Compuesto": 25136.65
+      "Banca Compuesto": 25136.65,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-20",
@@ -19494,7 +20258,8 @@ window.dashboardData = {
       "Banca Fijo": 4271.0,
       "Stake Compuesto": 502.73,
       "Beneficio Compuesto": 226.23,
-      "Banca Compuesto": 25362.88
+      "Banca Compuesto": 25362.88,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-20",
@@ -19512,7 +20277,8 @@ window.dashboardData = {
       "Banca Fijo": 4280.0,
       "Stake Compuesto": 507.26,
       "Beneficio Compuesto": 228.27,
-      "Banca Compuesto": 25591.15
+      "Banca Compuesto": 25591.15,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-20",
@@ -19530,7 +20296,8 @@ window.dashboardData = {
       "Banca Fijo": 4289.0,
       "Stake Compuesto": 511.82,
       "Beneficio Compuesto": 230.32,
-      "Banca Compuesto": 25821.47
+      "Banca Compuesto": 25821.47,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-20",
@@ -19548,7 +20315,8 @@ window.dashboardData = {
       "Banca Fijo": 4298.0,
       "Stake Compuesto": 516.43,
       "Beneficio Compuesto": 232.39,
-      "Banca Compuesto": 26053.86
+      "Banca Compuesto": 26053.86,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-20",
@@ -19566,7 +20334,8 @@ window.dashboardData = {
       "Banca Fijo": 4307.0,
       "Stake Compuesto": 521.08,
       "Beneficio Compuesto": 234.48,
-      "Banca Compuesto": 26288.35
+      "Banca Compuesto": 26288.35,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-20",
@@ -19584,7 +20353,8 @@ window.dashboardData = {
       "Banca Fijo": 4316.0,
       "Stake Compuesto": 525.77,
       "Beneficio Compuesto": 236.6,
-      "Banca Compuesto": 26524.94
+      "Banca Compuesto": 26524.94,
+      "league_id": 492
     },
     {
       "Fecha": "2024-04-20",
@@ -19602,7 +20372,8 @@ window.dashboardData = {
       "Banca Fijo": 4325.0,
       "Stake Compuesto": 530.5,
       "Beneficio Compuesto": 238.72,
-      "Banca Compuesto": 26763.66
+      "Banca Compuesto": 26763.66,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-21",
@@ -19620,7 +20391,8 @@ window.dashboardData = {
       "Banca Fijo": 4334.0,
       "Stake Compuesto": 535.27,
       "Beneficio Compuesto": 240.87,
-      "Banca Compuesto": 27004.54
+      "Banca Compuesto": 27004.54,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-21",
@@ -19638,7 +20410,8 @@ window.dashboardData = {
       "Banca Fijo": 4343.0,
       "Stake Compuesto": 540.09,
       "Beneficio Compuesto": 243.04,
-      "Banca Compuesto": 27247.58
+      "Banca Compuesto": 27247.58,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-21",
@@ -19656,7 +20429,8 @@ window.dashboardData = {
       "Banca Fijo": 4352.0,
       "Stake Compuesto": 544.95,
       "Beneficio Compuesto": 245.23,
-      "Banca Compuesto": 27492.81
+      "Banca Compuesto": 27492.81,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-21",
@@ -19674,7 +20448,8 @@ window.dashboardData = {
       "Banca Fijo": 4361.0,
       "Stake Compuesto": 549.86,
       "Beneficio Compuesto": 247.44,
-      "Banca Compuesto": 27740.24
+      "Banca Compuesto": 27740.24,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-21",
@@ -19692,7 +20467,8 @@ window.dashboardData = {
       "Banca Fijo": 4370.0,
       "Stake Compuesto": 554.8,
       "Beneficio Compuesto": 249.66,
-      "Banca Compuesto": 27989.9
+      "Banca Compuesto": 27989.9,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-21",
@@ -19710,7 +20486,8 @@ window.dashboardData = {
       "Banca Fijo": 4379.0,
       "Stake Compuesto": 559.8,
       "Beneficio Compuesto": 251.91,
-      "Banca Compuesto": 28241.81
+      "Banca Compuesto": 28241.81,
+      "league_id": 328
     },
     {
       "Fecha": "2024-04-21",
@@ -19728,7 +20505,8 @@ window.dashboardData = {
       "Banca Fijo": 4388.0,
       "Stake Compuesto": 564.84,
       "Beneficio Compuesto": 254.18,
-      "Banca Compuesto": 28495.99
+      "Banca Compuesto": 28495.99,
+      "league_id": 328
     },
     {
       "Fecha": "2024-04-21",
@@ -19746,7 +20524,8 @@ window.dashboardData = {
       "Banca Fijo": 4397.0,
       "Stake Compuesto": 569.92,
       "Beneficio Compuesto": 256.46,
-      "Banca Compuesto": 28752.45
+      "Banca Compuesto": 28752.45,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-21",
@@ -19764,7 +20543,8 @@ window.dashboardData = {
       "Banca Fijo": 4406.0,
       "Stake Compuesto": 575.05,
       "Beneficio Compuesto": 258.77,
-      "Banca Compuesto": 29011.23
+      "Banca Compuesto": 29011.23,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-21",
@@ -19782,7 +20562,8 @@ window.dashboardData = {
       "Banca Fijo": 4415.0,
       "Stake Compuesto": 580.22,
       "Beneficio Compuesto": 261.1,
-      "Banca Compuesto": 29272.33
+      "Banca Compuesto": 29272.33,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-22",
@@ -19800,7 +20581,8 @@ window.dashboardData = {
       "Banca Fijo": 4424.0,
       "Stake Compuesto": 585.45,
       "Beneficio Compuesto": 263.45,
-      "Banca Compuesto": 29535.78
+      "Banca Compuesto": 29535.78,
+      "league_id": 473
     },
     {
       "Fecha": "2024-04-22",
@@ -19818,7 +20600,8 @@ window.dashboardData = {
       "Banca Fijo": 4433.0,
       "Stake Compuesto": 590.72,
       "Beneficio Compuesto": 265.82,
-      "Banca Compuesto": 29801.6
+      "Banca Compuesto": 29801.6,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-22",
@@ -19836,7 +20619,8 @@ window.dashboardData = {
       "Banca Fijo": 4442.0,
       "Stake Compuesto": 596.03,
       "Beneficio Compuesto": 268.21,
-      "Banca Compuesto": 30069.81
+      "Banca Compuesto": 30069.81,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-22",
@@ -19854,7 +20638,8 @@ window.dashboardData = {
       "Banca Fijo": 4451.0,
       "Stake Compuesto": 601.4,
       "Beneficio Compuesto": 270.63,
-      "Banca Compuesto": 30340.44
+      "Banca Compuesto": 30340.44,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-24",
@@ -19872,7 +20657,8 @@ window.dashboardData = {
       "Banca Fijo": 4460.0,
       "Stake Compuesto": 606.81,
       "Beneficio Compuesto": 273.06,
-      "Banca Compuesto": 30613.51
+      "Banca Compuesto": 30613.51,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-26",
@@ -19890,7 +20676,8 @@ window.dashboardData = {
       "Banca Fijo": 4469.0,
       "Stake Compuesto": 612.27,
       "Beneficio Compuesto": 275.52,
-      "Banca Compuesto": 30889.03
+      "Banca Compuesto": 30889.03,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-26",
@@ -19908,7 +20695,8 @@ window.dashboardData = {
       "Banca Fijo": 4478.0,
       "Stake Compuesto": 617.78,
       "Beneficio Compuesto": 278.0,
-      "Banca Compuesto": 31167.03
+      "Banca Compuesto": 31167.03,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-26",
@@ -19926,7 +20714,8 @@ window.dashboardData = {
       "Banca Fijo": 4487.0,
       "Stake Compuesto": 623.34,
       "Beneficio Compuesto": 280.5,
-      "Banca Compuesto": 31447.53
+      "Banca Compuesto": 31447.53,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-26",
@@ -19944,7 +20733,8 @@ window.dashboardData = {
       "Banca Fijo": 4496.0,
       "Stake Compuesto": 628.95,
       "Beneficio Compuesto": 283.03,
-      "Banca Compuesto": 31730.56
+      "Banca Compuesto": 31730.56,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-26",
@@ -19962,7 +20752,8 @@ window.dashboardData = {
       "Banca Fijo": 4505.0,
       "Stake Compuesto": 634.61,
       "Beneficio Compuesto": 285.58,
-      "Banca Compuesto": 32016.14
+      "Banca Compuesto": 32016.14,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-26",
@@ -19980,7 +20771,8 @@ window.dashboardData = {
       "Banca Fijo": 4514.0,
       "Stake Compuesto": 640.32,
       "Beneficio Compuesto": 288.15,
-      "Banca Compuesto": 32304.28
+      "Banca Compuesto": 32304.28,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-26",
@@ -19998,7 +20790,8 @@ window.dashboardData = {
       "Banca Fijo": 4523.0,
       "Stake Compuesto": 646.09,
       "Beneficio Compuesto": 290.74,
-      "Banca Compuesto": 32595.02
+      "Banca Compuesto": 32595.02,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-26",
@@ -20016,7 +20809,8 @@ window.dashboardData = {
       "Banca Fijo": 4532.0,
       "Stake Compuesto": 651.9,
       "Beneficio Compuesto": 293.36,
-      "Banca Compuesto": 32888.37
+      "Banca Compuesto": 32888.37,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-26",
@@ -20034,7 +20828,8 @@ window.dashboardData = {
       "Banca Fijo": 4512.0,
       "Stake Compuesto": 657.77,
       "Beneficio Compuesto": -657.77,
-      "Banca Compuesto": 32230.61
+      "Banca Compuesto": 32230.61,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-26",
@@ -20052,7 +20847,8 @@ window.dashboardData = {
       "Banca Fijo": 4521.0,
       "Stake Compuesto": 644.61,
       "Beneficio Compuesto": 290.08,
-      "Banca Compuesto": 32520.68
+      "Banca Compuesto": 32520.68,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-27",
@@ -20070,7 +20866,8 @@ window.dashboardData = {
       "Banca Fijo": 4530.0,
       "Stake Compuesto": 650.41,
       "Beneficio Compuesto": 292.69,
-      "Banca Compuesto": 32813.37
+      "Banca Compuesto": 32813.37,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-27",
@@ -20088,7 +20885,8 @@ window.dashboardData = {
       "Banca Fijo": 4510.0,
       "Stake Compuesto": 656.27,
       "Beneficio Compuesto": -656.27,
-      "Banca Compuesto": 32157.1
+      "Banca Compuesto": 32157.1,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-27",
@@ -20106,7 +20904,8 @@ window.dashboardData = {
       "Banca Fijo": 4519.0,
       "Stake Compuesto": 643.14,
       "Beneficio Compuesto": 289.41,
-      "Banca Compuesto": 32446.51
+      "Banca Compuesto": 32446.51,
+      "league_id": 249
     },
     {
       "Fecha": "2024-04-27",
@@ -20124,7 +20923,8 @@ window.dashboardData = {
       "Banca Fijo": 4528.0,
       "Stake Compuesto": 648.93,
       "Beneficio Compuesto": 292.02,
-      "Banca Compuesto": 32738.53
+      "Banca Compuesto": 32738.53,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-27",
@@ -20142,7 +20942,8 @@ window.dashboardData = {
       "Banca Fijo": 4537.0,
       "Stake Compuesto": 654.77,
       "Beneficio Compuesto": 294.65,
-      "Banca Compuesto": 33033.18
+      "Banca Compuesto": 33033.18,
+      "league_id": 79
     },
     {
       "Fecha": "2024-04-27",
@@ -20160,7 +20961,8 @@ window.dashboardData = {
       "Banca Fijo": 4546.0,
       "Stake Compuesto": 660.66,
       "Beneficio Compuesto": 297.3,
-      "Banca Compuesto": 33330.48
+      "Banca Compuesto": 33330.48,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-27",
@@ -20178,7 +20980,8 @@ window.dashboardData = {
       "Banca Fijo": 4555.0,
       "Stake Compuesto": 666.61,
       "Beneficio Compuesto": 299.97,
-      "Banca Compuesto": 33630.45
+      "Banca Compuesto": 33630.45,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-27",
@@ -20196,7 +20999,8 @@ window.dashboardData = {
       "Banca Fijo": 4564.0,
       "Stake Compuesto": 672.61,
       "Beneficio Compuesto": 302.67,
-      "Banca Compuesto": 33933.13
+      "Banca Compuesto": 33933.13,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-27",
@@ -20214,7 +21018,8 @@ window.dashboardData = {
       "Banca Fijo": 4573.0,
       "Stake Compuesto": 678.66,
       "Beneficio Compuesto": 305.4,
-      "Banca Compuesto": 34238.53
+      "Banca Compuesto": 34238.53,
+      "league_id": 253
     },
     {
       "Fecha": "2024-04-27",
@@ -20232,7 +21037,8 @@ window.dashboardData = {
       "Banca Fijo": 4582.0,
       "Stake Compuesto": 684.77,
       "Beneficio Compuesto": 308.15,
-      "Banca Compuesto": 34546.67
+      "Banca Compuesto": 34546.67,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-27",
@@ -20250,7 +21056,8 @@ window.dashboardData = {
       "Banca Fijo": 4591.0,
       "Stake Compuesto": 690.93,
       "Beneficio Compuesto": 310.92,
-      "Banca Compuesto": 34857.59
+      "Banca Compuesto": 34857.59,
+      "league_id": 474
     },
     {
       "Fecha": "2024-04-27",
@@ -20268,7 +21075,8 @@ window.dashboardData = {
       "Banca Fijo": 4571.0,
       "Stake Compuesto": 697.15,
       "Beneficio Compuesto": -697.15,
-      "Banca Compuesto": 34160.44
+      "Banca Compuesto": 34160.44,
+      "league_id": 563
     },
     {
       "Fecha": "2024-04-28",
@@ -20286,7 +21094,8 @@ window.dashboardData = {
       "Banca Fijo": 4551.0,
       "Stake Compuesto": 683.21,
       "Beneficio Compuesto": -683.21,
-      "Banca Compuesto": 33477.23
+      "Banca Compuesto": 33477.23,
+      "league_id": 78
     },
     {
       "Fecha": "2024-04-28",
@@ -20304,7 +21113,8 @@ window.dashboardData = {
       "Banca Fijo": 4560.0,
       "Stake Compuesto": 669.54,
       "Beneficio Compuesto": 301.3,
-      "Banca Compuesto": 33778.53
+      "Banca Compuesto": 33778.53,
+      "league_id": 84
     },
     {
       "Fecha": "2024-04-28",
@@ -20322,7 +21132,8 @@ window.dashboardData = {
       "Banca Fijo": 4569.0,
       "Stake Compuesto": 675.57,
       "Beneficio Compuesto": 304.01,
-      "Banca Compuesto": 34082.53
+      "Banca Compuesto": 34082.53,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-28",
@@ -20340,7 +21151,8 @@ window.dashboardData = {
       "Banca Fijo": 4549.0,
       "Stake Compuesto": 681.65,
       "Beneficio Compuesto": -681.65,
-      "Banca Compuesto": 33400.88
+      "Banca Compuesto": 33400.88,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-28",
@@ -20358,7 +21170,8 @@ window.dashboardData = {
       "Banca Fijo": 4558.0,
       "Stake Compuesto": 668.02,
       "Beneficio Compuesto": 300.61,
-      "Banca Compuesto": 33701.49
+      "Banca Compuesto": 33701.49,
+      "league_id": 245
     },
     {
       "Fecha": "2024-04-28",
@@ -20376,7 +21189,8 @@ window.dashboardData = {
       "Banca Fijo": 4567.0,
       "Stake Compuesto": 674.03,
       "Beneficio Compuesto": 303.31,
-      "Banca Compuesto": 34004.8
+      "Banca Compuesto": 34004.8,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-28",
@@ -20394,7 +21208,8 @@ window.dashboardData = {
       "Banca Fijo": 4576.0,
       "Stake Compuesto": 680.1,
       "Beneficio Compuesto": 306.04,
-      "Banca Compuesto": 34310.85
+      "Banca Compuesto": 34310.85,
+      "league_id": 248
     },
     {
       "Fecha": "2024-04-28",
@@ -20412,7 +21227,8 @@ window.dashboardData = {
       "Banca Fijo": 4585.0,
       "Stake Compuesto": 686.22,
       "Beneficio Compuesto": 308.8,
-      "Banca Compuesto": 34619.64
+      "Banca Compuesto": 34619.64,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-28",
@@ -20430,7 +21246,8 @@ window.dashboardData = {
       "Banca Fijo": 4594.0,
       "Stake Compuesto": 692.39,
       "Beneficio Compuesto": 311.58,
-      "Banca Compuesto": 34931.22
+      "Banca Compuesto": 34931.22,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-28",
@@ -20448,7 +21265,8 @@ window.dashboardData = {
       "Banca Fijo": 4603.0,
       "Stake Compuesto": 698.62,
       "Beneficio Compuesto": 314.38,
-      "Banca Compuesto": 35245.6
+      "Banca Compuesto": 35245.6,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-28",
@@ -20466,7 +21284,8 @@ window.dashboardData = {
       "Banca Fijo": 4612.0,
       "Stake Compuesto": 704.91,
       "Beneficio Compuesto": 317.21,
-      "Banca Compuesto": 35562.81
+      "Banca Compuesto": 35562.81,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-28",
@@ -20484,7 +21303,8 @@ window.dashboardData = {
       "Banca Fijo": 4621.0,
       "Stake Compuesto": 711.26,
       "Beneficio Compuesto": 320.07,
-      "Banca Compuesto": 35882.88
+      "Banca Compuesto": 35882.88,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-28",
@@ -20502,7 +21322,8 @@ window.dashboardData = {
       "Banca Fijo": 4630.0,
       "Stake Compuesto": 717.66,
       "Beneficio Compuesto": 322.95,
-      "Banca Compuesto": 36205.82
+      "Banca Compuesto": 36205.82,
+      "league_id": 909
     },
     {
       "Fecha": "2024-04-29",
@@ -20520,7 +21341,8 @@ window.dashboardData = {
       "Banca Fijo": 4610.0,
       "Stake Compuesto": 724.12,
       "Beneficio Compuesto": -724.12,
-      "Banca Compuesto": 35481.71
+      "Banca Compuesto": 35481.71,
+      "league_id": 164
     },
     {
       "Fecha": "2024-04-29",
@@ -20538,7 +21360,8 @@ window.dashboardData = {
       "Banca Fijo": 4619.0,
       "Stake Compuesto": 709.63,
       "Beneficio Compuesto": 319.34,
-      "Banca Compuesto": 35801.04
+      "Banca Compuesto": 35801.04,
+      "league_id": 473
     },
     {
       "Fecha": "2024-04-29",
@@ -20556,7 +21379,8 @@ window.dashboardData = {
       "Banca Fijo": 4628.0,
       "Stake Compuesto": 716.02,
       "Beneficio Compuesto": 322.21,
-      "Banca Compuesto": 36123.25
+      "Banca Compuesto": 36123.25,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-29",
@@ -20574,7 +21398,8 @@ window.dashboardData = {
       "Banca Fijo": 4637.0,
       "Stake Compuesto": 722.47,
       "Beneficio Compuesto": 325.11,
-      "Banca Compuesto": 36448.36
+      "Banca Compuesto": 36448.36,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-29",
@@ -20592,7 +21417,8 @@ window.dashboardData = {
       "Banca Fijo": 4646.0,
       "Stake Compuesto": 728.97,
       "Beneficio Compuesto": 328.04,
-      "Banca Compuesto": 36776.4
+      "Banca Compuesto": 36776.4,
+      "league_id": 702
     },
     {
       "Fecha": "2024-04-30",
@@ -20610,7 +21436,8 @@ window.dashboardData = {
       "Banca Fijo": 4655.0,
       "Stake Compuesto": 735.53,
       "Beneficio Compuesto": 330.99,
-      "Banca Compuesto": 37107.38
+      "Banca Compuesto": 37107.38,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-03",
@@ -20628,7 +21455,8 @@ window.dashboardData = {
       "Banca Fijo": 4664.0,
       "Stake Compuesto": 742.15,
       "Beneficio Compuesto": 333.97,
-      "Banca Compuesto": 37441.35
+      "Banca Compuesto": 37441.35,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-03",
@@ -20646,7 +21474,8 @@ window.dashboardData = {
       "Banca Fijo": 4673.0,
       "Stake Compuesto": 748.83,
       "Beneficio Compuesto": 336.97,
-      "Banca Compuesto": 37778.32
+      "Banca Compuesto": 37778.32,
+      "league_id": 563
     },
     {
       "Fecha": "2024-05-03",
@@ -20664,7 +21493,8 @@ window.dashboardData = {
       "Banca Fijo": 4682.0,
       "Stake Compuesto": 755.57,
       "Beneficio Compuesto": 340.0,
-      "Banca Compuesto": 38118.33
+      "Banca Compuesto": 38118.33,
+      "league_id": 702
     },
     {
       "Fecha": "2024-05-03",
@@ -20682,7 +21512,8 @@ window.dashboardData = {
       "Banca Fijo": 4691.0,
       "Stake Compuesto": 762.37,
       "Beneficio Compuesto": 343.06,
-      "Banca Compuesto": 38461.39
+      "Banca Compuesto": 38461.39,
+      "league_id": 702
     },
     {
       "Fecha": "2024-05-03",
@@ -20700,7 +21531,8 @@ window.dashboardData = {
       "Banca Fijo": 4700.0,
       "Stake Compuesto": 769.23,
       "Beneficio Compuesto": 346.15,
-      "Banca Compuesto": 38807.55
+      "Banca Compuesto": 38807.55,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-04",
@@ -20718,7 +21550,8 @@ window.dashboardData = {
       "Banca Fijo": 4709.0,
       "Stake Compuesto": 776.15,
       "Beneficio Compuesto": 349.27,
-      "Banca Compuesto": 39156.81
+      "Banca Compuesto": 39156.81,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-04",
@@ -20736,7 +21569,8 @@ window.dashboardData = {
       "Banca Fijo": 4718.0,
       "Stake Compuesto": 783.14,
       "Beneficio Compuesto": 352.41,
-      "Banca Compuesto": 39509.22
+      "Banca Compuesto": 39509.22,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-04",
@@ -20754,7 +21588,8 @@ window.dashboardData = {
       "Banca Fijo": 4727.0,
       "Stake Compuesto": 790.18,
       "Beneficio Compuesto": 355.58,
-      "Banca Compuesto": 39864.81
+      "Banca Compuesto": 39864.81,
+      "league_id": 166
     },
     {
       "Fecha": "2024-05-04",
@@ -20772,7 +21607,8 @@ window.dashboardData = {
       "Banca Fijo": 4736.0,
       "Stake Compuesto": 797.3,
       "Beneficio Compuesto": 358.78,
-      "Banca Compuesto": 40223.59
+      "Banca Compuesto": 40223.59,
+      "league_id": 166
     },
     {
       "Fecha": "2024-05-04",
@@ -20790,7 +21626,8 @@ window.dashboardData = {
       "Banca Fijo": 4745.0,
       "Stake Compuesto": 804.47,
       "Beneficio Compuesto": 362.01,
-      "Banca Compuesto": 40585.6
+      "Banca Compuesto": 40585.6,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-04",
@@ -20808,7 +21645,8 @@ window.dashboardData = {
       "Banca Fijo": 4754.0,
       "Stake Compuesto": 811.71,
       "Beneficio Compuesto": 365.27,
-      "Banca Compuesto": 40950.87
+      "Banca Compuesto": 40950.87,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-04",
@@ -20826,7 +21664,8 @@ window.dashboardData = {
       "Banca Fijo": 4734.0,
       "Stake Compuesto": 819.02,
       "Beneficio Compuesto": -819.02,
-      "Banca Compuesto": 40131.86
+      "Banca Compuesto": 40131.86,
+      "league_id": 474
     },
     {
       "Fecha": "2024-05-04",
@@ -20844,7 +21683,8 @@ window.dashboardData = {
       "Banca Fijo": 4743.0,
       "Stake Compuesto": 802.64,
       "Beneficio Compuesto": 361.19,
-      "Banca Compuesto": 40493.04
+      "Banca Compuesto": 40493.04,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-04",
@@ -20862,7 +21702,8 @@ window.dashboardData = {
       "Banca Fijo": 4752.0,
       "Stake Compuesto": 809.86,
       "Beneficio Compuesto": 364.44,
-      "Banca Compuesto": 40857.48
+      "Banca Compuesto": 40857.48,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-04",
@@ -20880,7 +21721,8 @@ window.dashboardData = {
       "Banca Fijo": 4761.0,
       "Stake Compuesto": 817.15,
       "Beneficio Compuesto": 367.72,
-      "Banca Compuesto": 41225.2
+      "Banca Compuesto": 41225.2,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-04",
@@ -20898,7 +21740,8 @@ window.dashboardData = {
       "Banca Fijo": 4770.0,
       "Stake Compuesto": 824.5,
       "Beneficio Compuesto": 371.03,
-      "Banca Compuesto": 41596.22
+      "Banca Compuesto": 41596.22,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-05",
@@ -20916,7 +21759,8 @@ window.dashboardData = {
       "Banca Fijo": 4779.0,
       "Stake Compuesto": 831.92,
       "Beneficio Compuesto": 374.37,
-      "Banca Compuesto": 41970.59
+      "Banca Compuesto": 41970.59,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-05",
@@ -20934,7 +21778,8 @@ window.dashboardData = {
       "Banca Fijo": 4788.0,
       "Stake Compuesto": 839.41,
       "Beneficio Compuesto": 377.74,
-      "Banca Compuesto": 42348.33
+      "Banca Compuesto": 42348.33,
+      "league_id": 79
     },
     {
       "Fecha": "2024-05-05",
@@ -20952,7 +21797,8 @@ window.dashboardData = {
       "Banca Fijo": 4797.0,
       "Stake Compuesto": 846.97,
       "Beneficio Compuesto": 381.13,
-      "Banca Compuesto": 42729.46
+      "Banca Compuesto": 42729.46,
+      "league_id": 84
     },
     {
       "Fecha": "2024-05-05",
@@ -20970,7 +21816,8 @@ window.dashboardData = {
       "Banca Fijo": 4806.0,
       "Stake Compuesto": 854.59,
       "Beneficio Compuesto": 384.57,
-      "Banca Compuesto": 43114.03
+      "Banca Compuesto": 43114.03,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-05",
@@ -20988,7 +21835,8 @@ window.dashboardData = {
       "Banca Fijo": 4815.0,
       "Stake Compuesto": 862.28,
       "Beneficio Compuesto": 388.03,
-      "Banca Compuesto": 43502.05
+      "Banca Compuesto": 43502.05,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-05",
@@ -21006,7 +21854,8 @@ window.dashboardData = {
       "Banca Fijo": 4824.0,
       "Stake Compuesto": 870.04,
       "Beneficio Compuesto": 391.52,
-      "Banca Compuesto": 43893.57
+      "Banca Compuesto": 43893.57,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-05",
@@ -21024,7 +21873,8 @@ window.dashboardData = {
       "Banca Fijo": 4833.0,
       "Stake Compuesto": 877.87,
       "Beneficio Compuesto": 395.04,
-      "Banca Compuesto": 44288.61
+      "Banca Compuesto": 44288.61,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-05",
@@ -21042,7 +21892,8 @@ window.dashboardData = {
       "Banca Fijo": 4842.0,
       "Stake Compuesto": 885.77,
       "Beneficio Compuesto": 398.6,
-      "Banca Compuesto": 44687.21
+      "Banca Compuesto": 44687.21,
+      "league_id": 473
     },
     {
       "Fecha": "2024-05-06",
@@ -21060,7 +21911,8 @@ window.dashboardData = {
       "Banca Fijo": 4851.0,
       "Stake Compuesto": 893.74,
       "Beneficio Compuesto": 402.18,
-      "Banca Compuesto": 45089.4
+      "Banca Compuesto": 45089.4,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-06",
@@ -21078,7 +21930,8 @@ window.dashboardData = {
       "Banca Fijo": 4860.0,
       "Stake Compuesto": 901.79,
       "Beneficio Compuesto": 405.8,
-      "Banca Compuesto": 45495.2
+      "Banca Compuesto": 45495.2,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-06",
@@ -21096,7 +21949,8 @@ window.dashboardData = {
       "Banca Fijo": 4869.0,
       "Stake Compuesto": 909.9,
       "Beneficio Compuesto": 409.46,
-      "Banca Compuesto": 45904.66
+      "Banca Compuesto": 45904.66,
+      "league_id": 702
     },
     {
       "Fecha": "2024-05-08",
@@ -21114,7 +21968,8 @@ window.dashboardData = {
       "Banca Fijo": 4878.0,
       "Stake Compuesto": 918.09,
       "Beneficio Compuesto": 413.14,
-      "Banca Compuesto": 46317.8
+      "Banca Compuesto": 46317.8,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-08",
@@ -21132,7 +21987,8 @@ window.dashboardData = {
       "Banca Fijo": 4858.0,
       "Stake Compuesto": 926.36,
       "Beneficio Compuesto": -926.36,
-      "Banca Compuesto": 45391.44
+      "Banca Compuesto": 45391.44,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-10",
@@ -21150,7 +22006,8 @@ window.dashboardData = {
       "Banca Fijo": 4867.0,
       "Stake Compuesto": 907.83,
       "Beneficio Compuesto": 408.52,
-      "Banca Compuesto": 45799.97
+      "Banca Compuesto": 45799.97,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-10",
@@ -21168,7 +22025,8 @@ window.dashboardData = {
       "Banca Fijo": 4876.0,
       "Stake Compuesto": 916.0,
       "Beneficio Compuesto": 412.2,
-      "Banca Compuesto": 46212.17
+      "Banca Compuesto": 46212.17,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-10",
@@ -21186,7 +22044,8 @@ window.dashboardData = {
       "Banca Fijo": 4885.0,
       "Stake Compuesto": 924.24,
       "Beneficio Compuesto": 415.91,
-      "Banca Compuesto": 46628.07
+      "Banca Compuesto": 46628.07,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-11",
@@ -21204,7 +22063,8 @@ window.dashboardData = {
       "Banca Fijo": 4894.0,
       "Stake Compuesto": 932.56,
       "Beneficio Compuesto": 419.65,
-      "Banca Compuesto": 47047.73
+      "Banca Compuesto": 47047.73,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-11",
@@ -21222,7 +22082,8 @@ window.dashboardData = {
       "Banca Fijo": 4903.0,
       "Stake Compuesto": 940.95,
       "Beneficio Compuesto": 423.43,
-      "Banca Compuesto": 47471.16
+      "Banca Compuesto": 47471.16,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-11",
@@ -21240,7 +22101,8 @@ window.dashboardData = {
       "Banca Fijo": 4912.0,
       "Stake Compuesto": 949.42,
       "Beneficio Compuesto": 427.24,
-      "Banca Compuesto": 47898.4
+      "Banca Compuesto": 47898.4,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-11",
@@ -21258,7 +22120,8 @@ window.dashboardData = {
       "Banca Fijo": 4921.0,
       "Stake Compuesto": 957.97,
       "Beneficio Compuesto": 431.09,
-      "Banca Compuesto": 48329.48
+      "Banca Compuesto": 48329.48,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-11",
@@ -21276,7 +22139,8 @@ window.dashboardData = {
       "Banca Fijo": 4930.0,
       "Stake Compuesto": 966.59,
       "Beneficio Compuesto": 434.97,
-      "Banca Compuesto": 48764.45
+      "Banca Compuesto": 48764.45,
+      "league_id": 79
     },
     {
       "Fecha": "2024-05-11",
@@ -21294,7 +22158,8 @@ window.dashboardData = {
       "Banca Fijo": 4939.0,
       "Stake Compuesto": 975.29,
       "Beneficio Compuesto": 438.88,
-      "Banca Compuesto": 49203.33
+      "Banca Compuesto": 49203.33,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-11",
@@ -21312,7 +22177,8 @@ window.dashboardData = {
       "Banca Fijo": 4948.0,
       "Stake Compuesto": 984.07,
       "Beneficio Compuesto": 442.83,
-      "Banca Compuesto": 49646.16
+      "Banca Compuesto": 49646.16,
+      "league_id": 166
     },
     {
       "Fecha": "2024-05-11",
@@ -21330,7 +22196,8 @@ window.dashboardData = {
       "Banca Fijo": 4957.0,
       "Stake Compuesto": 992.92,
       "Beneficio Compuesto": 446.82,
-      "Banca Compuesto": 50092.97
+      "Banca Compuesto": 50092.97,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-11",
@@ -21348,7 +22215,8 @@ window.dashboardData = {
       "Banca Fijo": 4966.0,
       "Stake Compuesto": 1001.86,
       "Beneficio Compuesto": 450.84,
-      "Banca Compuesto": 50543.81
+      "Banca Compuesto": 50543.81,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-11",
@@ -21366,7 +22234,8 @@ window.dashboardData = {
       "Banca Fijo": 4975.0,
       "Stake Compuesto": 1010.88,
       "Beneficio Compuesto": 454.89,
-      "Banca Compuesto": 50998.7
+      "Banca Compuesto": 50998.7,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-11",
@@ -21384,7 +22253,8 @@ window.dashboardData = {
       "Banca Fijo": 4984.0,
       "Stake Compuesto": 1019.97,
       "Beneficio Compuesto": 458.99,
-      "Banca Compuesto": 51457.69
+      "Banca Compuesto": 51457.69,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-11",
@@ -21402,7 +22272,8 @@ window.dashboardData = {
       "Banca Fijo": 4964.0,
       "Stake Compuesto": 1029.15,
       "Beneficio Compuesto": -1029.15,
-      "Banca Compuesto": 50428.54
+      "Banca Compuesto": 50428.54,
+      "league_id": 474
     },
     {
       "Fecha": "2024-05-11",
@@ -21420,7 +22291,8 @@ window.dashboardData = {
       "Banca Fijo": 4973.0,
       "Stake Compuesto": 1008.57,
       "Beneficio Compuesto": 453.86,
-      "Banca Compuesto": 50882.4
+      "Banca Compuesto": 50882.4,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-11",
@@ -21438,7 +22310,8 @@ window.dashboardData = {
       "Banca Fijo": 4982.0,
       "Stake Compuesto": 1017.65,
       "Beneficio Compuesto": 457.94,
-      "Banca Compuesto": 51340.34
+      "Banca Compuesto": 51340.34,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-11",
@@ -21456,7 +22329,8 @@ window.dashboardData = {
       "Banca Fijo": 4962.0,
       "Stake Compuesto": 1026.81,
       "Beneficio Compuesto": -1026.81,
-      "Banca Compuesto": 50313.53
+      "Banca Compuesto": 50313.53,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-11",
@@ -21474,7 +22348,8 @@ window.dashboardData = {
       "Banca Fijo": 4971.0,
       "Stake Compuesto": 1006.27,
       "Beneficio Compuesto": 452.82,
-      "Banca Compuesto": 50766.35
+      "Banca Compuesto": 50766.35,
+      "league_id": 702
     },
     {
       "Fecha": "2024-05-11",
@@ -21492,7 +22367,8 @@ window.dashboardData = {
       "Banca Fijo": 4951.0,
       "Stake Compuesto": 1015.33,
       "Beneficio Compuesto": -1015.33,
-      "Banca Compuesto": 49751.03
+      "Banca Compuesto": 49751.03,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-12",
@@ -21510,7 +22386,8 @@ window.dashboardData = {
       "Banca Fijo": 4960.0,
       "Stake Compuesto": 995.02,
       "Beneficio Compuesto": 447.76,
-      "Banca Compuesto": 50198.78
+      "Banca Compuesto": 50198.78,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-12",
@@ -21528,7 +22405,8 @@ window.dashboardData = {
       "Banca Fijo": 4969.0,
       "Stake Compuesto": 1003.98,
       "Beneficio Compuesto": 451.79,
-      "Banca Compuesto": 50650.57
+      "Banca Compuesto": 50650.57,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-12",
@@ -21546,7 +22424,8 @@ window.dashboardData = {
       "Banca Fijo": 4978.0,
       "Stake Compuesto": 1013.01,
       "Beneficio Compuesto": 455.86,
-      "Banca Compuesto": 51106.43
+      "Banca Compuesto": 51106.43,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-12",
@@ -21564,7 +22443,8 @@ window.dashboardData = {
       "Banca Fijo": 4987.0,
       "Stake Compuesto": 1022.13,
       "Beneficio Compuesto": 459.96,
-      "Banca Compuesto": 51566.39
+      "Banca Compuesto": 51566.39,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-12",
@@ -21582,7 +22462,8 @@ window.dashboardData = {
       "Banca Fijo": 4996.0,
       "Stake Compuesto": 1031.33,
       "Beneficio Compuesto": 464.1,
-      "Banca Compuesto": 52030.48
+      "Banca Compuesto": 52030.48,
+      "league_id": 79
     },
     {
       "Fecha": "2024-05-12",
@@ -21600,7 +22481,8 @@ window.dashboardData = {
       "Banca Fijo": 5005.0,
       "Stake Compuesto": 1040.61,
       "Beneficio Compuesto": 468.27,
-      "Banca Compuesto": 52498.76
+      "Banca Compuesto": 52498.76,
+      "league_id": 84
     },
     {
       "Fecha": "2024-05-12",
@@ -21618,7 +22500,8 @@ window.dashboardData = {
       "Banca Fijo": 4985.0,
       "Stake Compuesto": 1049.98,
       "Beneficio Compuesto": -1049.98,
-      "Banca Compuesto": 51448.78
+      "Banca Compuesto": 51448.78,
+      "league_id": 84
     },
     {
       "Fecha": "2024-05-12",
@@ -21636,7 +22519,8 @@ window.dashboardData = {
       "Banca Fijo": 4994.0,
       "Stake Compuesto": 1028.98,
       "Beneficio Compuesto": 463.04,
-      "Banca Compuesto": 51911.82
+      "Banca Compuesto": 51911.82,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-12",
@@ -21654,7 +22538,8 @@ window.dashboardData = {
       "Banca Fijo": 5003.0,
       "Stake Compuesto": 1038.24,
       "Beneficio Compuesto": 467.21,
-      "Banca Compuesto": 52379.03
+      "Banca Compuesto": 52379.03,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-12",
@@ -21672,7 +22557,8 @@ window.dashboardData = {
       "Banca Fijo": 5012.0,
       "Stake Compuesto": 1047.58,
       "Beneficio Compuesto": 471.41,
-      "Banca Compuesto": 52850.44
+      "Banca Compuesto": 52850.44,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-12",
@@ -21690,7 +22576,8 @@ window.dashboardData = {
       "Banca Fijo": 5021.0,
       "Stake Compuesto": 1057.01,
       "Beneficio Compuesto": 475.65,
-      "Banca Compuesto": 53326.09
+      "Banca Compuesto": 53326.09,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-12",
@@ -21708,7 +22595,8 @@ window.dashboardData = {
       "Banca Fijo": 5030.0,
       "Stake Compuesto": 1066.52,
       "Beneficio Compuesto": 479.93,
-      "Banca Compuesto": 53806.03
+      "Banca Compuesto": 53806.03,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-12",
@@ -21726,7 +22614,8 @@ window.dashboardData = {
       "Banca Fijo": 5039.0,
       "Stake Compuesto": 1076.12,
       "Beneficio Compuesto": 484.25,
-      "Banca Compuesto": 54290.28
+      "Banca Compuesto": 54290.28,
+      "league_id": 474
     },
     {
       "Fecha": "2024-05-12",
@@ -21744,7 +22633,8 @@ window.dashboardData = {
       "Banca Fijo": 5048.0,
       "Stake Compuesto": 1085.81,
       "Beneficio Compuesto": 488.61,
-      "Banca Compuesto": 54778.9
+      "Banca Compuesto": 54778.9,
+      "league_id": 563
     },
     {
       "Fecha": "2024-05-12",
@@ -21762,7 +22652,8 @@ window.dashboardData = {
       "Banca Fijo": 5057.0,
       "Stake Compuesto": 1095.58,
       "Beneficio Compuesto": 493.01,
-      "Banca Compuesto": 55271.91
+      "Banca Compuesto": 55271.91,
+      "league_id": 563
     },
     {
       "Fecha": "2024-05-12",
@@ -21780,7 +22671,8 @@ window.dashboardData = {
       "Banca Fijo": 5066.0,
       "Stake Compuesto": 1105.44,
       "Beneficio Compuesto": 497.45,
-      "Banca Compuesto": 55769.35
+      "Banca Compuesto": 55769.35,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-13",
@@ -21798,7 +22690,8 @@ window.dashboardData = {
       "Banca Fijo": 5075.0,
       "Stake Compuesto": 1115.39,
       "Beneficio Compuesto": 501.92,
-      "Banca Compuesto": 56271.28
+      "Banca Compuesto": 56271.28,
+      "league_id": 473
     },
     {
       "Fecha": "2024-05-13",
@@ -21816,7 +22709,8 @@ window.dashboardData = {
       "Banca Fijo": 5084.0,
       "Stake Compuesto": 1125.43,
       "Beneficio Compuesto": 506.44,
-      "Banca Compuesto": 56777.72
+      "Banca Compuesto": 56777.72,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-14",
@@ -21834,7 +22728,8 @@ window.dashboardData = {
       "Banca Fijo": 5093.0,
       "Stake Compuesto": 1135.55,
       "Beneficio Compuesto": 511.0,
-      "Banca Compuesto": 57288.72
+      "Banca Compuesto": 57288.72,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-15",
@@ -21852,7 +22747,8 @@ window.dashboardData = {
       "Banca Fijo": 5073.0,
       "Stake Compuesto": 1145.77,
       "Beneficio Compuesto": -1145.77,
-      "Banca Compuesto": 56142.94
+      "Banca Compuesto": 56142.94,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-15",
@@ -21870,7 +22766,8 @@ window.dashboardData = {
       "Banca Fijo": 5082.0,
       "Stake Compuesto": 1122.86,
       "Beneficio Compuesto": 505.29,
-      "Banca Compuesto": 56648.23
+      "Banca Compuesto": 56648.23,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-17",
@@ -21888,7 +22785,8 @@ window.dashboardData = {
       "Banca Fijo": 5091.0,
       "Stake Compuesto": 1132.96,
       "Beneficio Compuesto": 509.83,
-      "Banca Compuesto": 57158.06
+      "Banca Compuesto": 57158.06,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-17",
@@ -21906,7 +22804,8 @@ window.dashboardData = {
       "Banca Fijo": 5100.0,
       "Stake Compuesto": 1143.16,
       "Beneficio Compuesto": 514.42,
-      "Banca Compuesto": 57672.49
+      "Banca Compuesto": 57672.49,
+      "league_id": 166
     },
     {
       "Fecha": "2024-05-18",
@@ -21924,7 +22823,8 @@ window.dashboardData = {
       "Banca Fijo": 5080.0,
       "Stake Compuesto": 1153.45,
       "Beneficio Compuesto": -1153.45,
-      "Banca Compuesto": 56519.04
+      "Banca Compuesto": 56519.04,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-18",
@@ -21942,7 +22842,8 @@ window.dashboardData = {
       "Banca Fijo": 5060.0,
       "Stake Compuesto": 1130.38,
       "Beneficio Compuesto": -1130.38,
-      "Banca Compuesto": 55388.66
+      "Banca Compuesto": 55388.66,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-18",
@@ -21960,7 +22861,8 @@ window.dashboardData = {
       "Banca Fijo": 5069.0,
       "Stake Compuesto": 1107.77,
       "Beneficio Compuesto": 498.5,
-      "Banca Compuesto": 55887.15
+      "Banca Compuesto": 55887.15,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-18",
@@ -21978,7 +22880,8 @@ window.dashboardData = {
       "Banca Fijo": 5078.0,
       "Stake Compuesto": 1117.74,
       "Beneficio Compuesto": 502.98,
-      "Banca Compuesto": 56390.14
+      "Banca Compuesto": 56390.14,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-18",
@@ -21996,7 +22899,8 @@ window.dashboardData = {
       "Banca Fijo": 5087.0,
       "Stake Compuesto": 1127.8,
       "Beneficio Compuesto": 507.51,
-      "Banca Compuesto": 56897.65
+      "Banca Compuesto": 56897.65,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-18",
@@ -22014,7 +22918,8 @@ window.dashboardData = {
       "Banca Fijo": 5096.0,
       "Stake Compuesto": 1137.95,
       "Beneficio Compuesto": 512.08,
-      "Banca Compuesto": 57409.73
+      "Banca Compuesto": 57409.73,
+      "league_id": 78
     },
     {
       "Fecha": "2024-05-18",
@@ -22032,7 +22937,8 @@ window.dashboardData = {
       "Banca Fijo": 5105.0,
       "Stake Compuesto": 1148.19,
       "Beneficio Compuesto": 516.69,
-      "Banca Compuesto": 57926.42
+      "Banca Compuesto": 57926.42,
+      "league_id": 84
     },
     {
       "Fecha": "2024-05-18",
@@ -22050,7 +22956,8 @@ window.dashboardData = {
       "Banca Fijo": 5114.0,
       "Stake Compuesto": 1158.53,
       "Beneficio Compuesto": 521.34,
-      "Banca Compuesto": 58447.75
+      "Banca Compuesto": 58447.75,
+      "league_id": 84
     },
     {
       "Fecha": "2024-05-18",
@@ -22068,7 +22975,8 @@ window.dashboardData = {
       "Banca Fijo": 5094.0,
       "Stake Compuesto": 1168.96,
       "Beneficio Compuesto": -1168.96,
-      "Banca Compuesto": 57278.8
+      "Banca Compuesto": 57278.8,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-18",
@@ -22086,7 +22994,8 @@ window.dashboardData = {
       "Banca Fijo": 5103.0,
       "Stake Compuesto": 1145.58,
       "Beneficio Compuesto": 515.51,
-      "Banca Compuesto": 57794.31
+      "Banca Compuesto": 57794.31,
+      "league_id": 247
     },
     {
       "Fecha": "2024-05-18",
@@ -22104,7 +23013,8 @@ window.dashboardData = {
       "Banca Fijo": 5112.0,
       "Stake Compuesto": 1155.89,
       "Beneficio Compuesto": 520.15,
-      "Banca Compuesto": 58314.46
+      "Banca Compuesto": 58314.46,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-18",
@@ -22122,7 +23032,8 @@ window.dashboardData = {
       "Banca Fijo": 5092.0,
       "Stake Compuesto": 1166.29,
       "Beneficio Compuesto": -1166.29,
-      "Banca Compuesto": 57148.17
+      "Banca Compuesto": 57148.17,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-18",
@@ -22140,7 +23051,8 @@ window.dashboardData = {
       "Banca Fijo": 5101.0,
       "Stake Compuesto": 1142.96,
       "Beneficio Compuesto": 514.33,
-      "Banca Compuesto": 57662.5
+      "Banca Compuesto": 57662.5,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-18",
@@ -22158,7 +23070,8 @@ window.dashboardData = {
       "Banca Fijo": 5110.0,
       "Stake Compuesto": 1153.25,
       "Beneficio Compuesto": 518.96,
-      "Banca Compuesto": 58181.46
+      "Banca Compuesto": 58181.46,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-18",
@@ -22176,7 +23089,8 @@ window.dashboardData = {
       "Banca Fijo": 5119.0,
       "Stake Compuesto": 1163.63,
       "Beneficio Compuesto": 523.63,
-      "Banca Compuesto": 58705.1
+      "Banca Compuesto": 58705.1,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-19",
@@ -22194,7 +23108,8 @@ window.dashboardData = {
       "Banca Fijo": 5128.0,
       "Stake Compuesto": 1174.1,
       "Beneficio Compuesto": 528.35,
-      "Banca Compuesto": 59233.44
+      "Banca Compuesto": 59233.44,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-19",
@@ -22212,7 +23127,8 @@ window.dashboardData = {
       "Banca Fijo": 5137.0,
       "Stake Compuesto": 1184.67,
       "Beneficio Compuesto": 533.1,
-      "Banca Compuesto": 59766.54
+      "Banca Compuesto": 59766.54,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-19",
@@ -22230,7 +23146,8 @@ window.dashboardData = {
       "Banca Fijo": 5146.0,
       "Stake Compuesto": 1195.33,
       "Beneficio Compuesto": 537.9,
-      "Banca Compuesto": 60304.44
+      "Banca Compuesto": 60304.44,
+      "league_id": 79
     },
     {
       "Fecha": "2024-05-19",
@@ -22248,7 +23165,8 @@ window.dashboardData = {
       "Banca Fijo": 5126.0,
       "Stake Compuesto": 1206.09,
       "Beneficio Compuesto": -1206.09,
-      "Banca Compuesto": 59098.35
+      "Banca Compuesto": 59098.35,
+      "league_id": 84
     },
     {
       "Fecha": "2024-05-19",
@@ -22266,7 +23184,8 @@ window.dashboardData = {
       "Banca Fijo": 5106.0,
       "Stake Compuesto": 1181.97,
       "Beneficio Compuesto": -1181.97,
-      "Banca Compuesto": 57916.39
+      "Banca Compuesto": 57916.39,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-19",
@@ -22284,7 +23203,8 @@ window.dashboardData = {
       "Banca Fijo": 5115.0,
       "Stake Compuesto": 1158.33,
       "Beneficio Compuesto": 521.25,
-      "Banca Compuesto": 58437.63
+      "Banca Compuesto": 58437.63,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-19",
@@ -22302,7 +23222,8 @@ window.dashboardData = {
       "Banca Fijo": 5124.0,
       "Stake Compuesto": 1168.75,
       "Beneficio Compuesto": 525.94,
-      "Banca Compuesto": 58963.57
+      "Banca Compuesto": 58963.57,
+      "league_id": 702
     },
     {
       "Fecha": "2024-05-19",
@@ -22320,7 +23241,8 @@ window.dashboardData = {
       "Banca Fijo": 5133.0,
       "Stake Compuesto": 1179.27,
       "Beneficio Compuesto": 530.67,
-      "Banca Compuesto": 59494.25
+      "Banca Compuesto": 59494.25,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-19",
@@ -22338,7 +23260,8 @@ window.dashboardData = {
       "Banca Fijo": 5142.0,
       "Stake Compuesto": 1189.88,
       "Beneficio Compuesto": 535.45,
-      "Banca Compuesto": 60029.69
+      "Banca Compuesto": 60029.69,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-20",
@@ -22356,7 +23279,8 @@ window.dashboardData = {
       "Banca Fijo": 5151.0,
       "Stake Compuesto": 1200.59,
       "Beneficio Compuesto": 540.27,
-      "Banca Compuesto": 60569.96
+      "Banca Compuesto": 60569.96,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-20",
@@ -22374,7 +23298,8 @@ window.dashboardData = {
       "Banca Fijo": 5160.0,
       "Stake Compuesto": 1211.4,
       "Beneficio Compuesto": 545.13,
-      "Banca Compuesto": 61115.09
+      "Banca Compuesto": 61115.09,
+      "league_id": 474
     },
     {
       "Fecha": "2024-05-20",
@@ -22392,7 +23317,8 @@ window.dashboardData = {
       "Banca Fijo": 5169.0,
       "Stake Compuesto": 1222.3,
       "Beneficio Compuesto": 550.04,
-      "Banca Compuesto": 61665.13
+      "Banca Compuesto": 61665.13,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-21",
@@ -22410,7 +23336,8 @@ window.dashboardData = {
       "Banca Fijo": 5149.0,
       "Stake Compuesto": 1233.3,
       "Beneficio Compuesto": -1233.3,
-      "Banca Compuesto": 60431.82
+      "Banca Compuesto": 60431.82,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-21",
@@ -22428,7 +23355,8 @@ window.dashboardData = {
       "Banca Fijo": 5158.0,
       "Stake Compuesto": 1208.64,
       "Beneficio Compuesto": 543.89,
-      "Banca Compuesto": 60975.71
+      "Banca Compuesto": 60975.71,
+      "league_id": 473
     },
     {
       "Fecha": "2024-05-22",
@@ -22446,7 +23374,8 @@ window.dashboardData = {
       "Banca Fijo": 5167.0,
       "Stake Compuesto": 1219.51,
       "Beneficio Compuesto": 548.78,
-      "Banca Compuesto": 61524.49
+      "Banca Compuesto": 61524.49,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-23",
@@ -22464,7 +23393,8 @@ window.dashboardData = {
       "Banca Fijo": 5176.0,
       "Stake Compuesto": 1230.49,
       "Beneficio Compuesto": 553.72,
-      "Banca Compuesto": 62078.21
+      "Banca Compuesto": 62078.21,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-23",
@@ -22482,7 +23412,8 @@ window.dashboardData = {
       "Banca Fijo": 5185.0,
       "Stake Compuesto": 1241.56,
       "Beneficio Compuesto": 558.7,
-      "Banca Compuesto": 62636.92
+      "Banca Compuesto": 62636.92,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-24",
@@ -22500,7 +23431,8 @@ window.dashboardData = {
       "Banca Fijo": 5194.0,
       "Stake Compuesto": 1252.74,
       "Beneficio Compuesto": 563.73,
-      "Banca Compuesto": 63200.65
+      "Banca Compuesto": 63200.65,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-24",
@@ -22518,7 +23450,8 @@ window.dashboardData = {
       "Banca Fijo": 5203.0,
       "Stake Compuesto": 1264.01,
       "Beneficio Compuesto": 568.81,
-      "Banca Compuesto": 63769.45
+      "Banca Compuesto": 63769.45,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-25",
@@ -22536,7 +23469,8 @@ window.dashboardData = {
       "Banca Fijo": 5212.0,
       "Stake Compuesto": 1275.39,
       "Beneficio Compuesto": 573.93,
-      "Banca Compuesto": 64343.38
+      "Banca Compuesto": 64343.38,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-25",
@@ -22554,7 +23488,8 @@ window.dashboardData = {
       "Banca Fijo": 5221.0,
       "Stake Compuesto": 1286.87,
       "Beneficio Compuesto": 579.09,
-      "Banca Compuesto": 64922.47
+      "Banca Compuesto": 64922.47,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-25",
@@ -22572,7 +23507,8 @@ window.dashboardData = {
       "Banca Fijo": 5230.0,
       "Stake Compuesto": 1298.45,
       "Beneficio Compuesto": 584.3,
-      "Banca Compuesto": 65506.77
+      "Banca Compuesto": 65506.77,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-25",
@@ -22590,7 +23526,8 @@ window.dashboardData = {
       "Banca Fijo": 5239.0,
       "Stake Compuesto": 1310.14,
       "Beneficio Compuesto": 589.56,
-      "Banca Compuesto": 66096.33
+      "Banca Compuesto": 66096.33,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-25",
@@ -22608,7 +23545,8 @@ window.dashboardData = {
       "Banca Fijo": 5248.0,
       "Stake Compuesto": 1321.93,
       "Beneficio Compuesto": 594.87,
-      "Banca Compuesto": 66691.2
+      "Banca Compuesto": 66691.2,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-25",
@@ -22626,7 +23564,8 @@ window.dashboardData = {
       "Banca Fijo": 5257.0,
       "Stake Compuesto": 1333.82,
       "Beneficio Compuesto": 600.22,
-      "Banca Compuesto": 67291.42
+      "Banca Compuesto": 67291.42,
+      "league_id": 166
     },
     {
       "Fecha": "2024-05-25",
@@ -22644,7 +23583,8 @@ window.dashboardData = {
       "Banca Fijo": 5237.0,
       "Stake Compuesto": 1345.83,
       "Beneficio Compuesto": -1345.83,
-      "Banca Compuesto": 65945.59
+      "Banca Compuesto": 65945.59,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-25",
@@ -22662,7 +23602,8 @@ window.dashboardData = {
       "Banca Fijo": 5246.0,
       "Stake Compuesto": 1318.91,
       "Beneficio Compuesto": 593.51,
-      "Banca Compuesto": 66539.1
+      "Banca Compuesto": 66539.1,
+      "league_id": 474
     },
     {
       "Fecha": "2024-05-25",
@@ -22680,7 +23621,8 @@ window.dashboardData = {
       "Banca Fijo": 5255.0,
       "Stake Compuesto": 1330.78,
       "Beneficio Compuesto": 598.85,
-      "Banca Compuesto": 67137.95
+      "Banca Compuesto": 67137.95,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-25",
@@ -22698,7 +23640,8 @@ window.dashboardData = {
       "Banca Fijo": 5264.0,
       "Stake Compuesto": 1342.76,
       "Beneficio Compuesto": 604.24,
-      "Banca Compuesto": 67742.2
+      "Banca Compuesto": 67742.2,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-25",
@@ -22716,7 +23659,8 @@ window.dashboardData = {
       "Banca Fijo": 5273.0,
       "Stake Compuesto": 1354.84,
       "Beneficio Compuesto": 609.68,
-      "Banca Compuesto": 68351.88
+      "Banca Compuesto": 68351.88,
+      "league_id": 492
     },
     {
       "Fecha": "2024-05-25",
@@ -22734,7 +23678,8 @@ window.dashboardData = {
       "Banca Fijo": 5282.0,
       "Stake Compuesto": 1367.04,
       "Beneficio Compuesto": 615.17,
-      "Banca Compuesto": 68967.04
+      "Banca Compuesto": 68967.04,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-26",
@@ -22752,7 +23697,8 @@ window.dashboardData = {
       "Banca Fijo": 5262.0,
       "Stake Compuesto": 1379.34,
       "Beneficio Compuesto": -1379.34,
-      "Banca Compuesto": 67587.7
+      "Banca Compuesto": 67587.7,
+      "league_id": 368
     },
     {
       "Fecha": "2024-05-26",
@@ -22770,7 +23716,8 @@ window.dashboardData = {
       "Banca Fijo": 5242.0,
       "Stake Compuesto": 1351.75,
       "Beneficio Compuesto": -1351.75,
-      "Banca Compuesto": 66235.95
+      "Banca Compuesto": 66235.95,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-26",
@@ -22788,7 +23735,8 @@ window.dashboardData = {
       "Banca Fijo": 5251.0,
       "Stake Compuesto": 1324.72,
       "Beneficio Compuesto": 596.12,
-      "Banca Compuesto": 66832.07
+      "Banca Compuesto": 66832.07,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-26",
@@ -22806,7 +23754,8 @@ window.dashboardData = {
       "Banca Fijo": 5231.0,
       "Stake Compuesto": 1336.64,
       "Beneficio Compuesto": -1336.64,
-      "Banca Compuesto": 65495.43
+      "Banca Compuesto": 65495.43,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-26",
@@ -22824,7 +23773,8 @@ window.dashboardData = {
       "Banca Fijo": 5240.0,
       "Stake Compuesto": 1309.91,
       "Beneficio Compuesto": 589.46,
-      "Banca Compuesto": 66084.89
+      "Banca Compuesto": 66084.89,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-26",
@@ -22842,7 +23792,8 @@ window.dashboardData = {
       "Banca Fijo": 5249.0,
       "Stake Compuesto": 1321.7,
       "Beneficio Compuesto": 594.76,
-      "Banca Compuesto": 66679.65
+      "Banca Compuesto": 66679.65,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-26",
@@ -22860,7 +23811,8 @@ window.dashboardData = {
       "Banca Fijo": 5258.0,
       "Stake Compuesto": 1333.59,
       "Beneficio Compuesto": 600.12,
-      "Banca Compuesto": 67279.77
+      "Banca Compuesto": 67279.77,
+      "league_id": 563
     },
     {
       "Fecha": "2024-05-26",
@@ -22878,7 +23830,8 @@ window.dashboardData = {
       "Banca Fijo": 5267.0,
       "Stake Compuesto": 1345.6,
       "Beneficio Compuesto": 605.52,
-      "Banca Compuesto": 67885.29
+      "Banca Compuesto": 67885.29,
+      "league_id": 563
     },
     {
       "Fecha": "2024-05-26",
@@ -22896,7 +23849,8 @@ window.dashboardData = {
       "Banca Fijo": 5276.0,
       "Stake Compuesto": 1357.71,
       "Beneficio Compuesto": 610.97,
-      "Banca Compuesto": 68496.25
+      "Banca Compuesto": 68496.25,
+      "league_id": 702
     },
     {
       "Fecha": "2024-05-27",
@@ -22914,7 +23868,8 @@ window.dashboardData = {
       "Banca Fijo": 5285.0,
       "Stake Compuesto": 1369.93,
       "Beneficio Compuesto": 616.47,
-      "Banca Compuesto": 69112.72
+      "Banca Compuesto": 69112.72,
+      "league_id": 473
     },
     {
       "Fecha": "2024-05-29",
@@ -22932,7 +23887,8 @@ window.dashboardData = {
       "Banca Fijo": 5294.0,
       "Stake Compuesto": 1382.25,
       "Beneficio Compuesto": 622.01,
-      "Banca Compuesto": 69734.74
+      "Banca Compuesto": 69734.74,
+      "league_id": 249
     },
     {
       "Fecha": "2024-05-29",
@@ -22950,7 +23906,8 @@ window.dashboardData = {
       "Banca Fijo": 5303.0,
       "Stake Compuesto": 1394.69,
       "Beneficio Compuesto": 627.61,
-      "Banca Compuesto": 70362.35
+      "Banca Compuesto": 70362.35,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-29",
@@ -22968,7 +23925,8 @@ window.dashboardData = {
       "Banca Fijo": 5312.0,
       "Stake Compuesto": 1407.25,
       "Beneficio Compuesto": 633.26,
-      "Banca Compuesto": 70995.61
+      "Banca Compuesto": 70995.61,
+      "league_id": 248
     },
     {
       "Fecha": "2024-05-29",
@@ -22986,7 +23944,8 @@ window.dashboardData = {
       "Banca Fijo": 5321.0,
       "Stake Compuesto": 1419.91,
       "Beneficio Compuesto": 638.96,
-      "Banca Compuesto": 71634.57
+      "Banca Compuesto": 71634.57,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-30",
@@ -23004,7 +23963,8 @@ window.dashboardData = {
       "Banca Fijo": 5330.0,
       "Stake Compuesto": 1432.69,
       "Beneficio Compuesto": 644.71,
-      "Banca Compuesto": 72279.28
+      "Banca Compuesto": 72279.28,
+      "league_id": 164
     },
     {
       "Fecha": "2024-05-30",
@@ -23022,7 +23982,8 @@ window.dashboardData = {
       "Banca Fijo": 5339.0,
       "Stake Compuesto": 1445.59,
       "Beneficio Compuesto": 650.51,
-      "Banca Compuesto": 72929.79
+      "Banca Compuesto": 72929.79,
+      "league_id": 245
     },
     {
       "Fecha": "2024-05-30",
@@ -23040,7 +24001,8 @@ window.dashboardData = {
       "Banca Fijo": 5348.0,
       "Stake Compuesto": 1458.6,
       "Beneficio Compuesto": 656.37,
-      "Banca Compuesto": 73586.16
+      "Banca Compuesto": 73586.16,
+      "league_id": 247
     },
     {
       "Fecha": "2024-05-30",
@@ -23058,7 +24020,8 @@ window.dashboardData = {
       "Banca Fijo": 5328.0,
       "Stake Compuesto": 1471.72,
       "Beneficio Compuesto": -1471.72,
-      "Banca Compuesto": 72114.44
+      "Banca Compuesto": 72114.44,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-30",
@@ -23076,7 +24039,8 @@ window.dashboardData = {
       "Banca Fijo": 5337.0,
       "Stake Compuesto": 1442.29,
       "Beneficio Compuesto": 649.03,
-      "Banca Compuesto": 72763.47
+      "Banca Compuesto": 72763.47,
+      "league_id": 328
     },
     {
       "Fecha": "2024-05-31",
@@ -23094,7 +24058,8 @@ window.dashboardData = {
       "Banca Fijo": 5346.0,
       "Stake Compuesto": 1455.27,
       "Beneficio Compuesto": 654.87,
-      "Banca Compuesto": 73418.34
+      "Banca Compuesto": 73418.34,
+      "league_id": 166
     },
     {
       "Fecha": "2024-05-31",
@@ -23112,7 +24077,8 @@ window.dashboardData = {
       "Banca Fijo": 5326.0,
       "Stake Compuesto": 1468.37,
       "Beneficio Compuesto": -1468.37,
-      "Banca Compuesto": 71949.97
+      "Banca Compuesto": 71949.97,
+      "league_id": 253
     },
     {
       "Fecha": "2024-05-31",
@@ -23130,7 +24096,8 @@ window.dashboardData = {
       "Banca Fijo": 5335.0,
       "Stake Compuesto": 1439.0,
       "Beneficio Compuesto": 647.55,
-      "Banca Compuesto": 72597.52
+      "Banca Compuesto": 72597.52,
+      "league_id": 909
     },
     {
       "Fecha": "2024-05-31",
@@ -23148,7 +24115,8 @@ window.dashboardData = {
       "Banca Fijo": 5315.0,
       "Stake Compuesto": 1451.95,
       "Beneficio Compuesto": -1451.95,
-      "Banca Compuesto": 71145.57
+      "Banca Compuesto": 71145.57,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-01",
@@ -23166,7 +24134,8 @@ window.dashboardData = {
       "Banca Fijo": 5324.0,
       "Stake Compuesto": 1422.91,
       "Beneficio Compuesto": 640.31,
-      "Banca Compuesto": 71785.88
+      "Banca Compuesto": 71785.88,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-01",
@@ -23184,7 +24153,8 @@ window.dashboardData = {
       "Banca Fijo": 5333.0,
       "Stake Compuesto": 1435.72,
       "Beneficio Compuesto": 646.07,
-      "Banca Compuesto": 72431.96
+      "Banca Compuesto": 72431.96,
+      "league_id": 253
     },
     {
       "Fecha": "2024-06-01",
@@ -23202,7 +24172,8 @@ window.dashboardData = {
       "Banca Fijo": 5342.0,
       "Stake Compuesto": 1448.64,
       "Beneficio Compuesto": 651.89,
-      "Banca Compuesto": 73083.84
+      "Banca Compuesto": 73083.84,
+      "league_id": 474
     },
     {
       "Fecha": "2024-06-01",
@@ -23220,7 +24191,8 @@ window.dashboardData = {
       "Banca Fijo": 5351.0,
       "Stake Compuesto": 1461.68,
       "Beneficio Compuesto": 657.75,
-      "Banca Compuesto": 73741.6
+      "Banca Compuesto": 73741.6,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-01",
@@ -23238,7 +24210,8 @@ window.dashboardData = {
       "Banca Fijo": 5360.0,
       "Stake Compuesto": 1474.83,
       "Beneficio Compuesto": 663.67,
-      "Banca Compuesto": 74405.27
+      "Banca Compuesto": 74405.27,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-02",
@@ -23256,7 +24229,8 @@ window.dashboardData = {
       "Banca Fijo": 5369.0,
       "Stake Compuesto": 1488.11,
       "Beneficio Compuesto": 669.65,
-      "Banca Compuesto": 75074.92
+      "Banca Compuesto": 75074.92,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-02",
@@ -23274,7 +24248,8 @@ window.dashboardData = {
       "Banca Fijo": 5378.0,
       "Stake Compuesto": 1501.5,
       "Beneficio Compuesto": 675.67,
-      "Banca Compuesto": 75750.59
+      "Banca Compuesto": 75750.59,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-02",
@@ -23292,7 +24267,8 @@ window.dashboardData = {
       "Banca Fijo": 5387.0,
       "Stake Compuesto": 1515.01,
       "Beneficio Compuesto": 681.76,
-      "Banca Compuesto": 76432.35
+      "Banca Compuesto": 76432.35,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-02",
@@ -23310,7 +24286,8 @@ window.dashboardData = {
       "Banca Fijo": 5396.0,
       "Stake Compuesto": 1528.65,
       "Beneficio Compuesto": 687.89,
-      "Banca Compuesto": 77120.24
+      "Banca Compuesto": 77120.24,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-02",
@@ -23328,7 +24305,8 @@ window.dashboardData = {
       "Banca Fijo": 5405.0,
       "Stake Compuesto": 1542.4,
       "Beneficio Compuesto": 694.08,
-      "Banca Compuesto": 77814.32
+      "Banca Compuesto": 77814.32,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-02",
@@ -23346,7 +24324,8 @@ window.dashboardData = {
       "Banca Fijo": 5414.0,
       "Stake Compuesto": 1556.29,
       "Beneficio Compuesto": 700.33,
-      "Banca Compuesto": 78514.65
+      "Banca Compuesto": 78514.65,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-02",
@@ -23364,7 +24343,8 @@ window.dashboardData = {
       "Banca Fijo": 5423.0,
       "Stake Compuesto": 1570.29,
       "Beneficio Compuesto": 706.63,
-      "Banca Compuesto": 79221.28
+      "Banca Compuesto": 79221.28,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-02",
@@ -23382,7 +24362,8 @@ window.dashboardData = {
       "Banca Fijo": 5432.0,
       "Stake Compuesto": 1584.43,
       "Beneficio Compuesto": 712.99,
-      "Banca Compuesto": 79934.28
+      "Banca Compuesto": 79934.28,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-02",
@@ -23400,7 +24381,8 @@ window.dashboardData = {
       "Banca Fijo": 5412.0,
       "Stake Compuesto": 1598.69,
       "Beneficio Compuesto": -1598.69,
-      "Banca Compuesto": 78335.59
+      "Banca Compuesto": 78335.59,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-02",
@@ -23418,7 +24400,8 @@ window.dashboardData = {
       "Banca Fijo": 5421.0,
       "Stake Compuesto": 1566.71,
       "Beneficio Compuesto": 705.02,
-      "Banca Compuesto": 79040.61
+      "Banca Compuesto": 79040.61,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-02",
@@ -23436,7 +24419,8 @@ window.dashboardData = {
       "Banca Fijo": 5430.0,
       "Stake Compuesto": 1580.81,
       "Beneficio Compuesto": 711.37,
-      "Banca Compuesto": 79751.98
+      "Banca Compuesto": 79751.98,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-02",
@@ -23454,7 +24438,8 @@ window.dashboardData = {
       "Banca Fijo": 5410.0,
       "Stake Compuesto": 1595.04,
       "Beneficio Compuesto": -1595.04,
-      "Banca Compuesto": 78156.94
+      "Banca Compuesto": 78156.94,
+      "league_id": 473
     },
     {
       "Fecha": "2024-06-02",
@@ -23472,7 +24457,8 @@ window.dashboardData = {
       "Banca Fijo": 5390.0,
       "Stake Compuesto": 1563.14,
       "Beneficio Compuesto": -1563.14,
-      "Banca Compuesto": 76593.8
+      "Banca Compuesto": 76593.8,
+      "league_id": 474
     },
     {
       "Fecha": "2024-06-02",
@@ -23490,7 +24476,8 @@ window.dashboardData = {
       "Banca Fijo": 5399.0,
       "Stake Compuesto": 1531.88,
       "Beneficio Compuesto": 689.34,
-      "Banca Compuesto": 77283.14
+      "Banca Compuesto": 77283.14,
+      "league_id": 474
     },
     {
       "Fecha": "2024-06-02",
@@ -23508,7 +24495,8 @@ window.dashboardData = {
       "Banca Fijo": 5408.0,
       "Stake Compuesto": 1545.66,
       "Beneficio Compuesto": 695.55,
-      "Banca Compuesto": 77978.69
+      "Banca Compuesto": 77978.69,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-02",
@@ -23526,7 +24514,8 @@ window.dashboardData = {
       "Banca Fijo": 5417.0,
       "Stake Compuesto": 1559.57,
       "Beneficio Compuesto": 701.81,
-      "Banca Compuesto": 78680.5
+      "Banca Compuesto": 78680.5,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-03",
@@ -23544,7 +24533,8 @@ window.dashboardData = {
       "Banca Fijo": 5426.0,
       "Stake Compuesto": 1573.61,
       "Beneficio Compuesto": 708.12,
-      "Banca Compuesto": 79388.62
+      "Banca Compuesto": 79388.62,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-03",
@@ -23562,7 +24552,8 @@ window.dashboardData = {
       "Banca Fijo": 5435.0,
       "Stake Compuesto": 1587.77,
       "Beneficio Compuesto": 714.5,
-      "Banca Compuesto": 80103.12
+      "Banca Compuesto": 80103.12,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-03",
@@ -23580,7 +24571,8 @@ window.dashboardData = {
       "Banca Fijo": 5444.0,
       "Stake Compuesto": 1602.06,
       "Beneficio Compuesto": 720.93,
-      "Banca Compuesto": 80824.05
+      "Banca Compuesto": 80824.05,
+      "league_id": 247
     },
     {
       "Fecha": "2024-06-04",
@@ -23598,7 +24590,8 @@ window.dashboardData = {
       "Banca Fijo": 5453.0,
       "Stake Compuesto": 1616.48,
       "Beneficio Compuesto": 727.42,
-      "Banca Compuesto": 81551.46
+      "Banca Compuesto": 81551.46,
+      "league_id": 563
     },
     {
       "Fecha": "2024-06-06",
@@ -23616,7 +24609,8 @@ window.dashboardData = {
       "Banca Fijo": 5433.0,
       "Stake Compuesto": 1631.03,
       "Beneficio Compuesto": -1631.03,
-      "Banca Compuesto": 79920.44
+      "Banca Compuesto": 79920.44,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-07",
@@ -23634,7 +24628,8 @@ window.dashboardData = {
       "Banca Fijo": 5442.0,
       "Stake Compuesto": 1598.41,
       "Beneficio Compuesto": 719.28,
-      "Banca Compuesto": 80639.72
+      "Banca Compuesto": 80639.72,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-08",
@@ -23652,7 +24647,8 @@ window.dashboardData = {
       "Banca Fijo": 5451.0,
       "Stake Compuesto": 1612.79,
       "Beneficio Compuesto": 725.76,
-      "Banca Compuesto": 81365.48
+      "Banca Compuesto": 81365.48,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-08",
@@ -23670,7 +24666,8 @@ window.dashboardData = {
       "Banca Fijo": 5431.0,
       "Stake Compuesto": 1627.31,
       "Beneficio Compuesto": -1627.31,
-      "Banca Compuesto": 79738.17
+      "Banca Compuesto": 79738.17,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-08",
@@ -23688,7 +24685,8 @@ window.dashboardData = {
       "Banca Fijo": 5411.0,
       "Stake Compuesto": 1594.76,
       "Beneficio Compuesto": -1594.76,
-      "Banca Compuesto": 78143.4
+      "Banca Compuesto": 78143.4,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-08",
@@ -23706,7 +24704,8 @@ window.dashboardData = {
       "Banca Fijo": 5391.0,
       "Stake Compuesto": 1562.87,
       "Beneficio Compuesto": -1562.87,
-      "Banca Compuesto": 76580.54
+      "Banca Compuesto": 76580.54,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-08",
@@ -23724,7 +24723,8 @@ window.dashboardData = {
       "Banca Fijo": 5400.0,
       "Stake Compuesto": 1531.61,
       "Beneficio Compuesto": 689.22,
-      "Banca Compuesto": 77269.76
+      "Banca Compuesto": 77269.76,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-08",
@@ -23742,7 +24742,8 @@ window.dashboardData = {
       "Banca Fijo": 5409.0,
       "Stake Compuesto": 1545.4,
       "Beneficio Compuesto": 695.43,
-      "Banca Compuesto": 77965.19
+      "Banca Compuesto": 77965.19,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-08",
@@ -23760,7 +24761,8 @@ window.dashboardData = {
       "Banca Fijo": 5418.0,
       "Stake Compuesto": 1559.3,
       "Beneficio Compuesto": 701.69,
-      "Banca Compuesto": 78666.88
+      "Banca Compuesto": 78666.88,
+      "league_id": 473
     },
     {
       "Fecha": "2024-06-08",
@@ -23778,7 +24780,8 @@ window.dashboardData = {
       "Banca Fijo": 5427.0,
       "Stake Compuesto": 1573.34,
       "Beneficio Compuesto": 708.0,
-      "Banca Compuesto": 79374.88
+      "Banca Compuesto": 79374.88,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-09",
@@ -23796,7 +24799,8 @@ window.dashboardData = {
       "Banca Fijo": 5436.0,
       "Stake Compuesto": 1587.5,
       "Beneficio Compuesto": 714.37,
-      "Banca Compuesto": 80089.25
+      "Banca Compuesto": 80089.25,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-09",
@@ -23814,7 +24818,8 @@ window.dashboardData = {
       "Banca Fijo": 5416.0,
       "Stake Compuesto": 1601.79,
       "Beneficio Compuesto": -1601.79,
-      "Banca Compuesto": 78487.47
+      "Banca Compuesto": 78487.47,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-09",
@@ -23832,7 +24837,8 @@ window.dashboardData = {
       "Banca Fijo": 5425.0,
       "Stake Compuesto": 1569.75,
       "Beneficio Compuesto": 706.39,
-      "Banca Compuesto": 79193.85
+      "Banca Compuesto": 79193.85,
+      "league_id": 563
     },
     {
       "Fecha": "2024-06-09",
@@ -23850,7 +24856,8 @@ window.dashboardData = {
       "Banca Fijo": 5434.0,
       "Stake Compuesto": 1583.88,
       "Beneficio Compuesto": 712.74,
-      "Banca Compuesto": 79906.6
+      "Banca Compuesto": 79906.6,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-12",
@@ -23868,7 +24875,8 @@ window.dashboardData = {
       "Banca Fijo": 5443.0,
       "Stake Compuesto": 1598.13,
       "Beneficio Compuesto": 719.16,
-      "Banca Compuesto": 80625.76
+      "Banca Compuesto": 80625.76,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-12",
@@ -23886,7 +24894,8 @@ window.dashboardData = {
       "Banca Fijo": 5452.0,
       "Stake Compuesto": 1612.52,
       "Beneficio Compuesto": 725.63,
-      "Banca Compuesto": 81351.39
+      "Banca Compuesto": 81351.39,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-12",
@@ -23904,7 +24913,8 @@ window.dashboardData = {
       "Banca Fijo": 5461.0,
       "Stake Compuesto": 1627.03,
       "Beneficio Compuesto": 732.16,
-      "Banca Compuesto": 82083.55
+      "Banca Compuesto": 82083.55,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-13",
@@ -23922,7 +24932,8 @@ window.dashboardData = {
       "Banca Fijo": 5470.0,
       "Stake Compuesto": 1641.67,
       "Beneficio Compuesto": 738.75,
-      "Banca Compuesto": 82822.3
+      "Banca Compuesto": 82822.3,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-13",
@@ -23940,7 +24951,8 @@ window.dashboardData = {
       "Banca Fijo": 5479.0,
       "Stake Compuesto": 1656.45,
       "Beneficio Compuesto": 745.4,
-      "Banca Compuesto": 83567.7
+      "Banca Compuesto": 83567.7,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-13",
@@ -23958,7 +24970,8 @@ window.dashboardData = {
       "Banca Fijo": 5459.0,
       "Stake Compuesto": 1671.35,
       "Beneficio Compuesto": -1671.35,
-      "Banca Compuesto": 81896.35
+      "Banca Compuesto": 81896.35,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-14",
@@ -23976,7 +24989,8 @@ window.dashboardData = {
       "Banca Fijo": 5468.0,
       "Stake Compuesto": 1637.93,
       "Beneficio Compuesto": 737.07,
-      "Banca Compuesto": 82633.42
+      "Banca Compuesto": 82633.42,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-14",
@@ -23994,7 +25008,8 @@ window.dashboardData = {
       "Banca Fijo": 5477.0,
       "Stake Compuesto": 1652.67,
       "Beneficio Compuesto": 743.7,
-      "Banca Compuesto": 83377.12
+      "Banca Compuesto": 83377.12,
+      "league_id": 253
     },
     {
       "Fecha": "2024-06-14",
@@ -24012,7 +25027,8 @@ window.dashboardData = {
       "Banca Fijo": 5486.0,
       "Stake Compuesto": 1667.54,
       "Beneficio Compuesto": 750.39,
-      "Banca Compuesto": 84127.51
+      "Banca Compuesto": 84127.51,
+      "league_id": 474
     },
     {
       "Fecha": "2024-06-15",
@@ -24030,7 +25046,8 @@ window.dashboardData = {
       "Banca Fijo": 5495.0,
       "Stake Compuesto": 1682.55,
       "Beneficio Compuesto": 757.15,
-      "Banca Compuesto": 84884.66
+      "Banca Compuesto": 84884.66,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-15",
@@ -24048,7 +25065,8 @@ window.dashboardData = {
       "Banca Fijo": 5504.0,
       "Stake Compuesto": 1697.69,
       "Beneficio Compuesto": 763.96,
-      "Banca Compuesto": 85648.62
+      "Banca Compuesto": 85648.62,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-15",
@@ -24066,7 +25084,8 @@ window.dashboardData = {
       "Banca Fijo": 5513.0,
       "Stake Compuesto": 1712.97,
       "Beneficio Compuesto": 770.84,
-      "Banca Compuesto": 86419.46
+      "Banca Compuesto": 86419.46,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-15",
@@ -24084,7 +25103,8 @@ window.dashboardData = {
       "Banca Fijo": 5522.0,
       "Stake Compuesto": 1728.39,
       "Beneficio Compuesto": 777.78,
-      "Banca Compuesto": 87197.23
+      "Banca Compuesto": 87197.23,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-15",
@@ -24102,7 +25122,8 @@ window.dashboardData = {
       "Banca Fijo": 5531.0,
       "Stake Compuesto": 1743.94,
       "Beneficio Compuesto": 784.78,
-      "Banca Compuesto": 87982.01
+      "Banca Compuesto": 87982.01,
+      "league_id": 253
     },
     {
       "Fecha": "2024-06-15",
@@ -24120,7 +25141,8 @@ window.dashboardData = {
       "Banca Fijo": 5540.0,
       "Stake Compuesto": 1759.64,
       "Beneficio Compuesto": 791.84,
-      "Banca Compuesto": 88773.85
+      "Banca Compuesto": 88773.85,
+      "league_id": 474
     },
     {
       "Fecha": "2024-06-15",
@@ -24138,7 +25160,8 @@ window.dashboardData = {
       "Banca Fijo": 5549.0,
       "Stake Compuesto": 1775.48,
       "Beneficio Compuesto": 798.96,
-      "Banca Compuesto": 89572.81
+      "Banca Compuesto": 89572.81,
+      "league_id": 563
     },
     {
       "Fecha": "2024-06-15",
@@ -24156,7 +25179,8 @@ window.dashboardData = {
       "Banca Fijo": 5558.0,
       "Stake Compuesto": 1791.46,
       "Beneficio Compuesto": 806.16,
-      "Banca Compuesto": 90378.97
+      "Banca Compuesto": 90378.97,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-16",
@@ -24174,7 +25198,8 @@ window.dashboardData = {
       "Banca Fijo": 5567.0,
       "Stake Compuesto": 1807.58,
       "Beneficio Compuesto": 813.41,
-      "Banca Compuesto": 91192.38
+      "Banca Compuesto": 91192.38,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-16",
@@ -24192,7 +25217,8 @@ window.dashboardData = {
       "Banca Fijo": 5576.0,
       "Stake Compuesto": 1823.85,
       "Beneficio Compuesto": 820.73,
-      "Banca Compuesto": 92013.11
+      "Banca Compuesto": 92013.11,
+      "league_id": 473
     },
     {
       "Fecha": "2024-06-16",
@@ -24210,7 +25236,8 @@ window.dashboardData = {
       "Banca Fijo": 5585.0,
       "Stake Compuesto": 1840.26,
       "Beneficio Compuesto": 828.12,
-      "Banca Compuesto": 92841.23
+      "Banca Compuesto": 92841.23,
+      "league_id": 474
     },
     {
       "Fecha": "2024-06-16",
@@ -24228,7 +25255,8 @@ window.dashboardData = {
       "Banca Fijo": 5594.0,
       "Stake Compuesto": 1856.82,
       "Beneficio Compuesto": 835.57,
-      "Banca Compuesto": 93676.8
+      "Banca Compuesto": 93676.8,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-18",
@@ -24246,7 +25274,8 @@ window.dashboardData = {
       "Banca Fijo": 5574.0,
       "Stake Compuesto": 1873.54,
       "Beneficio Compuesto": -1873.54,
-      "Banca Compuesto": 91803.26
+      "Banca Compuesto": 91803.26,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-18",
@@ -24264,7 +25293,8 @@ window.dashboardData = {
       "Banca Fijo": 5554.0,
       "Stake Compuesto": 1836.07,
       "Beneficio Compuesto": -1836.07,
-      "Banca Compuesto": 89967.2
+      "Banca Compuesto": 89967.2,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-18",
@@ -24282,7 +25312,8 @@ window.dashboardData = {
       "Banca Fijo": 5563.0,
       "Stake Compuesto": 1799.34,
       "Beneficio Compuesto": 809.7,
-      "Banca Compuesto": 90776.9
+      "Banca Compuesto": 90776.9,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-19",
@@ -24300,7 +25331,8 @@ window.dashboardData = {
       "Banca Fijo": 5572.0,
       "Stake Compuesto": 1815.54,
       "Beneficio Compuesto": 816.99,
-      "Banca Compuesto": 91593.89
+      "Banca Compuesto": 91593.89,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-19",
@@ -24318,7 +25350,8 @@ window.dashboardData = {
       "Banca Fijo": 5581.0,
       "Stake Compuesto": 1831.88,
       "Beneficio Compuesto": 824.35,
-      "Banca Compuesto": 92418.24
+      "Banca Compuesto": 92418.24,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-19",
@@ -24336,7 +25369,8 @@ window.dashboardData = {
       "Banca Fijo": 5590.0,
       "Stake Compuesto": 1848.36,
       "Beneficio Compuesto": 831.76,
-      "Banca Compuesto": 93250.0
+      "Banca Compuesto": 93250.0,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-19",
@@ -24354,7 +25388,8 @@ window.dashboardData = {
       "Banca Fijo": 5599.0,
       "Stake Compuesto": 1865.0,
       "Beneficio Compuesto": 839.25,
-      "Banca Compuesto": 94089.25
+      "Banca Compuesto": 94089.25,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-19",
@@ -24372,7 +25407,8 @@ window.dashboardData = {
       "Banca Fijo": 5608.0,
       "Stake Compuesto": 1881.79,
       "Beneficio Compuesto": 846.8,
-      "Banca Compuesto": 94936.06
+      "Banca Compuesto": 94936.06,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-19",
@@ -24390,7 +25426,8 @@ window.dashboardData = {
       "Banca Fijo": 5617.0,
       "Stake Compuesto": 1898.72,
       "Beneficio Compuesto": 854.42,
-      "Banca Compuesto": 95790.48
+      "Banca Compuesto": 95790.48,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-19",
@@ -24408,7 +25445,8 @@ window.dashboardData = {
       "Banca Fijo": 5626.0,
       "Stake Compuesto": 1915.81,
       "Beneficio Compuesto": 862.11,
-      "Banca Compuesto": 96652.6
+      "Banca Compuesto": 96652.6,
+      "league_id": 253
     },
     {
       "Fecha": "2024-06-20",
@@ -24426,7 +25464,8 @@ window.dashboardData = {
       "Banca Fijo": 5635.0,
       "Stake Compuesto": 1933.05,
       "Beneficio Compuesto": 869.87,
-      "Banca Compuesto": 97522.47
+      "Banca Compuesto": 97522.47,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-20",
@@ -24444,7 +25483,8 @@ window.dashboardData = {
       "Banca Fijo": 5644.0,
       "Stake Compuesto": 1950.45,
       "Beneficio Compuesto": 877.7,
-      "Banca Compuesto": 98400.17
+      "Banca Compuesto": 98400.17,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-20",
@@ -24462,7 +25502,8 @@ window.dashboardData = {
       "Banca Fijo": 5624.0,
       "Stake Compuesto": 1968.0,
       "Beneficio Compuesto": -1968.0,
-      "Banca Compuesto": 96432.17
+      "Banca Compuesto": 96432.17,
+      "league_id": 563
     },
     {
       "Fecha": "2024-06-21",
@@ -24480,7 +25521,8 @@ window.dashboardData = {
       "Banca Fijo": 5633.0,
       "Stake Compuesto": 1928.64,
       "Beneficio Compuesto": 867.89,
-      "Banca Compuesto": 97300.06
+      "Banca Compuesto": 97300.06,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-22",
@@ -24498,7 +25540,8 @@ window.dashboardData = {
       "Banca Fijo": 5642.0,
       "Stake Compuesto": 1946.0,
       "Beneficio Compuesto": 875.7,
-      "Banca Compuesto": 98175.76
+      "Banca Compuesto": 98175.76,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-22",
@@ -24516,7 +25559,8 @@ window.dashboardData = {
       "Banca Fijo": 5651.0,
       "Stake Compuesto": 1963.52,
       "Beneficio Compuesto": 883.58,
-      "Banca Compuesto": 99059.34
+      "Banca Compuesto": 99059.34,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-22",
@@ -24534,7 +25578,8 @@ window.dashboardData = {
       "Banca Fijo": 5660.0,
       "Stake Compuesto": 1981.19,
       "Beneficio Compuesto": 891.53,
-      "Banca Compuesto": 99950.87
+      "Banca Compuesto": 99950.87,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-22",
@@ -24552,7 +25597,8 @@ window.dashboardData = {
       "Banca Fijo": 5669.0,
       "Stake Compuesto": 1999.02,
       "Beneficio Compuesto": 899.56,
-      "Banca Compuesto": 100850.43
+      "Banca Compuesto": 100850.43,
+      "league_id": 473
     },
     {
       "Fecha": "2024-06-23",
@@ -24570,7 +25616,8 @@ window.dashboardData = {
       "Banca Fijo": 5678.0,
       "Stake Compuesto": 2017.01,
       "Beneficio Compuesto": 907.65,
-      "Banca Compuesto": 101758.09
+      "Banca Compuesto": 101758.09,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-24",
@@ -24588,7 +25635,8 @@ window.dashboardData = {
       "Banca Fijo": 5687.0,
       "Stake Compuesto": 2035.16,
       "Beneficio Compuesto": 915.82,
-      "Banca Compuesto": 102673.91
+      "Banca Compuesto": 102673.91,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-24",
@@ -24606,7 +25654,8 @@ window.dashboardData = {
       "Banca Fijo": 5696.0,
       "Stake Compuesto": 2053.48,
       "Beneficio Compuesto": 924.07,
-      "Banca Compuesto": 103597.97
+      "Banca Compuesto": 103597.97,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-26",
@@ -24624,7 +25673,8 @@ window.dashboardData = {
       "Banca Fijo": 5705.0,
       "Stake Compuesto": 2071.96,
       "Beneficio Compuesto": 932.38,
-      "Banca Compuesto": 104530.36
+      "Banca Compuesto": 104530.36,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-27",
@@ -24642,7 +25692,8 @@ window.dashboardData = {
       "Banca Fijo": 5714.0,
       "Stake Compuesto": 2090.61,
       "Beneficio Compuesto": 940.77,
-      "Banca Compuesto": 105471.13
+      "Banca Compuesto": 105471.13,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-27",
@@ -24660,7 +25711,8 @@ window.dashboardData = {
       "Banca Fijo": 5723.0,
       "Stake Compuesto": 2109.42,
       "Beneficio Compuesto": 949.24,
-      "Banca Compuesto": 106420.37
+      "Banca Compuesto": 106420.37,
+      "league_id": 247
     },
     {
       "Fecha": "2024-06-27",
@@ -24678,7 +25730,8 @@ window.dashboardData = {
       "Banca Fijo": 5732.0,
       "Stake Compuesto": 2128.41,
       "Beneficio Compuesto": 957.78,
-      "Banca Compuesto": 107378.15
+      "Banca Compuesto": 107378.15,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-28",
@@ -24696,7 +25749,8 @@ window.dashboardData = {
       "Banca Fijo": 5741.0,
       "Stake Compuesto": 2147.56,
       "Beneficio Compuesto": 966.4,
-      "Banca Compuesto": 108344.56
+      "Banca Compuesto": 108344.56,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-28",
@@ -24714,7 +25768,8 @@ window.dashboardData = {
       "Banca Fijo": 5750.0,
       "Stake Compuesto": 2166.89,
       "Beneficio Compuesto": 975.1,
-      "Banca Compuesto": 109319.66
+      "Banca Compuesto": 109319.66,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-28",
@@ -24732,7 +25787,8 @@ window.dashboardData = {
       "Banca Fijo": 5759.0,
       "Stake Compuesto": 2186.39,
       "Beneficio Compuesto": 983.88,
-      "Banca Compuesto": 110303.53
+      "Banca Compuesto": 110303.53,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-28",
@@ -24750,7 +25806,8 @@ window.dashboardData = {
       "Banca Fijo": 5768.0,
       "Stake Compuesto": 2206.07,
       "Beneficio Compuesto": 992.73,
-      "Banca Compuesto": 111296.27
+      "Banca Compuesto": 111296.27,
+      "league_id": 248
     },
     {
       "Fecha": "2024-06-28",
@@ -24768,7 +25825,8 @@ window.dashboardData = {
       "Banca Fijo": 5777.0,
       "Stake Compuesto": 2225.93,
       "Beneficio Compuesto": 1001.67,
-      "Banca Compuesto": 112297.93
+      "Banca Compuesto": 112297.93,
+      "league_id": 253
     },
     {
       "Fecha": "2024-06-29",
@@ -24786,7 +25844,8 @@ window.dashboardData = {
       "Banca Fijo": 5786.0,
       "Stake Compuesto": 2245.96,
       "Beneficio Compuesto": 1010.68,
-      "Banca Compuesto": 113308.61
+      "Banca Compuesto": 113308.61,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-29",
@@ -24804,7 +25863,8 @@ window.dashboardData = {
       "Banca Fijo": 5795.0,
       "Stake Compuesto": 2266.17,
       "Beneficio Compuesto": 1019.78,
-      "Banca Compuesto": 114328.39
+      "Banca Compuesto": 114328.39,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-29",
@@ -24822,7 +25882,8 @@ window.dashboardData = {
       "Banca Fijo": 5804.0,
       "Stake Compuesto": 2286.57,
       "Beneficio Compuesto": 1028.96,
-      "Banca Compuesto": 115357.35
+      "Banca Compuesto": 115357.35,
+      "league_id": 166
     },
     {
       "Fecha": "2024-06-29",
@@ -24840,7 +25901,8 @@ window.dashboardData = {
       "Banca Fijo": 5813.0,
       "Stake Compuesto": 2307.15,
       "Beneficio Compuesto": 1038.22,
-      "Banca Compuesto": 116395.56
+      "Banca Compuesto": 116395.56,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-29",
@@ -24858,7 +25920,8 @@ window.dashboardData = {
       "Banca Fijo": 5822.0,
       "Stake Compuesto": 2327.91,
       "Beneficio Compuesto": 1047.56,
-      "Banca Compuesto": 117443.12
+      "Banca Compuesto": 117443.12,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-29",
@@ -24876,7 +25939,8 @@ window.dashboardData = {
       "Banca Fijo": 5831.0,
       "Stake Compuesto": 2348.86,
       "Beneficio Compuesto": 1056.99,
-      "Banca Compuesto": 118500.11
+      "Banca Compuesto": 118500.11,
+      "league_id": 245
     },
     {
       "Fecha": "2024-06-29",
@@ -24894,7 +25958,8 @@ window.dashboardData = {
       "Banca Fijo": 5840.0,
       "Stake Compuesto": 2370.0,
       "Beneficio Compuesto": 1066.5,
-      "Banca Compuesto": 119566.61
+      "Banca Compuesto": 119566.61,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-29",
@@ -24912,7 +25977,8 @@ window.dashboardData = {
       "Banca Fijo": 5849.0,
       "Stake Compuesto": 2391.33,
       "Beneficio Compuesto": 1076.1,
-      "Banca Compuesto": 120642.71
+      "Banca Compuesto": 120642.71,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-30",
@@ -24930,7 +25996,8 @@ window.dashboardData = {
       "Banca Fijo": 5858.0,
       "Stake Compuesto": 2412.85,
       "Beneficio Compuesto": 1085.78,
-      "Banca Compuesto": 121728.5
+      "Banca Compuesto": 121728.5,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-30",
@@ -24948,7 +26015,8 @@ window.dashboardData = {
       "Banca Fijo": 5867.0,
       "Stake Compuesto": 2434.57,
       "Beneficio Compuesto": 1095.56,
-      "Banca Compuesto": 122824.05
+      "Banca Compuesto": 122824.05,
+      "league_id": 249
     },
     {
       "Fecha": "2024-06-30",
@@ -24966,7 +26034,8 @@ window.dashboardData = {
       "Banca Fijo": 5876.0,
       "Stake Compuesto": 2456.48,
       "Beneficio Compuesto": 1105.42,
-      "Banca Compuesto": 123929.47
+      "Banca Compuesto": 123929.47,
+      "league_id": 368
     },
     {
       "Fecha": "2024-06-30",
@@ -24984,7 +26053,8 @@ window.dashboardData = {
       "Banca Fijo": 5885.0,
       "Stake Compuesto": 2478.59,
       "Beneficio Compuesto": 1115.37,
-      "Banca Compuesto": 125044.83
+      "Banca Compuesto": 125044.83,
+      "league_id": 164
     },
     {
       "Fecha": "2024-06-30",
@@ -25002,7 +26072,8 @@ window.dashboardData = {
       "Banca Fijo": 5894.0,
       "Stake Compuesto": 2500.9,
       "Beneficio Compuesto": 1125.4,
-      "Banca Compuesto": 126170.24
+      "Banca Compuesto": 126170.24,
+      "league_id": 253
     },
     {
       "Fecha": "2024-06-30",
@@ -25020,7 +26091,8 @@ window.dashboardData = {
       "Banca Fijo": 5903.0,
       "Stake Compuesto": 2523.4,
       "Beneficio Compuesto": 1135.53,
-      "Banca Compuesto": 127305.77
+      "Banca Compuesto": 127305.77,
+      "league_id": 328
     },
     {
       "Fecha": "2024-06-30",
@@ -25038,7 +26110,8 @@ window.dashboardData = {
       "Banca Fijo": 5883.0,
       "Stake Compuesto": 2546.12,
       "Beneficio Compuesto": -2546.12,
-      "Banca Compuesto": 124759.65
+      "Banca Compuesto": 124759.65,
+      "league_id": 473
     },
     {
       "Fecha": "2024-06-30",
@@ -25056,7 +26129,8 @@ window.dashboardData = {
       "Banca Fijo": 5892.0,
       "Stake Compuesto": 2495.19,
       "Beneficio Compuesto": 1122.84,
-      "Banca Compuesto": 125882.49
+      "Banca Compuesto": 125882.49,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-30",
@@ -25074,7 +26148,8 @@ window.dashboardData = {
       "Banca Fijo": 5901.0,
       "Stake Compuesto": 2517.65,
       "Beneficio Compuesto": 1132.94,
-      "Banca Compuesto": 127015.43
+      "Banca Compuesto": 127015.43,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-30",
@@ -25092,7 +26167,8 @@ window.dashboardData = {
       "Banca Fijo": 5910.0,
       "Stake Compuesto": 2540.31,
       "Beneficio Compuesto": 1143.14,
-      "Banca Compuesto": 128158.57
+      "Banca Compuesto": 128158.57,
+      "league_id": 909
     },
     {
       "Fecha": "2024-06-30",
@@ -25110,7 +26186,8 @@ window.dashboardData = {
       "Banca Fijo": 5919.0,
       "Stake Compuesto": 2563.17,
       "Beneficio Compuesto": 1153.43,
-      "Banca Compuesto": 129312.0
+      "Banca Compuesto": 129312.0,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-01",
@@ -25128,7 +26205,8 @@ window.dashboardData = {
       "Banca Fijo": 5928.0,
       "Stake Compuesto": 2586.24,
       "Beneficio Compuesto": 1163.81,
-      "Banca Compuesto": 130475.81
+      "Banca Compuesto": 130475.81,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-03",
@@ -25146,7 +26224,8 @@ window.dashboardData = {
       "Banca Fijo": 5937.0,
       "Stake Compuesto": 2609.52,
       "Beneficio Compuesto": 1174.28,
-      "Banca Compuesto": 131650.09
+      "Banca Compuesto": 131650.09,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-03",
@@ -25164,7 +26243,8 @@ window.dashboardData = {
       "Banca Fijo": 5946.0,
       "Stake Compuesto": 2633.0,
       "Beneficio Compuesto": 1184.85,
-      "Banca Compuesto": 132834.94
+      "Banca Compuesto": 132834.94,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-03",
@@ -25182,7 +26262,8 @@ window.dashboardData = {
       "Banca Fijo": 5955.0,
       "Stake Compuesto": 2656.7,
       "Beneficio Compuesto": 1195.51,
-      "Banca Compuesto": 134030.45
+      "Banca Compuesto": 134030.45,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-03",
@@ -25200,7 +26281,8 @@ window.dashboardData = {
       "Banca Fijo": 5964.0,
       "Stake Compuesto": 2680.61,
       "Beneficio Compuesto": 1206.27,
-      "Banca Compuesto": 135236.73
+      "Banca Compuesto": 135236.73,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-03",
@@ -25218,7 +26300,8 @@ window.dashboardData = {
       "Banca Fijo": 5973.0,
       "Stake Compuesto": 2704.73,
       "Beneficio Compuesto": 1217.13,
-      "Banca Compuesto": 136453.86
+      "Banca Compuesto": 136453.86,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-03",
@@ -25236,7 +26319,8 @@ window.dashboardData = {
       "Banca Fijo": 5982.0,
       "Stake Compuesto": 2729.08,
       "Beneficio Compuesto": 1228.08,
-      "Banca Compuesto": 137681.94
+      "Banca Compuesto": 137681.94,
+      "league_id": 247
     },
     {
       "Fecha": "2024-07-03",
@@ -25254,7 +26338,8 @@ window.dashboardData = {
       "Banca Fijo": 5991.0,
       "Stake Compuesto": 2753.64,
       "Beneficio Compuesto": 1239.14,
-      "Banca Compuesto": 138921.08
+      "Banca Compuesto": 138921.08,
+      "league_id": 253
     },
     {
       "Fecha": "2024-07-03",
@@ -25272,7 +26357,8 @@ window.dashboardData = {
       "Banca Fijo": 6000.0,
       "Stake Compuesto": 2778.42,
       "Beneficio Compuesto": 1250.29,
-      "Banca Compuesto": 140171.37
+      "Banca Compuesto": 140171.37,
+      "league_id": 253
     },
     {
       "Fecha": "2024-07-04",
@@ -25290,7 +26376,8 @@ window.dashboardData = {
       "Banca Fijo": 6009.0,
       "Stake Compuesto": 2803.43,
       "Beneficio Compuesto": 1261.54,
-      "Banca Compuesto": 141432.91
+      "Banca Compuesto": 141432.91,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-05",
@@ -25308,7 +26395,8 @@ window.dashboardData = {
       "Banca Fijo": 6018.0,
       "Stake Compuesto": 2828.66,
       "Beneficio Compuesto": 1272.9,
-      "Banca Compuesto": 142705.81
+      "Banca Compuesto": 142705.81,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-06",
@@ -25326,7 +26414,8 @@ window.dashboardData = {
       "Banca Fijo": 6027.0,
       "Stake Compuesto": 2854.12,
       "Beneficio Compuesto": 1284.35,
-      "Banca Compuesto": 143990.16
+      "Banca Compuesto": 143990.16,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-06",
@@ -25344,7 +26433,8 @@ window.dashboardData = {
       "Banca Fijo": 6036.0,
       "Stake Compuesto": 2879.8,
       "Beneficio Compuesto": 1295.91,
-      "Banca Compuesto": 145286.07
+      "Banca Compuesto": 145286.07,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-06",
@@ -25362,7 +26452,8 @@ window.dashboardData = {
       "Banca Fijo": 6045.0,
       "Stake Compuesto": 2905.72,
       "Beneficio Compuesto": 1307.57,
-      "Banca Compuesto": 146593.65
+      "Banca Compuesto": 146593.65,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-06",
@@ -25380,7 +26471,8 @@ window.dashboardData = {
       "Banca Fijo": 6054.0,
       "Stake Compuesto": 2931.87,
       "Beneficio Compuesto": 1319.34,
-      "Banca Compuesto": 147912.99
+      "Banca Compuesto": 147912.99,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-06",
@@ -25398,7 +26490,8 @@ window.dashboardData = {
       "Banca Fijo": 6063.0,
       "Stake Compuesto": 2958.26,
       "Beneficio Compuesto": 1331.22,
-      "Banca Compuesto": 149244.21
+      "Banca Compuesto": 149244.21,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-06",
@@ -25416,7 +26509,8 @@ window.dashboardData = {
       "Banca Fijo": 6072.0,
       "Stake Compuesto": 2984.88,
       "Beneficio Compuesto": 1343.2,
-      "Banca Compuesto": 150587.41
+      "Banca Compuesto": 150587.41,
+      "league_id": 253
     },
     {
       "Fecha": "2024-07-06",
@@ -25434,7 +26528,8 @@ window.dashboardData = {
       "Banca Fijo": 6052.0,
       "Stake Compuesto": 3011.75,
       "Beneficio Compuesto": -3011.75,
-      "Banca Compuesto": 147575.66
+      "Banca Compuesto": 147575.66,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-06",
@@ -25452,7 +26547,8 @@ window.dashboardData = {
       "Banca Fijo": 6061.0,
       "Stake Compuesto": 2951.51,
       "Beneficio Compuesto": 1328.18,
-      "Banca Compuesto": 148903.84
+      "Banca Compuesto": 148903.84,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-07",
@@ -25470,7 +26566,8 @@ window.dashboardData = {
       "Banca Fijo": 6041.0,
       "Stake Compuesto": 2978.08,
       "Beneficio Compuesto": -2978.08,
-      "Banca Compuesto": 145925.76
+      "Banca Compuesto": 145925.76,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-07",
@@ -25488,7 +26585,8 @@ window.dashboardData = {
       "Banca Fijo": 6050.0,
       "Stake Compuesto": 2918.52,
       "Beneficio Compuesto": 1313.33,
-      "Banca Compuesto": 147239.09
+      "Banca Compuesto": 147239.09,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-07",
@@ -25506,7 +26604,8 @@ window.dashboardData = {
       "Banca Fijo": 6030.0,
       "Stake Compuesto": 2944.78,
       "Beneficio Compuesto": -2944.78,
-      "Banca Compuesto": 144294.31
+      "Banca Compuesto": 144294.31,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-07",
@@ -25524,7 +26623,8 @@ window.dashboardData = {
       "Banca Fijo": 6039.0,
       "Stake Compuesto": 2885.89,
       "Beneficio Compuesto": 1298.65,
-      "Banca Compuesto": 145592.96
+      "Banca Compuesto": 145592.96,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-07",
@@ -25542,7 +26642,8 @@ window.dashboardData = {
       "Banca Fijo": 6048.0,
       "Stake Compuesto": 2911.86,
       "Beneficio Compuesto": 1310.34,
-      "Banca Compuesto": 146903.3
+      "Banca Compuesto": 146903.3,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-07",
@@ -25560,7 +26661,8 @@ window.dashboardData = {
       "Banca Fijo": 6057.0,
       "Stake Compuesto": 2938.07,
       "Beneficio Compuesto": 1322.13,
-      "Banca Compuesto": 148225.43
+      "Banca Compuesto": 148225.43,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-07",
@@ -25578,7 +26680,8 @@ window.dashboardData = {
       "Banca Fijo": 6066.0,
       "Stake Compuesto": 2964.51,
       "Beneficio Compuesto": 1334.03,
-      "Banca Compuesto": 149559.46
+      "Banca Compuesto": 149559.46,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-07",
@@ -25596,7 +26699,8 @@ window.dashboardData = {
       "Banca Fijo": 6075.0,
       "Stake Compuesto": 2991.19,
       "Beneficio Compuesto": 1346.04,
-      "Banca Compuesto": 150905.49
+      "Banca Compuesto": 150905.49,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-08",
@@ -25614,7 +26718,8 @@ window.dashboardData = {
       "Banca Fijo": 6084.0,
       "Stake Compuesto": 3018.11,
       "Beneficio Compuesto": 1358.15,
-      "Banca Compuesto": 152263.64
+      "Banca Compuesto": 152263.64,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-08",
@@ -25632,7 +26737,8 @@ window.dashboardData = {
       "Banca Fijo": 6093.0,
       "Stake Compuesto": 3045.27,
       "Beneficio Compuesto": 1370.37,
-      "Banca Compuesto": 153634.01
+      "Banca Compuesto": 153634.01,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-08",
@@ -25650,7 +26756,8 @@ window.dashboardData = {
       "Banca Fijo": 6102.0,
       "Stake Compuesto": 3072.68,
       "Beneficio Compuesto": 1382.71,
-      "Banca Compuesto": 155016.72
+      "Banca Compuesto": 155016.72,
+      "league_id": 473
     },
     {
       "Fecha": "2024-07-08",
@@ -25668,7 +26775,8 @@ window.dashboardData = {
       "Banca Fijo": 6111.0,
       "Stake Compuesto": 3100.33,
       "Beneficio Compuesto": 1395.15,
-      "Banca Compuesto": 156411.87
+      "Banca Compuesto": 156411.87,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-10",
@@ -25686,7 +26794,8 @@ window.dashboardData = {
       "Banca Fijo": 6120.0,
       "Stake Compuesto": 3128.24,
       "Beneficio Compuesto": 1407.71,
-      "Banca Compuesto": 157819.58
+      "Banca Compuesto": 157819.58,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-10",
@@ -25704,7 +26813,8 @@ window.dashboardData = {
       "Banca Fijo": 6129.0,
       "Stake Compuesto": 3156.39,
       "Beneficio Compuesto": 1420.38,
-      "Banca Compuesto": 159239.95
+      "Banca Compuesto": 159239.95,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-10",
@@ -25722,7 +26832,8 @@ window.dashboardData = {
       "Banca Fijo": 6109.0,
       "Stake Compuesto": 3184.8,
       "Beneficio Compuesto": -3184.8,
-      "Banca Compuesto": 156055.15
+      "Banca Compuesto": 156055.15,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-11",
@@ -25740,7 +26851,8 @@ window.dashboardData = {
       "Banca Fijo": 6089.0,
       "Stake Compuesto": 3121.1,
       "Beneficio Compuesto": -3121.1,
-      "Banca Compuesto": 152934.05
+      "Banca Compuesto": 152934.05,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-13",
@@ -25758,7 +26870,8 @@ window.dashboardData = {
       "Banca Fijo": 6098.0,
       "Stake Compuesto": 3058.68,
       "Beneficio Compuesto": 1376.41,
-      "Banca Compuesto": 154310.46
+      "Banca Compuesto": 154310.46,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-13",
@@ -25776,7 +26889,8 @@ window.dashboardData = {
       "Banca Fijo": 6078.0,
       "Stake Compuesto": 3086.21,
       "Beneficio Compuesto": -3086.21,
-      "Banca Compuesto": 151224.25
+      "Banca Compuesto": 151224.25,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-13",
@@ -25794,7 +26908,8 @@ window.dashboardData = {
       "Banca Fijo": 6087.0,
       "Stake Compuesto": 3024.48,
       "Beneficio Compuesto": 1361.02,
-      "Banca Compuesto": 152585.27
+      "Banca Compuesto": 152585.27,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-13",
@@ -25812,7 +26927,8 @@ window.dashboardData = {
       "Banca Fijo": 6096.0,
       "Stake Compuesto": 3051.71,
       "Beneficio Compuesto": 1373.27,
-      "Banca Compuesto": 153958.53
+      "Banca Compuesto": 153958.53,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-13",
@@ -25830,7 +26946,8 @@ window.dashboardData = {
       "Banca Fijo": 6105.0,
       "Stake Compuesto": 3079.17,
       "Beneficio Compuesto": 1385.63,
-      "Banca Compuesto": 155344.16
+      "Banca Compuesto": 155344.16,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-13",
@@ -25848,7 +26965,8 @@ window.dashboardData = {
       "Banca Fijo": 6114.0,
       "Stake Compuesto": 3106.88,
       "Beneficio Compuesto": 1398.1,
-      "Banca Compuesto": 156742.26
+      "Banca Compuesto": 156742.26,
+      "league_id": 247
     },
     {
       "Fecha": "2024-07-13",
@@ -25866,7 +26984,8 @@ window.dashboardData = {
       "Banca Fijo": 6123.0,
       "Stake Compuesto": 3134.85,
       "Beneficio Compuesto": 1410.68,
-      "Banca Compuesto": 158152.94
+      "Banca Compuesto": 158152.94,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-13",
@@ -25884,7 +27003,8 @@ window.dashboardData = {
       "Banca Fijo": 6132.0,
       "Stake Compuesto": 3163.06,
       "Beneficio Compuesto": 1423.38,
-      "Banca Compuesto": 159576.31
+      "Banca Compuesto": 159576.31,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-14",
@@ -25902,7 +27022,8 @@ window.dashboardData = {
       "Banca Fijo": 6141.0,
       "Stake Compuesto": 3191.53,
       "Beneficio Compuesto": 1436.19,
-      "Banca Compuesto": 161012.5
+      "Banca Compuesto": 161012.5,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-14",
@@ -25920,7 +27041,8 @@ window.dashboardData = {
       "Banca Fijo": 6150.0,
       "Stake Compuesto": 3220.25,
       "Beneficio Compuesto": 1449.11,
-      "Banca Compuesto": 162461.61
+      "Banca Compuesto": 162461.61,
+      "league_id": 473
     },
     {
       "Fecha": "2024-07-14",
@@ -25938,7 +27060,8 @@ window.dashboardData = {
       "Banca Fijo": 6159.0,
       "Stake Compuesto": 3249.23,
       "Beneficio Compuesto": 1462.15,
-      "Banca Compuesto": 163923.77
+      "Banca Compuesto": 163923.77,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-14",
@@ -25956,7 +27079,8 @@ window.dashboardData = {
       "Banca Fijo": 6168.0,
       "Stake Compuesto": 3278.48,
       "Beneficio Compuesto": 1475.31,
-      "Banca Compuesto": 165399.08
+      "Banca Compuesto": 165399.08,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-15",
@@ -25974,7 +27098,8 @@ window.dashboardData = {
       "Banca Fijo": 6177.0,
       "Stake Compuesto": 3307.98,
       "Beneficio Compuesto": 1488.59,
-      "Banca Compuesto": 166887.67
+      "Banca Compuesto": 166887.67,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-17",
@@ -25992,7 +27117,8 @@ window.dashboardData = {
       "Banca Fijo": 6186.0,
       "Stake Compuesto": 3337.75,
       "Beneficio Compuesto": 1501.99,
-      "Banca Compuesto": 168389.66
+      "Banca Compuesto": 168389.66,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-17",
@@ -26010,7 +27136,8 @@ window.dashboardData = {
       "Banca Fijo": 6195.0,
       "Stake Compuesto": 3367.79,
       "Beneficio Compuesto": 1515.51,
-      "Banca Compuesto": 169905.17
+      "Banca Compuesto": 169905.17,
+      "league_id": 253
     },
     {
       "Fecha": "2024-07-18",
@@ -26028,7 +27155,8 @@ window.dashboardData = {
       "Banca Fijo": 6204.0,
       "Stake Compuesto": 3398.1,
       "Beneficio Compuesto": 1529.15,
-      "Banca Compuesto": 171434.32
+      "Banca Compuesto": 171434.32,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-18",
@@ -26046,7 +27174,8 @@ window.dashboardData = {
       "Banca Fijo": 6213.0,
       "Stake Compuesto": 3428.69,
       "Beneficio Compuesto": 1542.91,
-      "Banca Compuesto": 172977.23
+      "Banca Compuesto": 172977.23,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-19",
@@ -26064,7 +27193,8 @@ window.dashboardData = {
       "Banca Fijo": 6222.0,
       "Stake Compuesto": 3459.54,
       "Beneficio Compuesto": 1556.8,
-      "Banca Compuesto": 174534.02
+      "Banca Compuesto": 174534.02,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-19",
@@ -26082,7 +27212,8 @@ window.dashboardData = {
       "Banca Fijo": 6231.0,
       "Stake Compuesto": 3490.68,
       "Beneficio Compuesto": 1570.81,
-      "Banca Compuesto": 176104.83
+      "Banca Compuesto": 176104.83,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-19",
@@ -26100,7 +27231,8 @@ window.dashboardData = {
       "Banca Fijo": 6240.0,
       "Stake Compuesto": 3522.1,
       "Beneficio Compuesto": 1584.94,
-      "Banca Compuesto": 177689.77
+      "Banca Compuesto": 177689.77,
+      "league_id": 119
     },
     {
       "Fecha": "2024-07-19",
@@ -26118,7 +27250,8 @@ window.dashboardData = {
       "Banca Fijo": 6249.0,
       "Stake Compuesto": 3553.8,
       "Beneficio Compuesto": 1599.21,
-      "Banca Compuesto": 179288.98
+      "Banca Compuesto": 179288.98,
+      "league_id": 119
     },
     {
       "Fecha": "2024-07-19",
@@ -26136,7 +27269,8 @@ window.dashboardData = {
       "Banca Fijo": 6258.0,
       "Stake Compuesto": 3585.78,
       "Beneficio Compuesto": 1613.6,
-      "Banca Compuesto": 180902.58
+      "Banca Compuesto": 180902.58,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-19",
@@ -26154,7 +27288,8 @@ window.dashboardData = {
       "Banca Fijo": 6267.0,
       "Stake Compuesto": 3618.05,
       "Beneficio Compuesto": 1628.12,
-      "Banca Compuesto": 182530.7
+      "Banca Compuesto": 182530.7,
+      "league_id": 474
     },
     {
       "Fecha": "2024-07-20",
@@ -26172,7 +27307,8 @@ window.dashboardData = {
       "Banca Fijo": 6247.0,
       "Stake Compuesto": 3650.61,
       "Beneficio Compuesto": -3650.61,
-      "Banca Compuesto": 178880.09
+      "Banca Compuesto": 178880.09,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-20",
@@ -26190,7 +27326,8 @@ window.dashboardData = {
       "Banca Fijo": 6227.0,
       "Stake Compuesto": 3577.6,
       "Beneficio Compuesto": -3577.6,
-      "Banca Compuesto": 175302.49
+      "Banca Compuesto": 175302.49,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-20",
@@ -26208,7 +27345,8 @@ window.dashboardData = {
       "Banca Fijo": 6236.0,
       "Stake Compuesto": 3506.05,
       "Beneficio Compuesto": 1577.72,
-      "Banca Compuesto": 176880.21
+      "Banca Compuesto": 176880.21,
+      "league_id": 253
     },
     {
       "Fecha": "2024-07-20",
@@ -26226,7 +27364,8 @@ window.dashboardData = {
       "Banca Fijo": 6245.0,
       "Stake Compuesto": 3537.6,
       "Beneficio Compuesto": 1591.92,
-      "Banca Compuesto": 178472.13
+      "Banca Compuesto": 178472.13,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-20",
@@ -26244,7 +27383,8 @@ window.dashboardData = {
       "Banca Fijo": 6254.0,
       "Stake Compuesto": 3569.44,
       "Beneficio Compuesto": 1606.25,
-      "Banca Compuesto": 180078.38
+      "Banca Compuesto": 180078.38,
+      "league_id": 474
     },
     {
       "Fecha": "2024-07-20",
@@ -26262,7 +27402,8 @@ window.dashboardData = {
       "Banca Fijo": 6263.0,
       "Stake Compuesto": 3601.57,
       "Beneficio Compuesto": 1620.71,
-      "Banca Compuesto": 181699.09
+      "Banca Compuesto": 181699.09,
+      "league_id": 474
     },
     {
       "Fecha": "2024-07-20",
@@ -26280,7 +27421,8 @@ window.dashboardData = {
       "Banca Fijo": 6272.0,
       "Stake Compuesto": 3633.98,
       "Beneficio Compuesto": 1635.29,
-      "Banca Compuesto": 183334.38
+      "Banca Compuesto": 183334.38,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-21",
@@ -26298,7 +27440,8 @@ window.dashboardData = {
       "Banca Fijo": 6281.0,
       "Stake Compuesto": 3666.69,
       "Beneficio Compuesto": 1650.01,
-      "Banca Compuesto": 184984.39
+      "Banca Compuesto": 184984.39,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-21",
@@ -26316,7 +27459,8 @@ window.dashboardData = {
       "Banca Fijo": 6290.0,
       "Stake Compuesto": 3699.69,
       "Beneficio Compuesto": 1664.86,
-      "Banca Compuesto": 186649.25
+      "Banca Compuesto": 186649.25,
+      "league_id": 119
     },
     {
       "Fecha": "2024-07-21",
@@ -26334,7 +27478,8 @@ window.dashboardData = {
       "Banca Fijo": 6299.0,
       "Stake Compuesto": 3732.98,
       "Beneficio Compuesto": 1679.84,
-      "Banca Compuesto": 188329.09
+      "Banca Compuesto": 188329.09,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-21",
@@ -26352,7 +27497,8 @@ window.dashboardData = {
       "Banca Fijo": 6308.0,
       "Stake Compuesto": 3766.58,
       "Beneficio Compuesto": 1694.96,
-      "Banca Compuesto": 190024.05
+      "Banca Compuesto": 190024.05,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-21",
@@ -26370,7 +27516,8 @@ window.dashboardData = {
       "Banca Fijo": 6317.0,
       "Stake Compuesto": 3800.48,
       "Beneficio Compuesto": 1710.22,
-      "Banca Compuesto": 191734.27
+      "Banca Compuesto": 191734.27,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-21",
@@ -26388,7 +27535,8 @@ window.dashboardData = {
       "Banca Fijo": 6326.0,
       "Stake Compuesto": 3834.69,
       "Beneficio Compuesto": 1725.61,
-      "Banca Compuesto": 193459.88
+      "Banca Compuesto": 193459.88,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-21",
@@ -26406,7 +27554,8 @@ window.dashboardData = {
       "Banca Fijo": 6335.0,
       "Stake Compuesto": 3869.2,
       "Beneficio Compuesto": 1741.14,
-      "Banca Compuesto": 195201.01
+      "Banca Compuesto": 195201.01,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-21",
@@ -26424,7 +27573,8 @@ window.dashboardData = {
       "Banca Fijo": 6315.0,
       "Stake Compuesto": 3904.02,
       "Beneficio Compuesto": -3904.02,
-      "Banca Compuesto": 191296.99
+      "Banca Compuesto": 191296.99,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-21",
@@ -26442,7 +27592,8 @@ window.dashboardData = {
       "Banca Fijo": 6324.0,
       "Stake Compuesto": 3825.94,
       "Beneficio Compuesto": 1721.67,
-      "Banca Compuesto": 193018.67
+      "Banca Compuesto": 193018.67,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-22",
@@ -26460,7 +27611,8 @@ window.dashboardData = {
       "Banca Fijo": 6333.0,
       "Stake Compuesto": 3860.37,
       "Beneficio Compuesto": 1737.17,
-      "Banca Compuesto": 194755.84
+      "Banca Compuesto": 194755.84,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-23",
@@ -26478,7 +27630,8 @@ window.dashboardData = {
       "Banca Fijo": 6313.0,
       "Stake Compuesto": 3895.12,
       "Beneficio Compuesto": -3895.12,
-      "Banca Compuesto": 190860.72
+      "Banca Compuesto": 190860.72,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-23",
@@ -26496,7 +27649,8 @@ window.dashboardData = {
       "Banca Fijo": 6322.0,
       "Stake Compuesto": 3817.21,
       "Beneficio Compuesto": 1717.75,
-      "Banca Compuesto": 192578.46
+      "Banca Compuesto": 192578.46,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-23",
@@ -26514,7 +27668,8 @@ window.dashboardData = {
       "Banca Fijo": 6331.0,
       "Stake Compuesto": 3851.57,
       "Beneficio Compuesto": 1733.21,
-      "Banca Compuesto": 194311.67
+      "Banca Compuesto": 194311.67,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-24",
@@ -26532,7 +27687,8 @@ window.dashboardData = {
       "Banca Fijo": 6340.0,
       "Stake Compuesto": 3886.23,
       "Beneficio Compuesto": 1748.81,
-      "Banca Compuesto": 196060.48
+      "Banca Compuesto": 196060.48,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-24",
@@ -26550,7 +27706,8 @@ window.dashboardData = {
       "Banca Fijo": 6349.0,
       "Stake Compuesto": 3921.21,
       "Beneficio Compuesto": 1764.54,
-      "Banca Compuesto": 197825.02
+      "Banca Compuesto": 197825.02,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-25",
@@ -26568,7 +27725,8 @@ window.dashboardData = {
       "Banca Fijo": 6358.0,
       "Stake Compuesto": 3956.5,
       "Beneficio Compuesto": 1780.43,
-      "Banca Compuesto": 199605.45
+      "Banca Compuesto": 199605.45,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-25",
@@ -26586,7 +27744,8 @@ window.dashboardData = {
       "Banca Fijo": 6367.0,
       "Stake Compuesto": 3992.11,
       "Beneficio Compuesto": 1796.45,
-      "Banca Compuesto": 201401.89
+      "Banca Compuesto": 201401.89,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-26",
@@ -26604,7 +27763,8 @@ window.dashboardData = {
       "Banca Fijo": 6376.0,
       "Stake Compuesto": 4028.04,
       "Beneficio Compuesto": 1812.62,
-      "Banca Compuesto": 203214.51
+      "Banca Compuesto": 203214.51,
+      "league_id": 208
     },
     {
       "Fecha": "2024-07-26",
@@ -26622,7 +27782,8 @@ window.dashboardData = {
       "Banca Fijo": 6385.0,
       "Stake Compuesto": 4064.29,
       "Beneficio Compuesto": 1828.93,
-      "Banca Compuesto": 205043.44
+      "Banca Compuesto": 205043.44,
+      "league_id": 208
     },
     {
       "Fecha": "2024-07-27",
@@ -26640,7 +27801,8 @@ window.dashboardData = {
       "Banca Fijo": 6394.0,
       "Stake Compuesto": 4100.87,
       "Beneficio Compuesto": 1845.39,
-      "Banca Compuesto": 206888.83
+      "Banca Compuesto": 206888.83,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-27",
@@ -26658,7 +27820,8 @@ window.dashboardData = {
       "Banca Fijo": 6403.0,
       "Stake Compuesto": 4137.78,
       "Beneficio Compuesto": 1862.0,
-      "Banca Compuesto": 208750.83
+      "Banca Compuesto": 208750.83,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-27",
@@ -26676,7 +27839,8 @@ window.dashboardData = {
       "Banca Fijo": 6412.0,
       "Stake Compuesto": 4175.02,
       "Beneficio Compuesto": 1878.76,
-      "Banca Compuesto": 210629.59
+      "Banca Compuesto": 210629.59,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-27",
@@ -26694,7 +27858,8 @@ window.dashboardData = {
       "Banca Fijo": 6421.0,
       "Stake Compuesto": 4212.59,
       "Beneficio Compuesto": 1895.67,
-      "Banca Compuesto": 212525.26
+      "Banca Compuesto": 212525.26,
+      "league_id": 119
     },
     {
       "Fecha": "2024-07-27",
@@ -26712,7 +27877,8 @@ window.dashboardData = {
       "Banca Fijo": 6430.0,
       "Stake Compuesto": 4250.51,
       "Beneficio Compuesto": 1912.73,
-      "Banca Compuesto": 214437.98
+      "Banca Compuesto": 214437.98,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-27",
@@ -26730,7 +27896,8 @@ window.dashboardData = {
       "Banca Fijo": 6439.0,
       "Stake Compuesto": 4288.76,
       "Beneficio Compuesto": 1929.94,
-      "Banca Compuesto": 216367.93
+      "Banca Compuesto": 216367.93,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-27",
@@ -26748,7 +27915,8 @@ window.dashboardData = {
       "Banca Fijo": 6448.0,
       "Stake Compuesto": 4327.36,
       "Beneficio Compuesto": 1947.31,
-      "Banca Compuesto": 218315.24
+      "Banca Compuesto": 218315.24,
+      "league_id": 245
     },
     {
       "Fecha": "2024-07-27",
@@ -26766,7 +27934,8 @@ window.dashboardData = {
       "Banca Fijo": 6457.0,
       "Stake Compuesto": 4366.3,
       "Beneficio Compuesto": 1964.84,
-      "Banca Compuesto": 220280.07
+      "Banca Compuesto": 220280.07,
+      "league_id": 247
     },
     {
       "Fecha": "2024-07-27",
@@ -26784,7 +27953,8 @@ window.dashboardData = {
       "Banca Fijo": 6466.0,
       "Stake Compuesto": 4405.6,
       "Beneficio Compuesto": 1982.52,
-      "Banca Compuesto": 222262.59
+      "Banca Compuesto": 222262.59,
+      "league_id": 248
     },
     {
       "Fecha": "2024-07-27",
@@ -26802,7 +27972,8 @@ window.dashboardData = {
       "Banca Fijo": 6475.0,
       "Stake Compuesto": 4445.25,
       "Beneficio Compuesto": 2000.36,
-      "Banca Compuesto": 224262.96
+      "Banca Compuesto": 224262.96,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-27",
@@ -26820,7 +27991,8 @@ window.dashboardData = {
       "Banca Fijo": 6484.0,
       "Stake Compuesto": 4485.26,
       "Beneficio Compuesto": 2018.37,
-      "Banca Compuesto": 226281.32
+      "Banca Compuesto": 226281.32,
+      "league_id": 328
     },
     {
       "Fecha": "2024-07-27",
@@ -26838,7 +28010,8 @@ window.dashboardData = {
       "Banca Fijo": 6464.0,
       "Stake Compuesto": 4525.63,
       "Beneficio Compuesto": -4525.63,
-      "Banca Compuesto": 221755.7
+      "Banca Compuesto": 221755.7,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-28",
@@ -26856,7 +28029,8 @@ window.dashboardData = {
       "Banca Fijo": 6473.0,
       "Stake Compuesto": 4435.11,
       "Beneficio Compuesto": 1995.8,
-      "Banca Compuesto": 223751.5
+      "Banca Compuesto": 223751.5,
+      "league_id": 84
     },
     {
       "Fecha": "2024-07-28",
@@ -26874,7 +28048,8 @@ window.dashboardData = {
       "Banca Fijo": 6482.0,
       "Stake Compuesto": 4475.03,
       "Beneficio Compuesto": 2013.76,
-      "Banca Compuesto": 225765.26
+      "Banca Compuesto": 225765.26,
+      "league_id": 249
     },
     {
       "Fecha": "2024-07-28",
@@ -26892,7 +28067,8 @@ window.dashboardData = {
       "Banca Fijo": 6491.0,
       "Stake Compuesto": 4515.31,
       "Beneficio Compuesto": 2031.89,
-      "Banca Compuesto": 227797.15
+      "Banca Compuesto": 227797.15,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-28",
@@ -26910,7 +28086,8 @@ window.dashboardData = {
       "Banca Fijo": 6500.0,
       "Stake Compuesto": 4555.94,
       "Beneficio Compuesto": 2050.17,
-      "Banca Compuesto": 229847.32
+      "Banca Compuesto": 229847.32,
+      "league_id": 368
     },
     {
       "Fecha": "2024-07-28",
@@ -26928,7 +28105,8 @@ window.dashboardData = {
       "Banca Fijo": 6509.0,
       "Stake Compuesto": 4596.95,
       "Beneficio Compuesto": 2068.63,
-      "Banca Compuesto": 231915.95
+      "Banca Compuesto": 231915.95,
+      "league_id": 119
     },
     {
       "Fecha": "2024-07-28",
@@ -26946,7 +28124,8 @@ window.dashboardData = {
       "Banca Fijo": 6518.0,
       "Stake Compuesto": 4638.32,
       "Beneficio Compuesto": 2087.24,
-      "Banca Compuesto": 234003.19
+      "Banca Compuesto": 234003.19,
+      "league_id": 119
     },
     {
       "Fecha": "2024-07-28",
@@ -26964,7 +28143,8 @@ window.dashboardData = {
       "Banca Fijo": 6527.0,
       "Stake Compuesto": 4680.06,
       "Beneficio Compuesto": 2106.03,
-      "Banca Compuesto": 236109.22
+      "Banca Compuesto": 236109.22,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-28",
@@ -26982,7 +28162,8 @@ window.dashboardData = {
       "Banca Fijo": 6536.0,
       "Stake Compuesto": 4722.18,
       "Beneficio Compuesto": 2124.98,
-      "Banca Compuesto": 238234.21
+      "Banca Compuesto": 238234.21,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-28",
@@ -27000,7 +28181,8 @@ window.dashboardData = {
       "Banca Fijo": 6545.0,
       "Stake Compuesto": 4764.68,
       "Beneficio Compuesto": 2144.11,
-      "Banca Compuesto": 240378.31
+      "Banca Compuesto": 240378.31,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-28",
@@ -27018,7 +28200,8 @@ window.dashboardData = {
       "Banca Fijo": 6554.0,
       "Stake Compuesto": 4807.57,
       "Beneficio Compuesto": 2163.4,
-      "Banca Compuesto": 242541.72
+      "Banca Compuesto": 242541.72,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-28",
@@ -27036,7 +28219,8 @@ window.dashboardData = {
       "Banca Fijo": 6563.0,
       "Stake Compuesto": 4850.83,
       "Beneficio Compuesto": 2182.88,
-      "Banca Compuesto": 244724.59
+      "Banca Compuesto": 244724.59,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-28",
@@ -27054,7 +28238,8 @@ window.dashboardData = {
       "Banca Fijo": 6572.0,
       "Stake Compuesto": 4894.49,
       "Beneficio Compuesto": 2202.52,
-      "Banca Compuesto": 246927.12
+      "Banca Compuesto": 246927.12,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-29",
@@ -27072,7 +28257,8 @@ window.dashboardData = {
       "Banca Fijo": 6581.0,
       "Stake Compuesto": 4938.54,
       "Beneficio Compuesto": 2222.34,
-      "Banca Compuesto": 249149.46
+      "Banca Compuesto": 249149.46,
+      "league_id": 164
     },
     {
       "Fecha": "2024-07-29",
@@ -27090,7 +28276,8 @@ window.dashboardData = {
       "Banca Fijo": 6590.0,
       "Stake Compuesto": 4982.99,
       "Beneficio Compuesto": 2242.35,
-      "Banca Compuesto": 251391.8
+      "Banca Compuesto": 251391.8,
+      "league_id": 909
     },
     {
       "Fecha": "2024-07-31",
@@ -27108,7 +28295,8 @@ window.dashboardData = {
       "Banca Fijo": 6599.0,
       "Stake Compuesto": 5027.84,
       "Beneficio Compuesto": 2262.53,
-      "Banca Compuesto": 253654.33
+      "Banca Compuesto": 253654.33,
+      "league_id": 166
     },
     {
       "Fecha": "2024-07-31",
@@ -27126,7 +28314,8 @@ window.dashboardData = {
       "Banca Fijo": 6608.0,
       "Stake Compuesto": 5073.09,
       "Beneficio Compuesto": 2282.89,
-      "Banca Compuesto": 255937.22
+      "Banca Compuesto": 255937.22,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-02",
@@ -27144,7 +28333,8 @@ window.dashboardData = {
       "Banca Fijo": 6617.0,
       "Stake Compuesto": 5118.74,
       "Beneficio Compuesto": 2303.43,
-      "Banca Compuesto": 258240.65
+      "Banca Compuesto": 258240.65,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-02",
@@ -27162,7 +28352,8 @@ window.dashboardData = {
       "Banca Fijo": 6626.0,
       "Stake Compuesto": 5164.81,
       "Beneficio Compuesto": 2324.17,
-      "Banca Compuesto": 260564.82
+      "Banca Compuesto": 260564.82,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-02",
@@ -27180,7 +28371,8 @@ window.dashboardData = {
       "Banca Fijo": 6635.0,
       "Stake Compuesto": 5211.3,
       "Beneficio Compuesto": 2345.08,
-      "Banca Compuesto": 262909.9
+      "Banca Compuesto": 262909.9,
+      "league_id": 474
     },
     {
       "Fecha": "2024-08-02",
@@ -27198,7 +28390,8 @@ window.dashboardData = {
       "Banca Fijo": 6644.0,
       "Stake Compuesto": 5258.2,
       "Beneficio Compuesto": 2366.19,
-      "Banca Compuesto": 265276.09
+      "Banca Compuesto": 265276.09,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-03",
@@ -27216,7 +28409,8 @@ window.dashboardData = {
       "Banca Fijo": 6653.0,
       "Stake Compuesto": 5305.52,
       "Beneficio Compuesto": 2387.48,
-      "Banca Compuesto": 267663.58
+      "Banca Compuesto": 267663.58,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-03",
@@ -27234,7 +28428,8 @@ window.dashboardData = {
       "Banca Fijo": 6633.0,
       "Stake Compuesto": 5353.27,
       "Beneficio Compuesto": -5353.27,
-      "Banca Compuesto": 262310.31
+      "Banca Compuesto": 262310.31,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-03",
@@ -27252,7 +28447,8 @@ window.dashboardData = {
       "Banca Fijo": 6642.0,
       "Stake Compuesto": 5246.21,
       "Beneficio Compuesto": 2360.79,
-      "Banca Compuesto": 264671.1
+      "Banca Compuesto": 264671.1,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-03",
@@ -27270,7 +28466,8 @@ window.dashboardData = {
       "Banca Fijo": 6651.0,
       "Stake Compuesto": 5293.42,
       "Beneficio Compuesto": 2382.04,
-      "Banca Compuesto": 267053.14
+      "Banca Compuesto": 267053.14,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-03",
@@ -27288,7 +28485,8 @@ window.dashboardData = {
       "Banca Fijo": 6660.0,
       "Stake Compuesto": 5341.06,
       "Beneficio Compuesto": 2403.48,
-      "Banca Compuesto": 269456.62
+      "Banca Compuesto": 269456.62,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-03",
@@ -27306,7 +28504,8 @@ window.dashboardData = {
       "Banca Fijo": 6669.0,
       "Stake Compuesto": 5389.13,
       "Beneficio Compuesto": 2425.11,
-      "Banca Compuesto": 271881.73
+      "Banca Compuesto": 271881.73,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-03",
@@ -27324,7 +28523,8 @@ window.dashboardData = {
       "Banca Fijo": 6678.0,
       "Stake Compuesto": 5437.63,
       "Beneficio Compuesto": 2446.94,
-      "Banca Compuesto": 274328.66
+      "Banca Compuesto": 274328.66,
+      "league_id": 563
     },
     {
       "Fecha": "2024-08-03",
@@ -27342,7 +28542,8 @@ window.dashboardData = {
       "Banca Fijo": 6687.0,
       "Stake Compuesto": 5486.57,
       "Beneficio Compuesto": 2468.96,
-      "Banca Compuesto": 276797.62
+      "Banca Compuesto": 276797.62,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-04",
@@ -27360,7 +28561,8 @@ window.dashboardData = {
       "Banca Fijo": 6667.0,
       "Stake Compuesto": 5535.95,
       "Beneficio Compuesto": -5535.95,
-      "Banca Compuesto": 271261.67
+      "Banca Compuesto": 271261.67,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-04",
@@ -27378,7 +28580,8 @@ window.dashboardData = {
       "Banca Fijo": 6676.0,
       "Stake Compuesto": 5425.23,
       "Beneficio Compuesto": 2441.36,
-      "Banca Compuesto": 273703.02
+      "Banca Compuesto": 273703.02,
+      "league_id": 249
     },
     {
       "Fecha": "2024-08-04",
@@ -27396,7 +28599,8 @@ window.dashboardData = {
       "Banca Fijo": 6685.0,
       "Stake Compuesto": 5474.06,
       "Beneficio Compuesto": 2463.33,
-      "Banca Compuesto": 276166.35
+      "Banca Compuesto": 276166.35,
+      "league_id": 249
     },
     {
       "Fecha": "2024-08-04",
@@ -27414,7 +28618,8 @@ window.dashboardData = {
       "Banca Fijo": 6694.0,
       "Stake Compuesto": 5523.33,
       "Beneficio Compuesto": 2485.5,
-      "Banca Compuesto": 278651.85
+      "Banca Compuesto": 278651.85,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-04",
@@ -27432,7 +28637,8 @@ window.dashboardData = {
       "Banca Fijo": 6703.0,
       "Stake Compuesto": 5573.04,
       "Beneficio Compuesto": 2507.87,
-      "Banca Compuesto": 281159.71
+      "Banca Compuesto": 281159.71,
+      "league_id": 248
     },
     {
       "Fecha": "2024-08-04",
@@ -27450,7 +28656,8 @@ window.dashboardData = {
       "Banca Fijo": 6683.0,
       "Stake Compuesto": 5623.19,
       "Beneficio Compuesto": -5623.19,
-      "Banca Compuesto": 275536.52
+      "Banca Compuesto": 275536.52,
+      "league_id": 248
     },
     {
       "Fecha": "2024-08-04",
@@ -27468,7 +28675,8 @@ window.dashboardData = {
       "Banca Fijo": 6692.0,
       "Stake Compuesto": 5510.73,
       "Beneficio Compuesto": 2479.83,
-      "Banca Compuesto": 278016.35
+      "Banca Compuesto": 278016.35,
+      "league_id": 474
     },
     {
       "Fecha": "2024-08-04",
@@ -27486,7 +28694,8 @@ window.dashboardData = {
       "Banca Fijo": 6701.0,
       "Stake Compuesto": 5560.33,
       "Beneficio Compuesto": 2502.15,
-      "Banca Compuesto": 280518.5
+      "Banca Compuesto": 280518.5,
+      "league_id": 474
     },
     {
       "Fecha": "2024-08-04",
@@ -27504,7 +28713,8 @@ window.dashboardData = {
       "Banca Fijo": 6710.0,
       "Stake Compuesto": 5610.37,
       "Beneficio Compuesto": 2524.67,
-      "Banca Compuesto": 283043.16
+      "Banca Compuesto": 283043.16,
+      "league_id": 563
     },
     {
       "Fecha": "2024-08-04",
@@ -27522,7 +28732,8 @@ window.dashboardData = {
       "Banca Fijo": 6719.0,
       "Stake Compuesto": 5660.86,
       "Beneficio Compuesto": 2547.39,
-      "Banca Compuesto": 285590.55
+      "Banca Compuesto": 285590.55,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-04",
@@ -27540,7 +28751,8 @@ window.dashboardData = {
       "Banca Fijo": 6728.0,
       "Stake Compuesto": 5711.81,
       "Beneficio Compuesto": 2570.31,
-      "Banca Compuesto": 288160.87
+      "Banca Compuesto": 288160.87,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-04",
@@ -27558,7 +28770,8 @@ window.dashboardData = {
       "Banca Fijo": 6737.0,
       "Stake Compuesto": 5763.22,
       "Beneficio Compuesto": 2593.45,
-      "Banca Compuesto": 290754.31
+      "Banca Compuesto": 290754.31,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-05",
@@ -27576,7 +28789,8 @@ window.dashboardData = {
       "Banca Fijo": 6746.0,
       "Stake Compuesto": 5815.09,
       "Beneficio Compuesto": 2616.79,
-      "Banca Compuesto": 293371.1
+      "Banca Compuesto": 293371.1,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-05",
@@ -27594,7 +28808,8 @@ window.dashboardData = {
       "Banca Fijo": 6755.0,
       "Stake Compuesto": 5867.42,
       "Beneficio Compuesto": 2640.34,
-      "Banca Compuesto": 296011.44
+      "Banca Compuesto": 296011.44,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-06",
@@ -27612,7 +28827,8 @@ window.dashboardData = {
       "Banca Fijo": 6764.0,
       "Stake Compuesto": 5920.23,
       "Beneficio Compuesto": 2664.1,
-      "Banca Compuesto": 298675.55
+      "Banca Compuesto": 298675.55,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-09",
@@ -27630,7 +28846,8 @@ window.dashboardData = {
       "Banca Fijo": 6773.0,
       "Stake Compuesto": 5973.51,
       "Beneficio Compuesto": 2688.08,
-      "Banca Compuesto": 301363.62
+      "Banca Compuesto": 301363.62,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-09",
@@ -27648,7 +28865,8 @@ window.dashboardData = {
       "Banca Fijo": 6782.0,
       "Stake Compuesto": 6027.27,
       "Beneficio Compuesto": 2712.27,
-      "Banca Compuesto": 304075.9
+      "Banca Compuesto": 304075.9,
+      "league_id": 208
     },
     {
       "Fecha": "2024-08-09",
@@ -27666,7 +28884,8 @@ window.dashboardData = {
       "Banca Fijo": 6791.0,
       "Stake Compuesto": 6081.52,
       "Beneficio Compuesto": 2736.68,
-      "Banca Compuesto": 306812.58
+      "Banca Compuesto": 306812.58,
+      "league_id": 208
     },
     {
       "Fecha": "2024-08-10",
@@ -27684,7 +28903,8 @@ window.dashboardData = {
       "Banca Fijo": 6800.0,
       "Stake Compuesto": 6136.25,
       "Beneficio Compuesto": 2761.31,
-      "Banca Compuesto": 309573.89
+      "Banca Compuesto": 309573.89,
+      "league_id": 249
     },
     {
       "Fecha": "2024-08-10",
@@ -27702,7 +28922,8 @@ window.dashboardData = {
       "Banca Fijo": 6809.0,
       "Stake Compuesto": 6191.48,
       "Beneficio Compuesto": 2786.17,
-      "Banca Compuesto": 312360.06
+      "Banca Compuesto": 312360.06,
+      "league_id": 249
     },
     {
       "Fecha": "2024-08-10",
@@ -27720,7 +28941,8 @@ window.dashboardData = {
       "Banca Fijo": 6818.0,
       "Stake Compuesto": 6247.2,
       "Beneficio Compuesto": 2811.24,
-      "Banca Compuesto": 315171.3
+      "Banca Compuesto": 315171.3,
+      "league_id": 249
     },
     {
       "Fecha": "2024-08-10",
@@ -27738,7 +28960,8 @@ window.dashboardData = {
       "Banca Fijo": 6827.0,
       "Stake Compuesto": 6303.43,
       "Beneficio Compuesto": 2836.54,
-      "Banca Compuesto": 318007.84
+      "Banca Compuesto": 318007.84,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-10",
@@ -27756,7 +28979,8 @@ window.dashboardData = {
       "Banca Fijo": 6836.0,
       "Stake Compuesto": 6360.16,
       "Beneficio Compuesto": 2862.07,
-      "Banca Compuesto": 320869.91
+      "Banca Compuesto": 320869.91,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-10",
@@ -27774,7 +28998,8 @@ window.dashboardData = {
       "Banca Fijo": 6845.0,
       "Stake Compuesto": 6417.4,
       "Beneficio Compuesto": 2887.83,
-      "Banca Compuesto": 323757.74
+      "Banca Compuesto": 323757.74,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-10",
@@ -27792,7 +29017,8 @@ window.dashboardData = {
       "Banca Fijo": 6854.0,
       "Stake Compuesto": 6475.15,
       "Beneficio Compuesto": 2913.82,
-      "Banca Compuesto": 326671.56
+      "Banca Compuesto": 326671.56,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-10",
@@ -27810,7 +29036,8 @@ window.dashboardData = {
       "Banca Fijo": 6863.0,
       "Stake Compuesto": 6533.43,
       "Beneficio Compuesto": 2940.04,
-      "Banca Compuesto": 329611.6
+      "Banca Compuesto": 329611.6,
+      "league_id": 247
     },
     {
       "Fecha": "2024-08-10",
@@ -27828,7 +29055,8 @@ window.dashboardData = {
       "Banca Fijo": 6872.0,
       "Stake Compuesto": 6592.23,
       "Beneficio Compuesto": 2966.5,
-      "Banca Compuesto": 332578.11
+      "Banca Compuesto": 332578.11,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-10",
@@ -27846,7 +29074,8 @@ window.dashboardData = {
       "Banca Fijo": 6881.0,
       "Stake Compuesto": 6651.56,
       "Beneficio Compuesto": 2993.2,
-      "Banca Compuesto": 335571.31
+      "Banca Compuesto": 335571.31,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-11",
@@ -27864,7 +29093,8 @@ window.dashboardData = {
       "Banca Fijo": 6890.0,
       "Stake Compuesto": 6711.43,
       "Beneficio Compuesto": 3020.14,
-      "Banca Compuesto": 338591.45
+      "Banca Compuesto": 338591.45,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-11",
@@ -27882,7 +29112,8 @@ window.dashboardData = {
       "Banca Fijo": 6899.0,
       "Stake Compuesto": 6771.83,
       "Beneficio Compuesto": 3047.32,
-      "Banca Compuesto": 341638.78
+      "Banca Compuesto": 341638.78,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-11",
@@ -27900,7 +29131,8 @@ window.dashboardData = {
       "Banca Fijo": 6908.0,
       "Stake Compuesto": 6832.78,
       "Beneficio Compuesto": 3074.75,
-      "Banca Compuesto": 344713.53
+      "Banca Compuesto": 344713.53,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-11",
@@ -27918,7 +29150,8 @@ window.dashboardData = {
       "Banca Fijo": 6917.0,
       "Stake Compuesto": 6894.27,
       "Beneficio Compuesto": 3102.42,
-      "Banca Compuesto": 347815.95
+      "Banca Compuesto": 347815.95,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-11",
@@ -27936,7 +29169,8 @@ window.dashboardData = {
       "Banca Fijo": 6926.0,
       "Stake Compuesto": 6956.32,
       "Beneficio Compuesto": 3130.34,
-      "Banca Compuesto": 350946.29
+      "Banca Compuesto": 350946.29,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-11",
@@ -27954,7 +29188,8 @@ window.dashboardData = {
       "Banca Fijo": 6906.0,
       "Stake Compuesto": 7018.93,
       "Beneficio Compuesto": -7018.93,
-      "Banca Compuesto": 343927.37
+      "Banca Compuesto": 343927.37,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-11",
@@ -27972,7 +29207,8 @@ window.dashboardData = {
       "Banca Fijo": 6915.0,
       "Stake Compuesto": 6878.55,
       "Beneficio Compuesto": 3095.35,
-      "Banca Compuesto": 347022.71
+      "Banca Compuesto": 347022.71,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-11",
@@ -27990,7 +29226,8 @@ window.dashboardData = {
       "Banca Fijo": 6924.0,
       "Stake Compuesto": 6940.45,
       "Beneficio Compuesto": 3123.2,
-      "Banca Compuesto": 350145.92
+      "Banca Compuesto": 350145.92,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-11",
@@ -28008,7 +29245,8 @@ window.dashboardData = {
       "Banca Fijo": 6933.0,
       "Stake Compuesto": 7002.92,
       "Beneficio Compuesto": 3151.31,
-      "Banca Compuesto": 353297.23
+      "Banca Compuesto": 353297.23,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-11",
@@ -28026,7 +29264,8 @@ window.dashboardData = {
       "Banca Fijo": 6942.0,
       "Stake Compuesto": 7065.94,
       "Beneficio Compuesto": 3179.68,
-      "Banca Compuesto": 356476.9
+      "Banca Compuesto": 356476.9,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-11",
@@ -28044,7 +29283,8 @@ window.dashboardData = {
       "Banca Fijo": 6951.0,
       "Stake Compuesto": 7129.54,
       "Beneficio Compuesto": 3208.29,
-      "Banca Compuesto": 359685.2
+      "Banca Compuesto": 359685.2,
+      "league_id": 473
     },
     {
       "Fecha": "2024-08-11",
@@ -28062,7 +29302,8 @@ window.dashboardData = {
       "Banca Fijo": 6960.0,
       "Stake Compuesto": 7193.7,
       "Beneficio Compuesto": 3237.17,
-      "Banca Compuesto": 362922.36
+      "Banca Compuesto": 362922.36,
+      "league_id": 563
     },
     {
       "Fecha": "2024-08-11",
@@ -28080,7 +29321,8 @@ window.dashboardData = {
       "Banca Fijo": 6969.0,
       "Stake Compuesto": 7258.45,
       "Beneficio Compuesto": 3266.3,
-      "Banca Compuesto": 366188.66
+      "Banca Compuesto": 366188.66,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-11",
@@ -28098,7 +29340,8 @@ window.dashboardData = {
       "Banca Fijo": 6978.0,
       "Stake Compuesto": 7323.77,
       "Beneficio Compuesto": 3295.7,
-      "Banca Compuesto": 369484.36
+      "Banca Compuesto": 369484.36,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-12",
@@ -28116,7 +29359,8 @@ window.dashboardData = {
       "Banca Fijo": 6987.0,
       "Stake Compuesto": 7389.69,
       "Beneficio Compuesto": 3325.36,
-      "Banca Compuesto": 372809.72
+      "Banca Compuesto": 372809.72,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-12",
@@ -28134,7 +29378,8 @@ window.dashboardData = {
       "Banca Fijo": 6996.0,
       "Stake Compuesto": 7456.19,
       "Beneficio Compuesto": 3355.29,
-      "Banca Compuesto": 376165.01
+      "Banca Compuesto": 376165.01,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-15",
@@ -28152,7 +29397,8 @@ window.dashboardData = {
       "Banca Fijo": 7005.0,
       "Stake Compuesto": 7523.3,
       "Beneficio Compuesto": 3385.49,
-      "Banca Compuesto": 379550.49
+      "Banca Compuesto": 379550.49,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-16",
@@ -28170,7 +29416,8 @@ window.dashboardData = {
       "Banca Fijo": 7014.0,
       "Stake Compuesto": 7591.01,
       "Beneficio Compuesto": 3415.95,
-      "Banca Compuesto": 382966.45
+      "Banca Compuesto": 382966.45,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-16",
@@ -28188,7 +29435,8 @@ window.dashboardData = {
       "Banca Fijo": 7023.0,
       "Stake Compuesto": 7659.33,
       "Beneficio Compuesto": 3446.7,
-      "Banca Compuesto": 386413.15
+      "Banca Compuesto": 386413.15,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-17",
@@ -28206,7 +29454,8 @@ window.dashboardData = {
       "Banca Fijo": 7032.0,
       "Stake Compuesto": 7728.26,
       "Beneficio Compuesto": 3477.72,
-      "Banca Compuesto": 389890.87
+      "Banca Compuesto": 389890.87,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-17",
@@ -28224,7 +29473,8 @@ window.dashboardData = {
       "Banca Fijo": 7041.0,
       "Stake Compuesto": 7797.82,
       "Beneficio Compuesto": 3509.02,
-      "Banca Compuesto": 393399.88
+      "Banca Compuesto": 393399.88,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-17",
@@ -28242,7 +29492,8 @@ window.dashboardData = {
       "Banca Fijo": 7050.0,
       "Stake Compuesto": 7868.0,
       "Beneficio Compuesto": 3540.6,
-      "Banca Compuesto": 396940.48
+      "Banca Compuesto": 396940.48,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-17",
@@ -28260,7 +29511,8 @@ window.dashboardData = {
       "Banca Fijo": 7059.0,
       "Stake Compuesto": 7938.81,
       "Beneficio Compuesto": 3572.46,
-      "Banca Compuesto": 400512.95
+      "Banca Compuesto": 400512.95,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-17",
@@ -28278,7 +29530,8 @@ window.dashboardData = {
       "Banca Fijo": 7039.0,
       "Stake Compuesto": 8010.26,
       "Beneficio Compuesto": -8010.26,
-      "Banca Compuesto": 392502.69
+      "Banca Compuesto": 392502.69,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-17",
@@ -28296,7 +29549,8 @@ window.dashboardData = {
       "Banca Fijo": 7048.0,
       "Stake Compuesto": 7850.05,
       "Beneficio Compuesto": 3532.52,
-      "Banca Compuesto": 396035.21
+      "Banca Compuesto": 396035.21,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-17",
@@ -28314,7 +29568,8 @@ window.dashboardData = {
       "Banca Fijo": 7057.0,
       "Stake Compuesto": 7920.7,
       "Beneficio Compuesto": 3564.32,
-      "Banca Compuesto": 399599.53
+      "Banca Compuesto": 399599.53,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-17",
@@ -28332,7 +29587,8 @@ window.dashboardData = {
       "Banca Fijo": 7066.0,
       "Stake Compuesto": 7991.99,
       "Beneficio Compuesto": 3596.4,
-      "Banca Compuesto": 403195.92
+      "Banca Compuesto": 403195.92,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-17",
@@ -28350,7 +29606,8 @@ window.dashboardData = {
       "Banca Fijo": 7075.0,
       "Stake Compuesto": 8063.92,
       "Beneficio Compuesto": 3628.76,
-      "Banca Compuesto": 406824.69
+      "Banca Compuesto": 406824.69,
+      "league_id": 474
     },
     {
       "Fecha": "2024-08-17",
@@ -28368,7 +29625,8 @@ window.dashboardData = {
       "Banca Fijo": 7084.0,
       "Stake Compuesto": 8136.49,
       "Beneficio Compuesto": 3661.42,
-      "Banca Compuesto": 410486.11
+      "Banca Compuesto": 410486.11,
+      "league_id": 474
     },
     {
       "Fecha": "2024-08-18",
@@ -28386,7 +29644,8 @@ window.dashboardData = {
       "Banca Fijo": 7093.0,
       "Stake Compuesto": 8209.72,
       "Beneficio Compuesto": 3694.37,
-      "Banca Compuesto": 414180.48
+      "Banca Compuesto": 414180.48,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-18",
@@ -28404,7 +29663,8 @@ window.dashboardData = {
       "Banca Fijo": 7102.0,
       "Stake Compuesto": 8283.61,
       "Beneficio Compuesto": 3727.62,
-      "Banca Compuesto": 417908.11
+      "Banca Compuesto": 417908.11,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-18",
@@ -28422,7 +29682,8 @@ window.dashboardData = {
       "Banca Fijo": 7111.0,
       "Stake Compuesto": 8358.16,
       "Beneficio Compuesto": 3761.17,
-      "Banca Compuesto": 421669.28
+      "Banca Compuesto": 421669.28,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-18",
@@ -28440,7 +29701,8 @@ window.dashboardData = {
       "Banca Fijo": 7120.0,
       "Stake Compuesto": 8433.39,
       "Beneficio Compuesto": 3795.02,
-      "Banca Compuesto": 425464.31
+      "Banca Compuesto": 425464.31,
+      "league_id": 563
     },
     {
       "Fecha": "2024-08-18",
@@ -28458,7 +29720,8 @@ window.dashboardData = {
       "Banca Fijo": 7129.0,
       "Stake Compuesto": 8509.29,
       "Beneficio Compuesto": 3829.18,
-      "Banca Compuesto": 429293.48
+      "Banca Compuesto": 429293.48,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-18",
@@ -28476,7 +29739,8 @@ window.dashboardData = {
       "Banca Fijo": 7138.0,
       "Stake Compuesto": 8585.87,
       "Beneficio Compuesto": 3863.64,
-      "Banca Compuesto": 433157.13
+      "Banca Compuesto": 433157.13,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-18",
@@ -28494,7 +29758,8 @@ window.dashboardData = {
       "Banca Fijo": 7147.0,
       "Stake Compuesto": 8663.14,
       "Beneficio Compuesto": 3898.41,
-      "Banca Compuesto": 437055.54
+      "Banca Compuesto": 437055.54,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-19",
@@ -28512,7 +29777,8 @@ window.dashboardData = {
       "Banca Fijo": 7156.0,
       "Stake Compuesto": 8741.11,
       "Beneficio Compuesto": 3933.5,
-      "Banca Compuesto": 440989.04
+      "Banca Compuesto": 440989.04,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-19",
@@ -28530,7 +29796,8 @@ window.dashboardData = {
       "Banca Fijo": 7165.0,
       "Stake Compuesto": 8819.78,
       "Beneficio Compuesto": 3968.9,
-      "Banca Compuesto": 444957.94
+      "Banca Compuesto": 444957.94,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-19",
@@ -28548,7 +29815,8 @@ window.dashboardData = {
       "Banca Fijo": 7174.0,
       "Stake Compuesto": 8899.16,
       "Beneficio Compuesto": 4004.62,
-      "Banca Compuesto": 448962.56
+      "Banca Compuesto": 448962.56,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-19",
@@ -28566,7 +29834,8 @@ window.dashboardData = {
       "Banca Fijo": 7183.0,
       "Stake Compuesto": 8979.25,
       "Beneficio Compuesto": 4040.66,
-      "Banca Compuesto": 453003.23
+      "Banca Compuesto": 453003.23,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-19",
@@ -28584,7 +29853,8 @@ window.dashboardData = {
       "Banca Fijo": 7163.0,
       "Stake Compuesto": 9060.06,
       "Beneficio Compuesto": -9060.06,
-      "Banca Compuesto": 443943.16
+      "Banca Compuesto": 443943.16,
+      "league_id": 473
     },
     {
       "Fecha": "2024-08-19",
@@ -28602,7 +29872,8 @@ window.dashboardData = {
       "Banca Fijo": 7172.0,
       "Stake Compuesto": 8878.86,
       "Beneficio Compuesto": 3995.49,
-      "Banca Compuesto": 447938.65
+      "Banca Compuesto": 447938.65,
+      "league_id": 474
     },
     {
       "Fecha": "2024-08-20",
@@ -28620,7 +29891,8 @@ window.dashboardData = {
       "Banca Fijo": 7181.0,
       "Stake Compuesto": 8958.77,
       "Beneficio Compuesto": 4031.45,
-      "Banca Compuesto": 451970.1
+      "Banca Compuesto": 451970.1,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-20",
@@ -28638,7 +29910,8 @@ window.dashboardData = {
       "Banca Fijo": 7190.0,
       "Stake Compuesto": 9039.4,
       "Beneficio Compuesto": 4067.73,
-      "Banca Compuesto": 456037.83
+      "Banca Compuesto": 456037.83,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-21",
@@ -28656,7 +29929,8 @@ window.dashboardData = {
       "Banca Fijo": 7199.0,
       "Stake Compuesto": 9120.76,
       "Beneficio Compuesto": 4104.34,
-      "Banca Compuesto": 460142.17
+      "Banca Compuesto": 460142.17,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-21",
@@ -28674,7 +29948,8 @@ window.dashboardData = {
       "Banca Fijo": 7179.0,
       "Stake Compuesto": 9202.84,
       "Beneficio Compuesto": -9202.84,
-      "Banca Compuesto": 450939.33
+      "Banca Compuesto": 450939.33,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-21",
@@ -28692,7 +29967,8 @@ window.dashboardData = {
       "Banca Fijo": 7188.0,
       "Stake Compuesto": 9018.79,
       "Beneficio Compuesto": 4058.45,
-      "Banca Compuesto": 454997.78
+      "Banca Compuesto": 454997.78,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-21",
@@ -28710,7 +29986,8 @@ window.dashboardData = {
       "Banca Fijo": 7197.0,
       "Stake Compuesto": 9099.96,
       "Beneficio Compuesto": 4094.98,
-      "Banca Compuesto": 459092.76
+      "Banca Compuesto": 459092.76,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-22",
@@ -28728,7 +30005,8 @@ window.dashboardData = {
       "Banca Fijo": 7206.0,
       "Stake Compuesto": 9181.86,
       "Beneficio Compuesto": 4131.83,
-      "Banca Compuesto": 463224.59
+      "Banca Compuesto": 463224.59,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-23",
@@ -28746,7 +30024,8 @@ window.dashboardData = {
       "Banca Fijo": 7215.0,
       "Stake Compuesto": 9264.49,
       "Beneficio Compuesto": 4169.02,
-      "Banca Compuesto": 467393.62
+      "Banca Compuesto": 467393.62,
+      "league_id": 78
     },
     {
       "Fecha": "2024-08-23",
@@ -28764,7 +30043,8 @@ window.dashboardData = {
       "Banca Fijo": 7224.0,
       "Stake Compuesto": 9347.87,
       "Beneficio Compuesto": 4206.54,
-      "Banca Compuesto": 471600.16
+      "Banca Compuesto": 471600.16,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-23",
@@ -28782,7 +30062,8 @@ window.dashboardData = {
       "Banca Fijo": 7204.0,
       "Stake Compuesto": 9432.0,
       "Beneficio Compuesto": -9432.0,
-      "Banca Compuesto": 462168.15
+      "Banca Compuesto": 462168.15,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-23",
@@ -28800,7 +30081,8 @@ window.dashboardData = {
       "Banca Fijo": 7213.0,
       "Stake Compuesto": 9243.36,
       "Beneficio Compuesto": 4159.51,
-      "Banca Compuesto": 466327.67
+      "Banca Compuesto": 466327.67,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-23",
@@ -28818,7 +30100,8 @@ window.dashboardData = {
       "Banca Fijo": 7222.0,
       "Stake Compuesto": 9326.55,
       "Beneficio Compuesto": 4196.95,
-      "Banca Compuesto": 470524.62
+      "Banca Compuesto": 470524.62,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-23",
@@ -28836,7 +30119,8 @@ window.dashboardData = {
       "Banca Fijo": 7231.0,
       "Stake Compuesto": 9410.49,
       "Beneficio Compuesto": 4234.72,
-      "Banca Compuesto": 474759.34
+      "Banca Compuesto": 474759.34,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-23",
@@ -28854,7 +30138,8 @@ window.dashboardData = {
       "Banca Fijo": 7240.0,
       "Stake Compuesto": 9495.19,
       "Beneficio Compuesto": 4272.83,
-      "Banca Compuesto": 479032.17
+      "Banca Compuesto": 479032.17,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-24",
@@ -28872,7 +30157,8 @@ window.dashboardData = {
       "Banca Fijo": 7220.0,
       "Stake Compuesto": 9580.64,
       "Beneficio Compuesto": -9580.64,
-      "Banca Compuesto": 469451.53
+      "Banca Compuesto": 469451.53,
+      "league_id": 78
     },
     {
       "Fecha": "2024-08-24",
@@ -28890,7 +30176,8 @@ window.dashboardData = {
       "Banca Fijo": 7200.0,
       "Stake Compuesto": 9389.03,
       "Beneficio Compuesto": -9389.03,
-      "Banca Compuesto": 460062.5
+      "Banca Compuesto": 460062.5,
+      "league_id": 78
     },
     {
       "Fecha": "2024-08-24",
@@ -28908,7 +30195,8 @@ window.dashboardData = {
       "Banca Fijo": 7209.0,
       "Stake Compuesto": 9201.25,
       "Beneficio Compuesto": 4140.56,
-      "Banca Compuesto": 464203.06
+      "Banca Compuesto": 464203.06,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-24",
@@ -28926,7 +30214,8 @@ window.dashboardData = {
       "Banca Fijo": 7218.0,
       "Stake Compuesto": 9284.06,
       "Beneficio Compuesto": 4177.83,
-      "Banca Compuesto": 468380.89
+      "Banca Compuesto": 468380.89,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-24",
@@ -28944,7 +30233,8 @@ window.dashboardData = {
       "Banca Fijo": 7227.0,
       "Stake Compuesto": 9367.62,
       "Beneficio Compuesto": 4215.43,
-      "Banca Compuesto": 472596.32
+      "Banca Compuesto": 472596.32,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-24",
@@ -28962,7 +30252,8 @@ window.dashboardData = {
       "Banca Fijo": 7236.0,
       "Stake Compuesto": 9451.93,
       "Beneficio Compuesto": 4253.37,
-      "Banca Compuesto": 476849.68
+      "Banca Compuesto": 476849.68,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-24",
@@ -28980,7 +30271,8 @@ window.dashboardData = {
       "Banca Fijo": 7245.0,
       "Stake Compuesto": 9536.99,
       "Beneficio Compuesto": 4291.65,
-      "Banca Compuesto": 481141.33
+      "Banca Compuesto": 481141.33,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-24",
@@ -28998,7 +30290,8 @@ window.dashboardData = {
       "Banca Fijo": 7254.0,
       "Stake Compuesto": 9622.83,
       "Beneficio Compuesto": 4330.27,
-      "Banca Compuesto": 485471.6
+      "Banca Compuesto": 485471.6,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-24",
@@ -29016,7 +30309,8 @@ window.dashboardData = {
       "Banca Fijo": 7263.0,
       "Stake Compuesto": 9709.43,
       "Beneficio Compuesto": 4369.24,
-      "Banca Compuesto": 489840.85
+      "Banca Compuesto": 489840.85,
+      "league_id": 253
     },
     {
       "Fecha": "2024-08-24",
@@ -29034,7 +30328,8 @@ window.dashboardData = {
       "Banca Fijo": 7272.0,
       "Stake Compuesto": 9796.82,
       "Beneficio Compuesto": 4408.57,
-      "Banca Compuesto": 494249.41
+      "Banca Compuesto": 494249.41,
+      "league_id": 253
     },
     {
       "Fecha": "2024-08-24",
@@ -29052,7 +30347,8 @@ window.dashboardData = {
       "Banca Fijo": 7281.0,
       "Stake Compuesto": 9884.99,
       "Beneficio Compuesto": 4448.24,
-      "Banca Compuesto": 498697.66
+      "Banca Compuesto": 498697.66,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-25",
@@ -29070,7 +30366,8 @@ window.dashboardData = {
       "Banca Fijo": 7290.0,
       "Stake Compuesto": 9973.95,
       "Beneficio Compuesto": 4488.28,
-      "Banca Compuesto": 503185.94
+      "Banca Compuesto": 503185.94,
+      "league_id": 78
     },
     {
       "Fecha": "2024-08-25",
@@ -29088,7 +30385,8 @@ window.dashboardData = {
       "Banca Fijo": 7299.0,
       "Stake Compuesto": 10063.72,
       "Beneficio Compuesto": 4528.67,
-      "Banca Compuesto": 507714.61
+      "Banca Compuesto": 507714.61,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-25",
@@ -29106,7 +30404,8 @@ window.dashboardData = {
       "Banca Fijo": 7308.0,
       "Stake Compuesto": 10154.29,
       "Beneficio Compuesto": 4569.43,
-      "Banca Compuesto": 512284.04
+      "Banca Compuesto": 512284.04,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-25",
@@ -29124,7 +30423,8 @@ window.dashboardData = {
       "Banca Fijo": 7288.0,
       "Stake Compuesto": 10245.68,
       "Beneficio Compuesto": -10245.68,
-      "Banca Compuesto": 502038.36
+      "Banca Compuesto": 502038.36,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-25",
@@ -29142,7 +30442,8 @@ window.dashboardData = {
       "Banca Fijo": 7297.0,
       "Stake Compuesto": 10040.77,
       "Beneficio Compuesto": 4518.35,
-      "Banca Compuesto": 506556.71
+      "Banca Compuesto": 506556.71,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-25",
@@ -29160,7 +30461,8 @@ window.dashboardData = {
       "Banca Fijo": 7277.0,
       "Stake Compuesto": 10131.13,
       "Beneficio Compuesto": -10131.13,
-      "Banca Compuesto": 496425.57
+      "Banca Compuesto": 496425.57,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-25",
@@ -29178,7 +30480,8 @@ window.dashboardData = {
       "Banca Fijo": 7286.0,
       "Stake Compuesto": 9928.51,
       "Beneficio Compuesto": 4467.83,
-      "Banca Compuesto": 500893.4
+      "Banca Compuesto": 500893.4,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-25",
@@ -29196,7 +30499,8 @@ window.dashboardData = {
       "Banca Fijo": 7295.0,
       "Stake Compuesto": 10017.87,
       "Beneficio Compuesto": 4508.04,
-      "Banca Compuesto": 505401.44
+      "Banca Compuesto": 505401.44,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-25",
@@ -29214,7 +30518,8 @@ window.dashboardData = {
       "Banca Fijo": 7304.0,
       "Stake Compuesto": 10108.03,
       "Beneficio Compuesto": 4548.61,
-      "Banca Compuesto": 509950.06
+      "Banca Compuesto": 509950.06,
+      "league_id": 164
     },
     {
       "Fecha": "2024-08-25",
@@ -29232,7 +30537,8 @@ window.dashboardData = {
       "Banca Fijo": 7313.0,
       "Stake Compuesto": 10199.0,
       "Beneficio Compuesto": 4589.55,
-      "Banca Compuesto": 514539.61
+      "Banca Compuesto": 514539.61,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-25",
@@ -29250,7 +30556,8 @@ window.dashboardData = {
       "Banca Fijo": 7322.0,
       "Stake Compuesto": 10290.79,
       "Beneficio Compuesto": 4630.86,
-      "Banca Compuesto": 519170.46
+      "Banca Compuesto": 519170.46,
+      "league_id": 563
     },
     {
       "Fecha": "2024-08-25",
@@ -29268,7 +30575,8 @@ window.dashboardData = {
       "Banca Fijo": 7331.0,
       "Stake Compuesto": 10383.41,
       "Beneficio Compuesto": 4672.53,
-      "Banca Compuesto": 523843.0
+      "Banca Compuesto": 523843.0,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-25",
@@ -29286,7 +30594,8 @@ window.dashboardData = {
       "Banca Fijo": 7340.0,
       "Stake Compuesto": 10476.86,
       "Beneficio Compuesto": 4714.59,
-      "Banca Compuesto": 528557.59
+      "Banca Compuesto": 528557.59,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-26",
@@ -29304,7 +30613,8 @@ window.dashboardData = {
       "Banca Fijo": 7349.0,
       "Stake Compuesto": 10571.15,
       "Beneficio Compuesto": 4757.02,
-      "Banca Compuesto": 533314.6
+      "Banca Compuesto": 533314.6,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-26",
@@ -29322,7 +30632,8 @@ window.dashboardData = {
       "Banca Fijo": 7358.0,
       "Stake Compuesto": 10666.29,
       "Beneficio Compuesto": 4799.83,
-      "Banca Compuesto": 538114.44
+      "Banca Compuesto": 538114.44,
+      "league_id": 473
     },
     {
       "Fecha": "2024-08-26",
@@ -29340,7 +30651,8 @@ window.dashboardData = {
       "Banca Fijo": 7367.0,
       "Stake Compuesto": 10762.29,
       "Beneficio Compuesto": 4843.03,
-      "Banca Compuesto": 542957.47
+      "Banca Compuesto": 542957.47,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-28",
@@ -29358,7 +30670,8 @@ window.dashboardData = {
       "Banca Fijo": 7376.0,
       "Stake Compuesto": 10859.15,
       "Beneficio Compuesto": 4886.62,
-      "Banca Compuesto": 547844.08
+      "Banca Compuesto": 547844.08,
+      "league_id": 909
     },
     {
       "Fecha": "2024-08-30",
@@ -29376,7 +30689,8 @@ window.dashboardData = {
       "Banca Fijo": 7356.0,
       "Stake Compuesto": 10956.88,
       "Beneficio Compuesto": -10956.88,
-      "Banca Compuesto": 536887.2
+      "Banca Compuesto": 536887.2,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-30",
@@ -29394,7 +30708,8 @@ window.dashboardData = {
       "Banca Fijo": 7336.0,
       "Stake Compuesto": 10737.74,
       "Beneficio Compuesto": -10737.74,
-      "Banca Compuesto": 526149.46
+      "Banca Compuesto": 526149.46,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-30",
@@ -29412,7 +30727,8 @@ window.dashboardData = {
       "Banca Fijo": 7345.0,
       "Stake Compuesto": 10522.99,
       "Beneficio Compuesto": 4735.35,
-      "Banca Compuesto": 530884.8
+      "Banca Compuesto": 530884.8,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-30",
@@ -29430,7 +30746,8 @@ window.dashboardData = {
       "Banca Fijo": 7354.0,
       "Stake Compuesto": 10617.7,
       "Beneficio Compuesto": 4777.96,
-      "Banca Compuesto": 535662.77
+      "Banca Compuesto": 535662.77,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-30",
@@ -29448,7 +30765,8 @@ window.dashboardData = {
       "Banca Fijo": 7363.0,
       "Stake Compuesto": 10713.26,
       "Beneficio Compuesto": 4820.96,
-      "Banca Compuesto": 540483.73
+      "Banca Compuesto": 540483.73,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-30",
@@ -29466,7 +30784,8 @@ window.dashboardData = {
       "Banca Fijo": 7372.0,
       "Stake Compuesto": 10809.67,
       "Beneficio Compuesto": 4864.35,
-      "Banca Compuesto": 545348.08
+      "Banca Compuesto": 545348.08,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-30",
@@ -29484,7 +30803,8 @@ window.dashboardData = {
       "Banca Fijo": 7381.0,
       "Stake Compuesto": 10906.96,
       "Beneficio Compuesto": 4908.13,
-      "Banca Compuesto": 550256.22
+      "Banca Compuesto": 550256.22,
+      "league_id": 702
     },
     {
       "Fecha": "2024-08-30",
@@ -29502,7 +30822,8 @@ window.dashboardData = {
       "Banca Fijo": 7390.0,
       "Stake Compuesto": 11005.12,
       "Beneficio Compuesto": 4952.31,
-      "Banca Compuesto": 555208.52
+      "Banca Compuesto": 555208.52,
+      "league_id": 208
     },
     {
       "Fecha": "2024-08-31",
@@ -29520,7 +30841,8 @@ window.dashboardData = {
       "Banca Fijo": 7399.0,
       "Stake Compuesto": 11104.17,
       "Beneficio Compuesto": 4996.88,
-      "Banca Compuesto": 560205.4
+      "Banca Compuesto": 560205.4,
+      "league_id": 78
     },
     {
       "Fecha": "2024-08-31",
@@ -29538,7 +30860,8 @@ window.dashboardData = {
       "Banca Fijo": 7408.0,
       "Stake Compuesto": 11204.11,
       "Beneficio Compuesto": 5041.85,
-      "Banca Compuesto": 565247.25
+      "Banca Compuesto": 565247.25,
+      "league_id": 78
     },
     {
       "Fecha": "2024-08-31",
@@ -29556,7 +30879,8 @@ window.dashboardData = {
       "Banca Fijo": 7417.0,
       "Stake Compuesto": 11304.94,
       "Beneficio Compuesto": 5087.23,
-      "Banca Compuesto": 570334.47
+      "Banca Compuesto": 570334.47,
+      "league_id": 84
     },
     {
       "Fecha": "2024-08-31",
@@ -29574,7 +30898,8 @@ window.dashboardData = {
       "Banca Fijo": 7426.0,
       "Stake Compuesto": 11406.69,
       "Beneficio Compuesto": 5133.01,
-      "Banca Compuesto": 575467.48
+      "Banca Compuesto": 575467.48,
+      "league_id": 368
     },
     {
       "Fecha": "2024-08-31",
@@ -29592,7 +30917,8 @@ window.dashboardData = {
       "Banca Fijo": 7435.0,
       "Stake Compuesto": 11509.35,
       "Beneficio Compuesto": 5179.21,
-      "Banca Compuesto": 580646.69
+      "Banca Compuesto": 580646.69,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-31",
@@ -29610,7 +30936,8 @@ window.dashboardData = {
       "Banca Fijo": 7444.0,
       "Stake Compuesto": 11612.93,
       "Beneficio Compuesto": 5225.82,
-      "Banca Compuesto": 585872.51
+      "Banca Compuesto": 585872.51,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-31",
@@ -29628,7 +30955,8 @@ window.dashboardData = {
       "Banca Fijo": 7453.0,
       "Stake Compuesto": 11717.45,
       "Beneficio Compuesto": 5272.85,
-      "Banca Compuesto": 591145.36
+      "Banca Compuesto": 591145.36,
+      "league_id": 492
     },
     {
       "Fecha": "2024-08-31",
@@ -29646,7 +30974,8 @@ window.dashboardData = {
       "Banca Fijo": 7462.0,
       "Stake Compuesto": 11822.91,
       "Beneficio Compuesto": 5320.31,
-      "Banca Compuesto": 596465.67
+      "Banca Compuesto": 596465.67,
+      "league_id": 119
     },
     {
       "Fecha": "2024-08-31",
@@ -29664,7 +30993,8 @@ window.dashboardData = {
       "Banca Fijo": 7442.0,
       "Stake Compuesto": 11929.31,
       "Beneficio Compuesto": -11929.31,
-      "Banca Compuesto": 584536.36
+      "Banca Compuesto": 584536.36,
+      "league_id": 166
     },
     {
       "Fecha": "2024-08-31",
@@ -29682,7 +31012,8 @@ window.dashboardData = {
       "Banca Fijo": 7451.0,
       "Stake Compuesto": 11690.73,
       "Beneficio Compuesto": 5260.83,
-      "Banca Compuesto": 589797.19
+      "Banca Compuesto": 589797.19,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-31",
@@ -29700,7 +31031,8 @@ window.dashboardData = {
       "Banca Fijo": 7460.0,
       "Stake Compuesto": 11795.94,
       "Beneficio Compuesto": 5308.17,
-      "Banca Compuesto": 595105.36
+      "Banca Compuesto": 595105.36,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-31",
@@ -29718,7 +31050,8 @@ window.dashboardData = {
       "Banca Fijo": 7469.0,
       "Stake Compuesto": 11902.11,
       "Beneficio Compuesto": 5355.95,
-      "Banca Compuesto": 600461.31
+      "Banca Compuesto": 600461.31,
+      "league_id": 245
     },
     {
       "Fecha": "2024-08-31",
@@ -29736,7 +31069,8 @@ window.dashboardData = {
       "Banca Fijo": 7449.0,
       "Stake Compuesto": 12009.23,
       "Beneficio Compuesto": -12009.23,
-      "Banca Compuesto": 588452.08
+      "Banca Compuesto": 588452.08,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-31",
@@ -29754,7 +31088,8 @@ window.dashboardData = {
       "Banca Fijo": 7458.0,
       "Stake Compuesto": 11769.04,
       "Beneficio Compuesto": 5296.07,
-      "Banca Compuesto": 593748.15
+      "Banca Compuesto": 593748.15,
+      "league_id": 328
     },
     {
       "Fecha": "2024-08-31",
@@ -29772,7 +31107,8 @@ window.dashboardData = {
       "Banca Fijo": 7467.0,
       "Stake Compuesto": 11874.96,
       "Beneficio Compuesto": 5343.73,
-      "Banca Compuesto": 599091.88
+      "Banca Compuesto": 599091.88,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-01",
@@ -29790,7 +31126,8 @@ window.dashboardData = {
       "Banca Fijo": 7476.0,
       "Stake Compuesto": 11981.84,
       "Beneficio Compuesto": 5391.83,
-      "Banca Compuesto": 604483.71
+      "Banca Compuesto": 604483.71,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-01",
@@ -29808,7 +31145,8 @@ window.dashboardData = {
       "Banca Fijo": 7485.0,
       "Stake Compuesto": 12089.67,
       "Beneficio Compuesto": 5440.35,
-      "Banca Compuesto": 609924.06
+      "Banca Compuesto": 609924.06,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-01",
@@ -29826,7 +31164,8 @@ window.dashboardData = {
       "Banca Fijo": 7494.0,
       "Stake Compuesto": 12198.48,
       "Beneficio Compuesto": 5489.32,
-      "Banca Compuesto": 615413.38
+      "Banca Compuesto": 615413.38,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-01",
@@ -29844,7 +31183,8 @@ window.dashboardData = {
       "Banca Fijo": 7503.0,
       "Stake Compuesto": 12308.27,
       "Beneficio Compuesto": 5538.72,
-      "Banca Compuesto": 620952.1
+      "Banca Compuesto": 620952.1,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-01",
@@ -29862,7 +31202,8 @@ window.dashboardData = {
       "Banca Fijo": 7512.0,
       "Stake Compuesto": 12419.04,
       "Beneficio Compuesto": 5588.57,
-      "Banca Compuesto": 626540.67
+      "Banca Compuesto": 626540.67,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-01",
@@ -29880,7 +31221,8 @@ window.dashboardData = {
       "Banca Fijo": 7521.0,
       "Stake Compuesto": 12530.81,
       "Beneficio Compuesto": 5638.87,
-      "Banca Compuesto": 632179.54
+      "Banca Compuesto": 632179.54,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-01",
@@ -29898,7 +31240,8 @@ window.dashboardData = {
       "Banca Fijo": 7530.0,
       "Stake Compuesto": 12643.59,
       "Beneficio Compuesto": 5689.62,
-      "Banca Compuesto": 637869.15
+      "Banca Compuesto": 637869.15,
+      "league_id": 253
     },
     {
       "Fecha": "2024-09-01",
@@ -29916,7 +31259,8 @@ window.dashboardData = {
       "Banca Fijo": 7539.0,
       "Stake Compuesto": 12757.38,
       "Beneficio Compuesto": 5740.82,
-      "Banca Compuesto": 643609.97
+      "Banca Compuesto": 643609.97,
+      "league_id": 563
     },
     {
       "Fecha": "2024-09-01",
@@ -29934,7 +31278,8 @@ window.dashboardData = {
       "Banca Fijo": 7548.0,
       "Stake Compuesto": 12872.2,
       "Beneficio Compuesto": 5792.49,
-      "Banca Compuesto": 649402.46
+      "Banca Compuesto": 649402.46,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-02",
@@ -29952,7 +31297,8 @@ window.dashboardData = {
       "Banca Fijo": 7557.0,
       "Stake Compuesto": 12988.05,
       "Beneficio Compuesto": 5844.62,
-      "Banca Compuesto": 655247.09
+      "Banca Compuesto": 655247.09,
+      "league_id": 473
     },
     {
       "Fecha": "2024-09-02",
@@ -29970,7 +31316,8 @@ window.dashboardData = {
       "Banca Fijo": 7566.0,
       "Stake Compuesto": 13104.94,
       "Beneficio Compuesto": 5897.22,
-      "Banca Compuesto": 661144.31
+      "Banca Compuesto": 661144.31,
+      "league_id": 563
     },
     {
       "Fecha": "2024-09-02",
@@ -29988,7 +31335,8 @@ window.dashboardData = {
       "Banca Fijo": 7575.0,
       "Stake Compuesto": 13222.89,
       "Beneficio Compuesto": 5950.3,
-      "Banca Compuesto": 667094.61
+      "Banca Compuesto": 667094.61,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-07",
@@ -30006,7 +31354,8 @@ window.dashboardData = {
       "Banca Fijo": 7584.0,
       "Stake Compuesto": 13341.89,
       "Beneficio Compuesto": 6003.85,
-      "Banca Compuesto": 673098.46
+      "Banca Compuesto": 673098.46,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-07",
@@ -30024,7 +31373,8 @@ window.dashboardData = {
       "Banca Fijo": 7593.0,
       "Stake Compuesto": 13461.97,
       "Beneficio Compuesto": 6057.89,
-      "Banca Compuesto": 679156.35
+      "Banca Compuesto": 679156.35,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-07",
@@ -30042,7 +31392,8 @@ window.dashboardData = {
       "Banca Fijo": 7602.0,
       "Stake Compuesto": 13583.13,
       "Beneficio Compuesto": 6112.41,
-      "Banca Compuesto": 685268.75
+      "Banca Compuesto": 685268.75,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-07",
@@ -30060,7 +31411,8 @@ window.dashboardData = {
       "Banca Fijo": 7611.0,
       "Stake Compuesto": 13705.38,
       "Beneficio Compuesto": 6167.42,
-      "Banca Compuesto": 691436.17
+      "Banca Compuesto": 691436.17,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-08",
@@ -30078,7 +31430,8 @@ window.dashboardData = {
       "Banca Fijo": 7620.0,
       "Stake Compuesto": 13828.72,
       "Beneficio Compuesto": 6222.93,
-      "Banca Compuesto": 697659.1
+      "Banca Compuesto": 697659.1,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-08",
@@ -30096,7 +31449,8 @@ window.dashboardData = {
       "Banca Fijo": 7629.0,
       "Stake Compuesto": 13953.18,
       "Beneficio Compuesto": 6278.93,
-      "Banca Compuesto": 703938.03
+      "Banca Compuesto": 703938.03,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-08",
@@ -30114,7 +31468,8 @@ window.dashboardData = {
       "Banca Fijo": 7638.0,
       "Stake Compuesto": 14078.76,
       "Beneficio Compuesto": 6335.44,
-      "Banca Compuesto": 710273.47
+      "Banca Compuesto": 710273.47,
+      "league_id": 166
     },
     {
       "Fecha": "2024-09-08",
@@ -30132,7 +31487,8 @@ window.dashboardData = {
       "Banca Fijo": 7647.0,
       "Stake Compuesto": 14205.47,
       "Beneficio Compuesto": 6392.46,
-      "Banca Compuesto": 716665.93
+      "Banca Compuesto": 716665.93,
+      "league_id": 166
     },
     {
       "Fecha": "2024-09-08",
@@ -30150,7 +31506,8 @@ window.dashboardData = {
       "Banca Fijo": 7656.0,
       "Stake Compuesto": 14333.32,
       "Beneficio Compuesto": 6449.99,
-      "Banca Compuesto": 723115.93
+      "Banca Compuesto": 723115.93,
+      "league_id": 473
     },
     {
       "Fecha": "2024-09-08",
@@ -30168,7 +31525,8 @@ window.dashboardData = {
       "Banca Fijo": 7665.0,
       "Stake Compuesto": 14462.32,
       "Beneficio Compuesto": 6508.04,
-      "Banca Compuesto": 729623.97
+      "Banca Compuesto": 729623.97,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-08",
@@ -30186,7 +31544,8 @@ window.dashboardData = {
       "Banca Fijo": 7674.0,
       "Stake Compuesto": 14592.48,
       "Beneficio Compuesto": 6566.62,
-      "Banca Compuesto": 736190.59
+      "Banca Compuesto": 736190.59,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-08",
@@ -30204,7 +31563,8 @@ window.dashboardData = {
       "Banca Fijo": 7683.0,
       "Stake Compuesto": 14723.81,
       "Beneficio Compuesto": 6625.72,
-      "Banca Compuesto": 742816.3
+      "Banca Compuesto": 742816.3,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-09",
@@ -30222,7 +31582,8 @@ window.dashboardData = {
       "Banca Fijo": 7663.0,
       "Stake Compuesto": 14856.33,
       "Beneficio Compuesto": -14856.33,
-      "Banca Compuesto": 727959.98
+      "Banca Compuesto": 727959.98,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-11",
@@ -30240,7 +31601,8 @@ window.dashboardData = {
       "Banca Fijo": 7672.0,
       "Stake Compuesto": 14559.2,
       "Beneficio Compuesto": 6551.64,
-      "Banca Compuesto": 734511.62
+      "Banca Compuesto": 734511.62,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-12",
@@ -30258,7 +31620,8 @@ window.dashboardData = {
       "Banca Fijo": 7681.0,
       "Stake Compuesto": 14690.23,
       "Beneficio Compuesto": 6610.6,
-      "Banca Compuesto": 741122.22
+      "Banca Compuesto": 741122.22,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-13",
@@ -30276,7 +31639,8 @@ window.dashboardData = {
       "Banca Fijo": 7690.0,
       "Stake Compuesto": 14822.44,
       "Beneficio Compuesto": 6670.1,
-      "Banca Compuesto": 747792.32
+      "Banca Compuesto": 747792.32,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-13",
@@ -30294,7 +31658,8 @@ window.dashboardData = {
       "Banca Fijo": 7699.0,
       "Stake Compuesto": 14955.85,
       "Beneficio Compuesto": 6730.13,
-      "Banca Compuesto": 754522.45
+      "Banca Compuesto": 754522.45,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-13",
@@ -30312,7 +31677,8 @@ window.dashboardData = {
       "Banca Fijo": 7708.0,
       "Stake Compuesto": 15090.45,
       "Beneficio Compuesto": 6790.7,
-      "Banca Compuesto": 761313.15
+      "Banca Compuesto": 761313.15,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-13",
@@ -30330,7 +31696,8 @@ window.dashboardData = {
       "Banca Fijo": 7717.0,
       "Stake Compuesto": 15226.26,
       "Beneficio Compuesto": 6851.82,
-      "Banca Compuesto": 768164.97
+      "Banca Compuesto": 768164.97,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-13",
@@ -30348,7 +31715,8 @@ window.dashboardData = {
       "Banca Fijo": 7697.0,
       "Stake Compuesto": 15363.3,
       "Beneficio Compuesto": -15363.3,
-      "Banca Compuesto": 752801.67
+      "Banca Compuesto": 752801.67,
+      "league_id": 563
     },
     {
       "Fecha": "2024-09-13",
@@ -30366,7 +31734,8 @@ window.dashboardData = {
       "Banca Fijo": 7706.0,
       "Stake Compuesto": 15056.03,
       "Beneficio Compuesto": 6775.22,
-      "Banca Compuesto": 759576.89
+      "Banca Compuesto": 759576.89,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-14",
@@ -30384,7 +31753,8 @@ window.dashboardData = {
       "Banca Fijo": 7715.0,
       "Stake Compuesto": 15191.54,
       "Beneficio Compuesto": 6836.19,
-      "Banca Compuesto": 766413.08
+      "Banca Compuesto": 766413.08,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-14",
@@ -30402,7 +31772,8 @@ window.dashboardData = {
       "Banca Fijo": 7695.0,
       "Stake Compuesto": 15328.26,
       "Beneficio Compuesto": -15328.26,
-      "Banca Compuesto": 751084.82
+      "Banca Compuesto": 751084.82,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-14",
@@ -30420,7 +31791,8 @@ window.dashboardData = {
       "Banca Fijo": 7704.0,
       "Stake Compuesto": 15021.7,
       "Beneficio Compuesto": 6759.76,
-      "Banca Compuesto": 757844.58
+      "Banca Compuesto": 757844.58,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-14",
@@ -30438,7 +31810,8 @@ window.dashboardData = {
       "Banca Fijo": 7713.0,
       "Stake Compuesto": 15156.89,
       "Beneficio Compuesto": 6820.6,
-      "Banca Compuesto": 764665.18
+      "Banca Compuesto": 764665.18,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-14",
@@ -30456,7 +31829,8 @@ window.dashboardData = {
       "Banca Fijo": 7693.0,
       "Stake Compuesto": 15293.3,
       "Beneficio Compuesto": -15293.3,
-      "Banca Compuesto": 749371.88
+      "Banca Compuesto": 749371.88,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-14",
@@ -30474,7 +31848,8 @@ window.dashboardData = {
       "Banca Fijo": 7702.0,
       "Stake Compuesto": 14987.44,
       "Beneficio Compuesto": 6744.35,
-      "Banca Compuesto": 756116.22
+      "Banca Compuesto": 756116.22,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-14",
@@ -30492,7 +31867,8 @@ window.dashboardData = {
       "Banca Fijo": 7711.0,
       "Stake Compuesto": 15122.32,
       "Beneficio Compuesto": 6805.05,
-      "Banca Compuesto": 762921.27
+      "Banca Compuesto": 762921.27,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-14",
@@ -30510,7 +31886,8 @@ window.dashboardData = {
       "Banca Fijo": 7720.0,
       "Stake Compuesto": 15258.43,
       "Beneficio Compuesto": 6866.29,
-      "Banca Compuesto": 769787.56
+      "Banca Compuesto": 769787.56,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-14",
@@ -30528,7 +31905,8 @@ window.dashboardData = {
       "Banca Fijo": 7729.0,
       "Stake Compuesto": 15395.75,
       "Beneficio Compuesto": 6928.09,
-      "Banca Compuesto": 776715.65
+      "Banca Compuesto": 776715.65,
+      "league_id": 166
     },
     {
       "Fecha": "2024-09-14",
@@ -30546,7 +31924,8 @@ window.dashboardData = {
       "Banca Fijo": 7738.0,
       "Stake Compuesto": 15534.31,
       "Beneficio Compuesto": 6990.44,
-      "Banca Compuesto": 783706.09
+      "Banca Compuesto": 783706.09,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-14",
@@ -30564,7 +31943,8 @@ window.dashboardData = {
       "Banca Fijo": 7747.0,
       "Stake Compuesto": 15674.12,
       "Beneficio Compuesto": 7053.35,
-      "Banca Compuesto": 790759.45
+      "Banca Compuesto": 790759.45,
+      "league_id": 253
     },
     {
       "Fecha": "2024-09-14",
@@ -30582,7 +31962,8 @@ window.dashboardData = {
       "Banca Fijo": 7727.0,
       "Stake Compuesto": 15815.19,
       "Beneficio Compuesto": -15815.19,
-      "Banca Compuesto": 774944.26
+      "Banca Compuesto": 774944.26,
+      "league_id": 328
     },
     {
       "Fecha": "2024-09-14",
@@ -30600,7 +31981,8 @@ window.dashboardData = {
       "Banca Fijo": 7736.0,
       "Stake Compuesto": 15498.89,
       "Beneficio Compuesto": 6974.5,
-      "Banca Compuesto": 781918.76
+      "Banca Compuesto": 781918.76,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-14",
@@ -30618,7 +32000,8 @@ window.dashboardData = {
       "Banca Fijo": 7745.0,
       "Stake Compuesto": 15638.38,
       "Beneficio Compuesto": 7037.27,
-      "Banca Compuesto": 788956.02
+      "Banca Compuesto": 788956.02,
+      "league_id": 563
     },
     {
       "Fecha": "2024-09-15",
@@ -30636,7 +32019,8 @@ window.dashboardData = {
       "Banca Fijo": 7754.0,
       "Stake Compuesto": 15779.12,
       "Beneficio Compuesto": 7100.6,
-      "Banca Compuesto": 796056.63
+      "Banca Compuesto": 796056.63,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-15",
@@ -30654,7 +32038,8 @@ window.dashboardData = {
       "Banca Fijo": 7763.0,
       "Stake Compuesto": 15921.13,
       "Beneficio Compuesto": 7164.51,
-      "Banca Compuesto": 803221.14
+      "Banca Compuesto": 803221.14,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-15",
@@ -30672,7 +32057,8 @@ window.dashboardData = {
       "Banca Fijo": 7772.0,
       "Stake Compuesto": 16064.42,
       "Beneficio Compuesto": 7228.99,
-      "Banca Compuesto": 810450.13
+      "Banca Compuesto": 810450.13,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-15",
@@ -30690,7 +32076,8 @@ window.dashboardData = {
       "Banca Fijo": 7781.0,
       "Stake Compuesto": 16209.0,
       "Beneficio Compuesto": 7294.05,
-      "Banca Compuesto": 817744.18
+      "Banca Compuesto": 817744.18,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-15",
@@ -30708,7 +32095,8 @@ window.dashboardData = {
       "Banca Fijo": 7790.0,
       "Stake Compuesto": 16354.88,
       "Beneficio Compuesto": 7359.7,
-      "Banca Compuesto": 825103.88
+      "Banca Compuesto": 825103.88,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-15",
@@ -30726,7 +32114,8 @@ window.dashboardData = {
       "Banca Fijo": 7770.0,
       "Stake Compuesto": 16502.08,
       "Beneficio Compuesto": -16502.08,
-      "Banca Compuesto": 808601.8
+      "Banca Compuesto": 808601.8,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-15",
@@ -30744,7 +32133,8 @@ window.dashboardData = {
       "Banca Fijo": 7779.0,
       "Stake Compuesto": 16172.04,
       "Beneficio Compuesto": 7277.42,
-      "Banca Compuesto": 815879.22
+      "Banca Compuesto": 815879.22,
+      "league_id": 328
     },
     {
       "Fecha": "2024-09-15",
@@ -30762,7 +32152,8 @@ window.dashboardData = {
       "Banca Fijo": 7788.0,
       "Stake Compuesto": 16317.58,
       "Beneficio Compuesto": 7342.91,
-      "Banca Compuesto": 823222.13
+      "Banca Compuesto": 823222.13,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-15",
@@ -30780,7 +32171,8 @@ window.dashboardData = {
       "Banca Fijo": 7797.0,
       "Stake Compuesto": 16464.44,
       "Beneficio Compuesto": 7409.0,
-      "Banca Compuesto": 830631.13
+      "Banca Compuesto": 830631.13,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-15",
@@ -30798,7 +32190,8 @@ window.dashboardData = {
       "Banca Fijo": 7806.0,
       "Stake Compuesto": 16612.62,
       "Beneficio Compuesto": 7475.68,
-      "Banca Compuesto": 838106.81
+      "Banca Compuesto": 838106.81,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-15",
@@ -30816,7 +32209,8 @@ window.dashboardData = {
       "Banca Fijo": 7815.0,
       "Stake Compuesto": 16762.14,
       "Beneficio Compuesto": 7542.96,
-      "Banca Compuesto": 845649.77
+      "Banca Compuesto": 845649.77,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-16",
@@ -30834,7 +32228,8 @@ window.dashboardData = {
       "Banca Fijo": 7795.0,
       "Stake Compuesto": 16913.0,
       "Beneficio Compuesto": -16913.0,
-      "Banca Compuesto": 828736.77
+      "Banca Compuesto": 828736.77,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-16",
@@ -30852,7 +32247,8 @@ window.dashboardData = {
       "Banca Fijo": 7804.0,
       "Stake Compuesto": 16574.74,
       "Beneficio Compuesto": 7458.63,
-      "Banca Compuesto": 836195.4
+      "Banca Compuesto": 836195.4,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-16",
@@ -30870,7 +32266,8 @@ window.dashboardData = {
       "Banca Fijo": 7813.0,
       "Stake Compuesto": 16723.91,
       "Beneficio Compuesto": 7525.76,
-      "Banca Compuesto": 843721.16
+      "Banca Compuesto": 843721.16,
+      "league_id": 473
     },
     {
       "Fecha": "2024-09-18",
@@ -30888,7 +32285,8 @@ window.dashboardData = {
       "Banca Fijo": 7822.0,
       "Stake Compuesto": 16874.42,
       "Beneficio Compuesto": 7593.49,
-      "Banca Compuesto": 851314.65
+      "Banca Compuesto": 851314.65,
+      "league_id": 253
     },
     {
       "Fecha": "2024-09-18",
@@ -30906,7 +32304,8 @@ window.dashboardData = {
       "Banca Fijo": 7831.0,
       "Stake Compuesto": 17026.29,
       "Beneficio Compuesto": 7661.83,
-      "Banca Compuesto": 858976.49
+      "Banca Compuesto": 858976.49,
+      "league_id": 253
     },
     {
       "Fecha": "2024-09-19",
@@ -30924,7 +32323,8 @@ window.dashboardData = {
       "Banca Fijo": 7840.0,
       "Stake Compuesto": 17179.53,
       "Beneficio Compuesto": 7730.79,
-      "Banca Compuesto": 866707.27
+      "Banca Compuesto": 866707.27,
+      "league_id": 328
     },
     {
       "Fecha": "2024-09-19",
@@ -30942,7 +32342,8 @@ window.dashboardData = {
       "Banca Fijo": 7820.0,
       "Stake Compuesto": 17334.15,
       "Beneficio Compuesto": -17334.15,
-      "Banca Compuesto": 849373.13
+      "Banca Compuesto": 849373.13,
+      "league_id": 328
     },
     {
       "Fecha": "2024-09-20",
@@ -30960,7 +32361,8 @@ window.dashboardData = {
       "Banca Fijo": 7800.0,
       "Stake Compuesto": 16987.46,
       "Beneficio Compuesto": -16987.46,
-      "Banca Compuesto": 832385.67
+      "Banca Compuesto": 832385.67,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-20",
@@ -30978,7 +32380,8 @@ window.dashboardData = {
       "Banca Fijo": 7809.0,
       "Stake Compuesto": 16647.71,
       "Beneficio Compuesto": 7491.47,
-      "Banca Compuesto": 839877.14
+      "Banca Compuesto": 839877.14,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-20",
@@ -30996,7 +32399,8 @@ window.dashboardData = {
       "Banca Fijo": 7818.0,
       "Stake Compuesto": 16797.54,
       "Beneficio Compuesto": 7558.89,
-      "Banca Compuesto": 847436.03
+      "Banca Compuesto": 847436.03,
+      "league_id": 208
     },
     {
       "Fecha": "2024-09-20",
@@ -31014,7 +32418,8 @@ window.dashboardData = {
       "Banca Fijo": 7827.0,
       "Stake Compuesto": 16948.72,
       "Beneficio Compuesto": 7626.92,
-      "Banca Compuesto": 855062.96
+      "Banca Compuesto": 855062.96,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-21",
@@ -31032,7 +32437,8 @@ window.dashboardData = {
       "Banca Fijo": 7836.0,
       "Stake Compuesto": 17101.26,
       "Beneficio Compuesto": 7695.57,
-      "Banca Compuesto": 862758.52
+      "Banca Compuesto": 862758.52,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-21",
@@ -31050,7 +32456,8 @@ window.dashboardData = {
       "Banca Fijo": 7845.0,
       "Stake Compuesto": 17255.17,
       "Beneficio Compuesto": 7764.83,
-      "Banca Compuesto": 870523.35
+      "Banca Compuesto": 870523.35,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-21",
@@ -31068,7 +32475,8 @@ window.dashboardData = {
       "Banca Fijo": 7825.0,
       "Stake Compuesto": 17410.47,
       "Beneficio Compuesto": -17410.47,
-      "Banca Compuesto": 853112.88
+      "Banca Compuesto": 853112.88,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-21",
@@ -31086,7 +32494,8 @@ window.dashboardData = {
       "Banca Fijo": 7834.0,
       "Stake Compuesto": 17062.26,
       "Beneficio Compuesto": 7678.02,
-      "Banca Compuesto": 860790.9
+      "Banca Compuesto": 860790.9,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-21",
@@ -31104,7 +32513,8 @@ window.dashboardData = {
       "Banca Fijo": 7843.0,
       "Stake Compuesto": 17215.82,
       "Beneficio Compuesto": 7747.12,
-      "Banca Compuesto": 868538.02
+      "Banca Compuesto": 868538.02,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-21",
@@ -31122,7 +32532,8 @@ window.dashboardData = {
       "Banca Fijo": 7852.0,
       "Stake Compuesto": 17370.76,
       "Beneficio Compuesto": 7816.84,
-      "Banca Compuesto": 876354.86
+      "Banca Compuesto": 876354.86,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-21",
@@ -31140,7 +32551,8 @@ window.dashboardData = {
       "Banca Fijo": 7832.0,
       "Stake Compuesto": 17527.1,
       "Beneficio Compuesto": -17527.1,
-      "Banca Compuesto": 858827.76
+      "Banca Compuesto": 858827.76,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-21",
@@ -31158,7 +32570,8 @@ window.dashboardData = {
       "Banca Fijo": 7841.0,
       "Stake Compuesto": 17176.56,
       "Beneficio Compuesto": 7729.45,
-      "Banca Compuesto": 866557.21
+      "Banca Compuesto": 866557.21,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-21",
@@ -31176,7 +32589,8 @@ window.dashboardData = {
       "Banca Fijo": 7850.0,
       "Stake Compuesto": 17331.14,
       "Beneficio Compuesto": 7799.01,
-      "Banca Compuesto": 874356.23
+      "Banca Compuesto": 874356.23,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-21",
@@ -31194,7 +32608,8 @@ window.dashboardData = {
       "Banca Fijo": 7859.0,
       "Stake Compuesto": 17487.12,
       "Beneficio Compuesto": 7869.21,
-      "Banca Compuesto": 882225.43
+      "Banca Compuesto": 882225.43,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-21",
@@ -31212,7 +32627,8 @@ window.dashboardData = {
       "Banca Fijo": 7839.0,
       "Stake Compuesto": 17644.51,
       "Beneficio Compuesto": -17644.51,
-      "Banca Compuesto": 864580.92
+      "Banca Compuesto": 864580.92,
+      "league_id": 253
     },
     {
       "Fecha": "2024-09-22",
@@ -31230,7 +32646,8 @@ window.dashboardData = {
       "Banca Fijo": 7848.0,
       "Stake Compuesto": 17291.62,
       "Beneficio Compuesto": 7781.23,
-      "Banca Compuesto": 872362.15
+      "Banca Compuesto": 872362.15,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-22",
@@ -31248,7 +32665,8 @@ window.dashboardData = {
       "Banca Fijo": 7857.0,
       "Stake Compuesto": 17447.24,
       "Beneficio Compuesto": 7851.26,
-      "Banca Compuesto": 880213.41
+      "Banca Compuesto": 880213.41,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-22",
@@ -31266,7 +32684,8 @@ window.dashboardData = {
       "Banca Fijo": 7866.0,
       "Stake Compuesto": 17604.27,
       "Beneficio Compuesto": 7921.92,
-      "Banca Compuesto": 888135.33
+      "Banca Compuesto": 888135.33,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-22",
@@ -31284,7 +32703,8 @@ window.dashboardData = {
       "Banca Fijo": 7875.0,
       "Stake Compuesto": 17762.71,
       "Beneficio Compuesto": 7993.22,
-      "Banca Compuesto": 896128.55
+      "Banca Compuesto": 896128.55,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-22",
@@ -31302,7 +32722,8 @@ window.dashboardData = {
       "Banca Fijo": 7884.0,
       "Stake Compuesto": 17922.57,
       "Beneficio Compuesto": 8065.16,
-      "Banca Compuesto": 904193.71
+      "Banca Compuesto": 904193.71,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-22",
@@ -31320,7 +32741,8 @@ window.dashboardData = {
       "Banca Fijo": 7893.0,
       "Stake Compuesto": 18083.87,
       "Beneficio Compuesto": 8137.74,
-      "Banca Compuesto": 912331.45
+      "Banca Compuesto": 912331.45,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-22",
@@ -31338,7 +32760,8 @@ window.dashboardData = {
       "Banca Fijo": 7902.0,
       "Stake Compuesto": 18246.63,
       "Beneficio Compuesto": 8210.98,
-      "Banca Compuesto": 920542.43
+      "Banca Compuesto": 920542.43,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-22",
@@ -31356,7 +32779,8 @@ window.dashboardData = {
       "Banca Fijo": 7911.0,
       "Stake Compuesto": 18410.85,
       "Beneficio Compuesto": 8284.88,
-      "Banca Compuesto": 928827.31
+      "Banca Compuesto": 928827.31,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-22",
@@ -31374,7 +32798,8 @@ window.dashboardData = {
       "Banca Fijo": 7920.0,
       "Stake Compuesto": 18576.55,
       "Beneficio Compuesto": 8359.45,
-      "Banca Compuesto": 937186.76
+      "Banca Compuesto": 937186.76,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-22",
@@ -31392,7 +32817,8 @@ window.dashboardData = {
       "Banca Fijo": 7929.0,
       "Stake Compuesto": 18743.74,
       "Beneficio Compuesto": 8434.68,
-      "Banca Compuesto": 945621.44
+      "Banca Compuesto": 945621.44,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-22",
@@ -31410,7 +32836,8 @@ window.dashboardData = {
       "Banca Fijo": 7938.0,
       "Stake Compuesto": 18912.43,
       "Beneficio Compuesto": 8510.59,
-      "Banca Compuesto": 954132.03
+      "Banca Compuesto": 954132.03,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-22",
@@ -31428,7 +32855,8 @@ window.dashboardData = {
       "Banca Fijo": 7947.0,
       "Stake Compuesto": 19082.64,
       "Beneficio Compuesto": 8587.19,
-      "Banca Compuesto": 962719.22
+      "Banca Compuesto": 962719.22,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-23",
@@ -31446,7 +32874,8 @@ window.dashboardData = {
       "Banca Fijo": 7956.0,
       "Stake Compuesto": 19254.38,
       "Beneficio Compuesto": 8664.47,
-      "Banca Compuesto": 971383.7
+      "Banca Compuesto": 971383.7,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-23",
@@ -31464,7 +32893,8 @@ window.dashboardData = {
       "Banca Fijo": 7965.0,
       "Stake Compuesto": 19427.67,
       "Beneficio Compuesto": 8742.45,
-      "Banca Compuesto": 980126.15
+      "Banca Compuesto": 980126.15,
+      "league_id": 328
     },
     {
       "Fecha": "2024-09-23",
@@ -31482,7 +32912,8 @@ window.dashboardData = {
       "Banca Fijo": 7974.0,
       "Stake Compuesto": 19602.52,
       "Beneficio Compuesto": 8821.14,
-      "Banca Compuesto": 988947.28
+      "Banca Compuesto": 988947.28,
+      "league_id": 473
     },
     {
       "Fecha": "2024-09-23",
@@ -31500,7 +32931,8 @@ window.dashboardData = {
       "Banca Fijo": 7983.0,
       "Stake Compuesto": 19778.95,
       "Beneficio Compuesto": 8900.53,
-      "Banca Compuesto": 997847.81
+      "Banca Compuesto": 997847.81,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-23",
@@ -31518,7 +32950,8 @@ window.dashboardData = {
       "Banca Fijo": 7992.0,
       "Stake Compuesto": 19956.96,
       "Beneficio Compuesto": 8980.63,
-      "Banca Compuesto": 1006828.44
+      "Banca Compuesto": 1006828.44,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-23",
@@ -31536,7 +32969,8 @@ window.dashboardData = {
       "Banca Fijo": 7972.0,
       "Stake Compuesto": 20136.57,
       "Beneficio Compuesto": -20136.57,
-      "Banca Compuesto": 986691.87
+      "Banca Compuesto": 986691.87,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-24",
@@ -31554,7 +32988,8 @@ window.dashboardData = {
       "Banca Fijo": 7981.0,
       "Stake Compuesto": 19733.84,
       "Beneficio Compuesto": 8880.23,
-      "Banca Compuesto": 995572.1
+      "Banca Compuesto": 995572.1,
+      "league_id": 208
     },
     {
       "Fecha": "2024-09-24",
@@ -31572,7 +33007,8 @@ window.dashboardData = {
       "Banca Fijo": 7990.0,
       "Stake Compuesto": 19911.44,
       "Beneficio Compuesto": 8960.15,
-      "Banca Compuesto": 1004532.25
+      "Banca Compuesto": 1004532.25,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-25",
@@ -31590,7 +33026,8 @@ window.dashboardData = {
       "Banca Fijo": 7999.0,
       "Stake Compuesto": 20090.64,
       "Beneficio Compuesto": 9040.79,
-      "Banca Compuesto": 1013573.04
+      "Banca Compuesto": 1013573.04,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-27",
@@ -31608,7 +33045,8 @@ window.dashboardData = {
       "Banca Fijo": 8008.0,
       "Stake Compuesto": 20271.46,
       "Beneficio Compuesto": 9122.16,
-      "Banca Compuesto": 1022695.19
+      "Banca Compuesto": 1022695.19,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-27",
@@ -31626,7 +33064,8 @@ window.dashboardData = {
       "Banca Fijo": 8017.0,
       "Stake Compuesto": 20453.9,
       "Beneficio Compuesto": 9204.26,
-      "Banca Compuesto": 1031899.45
+      "Banca Compuesto": 1031899.45,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-27",
@@ -31644,7 +33083,8 @@ window.dashboardData = {
       "Banca Fijo": 8026.0,
       "Stake Compuesto": 20637.99,
       "Beneficio Compuesto": 9287.1,
-      "Banca Compuesto": 1041186.55
+      "Banca Compuesto": 1041186.55,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-27",
@@ -31662,7 +33102,8 @@ window.dashboardData = {
       "Banca Fijo": 8035.0,
       "Stake Compuesto": 20823.73,
       "Beneficio Compuesto": 9370.68,
-      "Banca Compuesto": 1050557.23
+      "Banca Compuesto": 1050557.23,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-27",
@@ -31680,7 +33121,8 @@ window.dashboardData = {
       "Banca Fijo": 8044.0,
       "Stake Compuesto": 21011.14,
       "Beneficio Compuesto": 9455.02,
-      "Banca Compuesto": 1060012.24
+      "Banca Compuesto": 1060012.24,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-27",
@@ -31698,7 +33140,8 @@ window.dashboardData = {
       "Banca Fijo": 8053.0,
       "Stake Compuesto": 21200.24,
       "Beneficio Compuesto": 9540.11,
-      "Banca Compuesto": 1069552.35
+      "Banca Compuesto": 1069552.35,
+      "league_id": 208
     },
     {
       "Fecha": "2024-09-28",
@@ -31716,7 +33159,8 @@ window.dashboardData = {
       "Banca Fijo": 8062.0,
       "Stake Compuesto": 21391.05,
       "Beneficio Compuesto": 9625.97,
-      "Banca Compuesto": 1079178.32
+      "Banca Compuesto": 1079178.32,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-28",
@@ -31734,7 +33178,8 @@ window.dashboardData = {
       "Banca Fijo": 8071.0,
       "Stake Compuesto": 21583.57,
       "Beneficio Compuesto": 9712.6,
-      "Banca Compuesto": 1088890.93
+      "Banca Compuesto": 1088890.93,
+      "league_id": 78
     },
     {
       "Fecha": "2024-09-28",
@@ -31752,7 +33197,8 @@ window.dashboardData = {
       "Banca Fijo": 8080.0,
       "Stake Compuesto": 21777.82,
       "Beneficio Compuesto": 9800.02,
-      "Banca Compuesto": 1098690.94
+      "Banca Compuesto": 1098690.94,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-28",
@@ -31770,7 +33216,8 @@ window.dashboardData = {
       "Banca Fijo": 8089.0,
       "Stake Compuesto": 21973.82,
       "Beneficio Compuesto": 9888.22,
-      "Banca Compuesto": 1108579.16
+      "Banca Compuesto": 1108579.16,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-28",
@@ -31788,7 +33235,8 @@ window.dashboardData = {
       "Banca Fijo": 8098.0,
       "Stake Compuesto": 22171.58,
       "Beneficio Compuesto": 9977.21,
-      "Banca Compuesto": 1118556.38
+      "Banca Compuesto": 1118556.38,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-28",
@@ -31806,7 +33254,8 @@ window.dashboardData = {
       "Banca Fijo": 8107.0,
       "Stake Compuesto": 22371.13,
       "Beneficio Compuesto": 10067.01,
-      "Banca Compuesto": 1128623.38
+      "Banca Compuesto": 1128623.38,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-28",
@@ -31824,7 +33273,8 @@ window.dashboardData = {
       "Banca Fijo": 8116.0,
       "Stake Compuesto": 22572.47,
       "Beneficio Compuesto": 10157.61,
-      "Banca Compuesto": 1138780.99
+      "Banca Compuesto": 1138780.99,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-28",
@@ -31842,7 +33292,8 @@ window.dashboardData = {
       "Banca Fijo": 8125.0,
       "Stake Compuesto": 22775.62,
       "Beneficio Compuesto": 10249.03,
-      "Banca Compuesto": 1149030.02
+      "Banca Compuesto": 1149030.02,
+      "league_id": 492
     },
     {
       "Fecha": "2024-09-28",
@@ -31860,7 +33311,8 @@ window.dashboardData = {
       "Banca Fijo": 8134.0,
       "Stake Compuesto": 22980.6,
       "Beneficio Compuesto": 10341.27,
-      "Banca Compuesto": 1159371.29
+      "Banca Compuesto": 1159371.29,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-28",
@@ -31878,7 +33330,8 @@ window.dashboardData = {
       "Banca Fijo": 8143.0,
       "Stake Compuesto": 23187.43,
       "Beneficio Compuesto": 10434.34,
-      "Banca Compuesto": 1169805.63
+      "Banca Compuesto": 1169805.63,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-28",
@@ -31896,7 +33349,8 @@ window.dashboardData = {
       "Banca Fijo": 8152.0,
       "Stake Compuesto": 23396.11,
       "Beneficio Compuesto": 10528.25,
-      "Banca Compuesto": 1180333.89
+      "Banca Compuesto": 1180333.89,
+      "league_id": 245
     },
     {
       "Fecha": "2024-09-28",
@@ -31914,7 +33368,8 @@ window.dashboardData = {
       "Banca Fijo": 8132.0,
       "Stake Compuesto": 23606.68,
       "Beneficio Compuesto": -23606.68,
-      "Banca Compuesto": 1156727.21
+      "Banca Compuesto": 1156727.21,
+      "league_id": 253
     },
     {
       "Fecha": "2024-09-28",
@@ -31932,7 +33387,8 @@ window.dashboardData = {
       "Banca Fijo": 8141.0,
       "Stake Compuesto": 23134.54,
       "Beneficio Compuesto": 10410.54,
-      "Banca Compuesto": 1167137.75
+      "Banca Compuesto": 1167137.75,
+      "league_id": 328
     },
     {
       "Fecha": "2024-09-28",
@@ -31950,7 +33406,8 @@ window.dashboardData = {
       "Banca Fijo": 8121.0,
       "Stake Compuesto": 23342.76,
       "Beneficio Compuesto": -23342.76,
-      "Banca Compuesto": 1143795.0
+      "Banca Compuesto": 1143795.0,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-28",
@@ -31968,7 +33425,8 @@ window.dashboardData = {
       "Banca Fijo": 8130.0,
       "Stake Compuesto": 22875.9,
       "Beneficio Compuesto": 10294.15,
-      "Banca Compuesto": 1154089.15
+      "Banca Compuesto": 1154089.15,
+      "league_id": 563
     },
     {
       "Fecha": "2024-09-29",
@@ -31986,7 +33444,8 @@ window.dashboardData = {
       "Banca Fijo": 8139.0,
       "Stake Compuesto": 23081.78,
       "Beneficio Compuesto": 10386.8,
-      "Banca Compuesto": 1164475.95
+      "Banca Compuesto": 1164475.95,
+      "league_id": 84
     },
     {
       "Fecha": "2024-09-29",
@@ -32004,7 +33463,8 @@ window.dashboardData = {
       "Banca Fijo": 8148.0,
       "Stake Compuesto": 23289.52,
       "Beneficio Compuesto": 10480.28,
-      "Banca Compuesto": 1174956.24
+      "Banca Compuesto": 1174956.24,
+      "league_id": 368
     },
     {
       "Fecha": "2024-09-29",
@@ -32022,7 +33482,8 @@ window.dashboardData = {
       "Banca Fijo": 8157.0,
       "Stake Compuesto": 23499.12,
       "Beneficio Compuesto": 10574.61,
-      "Banca Compuesto": 1185530.84
+      "Banca Compuesto": 1185530.84,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-29",
@@ -32040,7 +33501,8 @@ window.dashboardData = {
       "Banca Fijo": 8166.0,
       "Stake Compuesto": 23710.62,
       "Beneficio Compuesto": 10669.78,
-      "Banca Compuesto": 1196200.62
+      "Banca Compuesto": 1196200.62,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-29",
@@ -32058,7 +33520,8 @@ window.dashboardData = {
       "Banca Fijo": 8175.0,
       "Stake Compuesto": 23924.01,
       "Beneficio Compuesto": 10765.81,
-      "Banca Compuesto": 1206966.43
+      "Banca Compuesto": 1206966.43,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-29",
@@ -32076,7 +33539,8 @@ window.dashboardData = {
       "Banca Fijo": 8184.0,
       "Stake Compuesto": 24139.33,
       "Beneficio Compuesto": 10862.7,
-      "Banca Compuesto": 1217829.13
+      "Banca Compuesto": 1217829.13,
+      "league_id": 164
     },
     {
       "Fecha": "2024-09-29",
@@ -32094,7 +33558,8 @@ window.dashboardData = {
       "Banca Fijo": 8164.0,
       "Stake Compuesto": 24356.58,
       "Beneficio Compuesto": -24356.58,
-      "Banca Compuesto": 1193472.54
+      "Banca Compuesto": 1193472.54,
+      "league_id": 474
     },
     {
       "Fecha": "2024-09-29",
@@ -32112,7 +33577,8 @@ window.dashboardData = {
       "Banca Fijo": 8173.0,
       "Stake Compuesto": 23869.45,
       "Beneficio Compuesto": 10741.25,
-      "Banca Compuesto": 1204213.8
+      "Banca Compuesto": 1204213.8,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-29",
@@ -32130,7 +33596,8 @@ window.dashboardData = {
       "Banca Fijo": 8182.0,
       "Stake Compuesto": 24084.28,
       "Beneficio Compuesto": 10837.92,
-      "Banca Compuesto": 1215051.72
+      "Banca Compuesto": 1215051.72,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-29",
@@ -32148,7 +33615,8 @@ window.dashboardData = {
       "Banca Fijo": 8191.0,
       "Stake Compuesto": 24301.03,
       "Beneficio Compuesto": 10935.47,
-      "Banca Compuesto": 1225987.19
+      "Banca Compuesto": 1225987.19,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-30",
@@ -32166,7 +33634,8 @@ window.dashboardData = {
       "Banca Fijo": 8200.0,
       "Stake Compuesto": 24519.74,
       "Beneficio Compuesto": 11033.88,
-      "Banca Compuesto": 1237021.07
+      "Banca Compuesto": 1237021.07,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-30",
@@ -32184,7 +33653,8 @@ window.dashboardData = {
       "Banca Fijo": 8180.0,
       "Stake Compuesto": 24740.42,
       "Beneficio Compuesto": -24740.42,
-      "Banca Compuesto": 1212280.65
+      "Banca Compuesto": 1212280.65,
+      "league_id": 702
     },
     {
       "Fecha": "2024-09-30",
@@ -32202,7 +33672,8 @@ window.dashboardData = {
       "Banca Fijo": 8189.0,
       "Stake Compuesto": 24245.61,
       "Beneficio Compuesto": 10910.53,
-      "Banca Compuesto": 1223191.17
+      "Banca Compuesto": 1223191.17,
+      "league_id": 119
     },
     {
       "Fecha": "2024-09-30",
@@ -32220,7 +33691,8 @@ window.dashboardData = {
       "Banca Fijo": 8169.0,
       "Stake Compuesto": 24463.82,
       "Beneficio Compuesto": -24463.82,
-      "Banca Compuesto": 1198727.35
+      "Banca Compuesto": 1198727.35,
+      "league_id": 473
     },
     {
       "Fecha": "2024-09-30",
@@ -32238,7 +33710,8 @@ window.dashboardData = {
       "Banca Fijo": 8178.0,
       "Stake Compuesto": 23974.55,
       "Beneficio Compuesto": 10788.55,
-      "Banca Compuesto": 1209515.9
+      "Banca Compuesto": 1209515.9,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-30",
@@ -32256,7 +33729,8 @@ window.dashboardData = {
       "Banca Fijo": 8158.0,
       "Stake Compuesto": 24190.32,
       "Beneficio Compuesto": -24190.32,
-      "Banca Compuesto": 1185325.58
+      "Banca Compuesto": 1185325.58,
+      "league_id": 909
     },
     {
       "Fecha": "2024-09-30",
@@ -32274,7 +33748,8 @@ window.dashboardData = {
       "Banca Fijo": 8167.0,
       "Stake Compuesto": 23706.51,
       "Beneficio Compuesto": 10667.93,
-      "Banca Compuesto": 1195993.51
+      "Banca Compuesto": 1195993.51,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-02",
@@ -32292,7 +33767,8 @@ window.dashboardData = {
       "Banca Fijo": 8176.0,
       "Stake Compuesto": 23919.87,
       "Beneficio Compuesto": 10763.94,
-      "Banca Compuesto": 1206757.45
+      "Banca Compuesto": 1206757.45,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-02",
@@ -32310,7 +33786,8 @@ window.dashboardData = {
       "Banca Fijo": 8185.0,
       "Stake Compuesto": 24135.15,
       "Beneficio Compuesto": 10860.82,
-      "Banca Compuesto": 1217618.27
+      "Banca Compuesto": 1217618.27,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-02",
@@ -32328,7 +33805,8 @@ window.dashboardData = {
       "Banca Fijo": 8194.0,
       "Stake Compuesto": 24352.37,
       "Beneficio Compuesto": 10958.56,
-      "Banca Compuesto": 1228576.83
+      "Banca Compuesto": 1228576.83,
+      "league_id": 253
     },
     {
       "Fecha": "2024-10-02",
@@ -32346,7 +33824,8 @@ window.dashboardData = {
       "Banca Fijo": 8203.0,
       "Stake Compuesto": 24571.54,
       "Beneficio Compuesto": 11057.19,
-      "Banca Compuesto": 1239634.02
+      "Banca Compuesto": 1239634.02,
+      "league_id": 253
     },
     {
       "Fecha": "2024-10-03",
@@ -32364,7 +33843,8 @@ window.dashboardData = {
       "Banca Fijo": 8212.0,
       "Stake Compuesto": 24792.68,
       "Beneficio Compuesto": 11156.71,
-      "Banca Compuesto": 1250790.73
+      "Banca Compuesto": 1250790.73,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-03",
@@ -32382,7 +33862,8 @@ window.dashboardData = {
       "Banca Fijo": 8221.0,
       "Stake Compuesto": 25015.81,
       "Beneficio Compuesto": 11257.12,
-      "Banca Compuesto": 1262047.85
+      "Banca Compuesto": 1262047.85,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-04",
@@ -32400,7 +33881,8 @@ window.dashboardData = {
       "Banca Fijo": 8201.0,
       "Stake Compuesto": 25240.96,
       "Beneficio Compuesto": -25240.96,
-      "Banca Compuesto": 1236806.89
+      "Banca Compuesto": 1236806.89,
+      "league_id": 702
     },
     {
       "Fecha": "2024-10-04",
@@ -32418,7 +33900,8 @@ window.dashboardData = {
       "Banca Fijo": 8210.0,
       "Stake Compuesto": 24736.14,
       "Beneficio Compuesto": 11131.26,
-      "Banca Compuesto": 1247938.15
+      "Banca Compuesto": 1247938.15,
+      "league_id": 208
     },
     {
       "Fecha": "2024-10-04",
@@ -32436,7 +33919,8 @@ window.dashboardData = {
       "Banca Fijo": 8219.0,
       "Stake Compuesto": 24958.76,
       "Beneficio Compuesto": 11231.44,
-      "Banca Compuesto": 1259169.6
+      "Banca Compuesto": 1259169.6,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-05",
@@ -32454,7 +33938,8 @@ window.dashboardData = {
       "Banca Fijo": 8228.0,
       "Stake Compuesto": 25183.39,
       "Beneficio Compuesto": 11332.53,
-      "Banca Compuesto": 1270502.12
+      "Banca Compuesto": 1270502.12,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-05",
@@ -32472,7 +33957,8 @@ window.dashboardData = {
       "Banca Fijo": 8208.0,
       "Stake Compuesto": 25410.04,
       "Beneficio Compuesto": -25410.04,
-      "Banca Compuesto": 1245092.08
+      "Banca Compuesto": 1245092.08,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-05",
@@ -32490,7 +33976,8 @@ window.dashboardData = {
       "Banca Fijo": 8217.0,
       "Stake Compuesto": 24901.84,
       "Beneficio Compuesto": 11205.83,
-      "Banca Compuesto": 1256297.91
+      "Banca Compuesto": 1256297.91,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-05",
@@ -32508,7 +33995,8 @@ window.dashboardData = {
       "Banca Fijo": 8197.0,
       "Stake Compuesto": 25125.96,
       "Beneficio Compuesto": -25125.96,
-      "Banca Compuesto": 1231171.95
+      "Banca Compuesto": 1231171.95,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-05",
@@ -32526,7 +34014,8 @@ window.dashboardData = {
       "Banca Fijo": 8206.0,
       "Stake Compuesto": 24623.44,
       "Beneficio Compuesto": 11080.55,
-      "Banca Compuesto": 1242252.5
+      "Banca Compuesto": 1242252.5,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-05",
@@ -32544,7 +34033,8 @@ window.dashboardData = {
       "Banca Fijo": 8215.0,
       "Stake Compuesto": 24845.05,
       "Beneficio Compuesto": 11180.27,
-      "Banca Compuesto": 1253432.77
+      "Banca Compuesto": 1253432.77,
+      "league_id": 702
     },
     {
       "Fecha": "2024-10-05",
@@ -32562,7 +34052,8 @@ window.dashboardData = {
       "Banca Fijo": 8224.0,
       "Stake Compuesto": 25068.66,
       "Beneficio Compuesto": 11280.89,
-      "Banca Compuesto": 1264713.66
+      "Banca Compuesto": 1264713.66,
+      "league_id": 245
     },
     {
       "Fecha": "2024-10-05",
@@ -32580,7 +34071,8 @@ window.dashboardData = {
       "Banca Fijo": 8204.0,
       "Stake Compuesto": 25294.27,
       "Beneficio Compuesto": -25294.27,
-      "Banca Compuesto": 1239419.39
+      "Banca Compuesto": 1239419.39,
+      "league_id": 253
     },
     {
       "Fecha": "2024-10-06",
@@ -32598,7 +34090,8 @@ window.dashboardData = {
       "Banca Fijo": 8213.0,
       "Stake Compuesto": 24788.39,
       "Beneficio Compuesto": 11154.77,
-      "Banca Compuesto": 1250574.17
+      "Banca Compuesto": 1250574.17,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-06",
@@ -32616,7 +34109,8 @@ window.dashboardData = {
       "Banca Fijo": 8222.0,
       "Stake Compuesto": 25011.48,
       "Beneficio Compuesto": 11255.17,
-      "Banca Compuesto": 1261829.33
+      "Banca Compuesto": 1261829.33,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-06",
@@ -32634,7 +34128,8 @@ window.dashboardData = {
       "Banca Fijo": 8231.0,
       "Stake Compuesto": 25236.59,
       "Beneficio Compuesto": 11356.46,
-      "Banca Compuesto": 1273185.8
+      "Banca Compuesto": 1273185.8,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-06",
@@ -32652,7 +34147,8 @@ window.dashboardData = {
       "Banca Fijo": 8240.0,
       "Stake Compuesto": 25463.72,
       "Beneficio Compuesto": 11458.67,
-      "Banca Compuesto": 1284644.47
+      "Banca Compuesto": 1284644.47,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-06",
@@ -32670,7 +34166,8 @@ window.dashboardData = {
       "Banca Fijo": 8220.0,
       "Stake Compuesto": 25692.89,
       "Beneficio Compuesto": -25692.89,
-      "Banca Compuesto": 1258951.58
+      "Banca Compuesto": 1258951.58,
+      "league_id": 702
     },
     {
       "Fecha": "2024-10-06",
@@ -32688,7 +34185,8 @@ window.dashboardData = {
       "Banca Fijo": 8229.0,
       "Stake Compuesto": 25179.03,
       "Beneficio Compuesto": 11330.56,
-      "Banca Compuesto": 1270282.14
+      "Banca Compuesto": 1270282.14,
+      "league_id": 119
     },
     {
       "Fecha": "2024-10-06",
@@ -32706,7 +34204,8 @@ window.dashboardData = {
       "Banca Fijo": 8238.0,
       "Stake Compuesto": 25405.64,
       "Beneficio Compuesto": 11432.54,
-      "Banca Compuesto": 1281714.68
+      "Banca Compuesto": 1281714.68,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-06",
@@ -32724,7 +34223,8 @@ window.dashboardData = {
       "Banca Fijo": 8218.0,
       "Stake Compuesto": 25634.29,
       "Beneficio Compuesto": -25634.29,
-      "Banca Compuesto": 1256080.39
+      "Banca Compuesto": 1256080.39,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-06",
@@ -32742,7 +34242,8 @@ window.dashboardData = {
       "Banca Fijo": 8227.0,
       "Stake Compuesto": 25121.61,
       "Beneficio Compuesto": 11304.72,
-      "Banca Compuesto": 1267385.11
+      "Banca Compuesto": 1267385.11,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-06",
@@ -32760,7 +34261,8 @@ window.dashboardData = {
       "Banca Fijo": 8236.0,
       "Stake Compuesto": 25347.7,
       "Beneficio Compuesto": 11406.47,
-      "Banca Compuesto": 1278791.58
+      "Banca Compuesto": 1278791.58,
+      "league_id": 253
     },
     {
       "Fecha": "2024-10-06",
@@ -32778,7 +34280,8 @@ window.dashboardData = {
       "Banca Fijo": 8245.0,
       "Stake Compuesto": 25575.83,
       "Beneficio Compuesto": 11509.12,
-      "Banca Compuesto": 1290300.7
+      "Banca Compuesto": 1290300.7,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-06",
@@ -32796,7 +34299,8 @@ window.dashboardData = {
       "Banca Fijo": 8254.0,
       "Stake Compuesto": 25806.01,
       "Beneficio Compuesto": 11612.71,
-      "Banca Compuesto": 1301913.41
+      "Banca Compuesto": 1301913.41,
+      "league_id": 473
     },
     {
       "Fecha": "2024-10-06",
@@ -32814,7 +34318,8 @@ window.dashboardData = {
       "Banca Fijo": 8263.0,
       "Stake Compuesto": 26038.27,
       "Beneficio Compuesto": 11717.22,
-      "Banca Compuesto": 1313630.63
+      "Banca Compuesto": 1313630.63,
+      "league_id": 474
     },
     {
       "Fecha": "2024-10-06",
@@ -32832,7 +34337,8 @@ window.dashboardData = {
       "Banca Fijo": 8243.0,
       "Stake Compuesto": 26272.61,
       "Beneficio Compuesto": -26272.61,
-      "Banca Compuesto": 1287358.02
+      "Banca Compuesto": 1287358.02,
+      "league_id": 563
     },
     {
       "Fecha": "2024-10-06",
@@ -32850,7 +34356,8 @@ window.dashboardData = {
       "Banca Fijo": 8252.0,
       "Stake Compuesto": 25747.16,
       "Beneficio Compuesto": 11586.22,
-      "Banca Compuesto": 1298944.24
+      "Banca Compuesto": 1298944.24,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-06",
@@ -32868,7 +34375,8 @@ window.dashboardData = {
       "Banca Fijo": 8261.0,
       "Stake Compuesto": 25978.88,
       "Beneficio Compuesto": 11690.5,
-      "Banca Compuesto": 1310634.74
+      "Banca Compuesto": 1310634.74,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-06",
@@ -32886,7 +34394,8 @@ window.dashboardData = {
       "Banca Fijo": 8270.0,
       "Stake Compuesto": 26212.69,
       "Beneficio Compuesto": 11795.71,
-      "Banca Compuesto": 1322430.45
+      "Banca Compuesto": 1322430.45,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-06",
@@ -32904,7 +34413,8 @@ window.dashboardData = {
       "Banca Fijo": 8279.0,
       "Stake Compuesto": 26448.61,
       "Beneficio Compuesto": 11901.87,
-      "Banca Compuesto": 1334332.33
+      "Banca Compuesto": 1334332.33,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-06",
@@ -32922,7 +34432,8 @@ window.dashboardData = {
       "Banca Fijo": 8288.0,
       "Stake Compuesto": 26686.65,
       "Beneficio Compuesto": 12008.99,
-      "Banca Compuesto": 1346341.32
+      "Banca Compuesto": 1346341.32,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-07",
@@ -32940,7 +34451,8 @@ window.dashboardData = {
       "Banca Fijo": 8297.0,
       "Stake Compuesto": 26926.83,
       "Beneficio Compuesto": 12117.07,
-      "Banca Compuesto": 1358458.39
+      "Banca Compuesto": 1358458.39,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-11",
@@ -32958,7 +34470,8 @@ window.dashboardData = {
       "Banca Fijo": 8306.0,
       "Stake Compuesto": 27169.17,
       "Beneficio Compuesto": 12226.13,
-      "Banca Compuesto": 1370684.51
+      "Banca Compuesto": 1370684.51,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-11",
@@ -32976,7 +34489,8 @@ window.dashboardData = {
       "Banca Fijo": 8315.0,
       "Stake Compuesto": 27413.69,
       "Beneficio Compuesto": 12336.16,
-      "Banca Compuesto": 1383020.67
+      "Banca Compuesto": 1383020.67,
+      "league_id": 474
     },
     {
       "Fecha": "2024-10-12",
@@ -32994,7 +34508,8 @@ window.dashboardData = {
       "Banca Fijo": 8324.0,
       "Stake Compuesto": 27660.41,
       "Beneficio Compuesto": 12447.19,
-      "Banca Compuesto": 1395467.86
+      "Banca Compuesto": 1395467.86,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-12",
@@ -33012,7 +34527,8 @@ window.dashboardData = {
       "Banca Fijo": 8333.0,
       "Stake Compuesto": 27909.36,
       "Beneficio Compuesto": 12559.21,
-      "Banca Compuesto": 1408027.07
+      "Banca Compuesto": 1408027.07,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-12",
@@ -33030,7 +34546,8 @@ window.dashboardData = {
       "Banca Fijo": 8342.0,
       "Stake Compuesto": 28160.54,
       "Beneficio Compuesto": 12672.24,
-      "Banca Compuesto": 1420699.31
+      "Banca Compuesto": 1420699.31,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-12",
@@ -33048,7 +34565,8 @@ window.dashboardData = {
       "Banca Fijo": 8351.0,
       "Stake Compuesto": 28413.99,
       "Beneficio Compuesto": 12786.29,
-      "Banca Compuesto": 1433485.61
+      "Banca Compuesto": 1433485.61,
+      "league_id": 245
     },
     {
       "Fecha": "2024-10-12",
@@ -33066,7 +34584,8 @@ window.dashboardData = {
       "Banca Fijo": 8360.0,
       "Stake Compuesto": 28669.71,
       "Beneficio Compuesto": 12901.37,
-      "Banca Compuesto": 1446386.98
+      "Banca Compuesto": 1446386.98,
+      "league_id": 563
     },
     {
       "Fecha": "2024-10-13",
@@ -33084,7 +34603,8 @@ window.dashboardData = {
       "Banca Fijo": 8369.0,
       "Stake Compuesto": 28927.74,
       "Beneficio Compuesto": 13017.48,
-      "Banca Compuesto": 1459404.46
+      "Banca Compuesto": 1459404.46,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-15",
@@ -33102,7 +34622,8 @@ window.dashboardData = {
       "Banca Fijo": 8378.0,
       "Stake Compuesto": 29188.09,
       "Beneficio Compuesto": 13134.64,
-      "Banca Compuesto": 1472539.1
+      "Banca Compuesto": 1472539.1,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-18",
@@ -33120,7 +34641,8 @@ window.dashboardData = {
       "Banca Fijo": 8387.0,
       "Stake Compuesto": 29450.78,
       "Beneficio Compuesto": 13252.85,
-      "Banca Compuesto": 1485791.95
+      "Banca Compuesto": 1485791.95,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-18",
@@ -33138,7 +34660,8 @@ window.dashboardData = {
       "Banca Fijo": 8396.0,
       "Stake Compuesto": 29715.84,
       "Beneficio Compuesto": 13372.13,
-      "Banca Compuesto": 1499164.08
+      "Banca Compuesto": 1499164.08,
+      "league_id": 208
     },
     {
       "Fecha": "2024-10-19",
@@ -33156,7 +34679,8 @@ window.dashboardData = {
       "Banca Fijo": 8405.0,
       "Stake Compuesto": 29983.28,
       "Beneficio Compuesto": 13492.48,
-      "Banca Compuesto": 1512656.56
+      "Banca Compuesto": 1512656.56,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-19",
@@ -33174,7 +34698,8 @@ window.dashboardData = {
       "Banca Fijo": 8385.0,
       "Stake Compuesto": 30253.13,
       "Beneficio Compuesto": -30253.13,
-      "Banca Compuesto": 1482403.43
+      "Banca Compuesto": 1482403.43,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-19",
@@ -33192,7 +34717,8 @@ window.dashboardData = {
       "Banca Fijo": 8394.0,
       "Stake Compuesto": 29648.07,
       "Beneficio Compuesto": 13341.63,
-      "Banca Compuesto": 1495745.06
+      "Banca Compuesto": 1495745.06,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-19",
@@ -33210,7 +34736,8 @@ window.dashboardData = {
       "Banca Fijo": 8403.0,
       "Stake Compuesto": 29914.9,
       "Beneficio Compuesto": 13461.71,
-      "Banca Compuesto": 1509206.76
+      "Banca Compuesto": 1509206.76,
+      "league_id": 368
     },
     {
       "Fecha": "2024-10-19",
@@ -33228,7 +34755,8 @@ window.dashboardData = {
       "Banca Fijo": 8412.0,
       "Stake Compuesto": 30184.14,
       "Beneficio Compuesto": 13582.86,
-      "Banca Compuesto": 1522789.62
+      "Banca Compuesto": 1522789.62,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-19",
@@ -33246,7 +34774,8 @@ window.dashboardData = {
       "Banca Fijo": 8421.0,
       "Stake Compuesto": 30455.79,
       "Beneficio Compuesto": 13705.11,
-      "Banca Compuesto": 1536494.73
+      "Banca Compuesto": 1536494.73,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-19",
@@ -33264,7 +34793,8 @@ window.dashboardData = {
       "Banca Fijo": 8430.0,
       "Stake Compuesto": 30729.89,
       "Beneficio Compuesto": 13828.45,
-      "Banca Compuesto": 1550323.18
+      "Banca Compuesto": 1550323.18,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-19",
@@ -33282,7 +34812,8 @@ window.dashboardData = {
       "Banca Fijo": 8439.0,
       "Stake Compuesto": 31006.46,
       "Beneficio Compuesto": 13952.91,
-      "Banca Compuesto": 1564276.09
+      "Banca Compuesto": 1564276.09,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-19",
@@ -33300,7 +34831,8 @@ window.dashboardData = {
       "Banca Fijo": 8448.0,
       "Stake Compuesto": 31285.52,
       "Beneficio Compuesto": 14078.48,
-      "Banca Compuesto": 1578354.58
+      "Banca Compuesto": 1578354.58,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-19",
@@ -33318,7 +34850,8 @@ window.dashboardData = {
       "Banca Fijo": 8457.0,
       "Stake Compuesto": 31567.09,
       "Beneficio Compuesto": 14205.19,
-      "Banca Compuesto": 1592559.77
+      "Banca Compuesto": 1592559.77,
+      "league_id": 245
     },
     {
       "Fecha": "2024-10-19",
@@ -33336,7 +34869,8 @@ window.dashboardData = {
       "Banca Fijo": 8466.0,
       "Stake Compuesto": 31851.2,
       "Beneficio Compuesto": 14333.04,
-      "Banca Compuesto": 1606892.81
+      "Banca Compuesto": 1606892.81,
+      "league_id": 245
     },
     {
       "Fecha": "2024-10-19",
@@ -33354,7 +34888,8 @@ window.dashboardData = {
       "Banca Fijo": 8475.0,
       "Stake Compuesto": 32137.86,
       "Beneficio Compuesto": 14462.04,
-      "Banca Compuesto": 1621354.84
+      "Banca Compuesto": 1621354.84,
+      "league_id": 245
     },
     {
       "Fecha": "2024-10-19",
@@ -33372,7 +34907,8 @@ window.dashboardData = {
       "Banca Fijo": 8484.0,
       "Stake Compuesto": 32427.1,
       "Beneficio Compuesto": 14592.19,
-      "Banca Compuesto": 1635947.03
+      "Banca Compuesto": 1635947.03,
+      "league_id": 473
     },
     {
       "Fecha": "2024-10-19",
@@ -33390,7 +34926,8 @@ window.dashboardData = {
       "Banca Fijo": 8493.0,
       "Stake Compuesto": 32718.94,
       "Beneficio Compuesto": 14723.52,
-      "Banca Compuesto": 1650670.56
+      "Banca Compuesto": 1650670.56,
+      "league_id": 474
     },
     {
       "Fecha": "2024-10-19",
@@ -33408,7 +34945,8 @@ window.dashboardData = {
       "Banca Fijo": 8502.0,
       "Stake Compuesto": 33013.41,
       "Beneficio Compuesto": 14856.04,
-      "Banca Compuesto": 1665526.59
+      "Banca Compuesto": 1665526.59,
+      "league_id": 474
     },
     {
       "Fecha": "2024-10-20",
@@ -33426,7 +34964,8 @@ window.dashboardData = {
       "Banca Fijo": 8511.0,
       "Stake Compuesto": 33310.53,
       "Beneficio Compuesto": 14989.74,
-      "Banca Compuesto": 1680516.33
+      "Banca Compuesto": 1680516.33,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-20",
@@ -33444,7 +34983,8 @@ window.dashboardData = {
       "Banca Fijo": 8520.0,
       "Stake Compuesto": 33610.33,
       "Beneficio Compuesto": 15124.65,
-      "Banca Compuesto": 1695640.98
+      "Banca Compuesto": 1695640.98,
+      "league_id": 368
     },
     {
       "Fecha": "2024-10-20",
@@ -33462,7 +35002,8 @@ window.dashboardData = {
       "Banca Fijo": 8500.0,
       "Stake Compuesto": 33912.82,
       "Beneficio Compuesto": -33912.82,
-      "Banca Compuesto": 1661728.16
+      "Banca Compuesto": 1661728.16,
+      "league_id": 119
     },
     {
       "Fecha": "2024-10-20",
@@ -33480,7 +35021,8 @@ window.dashboardData = {
       "Banca Fijo": 8509.0,
       "Stake Compuesto": 33234.56,
       "Beneficio Compuesto": 14955.55,
-      "Banca Compuesto": 1676683.71
+      "Banca Compuesto": 1676683.71,
+      "league_id": 119
     },
     {
       "Fecha": "2024-10-20",
@@ -33498,7 +35040,8 @@ window.dashboardData = {
       "Banca Fijo": 8518.0,
       "Stake Compuesto": 33533.67,
       "Beneficio Compuesto": 15090.15,
-      "Banca Compuesto": 1691773.87
+      "Banca Compuesto": 1691773.87,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-20",
@@ -33516,7 +35059,8 @@ window.dashboardData = {
       "Banca Fijo": 8527.0,
       "Stake Compuesto": 33835.48,
       "Beneficio Compuesto": 15225.96,
-      "Banca Compuesto": 1706999.83
+      "Banca Compuesto": 1706999.83,
+      "league_id": 253
     },
     {
       "Fecha": "2024-10-20",
@@ -33534,7 +35078,8 @@ window.dashboardData = {
       "Banca Fijo": 8536.0,
       "Stake Compuesto": 34140.0,
       "Beneficio Compuesto": 15363.0,
-      "Banca Compuesto": 1722362.83
+      "Banca Compuesto": 1722362.83,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-20",
@@ -33552,7 +35097,8 @@ window.dashboardData = {
       "Banca Fijo": 8545.0,
       "Stake Compuesto": 34447.26,
       "Beneficio Compuesto": 15501.27,
-      "Banca Compuesto": 1737864.1
+      "Banca Compuesto": 1737864.1,
+      "league_id": 563
     },
     {
       "Fecha": "2024-10-20",
@@ -33570,7 +35116,8 @@ window.dashboardData = {
       "Banca Fijo": 8525.0,
       "Stake Compuesto": 34757.28,
       "Beneficio Compuesto": -34757.28,
-      "Banca Compuesto": 1703106.81
+      "Banca Compuesto": 1703106.81,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-20",
@@ -33588,7 +35135,8 @@ window.dashboardData = {
       "Banca Fijo": 8534.0,
       "Stake Compuesto": 34062.14,
       "Beneficio Compuesto": 15327.96,
-      "Banca Compuesto": 1718434.77
+      "Banca Compuesto": 1718434.77,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-21",
@@ -33606,7 +35154,8 @@ window.dashboardData = {
       "Banca Fijo": 8543.0,
       "Stake Compuesto": 34368.7,
       "Beneficio Compuesto": 15465.91,
-      "Banca Compuesto": 1733900.69
+      "Banca Compuesto": 1733900.69,
+      "league_id": 119
     },
     {
       "Fecha": "2024-10-21",
@@ -33624,7 +35173,8 @@ window.dashboardData = {
       "Banca Fijo": 8552.0,
       "Stake Compuesto": 34678.01,
       "Beneficio Compuesto": 15605.11,
-      "Banca Compuesto": 1749505.79
+      "Banca Compuesto": 1749505.79,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-21",
@@ -33642,7 +35192,8 @@ window.dashboardData = {
       "Banca Fijo": 8561.0,
       "Stake Compuesto": 34990.12,
       "Beneficio Compuesto": 15745.55,
-      "Banca Compuesto": 1765251.35
+      "Banca Compuesto": 1765251.35,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-24",
@@ -33660,7 +35211,8 @@ window.dashboardData = {
       "Banca Fijo": 8541.0,
       "Stake Compuesto": 35305.03,
       "Beneficio Compuesto": -35305.03,
-      "Banca Compuesto": 1729946.32
+      "Banca Compuesto": 1729946.32,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-25",
@@ -33678,7 +35230,8 @@ window.dashboardData = {
       "Banca Fijo": 8550.0,
       "Stake Compuesto": 34598.93,
       "Beneficio Compuesto": 15569.52,
-      "Banca Compuesto": 1745515.84
+      "Banca Compuesto": 1745515.84,
+      "league_id": 702
     },
     {
       "Fecha": "2024-10-25",
@@ -33696,7 +35249,8 @@ window.dashboardData = {
       "Banca Fijo": 8530.0,
       "Stake Compuesto": 34910.32,
       "Beneficio Compuesto": -34910.32,
-      "Banca Compuesto": 1710605.52
+      "Banca Compuesto": 1710605.52,
+      "league_id": 702
     },
     {
       "Fecha": "2024-10-25",
@@ -33714,7 +35268,8 @@ window.dashboardData = {
       "Banca Fijo": 8510.0,
       "Stake Compuesto": 34212.11,
       "Beneficio Compuesto": -34212.11,
-      "Banca Compuesto": 1676393.41
+      "Banca Compuesto": 1676393.41,
+      "league_id": 208
     },
     {
       "Fecha": "2024-10-26",
@@ -33732,7 +35287,8 @@ window.dashboardData = {
       "Banca Fijo": 8519.0,
       "Stake Compuesto": 33527.87,
       "Beneficio Compuesto": 15087.54,
-      "Banca Compuesto": 1691480.95
+      "Banca Compuesto": 1691480.95,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-26",
@@ -33750,7 +35306,8 @@ window.dashboardData = {
       "Banca Fijo": 8528.0,
       "Stake Compuesto": 33829.62,
       "Beneficio Compuesto": 15223.33,
-      "Banca Compuesto": 1706704.28
+      "Banca Compuesto": 1706704.28,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-26",
@@ -33768,7 +35325,8 @@ window.dashboardData = {
       "Banca Fijo": 8537.0,
       "Stake Compuesto": 34134.09,
       "Beneficio Compuesto": 15360.34,
-      "Banca Compuesto": 1722064.62
+      "Banca Compuesto": 1722064.62,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-26",
@@ -33786,7 +35344,8 @@ window.dashboardData = {
       "Banca Fijo": 8546.0,
       "Stake Compuesto": 34441.29,
       "Beneficio Compuesto": 15498.58,
-      "Banca Compuesto": 1737563.2
+      "Banca Compuesto": 1737563.2,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-26",
@@ -33804,7 +35363,8 @@ window.dashboardData = {
       "Banca Fijo": 8555.0,
       "Stake Compuesto": 34751.26,
       "Beneficio Compuesto": 15638.07,
-      "Banca Compuesto": 1753201.27
+      "Banca Compuesto": 1753201.27,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-26",
@@ -33822,7 +35382,8 @@ window.dashboardData = {
       "Banca Fijo": 8564.0,
       "Stake Compuesto": 35064.03,
       "Beneficio Compuesto": 15778.81,
-      "Banca Compuesto": 1768980.08
+      "Banca Compuesto": 1768980.08,
+      "league_id": 492
     },
     {
       "Fecha": "2024-10-26",
@@ -33840,7 +35401,8 @@ window.dashboardData = {
       "Banca Fijo": 8573.0,
       "Stake Compuesto": 35379.6,
       "Beneficio Compuesto": 15920.82,
-      "Banca Compuesto": 1784900.9
+      "Banca Compuesto": 1784900.9,
+      "league_id": 702
     },
     {
       "Fecha": "2024-10-26",
@@ -33858,7 +35420,8 @@ window.dashboardData = {
       "Banca Fijo": 8582.0,
       "Stake Compuesto": 35698.02,
       "Beneficio Compuesto": 16064.11,
-      "Banca Compuesto": 1800965.01
+      "Banca Compuesto": 1800965.01,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-26",
@@ -33876,7 +35439,8 @@ window.dashboardData = {
       "Banca Fijo": 8591.0,
       "Stake Compuesto": 36019.3,
       "Beneficio Compuesto": 16208.69,
-      "Banca Compuesto": 1817173.69
+      "Banca Compuesto": 1817173.69,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-26",
@@ -33894,7 +35458,8 @@ window.dashboardData = {
       "Banca Fijo": 8600.0,
       "Stake Compuesto": 36343.47,
       "Beneficio Compuesto": 16354.56,
-      "Banca Compuesto": 1833528.26
+      "Banca Compuesto": 1833528.26,
+      "league_id": 253
     },
     {
       "Fecha": "2024-10-26",
@@ -33912,7 +35477,8 @@ window.dashboardData = {
       "Banca Fijo": 8609.0,
       "Stake Compuesto": 36670.57,
       "Beneficio Compuesto": 16501.75,
-      "Banca Compuesto": 1850030.01
+      "Banca Compuesto": 1850030.01,
+      "league_id": 473
     },
     {
       "Fecha": "2024-10-26",
@@ -33930,7 +35496,8 @@ window.dashboardData = {
       "Banca Fijo": 8618.0,
       "Stake Compuesto": 37000.6,
       "Beneficio Compuesto": 16650.27,
-      "Banca Compuesto": 1866680.28
+      "Banca Compuesto": 1866680.28,
+      "league_id": 474
     },
     {
       "Fecha": "2024-10-27",
@@ -33948,7 +35515,8 @@ window.dashboardData = {
       "Banca Fijo": 8627.0,
       "Stake Compuesto": 37333.61,
       "Beneficio Compuesto": 16800.12,
-      "Banca Compuesto": 1883480.4
+      "Banca Compuesto": 1883480.4,
+      "league_id": 78
     },
     {
       "Fecha": "2024-10-27",
@@ -33966,7 +35534,8 @@ window.dashboardData = {
       "Banca Fijo": 8636.0,
       "Stake Compuesto": 37669.61,
       "Beneficio Compuesto": 16951.32,
-      "Banca Compuesto": 1900431.73
+      "Banca Compuesto": 1900431.73,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-27",
@@ -33984,7 +35553,8 @@ window.dashboardData = {
       "Banca Fijo": 8645.0,
       "Stake Compuesto": 38008.63,
       "Beneficio Compuesto": 17103.89,
-      "Banca Compuesto": 1917535.61
+      "Banca Compuesto": 1917535.61,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-27",
@@ -34002,7 +35572,8 @@ window.dashboardData = {
       "Banca Fijo": 8654.0,
       "Stake Compuesto": 38350.71,
       "Beneficio Compuesto": 17257.82,
-      "Banca Compuesto": 1934793.43
+      "Banca Compuesto": 1934793.43,
+      "league_id": 119
     },
     {
       "Fecha": "2024-10-27",
@@ -34020,7 +35591,8 @@ window.dashboardData = {
       "Banca Fijo": 8663.0,
       "Stake Compuesto": 38695.87,
       "Beneficio Compuesto": 17413.14,
-      "Banca Compuesto": 1952206.57
+      "Banca Compuesto": 1952206.57,
+      "league_id": 164
     },
     {
       "Fecha": "2024-10-27",
@@ -34038,7 +35610,8 @@ window.dashboardData = {
       "Banca Fijo": 8672.0,
       "Stake Compuesto": 39044.13,
       "Beneficio Compuesto": 17569.86,
-      "Banca Compuesto": 1969776.43
+      "Banca Compuesto": 1969776.43,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-27",
@@ -34056,7 +35629,8 @@ window.dashboardData = {
       "Banca Fijo": 8681.0,
       "Stake Compuesto": 39395.53,
       "Beneficio Compuesto": 17727.99,
-      "Banca Compuesto": 1987504.42
+      "Banca Compuesto": 1987504.42,
+      "league_id": 328
     },
     {
       "Fecha": "2024-10-27",
@@ -34074,7 +35648,8 @@ window.dashboardData = {
       "Banca Fijo": 8690.0,
       "Stake Compuesto": 39750.09,
       "Beneficio Compuesto": 17887.54,
-      "Banca Compuesto": 2005391.96
+      "Banca Compuesto": 2005391.96,
+      "league_id": 563
     },
     {
       "Fecha": "2024-10-27",
@@ -34092,7 +35667,8 @@ window.dashboardData = {
       "Banca Fijo": 8699.0,
       "Stake Compuesto": 40107.84,
       "Beneficio Compuesto": 18048.53,
-      "Banca Compuesto": 2023440.49
+      "Banca Compuesto": 2023440.49,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-27",
@@ -34110,7 +35686,8 @@ window.dashboardData = {
       "Banca Fijo": 8708.0,
       "Stake Compuesto": 40468.81,
       "Beneficio Compuesto": 18210.96,
-      "Banca Compuesto": 2041651.45
+      "Banca Compuesto": 2041651.45,
+      "league_id": 909
     },
     {
       "Fecha": "2024-10-28",
@@ -34128,7 +35705,8 @@ window.dashboardData = {
       "Banca Fijo": 8717.0,
       "Stake Compuesto": 40833.03,
       "Beneficio Compuesto": 18374.86,
-      "Banca Compuesto": 2060026.31
+      "Banca Compuesto": 2060026.31,
+      "league_id": 368
     },
     {
       "Fecha": "2024-10-28",
@@ -34146,7 +35724,8 @@ window.dashboardData = {
       "Banca Fijo": 8726.0,
       "Stake Compuesto": 41200.53,
       "Beneficio Compuesto": 18540.24,
-      "Banca Compuesto": 2078566.55
+      "Banca Compuesto": 2078566.55,
+      "league_id": 119
     },
     {
       "Fecha": "2024-10-29",
@@ -34164,7 +35743,8 @@ window.dashboardData = {
       "Banca Fijo": 8735.0,
       "Stake Compuesto": 41571.33,
       "Beneficio Compuesto": 18707.1,
-      "Banca Compuesto": 2097273.65
+      "Banca Compuesto": 2097273.65,
+      "league_id": 84
     },
     {
       "Fecha": "2024-10-29",
@@ -34182,7 +35762,8 @@ window.dashboardData = {
       "Banca Fijo": 8744.0,
       "Stake Compuesto": 41945.47,
       "Beneficio Compuesto": 18875.46,
-      "Banca Compuesto": 2116149.11
+      "Banca Compuesto": 2116149.11,
+      "league_id": 368
     },
     {
       "Fecha": "2024-10-29",
@@ -34200,7 +35781,8 @@ window.dashboardData = {
       "Banca Fijo": 8753.0,
       "Stake Compuesto": 42322.98,
       "Beneficio Compuesto": 19045.34,
-      "Banca Compuesto": 2135194.46
+      "Banca Compuesto": 2135194.46,
+      "league_id": 368
     },
     {
       "Fecha": "2024-11-01",
@@ -34218,7 +35800,8 @@ window.dashboardData = {
       "Banca Fijo": 8733.0,
       "Stake Compuesto": 42703.89,
       "Beneficio Compuesto": -42703.89,
-      "Banca Compuesto": 2092490.57
+      "Banca Compuesto": 2092490.57,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-01",
@@ -34236,7 +35819,8 @@ window.dashboardData = {
       "Banca Fijo": 8742.0,
       "Stake Compuesto": 41849.81,
       "Beneficio Compuesto": 18832.42,
-      "Banca Compuesto": 2111322.98
+      "Banca Compuesto": 2111322.98,
+      "league_id": 368
     },
     {
       "Fecha": "2024-11-01",
@@ -34254,7 +35838,8 @@ window.dashboardData = {
       "Banca Fijo": 8751.0,
       "Stake Compuesto": 42226.46,
       "Beneficio Compuesto": 19001.91,
-      "Banca Compuesto": 2130324.89
+      "Banca Compuesto": 2130324.89,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-01",
@@ -34272,7 +35857,8 @@ window.dashboardData = {
       "Banca Fijo": 8760.0,
       "Stake Compuesto": 42606.5,
       "Beneficio Compuesto": 19172.92,
-      "Banca Compuesto": 2149497.81
+      "Banca Compuesto": 2149497.81,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-01",
@@ -34290,7 +35876,8 @@ window.dashboardData = {
       "Banca Fijo": 8769.0,
       "Stake Compuesto": 42989.96,
       "Beneficio Compuesto": 19345.48,
-      "Banca Compuesto": 2168843.29
+      "Banca Compuesto": 2168843.29,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-01",
@@ -34308,7 +35895,8 @@ window.dashboardData = {
       "Banca Fijo": 8778.0,
       "Stake Compuesto": 43376.87,
       "Beneficio Compuesto": 19519.59,
-      "Banca Compuesto": 2188362.88
+      "Banca Compuesto": 2188362.88,
+      "league_id": 208
     },
     {
       "Fecha": "2024-11-02",
@@ -34326,7 +35914,8 @@ window.dashboardData = {
       "Banca Fijo": 8787.0,
       "Stake Compuesto": 43767.26,
       "Beneficio Compuesto": 19695.27,
-      "Banca Compuesto": 2208058.15
+      "Banca Compuesto": 2208058.15,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-02",
@@ -34344,7 +35933,8 @@ window.dashboardData = {
       "Banca Fijo": 8796.0,
       "Stake Compuesto": 44161.16,
       "Beneficio Compuesto": 19872.52,
-      "Banca Compuesto": 2227930.67
+      "Banca Compuesto": 2227930.67,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-02",
@@ -34362,7 +35952,8 @@ window.dashboardData = {
       "Banca Fijo": 8805.0,
       "Stake Compuesto": 44558.61,
       "Beneficio Compuesto": 20051.38,
-      "Banca Compuesto": 2247982.05
+      "Banca Compuesto": 2247982.05,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-02",
@@ -34380,7 +35971,8 @@ window.dashboardData = {
       "Banca Fijo": 8814.0,
       "Stake Compuesto": 44959.64,
       "Beneficio Compuesto": 20231.84,
-      "Banca Compuesto": 2268213.89
+      "Banca Compuesto": 2268213.89,
+      "league_id": 368
     },
     {
       "Fecha": "2024-11-02",
@@ -34398,7 +35990,8 @@ window.dashboardData = {
       "Banca Fijo": 8794.0,
       "Stake Compuesto": 45364.28,
       "Beneficio Compuesto": -45364.28,
-      "Banca Compuesto": 2222849.61
+      "Banca Compuesto": 2222849.61,
+      "league_id": 368
     },
     {
       "Fecha": "2024-11-02",
@@ -34416,7 +36009,8 @@ window.dashboardData = {
       "Banca Fijo": 8803.0,
       "Stake Compuesto": 44456.99,
       "Beneficio Compuesto": 20005.65,
-      "Banca Compuesto": 2242855.25
+      "Banca Compuesto": 2242855.25,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-02",
@@ -34434,7 +36028,8 @@ window.dashboardData = {
       "Banca Fijo": 8812.0,
       "Stake Compuesto": 44857.11,
       "Beneficio Compuesto": 20185.7,
-      "Banca Compuesto": 2263040.95
+      "Banca Compuesto": 2263040.95,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-02",
@@ -34452,7 +36047,8 @@ window.dashboardData = {
       "Banca Fijo": 8821.0,
       "Stake Compuesto": 45260.82,
       "Beneficio Compuesto": 20367.37,
-      "Banca Compuesto": 2283408.32
+      "Banca Compuesto": 2283408.32,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-02",
@@ -34470,7 +36066,8 @@ window.dashboardData = {
       "Banca Fijo": 8830.0,
       "Stake Compuesto": 45668.17,
       "Beneficio Compuesto": 20550.67,
-      "Banca Compuesto": 2303959.0
+      "Banca Compuesto": 2303959.0,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-02",
@@ -34488,7 +36085,8 @@ window.dashboardData = {
       "Banca Fijo": 8839.0,
       "Stake Compuesto": 46079.18,
       "Beneficio Compuesto": 20735.63,
-      "Banca Compuesto": 2324694.63
+      "Banca Compuesto": 2324694.63,
+      "league_id": 253
     },
     {
       "Fecha": "2024-11-02",
@@ -34506,7 +36104,8 @@ window.dashboardData = {
       "Banca Fijo": 8848.0,
       "Stake Compuesto": 46493.89,
       "Beneficio Compuesto": 20922.25,
-      "Banca Compuesto": 2345616.88
+      "Banca Compuesto": 2345616.88,
+      "league_id": 253
     },
     {
       "Fecha": "2024-11-02",
@@ -34524,7 +36123,8 @@ window.dashboardData = {
       "Banca Fijo": 8857.0,
       "Stake Compuesto": 46912.34,
       "Beneficio Compuesto": 21110.55,
-      "Banca Compuesto": 2366727.43
+      "Banca Compuesto": 2366727.43,
+      "league_id": 328
     },
     {
       "Fecha": "2024-11-02",
@@ -34542,7 +36142,8 @@ window.dashboardData = {
       "Banca Fijo": 8866.0,
       "Stake Compuesto": 47334.55,
       "Beneficio Compuesto": 21300.55,
-      "Banca Compuesto": 2388027.98
+      "Banca Compuesto": 2388027.98,
+      "league_id": 909
     },
     {
       "Fecha": "2024-11-03",
@@ -34560,7 +36161,8 @@ window.dashboardData = {
       "Banca Fijo": 8875.0,
       "Stake Compuesto": 47760.56,
       "Beneficio Compuesto": 21492.25,
-      "Banca Compuesto": 2409520.23
+      "Banca Compuesto": 2409520.23,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-03",
@@ -34578,7 +36180,8 @@ window.dashboardData = {
       "Banca Fijo": 8884.0,
       "Stake Compuesto": 48190.4,
       "Beneficio Compuesto": 21685.68,
-      "Banca Compuesto": 2431205.91
+      "Banca Compuesto": 2431205.91,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-03",
@@ -34596,7 +36199,8 @@ window.dashboardData = {
       "Banca Fijo": 8893.0,
       "Stake Compuesto": 48624.12,
       "Beneficio Compuesto": 21880.85,
-      "Banca Compuesto": 2453086.76
+      "Banca Compuesto": 2453086.76,
+      "league_id": 368
     },
     {
       "Fecha": "2024-11-03",
@@ -34614,7 +36218,8 @@ window.dashboardData = {
       "Banca Fijo": 8902.0,
       "Stake Compuesto": 49061.74,
       "Beneficio Compuesto": 22077.78,
-      "Banca Compuesto": 2475164.54
+      "Banca Compuesto": 2475164.54,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-03",
@@ -34632,7 +36237,8 @@ window.dashboardData = {
       "Banca Fijo": 8911.0,
       "Stake Compuesto": 49503.29,
       "Beneficio Compuesto": 22276.48,
-      "Banca Compuesto": 2497441.03
+      "Banca Compuesto": 2497441.03,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-03",
@@ -34650,7 +36256,8 @@ window.dashboardData = {
       "Banca Fijo": 8920.0,
       "Stake Compuesto": 49948.82,
       "Beneficio Compuesto": 22476.97,
-      "Banca Compuesto": 2519918.0
+      "Banca Compuesto": 2519918.0,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-03",
@@ -34668,7 +36275,8 @@ window.dashboardData = {
       "Banca Fijo": 8929.0,
       "Stake Compuesto": 50398.36,
       "Beneficio Compuesto": 22679.26,
-      "Banca Compuesto": 2542597.26
+      "Banca Compuesto": 2542597.26,
+      "league_id": 563
     },
     {
       "Fecha": "2024-11-04",
@@ -34686,7 +36294,8 @@ window.dashboardData = {
       "Banca Fijo": 8938.0,
       "Stake Compuesto": 50851.95,
       "Beneficio Compuesto": 22883.38,
-      "Banca Compuesto": 2565480.63
+      "Banca Compuesto": 2565480.63,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-04",
@@ -34704,7 +36313,8 @@ window.dashboardData = {
       "Banca Fijo": 8947.0,
       "Stake Compuesto": 51309.61,
       "Beneficio Compuesto": 23089.33,
-      "Banca Compuesto": 2588569.96
+      "Banca Compuesto": 2588569.96,
+      "league_id": 328
     },
     {
       "Fecha": "2024-11-08",
@@ -34722,7 +36332,8 @@ window.dashboardData = {
       "Banca Fijo": 8956.0,
       "Stake Compuesto": 51771.4,
       "Beneficio Compuesto": 23297.13,
-      "Banca Compuesto": 2611867.09
+      "Banca Compuesto": 2611867.09,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-09",
@@ -34740,7 +36351,8 @@ window.dashboardData = {
       "Banca Fijo": 8965.0,
       "Stake Compuesto": 52237.34,
       "Beneficio Compuesto": 23506.8,
-      "Banca Compuesto": 2635373.89
+      "Banca Compuesto": 2635373.89,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-09",
@@ -34758,7 +36370,8 @@ window.dashboardData = {
       "Banca Fijo": 8974.0,
       "Stake Compuesto": 52707.48,
       "Beneficio Compuesto": 23718.37,
-      "Banca Compuesto": 2659092.26
+      "Banca Compuesto": 2659092.26,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-09",
@@ -34776,7 +36389,8 @@ window.dashboardData = {
       "Banca Fijo": 8954.0,
       "Stake Compuesto": 53181.85,
       "Beneficio Compuesto": -53181.85,
-      "Banca Compuesto": 2605910.41
+      "Banca Compuesto": 2605910.41,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-09",
@@ -34794,7 +36408,8 @@ window.dashboardData = {
       "Banca Fijo": 8963.0,
       "Stake Compuesto": 52118.21,
       "Beneficio Compuesto": 23453.19,
-      "Banca Compuesto": 2629363.61
+      "Banca Compuesto": 2629363.61,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-09",
@@ -34812,7 +36427,8 @@ window.dashboardData = {
       "Banca Fijo": 8972.0,
       "Stake Compuesto": 52587.27,
       "Beneficio Compuesto": 23664.27,
-      "Banca Compuesto": 2653027.88
+      "Banca Compuesto": 2653027.88,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-09",
@@ -34830,7 +36446,8 @@ window.dashboardData = {
       "Banca Fijo": 8952.0,
       "Stake Compuesto": 53060.56,
       "Beneficio Compuesto": -53060.56,
-      "Banca Compuesto": 2599967.32
+      "Banca Compuesto": 2599967.32,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-09",
@@ -34848,7 +36465,8 @@ window.dashboardData = {
       "Banca Fijo": 8961.0,
       "Stake Compuesto": 51999.35,
       "Beneficio Compuesto": 23399.71,
-      "Banca Compuesto": 2623367.03
+      "Banca Compuesto": 2623367.03,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-09",
@@ -34866,7 +36484,8 @@ window.dashboardData = {
       "Banca Fijo": 8970.0,
       "Stake Compuesto": 52467.34,
       "Beneficio Compuesto": 23610.3,
-      "Banca Compuesto": 2646977.33
+      "Banca Compuesto": 2646977.33,
+      "league_id": 208
     },
     {
       "Fecha": "2024-11-09",
@@ -34884,7 +36503,8 @@ window.dashboardData = {
       "Banca Fijo": 8979.0,
       "Stake Compuesto": 52939.55,
       "Beneficio Compuesto": 23822.8,
-      "Banca Compuesto": 2670800.12
+      "Banca Compuesto": 2670800.12,
+      "league_id": 563
     },
     {
       "Fecha": "2024-11-10",
@@ -34902,7 +36522,8 @@ window.dashboardData = {
       "Banca Fijo": 8988.0,
       "Stake Compuesto": 53416.0,
       "Beneficio Compuesto": 24037.2,
-      "Banca Compuesto": 2694837.33
+      "Banca Compuesto": 2694837.33,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-10",
@@ -34920,7 +36541,8 @@ window.dashboardData = {
       "Banca Fijo": 8997.0,
       "Stake Compuesto": 53896.75,
       "Beneficio Compuesto": 24253.54,
-      "Banca Compuesto": 2719090.86
+      "Banca Compuesto": 2719090.86,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-10",
@@ -34938,7 +36560,8 @@ window.dashboardData = {
       "Banca Fijo": 9006.0,
       "Stake Compuesto": 54381.82,
       "Beneficio Compuesto": 24471.82,
-      "Banca Compuesto": 2743562.68
+      "Banca Compuesto": 2743562.68,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-10",
@@ -34956,7 +36579,8 @@ window.dashboardData = {
       "Banca Fijo": 8986.0,
       "Stake Compuesto": 54871.25,
       "Beneficio Compuesto": -54871.25,
-      "Banca Compuesto": 2688691.43
+      "Banca Compuesto": 2688691.43,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-10",
@@ -34974,7 +36598,8 @@ window.dashboardData = {
       "Banca Fijo": 8995.0,
       "Stake Compuesto": 53773.83,
       "Beneficio Compuesto": 24198.22,
-      "Banca Compuesto": 2712889.65
+      "Banca Compuesto": 2712889.65,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-10",
@@ -34992,7 +36617,8 @@ window.dashboardData = {
       "Banca Fijo": 9004.0,
       "Stake Compuesto": 54257.79,
       "Beneficio Compuesto": 24416.01,
-      "Banca Compuesto": 2737305.66
+      "Banca Compuesto": 2737305.66,
+      "league_id": 253
     },
     {
       "Fecha": "2024-11-10",
@@ -35010,7 +36636,8 @@ window.dashboardData = {
       "Banca Fijo": 9013.0,
       "Stake Compuesto": 54746.11,
       "Beneficio Compuesto": 24635.75,
-      "Banca Compuesto": 2761941.41
+      "Banca Compuesto": 2761941.41,
+      "league_id": 328
     },
     {
       "Fecha": "2024-11-10",
@@ -35028,7 +36655,8 @@ window.dashboardData = {
       "Banca Fijo": 9022.0,
       "Stake Compuesto": 55238.83,
       "Beneficio Compuesto": 24857.47,
-      "Banca Compuesto": 2786798.88
+      "Banca Compuesto": 2786798.88,
+      "league_id": 328
     },
     {
       "Fecha": "2024-11-10",
@@ -35046,7 +36674,8 @@ window.dashboardData = {
       "Banca Fijo": 9031.0,
       "Stake Compuesto": 55735.98,
       "Beneficio Compuesto": 25081.19,
-      "Banca Compuesto": 2811880.07
+      "Banca Compuesto": 2811880.07,
+      "league_id": 909
     },
     {
       "Fecha": "2024-11-16",
@@ -35064,7 +36693,8 @@ window.dashboardData = {
       "Banca Fijo": 9040.0,
       "Stake Compuesto": 56237.6,
       "Beneficio Compuesto": 25306.92,
-      "Banca Compuesto": 2837186.99
+      "Banca Compuesto": 2837186.99,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-16",
@@ -35082,7 +36712,8 @@ window.dashboardData = {
       "Banca Fijo": 9020.0,
       "Stake Compuesto": 56743.74,
       "Beneficio Compuesto": -56743.74,
-      "Banca Compuesto": 2780443.25
+      "Banca Compuesto": 2780443.25,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-16",
@@ -35100,7 +36731,8 @@ window.dashboardData = {
       "Banca Fijo": 9000.0,
       "Stake Compuesto": 55608.87,
       "Beneficio Compuesto": -55608.87,
-      "Banca Compuesto": 2724834.39
+      "Banca Compuesto": 2724834.39,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-17",
@@ -35118,7 +36750,8 @@ window.dashboardData = {
       "Banca Fijo": 9009.0,
       "Stake Compuesto": 54496.69,
       "Beneficio Compuesto": 24523.51,
-      "Banca Compuesto": 2749357.89
+      "Banca Compuesto": 2749357.89,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-17",
@@ -35136,7 +36769,8 @@ window.dashboardData = {
       "Banca Fijo": 9018.0,
       "Stake Compuesto": 54987.16,
       "Beneficio Compuesto": 24744.22,
-      "Banca Compuesto": 2774102.12
+      "Banca Compuesto": 2774102.12,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-22",
@@ -35154,7 +36788,8 @@ window.dashboardData = {
       "Banca Fijo": 8998.0,
       "Stake Compuesto": 55482.04,
       "Beneficio Compuesto": -55482.04,
-      "Banca Compuesto": 2718620.07
+      "Banca Compuesto": 2718620.07,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-22",
@@ -35172,7 +36807,8 @@ window.dashboardData = {
       "Banca Fijo": 8978.0,
       "Stake Compuesto": 54372.4,
       "Beneficio Compuesto": -54372.4,
-      "Banca Compuesto": 2664247.67
+      "Banca Compuesto": 2664247.67,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-22",
@@ -35190,7 +36826,8 @@ window.dashboardData = {
       "Banca Fijo": 8987.0,
       "Stake Compuesto": 53284.95,
       "Beneficio Compuesto": 23978.23,
-      "Banca Compuesto": 2688225.9
+      "Banca Compuesto": 2688225.9,
+      "league_id": 208
     },
     {
       "Fecha": "2024-11-23",
@@ -35208,7 +36845,8 @@ window.dashboardData = {
       "Banca Fijo": 8996.0,
       "Stake Compuesto": 53764.52,
       "Beneficio Compuesto": 24194.03,
-      "Banca Compuesto": 2712419.93
+      "Banca Compuesto": 2712419.93,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-23",
@@ -35226,7 +36864,8 @@ window.dashboardData = {
       "Banca Fijo": 9005.0,
       "Stake Compuesto": 54248.4,
       "Beneficio Compuesto": 24411.78,
-      "Banca Compuesto": 2736831.71
+      "Banca Compuesto": 2736831.71,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-23",
@@ -35244,7 +36883,8 @@ window.dashboardData = {
       "Banca Fijo": 9014.0,
       "Stake Compuesto": 54736.63,
       "Beneficio Compuesto": 24631.49,
-      "Banca Compuesto": 2761463.2
+      "Banca Compuesto": 2761463.2,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-23",
@@ -35262,7 +36902,8 @@ window.dashboardData = {
       "Banca Fijo": 9023.0,
       "Stake Compuesto": 55229.26,
       "Beneficio Compuesto": 24853.17,
-      "Banca Compuesto": 2786316.37
+      "Banca Compuesto": 2786316.37,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-23",
@@ -35280,7 +36921,8 @@ window.dashboardData = {
       "Banca Fijo": 9032.0,
       "Stake Compuesto": 55726.33,
       "Beneficio Compuesto": 25076.85,
-      "Banca Compuesto": 2811393.22
+      "Banca Compuesto": 2811393.22,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-23",
@@ -35298,7 +36940,8 @@ window.dashboardData = {
       "Banca Fijo": 9041.0,
       "Stake Compuesto": 56227.86,
       "Beneficio Compuesto": 25302.54,
-      "Banca Compuesto": 2836695.75
+      "Banca Compuesto": 2836695.75,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-23",
@@ -35316,7 +36959,8 @@ window.dashboardData = {
       "Banca Fijo": 9050.0,
       "Stake Compuesto": 56733.92,
       "Beneficio Compuesto": 25530.26,
-      "Banca Compuesto": 2862226.02
+      "Banca Compuesto": 2862226.02,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-23",
@@ -35334,7 +36978,8 @@ window.dashboardData = {
       "Banca Fijo": 9059.0,
       "Stake Compuesto": 57244.52,
       "Beneficio Compuesto": 25760.03,
-      "Banca Compuesto": 2887986.05
+      "Banca Compuesto": 2887986.05,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-23",
@@ -35352,7 +36997,8 @@ window.dashboardData = {
       "Banca Fijo": 9068.0,
       "Stake Compuesto": 57759.72,
       "Beneficio Compuesto": 25991.87,
-      "Banca Compuesto": 2913977.92
+      "Banca Compuesto": 2913977.92,
+      "league_id": 253
     },
     {
       "Fecha": "2024-11-24",
@@ -35370,7 +37016,8 @@ window.dashboardData = {
       "Banca Fijo": 9077.0,
       "Stake Compuesto": 58279.56,
       "Beneficio Compuesto": 26225.8,
-      "Banca Compuesto": 2940203.73
+      "Banca Compuesto": 2940203.73,
+      "league_id": 368
     },
     {
       "Fecha": "2024-11-24",
@@ -35388,7 +37035,8 @@ window.dashboardData = {
       "Banca Fijo": 9057.0,
       "Stake Compuesto": 58804.07,
       "Beneficio Compuesto": -58804.07,
-      "Banca Compuesto": 2881399.65
+      "Banca Compuesto": 2881399.65,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-25",
@@ -35406,7 +37054,8 @@ window.dashboardData = {
       "Banca Fijo": 9066.0,
       "Stake Compuesto": 57627.99,
       "Beneficio Compuesto": 25932.6,
-      "Banca Compuesto": 2907332.25
+      "Banca Compuesto": 2907332.25,
+      "league_id": 119
     },
     {
       "Fecha": "2024-11-27",
@@ -35424,7 +37073,8 @@ window.dashboardData = {
       "Banca Fijo": 9075.0,
       "Stake Compuesto": 58146.64,
       "Beneficio Compuesto": 26165.99,
-      "Banca Compuesto": 2933498.24
+      "Banca Compuesto": 2933498.24,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-29",
@@ -35442,7 +37092,8 @@ window.dashboardData = {
       "Banca Fijo": 9084.0,
       "Stake Compuesto": 58669.96,
       "Beneficio Compuesto": 26401.48,
-      "Banca Compuesto": 2959899.72
+      "Banca Compuesto": 2959899.72,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-29",
@@ -35460,7 +37111,8 @@ window.dashboardData = {
       "Banca Fijo": 9093.0,
       "Stake Compuesto": 59197.99,
       "Beneficio Compuesto": 26639.1,
-      "Banca Compuesto": 2986538.82
+      "Banca Compuesto": 2986538.82,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-29",
@@ -35478,7 +37130,8 @@ window.dashboardData = {
       "Banca Fijo": 9073.0,
       "Stake Compuesto": 59730.78,
       "Beneficio Compuesto": -59730.78,
-      "Banca Compuesto": 2926808.04
+      "Banca Compuesto": 2926808.04,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-29",
@@ -35496,7 +37149,8 @@ window.dashboardData = {
       "Banca Fijo": 9082.0,
       "Stake Compuesto": 58536.16,
       "Beneficio Compuesto": 26341.27,
-      "Banca Compuesto": 2953149.32
+      "Banca Compuesto": 2953149.32,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-29",
@@ -35514,7 +37168,8 @@ window.dashboardData = {
       "Banca Fijo": 9091.0,
       "Stake Compuesto": 59062.99,
       "Beneficio Compuesto": 26578.34,
-      "Banca Compuesto": 2979727.66
+      "Banca Compuesto": 2979727.66,
+      "league_id": 702
     },
     {
       "Fecha": "2024-11-30",
@@ -35532,7 +37187,8 @@ window.dashboardData = {
       "Banca Fijo": 9100.0,
       "Stake Compuesto": 59594.55,
       "Beneficio Compuesto": 26817.55,
-      "Banca Compuesto": 3006545.21
+      "Banca Compuesto": 3006545.21,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-30",
@@ -35550,7 +37206,8 @@ window.dashboardData = {
       "Banca Fijo": 9109.0,
       "Stake Compuesto": 60130.9,
       "Beneficio Compuesto": 27058.91,
-      "Banca Compuesto": 3033604.12
+      "Banca Compuesto": 3033604.12,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-30",
@@ -35568,7 +37225,8 @@ window.dashboardData = {
       "Banca Fijo": 9118.0,
       "Stake Compuesto": 60672.08,
       "Beneficio Compuesto": 27302.44,
-      "Banca Compuesto": 3060906.55
+      "Banca Compuesto": 3060906.55,
+      "league_id": 78
     },
     {
       "Fecha": "2024-11-30",
@@ -35586,7 +37244,8 @@ window.dashboardData = {
       "Banca Fijo": 9127.0,
       "Stake Compuesto": 61218.13,
       "Beneficio Compuesto": 27548.16,
-      "Banca Compuesto": 3088454.71
+      "Banca Compuesto": 3088454.71,
+      "league_id": 84
     },
     {
       "Fecha": "2024-11-30",
@@ -35604,7 +37263,8 @@ window.dashboardData = {
       "Banca Fijo": 9136.0,
       "Stake Compuesto": 61769.09,
       "Beneficio Compuesto": 27796.09,
-      "Banca Compuesto": 3116250.8
+      "Banca Compuesto": 3116250.8,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-30",
@@ -35622,7 +37282,8 @@ window.dashboardData = {
       "Banca Fijo": 9145.0,
       "Stake Compuesto": 62325.02,
       "Beneficio Compuesto": 28046.26,
-      "Banca Compuesto": 3144297.06
+      "Banca Compuesto": 3144297.06,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-30",
@@ -35640,7 +37301,8 @@ window.dashboardData = {
       "Banca Fijo": 9154.0,
       "Stake Compuesto": 62885.94,
       "Beneficio Compuesto": 28298.67,
-      "Banca Compuesto": 3172595.73
+      "Banca Compuesto": 3172595.73,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-30",
@@ -35658,7 +37320,8 @@ window.dashboardData = {
       "Banca Fijo": 9163.0,
       "Stake Compuesto": 63451.91,
       "Beneficio Compuesto": 28553.36,
-      "Banca Compuesto": 3201149.1
+      "Banca Compuesto": 3201149.1,
+      "league_id": 492
     },
     {
       "Fecha": "2024-11-30",
@@ -35676,7 +37339,8 @@ window.dashboardData = {
       "Banca Fijo": 9172.0,
       "Stake Compuesto": 64022.98,
       "Beneficio Compuesto": 28810.34,
-      "Banca Compuesto": 3229959.44
+      "Banca Compuesto": 3229959.44,
+      "league_id": 208
     },
     {
       "Fecha": "2024-12-01",
@@ -35694,7 +37358,8 @@ window.dashboardData = {
       "Banca Fijo": 9181.0,
       "Stake Compuesto": 64599.19,
       "Beneficio Compuesto": 29069.63,
-      "Banca Compuesto": 3259029.07
+      "Banca Compuesto": 3259029.07,
+      "league_id": 119
     },
     {
       "Fecha": "2024-12-07",
@@ -35712,7 +37377,8 @@ window.dashboardData = {
       "Banca Fijo": 9190.0,
       "Stake Compuesto": 65180.58,
       "Beneficio Compuesto": 29331.26,
-      "Banca Compuesto": 3288360.33
+      "Banca Compuesto": 3288360.33,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-07",
@@ -35730,7 +37396,8 @@ window.dashboardData = {
       "Banca Fijo": 9199.0,
       "Stake Compuesto": 65767.21,
       "Beneficio Compuesto": 29595.24,
-      "Banca Compuesto": 3317955.58
+      "Banca Compuesto": 3317955.58,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-07",
@@ -35748,7 +37415,8 @@ window.dashboardData = {
       "Banca Fijo": 9179.0,
       "Stake Compuesto": 66359.11,
       "Beneficio Compuesto": -66359.11,
-      "Banca Compuesto": 3251596.47
+      "Banca Compuesto": 3251596.47,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-07",
@@ -35766,7 +37434,8 @@ window.dashboardData = {
       "Banca Fijo": 9188.0,
       "Stake Compuesto": 65031.93,
       "Beneficio Compuesto": 29264.37,
-      "Banca Compuesto": 3280860.83
+      "Banca Compuesto": 3280860.83,
+      "league_id": 84
     },
     {
       "Fecha": "2024-12-07",
@@ -35784,7 +37453,8 @@ window.dashboardData = {
       "Banca Fijo": 9168.0,
       "Stake Compuesto": 65617.22,
       "Beneficio Compuesto": -65617.22,
-      "Banca Compuesto": 3215243.62
+      "Banca Compuesto": 3215243.62,
+      "league_id": 492
     },
     {
       "Fecha": "2024-12-07",
@@ -35802,7 +37472,8 @@ window.dashboardData = {
       "Banca Fijo": 9177.0,
       "Stake Compuesto": 64304.87,
       "Beneficio Compuesto": 28937.19,
-      "Banca Compuesto": 3244180.81
+      "Banca Compuesto": 3244180.81,
+      "league_id": 492
     },
     {
       "Fecha": "2024-12-07",
@@ -35820,7 +37491,8 @@ window.dashboardData = {
       "Banca Fijo": 9186.0,
       "Stake Compuesto": 64883.62,
       "Beneficio Compuesto": 29197.63,
-      "Banca Compuesto": 3273378.44
+      "Banca Compuesto": 3273378.44,
+      "league_id": 492
     },
     {
       "Fecha": "2024-12-08",
@@ -35838,7 +37510,8 @@ window.dashboardData = {
       "Banca Fijo": 9195.0,
       "Stake Compuesto": 65467.57,
       "Beneficio Compuesto": 29460.41,
-      "Banca Compuesto": 3302838.84
+      "Banca Compuesto": 3302838.84,
+      "league_id": 208
     },
     {
       "Fecha": "2024-12-13",
@@ -35856,7 +37529,8 @@ window.dashboardData = {
       "Banca Fijo": 9204.0,
       "Stake Compuesto": 66056.78,
       "Beneficio Compuesto": 29725.55,
-      "Banca Compuesto": 3332564.39
+      "Banca Compuesto": 3332564.39,
+      "league_id": 702
     },
     {
       "Fecha": "2024-12-13",
@@ -35874,7 +37548,8 @@ window.dashboardData = {
       "Banca Fijo": 9213.0,
       "Stake Compuesto": 66651.29,
       "Beneficio Compuesto": 29993.08,
-      "Banca Compuesto": 3362557.47
+      "Banca Compuesto": 3362557.47,
+      "league_id": 208
     },
     {
       "Fecha": "2024-12-14",
@@ -35892,7 +37567,8 @@ window.dashboardData = {
       "Banca Fijo": 9222.0,
       "Stake Compuesto": 67251.15,
       "Beneficio Compuesto": 30263.02,
-      "Banca Compuesto": 3392820.49
+      "Banca Compuesto": 3392820.49,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-14",
@@ -35910,7 +37586,8 @@ window.dashboardData = {
       "Banca Fijo": 9231.0,
       "Stake Compuesto": 67856.41,
       "Beneficio Compuesto": 30535.38,
-      "Banca Compuesto": 3423355.87
+      "Banca Compuesto": 3423355.87,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-14",
@@ -35928,7 +37605,8 @@ window.dashboardData = {
       "Banca Fijo": 9240.0,
       "Stake Compuesto": 68467.12,
       "Beneficio Compuesto": 30810.2,
-      "Banca Compuesto": 3454166.08
+      "Banca Compuesto": 3454166.08,
+      "league_id": 492
     },
     {
       "Fecha": "2024-12-14",
@@ -35946,7 +37624,8 @@ window.dashboardData = {
       "Banca Fijo": 9249.0,
       "Stake Compuesto": 69083.32,
       "Beneficio Compuesto": 31087.49,
-      "Banca Compuesto": 3485253.57
+      "Banca Compuesto": 3485253.57,
+      "league_id": 492
     },
     {
       "Fecha": "2024-12-14",
@@ -35964,7 +37643,8 @@ window.dashboardData = {
       "Banca Fijo": 9258.0,
       "Stake Compuesto": 69705.07,
       "Beneficio Compuesto": 31367.28,
-      "Banca Compuesto": 3516620.85
+      "Banca Compuesto": 3516620.85,
+      "league_id": 702
     },
     {
       "Fecha": "2024-12-15",
@@ -35982,7 +37662,8 @@ window.dashboardData = {
       "Banca Fijo": 9238.0,
       "Stake Compuesto": 70332.42,
       "Beneficio Compuesto": -70332.42,
-      "Banca Compuesto": 3446288.44
+      "Banca Compuesto": 3446288.44,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-15",
@@ -36000,7 +37681,8 @@ window.dashboardData = {
       "Banca Fijo": 9247.0,
       "Stake Compuesto": 68925.77,
       "Beneficio Compuesto": 31016.6,
-      "Banca Compuesto": 3477305.03
+      "Banca Compuesto": 3477305.03,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-16",
@@ -36018,7 +37700,8 @@ window.dashboardData = {
       "Banca Fijo": 9256.0,
       "Stake Compuesto": 69546.1,
       "Beneficio Compuesto": 31295.75,
-      "Banca Compuesto": 3508600.78
+      "Banca Compuesto": 3508600.78,
+      "league_id": 702
     },
     {
       "Fecha": "2024-12-20",
@@ -36036,7 +37719,8 @@ window.dashboardData = {
       "Banca Fijo": 9265.0,
       "Stake Compuesto": 70172.02,
       "Beneficio Compuesto": 31577.41,
-      "Banca Compuesto": 3540178.19
+      "Banca Compuesto": 3540178.19,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-21",
@@ -36054,7 +37738,8 @@ window.dashboardData = {
       "Banca Fijo": 9274.0,
       "Stake Compuesto": 70803.56,
       "Beneficio Compuesto": 31861.6,
-      "Banca Compuesto": 3572039.79
+      "Banca Compuesto": 3572039.79,
+      "league_id": 78
     },
     {
       "Fecha": "2024-12-21",
@@ -36072,7 +37757,8 @@ window.dashboardData = {
       "Banca Fijo": 9283.0,
       "Stake Compuesto": 71440.8,
       "Beneficio Compuesto": 32148.36,
-      "Banca Compuesto": 3604188.15
+      "Banca Compuesto": 3604188.15,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-10",
@@ -36090,7 +37776,8 @@ window.dashboardData = {
       "Banca Fijo": 9292.0,
       "Stake Compuesto": 72083.76,
       "Beneficio Compuesto": 32437.69,
-      "Banca Compuesto": 3636625.84
+      "Banca Compuesto": 3636625.84,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-10",
@@ -36108,7 +37795,8 @@ window.dashboardData = {
       "Banca Fijo": 9301.0,
       "Stake Compuesto": 72732.52,
       "Beneficio Compuesto": 32729.63,
-      "Banca Compuesto": 3669355.47
+      "Banca Compuesto": 3669355.47,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-11",
@@ -36126,7 +37814,8 @@ window.dashboardData = {
       "Banca Fijo": 9281.0,
       "Stake Compuesto": 73387.11,
       "Beneficio Compuesto": -73387.11,
-      "Banca Compuesto": 3595968.36
+      "Banca Compuesto": 3595968.36,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-11",
@@ -36144,7 +37833,8 @@ window.dashboardData = {
       "Banca Fijo": 9290.0,
       "Stake Compuesto": 71919.37,
       "Beneficio Compuesto": 32363.72,
-      "Banca Compuesto": 3628332.08
+      "Banca Compuesto": 3628332.08,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-11",
@@ -36162,7 +37852,8 @@ window.dashboardData = {
       "Banca Fijo": 9299.0,
       "Stake Compuesto": 72566.64,
       "Beneficio Compuesto": 32654.99,
-      "Banca Compuesto": 3660987.07
+      "Banca Compuesto": 3660987.07,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-11",
@@ -36180,7 +37871,8 @@ window.dashboardData = {
       "Banca Fijo": 9308.0,
       "Stake Compuesto": 73219.74,
       "Beneficio Compuesto": 32948.88,
-      "Banca Compuesto": 3693935.95
+      "Banca Compuesto": 3693935.95,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-12",
@@ -36198,7 +37890,8 @@ window.dashboardData = {
       "Banca Fijo": 9317.0,
       "Stake Compuesto": 73878.72,
       "Beneficio Compuesto": 33245.42,
-      "Banca Compuesto": 3727181.37
+      "Banca Compuesto": 3727181.37,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-13",
@@ -36216,7 +37909,8 @@ window.dashboardData = {
       "Banca Fijo": 9326.0,
       "Stake Compuesto": 74543.63,
       "Beneficio Compuesto": 33544.63,
-      "Banca Compuesto": 3760726.01
+      "Banca Compuesto": 3760726.01,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-13",
@@ -36234,7 +37928,8 @@ window.dashboardData = {
       "Banca Fijo": 9335.0,
       "Stake Compuesto": 75214.52,
       "Beneficio Compuesto": 33846.53,
-      "Banca Compuesto": 3794572.54
+      "Banca Compuesto": 3794572.54,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-14",
@@ -36252,7 +37947,8 @@ window.dashboardData = {
       "Banca Fijo": 9315.0,
       "Stake Compuesto": 75891.45,
       "Beneficio Compuesto": -75891.45,
-      "Banca Compuesto": 3718681.09
+      "Banca Compuesto": 3718681.09,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-14",
@@ -36270,7 +37966,8 @@ window.dashboardData = {
       "Banca Fijo": 9324.0,
       "Stake Compuesto": 74373.62,
       "Beneficio Compuesto": 33468.13,
-      "Banca Compuesto": 3752149.22
+      "Banca Compuesto": 3752149.22,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-15",
@@ -36288,7 +37985,8 @@ window.dashboardData = {
       "Banca Fijo": 9333.0,
       "Stake Compuesto": 75042.98,
       "Beneficio Compuesto": 33769.34,
-      "Banca Compuesto": 3785918.56
+      "Banca Compuesto": 3785918.56,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-17",
@@ -36306,7 +38004,8 @@ window.dashboardData = {
       "Banca Fijo": 9342.0,
       "Stake Compuesto": 75718.37,
       "Beneficio Compuesto": 34073.27,
-      "Banca Compuesto": 3819991.83
+      "Banca Compuesto": 3819991.83,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-17",
@@ -36324,7 +38023,8 @@ window.dashboardData = {
       "Banca Fijo": 9351.0,
       "Stake Compuesto": 76399.84,
       "Beneficio Compuesto": 34379.93,
-      "Banca Compuesto": 3854371.76
+      "Banca Compuesto": 3854371.76,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-17",
@@ -36342,7 +38042,8 @@ window.dashboardData = {
       "Banca Fijo": 9360.0,
       "Stake Compuesto": 77087.44,
       "Beneficio Compuesto": 34689.35,
-      "Banca Compuesto": 3889061.1
+      "Banca Compuesto": 3889061.1,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-17",
@@ -36360,7 +38061,8 @@ window.dashboardData = {
       "Banca Fijo": 9369.0,
       "Stake Compuesto": 77781.22,
       "Beneficio Compuesto": 35001.55,
-      "Banca Compuesto": 3924062.65
+      "Banca Compuesto": 3924062.65,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-17",
@@ -36378,7 +38080,8 @@ window.dashboardData = {
       "Banca Fijo": 9378.0,
       "Stake Compuesto": 78481.25,
       "Beneficio Compuesto": 35316.56,
-      "Banca Compuesto": 3959379.22
+      "Banca Compuesto": 3959379.22,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-18",
@@ -36396,7 +38099,8 @@ window.dashboardData = {
       "Banca Fijo": 9387.0,
       "Stake Compuesto": 79187.58,
       "Beneficio Compuesto": 35634.41,
-      "Banca Compuesto": 3995013.63
+      "Banca Compuesto": 3995013.63,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-18",
@@ -36414,7 +38118,8 @@ window.dashboardData = {
       "Banca Fijo": 9396.0,
       "Stake Compuesto": 79900.27,
       "Beneficio Compuesto": 35955.12,
-      "Banca Compuesto": 4030968.75
+      "Banca Compuesto": 4030968.75,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-18",
@@ -36432,7 +38137,8 @@ window.dashboardData = {
       "Banca Fijo": 9405.0,
       "Stake Compuesto": 80619.38,
       "Beneficio Compuesto": 36278.72,
-      "Banca Compuesto": 4067247.47
+      "Banca Compuesto": 4067247.47,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-18",
@@ -36450,7 +38156,8 @@ window.dashboardData = {
       "Banca Fijo": 9414.0,
       "Stake Compuesto": 81344.95,
       "Beneficio Compuesto": 36605.23,
-      "Banca Compuesto": 4103852.7
+      "Banca Compuesto": 4103852.7,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-18",
@@ -36468,7 +38175,8 @@ window.dashboardData = {
       "Banca Fijo": 9423.0,
       "Stake Compuesto": 82077.05,
       "Beneficio Compuesto": 36934.67,
-      "Banca Compuesto": 4140787.37
+      "Banca Compuesto": 4140787.37,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-18",
@@ -36486,7 +38194,8 @@ window.dashboardData = {
       "Banca Fijo": 9432.0,
       "Stake Compuesto": 82815.75,
       "Beneficio Compuesto": 37267.09,
-      "Banca Compuesto": 4178054.46
+      "Banca Compuesto": 4178054.46,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-18",
@@ -36504,7 +38213,8 @@ window.dashboardData = {
       "Banca Fijo": 9441.0,
       "Stake Compuesto": 83561.09,
       "Beneficio Compuesto": 37602.49,
-      "Banca Compuesto": 4215656.95
+      "Banca Compuesto": 4215656.95,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-19",
@@ -36522,7 +38232,8 @@ window.dashboardData = {
       "Banca Fijo": 9450.0,
       "Stake Compuesto": 84313.14,
       "Beneficio Compuesto": 37940.91,
-      "Banca Compuesto": 4253597.86
+      "Banca Compuesto": 4253597.86,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-20",
@@ -36540,7 +38251,8 @@ window.dashboardData = {
       "Banca Fijo": 9459.0,
       "Stake Compuesto": 85071.96,
       "Beneficio Compuesto": 38282.38,
-      "Banca Compuesto": 4291880.24
+      "Banca Compuesto": 4291880.24,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-24",
@@ -36558,7 +38270,8 @@ window.dashboardData = {
       "Banca Fijo": 9468.0,
       "Stake Compuesto": 85837.6,
       "Beneficio Compuesto": 38626.92,
-      "Banca Compuesto": 4330507.16
+      "Banca Compuesto": 4330507.16,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-24",
@@ -36576,7 +38289,8 @@ window.dashboardData = {
       "Banca Fijo": 9477.0,
       "Stake Compuesto": 86610.14,
       "Beneficio Compuesto": 38974.56,
-      "Banca Compuesto": 4369481.73
+      "Banca Compuesto": 4369481.73,
+      "league_id": 702
     },
     {
       "Fecha": "2025-01-24",
@@ -36594,7 +38308,8 @@ window.dashboardData = {
       "Banca Fijo": 9486.0,
       "Stake Compuesto": 87389.63,
       "Beneficio Compuesto": 39325.34,
-      "Banca Compuesto": 4408807.06
+      "Banca Compuesto": 4408807.06,
+      "league_id": 208
     },
     {
       "Fecha": "2025-01-24",
@@ -36612,7 +38327,8 @@ window.dashboardData = {
       "Banca Fijo": 9495.0,
       "Stake Compuesto": 88176.14,
       "Beneficio Compuesto": 39679.26,
-      "Banca Compuesto": 4448486.33
+      "Banca Compuesto": 4448486.33,
+      "league_id": 208
     },
     {
       "Fecha": "2025-01-25",
@@ -36630,7 +38346,8 @@ window.dashboardData = {
       "Banca Fijo": 9504.0,
       "Stake Compuesto": 88969.73,
       "Beneficio Compuesto": 40036.38,
-      "Banca Compuesto": 4488522.7
+      "Banca Compuesto": 4488522.7,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-25",
@@ -36648,7 +38365,8 @@ window.dashboardData = {
       "Banca Fijo": 9513.0,
       "Stake Compuesto": 89770.45,
       "Beneficio Compuesto": 40396.7,
-      "Banca Compuesto": 4528919.41
+      "Banca Compuesto": 4528919.41,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-25",
@@ -36666,7 +38384,8 @@ window.dashboardData = {
       "Banca Fijo": 9522.0,
       "Stake Compuesto": 90578.39,
       "Beneficio Compuesto": 40760.27,
-      "Banca Compuesto": 4569679.68
+      "Banca Compuesto": 4569679.68,
+      "league_id": 78
     },
     {
       "Fecha": "2025-01-25",
@@ -36684,7 +38403,8 @@ window.dashboardData = {
       "Banca Fijo": 9531.0,
       "Stake Compuesto": 91393.59,
       "Beneficio Compuesto": 41127.12,
-      "Banca Compuesto": 4610806.8
+      "Banca Compuesto": 4610806.8,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-25",
@@ -36702,7 +38422,8 @@ window.dashboardData = {
       "Banca Fijo": 9540.0,
       "Stake Compuesto": 92216.14,
       "Beneficio Compuesto": 41497.26,
-      "Banca Compuesto": 4652304.06
+      "Banca Compuesto": 4652304.06,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-25",
@@ -36720,7 +38441,8 @@ window.dashboardData = {
       "Banca Fijo": 9520.0,
       "Stake Compuesto": 93046.08,
       "Beneficio Compuesto": -93046.08,
-      "Banca Compuesto": 4559257.98
+      "Banca Compuesto": 4559257.98,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-25",
@@ -36738,7 +38460,8 @@ window.dashboardData = {
       "Banca Fijo": 9529.0,
       "Stake Compuesto": 91185.16,
       "Beneficio Compuesto": 41033.32,
-      "Banca Compuesto": 4600291.3
+      "Banca Compuesto": 4600291.3,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-25",
@@ -36756,7 +38479,8 @@ window.dashboardData = {
       "Banca Fijo": 9538.0,
       "Stake Compuesto": 92005.83,
       "Beneficio Compuesto": 41402.62,
-      "Banca Compuesto": 4641693.92
+      "Banca Compuesto": 4641693.92,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-25",
@@ -36774,7 +38498,8 @@ window.dashboardData = {
       "Banca Fijo": 9518.0,
       "Stake Compuesto": 92833.88,
       "Beneficio Compuesto": -92833.88,
-      "Banca Compuesto": 4548860.05
+      "Banca Compuesto": 4548860.05,
+      "league_id": 492
     },
     {
       "Fecha": "2025-01-26",
@@ -36792,7 +38517,8 @@ window.dashboardData = {
       "Banca Fijo": 9527.0,
       "Stake Compuesto": 90977.2,
       "Beneficio Compuesto": 40939.74,
-      "Banca Compuesto": 4589799.79
+      "Banca Compuesto": 4589799.79,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-26",
@@ -36810,7 +38536,8 @@ window.dashboardData = {
       "Banca Fijo": 9536.0,
       "Stake Compuesto": 91796.0,
       "Beneficio Compuesto": 41308.2,
-      "Banca Compuesto": 4631107.98
+      "Banca Compuesto": 4631107.98,
+      "league_id": 368
     },
     {
       "Fecha": "2025-01-27",
@@ -36828,7 +38555,8 @@ window.dashboardData = {
       "Banca Fijo": 9545.0,
       "Stake Compuesto": 92622.16,
       "Beneficio Compuesto": 41679.97,
-      "Banca Compuesto": 4672787.96
+      "Banca Compuesto": 4672787.96,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-01",
@@ -36846,7 +38574,8 @@ window.dashboardData = {
       "Banca Fijo": 9554.0,
       "Stake Compuesto": 93455.76,
       "Beneficio Compuesto": 42055.09,
-      "Banca Compuesto": 4714843.05
+      "Banca Compuesto": 4714843.05,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-01",
@@ -36864,7 +38593,8 @@ window.dashboardData = {
       "Banca Fijo": 9563.0,
       "Stake Compuesto": 94296.86,
       "Beneficio Compuesto": 42433.59,
-      "Banca Compuesto": 4757276.64
+      "Banca Compuesto": 4757276.64,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-01",
@@ -36882,7 +38612,8 @@ window.dashboardData = {
       "Banca Fijo": 9543.0,
       "Stake Compuesto": 95145.53,
       "Beneficio Compuesto": -95145.53,
-      "Banca Compuesto": 4662131.1
+      "Banca Compuesto": 4662131.1,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-02",
@@ -36900,7 +38631,8 @@ window.dashboardData = {
       "Banca Fijo": 9523.0,
       "Stake Compuesto": 93242.62,
       "Beneficio Compuesto": -93242.62,
-      "Banca Compuesto": 4568888.48
+      "Banca Compuesto": 4568888.48,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-02",
@@ -36918,7 +38650,8 @@ window.dashboardData = {
       "Banca Fijo": 9532.0,
       "Stake Compuesto": 91377.77,
       "Beneficio Compuesto": 41120.0,
-      "Banca Compuesto": 4610008.48
+      "Banca Compuesto": 4610008.48,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-07",
@@ -36936,7 +38669,8 @@ window.dashboardData = {
       "Banca Fijo": 9512.0,
       "Stake Compuesto": 92200.17,
       "Beneficio Compuesto": -92200.17,
-      "Banca Compuesto": 4517808.31
+      "Banca Compuesto": 4517808.31,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-07",
@@ -36954,7 +38688,8 @@ window.dashboardData = {
       "Banca Fijo": 9521.0,
       "Stake Compuesto": 90356.17,
       "Beneficio Compuesto": 40660.27,
-      "Banca Compuesto": 4558468.58
+      "Banca Compuesto": 4558468.58,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-07",
@@ -36972,7 +38707,8 @@ window.dashboardData = {
       "Banca Fijo": 9530.0,
       "Stake Compuesto": 91169.37,
       "Beneficio Compuesto": 41026.22,
-      "Banca Compuesto": 4599494.8
+      "Banca Compuesto": 4599494.8,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-07",
@@ -36990,7 +38726,8 @@ window.dashboardData = {
       "Banca Fijo": 9539.0,
       "Stake Compuesto": 91989.9,
       "Beneficio Compuesto": 41395.45,
-      "Banca Compuesto": 4640890.25
+      "Banca Compuesto": 4640890.25,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-07",
@@ -37008,7 +38745,8 @@ window.dashboardData = {
       "Banca Fijo": 9548.0,
       "Stake Compuesto": 92817.81,
       "Beneficio Compuesto": 41768.01,
-      "Banca Compuesto": 4682658.26
+      "Banca Compuesto": 4682658.26,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-07",
@@ -37026,7 +38764,8 @@ window.dashboardData = {
       "Banca Fijo": 9557.0,
       "Stake Compuesto": 93653.17,
       "Beneficio Compuesto": 42143.92,
-      "Banca Compuesto": 4724802.19
+      "Banca Compuesto": 4724802.19,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-07",
@@ -37044,7 +38783,8 @@ window.dashboardData = {
       "Banca Fijo": 9566.0,
       "Stake Compuesto": 94496.04,
       "Beneficio Compuesto": 42523.22,
-      "Banca Compuesto": 4767325.41
+      "Banca Compuesto": 4767325.41,
+      "league_id": 208
     },
     {
       "Fecha": "2025-02-07",
@@ -37062,7 +38802,8 @@ window.dashboardData = {
       "Banca Fijo": 9575.0,
       "Stake Compuesto": 95346.51,
       "Beneficio Compuesto": 42905.93,
-      "Banca Compuesto": 4810231.34
+      "Banca Compuesto": 4810231.34,
+      "league_id": 208
     },
     {
       "Fecha": "2025-02-08",
@@ -37080,7 +38821,8 @@ window.dashboardData = {
       "Banca Fijo": 9555.0,
       "Stake Compuesto": 96204.63,
       "Beneficio Compuesto": -96204.63,
-      "Banca Compuesto": 4714026.71
+      "Banca Compuesto": 4714026.71,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-08",
@@ -37098,7 +38840,8 @@ window.dashboardData = {
       "Banca Fijo": 9535.0,
       "Stake Compuesto": 94280.53,
       "Beneficio Compuesto": -94280.53,
-      "Banca Compuesto": 4619746.18
+      "Banca Compuesto": 4619746.18,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-08",
@@ -37116,7 +38859,8 @@ window.dashboardData = {
       "Banca Fijo": 9544.0,
       "Stake Compuesto": 92394.92,
       "Beneficio Compuesto": 41577.72,
-      "Banca Compuesto": 4661323.89
+      "Banca Compuesto": 4661323.89,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-08",
@@ -37134,7 +38878,8 @@ window.dashboardData = {
       "Banca Fijo": 9553.0,
       "Stake Compuesto": 93226.48,
       "Beneficio Compuesto": 41951.92,
-      "Banca Compuesto": 4703275.81
+      "Banca Compuesto": 4703275.81,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-08",
@@ -37152,7 +38897,8 @@ window.dashboardData = {
       "Banca Fijo": 9562.0,
       "Stake Compuesto": 94065.52,
       "Beneficio Compuesto": 42329.48,
-      "Banca Compuesto": 4745605.29
+      "Banca Compuesto": 4745605.29,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-08",
@@ -37170,7 +38916,8 @@ window.dashboardData = {
       "Banca Fijo": 9542.0,
       "Stake Compuesto": 94912.11,
       "Beneficio Compuesto": -94912.11,
-      "Banca Compuesto": 4650693.18
+      "Banca Compuesto": 4650693.18,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-09",
@@ -37188,7 +38935,8 @@ window.dashboardData = {
       "Banca Fijo": 9551.0,
       "Stake Compuesto": 93013.86,
       "Beneficio Compuesto": 41856.24,
-      "Banca Compuesto": 4692549.42
+      "Banca Compuesto": 4692549.42,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-09",
@@ -37206,7 +38954,8 @@ window.dashboardData = {
       "Banca Fijo": 9531.0,
       "Stake Compuesto": 93850.99,
       "Beneficio Compuesto": -93850.99,
-      "Banca Compuesto": 4598698.43
+      "Banca Compuesto": 4598698.43,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-09",
@@ -37224,7 +38973,8 @@ window.dashboardData = {
       "Banca Fijo": 9540.0,
       "Stake Compuesto": 91973.97,
       "Beneficio Compuesto": 41388.29,
-      "Banca Compuesto": 4640086.72
+      "Banca Compuesto": 4640086.72,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-09",
@@ -37242,7 +38992,8 @@ window.dashboardData = {
       "Banca Fijo": 9549.0,
       "Stake Compuesto": 92801.73,
       "Beneficio Compuesto": 41760.78,
-      "Banca Compuesto": 4681847.5
+      "Banca Compuesto": 4681847.5,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-09",
@@ -37260,7 +39011,8 @@ window.dashboardData = {
       "Banca Fijo": 9558.0,
       "Stake Compuesto": 93636.95,
       "Beneficio Compuesto": 42136.63,
-      "Banca Compuesto": 4723984.13
+      "Banca Compuesto": 4723984.13,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-10",
@@ -37278,7 +39030,8 @@ window.dashboardData = {
       "Banca Fijo": 9567.0,
       "Stake Compuesto": 94479.68,
       "Beneficio Compuesto": 42515.86,
-      "Banca Compuesto": 4766499.98
+      "Banca Compuesto": 4766499.98,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-10",
@@ -37296,7 +39049,8 @@ window.dashboardData = {
       "Banca Fijo": 9576.0,
       "Stake Compuesto": 95330.0,
       "Beneficio Compuesto": 42898.5,
-      "Banca Compuesto": 4809398.48
+      "Banca Compuesto": 4809398.48,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-14",
@@ -37314,7 +39068,8 @@ window.dashboardData = {
       "Banca Fijo": 9585.0,
       "Stake Compuesto": 96187.97,
       "Beneficio Compuesto": 43284.59,
-      "Banca Compuesto": 4852683.07
+      "Banca Compuesto": 4852683.07,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-14",
@@ -37332,7 +39087,8 @@ window.dashboardData = {
       "Banca Fijo": 9594.0,
       "Stake Compuesto": 97053.66,
       "Beneficio Compuesto": 43674.15,
-      "Banca Compuesto": 4896357.22
+      "Banca Compuesto": 4896357.22,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-15",
@@ -37350,7 +39106,8 @@ window.dashboardData = {
       "Banca Fijo": 9574.0,
       "Stake Compuesto": 97927.14,
       "Beneficio Compuesto": -97927.14,
-      "Banca Compuesto": 4798430.07
+      "Banca Compuesto": 4798430.07,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-15",
@@ -37368,7 +39125,8 @@ window.dashboardData = {
       "Banca Fijo": 9583.0,
       "Stake Compuesto": 95968.6,
       "Beneficio Compuesto": 43185.87,
-      "Banca Compuesto": 4841615.94
+      "Banca Compuesto": 4841615.94,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-15",
@@ -37386,7 +39144,8 @@ window.dashboardData = {
       "Banca Fijo": 9592.0,
       "Stake Compuesto": 96832.32,
       "Beneficio Compuesto": 43574.54,
-      "Banca Compuesto": 4885190.49
+      "Banca Compuesto": 4885190.49,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-15",
@@ -37404,7 +39163,8 @@ window.dashboardData = {
       "Banca Fijo": 9572.0,
       "Stake Compuesto": 97703.81,
       "Beneficio Compuesto": -97703.81,
-      "Banca Compuesto": 4787486.68
+      "Banca Compuesto": 4787486.68,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-15",
@@ -37422,7 +39182,8 @@ window.dashboardData = {
       "Banca Fijo": 9581.0,
       "Stake Compuesto": 95749.73,
       "Beneficio Compuesto": 43087.38,
-      "Banca Compuesto": 4830574.06
+      "Banca Compuesto": 4830574.06,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-16",
@@ -37440,7 +39201,8 @@ window.dashboardData = {
       "Banca Fijo": 9590.0,
       "Stake Compuesto": 96611.48,
       "Beneficio Compuesto": 43475.17,
-      "Banca Compuesto": 4874049.23
+      "Banca Compuesto": 4874049.23,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-16",
@@ -37458,7 +39220,8 @@ window.dashboardData = {
       "Banca Fijo": 9599.0,
       "Stake Compuesto": 97480.98,
       "Beneficio Compuesto": 43866.44,
-      "Banca Compuesto": 4917915.67
+      "Banca Compuesto": 4917915.67,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-16",
@@ -37476,7 +39239,8 @@ window.dashboardData = {
       "Banca Fijo": 9579.0,
       "Stake Compuesto": 98358.31,
       "Beneficio Compuesto": -98358.31,
-      "Banca Compuesto": 4819557.35
+      "Banca Compuesto": 4819557.35,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-16",
@@ -37494,7 +39258,8 @@ window.dashboardData = {
       "Banca Fijo": 9588.0,
       "Stake Compuesto": 96391.15,
       "Beneficio Compuesto": 43376.02,
-      "Banca Compuesto": 4862933.37
+      "Banca Compuesto": 4862933.37,
+      "league_id": 119
     },
     {
       "Fecha": "2025-02-17",
@@ -37512,7 +39277,8 @@ window.dashboardData = {
       "Banca Fijo": 9568.0,
       "Stake Compuesto": 97258.67,
       "Beneficio Compuesto": -97258.67,
-      "Banca Compuesto": 4765674.7
+      "Banca Compuesto": 4765674.7,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-17",
@@ -37530,7 +39296,8 @@ window.dashboardData = {
       "Banca Fijo": 9577.0,
       "Stake Compuesto": 95313.49,
       "Beneficio Compuesto": 42891.07,
-      "Banca Compuesto": 4808565.78
+      "Banca Compuesto": 4808565.78,
+      "league_id": 119
     },
     {
       "Fecha": "2025-02-21",
@@ -37548,7 +39315,8 @@ window.dashboardData = {
       "Banca Fijo": 9586.0,
       "Stake Compuesto": 96171.32,
       "Beneficio Compuesto": 43277.09,
-      "Banca Compuesto": 4851842.87
+      "Banca Compuesto": 4851842.87,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-21",
@@ -37566,7 +39334,8 @@ window.dashboardData = {
       "Banca Fijo": 9595.0,
       "Stake Compuesto": 97036.86,
       "Beneficio Compuesto": 43666.59,
-      "Banca Compuesto": 4895509.45
+      "Banca Compuesto": 4895509.45,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-21",
@@ -37584,7 +39353,8 @@ window.dashboardData = {
       "Banca Fijo": 9604.0,
       "Stake Compuesto": 97910.19,
       "Beneficio Compuesto": 44059.59,
-      "Banca Compuesto": 4939569.04
+      "Banca Compuesto": 4939569.04,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-21",
@@ -37602,7 +39372,8 @@ window.dashboardData = {
       "Banca Fijo": 9613.0,
       "Stake Compuesto": 98791.38,
       "Beneficio Compuesto": 44456.12,
-      "Banca Compuesto": 4984025.16
+      "Banca Compuesto": 4984025.16,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-21",
@@ -37620,7 +39391,8 @@ window.dashboardData = {
       "Banca Fijo": 9622.0,
       "Stake Compuesto": 99680.5,
       "Beneficio Compuesto": 44856.23,
-      "Banca Compuesto": 5028881.39
+      "Banca Compuesto": 5028881.39,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-21",
@@ -37638,7 +39410,8 @@ window.dashboardData = {
       "Banca Fijo": 9631.0,
       "Stake Compuesto": 100577.63,
       "Beneficio Compuesto": 45259.93,
-      "Banca Compuesto": 5074141.32
+      "Banca Compuesto": 5074141.32,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-21",
@@ -37656,7 +39429,8 @@ window.dashboardData = {
       "Banca Fijo": 9611.0,
       "Stake Compuesto": 101482.83,
       "Beneficio Compuesto": -101482.83,
-      "Banca Compuesto": 4972658.49
+      "Banca Compuesto": 4972658.49,
+      "league_id": 119
     },
     {
       "Fecha": "2025-02-22",
@@ -37674,7 +39448,8 @@ window.dashboardData = {
       "Banca Fijo": 9620.0,
       "Stake Compuesto": 99453.17,
       "Beneficio Compuesto": 44753.93,
-      "Banca Compuesto": 5017412.42
+      "Banca Compuesto": 5017412.42,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-22",
@@ -37692,7 +39467,8 @@ window.dashboardData = {
       "Banca Fijo": 9629.0,
       "Stake Compuesto": 100348.25,
       "Beneficio Compuesto": 45156.71,
-      "Banca Compuesto": 5062569.13
+      "Banca Compuesto": 5062569.13,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-22",
@@ -37710,7 +39486,8 @@ window.dashboardData = {
       "Banca Fijo": 9638.0,
       "Stake Compuesto": 101251.38,
       "Beneficio Compuesto": 45563.12,
-      "Banca Compuesto": 5108132.25
+      "Banca Compuesto": 5108132.25,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-22",
@@ -37728,7 +39505,8 @@ window.dashboardData = {
       "Banca Fijo": 9647.0,
       "Stake Compuesto": 102162.65,
       "Beneficio Compuesto": 45973.19,
-      "Banca Compuesto": 5154105.44
+      "Banca Compuesto": 5154105.44,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-22",
@@ -37746,7 +39524,8 @@ window.dashboardData = {
       "Banca Fijo": 9656.0,
       "Stake Compuesto": 103082.11,
       "Beneficio Compuesto": 46386.95,
-      "Banca Compuesto": 5200492.39
+      "Banca Compuesto": 5200492.39,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-22",
@@ -37764,7 +39543,8 @@ window.dashboardData = {
       "Banca Fijo": 9636.0,
       "Stake Compuesto": 104009.85,
       "Beneficio Compuesto": -104009.85,
-      "Banca Compuesto": 5096482.54
+      "Banca Compuesto": 5096482.54,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-23",
@@ -37782,7 +39562,8 @@ window.dashboardData = {
       "Banca Fijo": 9645.0,
       "Stake Compuesto": 101929.65,
       "Beneficio Compuesto": 45868.34,
-      "Banca Compuesto": 5142350.89
+      "Banca Compuesto": 5142350.89,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-23",
@@ -37800,7 +39581,8 @@ window.dashboardData = {
       "Banca Fijo": 9654.0,
       "Stake Compuesto": 102847.02,
       "Beneficio Compuesto": 46281.16,
-      "Banca Compuesto": 5188632.05
+      "Banca Compuesto": 5188632.05,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-23",
@@ -37818,7 +39600,8 @@ window.dashboardData = {
       "Banca Fijo": 9663.0,
       "Stake Compuesto": 103772.64,
       "Beneficio Compuesto": 46697.69,
-      "Banca Compuesto": 5235329.73
+      "Banca Compuesto": 5235329.73,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-23",
@@ -37836,7 +39619,8 @@ window.dashboardData = {
       "Banca Fijo": 9672.0,
       "Stake Compuesto": 104706.59,
       "Beneficio Compuesto": 47117.97,
-      "Banca Compuesto": 5282447.7
+      "Banca Compuesto": 5282447.7,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-23",
@@ -37854,7 +39638,8 @@ window.dashboardData = {
       "Banca Fijo": 9652.0,
       "Stake Compuesto": 105648.95,
       "Beneficio Compuesto": -105648.95,
-      "Banca Compuesto": 5176798.75
+      "Banca Compuesto": 5176798.75,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-23",
@@ -37872,7 +39657,8 @@ window.dashboardData = {
       "Banca Fijo": 9661.0,
       "Stake Compuesto": 103535.97,
       "Beneficio Compuesto": 46591.19,
-      "Banca Compuesto": 5223389.94
+      "Banca Compuesto": 5223389.94,
+      "league_id": 492
     },
     {
       "Fecha": "2025-02-23",
@@ -37890,7 +39676,8 @@ window.dashboardData = {
       "Banca Fijo": 9670.0,
       "Stake Compuesto": 104467.8,
       "Beneficio Compuesto": 47010.51,
-      "Banca Compuesto": 5270400.45
+      "Banca Compuesto": 5270400.45,
+      "league_id": 119
     },
     {
       "Fecha": "2025-02-23",
@@ -37908,7 +39695,8 @@ window.dashboardData = {
       "Banca Fijo": 9679.0,
       "Stake Compuesto": 105408.01,
       "Beneficio Compuesto": 47433.6,
-      "Banca Compuesto": 5317834.05
+      "Banca Compuesto": 5317834.05,
+      "league_id": 119
     },
     {
       "Fecha": "2025-02-23",
@@ -37926,7 +39714,8 @@ window.dashboardData = {
       "Banca Fijo": 9688.0,
       "Stake Compuesto": 106356.68,
       "Beneficio Compuesto": 47860.51,
-      "Banca Compuesto": 5365694.56
+      "Banca Compuesto": 5365694.56,
+      "league_id": 208
     },
     {
       "Fecha": "2025-02-24",
@@ -37944,7 +39733,8 @@ window.dashboardData = {
       "Banca Fijo": 9697.0,
       "Stake Compuesto": 107313.89,
       "Beneficio Compuesto": 48291.25,
-      "Banca Compuesto": 5413985.81
+      "Banca Compuesto": 5413985.81,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-24",
@@ -37962,7 +39752,8 @@ window.dashboardData = {
       "Banca Fijo": 9706.0,
       "Stake Compuesto": 108279.72,
       "Beneficio Compuesto": 48725.87,
-      "Banca Compuesto": 5462711.68
+      "Banca Compuesto": 5462711.68,
+      "league_id": 119
     },
     {
       "Fecha": "2025-02-26",
@@ -37980,7 +39771,8 @@ window.dashboardData = {
       "Banca Fijo": 9715.0,
       "Stake Compuesto": 109254.23,
       "Beneficio Compuesto": 49164.41,
-      "Banca Compuesto": 5511876.08
+      "Banca Compuesto": 5511876.08,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-26",
@@ -37998,7 +39790,8 @@ window.dashboardData = {
       "Banca Fijo": 9695.0,
       "Stake Compuesto": 110237.52,
       "Beneficio Compuesto": -110237.52,
-      "Banca Compuesto": 5401638.56
+      "Banca Compuesto": 5401638.56,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-27",
@@ -38016,7 +39809,8 @@ window.dashboardData = {
       "Banca Fijo": 9704.0,
       "Stake Compuesto": 108032.77,
       "Beneficio Compuesto": 48614.75,
-      "Banca Compuesto": 5450253.31
+      "Banca Compuesto": 5450253.31,
+      "league_id": 84
     },
     {
       "Fecha": "2025-02-27",
@@ -38034,7 +39828,8 @@ window.dashboardData = {
       "Banca Fijo": 9713.0,
       "Stake Compuesto": 109005.07,
       "Beneficio Compuesto": 49052.28,
-      "Banca Compuesto": 5499305.59
+      "Banca Compuesto": 5499305.59,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-27",
@@ -38052,7 +39847,8 @@ window.dashboardData = {
       "Banca Fijo": 9722.0,
       "Stake Compuesto": 109986.11,
       "Beneficio Compuesto": 49493.75,
-      "Banca Compuesto": 5548799.34
+      "Banca Compuesto": 5548799.34,
+      "league_id": 368
     },
     {
       "Fecha": "2025-02-28",
@@ -38070,7 +39866,8 @@ window.dashboardData = {
       "Banca Fijo": 9731.0,
       "Stake Compuesto": 110975.99,
       "Beneficio Compuesto": 49939.19,
-      "Banca Compuesto": 5598738.53
+      "Banca Compuesto": 5598738.53,
+      "league_id": 78
     },
     {
       "Fecha": "2025-02-28",
@@ -38088,7 +39885,8 @@ window.dashboardData = {
       "Banca Fijo": 9740.0,
       "Stake Compuesto": 111974.77,
       "Beneficio Compuesto": 50388.65,
-      "Banca Compuesto": 5649127.18
+      "Banca Compuesto": 5649127.18,
+      "league_id": 329
     },
     {
       "Fecha": "2025-02-28",
@@ -38106,7 +39904,8 @@ window.dashboardData = {
       "Banca Fijo": 9749.0,
       "Stake Compuesto": 112982.54,
       "Beneficio Compuesto": 50842.14,
-      "Banca Compuesto": 5699969.33
+      "Banca Compuesto": 5699969.33,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-28",
@@ -38124,7 +39923,8 @@ window.dashboardData = {
       "Banca Fijo": 9758.0,
       "Stake Compuesto": 113999.39,
       "Beneficio Compuesto": 51299.72,
-      "Banca Compuesto": 5751269.05
+      "Banca Compuesto": 5751269.05,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-28",
@@ -38142,7 +39942,8 @@ window.dashboardData = {
       "Banca Fijo": 9767.0,
       "Stake Compuesto": 115025.38,
       "Beneficio Compuesto": 51761.42,
-      "Banca Compuesto": 5803030.47
+      "Banca Compuesto": 5803030.47,
+      "league_id": 702
     },
     {
       "Fecha": "2025-02-28",
@@ -38160,7 +39961,8 @@ window.dashboardData = {
       "Banca Fijo": 9776.0,
       "Stake Compuesto": 116060.61,
       "Beneficio Compuesto": 52227.27,
-      "Banca Compuesto": 5855257.74
+      "Banca Compuesto": 5855257.74,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-01",
@@ -38178,7 +39980,8 @@ window.dashboardData = {
       "Banca Fijo": 9785.0,
       "Stake Compuesto": 117105.15,
       "Beneficio Compuesto": 52697.32,
-      "Banca Compuesto": 5907955.06
+      "Banca Compuesto": 5907955.06,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-01",
@@ -38196,7 +39999,8 @@ window.dashboardData = {
       "Banca Fijo": 9794.0,
       "Stake Compuesto": 118159.1,
       "Beneficio Compuesto": 53171.6,
-      "Banca Compuesto": 5961126.66
+      "Banca Compuesto": 5961126.66,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-01",
@@ -38214,7 +40018,8 @@ window.dashboardData = {
       "Banca Fijo": 9803.0,
       "Stake Compuesto": 119222.53,
       "Beneficio Compuesto": 53650.14,
-      "Banca Compuesto": 6014776.8
+      "Banca Compuesto": 6014776.8,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-01",
@@ -38232,7 +40037,8 @@ window.dashboardData = {
       "Banca Fijo": 9812.0,
       "Stake Compuesto": 120295.54,
       "Beneficio Compuesto": 54132.99,
-      "Banca Compuesto": 6068909.79
+      "Banca Compuesto": 6068909.79,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-01",
@@ -38250,7 +40056,8 @@ window.dashboardData = {
       "Banca Fijo": 9821.0,
       "Stake Compuesto": 121378.2,
       "Beneficio Compuesto": 54620.19,
-      "Banca Compuesto": 6123529.98
+      "Banca Compuesto": 6123529.98,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-02",
@@ -38268,7 +40075,8 @@ window.dashboardData = {
       "Banca Fijo": 9801.0,
       "Stake Compuesto": 122470.6,
       "Beneficio Compuesto": -122470.6,
-      "Banca Compuesto": 6001059.38
+      "Banca Compuesto": 6001059.38,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-02",
@@ -38286,7 +40094,8 @@ window.dashboardData = {
       "Banca Fijo": 9810.0,
       "Stake Compuesto": 120021.19,
       "Beneficio Compuesto": 54009.53,
-      "Banca Compuesto": 6055068.91
+      "Banca Compuesto": 6055068.91,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-02",
@@ -38304,7 +40113,8 @@ window.dashboardData = {
       "Banca Fijo": 9819.0,
       "Stake Compuesto": 121101.38,
       "Beneficio Compuesto": 54495.62,
-      "Banca Compuesto": 6109564.53
+      "Banca Compuesto": 6109564.53,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-02",
@@ -38322,7 +40132,8 @@ window.dashboardData = {
       "Banca Fijo": 9799.0,
       "Stake Compuesto": 122191.29,
       "Beneficio Compuesto": -122191.29,
-      "Banca Compuesto": 5987373.24
+      "Banca Compuesto": 5987373.24,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-02",
@@ -38340,7 +40151,8 @@ window.dashboardData = {
       "Banca Fijo": 9808.0,
       "Stake Compuesto": 119747.46,
       "Beneficio Compuesto": 53886.36,
-      "Banca Compuesto": 6041259.6
+      "Banca Compuesto": 6041259.6,
+      "league_id": 208
     },
     {
       "Fecha": "2025-03-03",
@@ -38358,7 +40170,8 @@ window.dashboardData = {
       "Banca Fijo": 9817.0,
       "Stake Compuesto": 120825.19,
       "Beneficio Compuesto": 54371.34,
-      "Banca Compuesto": 6095630.94
+      "Banca Compuesto": 6095630.94,
+      "league_id": 702
     },
     {
       "Fecha": "2025-03-06",
@@ -38376,7 +40189,8 @@ window.dashboardData = {
       "Banca Fijo": 9826.0,
       "Stake Compuesto": 121912.62,
       "Beneficio Compuesto": 54860.68,
-      "Banca Compuesto": 6150491.62
+      "Banca Compuesto": 6150491.62,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-07",
@@ -38394,7 +40208,8 @@ window.dashboardData = {
       "Banca Fijo": 9835.0,
       "Stake Compuesto": 123009.83,
       "Beneficio Compuesto": 55354.42,
-      "Banca Compuesto": 6205846.04
+      "Banca Compuesto": 6205846.04,
+      "league_id": 368
     },
     {
       "Fecha": "2025-03-07",
@@ -38412,7 +40227,8 @@ window.dashboardData = {
       "Banca Fijo": 9844.0,
       "Stake Compuesto": 124116.92,
       "Beneficio Compuesto": 55852.61,
-      "Banca Compuesto": 6261698.66
+      "Banca Compuesto": 6261698.66,
+      "league_id": 702
     },
     {
       "Fecha": "2025-03-07",
@@ -38430,7 +40246,8 @@ window.dashboardData = {
       "Banca Fijo": 9853.0,
       "Stake Compuesto": 125233.97,
       "Beneficio Compuesto": 56355.29,
-      "Banca Compuesto": 6318053.94
+      "Banca Compuesto": 6318053.94,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-07",
@@ -38448,7 +40265,8 @@ window.dashboardData = {
       "Banca Fijo": 9862.0,
       "Stake Compuesto": 126361.08,
       "Beneficio Compuesto": 56862.49,
-      "Banca Compuesto": 6374916.43
+      "Banca Compuesto": 6374916.43,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-08",
@@ -38466,7 +40284,8 @@ window.dashboardData = {
       "Banca Fijo": 9871.0,
       "Stake Compuesto": 127498.33,
       "Beneficio Compuesto": 57374.25,
-      "Banca Compuesto": 6432290.68
+      "Banca Compuesto": 6432290.68,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-08",
@@ -38484,7 +40303,8 @@ window.dashboardData = {
       "Banca Fijo": 9880.0,
       "Stake Compuesto": 128645.81,
       "Beneficio Compuesto": 57890.62,
-      "Banca Compuesto": 6490181.29
+      "Banca Compuesto": 6490181.29,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-08",
@@ -38502,7 +40322,8 @@ window.dashboardData = {
       "Banca Fijo": 9889.0,
       "Stake Compuesto": 129803.63,
       "Beneficio Compuesto": 58411.63,
-      "Banca Compuesto": 6548592.93
+      "Banca Compuesto": 6548592.93,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-08",
@@ -38520,7 +40341,8 @@ window.dashboardData = {
       "Banca Fijo": 9869.0,
       "Stake Compuesto": 130971.86,
       "Beneficio Compuesto": -130971.86,
-      "Banca Compuesto": 6417621.07
+      "Banca Compuesto": 6417621.07,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-08",
@@ -38538,7 +40360,8 @@ window.dashboardData = {
       "Banca Fijo": 9878.0,
       "Stake Compuesto": 128352.42,
       "Beneficio Compuesto": 57758.59,
-      "Banca Compuesto": 6475379.66
+      "Banca Compuesto": 6475379.66,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-08",
@@ -38556,7 +40379,8 @@ window.dashboardData = {
       "Banca Fijo": 9887.0,
       "Stake Compuesto": 129507.59,
       "Beneficio Compuesto": 58278.42,
-      "Banca Compuesto": 6533658.07
+      "Banca Compuesto": 6533658.07,
+      "league_id": 329
     },
     {
       "Fecha": "2025-03-08",
@@ -38574,7 +40398,8 @@ window.dashboardData = {
       "Banca Fijo": 9896.0,
       "Stake Compuesto": 130673.16,
       "Beneficio Compuesto": 58802.92,
-      "Banca Compuesto": 6592461.0
+      "Banca Compuesto": 6592461.0,
+      "league_id": 368
     },
     {
       "Fecha": "2025-03-08",
@@ -38592,7 +40417,8 @@ window.dashboardData = {
       "Banca Fijo": 9905.0,
       "Stake Compuesto": 131849.22,
       "Beneficio Compuesto": 59332.15,
-      "Banca Compuesto": 6651793.15
+      "Banca Compuesto": 6651793.15,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-08",
@@ -38610,7 +40436,8 @@ window.dashboardData = {
       "Banca Fijo": 9914.0,
       "Stake Compuesto": 133035.86,
       "Beneficio Compuesto": 59866.14,
-      "Banca Compuesto": 6711659.28
+      "Banca Compuesto": 6711659.28,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-08",
@@ -38628,7 +40455,8 @@ window.dashboardData = {
       "Banca Fijo": 9923.0,
       "Stake Compuesto": 134233.19,
       "Beneficio Compuesto": 60404.93,
-      "Banca Compuesto": 6772064.22
+      "Banca Compuesto": 6772064.22,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-08",
@@ -38646,7 +40474,8 @@ window.dashboardData = {
       "Banca Fijo": 9932.0,
       "Stake Compuesto": 135441.28,
       "Beneficio Compuesto": 60948.58,
-      "Banca Compuesto": 6833012.8
+      "Banca Compuesto": 6833012.8,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-09",
@@ -38664,7 +40493,8 @@ window.dashboardData = {
       "Banca Fijo": 9941.0,
       "Stake Compuesto": 136660.26,
       "Beneficio Compuesto": 61497.12,
-      "Banca Compuesto": 6894509.91
+      "Banca Compuesto": 6894509.91,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-09",
@@ -38682,7 +40512,8 @@ window.dashboardData = {
       "Banca Fijo": 9950.0,
       "Stake Compuesto": 137890.2,
       "Beneficio Compuesto": 62050.59,
-      "Banca Compuesto": 6956560.5
+      "Banca Compuesto": 6956560.5,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-09",
@@ -38700,7 +40531,8 @@ window.dashboardData = {
       "Banca Fijo": 9959.0,
       "Stake Compuesto": 139131.21,
       "Beneficio Compuesto": 62609.04,
-      "Banca Compuesto": 7019169.54
+      "Banca Compuesto": 7019169.54,
+      "league_id": 368
     },
     {
       "Fecha": "2025-03-09",
@@ -38718,7 +40550,8 @@ window.dashboardData = {
       "Banca Fijo": 9968.0,
       "Stake Compuesto": 140383.39,
       "Beneficio Compuesto": 63172.53,
-      "Banca Compuesto": 7082342.07
+      "Banca Compuesto": 7082342.07,
+      "league_id": 368
     },
     {
       "Fecha": "2025-03-09",
@@ -38736,7 +40569,8 @@ window.dashboardData = {
       "Banca Fijo": 9948.0,
       "Stake Compuesto": 141646.84,
       "Beneficio Compuesto": -141646.84,
-      "Banca Compuesto": 6940695.23
+      "Banca Compuesto": 6940695.23,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-10",
@@ -38754,7 +40588,8 @@ window.dashboardData = {
       "Banca Fijo": 9957.0,
       "Stake Compuesto": 138813.9,
       "Beneficio Compuesto": 62466.26,
-      "Banca Compuesto": 7003161.49
+      "Banca Compuesto": 7003161.49,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-10",
@@ -38772,7 +40607,8 @@ window.dashboardData = {
       "Banca Fijo": 9937.0,
       "Stake Compuesto": 140063.23,
       "Beneficio Compuesto": -140063.23,
-      "Banca Compuesto": 6863098.26
+      "Banca Compuesto": 6863098.26,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-14",
@@ -38790,7 +40626,8 @@ window.dashboardData = {
       "Banca Fijo": 9917.0,
       "Stake Compuesto": 137261.97,
       "Beneficio Compuesto": -137261.97,
-      "Banca Compuesto": 6725836.29
+      "Banca Compuesto": 6725836.29,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-14",
@@ -38808,7 +40645,8 @@ window.dashboardData = {
       "Banca Fijo": 9926.0,
       "Stake Compuesto": 134516.73,
       "Beneficio Compuesto": 60532.53,
-      "Banca Compuesto": 6786368.82
+      "Banca Compuesto": 6786368.82,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-14",
@@ -38826,7 +40664,8 @@ window.dashboardData = {
       "Banca Fijo": 9935.0,
       "Stake Compuesto": 135727.38,
       "Beneficio Compuesto": 61077.32,
-      "Banca Compuesto": 6847446.14
+      "Banca Compuesto": 6847446.14,
+      "league_id": 702
     },
     {
       "Fecha": "2025-03-14",
@@ -38844,7 +40683,8 @@ window.dashboardData = {
       "Banca Fijo": 9944.0,
       "Stake Compuesto": 136948.92,
       "Beneficio Compuesto": 61627.02,
-      "Banca Compuesto": 6909073.15
+      "Banca Compuesto": 6909073.15,
+      "league_id": 702
     },
     {
       "Fecha": "2025-03-14",
@@ -38862,7 +40702,8 @@ window.dashboardData = {
       "Banca Fijo": 9953.0,
       "Stake Compuesto": 138181.46,
       "Beneficio Compuesto": 62181.66,
-      "Banca Compuesto": 6971254.81
+      "Banca Compuesto": 6971254.81,
+      "league_id": 702
     },
     {
       "Fecha": "2025-03-14",
@@ -38880,7 +40721,8 @@ window.dashboardData = {
       "Banca Fijo": 9933.0,
       "Stake Compuesto": 139425.1,
       "Beneficio Compuesto": -139425.1,
-      "Banca Compuesto": 6831829.71
+      "Banca Compuesto": 6831829.71,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-14",
@@ -38898,7 +40740,8 @@ window.dashboardData = {
       "Banca Fijo": 9942.0,
       "Stake Compuesto": 136636.59,
       "Beneficio Compuesto": 61486.47,
-      "Banca Compuesto": 6893316.18
+      "Banca Compuesto": 6893316.18,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-14",
@@ -38916,7 +40759,8 @@ window.dashboardData = {
       "Banca Fijo": 9922.0,
       "Stake Compuesto": 137866.32,
       "Beneficio Compuesto": -137866.32,
-      "Banca Compuesto": 6755449.86
+      "Banca Compuesto": 6755449.86,
+      "league_id": 208
     },
     {
       "Fecha": "2025-03-15",
@@ -38934,7 +40778,8 @@ window.dashboardData = {
       "Banca Fijo": 9902.0,
       "Stake Compuesto": 135109.0,
       "Beneficio Compuesto": -135109.0,
-      "Banca Compuesto": 6620340.86
+      "Banca Compuesto": 6620340.86,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-15",
@@ -38952,7 +40797,8 @@ window.dashboardData = {
       "Banca Fijo": 9911.0,
       "Stake Compuesto": 132406.82,
       "Beneficio Compuesto": 59583.07,
-      "Banca Compuesto": 6679923.93
+      "Banca Compuesto": 6679923.93,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-15",
@@ -38970,7 +40816,8 @@ window.dashboardData = {
       "Banca Fijo": 9920.0,
       "Stake Compuesto": 133598.48,
       "Beneficio Compuesto": 60119.32,
-      "Banca Compuesto": 6740043.24
+      "Banca Compuesto": 6740043.24,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-15",
@@ -38988,7 +40835,8 @@ window.dashboardData = {
       "Banca Fijo": 9929.0,
       "Stake Compuesto": 134800.86,
       "Beneficio Compuesto": 60660.39,
-      "Banca Compuesto": 6800703.63
+      "Banca Compuesto": 6800703.63,
+      "league_id": 329
     },
     {
       "Fecha": "2025-03-15",
@@ -39006,7 +40854,8 @@ window.dashboardData = {
       "Banca Fijo": 9938.0,
       "Stake Compuesto": 136014.07,
       "Beneficio Compuesto": 61206.33,
-      "Banca Compuesto": 6861909.97
+      "Banca Compuesto": 6861909.97,
+      "league_id": 329
     },
     {
       "Fecha": "2025-03-15",
@@ -39024,7 +40873,8 @@ window.dashboardData = {
       "Banca Fijo": 9918.0,
       "Stake Compuesto": 137238.2,
       "Beneficio Compuesto": -137238.2,
-      "Banca Compuesto": 6724671.77
+      "Banca Compuesto": 6724671.77,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-15",
@@ -39042,7 +40892,8 @@ window.dashboardData = {
       "Banca Fijo": 9927.0,
       "Stake Compuesto": 134493.44,
       "Beneficio Compuesto": 60522.05,
-      "Banca Compuesto": 6785193.81
+      "Banca Compuesto": 6785193.81,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-15",
@@ -39060,7 +40911,8 @@ window.dashboardData = {
       "Banca Fijo": 9936.0,
       "Stake Compuesto": 135703.88,
       "Beneficio Compuesto": 61066.74,
-      "Banca Compuesto": 6846260.56
+      "Banca Compuesto": 6846260.56,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-15",
@@ -39078,7 +40930,8 @@ window.dashboardData = {
       "Banca Fijo": 9945.0,
       "Stake Compuesto": 136925.21,
       "Beneficio Compuesto": 61616.35,
-      "Banca Compuesto": 6907876.9
+      "Banca Compuesto": 6907876.9,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-15",
@@ -39096,7 +40949,8 @@ window.dashboardData = {
       "Banca Fijo": 9954.0,
       "Stake Compuesto": 138157.54,
       "Beneficio Compuesto": 62170.89,
-      "Banca Compuesto": 6970047.79
+      "Banca Compuesto": 6970047.79,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-15",
@@ -39114,7 +40968,8 @@ window.dashboardData = {
       "Banca Fijo": 9963.0,
       "Stake Compuesto": 139400.96,
       "Beneficio Compuesto": 62730.43,
-      "Banca Compuesto": 7032778.22
+      "Banca Compuesto": 7032778.22,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-16",
@@ -39132,7 +40987,8 @@ window.dashboardData = {
       "Banca Fijo": 9972.0,
       "Stake Compuesto": 140655.56,
       "Beneficio Compuesto": 63295.0,
-      "Banca Compuesto": 7096073.23
+      "Banca Compuesto": 7096073.23,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-16",
@@ -39150,7 +41006,8 @@ window.dashboardData = {
       "Banca Fijo": 9981.0,
       "Stake Compuesto": 141921.46,
       "Beneficio Compuesto": 63864.66,
-      "Banca Compuesto": 7159937.89
+      "Banca Compuesto": 7159937.89,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-16",
@@ -39168,7 +41025,8 @@ window.dashboardData = {
       "Banca Fijo": 9961.0,
       "Stake Compuesto": 143198.76,
       "Beneficio Compuesto": -143198.76,
-      "Banca Compuesto": 7016739.13
+      "Banca Compuesto": 7016739.13,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-16",
@@ -39186,7 +41044,8 @@ window.dashboardData = {
       "Banca Fijo": 9970.0,
       "Stake Compuesto": 140334.78,
       "Beneficio Compuesto": 63150.65,
-      "Banca Compuesto": 7079889.78
+      "Banca Compuesto": 7079889.78,
+      "league_id": 909
     },
     {
       "Fecha": "2025-03-16",
@@ -39204,7 +41063,8 @@ window.dashboardData = {
       "Banca Fijo": 9979.0,
       "Stake Compuesto": 141597.8,
       "Beneficio Compuesto": 63719.01,
-      "Banca Compuesto": 7143608.79
+      "Banca Compuesto": 7143608.79,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-16",
@@ -39222,7 +41082,8 @@ window.dashboardData = {
       "Banca Fijo": 9988.0,
       "Stake Compuesto": 142872.18,
       "Beneficio Compuesto": 64292.48,
-      "Banca Compuesto": 7207901.27
+      "Banca Compuesto": 7207901.27,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-16",
@@ -39240,7 +41101,8 @@ window.dashboardData = {
       "Banca Fijo": 9997.0,
       "Stake Compuesto": 144158.03,
       "Beneficio Compuesto": 64871.11,
-      "Banca Compuesto": 7272772.38
+      "Banca Compuesto": 7272772.38,
+      "league_id": 208
     },
     {
       "Fecha": "2025-03-19",
@@ -39258,7 +41120,8 @@ window.dashboardData = {
       "Banca Fijo": 10006.0,
       "Stake Compuesto": 145455.45,
       "Beneficio Compuesto": 65454.95,
-      "Banca Compuesto": 7338227.33
+      "Banca Compuesto": 7338227.33,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-22",
@@ -39276,7 +41139,8 @@ window.dashboardData = {
       "Banca Fijo": 10015.0,
       "Stake Compuesto": 146764.55,
       "Beneficio Compuesto": 66044.05,
-      "Banca Compuesto": 7404271.38
+      "Banca Compuesto": 7404271.38,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-22",
@@ -39294,7 +41158,8 @@ window.dashboardData = {
       "Banca Fijo": 10024.0,
       "Stake Compuesto": 148085.43,
       "Beneficio Compuesto": 66638.44,
-      "Banca Compuesto": 7470909.82
+      "Banca Compuesto": 7470909.82,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-22",
@@ -39312,7 +41177,8 @@ window.dashboardData = {
       "Banca Fijo": 10033.0,
       "Stake Compuesto": 149418.2,
       "Beneficio Compuesto": 67238.19,
-      "Banca Compuesto": 7538148.01
+      "Banca Compuesto": 7538148.01,
+      "league_id": 492
     },
     {
       "Fecha": "2025-03-23",
@@ -39330,7 +41196,8 @@ window.dashboardData = {
       "Banca Fijo": 10042.0,
       "Stake Compuesto": 150762.96,
       "Beneficio Compuesto": 67843.33,
-      "Banca Compuesto": 7605991.34
+      "Banca Compuesto": 7605991.34,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-23",
@@ -39348,7 +41215,8 @@ window.dashboardData = {
       "Banca Fijo": 10051.0,
       "Stake Compuesto": 152119.83,
       "Beneficio Compuesto": 68453.92,
-      "Banca Compuesto": 7674445.26
+      "Banca Compuesto": 7674445.26,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-26",
@@ -39366,7 +41234,8 @@ window.dashboardData = {
       "Banca Fijo": 10060.0,
       "Stake Compuesto": 153488.91,
       "Beneficio Compuesto": 69070.01,
-      "Banca Compuesto": 7743515.27
+      "Banca Compuesto": 7743515.27,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-26",
@@ -39384,7 +41253,8 @@ window.dashboardData = {
       "Banca Fijo": 10040.0,
       "Stake Compuesto": 154870.31,
       "Beneficio Compuesto": -154870.31,
-      "Banca Compuesto": 7588644.96
+      "Banca Compuesto": 7588644.96,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-28",
@@ -39402,7 +41272,8 @@ window.dashboardData = {
       "Banca Fijo": 10049.0,
       "Stake Compuesto": 151772.9,
       "Beneficio Compuesto": 68297.8,
-      "Banca Compuesto": 7656942.77
+      "Banca Compuesto": 7656942.77,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-29",
@@ -39420,7 +41291,8 @@ window.dashboardData = {
       "Banca Fijo": 10058.0,
       "Stake Compuesto": 153138.86,
       "Beneficio Compuesto": 68912.48,
-      "Banca Compuesto": 7725855.25
+      "Banca Compuesto": 7725855.25,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-29",
@@ -39438,7 +41310,8 @@ window.dashboardData = {
       "Banca Fijo": 10038.0,
       "Stake Compuesto": 154517.11,
       "Beneficio Compuesto": -154517.11,
-      "Banca Compuesto": 7571338.15
+      "Banca Compuesto": 7571338.15,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-29",
@@ -39456,7 +41329,8 @@ window.dashboardData = {
       "Banca Fijo": 10047.0,
       "Stake Compuesto": 151426.76,
       "Beneficio Compuesto": 68142.04,
-      "Banca Compuesto": 7639480.19
+      "Banca Compuesto": 7639480.19,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-29",
@@ -39474,7 +41348,8 @@ window.dashboardData = {
       "Banca Fijo": 10056.0,
       "Stake Compuesto": 152789.6,
       "Beneficio Compuesto": 68755.32,
-      "Banca Compuesto": 7708235.51
+      "Banca Compuesto": 7708235.51,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-29",
@@ -39492,7 +41367,8 @@ window.dashboardData = {
       "Banca Fijo": 10065.0,
       "Stake Compuesto": 154164.71,
       "Beneficio Compuesto": 69374.12,
-      "Banca Compuesto": 7777609.63
+      "Banca Compuesto": 7777609.63,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-29",
@@ -39510,7 +41386,8 @@ window.dashboardData = {
       "Banca Fijo": 10074.0,
       "Stake Compuesto": 155552.19,
       "Beneficio Compuesto": 69998.49,
-      "Banca Compuesto": 7847608.12
+      "Banca Compuesto": 7847608.12,
+      "league_id": 474
     },
     {
       "Fecha": "2025-03-29",
@@ -39528,7 +41405,8 @@ window.dashboardData = {
       "Banca Fijo": 10083.0,
       "Stake Compuesto": 156952.16,
       "Beneficio Compuesto": 70628.47,
-      "Banca Compuesto": 7918236.59
+      "Banca Compuesto": 7918236.59,
+      "league_id": 563
     },
     {
       "Fecha": "2025-03-30",
@@ -39546,7 +41424,8 @@ window.dashboardData = {
       "Banca Fijo": 10092.0,
       "Stake Compuesto": 158364.73,
       "Beneficio Compuesto": 71264.13,
-      "Banca Compuesto": 7989500.72
+      "Banca Compuesto": 7989500.72,
+      "league_id": 78
     },
     {
       "Fecha": "2025-03-30",
@@ -39564,7 +41443,8 @@ window.dashboardData = {
       "Banca Fijo": 10101.0,
       "Stake Compuesto": 159790.01,
       "Beneficio Compuesto": 71905.51,
-      "Banca Compuesto": 8061406.23
+      "Banca Compuesto": 8061406.23,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-30",
@@ -39582,7 +41462,8 @@ window.dashboardData = {
       "Banca Fijo": 10110.0,
       "Stake Compuesto": 161228.12,
       "Beneficio Compuesto": 72552.66,
-      "Banca Compuesto": 8133958.89
+      "Banca Compuesto": 8133958.89,
+      "league_id": 84
     },
     {
       "Fecha": "2025-03-30",
@@ -39600,7 +41481,8 @@ window.dashboardData = {
       "Banca Fijo": 10119.0,
       "Stake Compuesto": 162679.18,
       "Beneficio Compuesto": 73205.63,
-      "Banca Compuesto": 8207164.52
+      "Banca Compuesto": 8207164.52,
+      "league_id": 103
     },
     {
       "Fecha": "2025-03-30",
@@ -39618,7 +41500,8 @@ window.dashboardData = {
       "Banca Fijo": 10128.0,
       "Stake Compuesto": 164143.29,
       "Beneficio Compuesto": 73864.48,
-      "Banca Compuesto": 8281029.0
+      "Banca Compuesto": 8281029.0,
+      "league_id": 328
     },
     {
       "Fecha": "2025-03-30",
@@ -39636,7 +41519,8 @@ window.dashboardData = {
       "Banca Fijo": 10137.0,
       "Stake Compuesto": 165620.58,
       "Beneficio Compuesto": 74529.26,
-      "Banca Compuesto": 8355558.26
+      "Banca Compuesto": 8355558.26,
+      "league_id": 329
     },
     {
       "Fecha": "2025-03-30",
@@ -39654,7 +41538,8 @@ window.dashboardData = {
       "Banca Fijo": 10146.0,
       "Stake Compuesto": 167111.17,
       "Beneficio Compuesto": 75200.02,
-      "Banca Compuesto": 8430758.28
+      "Banca Compuesto": 8430758.28,
+      "league_id": 473
     },
     {
       "Fecha": "2025-03-30",
@@ -39672,7 +41557,8 @@ window.dashboardData = {
       "Banca Fijo": 10155.0,
       "Stake Compuesto": 168615.17,
       "Beneficio Compuesto": 75876.82,
-      "Banca Compuesto": 8506635.11
+      "Banca Compuesto": 8506635.11,
+      "league_id": 474
     },
     {
       "Fecha": "2025-03-30",
@@ -39690,7 +41576,8 @@ window.dashboardData = {
       "Banca Fijo": 10164.0,
       "Stake Compuesto": 170132.7,
       "Beneficio Compuesto": 76559.72,
-      "Banca Compuesto": 8583194.82
+      "Banca Compuesto": 8583194.82,
+      "league_id": 474
     },
     {
       "Fecha": "2025-03-30",
@@ -39708,7 +41595,8 @@ window.dashboardData = {
       "Banca Fijo": 10173.0,
       "Stake Compuesto": 171663.9,
       "Beneficio Compuesto": 77248.75,
-      "Banca Compuesto": 8660443.58
+      "Banca Compuesto": 8660443.58,
+      "league_id": 563
     },
     {
       "Fecha": "2025-03-30",
@@ -39726,7 +41614,8 @@ window.dashboardData = {
       "Banca Fijo": 10182.0,
       "Stake Compuesto": 173208.87,
       "Beneficio Compuesto": 77943.99,
-      "Banca Compuesto": 8738387.57
+      "Banca Compuesto": 8738387.57,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-30",
@@ -39744,7 +41633,8 @@ window.dashboardData = {
       "Banca Fijo": 10191.0,
       "Stake Compuesto": 174767.75,
       "Beneficio Compuesto": 78645.49,
-      "Banca Compuesto": 8817033.06
+      "Banca Compuesto": 8817033.06,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-30",
@@ -39762,7 +41652,8 @@ window.dashboardData = {
       "Banca Fijo": 10200.0,
       "Stake Compuesto": 176340.66,
       "Beneficio Compuesto": 79353.3,
-      "Banca Compuesto": 8896386.35
+      "Banca Compuesto": 8896386.35,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-31",
@@ -39780,7 +41671,8 @@ window.dashboardData = {
       "Banca Fijo": 10209.0,
       "Stake Compuesto": 177927.73,
       "Beneficio Compuesto": 80067.48,
-      "Banca Compuesto": 8976453.83
+      "Banca Compuesto": 8976453.83,
+      "league_id": 104
     },
     {
       "Fecha": "2025-03-31",
@@ -39798,7 +41690,8 @@ window.dashboardData = {
       "Banca Fijo": 10218.0,
       "Stake Compuesto": 179529.08,
       "Beneficio Compuesto": 80788.08,
-      "Banca Compuesto": 9057241.91
+      "Banca Compuesto": 9057241.91,
+      "league_id": 474
     },
     {
       "Fecha": "2025-03-31",
@@ -39816,7 +41709,8 @@ window.dashboardData = {
       "Banca Fijo": 10227.0,
       "Stake Compuesto": 181144.84,
       "Beneficio Compuesto": 81515.18,
-      "Banca Compuesto": 9138757.09
+      "Banca Compuesto": 9138757.09,
+      "league_id": 702
     },
     {
       "Fecha": "2025-03-31",
@@ -39834,7 +41728,8 @@ window.dashboardData = {
       "Banca Fijo": 10236.0,
       "Stake Compuesto": 182775.14,
       "Beneficio Compuesto": 82248.81,
-      "Banca Compuesto": 9221005.91
+      "Banca Compuesto": 9221005.91,
+      "league_id": 119
     },
     {
       "Fecha": "2025-03-31",
@@ -39852,7 +41747,8 @@ window.dashboardData = {
       "Banca Fijo": 10245.0,
       "Stake Compuesto": 184420.12,
       "Beneficio Compuesto": 82989.05,
-      "Banca Compuesto": 9303994.96
+      "Banca Compuesto": 9303994.96,
+      "league_id": 208
     },
     {
       "Fecha": "2025-03-31",
@@ -39870,7 +41766,8 @@ window.dashboardData = {
       "Banca Fijo": 10254.0,
       "Stake Compuesto": 186079.9,
       "Beneficio Compuesto": 83735.95,
-      "Banca Compuesto": 9387730.91
+      "Banca Compuesto": 9387730.91,
+      "league_id": 208
     },
     {
       "Fecha": "2025-04-04",
@@ -39888,7 +41785,8 @@ window.dashboardData = {
       "Banca Fijo": 10263.0,
       "Stake Compuesto": 187754.62,
       "Beneficio Compuesto": 84489.58,
-      "Banca Compuesto": 9472220.49
+      "Banca Compuesto": 9472220.49,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-04",
@@ -39906,7 +41804,8 @@ window.dashboardData = {
       "Banca Fijo": 10243.0,
       "Stake Compuesto": 189444.41,
       "Beneficio Compuesto": -189444.41,
-      "Banca Compuesto": 9282776.08
+      "Banca Compuesto": 9282776.08,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-04",
@@ -39924,7 +41823,8 @@ window.dashboardData = {
       "Banca Fijo": 10252.0,
       "Stake Compuesto": 185655.52,
       "Beneficio Compuesto": 83544.98,
-      "Banca Compuesto": 9366321.07
+      "Banca Compuesto": 9366321.07,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-04",
@@ -39942,7 +41842,8 @@ window.dashboardData = {
       "Banca Fijo": 10261.0,
       "Stake Compuesto": 187326.42,
       "Beneficio Compuesto": 84296.89,
-      "Banca Compuesto": 9450617.96
+      "Banca Compuesto": 9450617.96,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-04",
@@ -39960,7 +41861,8 @@ window.dashboardData = {
       "Banca Fijo": 10270.0,
       "Stake Compuesto": 189012.36,
       "Beneficio Compuesto": 85055.56,
-      "Banca Compuesto": 9535673.52
+      "Banca Compuesto": 9535673.52,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-04",
@@ -39978,7 +41880,8 @@ window.dashboardData = {
       "Banca Fijo": 10279.0,
       "Stake Compuesto": 190713.47,
       "Beneficio Compuesto": 85821.06,
-      "Banca Compuesto": 9621494.58
+      "Banca Compuesto": 9621494.58,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-04",
@@ -39996,7 +41899,8 @@ window.dashboardData = {
       "Banca Fijo": 10259.0,
       "Stake Compuesto": 192429.89,
       "Beneficio Compuesto": -192429.89,
-      "Banca Compuesto": 9429064.69
+      "Banca Compuesto": 9429064.69,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-04",
@@ -40014,7 +41918,8 @@ window.dashboardData = {
       "Banca Fijo": 10268.0,
       "Stake Compuesto": 188581.29,
       "Beneficio Compuesto": 84861.58,
-      "Banca Compuesto": 9513926.27
+      "Banca Compuesto": 9513926.27,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-05",
@@ -40032,7 +41937,8 @@ window.dashboardData = {
       "Banca Fijo": 10277.0,
       "Stake Compuesto": 190278.53,
       "Beneficio Compuesto": 85625.34,
-      "Banca Compuesto": 9599551.61
+      "Banca Compuesto": 9599551.61,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-05",
@@ -40050,7 +41956,8 @@ window.dashboardData = {
       "Banca Fijo": 10257.0,
       "Stake Compuesto": 191991.03,
       "Beneficio Compuesto": -191991.03,
-      "Banca Compuesto": 9407560.57
+      "Banca Compuesto": 9407560.57,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-05",
@@ -40068,7 +41975,8 @@ window.dashboardData = {
       "Banca Fijo": 10266.0,
       "Stake Compuesto": 188151.21,
       "Beneficio Compuesto": 84668.05,
-      "Banca Compuesto": 9492228.62
+      "Banca Compuesto": 9492228.62,
+      "league_id": 103
     },
     {
       "Fecha": "2025-04-05",
@@ -40086,7 +41994,8 @@ window.dashboardData = {
       "Banca Fijo": 10246.0,
       "Stake Compuesto": 189844.57,
       "Beneficio Compuesto": -189844.57,
-      "Banca Compuesto": 9302384.05
+      "Banca Compuesto": 9302384.05,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-05",
@@ -40104,7 +42013,8 @@ window.dashboardData = {
       "Banca Fijo": 10226.0,
       "Stake Compuesto": 186047.68,
       "Beneficio Compuesto": -186047.68,
-      "Banca Compuesto": 9116336.37
+      "Banca Compuesto": 9116336.37,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-05",
@@ -40122,7 +42032,8 @@ window.dashboardData = {
       "Banca Fijo": 10235.0,
       "Stake Compuesto": 182326.73,
       "Beneficio Compuesto": 82047.03,
-      "Banca Compuesto": 9198383.39
+      "Banca Compuesto": 9198383.39,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-05",
@@ -40140,7 +42051,8 @@ window.dashboardData = {
       "Banca Fijo": 10215.0,
       "Stake Compuesto": 183967.67,
       "Beneficio Compuesto": -183967.67,
-      "Banca Compuesto": 9014415.73
+      "Banca Compuesto": 9014415.73,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-05",
@@ -40158,7 +42070,8 @@ window.dashboardData = {
       "Banca Fijo": 10224.0,
       "Stake Compuesto": 180288.31,
       "Beneficio Compuesto": 81129.74,
-      "Banca Compuesto": 9095545.47
+      "Banca Compuesto": 9095545.47,
+      "league_id": 473
     },
     {
       "Fecha": "2025-04-05",
@@ -40176,7 +42089,8 @@ window.dashboardData = {
       "Banca Fijo": 10233.0,
       "Stake Compuesto": 181910.91,
       "Beneficio Compuesto": 81859.91,
-      "Banca Compuesto": 9177405.38
+      "Banca Compuesto": 9177405.38,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-05",
@@ -40194,7 +42108,8 @@ window.dashboardData = {
       "Banca Fijo": 10242.0,
       "Stake Compuesto": 183548.11,
       "Beneficio Compuesto": 82596.65,
-      "Banca Compuesto": 9260002.02
+      "Banca Compuesto": 9260002.02,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-05",
@@ -40212,7 +42127,8 @@ window.dashboardData = {
       "Banca Fijo": 10251.0,
       "Stake Compuesto": 185200.04,
       "Beneficio Compuesto": 83340.02,
-      "Banca Compuesto": 9343342.04
+      "Banca Compuesto": 9343342.04,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-05",
@@ -40230,7 +42146,8 @@ window.dashboardData = {
       "Banca Fijo": 10260.0,
       "Stake Compuesto": 186866.84,
       "Beneficio Compuesto": 84090.08,
-      "Banca Compuesto": 9427432.12
+      "Banca Compuesto": 9427432.12,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-05",
@@ -40248,7 +42165,8 @@ window.dashboardData = {
       "Banca Fijo": 10269.0,
       "Stake Compuesto": 188548.64,
       "Beneficio Compuesto": 84846.89,
-      "Banca Compuesto": 9512279.01
+      "Banca Compuesto": 9512279.01,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-05",
@@ -40266,7 +42184,8 @@ window.dashboardData = {
       "Banca Fijo": 10278.0,
       "Stake Compuesto": 190245.58,
       "Beneficio Compuesto": 85610.51,
-      "Banca Compuesto": 9597889.52
+      "Banca Compuesto": 9597889.52,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-05",
@@ -40284,7 +42203,8 @@ window.dashboardData = {
       "Banca Fijo": 10287.0,
       "Stake Compuesto": 191957.79,
       "Beneficio Compuesto": 86381.01,
-      "Banca Compuesto": 9684270.53
+      "Banca Compuesto": 9684270.53,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-05",
@@ -40302,7 +42222,8 @@ window.dashboardData = {
       "Banca Fijo": 10296.0,
       "Stake Compuesto": 193685.41,
       "Beneficio Compuesto": 87158.43,
-      "Banca Compuesto": 9771428.96
+      "Banca Compuesto": 9771428.96,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-05",
@@ -40320,7 +42241,8 @@ window.dashboardData = {
       "Banca Fijo": 10305.0,
       "Stake Compuesto": 195428.58,
       "Beneficio Compuesto": 87942.86,
-      "Banca Compuesto": 9859371.82
+      "Banca Compuesto": 9859371.82,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-05",
@@ -40338,7 +42260,8 @@ window.dashboardData = {
       "Banca Fijo": 10314.0,
       "Stake Compuesto": 197187.44,
       "Beneficio Compuesto": 88734.35,
-      "Banca Compuesto": 9948106.17
+      "Banca Compuesto": 9948106.17,
+      "league_id": 208
     },
     {
       "Fecha": "2025-04-06",
@@ -40356,7 +42279,8 @@ window.dashboardData = {
       "Banca Fijo": 10323.0,
       "Stake Compuesto": 198962.12,
       "Beneficio Compuesto": 89532.96,
-      "Banca Compuesto": 10037639.12
+      "Banca Compuesto": 10037639.12,
+      "league_id": 103
     },
     {
       "Fecha": "2025-04-06",
@@ -40374,7 +42298,8 @@ window.dashboardData = {
       "Banca Fijo": 10303.0,
       "Stake Compuesto": 200752.78,
       "Beneficio Compuesto": -200752.78,
-      "Banca Compuesto": 9836886.34
+      "Banca Compuesto": 9836886.34,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-06",
@@ -40392,7 +42317,8 @@ window.dashboardData = {
       "Banca Fijo": 10312.0,
       "Stake Compuesto": 196737.73,
       "Beneficio Compuesto": 88531.98,
-      "Banca Compuesto": 9925418.32
+      "Banca Compuesto": 9925418.32,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-06",
@@ -40410,7 +42336,8 @@ window.dashboardData = {
       "Banca Fijo": 10292.0,
       "Stake Compuesto": 198508.37,
       "Beneficio Compuesto": -198508.37,
-      "Banca Compuesto": 9726909.95
+      "Banca Compuesto": 9726909.95,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-06",
@@ -40428,7 +42355,8 @@ window.dashboardData = {
       "Banca Fijo": 10272.0,
       "Stake Compuesto": 194538.2,
       "Beneficio Compuesto": -194538.2,
-      "Banca Compuesto": 9532371.75
+      "Banca Compuesto": 9532371.75,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-06",
@@ -40446,7 +42374,8 @@ window.dashboardData = {
       "Banca Fijo": 10281.0,
       "Stake Compuesto": 190647.44,
       "Beneficio Compuesto": 85791.35,
-      "Banca Compuesto": 9618163.1
+      "Banca Compuesto": 9618163.1,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-06",
@@ -40464,7 +42393,8 @@ window.dashboardData = {
       "Banca Fijo": 10290.0,
       "Stake Compuesto": 192363.26,
       "Beneficio Compuesto": 86563.47,
-      "Banca Compuesto": 9704726.57
+      "Banca Compuesto": 9704726.57,
+      "league_id": 473
     },
     {
       "Fecha": "2025-04-06",
@@ -40482,7 +42412,8 @@ window.dashboardData = {
       "Banca Fijo": 10299.0,
       "Stake Compuesto": 194094.53,
       "Beneficio Compuesto": 87342.54,
-      "Banca Compuesto": 9792069.11
+      "Banca Compuesto": 9792069.11,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-06",
@@ -40500,7 +42431,8 @@ window.dashboardData = {
       "Banca Fijo": 10279.0,
       "Stake Compuesto": 195841.38,
       "Beneficio Compuesto": -195841.38,
-      "Banca Compuesto": 9596227.72
+      "Banca Compuesto": 9596227.72,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-07",
@@ -40518,7 +42450,8 @@ window.dashboardData = {
       "Banca Fijo": 10259.0,
       "Stake Compuesto": 191924.55,
       "Beneficio Compuesto": -191924.55,
-      "Banca Compuesto": 9404303.17
+      "Banca Compuesto": 9404303.17,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-07",
@@ -40536,7 +42469,8 @@ window.dashboardData = {
       "Banca Fijo": 10268.0,
       "Stake Compuesto": 188086.06,
       "Beneficio Compuesto": 84638.73,
-      "Banca Compuesto": 9488941.9
+      "Banca Compuesto": 9488941.9,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-07",
@@ -40554,7 +42488,8 @@ window.dashboardData = {
       "Banca Fijo": 10248.0,
       "Stake Compuesto": 189778.84,
       "Beneficio Compuesto": -189778.84,
-      "Banca Compuesto": 9299163.06
+      "Banca Compuesto": 9299163.06,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-07",
@@ -40572,7 +42507,8 @@ window.dashboardData = {
       "Banca Fijo": 10257.0,
       "Stake Compuesto": 185983.26,
       "Beneficio Compuesto": 83692.47,
-      "Banca Compuesto": 9382855.53
+      "Banca Compuesto": 9382855.53,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-07",
@@ -40590,7 +42526,8 @@ window.dashboardData = {
       "Banca Fijo": 10266.0,
       "Stake Compuesto": 187657.11,
       "Beneficio Compuesto": 84445.7,
-      "Banca Compuesto": 9467301.23
+      "Banca Compuesto": 9467301.23,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-07",
@@ -40608,7 +42545,8 @@ window.dashboardData = {
       "Banca Fijo": 10275.0,
       "Stake Compuesto": 189346.02,
       "Beneficio Compuesto": 85205.71,
-      "Banca Compuesto": 9552506.94
+      "Banca Compuesto": 9552506.94,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-07",
@@ -40626,7 +42564,8 @@ window.dashboardData = {
       "Banca Fijo": 10255.0,
       "Stake Compuesto": 191050.14,
       "Beneficio Compuesto": -191050.14,
-      "Banca Compuesto": 9361456.8
+      "Banca Compuesto": 9361456.8,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-08",
@@ -40644,7 +42583,8 @@ window.dashboardData = {
       "Banca Fijo": 10264.0,
       "Stake Compuesto": 187229.14,
       "Beneficio Compuesto": 84253.11,
-      "Banca Compuesto": 9445709.91
+      "Banca Compuesto": 9445709.91,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-08",
@@ -40662,7 +42602,8 @@ window.dashboardData = {
       "Banca Fijo": 10273.0,
       "Stake Compuesto": 188914.2,
       "Beneficio Compuesto": 85011.39,
-      "Banca Compuesto": 9530721.3
+      "Banca Compuesto": 9530721.3,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-10",
@@ -40680,7 +42621,8 @@ window.dashboardData = {
       "Banca Fijo": 10282.0,
       "Stake Compuesto": 190614.43,
       "Beneficio Compuesto": 85776.49,
-      "Banca Compuesto": 9616497.79
+      "Banca Compuesto": 9616497.79,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-11",
@@ -40698,7 +42640,8 @@ window.dashboardData = {
       "Banca Fijo": 10262.0,
       "Stake Compuesto": 192329.96,
       "Beneficio Compuesto": -192329.96,
-      "Banca Compuesto": 9424167.84
+      "Banca Compuesto": 9424167.84,
+      "league_id": 244
     },
     {
       "Fecha": "2025-04-11",
@@ -40716,7 +42659,8 @@ window.dashboardData = {
       "Banca Fijo": 10271.0,
       "Stake Compuesto": 188483.36,
       "Beneficio Compuesto": 84817.51,
-      "Banca Compuesto": 9508985.35
+      "Banca Compuesto": 9508985.35,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-11",
@@ -40734,7 +42678,8 @@ window.dashboardData = {
       "Banca Fijo": 10280.0,
       "Stake Compuesto": 190179.71,
       "Beneficio Compuesto": 85580.87,
-      "Banca Compuesto": 9594566.21
+      "Banca Compuesto": 9594566.21,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-11",
@@ -40752,7 +42697,8 @@ window.dashboardData = {
       "Banca Fijo": 10289.0,
       "Stake Compuesto": 191891.32,
       "Beneficio Compuesto": 86351.1,
-      "Banca Compuesto": 9680917.31
+      "Banca Compuesto": 9680917.31,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-11",
@@ -40770,7 +42716,8 @@ window.dashboardData = {
       "Banca Fijo": 10298.0,
       "Stake Compuesto": 193618.35,
       "Beneficio Compuesto": 87128.26,
-      "Banca Compuesto": 9768045.57
+      "Banca Compuesto": 9768045.57,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-11",
@@ -40788,7 +42735,8 @@ window.dashboardData = {
       "Banca Fijo": 10307.0,
       "Stake Compuesto": 195360.91,
       "Beneficio Compuesto": 87912.41,
-      "Banca Compuesto": 9855957.98
+      "Banca Compuesto": 9855957.98,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-11",
@@ -40806,7 +42754,8 @@ window.dashboardData = {
       "Banca Fijo": 10287.0,
       "Stake Compuesto": 197119.16,
       "Beneficio Compuesto": -197119.16,
-      "Banca Compuesto": 9658838.82
+      "Banca Compuesto": 9658838.82,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-11",
@@ -40824,7 +42773,8 @@ window.dashboardData = {
       "Banca Fijo": 10296.0,
       "Stake Compuesto": 193176.78,
       "Beneficio Compuesto": 86929.55,
-      "Banca Compuesto": 9745768.37
+      "Banca Compuesto": 9745768.37,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-11",
@@ -40842,7 +42792,8 @@ window.dashboardData = {
       "Banca Fijo": 10276.0,
       "Stake Compuesto": 194915.37,
       "Beneficio Compuesto": -194915.37,
-      "Banca Compuesto": 9550853.0
+      "Banca Compuesto": 9550853.0,
+      "league_id": 208
     },
     {
       "Fecha": "2025-04-12",
@@ -40860,7 +42811,8 @@ window.dashboardData = {
       "Banca Fijo": 10256.0,
       "Stake Compuesto": 191017.06,
       "Beneficio Compuesto": -191017.06,
-      "Banca Compuesto": 9359835.94
+      "Banca Compuesto": 9359835.94,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-12",
@@ -40878,7 +42830,8 @@ window.dashboardData = {
       "Banca Fijo": 10236.0,
       "Stake Compuesto": 187196.72,
       "Beneficio Compuesto": -187196.72,
-      "Banca Compuesto": 9172639.22
+      "Banca Compuesto": 9172639.22,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-12",
@@ -40896,7 +42849,8 @@ window.dashboardData = {
       "Banca Fijo": 10216.0,
       "Stake Compuesto": 183452.78,
       "Beneficio Compuesto": -183452.78,
-      "Banca Compuesto": 8989186.44
+      "Banca Compuesto": 8989186.44,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-12",
@@ -40914,7 +42868,8 @@ window.dashboardData = {
       "Banca Fijo": 10225.0,
       "Stake Compuesto": 179783.73,
       "Beneficio Compuesto": 80902.68,
-      "Banca Compuesto": 9070089.11
+      "Banca Compuesto": 9070089.11,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-12",
@@ -40932,7 +42887,8 @@ window.dashboardData = {
       "Banca Fijo": 10234.0,
       "Stake Compuesto": 181401.78,
       "Beneficio Compuesto": 81630.8,
-      "Banca Compuesto": 9151719.92
+      "Banca Compuesto": 9151719.92,
+      "league_id": 248
     },
     {
       "Fecha": "2025-04-12",
@@ -40950,7 +42906,8 @@ window.dashboardData = {
       "Banca Fijo": 10214.0,
       "Stake Compuesto": 183034.4,
       "Beneficio Compuesto": -183034.4,
-      "Banca Compuesto": 8968685.52
+      "Banca Compuesto": 8968685.52,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-12",
@@ -40968,7 +42925,8 @@ window.dashboardData = {
       "Banca Fijo": 10194.0,
       "Stake Compuesto": 179373.71,
       "Beneficio Compuesto": -179373.71,
-      "Banca Compuesto": 8789311.81
+      "Banca Compuesto": 8789311.81,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-12",
@@ -40986,7 +42944,8 @@ window.dashboardData = {
       "Banca Fijo": 10203.0,
       "Stake Compuesto": 175786.24,
       "Beneficio Compuesto": 79103.81,
-      "Banca Compuesto": 8868415.61
+      "Banca Compuesto": 8868415.61,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-12",
@@ -41004,7 +42963,8 @@ window.dashboardData = {
       "Banca Fijo": 10212.0,
       "Stake Compuesto": 177368.31,
       "Beneficio Compuesto": 79815.74,
-      "Banca Compuesto": 8948231.35
+      "Banca Compuesto": 8948231.35,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-12",
@@ -41022,7 +42982,8 @@ window.dashboardData = {
       "Banca Fijo": 10221.0,
       "Stake Compuesto": 178964.63,
       "Beneficio Compuesto": 80534.08,
-      "Banca Compuesto": 9028765.44
+      "Banca Compuesto": 9028765.44,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-13",
@@ -41040,7 +43001,8 @@ window.dashboardData = {
       "Banca Fijo": 10230.0,
       "Stake Compuesto": 180575.31,
       "Beneficio Compuesto": 81258.89,
-      "Banca Compuesto": 9110024.33
+      "Banca Compuesto": 9110024.33,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-13",
@@ -41058,7 +43020,8 @@ window.dashboardData = {
       "Banca Fijo": 10239.0,
       "Stake Compuesto": 182200.49,
       "Beneficio Compuesto": 81990.22,
-      "Banca Compuesto": 9192014.54
+      "Banca Compuesto": 9192014.54,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-13",
@@ -41076,7 +43039,8 @@ window.dashboardData = {
       "Banca Fijo": 10248.0,
       "Stake Compuesto": 183840.29,
       "Beneficio Compuesto": 82728.13,
-      "Banca Compuesto": 9274742.68
+      "Banca Compuesto": 9274742.68,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-13",
@@ -41094,7 +43058,8 @@ window.dashboardData = {
       "Banca Fijo": 10257.0,
       "Stake Compuesto": 185494.85,
       "Beneficio Compuesto": 83472.68,
-      "Banca Compuesto": 9358215.36
+      "Banca Compuesto": 9358215.36,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-13",
@@ -41112,7 +43077,8 @@ window.dashboardData = {
       "Banca Fijo": 10266.0,
       "Stake Compuesto": 187164.31,
       "Beneficio Compuesto": 84223.94,
-      "Banca Compuesto": 9442439.3
+      "Banca Compuesto": 9442439.3,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-13",
@@ -41130,7 +43096,8 @@ window.dashboardData = {
       "Banca Fijo": 10275.0,
       "Stake Compuesto": 188848.79,
       "Beneficio Compuesto": 84981.95,
-      "Banca Compuesto": 9527421.25
+      "Banca Compuesto": 9527421.25,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-13",
@@ -41148,7 +43115,8 @@ window.dashboardData = {
       "Banca Fijo": 10284.0,
       "Stake Compuesto": 190548.43,
       "Beneficio Compuesto": 85746.79,
-      "Banca Compuesto": 9613168.04
+      "Banca Compuesto": 9613168.04,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-13",
@@ -41166,7 +43134,8 @@ window.dashboardData = {
       "Banca Fijo": 10293.0,
       "Stake Compuesto": 192263.36,
       "Beneficio Compuesto": 86518.51,
-      "Banca Compuesto": 9699686.55
+      "Banca Compuesto": 9699686.55,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-13",
@@ -41184,7 +43153,8 @@ window.dashboardData = {
       "Banca Fijo": 10302.0,
       "Stake Compuesto": 193993.73,
       "Beneficio Compuesto": 87297.18,
-      "Banca Compuesto": 9786983.73
+      "Banca Compuesto": 9786983.73,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-13",
@@ -41202,7 +43172,8 @@ window.dashboardData = {
       "Banca Fijo": 10282.0,
       "Stake Compuesto": 195739.67,
       "Beneficio Compuesto": -195739.67,
-      "Banca Compuesto": 9591244.06
+      "Banca Compuesto": 9591244.06,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-13",
@@ -41220,7 +43191,8 @@ window.dashboardData = {
       "Banca Fijo": 10291.0,
       "Stake Compuesto": 191824.88,
       "Beneficio Compuesto": 86321.2,
-      "Banca Compuesto": 9677565.26
+      "Banca Compuesto": 9677565.26,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-14",
@@ -41238,7 +43210,8 @@ window.dashboardData = {
       "Banca Fijo": 10300.0,
       "Stake Compuesto": 193551.31,
       "Beneficio Compuesto": 87098.09,
-      "Banca Compuesto": 9764663.34
+      "Banca Compuesto": 9764663.34,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-14",
@@ -41256,7 +43229,8 @@ window.dashboardData = {
       "Banca Fijo": 10309.0,
       "Stake Compuesto": 195293.27,
       "Beneficio Compuesto": 87881.97,
-      "Banca Compuesto": 9852545.31
+      "Banca Compuesto": 9852545.31,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-14",
@@ -41274,7 +43248,8 @@ window.dashboardData = {
       "Banca Fijo": 10318.0,
       "Stake Compuesto": 197050.91,
       "Beneficio Compuesto": 88672.91,
-      "Banca Compuesto": 9941218.22
+      "Banca Compuesto": 9941218.22,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-14",
@@ -41292,7 +43267,8 @@ window.dashboardData = {
       "Banca Fijo": 10327.0,
       "Stake Compuesto": 198824.36,
       "Beneficio Compuesto": 89470.96,
-      "Banca Compuesto": 10030689.18
+      "Banca Compuesto": 10030689.18,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-17",
@@ -41310,7 +43286,8 @@ window.dashboardData = {
       "Banca Fijo": 10336.0,
       "Stake Compuesto": 200613.78,
       "Beneficio Compuesto": 90276.2,
-      "Banca Compuesto": 10120965.39
+      "Banca Compuesto": 10120965.39,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-17",
@@ -41328,7 +43305,8 @@ window.dashboardData = {
       "Banca Fijo": 10316.0,
       "Stake Compuesto": 202419.31,
       "Beneficio Compuesto": -202419.31,
-      "Banca Compuesto": 9918546.08
+      "Banca Compuesto": 9918546.08,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-17",
@@ -41346,7 +43324,8 @@ window.dashboardData = {
       "Banca Fijo": 10325.0,
       "Stake Compuesto": 198370.92,
       "Beneficio Compuesto": 89266.91,
-      "Banca Compuesto": 10007812.99
+      "Banca Compuesto": 10007812.99,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-17",
@@ -41364,7 +43343,8 @@ window.dashboardData = {
       "Banca Fijo": 10334.0,
       "Stake Compuesto": 200156.26,
       "Beneficio Compuesto": 90070.32,
-      "Banca Compuesto": 10097883.31
+      "Banca Compuesto": 10097883.31,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-17",
@@ -41382,7 +43362,8 @@ window.dashboardData = {
       "Banca Fijo": 10343.0,
       "Stake Compuesto": 201957.67,
       "Beneficio Compuesto": 90880.95,
-      "Banca Compuesto": 10188764.26
+      "Banca Compuesto": 10188764.26,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-17",
@@ -41400,7 +43381,8 @@ window.dashboardData = {
       "Banca Fijo": 10352.0,
       "Stake Compuesto": 203775.29,
       "Beneficio Compuesto": 91698.88,
-      "Banca Compuesto": 10280463.14
+      "Banca Compuesto": 10280463.14,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-18",
@@ -41418,7 +43400,8 @@ window.dashboardData = {
       "Banca Fijo": 10361.0,
       "Stake Compuesto": 205609.26,
       "Beneficio Compuesto": 92524.17,
-      "Banca Compuesto": 10372987.31
+      "Banca Compuesto": 10372987.31,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-18",
@@ -41436,7 +43419,8 @@ window.dashboardData = {
       "Banca Fijo": 10341.0,
       "Stake Compuesto": 207459.75,
       "Beneficio Compuesto": -207459.75,
-      "Banca Compuesto": 10165527.56
+      "Banca Compuesto": 10165527.56,
+      "league_id": 208
     },
     {
       "Fecha": "2025-04-19",
@@ -41454,7 +43438,8 @@ window.dashboardData = {
       "Banca Fijo": 10350.0,
       "Stake Compuesto": 203310.55,
       "Beneficio Compuesto": 91489.75,
-      "Banca Compuesto": 10257017.31
+      "Banca Compuesto": 10257017.31,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-19",
@@ -41472,7 +43457,8 @@ window.dashboardData = {
       "Banca Fijo": 10359.0,
       "Stake Compuesto": 205140.35,
       "Beneficio Compuesto": 92313.16,
-      "Banca Compuesto": 10349330.47
+      "Banca Compuesto": 10349330.47,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-19",
@@ -41490,7 +43476,8 @@ window.dashboardData = {
       "Banca Fijo": 10368.0,
       "Stake Compuesto": 206986.61,
       "Beneficio Compuesto": 93143.97,
-      "Banca Compuesto": 10442474.44
+      "Banca Compuesto": 10442474.44,
+      "league_id": 247
     },
     {
       "Fecha": "2025-04-19",
@@ -41508,7 +43495,8 @@ window.dashboardData = {
       "Banca Fijo": 10377.0,
       "Stake Compuesto": 208849.49,
       "Beneficio Compuesto": 93982.27,
-      "Banca Compuesto": 10536456.71
+      "Banca Compuesto": 10536456.71,
+      "league_id": 247
     },
     {
       "Fecha": "2025-04-19",
@@ -41526,7 +43514,8 @@ window.dashboardData = {
       "Banca Fijo": 10386.0,
       "Stake Compuesto": 210729.13,
       "Beneficio Compuesto": 94828.11,
-      "Banca Compuesto": 10631284.82
+      "Banca Compuesto": 10631284.82,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-19",
@@ -41544,7 +43533,8 @@ window.dashboardData = {
       "Banca Fijo": 10395.0,
       "Stake Compuesto": 212625.7,
       "Beneficio Compuesto": 95681.56,
-      "Banca Compuesto": 10726966.38
+      "Banca Compuesto": 10726966.38,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-19",
@@ -41562,7 +43552,8 @@ window.dashboardData = {
       "Banca Fijo": 10404.0,
       "Stake Compuesto": 214539.33,
       "Beneficio Compuesto": 96542.7,
-      "Banca Compuesto": 10823509.08
+      "Banca Compuesto": 10823509.08,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-19",
@@ -41580,7 +43571,8 @@ window.dashboardData = {
       "Banca Fijo": 10413.0,
       "Stake Compuesto": 216470.18,
       "Beneficio Compuesto": 97411.58,
-      "Banca Compuesto": 10920920.66
+      "Banca Compuesto": 10920920.66,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-19",
@@ -41598,7 +43590,8 @@ window.dashboardData = {
       "Banca Fijo": 10422.0,
       "Stake Compuesto": 218418.41,
       "Beneficio Compuesto": 98288.29,
-      "Banca Compuesto": 11019208.95
+      "Banca Compuesto": 11019208.95,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-19",
@@ -41616,7 +43609,8 @@ window.dashboardData = {
       "Banca Fijo": 10402.0,
       "Stake Compuesto": 220384.18,
       "Beneficio Compuesto": -220384.18,
-      "Banca Compuesto": 10798824.77
+      "Banca Compuesto": 10798824.77,
+      "league_id": 492
     },
     {
       "Fecha": "2025-04-19",
@@ -41634,7 +43628,8 @@ window.dashboardData = {
       "Banca Fijo": 10411.0,
       "Stake Compuesto": 215976.5,
       "Beneficio Compuesto": 97189.42,
-      "Banca Compuesto": 10896014.19
+      "Banca Compuesto": 10896014.19,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-19",
@@ -41652,7 +43647,8 @@ window.dashboardData = {
       "Banca Fijo": 10420.0,
       "Stake Compuesto": 217920.28,
       "Beneficio Compuesto": 98064.13,
-      "Banca Compuesto": 10994078.32
+      "Banca Compuesto": 10994078.32,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-20",
@@ -41670,7 +43666,8 @@ window.dashboardData = {
       "Banca Fijo": 10429.0,
       "Stake Compuesto": 219881.57,
       "Beneficio Compuesto": 98946.7,
-      "Banca Compuesto": 11093025.03
+      "Banca Compuesto": 11093025.03,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-20",
@@ -41688,7 +43685,8 @@ window.dashboardData = {
       "Banca Fijo": 10438.0,
       "Stake Compuesto": 221860.5,
       "Beneficio Compuesto": 99837.23,
-      "Banca Compuesto": 11192862.25
+      "Banca Compuesto": 11192862.25,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-20",
@@ -41706,7 +43704,8 @@ window.dashboardData = {
       "Banca Fijo": 10447.0,
       "Stake Compuesto": 223857.25,
       "Beneficio Compuesto": 100735.76,
-      "Banca Compuesto": 11293598.01
+      "Banca Compuesto": 11293598.01,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-20",
@@ -41724,7 +43723,8 @@ window.dashboardData = {
       "Banca Fijo": 10456.0,
       "Stake Compuesto": 225871.96,
       "Beneficio Compuesto": 101642.38,
-      "Banca Compuesto": 11395240.39
+      "Banca Compuesto": 11395240.39,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-20",
@@ -41742,7 +43742,8 @@ window.dashboardData = {
       "Banca Fijo": 10465.0,
       "Stake Compuesto": 227904.81,
       "Beneficio Compuesto": 102557.16,
-      "Banca Compuesto": 11497797.56
+      "Banca Compuesto": 11497797.56,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-21",
@@ -41760,7 +43761,8 @@ window.dashboardData = {
       "Banca Fijo": 10474.0,
       "Stake Compuesto": 229955.95,
       "Beneficio Compuesto": 103480.18,
-      "Banca Compuesto": 11601277.73
+      "Banca Compuesto": 11601277.73,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-21",
@@ -41778,7 +43780,8 @@ window.dashboardData = {
       "Banca Fijo": 10483.0,
       "Stake Compuesto": 232025.55,
       "Beneficio Compuesto": 104411.5,
-      "Banca Compuesto": 11705689.23
+      "Banca Compuesto": 11705689.23,
+      "league_id": 103
     },
     {
       "Fecha": "2025-04-21",
@@ -41796,7 +43799,8 @@ window.dashboardData = {
       "Banca Fijo": 10492.0,
       "Stake Compuesto": 234113.78,
       "Beneficio Compuesto": 105351.2,
-      "Banca Compuesto": 11811040.44
+      "Banca Compuesto": 11811040.44,
+      "league_id": 104
     },
     {
       "Fecha": "2025-04-21",
@@ -41814,7 +43818,8 @@ window.dashboardData = {
       "Banca Fijo": 10501.0,
       "Stake Compuesto": 236220.81,
       "Beneficio Compuesto": 106299.36,
-      "Banca Compuesto": 11917339.8
+      "Banca Compuesto": 11917339.8,
+      "league_id": 247
     },
     {
       "Fecha": "2025-04-21",
@@ -41832,7 +43837,8 @@ window.dashboardData = {
       "Banca Fijo": 10510.0,
       "Stake Compuesto": 238346.8,
       "Beneficio Compuesto": 107256.06,
-      "Banca Compuesto": 12024595.86
+      "Banca Compuesto": 12024595.86,
+      "league_id": 248
     },
     {
       "Fecha": "2025-04-21",
@@ -41850,7 +43856,8 @@ window.dashboardData = {
       "Banca Fijo": 10519.0,
       "Stake Compuesto": 240491.92,
       "Beneficio Compuesto": 108221.36,
-      "Banca Compuesto": 12132817.22
+      "Banca Compuesto": 12132817.22,
+      "league_id": 473
     },
     {
       "Fecha": "2025-04-21",
@@ -41868,7 +43875,8 @@ window.dashboardData = {
       "Banca Fijo": 10528.0,
       "Stake Compuesto": 242656.34,
       "Beneficio Compuesto": 109195.35,
-      "Banca Compuesto": 12242012.58
+      "Banca Compuesto": 12242012.58,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-21",
@@ -41886,7 +43894,8 @@ window.dashboardData = {
       "Banca Fijo": 10537.0,
       "Stake Compuesto": 244840.25,
       "Beneficio Compuesto": 110178.11,
-      "Banca Compuesto": 12352190.69
+      "Banca Compuesto": 12352190.69,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-22",
@@ -41904,7 +43913,8 @@ window.dashboardData = {
       "Banca Fijo": 10517.0,
       "Stake Compuesto": 247043.81,
       "Beneficio Compuesto": -247043.81,
-      "Banca Compuesto": 12105146.88
+      "Banca Compuesto": 12105146.88,
+      "league_id": 244
     },
     {
       "Fecha": "2025-04-22",
@@ -41922,7 +43932,8 @@ window.dashboardData = {
       "Banca Fijo": 10526.0,
       "Stake Compuesto": 242102.94,
       "Beneficio Compuesto": 108946.32,
-      "Banca Compuesto": 12214093.2
+      "Banca Compuesto": 12214093.2,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-04-22",
@@ -41940,7 +43951,8 @@ window.dashboardData = {
       "Banca Fijo": 10535.0,
       "Stake Compuesto": 244281.86,
       "Beneficio Compuesto": 109926.84,
-      "Banca Compuesto": 12324020.04
+      "Banca Compuesto": 12324020.04,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-23",
@@ -41958,7 +43970,8 @@ window.dashboardData = {
       "Banca Fijo": 10544.0,
       "Stake Compuesto": 246480.4,
       "Beneficio Compuesto": 110916.18,
-      "Banca Compuesto": 12434936.22
+      "Banca Compuesto": 12434936.22,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-23",
@@ -41976,7 +43989,8 @@ window.dashboardData = {
       "Banca Fijo": 10553.0,
       "Stake Compuesto": 248698.72,
       "Beneficio Compuesto": 111914.43,
-      "Banca Compuesto": 12546850.64
+      "Banca Compuesto": 12546850.64,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-23",
@@ -41994,7 +44008,8 @@ window.dashboardData = {
       "Banca Fijo": 10562.0,
       "Stake Compuesto": 250937.01,
       "Beneficio Compuesto": 112921.66,
-      "Banca Compuesto": 12659772.3
+      "Banca Compuesto": 12659772.3,
+      "league_id": 244
     },
     {
       "Fecha": "2025-04-23",
@@ -42012,7 +44027,8 @@ window.dashboardData = {
       "Banca Fijo": 10571.0,
       "Stake Compuesto": 253195.45,
       "Beneficio Compuesto": 113937.95,
-      "Banca Compuesto": 12773710.25
+      "Banca Compuesto": 12773710.25,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-23",
@@ -42030,7 +44046,8 @@ window.dashboardData = {
       "Banca Fijo": 10580.0,
       "Stake Compuesto": 255474.2,
       "Beneficio Compuesto": 114963.39,
-      "Banca Compuesto": 12888673.64
+      "Banca Compuesto": 12888673.64,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-23",
@@ -42048,7 +44065,8 @@ window.dashboardData = {
       "Banca Fijo": 10589.0,
       "Stake Compuesto": 257773.47,
       "Beneficio Compuesto": 115998.06,
-      "Banca Compuesto": 13004671.7
+      "Banca Compuesto": 13004671.7,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-24",
@@ -42066,7 +44084,8 @@ window.dashboardData = {
       "Banca Fijo": 10598.0,
       "Stake Compuesto": 260093.43,
       "Beneficio Compuesto": 117042.05,
-      "Banca Compuesto": 13121713.75
+      "Banca Compuesto": 13121713.75,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-24",
@@ -42084,7 +44103,8 @@ window.dashboardData = {
       "Banca Fijo": 10607.0,
       "Stake Compuesto": 262434.27,
       "Beneficio Compuesto": 118095.42,
-      "Banca Compuesto": 13239809.17
+      "Banca Compuesto": 13239809.17,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-25",
@@ -42102,7 +44122,8 @@ window.dashboardData = {
       "Banca Fijo": 10616.0,
       "Stake Compuesto": 264796.18,
       "Beneficio Compuesto": 119158.28,
-      "Banca Compuesto": 13358967.46
+      "Banca Compuesto": 13358967.46,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-25",
@@ -42120,7 +44141,8 @@ window.dashboardData = {
       "Banca Fijo": 10625.0,
       "Stake Compuesto": 267179.35,
       "Beneficio Compuesto": 120230.71,
-      "Banca Compuesto": 13479198.16
+      "Banca Compuesto": 13479198.16,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-25",
@@ -42138,7 +44160,8 @@ window.dashboardData = {
       "Banca Fijo": 10634.0,
       "Stake Compuesto": 269583.96,
       "Beneficio Compuesto": 121312.78,
-      "Banca Compuesto": 13600510.95
+      "Banca Compuesto": 13600510.95,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-25",
@@ -42156,7 +44179,8 @@ window.dashboardData = {
       "Banca Fijo": 10643.0,
       "Stake Compuesto": 272010.22,
       "Beneficio Compuesto": 122404.6,
-      "Banca Compuesto": 13722915.55
+      "Banca Compuesto": 13722915.55,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-25",
@@ -42174,7 +44198,8 @@ window.dashboardData = {
       "Banca Fijo": 10623.0,
       "Stake Compuesto": 274458.31,
       "Beneficio Compuesto": -274458.31,
-      "Banca Compuesto": 13448457.23
+      "Banca Compuesto": 13448457.23,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-25",
@@ -42192,7 +44217,8 @@ window.dashboardData = {
       "Banca Fijo": 10603.0,
       "Stake Compuesto": 268969.14,
       "Beneficio Compuesto": -268969.14,
-      "Banca Compuesto": 13179488.09
+      "Banca Compuesto": 13179488.09,
+      "league_id": 208
     },
     {
       "Fecha": "2025-04-26",
@@ -42210,7 +44236,8 @@ window.dashboardData = {
       "Banca Fijo": 10612.0,
       "Stake Compuesto": 263589.76,
       "Beneficio Compuesto": 118615.39,
-      "Banca Compuesto": 13298103.48
+      "Banca Compuesto": 13298103.48,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-26",
@@ -42228,7 +44255,8 @@ window.dashboardData = {
       "Banca Fijo": 10621.0,
       "Stake Compuesto": 265962.07,
       "Beneficio Compuesto": 119682.93,
-      "Banca Compuesto": 13417786.41
+      "Banca Compuesto": 13417786.41,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-26",
@@ -42246,7 +44274,8 @@ window.dashboardData = {
       "Banca Fijo": 10630.0,
       "Stake Compuesto": 268355.73,
       "Beneficio Compuesto": 120760.08,
-      "Banca Compuesto": 13538546.49
+      "Banca Compuesto": 13538546.49,
+      "league_id": 78
     },
     {
       "Fecha": "2025-04-26",
@@ -42264,7 +44293,8 @@ window.dashboardData = {
       "Banca Fijo": 10639.0,
       "Stake Compuesto": 270770.93,
       "Beneficio Compuesto": 121846.92,
-      "Banca Compuesto": 13660393.41
+      "Banca Compuesto": 13660393.41,
+      "league_id": 244
     },
     {
       "Fecha": "2025-04-26",
@@ -42282,7 +44312,8 @@ window.dashboardData = {
       "Banca Fijo": 10648.0,
       "Stake Compuesto": 273207.87,
       "Beneficio Compuesto": 122943.54,
-      "Banca Compuesto": 13783336.95
+      "Banca Compuesto": 13783336.95,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-26",
@@ -42300,7 +44331,8 @@ window.dashboardData = {
       "Banca Fijo": 10657.0,
       "Stake Compuesto": 275666.74,
       "Beneficio Compuesto": 124050.03,
-      "Banca Compuesto": 13907386.98
+      "Banca Compuesto": 13907386.98,
+      "league_id": 247
     },
     {
       "Fecha": "2025-04-26",
@@ -42318,7 +44350,8 @@ window.dashboardData = {
       "Banca Fijo": 10666.0,
       "Stake Compuesto": 278147.74,
       "Beneficio Compuesto": 125166.48,
-      "Banca Compuesto": 14032553.47
+      "Banca Compuesto": 14032553.47,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-26",
@@ -42336,7 +44369,8 @@ window.dashboardData = {
       "Banca Fijo": 10675.0,
       "Stake Compuesto": 280651.07,
       "Beneficio Compuesto": 126292.98,
-      "Banca Compuesto": 14158846.45
+      "Banca Compuesto": 14158846.45,
+      "league_id": 329
     },
     {
       "Fecha": "2025-04-26",
@@ -42354,7 +44388,8 @@ window.dashboardData = {
       "Banca Fijo": 10684.0,
       "Stake Compuesto": 283176.93,
       "Beneficio Compuesto": 127429.62,
-      "Banca Compuesto": 14286276.07
+      "Banca Compuesto": 14286276.07,
+      "league_id": 702
     },
     {
       "Fecha": "2025-04-26",
@@ -42372,7 +44407,8 @@ window.dashboardData = {
       "Banca Fijo": 10693.0,
       "Stake Compuesto": 285725.52,
       "Beneficio Compuesto": 128576.48,
-      "Banca Compuesto": 14414852.55
+      "Banca Compuesto": 14414852.55,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-04-27",
@@ -42390,7 +44426,8 @@ window.dashboardData = {
       "Banca Fijo": 10702.0,
       "Stake Compuesto": 288297.05,
       "Beneficio Compuesto": 129733.67,
-      "Banca Compuesto": 14544586.22
+      "Banca Compuesto": 14544586.22,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-27",
@@ -42408,7 +44445,8 @@ window.dashboardData = {
       "Banca Fijo": 10711.0,
       "Stake Compuesto": 290891.72,
       "Beneficio Compuesto": 130901.28,
-      "Banca Compuesto": 14675487.5
+      "Banca Compuesto": 14675487.5,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-27",
@@ -42426,7 +44464,8 @@ window.dashboardData = {
       "Banca Fijo": 10691.0,
       "Stake Compuesto": 293509.75,
       "Beneficio Compuesto": -293509.75,
-      "Banca Compuesto": 14381977.75
+      "Banca Compuesto": 14381977.75,
+      "league_id": 103
     },
     {
       "Fecha": "2025-04-27",
@@ -42444,7 +44483,8 @@ window.dashboardData = {
       "Banca Fijo": 10700.0,
       "Stake Compuesto": 287639.55,
       "Beneficio Compuesto": 129437.8,
-      "Banca Compuesto": 14511415.55
+      "Banca Compuesto": 14511415.55,
+      "league_id": 103
     },
     {
       "Fecha": "2025-04-27",
@@ -42462,7 +44502,8 @@ window.dashboardData = {
       "Banca Fijo": 10680.0,
       "Stake Compuesto": 290228.31,
       "Beneficio Compuesto": -290228.31,
-      "Banca Compuesto": 14221187.24
+      "Banca Compuesto": 14221187.24,
+      "league_id": 104
     },
     {
       "Fecha": "2025-04-27",
@@ -42480,7 +44521,8 @@ window.dashboardData = {
       "Banca Fijo": 10689.0,
       "Stake Compuesto": 284423.74,
       "Beneficio Compuesto": 127990.69,
-      "Banca Compuesto": 14349177.92
+      "Banca Compuesto": 14349177.92,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-27",
@@ -42498,7 +44540,8 @@ window.dashboardData = {
       "Banca Fijo": 10698.0,
       "Stake Compuesto": 286983.56,
       "Beneficio Compuesto": 129142.6,
-      "Banca Compuesto": 14478320.52
+      "Banca Compuesto": 14478320.52,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-27",
@@ -42516,7 +44559,8 @@ window.dashboardData = {
       "Banca Fijo": 10678.0,
       "Stake Compuesto": 289566.41,
       "Beneficio Compuesto": -289566.41,
-      "Banca Compuesto": 14188754.11
+      "Banca Compuesto": 14188754.11,
+      "league_id": 473
     },
     {
       "Fecha": "2025-04-27",
@@ -42534,7 +44578,8 @@ window.dashboardData = {
       "Banca Fijo": 10687.0,
       "Stake Compuesto": 283775.08,
       "Beneficio Compuesto": 127698.79,
-      "Banca Compuesto": 14316452.9
+      "Banca Compuesto": 14316452.9,
+      "league_id": 473
     },
     {
       "Fecha": "2025-04-27",
@@ -42552,7 +44597,8 @@ window.dashboardData = {
       "Banca Fijo": 10696.0,
       "Stake Compuesto": 286329.06,
       "Beneficio Compuesto": 128848.08,
-      "Banca Compuesto": 14445300.98
+      "Banca Compuesto": 14445300.98,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-27",
@@ -42570,7 +44616,8 @@ window.dashboardData = {
       "Banca Fijo": 10705.0,
       "Stake Compuesto": 288906.02,
       "Beneficio Compuesto": 130007.71,
-      "Banca Compuesto": 14575308.69
+      "Banca Compuesto": 14575308.69,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-27",
@@ -42588,7 +44635,8 @@ window.dashboardData = {
       "Banca Fijo": 10714.0,
       "Stake Compuesto": 291506.17,
       "Beneficio Compuesto": 131177.78,
-      "Banca Compuesto": 14706486.46
+      "Banca Compuesto": 14706486.46,
+      "league_id": 474
     },
     {
       "Fecha": "2025-04-27",
@@ -42606,7 +44654,8 @@ window.dashboardData = {
       "Banca Fijo": 10723.0,
       "Stake Compuesto": 294129.73,
       "Beneficio Compuesto": 132358.38,
-      "Banca Compuesto": 14838844.84
+      "Banca Compuesto": 14838844.84,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-27",
@@ -42624,7 +44673,8 @@ window.dashboardData = {
       "Banca Fijo": 10703.0,
       "Stake Compuesto": 296776.9,
       "Beneficio Compuesto": -296776.9,
-      "Banca Compuesto": 14542067.95
+      "Banca Compuesto": 14542067.95,
+      "league_id": 563
     },
     {
       "Fecha": "2025-04-27",
@@ -42642,7 +44692,8 @@ window.dashboardData = {
       "Banca Fijo": 10712.0,
       "Stake Compuesto": 290841.36,
       "Beneficio Compuesto": 130878.61,
-      "Banca Compuesto": 14672946.56
+      "Banca Compuesto": 14672946.56,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-27",
@@ -42660,7 +44711,8 @@ window.dashboardData = {
       "Banca Fijo": 10721.0,
       "Stake Compuesto": 293458.93,
       "Beneficio Compuesto": 132056.52,
-      "Banca Compuesto": 14805003.08
+      "Banca Compuesto": 14805003.08,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-27",
@@ -42678,7 +44730,8 @@ window.dashboardData = {
       "Banca Fijo": 10730.0,
       "Stake Compuesto": 296100.06,
       "Beneficio Compuesto": 133245.03,
-      "Banca Compuesto": 14938248.1
+      "Banca Compuesto": 14938248.1,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-27",
@@ -42696,7 +44749,8 @@ window.dashboardData = {
       "Banca Fijo": 10739.0,
       "Stake Compuesto": 298764.96,
       "Beneficio Compuesto": 134444.23,
-      "Banca Compuesto": 15072692.34
+      "Banca Compuesto": 15072692.34,
+      "league_id": 119
     },
     {
       "Fecha": "2025-04-28",
@@ -42714,7 +44768,8 @@ window.dashboardData = {
       "Banca Fijo": 10748.0,
       "Stake Compuesto": 301453.85,
       "Beneficio Compuesto": 135654.23,
-      "Banca Compuesto": 15208346.57
+      "Banca Compuesto": 15208346.57,
+      "league_id": 164
     },
     {
       "Fecha": "2025-04-28",
@@ -42732,7 +44787,8 @@ window.dashboardData = {
       "Banca Fijo": 10757.0,
       "Stake Compuesto": 304166.93,
       "Beneficio Compuesto": 136875.12,
-      "Banca Compuesto": 15345221.69
+      "Banca Compuesto": 15345221.69,
+      "league_id": 244
     },
     {
       "Fecha": "2025-04-28",
@@ -42750,7 +44806,8 @@ window.dashboardData = {
       "Banca Fijo": 10766.0,
       "Stake Compuesto": 306904.43,
       "Beneficio Compuesto": 138107.0,
-      "Banca Compuesto": 15483328.68
+      "Banca Compuesto": 15483328.68,
+      "league_id": 245
     },
     {
       "Fecha": "2025-04-28",
@@ -42768,7 +44825,8 @@ window.dashboardData = {
       "Banca Fijo": 10775.0,
       "Stake Compuesto": 309666.57,
       "Beneficio Compuesto": 139349.96,
-      "Banca Compuesto": 15622678.64
+      "Banca Compuesto": 15622678.64,
+      "league_id": 328
     },
     {
       "Fecha": "2025-04-28",
@@ -42786,7 +44844,8 @@ window.dashboardData = {
       "Banca Fijo": 10784.0,
       "Stake Compuesto": 312453.57,
       "Beneficio Compuesto": 140604.11,
-      "Banca Compuesto": 15763282.75
+      "Banca Compuesto": 15763282.75,
+      "league_id": 473
     },
     {
       "Fecha": "2025-04-28",
@@ -42804,7 +44863,8 @@ window.dashboardData = {
       "Banca Fijo": 10793.0,
       "Stake Compuesto": 315265.65,
       "Beneficio Compuesto": 141869.54,
-      "Banca Compuesto": 15905152.29
+      "Banca Compuesto": 15905152.29,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-28",
@@ -42822,7 +44882,8 @@ window.dashboardData = {
       "Banca Fijo": 10802.0,
       "Stake Compuesto": 318103.05,
       "Beneficio Compuesto": 143146.37,
-      "Banca Compuesto": 16048298.66
+      "Banca Compuesto": 16048298.66,
+      "league_id": 909
     },
     {
       "Fecha": "2025-04-29",
@@ -42840,7 +44901,8 @@ window.dashboardData = {
       "Banca Fijo": 10782.0,
       "Stake Compuesto": 320965.97,
       "Beneficio Compuesto": -320965.97,
-      "Banca Compuesto": 15727332.69
+      "Banca Compuesto": 15727332.69,
+      "league_id": 247
     },
     {
       "Fecha": "2025-04-29",
@@ -42858,7 +44920,8 @@ window.dashboardData = {
       "Banca Fijo": 10791.0,
       "Stake Compuesto": 314546.65,
       "Beneficio Compuesto": 141545.99,
-      "Banca Compuesto": 15868878.68
+      "Banca Compuesto": 15868878.68,
+      "league_id": 368
     },
     {
       "Fecha": "2025-04-30",
@@ -42876,7 +44939,8 @@ window.dashboardData = {
       "Banca Fijo": 10771.0,
       "Stake Compuesto": 317377.57,
       "Beneficio Compuesto": -317377.57,
-      "Banca Compuesto": 15551501.11
+      "Banca Compuesto": 15551501.11,
+      "league_id": 84
     },
     {
       "Fecha": "2025-04-30",
@@ -42894,7 +44958,8 @@ window.dashboardData = {
       "Banca Fijo": 10780.0,
       "Stake Compuesto": 311030.02,
       "Beneficio Compuesto": 139963.51,
-      "Banca Compuesto": 15691464.62
+      "Banca Compuesto": 15691464.62,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-01",
@@ -42912,7 +44977,8 @@ window.dashboardData = {
       "Banca Fijo": 10789.0,
       "Stake Compuesto": 313829.29,
       "Beneficio Compuesto": 141223.18,
-      "Banca Compuesto": 15832687.8
+      "Banca Compuesto": 15832687.8,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-02",
@@ -42930,7 +44996,8 @@ window.dashboardData = {
       "Banca Fijo": 10769.0,
       "Stake Compuesto": 316653.76,
       "Beneficio Compuesto": -316653.76,
-      "Banca Compuesto": 15516034.05
+      "Banca Compuesto": 15516034.05,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-02",
@@ -42948,7 +45015,8 @@ window.dashboardData = {
       "Banca Fijo": 10778.0,
       "Stake Compuesto": 310320.68,
       "Beneficio Compuesto": 139644.31,
-      "Banca Compuesto": 15655678.35
+      "Banca Compuesto": 15655678.35,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-02",
@@ -42966,7 +45034,8 @@ window.dashboardData = {
       "Banca Fijo": 10758.0,
       "Stake Compuesto": 313113.57,
       "Beneficio Compuesto": -313113.57,
-      "Banca Compuesto": 15342564.78
+      "Banca Compuesto": 15342564.78,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-02",
@@ -42984,7 +45053,8 @@ window.dashboardData = {
       "Banca Fijo": 10767.0,
       "Stake Compuesto": 306851.3,
       "Beneficio Compuesto": 138083.08,
-      "Banca Compuesto": 15480647.87
+      "Banca Compuesto": 15480647.87,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-02",
@@ -43002,7 +45072,8 @@ window.dashboardData = {
       "Banca Fijo": 10776.0,
       "Stake Compuesto": 309612.96,
       "Beneficio Compuesto": 139325.83,
-      "Banca Compuesto": 15619973.7
+      "Banca Compuesto": 15619973.7,
+      "league_id": 248
     },
     {
       "Fecha": "2025-05-02",
@@ -43020,7 +45091,8 @@ window.dashboardData = {
       "Banca Fijo": 10785.0,
       "Stake Compuesto": 312399.47,
       "Beneficio Compuesto": 140579.76,
-      "Banca Compuesto": 15760553.46
+      "Banca Compuesto": 15760553.46,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-02",
@@ -43038,7 +45110,8 @@ window.dashboardData = {
       "Banca Fijo": 10794.0,
       "Stake Compuesto": 315211.07,
       "Beneficio Compuesto": 141844.98,
-      "Banca Compuesto": 15902398.44
+      "Banca Compuesto": 15902398.44,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-02",
@@ -43056,7 +45129,8 @@ window.dashboardData = {
       "Banca Fijo": 10803.0,
       "Stake Compuesto": 318047.97,
       "Beneficio Compuesto": 143121.59,
-      "Banca Compuesto": 16045520.03
+      "Banca Compuesto": 16045520.03,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-02",
@@ -43074,7 +45148,8 @@ window.dashboardData = {
       "Banca Fijo": 10812.0,
       "Stake Compuesto": 320910.4,
       "Beneficio Compuesto": 144409.68,
-      "Banca Compuesto": 16189929.71
+      "Banca Compuesto": 16189929.71,
+      "league_id": 702
     },
     {
       "Fecha": "2025-05-02",
@@ -43092,7 +45167,8 @@ window.dashboardData = {
       "Banca Fijo": 10821.0,
       "Stake Compuesto": 323798.59,
       "Beneficio Compuesto": 145709.37,
-      "Banca Compuesto": 16335639.08
+      "Banca Compuesto": 16335639.08,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-02",
@@ -43110,7 +45186,8 @@ window.dashboardData = {
       "Banca Fijo": 10830.0,
       "Stake Compuesto": 326712.78,
       "Beneficio Compuesto": 147020.75,
-      "Banca Compuesto": 16482659.83
+      "Banca Compuesto": 16482659.83,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-02",
@@ -43128,7 +45205,8 @@ window.dashboardData = {
       "Banca Fijo": 10839.0,
       "Stake Compuesto": 329653.2,
       "Beneficio Compuesto": 148343.94,
-      "Banca Compuesto": 16631003.77
+      "Banca Compuesto": 16631003.77,
+      "league_id": 208
     },
     {
       "Fecha": "2025-05-02",
@@ -43146,7 +45224,8 @@ window.dashboardData = {
       "Banca Fijo": 10848.0,
       "Stake Compuesto": 332620.08,
       "Beneficio Compuesto": 149679.03,
-      "Banca Compuesto": 16780682.8
+      "Banca Compuesto": 16780682.8,
+      "league_id": 208
     },
     {
       "Fecha": "2025-05-03",
@@ -43164,7 +45243,8 @@ window.dashboardData = {
       "Banca Fijo": 10857.0,
       "Stake Compuesto": 335613.66,
       "Beneficio Compuesto": 151026.15,
-      "Banca Compuesto": 16931708.95
+      "Banca Compuesto": 16931708.95,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-03",
@@ -43182,7 +45262,8 @@ window.dashboardData = {
       "Banca Fijo": 10866.0,
       "Stake Compuesto": 338634.18,
       "Beneficio Compuesto": 152385.38,
-      "Banca Compuesto": 17084094.33
+      "Banca Compuesto": 17084094.33,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-03",
@@ -43200,7 +45281,8 @@ window.dashboardData = {
       "Banca Fijo": 10875.0,
       "Stake Compuesto": 341681.89,
       "Beneficio Compuesto": 153756.85,
-      "Banca Compuesto": 17237851.18
+      "Banca Compuesto": 17237851.18,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-03",
@@ -43218,7 +45300,8 @@ window.dashboardData = {
       "Banca Fijo": 10855.0,
       "Stake Compuesto": 344757.02,
       "Beneficio Compuesto": -344757.02,
-      "Banca Compuesto": 16893094.15
+      "Banca Compuesto": 16893094.15,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-03",
@@ -43236,7 +45319,8 @@ window.dashboardData = {
       "Banca Fijo": 10864.0,
       "Stake Compuesto": 337861.88,
       "Beneficio Compuesto": 152037.85,
-      "Banca Compuesto": 17045132.0
+      "Banca Compuesto": 17045132.0,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-03",
@@ -43254,7 +45338,8 @@ window.dashboardData = {
       "Banca Fijo": 10873.0,
       "Stake Compuesto": 340902.64,
       "Beneficio Compuesto": 153406.19,
-      "Banca Compuesto": 17198538.19
+      "Banca Compuesto": 17198538.19,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-03",
@@ -43272,7 +45357,8 @@ window.dashboardData = {
       "Banca Fijo": 10882.0,
       "Stake Compuesto": 343970.76,
       "Beneficio Compuesto": 154786.84,
-      "Banca Compuesto": 17353325.03
+      "Banca Compuesto": 17353325.03,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-03",
@@ -43290,7 +45376,8 @@ window.dashboardData = {
       "Banca Fijo": 10891.0,
       "Stake Compuesto": 347066.5,
       "Beneficio Compuesto": 156179.93,
-      "Banca Compuesto": 17509504.96
+      "Banca Compuesto": 17509504.96,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-03",
@@ -43308,7 +45395,8 @@ window.dashboardData = {
       "Banca Fijo": 10900.0,
       "Stake Compuesto": 350190.1,
       "Beneficio Compuesto": 157585.54,
-      "Banca Compuesto": 17667090.5
+      "Banca Compuesto": 17667090.5,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-03",
@@ -43326,7 +45414,8 @@ window.dashboardData = {
       "Banca Fijo": 10909.0,
       "Stake Compuesto": 353341.81,
       "Beneficio Compuesto": 159003.81,
-      "Banca Compuesto": 17826094.32
+      "Banca Compuesto": 17826094.32,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-03",
@@ -43344,7 +45433,8 @@ window.dashboardData = {
       "Banca Fijo": 10918.0,
       "Stake Compuesto": 356521.89,
       "Beneficio Compuesto": 160434.85,
-      "Banca Compuesto": 17986529.16
+      "Banca Compuesto": 17986529.16,
+      "league_id": 248
     },
     {
       "Fecha": "2025-05-03",
@@ -43362,7 +45452,8 @@ window.dashboardData = {
       "Banca Fijo": 10927.0,
       "Stake Compuesto": 359730.58,
       "Beneficio Compuesto": 161878.76,
-      "Banca Compuesto": 18148407.93
+      "Banca Compuesto": 18148407.93,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-03",
@@ -43380,7 +45471,8 @@ window.dashboardData = {
       "Banca Fijo": 10936.0,
       "Stake Compuesto": 362968.16,
       "Beneficio Compuesto": 163335.67,
-      "Banca Compuesto": 18311743.6
+      "Banca Compuesto": 18311743.6,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-03",
@@ -43398,7 +45490,8 @@ window.dashboardData = {
       "Banca Fijo": 10916.0,
       "Stake Compuesto": 366234.87,
       "Beneficio Compuesto": -366234.87,
-      "Banca Compuesto": 17945508.73
+      "Banca Compuesto": 17945508.73,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-03",
@@ -43416,7 +45509,8 @@ window.dashboardData = {
       "Banca Fijo": 10925.0,
       "Stake Compuesto": 358910.17,
       "Beneficio Compuesto": 161509.58,
-      "Banca Compuesto": 18107018.3
+      "Banca Compuesto": 18107018.3,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-03",
@@ -43434,7 +45528,8 @@ window.dashboardData = {
       "Banca Fijo": 10934.0,
       "Stake Compuesto": 362140.37,
       "Beneficio Compuesto": 162963.16,
-      "Banca Compuesto": 18269981.47
+      "Banca Compuesto": 18269981.47,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-03",
@@ -43452,7 +45547,8 @@ window.dashboardData = {
       "Banca Fijo": 10914.0,
       "Stake Compuesto": 365399.63,
       "Beneficio Compuesto": -365399.63,
-      "Banca Compuesto": 17904581.84
+      "Banca Compuesto": 17904581.84,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-03",
@@ -43470,7 +45566,8 @@ window.dashboardData = {
       "Banca Fijo": 10923.0,
       "Stake Compuesto": 358091.64,
       "Beneficio Compuesto": 161141.24,
-      "Banca Compuesto": 18065723.08
+      "Banca Compuesto": 18065723.08,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-03",
@@ -43488,7 +45585,8 @@ window.dashboardData = {
       "Banca Fijo": 10932.0,
       "Stake Compuesto": 361314.46,
       "Beneficio Compuesto": 162591.51,
-      "Banca Compuesto": 18228314.58
+      "Banca Compuesto": 18228314.58,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-03",
@@ -43506,7 +45604,8 @@ window.dashboardData = {
       "Banca Fijo": 10941.0,
       "Stake Compuesto": 364566.29,
       "Beneficio Compuesto": 164054.83,
-      "Banca Compuesto": 18392369.42
+      "Banca Compuesto": 18392369.42,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-03",
@@ -43524,7 +45623,8 @@ window.dashboardData = {
       "Banca Fijo": 10950.0,
       "Stake Compuesto": 367847.39,
       "Beneficio Compuesto": 165531.32,
-      "Banca Compuesto": 18557900.74
+      "Banca Compuesto": 18557900.74,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-03",
@@ -43542,7 +45642,8 @@ window.dashboardData = {
       "Banca Fijo": 10959.0,
       "Stake Compuesto": 371158.01,
       "Beneficio Compuesto": 167021.11,
-      "Banca Compuesto": 18724921.85
+      "Banca Compuesto": 18724921.85,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-03",
@@ -43560,7 +45661,8 @@ window.dashboardData = {
       "Banca Fijo": 10939.0,
       "Stake Compuesto": 374498.44,
       "Beneficio Compuesto": -374498.44,
-      "Banca Compuesto": 18350423.41
+      "Banca Compuesto": 18350423.41,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-03",
@@ -43578,7 +45680,8 @@ window.dashboardData = {
       "Banca Fijo": 10948.0,
       "Stake Compuesto": 367008.47,
       "Beneficio Compuesto": 165153.81,
-      "Banca Compuesto": 18515577.22
+      "Banca Compuesto": 18515577.22,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-03",
@@ -43596,7 +45699,8 @@ window.dashboardData = {
       "Banca Fijo": 10928.0,
       "Stake Compuesto": 370311.54,
       "Beneficio Compuesto": -370311.54,
-      "Banca Compuesto": 18145265.68
+      "Banca Compuesto": 18145265.68,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-04",
@@ -43614,7 +45718,8 @@ window.dashboardData = {
       "Banca Fijo": 10937.0,
       "Stake Compuesto": 362905.31,
       "Beneficio Compuesto": 163307.39,
-      "Banca Compuesto": 18308573.07
+      "Banca Compuesto": 18308573.07,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-04",
@@ -43632,7 +45737,8 @@ window.dashboardData = {
       "Banca Fijo": 10946.0,
       "Stake Compuesto": 366171.46,
       "Beneficio Compuesto": 164777.16,
-      "Banca Compuesto": 18473350.23
+      "Banca Compuesto": 18473350.23,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-04",
@@ -43650,7 +45756,8 @@ window.dashboardData = {
       "Banca Fijo": 10955.0,
       "Stake Compuesto": 369467.0,
       "Beneficio Compuesto": 166260.15,
-      "Banca Compuesto": 18639610.38
+      "Banca Compuesto": 18639610.38,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-04",
@@ -43668,7 +45775,8 @@ window.dashboardData = {
       "Banca Fijo": 10964.0,
       "Stake Compuesto": 372792.21,
       "Beneficio Compuesto": 167756.49,
-      "Banca Compuesto": 18807366.87
+      "Banca Compuesto": 18807366.87,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-04",
@@ -43686,7 +45794,8 @@ window.dashboardData = {
       "Banca Fijo": 10973.0,
       "Stake Compuesto": 376147.34,
       "Beneficio Compuesto": 169266.3,
-      "Banca Compuesto": 18976633.17
+      "Banca Compuesto": 18976633.17,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-04",
@@ -43704,7 +45813,8 @@ window.dashboardData = {
       "Banca Fijo": 10982.0,
       "Stake Compuesto": 379532.66,
       "Beneficio Compuesto": 170789.7,
-      "Banca Compuesto": 19147422.87
+      "Banca Compuesto": 19147422.87,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-04",
@@ -43722,7 +45832,8 @@ window.dashboardData = {
       "Banca Fijo": 10991.0,
       "Stake Compuesto": 382948.46,
       "Beneficio Compuesto": 172326.81,
-      "Banca Compuesto": 19319749.68
+      "Banca Compuesto": 19319749.68,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-05",
@@ -43740,7 +45851,8 @@ window.dashboardData = {
       "Banca Fijo": 10971.0,
       "Stake Compuesto": 386394.99,
       "Beneficio Compuesto": -386394.99,
-      "Banca Compuesto": 18933354.68
+      "Banca Compuesto": 18933354.68,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-05",
@@ -43758,7 +45870,8 @@ window.dashboardData = {
       "Banca Fijo": 10980.0,
       "Stake Compuesto": 378667.09,
       "Beneficio Compuesto": 170400.19,
-      "Banca Compuesto": 19103754.88
+      "Banca Compuesto": 19103754.88,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-05",
@@ -43776,7 +45889,8 @@ window.dashboardData = {
       "Banca Fijo": 10989.0,
       "Stake Compuesto": 382075.1,
       "Beneficio Compuesto": 171933.79,
-      "Banca Compuesto": 19275688.67
+      "Banca Compuesto": 19275688.67,
+      "league_id": 702
     },
     {
       "Fecha": "2025-05-05",
@@ -43794,7 +45908,8 @@ window.dashboardData = {
       "Banca Fijo": 10998.0,
       "Stake Compuesto": 385513.77,
       "Beneficio Compuesto": 173481.2,
-      "Banca Compuesto": 19449169.87
+      "Banca Compuesto": 19449169.87,
+      "league_id": 702
     },
     {
       "Fecha": "2025-05-05",
@@ -43812,7 +45927,8 @@ window.dashboardData = {
       "Banca Fijo": 11007.0,
       "Stake Compuesto": 388983.4,
       "Beneficio Compuesto": 175042.53,
-      "Banca Compuesto": 19624212.4
+      "Banca Compuesto": 19624212.4,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-06",
@@ -43830,7 +45946,8 @@ window.dashboardData = {
       "Banca Fijo": 11016.0,
       "Stake Compuesto": 392484.25,
       "Beneficio Compuesto": 176617.91,
-      "Banca Compuesto": 19800830.31
+      "Banca Compuesto": 19800830.31,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-07",
@@ -43848,7 +45965,8 @@ window.dashboardData = {
       "Banca Fijo": 11025.0,
       "Stake Compuesto": 396016.61,
       "Beneficio Compuesto": 178207.47,
-      "Banca Compuesto": 19979037.78
+      "Banca Compuesto": 19979037.78,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-08",
@@ -43866,7 +45984,8 @@ window.dashboardData = {
       "Banca Fijo": 11034.0,
       "Stake Compuesto": 399580.76,
       "Beneficio Compuesto": 179811.34,
-      "Banca Compuesto": 20158849.12
+      "Banca Compuesto": 20158849.12,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-09",
@@ -43884,7 +46003,8 @@ window.dashboardData = {
       "Banca Fijo": 11043.0,
       "Stake Compuesto": 403176.98,
       "Beneficio Compuesto": 181429.64,
-      "Banca Compuesto": 20340278.76
+      "Banca Compuesto": 20340278.76,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-09",
@@ -43902,7 +46022,8 @@ window.dashboardData = {
       "Banca Fijo": 11052.0,
       "Stake Compuesto": 406805.58,
       "Beneficio Compuesto": 183062.51,
-      "Banca Compuesto": 20523341.27
+      "Banca Compuesto": 20523341.27,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-09",
@@ -43920,7 +46041,8 @@ window.dashboardData = {
       "Banca Fijo": 11061.0,
       "Stake Compuesto": 410466.83,
       "Beneficio Compuesto": 184710.07,
-      "Banca Compuesto": 20708051.34
+      "Banca Compuesto": 20708051.34,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-09",
@@ -43938,7 +46060,8 @@ window.dashboardData = {
       "Banca Fijo": 11070.0,
       "Stake Compuesto": 414161.03,
       "Beneficio Compuesto": 186372.46,
-      "Banca Compuesto": 20894423.8
+      "Banca Compuesto": 20894423.8,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-09",
@@ -43956,7 +46079,8 @@ window.dashboardData = {
       "Banca Fijo": 11050.0,
       "Stake Compuesto": 417888.48,
       "Beneficio Compuesto": -417888.48,
-      "Banca Compuesto": 20476535.33
+      "Banca Compuesto": 20476535.33,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-10",
@@ -43974,7 +46098,8 @@ window.dashboardData = {
       "Banca Fijo": 11059.0,
       "Stake Compuesto": 409530.71,
       "Beneficio Compuesto": 184288.82,
-      "Banca Compuesto": 20660824.15
+      "Banca Compuesto": 20660824.15,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-10",
@@ -43992,7 +46117,8 @@ window.dashboardData = {
       "Banca Fijo": 11068.0,
       "Stake Compuesto": 413216.48,
       "Beneficio Compuesto": 185947.42,
-      "Banca Compuesto": 20846771.56
+      "Banca Compuesto": 20846771.56,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-10",
@@ -44010,7 +46136,8 @@ window.dashboardData = {
       "Banca Fijo": 11077.0,
       "Stake Compuesto": 416935.43,
       "Beneficio Compuesto": 187620.94,
-      "Banca Compuesto": 21034392.51
+      "Banca Compuesto": 21034392.51,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-10",
@@ -44028,7 +46155,8 @@ window.dashboardData = {
       "Banca Fijo": 11086.0,
       "Stake Compuesto": 420687.85,
       "Beneficio Compuesto": 189309.53,
-      "Banca Compuesto": 21223702.04
+      "Banca Compuesto": 21223702.04,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-10",
@@ -44046,7 +46174,8 @@ window.dashboardData = {
       "Banca Fijo": 11095.0,
       "Stake Compuesto": 424474.04,
       "Beneficio Compuesto": 191013.32,
-      "Banca Compuesto": 21414715.36
+      "Banca Compuesto": 21414715.36,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-10",
@@ -44064,7 +46193,8 @@ window.dashboardData = {
       "Banca Fijo": 11104.0,
       "Stake Compuesto": 428294.31,
       "Beneficio Compuesto": 192732.44,
-      "Banca Compuesto": 21607447.8
+      "Banca Compuesto": 21607447.8,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-10",
@@ -44082,7 +46212,8 @@ window.dashboardData = {
       "Banca Fijo": 11084.0,
       "Stake Compuesto": 432148.96,
       "Beneficio Compuesto": -432148.96,
-      "Banca Compuesto": 21175298.84
+      "Banca Compuesto": 21175298.84,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-10",
@@ -44100,7 +46231,8 @@ window.dashboardData = {
       "Banca Fijo": 11093.0,
       "Stake Compuesto": 423505.98,
       "Beneficio Compuesto": 190577.69,
-      "Banca Compuesto": 21365876.53
+      "Banca Compuesto": 21365876.53,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-10",
@@ -44118,7 +46250,8 @@ window.dashboardData = {
       "Banca Fijo": 11102.0,
       "Stake Compuesto": 427317.53,
       "Beneficio Compuesto": 192292.89,
-      "Banca Compuesto": 21558169.42
+      "Banca Compuesto": 21558169.42,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-10",
@@ -44136,7 +46269,8 @@ window.dashboardData = {
       "Banca Fijo": 11111.0,
       "Stake Compuesto": 431163.39,
       "Beneficio Compuesto": 194023.52,
-      "Banca Compuesto": 21752192.94
+      "Banca Compuesto": 21752192.94,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-10",
@@ -44154,7 +46288,8 @@ window.dashboardData = {
       "Banca Fijo": 11120.0,
       "Stake Compuesto": 435043.86,
       "Beneficio Compuesto": 195769.74,
-      "Banca Compuesto": 21947962.68
+      "Banca Compuesto": 21947962.68,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-10",
@@ -44172,7 +46307,8 @@ window.dashboardData = {
       "Banca Fijo": 11129.0,
       "Stake Compuesto": 438959.25,
       "Beneficio Compuesto": 197531.66,
-      "Banca Compuesto": 22145494.35
+      "Banca Compuesto": 22145494.35,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-10",
@@ -44190,7 +46326,8 @@ window.dashboardData = {
       "Banca Fijo": 11138.0,
       "Stake Compuesto": 442909.89,
       "Beneficio Compuesto": 199309.45,
-      "Banca Compuesto": 22344803.79
+      "Banca Compuesto": 22344803.79,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-10",
@@ -44208,7 +46345,8 @@ window.dashboardData = {
       "Banca Fijo": 11147.0,
       "Stake Compuesto": 446896.08,
       "Beneficio Compuesto": 201103.23,
-      "Banca Compuesto": 22545907.03
+      "Banca Compuesto": 22545907.03,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-10",
@@ -44226,7 +46364,8 @@ window.dashboardData = {
       "Banca Fijo": 11156.0,
       "Stake Compuesto": 450918.14,
       "Beneficio Compuesto": 202913.16,
-      "Banca Compuesto": 22748820.19
+      "Banca Compuesto": 22748820.19,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-10",
@@ -44244,7 +46383,8 @@ window.dashboardData = {
       "Banca Fijo": 11165.0,
       "Stake Compuesto": 454976.4,
       "Beneficio Compuesto": 204739.38,
-      "Banca Compuesto": 22953559.57
+      "Banca Compuesto": 22953559.57,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-11",
@@ -44262,7 +46402,8 @@ window.dashboardData = {
       "Banca Fijo": 11174.0,
       "Stake Compuesto": 459071.19,
       "Beneficio Compuesto": 206582.04,
-      "Banca Compuesto": 23160141.61
+      "Banca Compuesto": 23160141.61,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-11",
@@ -44280,7 +46421,8 @@ window.dashboardData = {
       "Banca Fijo": 11183.0,
       "Stake Compuesto": 463202.83,
       "Beneficio Compuesto": 208441.27,
-      "Banca Compuesto": 23368582.88
+      "Banca Compuesto": 23368582.88,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-11",
@@ -44298,7 +46440,8 @@ window.dashboardData = {
       "Banca Fijo": 11192.0,
       "Stake Compuesto": 467371.66,
       "Beneficio Compuesto": 210317.25,
-      "Banca Compuesto": 23578900.13
+      "Banca Compuesto": 23578900.13,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-11",
@@ -44316,7 +46459,8 @@ window.dashboardData = {
       "Banca Fijo": 11201.0,
       "Stake Compuesto": 471578.0,
       "Beneficio Compuesto": 212210.1,
-      "Banca Compuesto": 23791110.23
+      "Banca Compuesto": 23791110.23,
+      "league_id": 103
     },
     {
       "Fecha": "2025-05-11",
@@ -44334,7 +46478,8 @@ window.dashboardData = {
       "Banca Fijo": 11210.0,
       "Stake Compuesto": 475822.2,
       "Beneficio Compuesto": 214119.99,
-      "Banca Compuesto": 24005230.22
+      "Banca Compuesto": 24005230.22,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-11",
@@ -44352,7 +46497,8 @@ window.dashboardData = {
       "Banca Fijo": 11219.0,
       "Stake Compuesto": 480104.6,
       "Beneficio Compuesto": 216047.07,
-      "Banca Compuesto": 24221277.3
+      "Banca Compuesto": 24221277.3,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-11",
@@ -44370,7 +46516,8 @@ window.dashboardData = {
       "Banca Fijo": 11228.0,
       "Stake Compuesto": 484425.55,
       "Beneficio Compuesto": 217991.5,
-      "Banca Compuesto": 24439268.79
+      "Banca Compuesto": 24439268.79,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-11",
@@ -44388,7 +46535,8 @@ window.dashboardData = {
       "Banca Fijo": 11237.0,
       "Stake Compuesto": 488785.38,
       "Beneficio Compuesto": 219953.42,
-      "Banca Compuesto": 24659222.21
+      "Banca Compuesto": 24659222.21,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-11",
@@ -44406,7 +46554,8 @@ window.dashboardData = {
       "Banca Fijo": 11246.0,
       "Stake Compuesto": 493184.44,
       "Beneficio Compuesto": 221933.0,
-      "Banca Compuesto": 24881155.21
+      "Banca Compuesto": 24881155.21,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-11",
@@ -44424,7 +46573,8 @@ window.dashboardData = {
       "Banca Fijo": 11226.0,
       "Stake Compuesto": 497623.1,
       "Beneficio Compuesto": -497623.1,
-      "Banca Compuesto": 24383532.11
+      "Banca Compuesto": 24383532.11,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-11",
@@ -44442,7 +46592,8 @@ window.dashboardData = {
       "Banca Fijo": 11235.0,
       "Stake Compuesto": 487670.64,
       "Beneficio Compuesto": 219451.79,
-      "Banca Compuesto": 24602983.89
+      "Banca Compuesto": 24602983.89,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-11",
@@ -44460,7 +46611,8 @@ window.dashboardData = {
       "Banca Fijo": 11244.0,
       "Stake Compuesto": 492059.68,
       "Beneficio Compuesto": 221426.86,
-      "Banca Compuesto": 24824410.75
+      "Banca Compuesto": 24824410.75,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-11",
@@ -44478,7 +46630,8 @@ window.dashboardData = {
       "Banca Fijo": 11253.0,
       "Stake Compuesto": 496488.21,
       "Beneficio Compuesto": 223419.7,
-      "Banca Compuesto": 25047830.45
+      "Banca Compuesto": 25047830.45,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-11",
@@ -44496,7 +46649,8 @@ window.dashboardData = {
       "Banca Fijo": 11262.0,
       "Stake Compuesto": 500956.61,
       "Beneficio Compuesto": 225430.47,
-      "Banca Compuesto": 25273260.92
+      "Banca Compuesto": 25273260.92,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-11",
@@ -44514,7 +46668,8 @@ window.dashboardData = {
       "Banca Fijo": 11271.0,
       "Stake Compuesto": 505465.22,
       "Beneficio Compuesto": 227459.35,
-      "Banca Compuesto": 25500720.27
+      "Banca Compuesto": 25500720.27,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-11",
@@ -44532,7 +46687,8 @@ window.dashboardData = {
       "Banca Fijo": 11251.0,
       "Stake Compuesto": 510014.41,
       "Beneficio Compuesto": -510014.41,
-      "Banca Compuesto": 24990705.86
+      "Banca Compuesto": 24990705.86,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-11",
@@ -44550,7 +46706,8 @@ window.dashboardData = {
       "Banca Fijo": 11260.0,
       "Stake Compuesto": 499814.12,
       "Beneficio Compuesto": 224916.35,
-      "Banca Compuesto": 25215622.22
+      "Banca Compuesto": 25215622.22,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-11",
@@ -44568,7 +46725,8 @@ window.dashboardData = {
       "Banca Fijo": 11269.0,
       "Stake Compuesto": 504312.44,
       "Beneficio Compuesto": 226940.6,
-      "Banca Compuesto": 25442562.82
+      "Banca Compuesto": 25442562.82,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-11",
@@ -44586,7 +46744,8 @@ window.dashboardData = {
       "Banca Fijo": 11278.0,
       "Stake Compuesto": 508851.26,
       "Beneficio Compuesto": 228983.07,
-      "Banca Compuesto": 25671545.88
+      "Banca Compuesto": 25671545.88,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-11",
@@ -44604,7 +46763,8 @@ window.dashboardData = {
       "Banca Fijo": 11258.0,
       "Stake Compuesto": 513430.92,
       "Beneficio Compuesto": -513430.92,
-      "Banca Compuesto": 25158114.96
+      "Banca Compuesto": 25158114.96,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-11",
@@ -44622,7 +46782,8 @@ window.dashboardData = {
       "Banca Fijo": 11267.0,
       "Stake Compuesto": 503162.3,
       "Beneficio Compuesto": 226423.03,
-      "Banca Compuesto": 25384538.0
+      "Banca Compuesto": 25384538.0,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-11",
@@ -44640,7 +46801,8 @@ window.dashboardData = {
       "Banca Fijo": 11276.0,
       "Stake Compuesto": 507690.76,
       "Beneficio Compuesto": 228460.84,
-      "Banca Compuesto": 25612998.84
+      "Banca Compuesto": 25612998.84,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-11",
@@ -44658,7 +46820,8 @@ window.dashboardData = {
       "Banca Fijo": 11285.0,
       "Stake Compuesto": 512259.98,
       "Beneficio Compuesto": 230516.99,
-      "Banca Compuesto": 25843515.83
+      "Banca Compuesto": 25843515.83,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-12",
@@ -44676,7 +46839,8 @@ window.dashboardData = {
       "Banca Fijo": 11265.0,
       "Stake Compuesto": 516870.32,
       "Beneficio Compuesto": -516870.32,
-      "Banca Compuesto": 25326645.51
+      "Banca Compuesto": 25326645.51,
+      "league_id": 104
     },
     {
       "Fecha": "2025-05-12",
@@ -44694,7 +46858,8 @@ window.dashboardData = {
       "Banca Fijo": 11274.0,
       "Stake Compuesto": 506532.91,
       "Beneficio Compuesto": 227939.81,
-      "Banca Compuesto": 25554585.32
+      "Banca Compuesto": 25554585.32,
+      "league_id": 244
     },
     {
       "Fecha": "2025-05-12",
@@ -44712,7 +46877,8 @@ window.dashboardData = {
       "Banca Fijo": 11283.0,
       "Stake Compuesto": 511091.71,
       "Beneficio Compuesto": 229991.27,
-      "Banca Compuesto": 25784576.59
+      "Banca Compuesto": 25784576.59,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-13",
@@ -44730,7 +46896,8 @@ window.dashboardData = {
       "Banca Fijo": 11292.0,
       "Stake Compuesto": 515691.53,
       "Beneficio Compuesto": 232061.19,
-      "Banca Compuesto": 26016637.78
+      "Banca Compuesto": 26016637.78,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-14",
@@ -44748,7 +46915,8 @@ window.dashboardData = {
       "Banca Fijo": 11301.0,
       "Stake Compuesto": 520332.76,
       "Beneficio Compuesto": 234149.74,
-      "Banca Compuesto": 26250787.52
+      "Banca Compuesto": 26250787.52,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-14",
@@ -44766,7 +46934,8 @@ window.dashboardData = {
       "Banca Fijo": 11310.0,
       "Stake Compuesto": 525015.75,
       "Beneficio Compuesto": 236257.09,
-      "Banca Compuesto": 26487044.61
+      "Banca Compuesto": 26487044.61,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-15",
@@ -44784,7 +46953,8 @@ window.dashboardData = {
       "Banca Fijo": 11319.0,
       "Stake Compuesto": 529740.89,
       "Beneficio Compuesto": 238383.4,
-      "Banca Compuesto": 26725428.01
+      "Banca Compuesto": 26725428.01,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-15",
@@ -44802,7 +46972,8 @@ window.dashboardData = {
       "Banca Fijo": 11328.0,
       "Stake Compuesto": 534508.56,
       "Beneficio Compuesto": 240528.85,
-      "Banca Compuesto": 26965956.86
+      "Banca Compuesto": 26965956.86,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-15",
@@ -44820,7 +46991,8 @@ window.dashboardData = {
       "Banca Fijo": 11337.0,
       "Stake Compuesto": 539319.14,
       "Beneficio Compuesto": 242693.61,
-      "Banca Compuesto": 27208650.47
+      "Banca Compuesto": 27208650.47,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-15",
@@ -44838,7 +47010,8 @@ window.dashboardData = {
       "Banca Fijo": 11346.0,
       "Stake Compuesto": 544173.01,
       "Beneficio Compuesto": 244877.85,
-      "Banca Compuesto": 27453528.33
+      "Banca Compuesto": 27453528.33,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-16",
@@ -44856,7 +47029,8 @@ window.dashboardData = {
       "Banca Fijo": 11355.0,
       "Stake Compuesto": 549070.57,
       "Beneficio Compuesto": 247081.75,
-      "Banca Compuesto": 27700610.08
+      "Banca Compuesto": 27700610.08,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-16",
@@ -44874,7 +47048,8 @@ window.dashboardData = {
       "Banca Fijo": 11364.0,
       "Stake Compuesto": 554012.2,
       "Beneficio Compuesto": 249305.49,
-      "Banca Compuesto": 27949915.57
+      "Banca Compuesto": 27949915.57,
+      "league_id": 103
     },
     {
       "Fecha": "2025-05-16",
@@ -44892,7 +47067,8 @@ window.dashboardData = {
       "Banca Fijo": 11344.0,
       "Stake Compuesto": 558998.31,
       "Beneficio Compuesto": -558998.31,
-      "Banca Compuesto": 27390917.26
+      "Banca Compuesto": 27390917.26,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-16",
@@ -44910,7 +47086,8 @@ window.dashboardData = {
       "Banca Fijo": 11353.0,
       "Stake Compuesto": 547818.35,
       "Beneficio Compuesto": 246518.26,
-      "Banca Compuesto": 27637435.52
+      "Banca Compuesto": 27637435.52,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-16",
@@ -44928,7 +47105,8 @@ window.dashboardData = {
       "Banca Fijo": 11362.0,
       "Stake Compuesto": 552748.71,
       "Beneficio Compuesto": 248736.92,
-      "Banca Compuesto": 27886172.44
+      "Banca Compuesto": 27886172.44,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-16",
@@ -44946,7 +47124,8 @@ window.dashboardData = {
       "Banca Fijo": 11371.0,
       "Stake Compuesto": 557723.45,
       "Beneficio Compuesto": 250975.55,
-      "Banca Compuesto": 28137147.99
+      "Banca Compuesto": 28137147.99,
+      "league_id": 208
     },
     {
       "Fecha": "2025-05-17",
@@ -44964,7 +47143,8 @@ window.dashboardData = {
       "Banca Fijo": 11380.0,
       "Stake Compuesto": 562742.96,
       "Beneficio Compuesto": 253234.33,
-      "Banca Compuesto": 28390382.32
+      "Banca Compuesto": 28390382.32,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-17",
@@ -44982,7 +47162,8 @@ window.dashboardData = {
       "Banca Fijo": 11389.0,
       "Stake Compuesto": 567807.65,
       "Beneficio Compuesto": 255513.44,
-      "Banca Compuesto": 28645895.76
+      "Banca Compuesto": 28645895.76,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-17",
@@ -45000,7 +47181,8 @@ window.dashboardData = {
       "Banca Fijo": 11398.0,
       "Stake Compuesto": 572917.92,
       "Beneficio Compuesto": 257813.06,
-      "Banca Compuesto": 28903708.82
+      "Banca Compuesto": 28903708.82,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-17",
@@ -45018,7 +47200,8 @@ window.dashboardData = {
       "Banca Fijo": 11407.0,
       "Stake Compuesto": 578074.18,
       "Beneficio Compuesto": 260133.38,
-      "Banca Compuesto": 29163842.2
+      "Banca Compuesto": 29163842.2,
+      "league_id": 78
     },
     {
       "Fecha": "2025-05-17",
@@ -45036,7 +47219,8 @@ window.dashboardData = {
       "Banca Fijo": 11416.0,
       "Stake Compuesto": 583276.84,
       "Beneficio Compuesto": 262474.58,
-      "Banca Compuesto": 29426316.78
+      "Banca Compuesto": 29426316.78,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-17",
@@ -45054,7 +47238,8 @@ window.dashboardData = {
       "Banca Fijo": 11425.0,
       "Stake Compuesto": 588526.34,
       "Beneficio Compuesto": 264836.85,
-      "Banca Compuesto": 29691153.63
+      "Banca Compuesto": 29691153.63,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-17",
@@ -45072,7 +47257,8 @@ window.dashboardData = {
       "Banca Fijo": 11434.0,
       "Stake Compuesto": 593823.07,
       "Beneficio Compuesto": 267220.38,
-      "Banca Compuesto": 29958374.02
+      "Banca Compuesto": 29958374.02,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-17",
@@ -45090,7 +47276,8 @@ window.dashboardData = {
       "Banca Fijo": 11443.0,
       "Stake Compuesto": 599167.48,
       "Beneficio Compuesto": 269625.37,
-      "Banca Compuesto": 30227999.38
+      "Banca Compuesto": 30227999.38,
+      "league_id": 244
     },
     {
       "Fecha": "2025-05-17",
@@ -45108,7 +47295,8 @@ window.dashboardData = {
       "Banca Fijo": 11452.0,
       "Stake Compuesto": 604559.99,
       "Beneficio Compuesto": 272051.99,
-      "Banca Compuesto": 30500051.38
+      "Banca Compuesto": 30500051.38,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-17",
@@ -45126,7 +47314,8 @@ window.dashboardData = {
       "Banca Fijo": 11461.0,
       "Stake Compuesto": 610001.03,
       "Beneficio Compuesto": 274500.46,
-      "Banca Compuesto": 30774551.84
+      "Banca Compuesto": 30774551.84,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-17",
@@ -45144,7 +47333,8 @@ window.dashboardData = {
       "Banca Fijo": 11470.0,
       "Stake Compuesto": 615491.04,
       "Beneficio Compuesto": 276970.97,
-      "Banca Compuesto": 31051522.81
+      "Banca Compuesto": 31051522.81,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-17",
@@ -45162,7 +47352,8 @@ window.dashboardData = {
       "Banca Fijo": 11479.0,
       "Stake Compuesto": 621030.46,
       "Beneficio Compuesto": 279463.71,
-      "Banca Compuesto": 31330986.51
+      "Banca Compuesto": 31330986.51,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-17",
@@ -45180,7 +47371,8 @@ window.dashboardData = {
       "Banca Fijo": 11488.0,
       "Stake Compuesto": 626619.73,
       "Beneficio Compuesto": 281978.88,
-      "Banca Compuesto": 31612965.39
+      "Banca Compuesto": 31612965.39,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-17",
@@ -45198,7 +47390,8 @@ window.dashboardData = {
       "Banca Fijo": 11497.0,
       "Stake Compuesto": 632259.31,
       "Beneficio Compuesto": 284516.69,
-      "Banca Compuesto": 31897482.08
+      "Banca Compuesto": 31897482.08,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-17",
@@ -45216,7 +47409,8 @@ window.dashboardData = {
       "Banca Fijo": 11477.0,
       "Stake Compuesto": 637949.64,
       "Beneficio Compuesto": -637949.64,
-      "Banca Compuesto": 31259532.44
+      "Banca Compuesto": 31259532.44,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-17",
@@ -45234,7 +47428,8 @@ window.dashboardData = {
       "Banca Fijo": 11486.0,
       "Stake Compuesto": 625190.65,
       "Beneficio Compuesto": 281335.79,
-      "Banca Compuesto": 31540868.23
+      "Banca Compuesto": 31540868.23,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-17",
@@ -45252,7 +47447,8 @@ window.dashboardData = {
       "Banca Fijo": 11495.0,
       "Stake Compuesto": 630817.36,
       "Beneficio Compuesto": 283867.81,
-      "Banca Compuesto": 31824736.04
+      "Banca Compuesto": 31824736.04,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-17",
@@ -45270,7 +47466,8 @@ window.dashboardData = {
       "Banca Fijo": 11504.0,
       "Stake Compuesto": 636494.72,
       "Beneficio Compuesto": 286422.62,
-      "Banca Compuesto": 32111158.67
+      "Banca Compuesto": 32111158.67,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-18",
@@ -45288,7 +47485,8 @@ window.dashboardData = {
       "Banca Fijo": 11513.0,
       "Stake Compuesto": 642223.17,
       "Beneficio Compuesto": 289000.43,
-      "Banca Compuesto": 32400159.09
+      "Banca Compuesto": 32400159.09,
+      "league_id": 84
     },
     {
       "Fecha": "2025-05-18",
@@ -45306,7 +47504,8 @@ window.dashboardData = {
       "Banca Fijo": 11522.0,
       "Stake Compuesto": 648003.18,
       "Beneficio Compuesto": 291601.43,
-      "Banca Compuesto": 32691760.53
+      "Banca Compuesto": 32691760.53,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-18",
@@ -45324,7 +47523,8 @@ window.dashboardData = {
       "Banca Fijo": 11531.0,
       "Stake Compuesto": 653835.21,
       "Beneficio Compuesto": 294225.84,
-      "Banca Compuesto": 32985986.37
+      "Banca Compuesto": 32985986.37,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-18",
@@ -45342,7 +47542,8 @@ window.dashboardData = {
       "Banca Fijo": 11540.0,
       "Stake Compuesto": 659719.73,
       "Beneficio Compuesto": 296873.88,
-      "Banca Compuesto": 33282860.25
+      "Banca Compuesto": 33282860.25,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-18",
@@ -45360,7 +47561,8 @@ window.dashboardData = {
       "Banca Fijo": 11549.0,
       "Stake Compuesto": 665657.2,
       "Beneficio Compuesto": 299545.74,
-      "Banca Compuesto": 33582405.99
+      "Banca Compuesto": 33582405.99,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-18",
@@ -45378,7 +47580,8 @@ window.dashboardData = {
       "Banca Fijo": 11529.0,
       "Stake Compuesto": 671648.12,
       "Beneficio Compuesto": -671648.12,
-      "Banca Compuesto": 32910757.87
+      "Banca Compuesto": 32910757.87,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-18",
@@ -45396,7 +47599,8 @@ window.dashboardData = {
       "Banca Fijo": 11538.0,
       "Stake Compuesto": 658215.16,
       "Beneficio Compuesto": 296196.82,
-      "Banca Compuesto": 33206954.69
+      "Banca Compuesto": 33206954.69,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-18",
@@ -45414,7 +47618,8 @@ window.dashboardData = {
       "Banca Fijo": 11547.0,
       "Stake Compuesto": 664139.09,
       "Beneficio Compuesto": 298862.59,
-      "Banca Compuesto": 33505817.28
+      "Banca Compuesto": 33505817.28,
+      "league_id": 248
     },
     {
       "Fecha": "2025-05-18",
@@ -45432,7 +47637,8 @@ window.dashboardData = {
       "Banca Fijo": 11556.0,
       "Stake Compuesto": 670116.35,
       "Beneficio Compuesto": 301552.36,
-      "Banca Compuesto": 33807369.64
+      "Banca Compuesto": 33807369.64,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-18",
@@ -45450,7 +47656,8 @@ window.dashboardData = {
       "Banca Fijo": 11565.0,
       "Stake Compuesto": 676147.39,
       "Beneficio Compuesto": 304266.33,
-      "Banca Compuesto": 34111635.97
+      "Banca Compuesto": 34111635.97,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-18",
@@ -45468,7 +47675,8 @@ window.dashboardData = {
       "Banca Fijo": 11574.0,
       "Stake Compuesto": 682232.72,
       "Beneficio Compuesto": 307004.72,
-      "Banca Compuesto": 34418640.69
+      "Banca Compuesto": 34418640.69,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-18",
@@ -45486,7 +47694,8 @@ window.dashboardData = {
       "Banca Fijo": 11583.0,
       "Stake Compuesto": 688372.81,
       "Beneficio Compuesto": 309767.77,
-      "Banca Compuesto": 34728408.46
+      "Banca Compuesto": 34728408.46,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-18",
@@ -45504,7 +47713,8 @@ window.dashboardData = {
       "Banca Fijo": 11563.0,
       "Stake Compuesto": 694568.17,
       "Beneficio Compuesto": -694568.17,
-      "Banca Compuesto": 34033840.29
+      "Banca Compuesto": 34033840.29,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-18",
@@ -45522,7 +47732,8 @@ window.dashboardData = {
       "Banca Fijo": 11572.0,
       "Stake Compuesto": 680676.81,
       "Beneficio Compuesto": 306304.56,
-      "Banca Compuesto": 34340144.85
+      "Banca Compuesto": 34340144.85,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-18",
@@ -45540,7 +47751,8 @@ window.dashboardData = {
       "Banca Fijo": 11581.0,
       "Stake Compuesto": 686802.9,
       "Beneficio Compuesto": 309061.3,
-      "Banca Compuesto": 34649206.15
+      "Banca Compuesto": 34649206.15,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-18",
@@ -45558,7 +47770,8 @@ window.dashboardData = {
       "Banca Fijo": 11590.0,
       "Stake Compuesto": 692984.12,
       "Beneficio Compuesto": 311842.86,
-      "Banca Compuesto": 34961049.01
+      "Banca Compuesto": 34961049.01,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-19",
@@ -45576,7 +47789,8 @@ window.dashboardData = {
       "Banca Fijo": 11599.0,
       "Stake Compuesto": 699220.98,
       "Beneficio Compuesto": 314649.44,
-      "Banca Compuesto": 35275698.45
+      "Banca Compuesto": 35275698.45,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-19",
@@ -45594,7 +47808,8 @@ window.dashboardData = {
       "Banca Fijo": 11608.0,
       "Stake Compuesto": 705513.97,
       "Beneficio Compuesto": 317481.29,
-      "Banca Compuesto": 35593179.74
+      "Banca Compuesto": 35593179.74,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-19",
@@ -45612,7 +47827,8 @@ window.dashboardData = {
       "Banca Fijo": 11617.0,
       "Stake Compuesto": 711863.59,
       "Beneficio Compuesto": 320338.62,
-      "Banca Compuesto": 35913518.35
+      "Banca Compuesto": 35913518.35,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-19",
@@ -45630,7 +47846,8 @@ window.dashboardData = {
       "Banca Fijo": 11626.0,
       "Stake Compuesto": 718270.37,
       "Beneficio Compuesto": 323221.67,
-      "Banca Compuesto": 36236740.02
+      "Banca Compuesto": 36236740.02,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-20",
@@ -45648,7 +47865,8 @@ window.dashboardData = {
       "Banca Fijo": 11635.0,
       "Stake Compuesto": 724734.8,
       "Beneficio Compuesto": 326130.66,
-      "Banca Compuesto": 36562870.68
+      "Banca Compuesto": 36562870.68,
+      "league_id": 244
     },
     {
       "Fecha": "2025-05-21",
@@ -45666,7 +47884,8 @@ window.dashboardData = {
       "Banca Fijo": 11644.0,
       "Stake Compuesto": 731257.41,
       "Beneficio Compuesto": 329065.84,
-      "Banca Compuesto": 36891936.52
+      "Banca Compuesto": 36891936.52,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-23",
@@ -45684,7 +47903,8 @@ window.dashboardData = {
       "Banca Fijo": 11653.0,
       "Stake Compuesto": 737838.73,
       "Beneficio Compuesto": 332027.43,
-      "Banca Compuesto": 37223963.94
+      "Banca Compuesto": 37223963.94,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-23",
@@ -45702,7 +47922,8 @@ window.dashboardData = {
       "Banca Fijo": 11662.0,
       "Stake Compuesto": 744479.28,
       "Beneficio Compuesto": 335015.68,
-      "Banca Compuesto": 37558979.62
+      "Banca Compuesto": 37558979.62,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-23",
@@ -45720,7 +47941,8 @@ window.dashboardData = {
       "Banca Fijo": 11671.0,
       "Stake Compuesto": 751179.59,
       "Beneficio Compuesto": 338030.82,
-      "Banca Compuesto": 37897010.44
+      "Banca Compuesto": 37897010.44,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-23",
@@ -45738,7 +47960,8 @@ window.dashboardData = {
       "Banca Fijo": 11680.0,
       "Stake Compuesto": 757940.21,
       "Beneficio Compuesto": 341073.09,
-      "Banca Compuesto": 38238083.53
+      "Banca Compuesto": 38238083.53,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-23",
@@ -45756,7 +47979,8 @@ window.dashboardData = {
       "Banca Fijo": 11689.0,
       "Stake Compuesto": 764761.67,
       "Beneficio Compuesto": 344142.75,
-      "Banca Compuesto": 38582226.28
+      "Banca Compuesto": 38582226.28,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-24",
@@ -45774,7 +47998,8 @@ window.dashboardData = {
       "Banca Fijo": 11698.0,
       "Stake Compuesto": 771644.53,
       "Beneficio Compuesto": 347240.04,
-      "Banca Compuesto": 38929466.32
+      "Banca Compuesto": 38929466.32,
+      "league_id": 103
     },
     {
       "Fecha": "2025-05-24",
@@ -45792,7 +48017,8 @@ window.dashboardData = {
       "Banca Fijo": 11707.0,
       "Stake Compuesto": 778589.33,
       "Beneficio Compuesto": 350365.2,
-      "Banca Compuesto": 39279831.52
+      "Banca Compuesto": 39279831.52,
+      "league_id": 104
     },
     {
       "Fecha": "2025-05-24",
@@ -45810,7 +48036,8 @@ window.dashboardData = {
       "Banca Fijo": 11716.0,
       "Stake Compuesto": 785596.63,
       "Beneficio Compuesto": 353518.48,
-      "Banca Compuesto": 39633350.0
+      "Banca Compuesto": 39633350.0,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-24",
@@ -45828,7 +48055,8 @@ window.dashboardData = {
       "Banca Fijo": 11725.0,
       "Stake Compuesto": 792667.0,
       "Beneficio Compuesto": 356700.15,
-      "Banca Compuesto": 39990050.15
+      "Banca Compuesto": 39990050.15,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-24",
@@ -45846,7 +48074,8 @@ window.dashboardData = {
       "Banca Fijo": 11734.0,
       "Stake Compuesto": 799801.0,
       "Beneficio Compuesto": 359910.45,
-      "Banca Compuesto": 40349960.6
+      "Banca Compuesto": 40349960.6,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-24",
@@ -45864,7 +48093,8 @@ window.dashboardData = {
       "Banca Fijo": 11743.0,
       "Stake Compuesto": 806999.21,
       "Beneficio Compuesto": 363149.65,
-      "Banca Compuesto": 40713110.25
+      "Banca Compuesto": 40713110.25,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-24",
@@ -45882,7 +48112,8 @@ window.dashboardData = {
       "Banca Fijo": 11752.0,
       "Stake Compuesto": 814262.2,
       "Beneficio Compuesto": 366417.99,
-      "Banca Compuesto": 41079528.24
+      "Banca Compuesto": 41079528.24,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-24",
@@ -45900,7 +48131,8 @@ window.dashboardData = {
       "Banca Fijo": 11761.0,
       "Stake Compuesto": 821590.56,
       "Beneficio Compuesto": 369715.75,
-      "Banca Compuesto": 41449243.99
+      "Banca Compuesto": 41449243.99,
+      "league_id": 245
     },
     {
       "Fecha": "2025-05-24",
@@ -45918,7 +48150,8 @@ window.dashboardData = {
       "Banca Fijo": 11770.0,
       "Stake Compuesto": 828984.88,
       "Beneficio Compuesto": 373043.2,
-      "Banca Compuesto": 41822287.19
+      "Banca Compuesto": 41822287.19,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-24",
@@ -45936,7 +48169,8 @@ window.dashboardData = {
       "Banca Fijo": 11779.0,
       "Stake Compuesto": 836445.74,
       "Beneficio Compuesto": 376400.58,
-      "Banca Compuesto": 42198687.77
+      "Banca Compuesto": 42198687.77,
+      "league_id": 248
     },
     {
       "Fecha": "2025-05-24",
@@ -45954,7 +48188,8 @@ window.dashboardData = {
       "Banca Fijo": 11788.0,
       "Stake Compuesto": 843973.76,
       "Beneficio Compuesto": 379788.19,
-      "Banca Compuesto": 42578475.96
+      "Banca Compuesto": 42578475.96,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-24",
@@ -45972,7 +48207,8 @@ window.dashboardData = {
       "Banca Fijo": 11768.0,
       "Stake Compuesto": 851569.52,
       "Beneficio Compuesto": -851569.52,
-      "Banca Compuesto": 41726906.44
+      "Banca Compuesto": 41726906.44,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-24",
@@ -45990,7 +48226,8 @@ window.dashboardData = {
       "Banca Fijo": 11748.0,
       "Stake Compuesto": 834538.13,
       "Beneficio Compuesto": -834538.13,
-      "Banca Compuesto": 40892368.31
+      "Banca Compuesto": 40892368.31,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-24",
@@ -46008,7 +48245,8 @@ window.dashboardData = {
       "Banca Fijo": 11757.0,
       "Stake Compuesto": 817847.37,
       "Beneficio Compuesto": 368031.31,
-      "Banca Compuesto": 41260399.63
+      "Banca Compuesto": 41260399.63,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-24",
@@ -46026,7 +48264,8 @@ window.dashboardData = {
       "Banca Fijo": 11766.0,
       "Stake Compuesto": 825207.99,
       "Beneficio Compuesto": 371343.6,
-      "Banca Compuesto": 41631743.23
+      "Banca Compuesto": 41631743.23,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-24",
@@ -46044,7 +48283,8 @@ window.dashboardData = {
       "Banca Fijo": 11775.0,
       "Stake Compuesto": 832634.86,
       "Beneficio Compuesto": 374685.69,
-      "Banca Compuesto": 42006428.91
+      "Banca Compuesto": 42006428.91,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-24",
@@ -46062,7 +48302,8 @@ window.dashboardData = {
       "Banca Fijo": 11784.0,
       "Stake Compuesto": 840128.58,
       "Beneficio Compuesto": 378057.86,
-      "Banca Compuesto": 42384486.78
+      "Banca Compuesto": 42384486.78,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-24",
@@ -46080,7 +48321,8 @@ window.dashboardData = {
       "Banca Fijo": 11793.0,
       "Stake Compuesto": 847689.74,
       "Beneficio Compuesto": 381460.38,
-      "Banca Compuesto": 42765947.16
+      "Banca Compuesto": 42765947.16,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-25",
@@ -46098,7 +48340,8 @@ window.dashboardData = {
       "Banca Fijo": 11773.0,
       "Stake Compuesto": 855318.94,
       "Beneficio Compuesto": -855318.94,
-      "Banca Compuesto": 41910628.21
+      "Banca Compuesto": 41910628.21,
+      "league_id": 103
     },
     {
       "Fecha": "2025-05-25",
@@ -46116,7 +48359,8 @@ window.dashboardData = {
       "Banca Fijo": 11782.0,
       "Stake Compuesto": 838212.56,
       "Beneficio Compuesto": 377195.65,
-      "Banca Compuesto": 42287823.87
+      "Banca Compuesto": 42287823.87,
+      "league_id": 244
     },
     {
       "Fecha": "2025-05-25",
@@ -46134,7 +48378,8 @@ window.dashboardData = {
       "Banca Fijo": 11791.0,
       "Stake Compuesto": 845756.48,
       "Beneficio Compuesto": 380590.41,
-      "Banca Compuesto": 42668414.28
+      "Banca Compuesto": 42668414.28,
+      "league_id": 247
     },
     {
       "Fecha": "2025-05-25",
@@ -46152,7 +48397,8 @@ window.dashboardData = {
       "Banca Fijo": 11800.0,
       "Stake Compuesto": 853368.29,
       "Beneficio Compuesto": 384015.73,
-      "Banca Compuesto": 43052430.01
+      "Banca Compuesto": 43052430.01,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-25",
@@ -46170,7 +48416,8 @@ window.dashboardData = {
       "Banca Fijo": 11809.0,
       "Stake Compuesto": 861048.6,
       "Beneficio Compuesto": 387471.87,
-      "Banca Compuesto": 43439901.88
+      "Banca Compuesto": 43439901.88,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-25",
@@ -46188,7 +48435,8 @@ window.dashboardData = {
       "Banca Fijo": 11818.0,
       "Stake Compuesto": 868798.04,
       "Beneficio Compuesto": 390959.12,
-      "Banca Compuesto": 43830861.0
+      "Banca Compuesto": 43830861.0,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-25",
@@ -46206,7 +48454,8 @@ window.dashboardData = {
       "Banca Fijo": 11827.0,
       "Stake Compuesto": 876617.22,
       "Beneficio Compuesto": 394477.75,
-      "Banca Compuesto": 44225338.75
+      "Banca Compuesto": 44225338.75,
+      "league_id": 368
     },
     {
       "Fecha": "2025-05-25",
@@ -46224,7 +48473,8 @@ window.dashboardData = {
       "Banca Fijo": 11836.0,
       "Stake Compuesto": 884506.77,
       "Beneficio Compuesto": 398028.05,
-      "Banca Compuesto": 44623366.79
+      "Banca Compuesto": 44623366.79,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-25",
@@ -46242,7 +48492,8 @@ window.dashboardData = {
       "Banca Fijo": 11845.0,
       "Stake Compuesto": 892467.34,
       "Beneficio Compuesto": 401610.3,
-      "Banca Compuesto": 45024977.1
+      "Banca Compuesto": 45024977.1,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-25",
@@ -46260,7 +48511,8 @@ window.dashboardData = {
       "Banca Fijo": 11854.0,
       "Stake Compuesto": 900499.54,
       "Beneficio Compuesto": 405224.79,
-      "Banca Compuesto": 45430201.89
+      "Banca Compuesto": 45430201.89,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-25",
@@ -46278,7 +48530,8 @@ window.dashboardData = {
       "Banca Fijo": 11863.0,
       "Stake Compuesto": 908604.04,
       "Beneficio Compuesto": 408871.82,
-      "Banca Compuesto": 45839073.71
+      "Banca Compuesto": 45839073.71,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-05-25",
@@ -46296,7 +48549,8 @@ window.dashboardData = {
       "Banca Fijo": 11872.0,
       "Stake Compuesto": 916781.47,
       "Beneficio Compuesto": 412551.66,
-      "Banca Compuesto": 46251625.37
+      "Banca Compuesto": 46251625.37,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-25",
@@ -46314,7 +48568,8 @@ window.dashboardData = {
       "Banca Fijo": 11881.0,
       "Stake Compuesto": 925032.51,
       "Beneficio Compuesto": 416264.63,
-      "Banca Compuesto": 46667890.0
+      "Banca Compuesto": 46667890.0,
+      "league_id": 119
     },
     {
       "Fecha": "2025-05-26",
@@ -46332,7 +48587,8 @@ window.dashboardData = {
       "Banca Fijo": 11890.0,
       "Stake Compuesto": 933357.8,
       "Beneficio Compuesto": 420011.01,
-      "Banca Compuesto": 47087901.01
+      "Banca Compuesto": 47087901.01,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-27",
@@ -46350,7 +48606,8 @@ window.dashboardData = {
       "Banca Fijo": 11899.0,
       "Stake Compuesto": 941758.02,
       "Beneficio Compuesto": 423791.11,
-      "Banca Compuesto": 47511692.12
+      "Banca Compuesto": 47511692.12,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-28",
@@ -46368,7 +48625,8 @@ window.dashboardData = {
       "Banca Fijo": 11908.0,
       "Stake Compuesto": 950233.84,
       "Beneficio Compuesto": 427605.23,
-      "Banca Compuesto": 47939297.35
+      "Banca Compuesto": 47939297.35,
+      "league_id": 103
     },
     {
       "Fecha": "2025-05-28",
@@ -46386,7 +48644,8 @@ window.dashboardData = {
       "Banca Fijo": 11917.0,
       "Stake Compuesto": 958785.95,
       "Beneficio Compuesto": 431453.68,
-      "Banca Compuesto": 48370751.02
+      "Banca Compuesto": 48370751.02,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-28",
@@ -46404,7 +48663,8 @@ window.dashboardData = {
       "Banca Fijo": 11897.0,
       "Stake Compuesto": 967415.02,
       "Beneficio Compuesto": -967415.02,
-      "Banca Compuesto": 47403336.0
+      "Banca Compuesto": 47403336.0,
+      "league_id": 492
     },
     {
       "Fecha": "2025-05-28",
@@ -46422,7 +48682,8 @@ window.dashboardData = {
       "Banca Fijo": 11906.0,
       "Stake Compuesto": 948066.72,
       "Beneficio Compuesto": 426630.02,
-      "Banca Compuesto": 47829966.03
+      "Banca Compuesto": 47829966.03,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-29",
@@ -46440,7 +48701,8 @@ window.dashboardData = {
       "Banca Fijo": 11915.0,
       "Stake Compuesto": 956599.32,
       "Beneficio Compuesto": 430469.69,
-      "Banca Compuesto": 48260435.72
+      "Banca Compuesto": 48260435.72,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-29",
@@ -46458,7 +48720,8 @@ window.dashboardData = {
       "Banca Fijo": 11924.0,
       "Stake Compuesto": 965208.71,
       "Beneficio Compuesto": 434343.92,
-      "Banca Compuesto": 48694779.64
+      "Banca Compuesto": 48694779.64,
+      "league_id": 164
     },
     {
       "Fecha": "2025-05-29",
@@ -46476,7 +48739,8 @@ window.dashboardData = {
       "Banca Fijo": 11933.0,
       "Stake Compuesto": 973895.59,
       "Beneficio Compuesto": 438253.02,
-      "Banca Compuesto": 49133032.66
+      "Banca Compuesto": 49133032.66,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-29",
@@ -46494,7 +48758,8 @@ window.dashboardData = {
       "Banca Fijo": 11913.0,
       "Stake Compuesto": 982660.65,
       "Beneficio Compuesto": -982660.65,
-      "Banca Compuesto": 48150372.01
+      "Banca Compuesto": 48150372.01,
+      "league_id": 328
     },
     {
       "Fecha": "2025-05-29",
@@ -46512,7 +48777,8 @@ window.dashboardData = {
       "Banca Fijo": 11922.0,
       "Stake Compuesto": 963007.44,
       "Beneficio Compuesto": 433353.35,
-      "Banca Compuesto": 48583725.35
+      "Banca Compuesto": 48583725.35,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-29",
@@ -46530,7 +48796,8 @@ window.dashboardData = {
       "Banca Fijo": 11931.0,
       "Stake Compuesto": 971674.51,
       "Beneficio Compuesto": 437253.53,
-      "Banca Compuesto": 49020978.88
+      "Banca Compuesto": 49020978.88,
+      "league_id": 563
     },
     {
       "Fecha": "2025-05-29",
@@ -46548,7 +48815,8 @@ window.dashboardData = {
       "Banca Fijo": 11940.0,
       "Stake Compuesto": 980419.58,
       "Beneficio Compuesto": 441188.81,
-      "Banca Compuesto": 49462167.69
+      "Banca Compuesto": 49462167.69,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-29",
@@ -46566,7 +48834,8 @@ window.dashboardData = {
       "Banca Fijo": 11949.0,
       "Stake Compuesto": 989243.35,
       "Beneficio Compuesto": 445159.51,
-      "Banca Compuesto": 49907327.2
+      "Banca Compuesto": 49907327.2,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-30",
@@ -46584,7 +48853,8 @@ window.dashboardData = {
       "Banca Fijo": 11958.0,
       "Stake Compuesto": 998146.54,
       "Beneficio Compuesto": 449165.94,
-      "Banca Compuesto": 50356493.15
+      "Banca Compuesto": 50356493.15,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-30",
@@ -46602,7 +48872,8 @@ window.dashboardData = {
       "Banca Fijo": 11967.0,
       "Stake Compuesto": 1007129.86,
       "Beneficio Compuesto": 453208.44,
-      "Banca Compuesto": 50809701.58
+      "Banca Compuesto": 50809701.58,
+      "league_id": 165
     },
     {
       "Fecha": "2025-05-30",
@@ -46620,7 +48891,8 @@ window.dashboardData = {
       "Banca Fijo": 11947.0,
       "Stake Compuesto": 1016194.03,
       "Beneficio Compuesto": -1016194.03,
-      "Banca Compuesto": 49793507.55
+      "Banca Compuesto": 49793507.55,
+      "league_id": 909
     },
     {
       "Fecha": "2025-05-31",
@@ -46638,7 +48910,8 @@ window.dashboardData = {
       "Banca Fijo": 11956.0,
       "Stake Compuesto": 995870.15,
       "Beneficio Compuesto": 448141.57,
-      "Banca Compuesto": 50241649.12
+      "Banca Compuesto": 50241649.12,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-31",
@@ -46656,7 +48929,8 @@ window.dashboardData = {
       "Banca Fijo": 11965.0,
       "Stake Compuesto": 1004832.98,
       "Beneficio Compuesto": 452174.84,
-      "Banca Compuesto": 50693823.96
+      "Banca Compuesto": 50693823.96,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-31",
@@ -46674,7 +48948,8 @@ window.dashboardData = {
       "Banca Fijo": 11974.0,
       "Stake Compuesto": 1013876.48,
       "Beneficio Compuesto": 456244.42,
-      "Banca Compuesto": 51150068.38
+      "Banca Compuesto": 51150068.38,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-31",
@@ -46692,7 +48967,8 @@ window.dashboardData = {
       "Banca Fijo": 11954.0,
       "Stake Compuesto": 1023001.37,
       "Beneficio Compuesto": -1023001.37,
-      "Banca Compuesto": 50127067.01
+      "Banca Compuesto": 50127067.01,
+      "league_id": 166
     },
     {
       "Fecha": "2025-05-31",
@@ -46710,7 +48986,8 @@ window.dashboardData = {
       "Banca Fijo": 11934.0,
       "Stake Compuesto": 1002541.34,
       "Beneficio Compuesto": -1002541.34,
-      "Banca Compuesto": 49124525.67
+      "Banca Compuesto": 49124525.67,
+      "league_id": 244
     },
     {
       "Fecha": "2025-05-31",
@@ -46728,7 +49005,8 @@ window.dashboardData = {
       "Banca Fijo": 11943.0,
       "Stake Compuesto": 982490.51,
       "Beneficio Compuesto": 442120.73,
-      "Banca Compuesto": 49566646.4
+      "Banca Compuesto": 49566646.4,
+      "league_id": 329
     },
     {
       "Fecha": "2025-05-31",
@@ -46746,7 +49024,8 @@ window.dashboardData = {
       "Banca Fijo": 11952.0,
       "Stake Compuesto": 991332.93,
       "Beneficio Compuesto": 446099.82,
-      "Banca Compuesto": 50012746.22
+      "Banca Compuesto": 50012746.22,
+      "league_id": 473
     },
     {
       "Fecha": "2025-05-31",
@@ -46764,7 +49043,8 @@ window.dashboardData = {
       "Banca Fijo": 11961.0,
       "Stake Compuesto": 1000254.92,
       "Beneficio Compuesto": 450114.72,
-      "Banca Compuesto": 50462860.94
+      "Banca Compuesto": 50462860.94,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-31",
@@ -46782,7 +49062,8 @@ window.dashboardData = {
       "Banca Fijo": 11970.0,
       "Stake Compuesto": 1009257.22,
       "Beneficio Compuesto": 454165.75,
-      "Banca Compuesto": 50917026.68
+      "Banca Compuesto": 50917026.68,
+      "league_id": 474
     },
     {
       "Fecha": "2025-05-31",
@@ -46800,7 +49081,8 @@ window.dashboardData = {
       "Banca Fijo": 11979.0,
       "Stake Compuesto": 1018340.53,
       "Beneficio Compuesto": 458253.24,
-      "Banca Compuesto": 51375279.92
+      "Banca Compuesto": 51375279.92,
+      "league_id": 492
     },
     {
       "Fecha": "2025-06-01",
@@ -46818,7 +49100,8 @@ window.dashboardData = {
       "Banca Fijo": 11988.0,
       "Stake Compuesto": 1027505.6,
       "Beneficio Compuesto": 462377.52,
-      "Banca Compuesto": 51837657.44
+      "Banca Compuesto": 51837657.44,
+      "league_id": 103
     },
     {
       "Fecha": "2025-06-01",
@@ -46836,7 +49119,8 @@ window.dashboardData = {
       "Banca Fijo": 11997.0,
       "Stake Compuesto": 1036753.15,
       "Beneficio Compuesto": 466538.92,
-      "Banca Compuesto": 52304196.36
+      "Banca Compuesto": 52304196.36,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-01",
@@ -46854,7 +49138,8 @@ window.dashboardData = {
       "Banca Fijo": 12006.0,
       "Stake Compuesto": 1046083.93,
       "Beneficio Compuesto": 470737.77,
-      "Banca Compuesto": 52774934.13
+      "Banca Compuesto": 52774934.13,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-01",
@@ -46872,7 +49157,8 @@ window.dashboardData = {
       "Banca Fijo": 12015.0,
       "Stake Compuesto": 1055498.68,
       "Beneficio Compuesto": 474974.41,
-      "Banca Compuesto": 53249908.53
+      "Banca Compuesto": 53249908.53,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-01",
@@ -46890,7 +49176,8 @@ window.dashboardData = {
       "Banca Fijo": 11995.0,
       "Stake Compuesto": 1064998.17,
       "Beneficio Compuesto": -1064998.17,
-      "Banca Compuesto": 52184910.36
+      "Banca Compuesto": 52184910.36,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-01",
@@ -46908,7 +49195,8 @@ window.dashboardData = {
       "Banca Fijo": 12004.0,
       "Stake Compuesto": 1043698.21,
       "Beneficio Compuesto": 469664.19,
-      "Banca Compuesto": 52654574.56
+      "Banca Compuesto": 52654574.56,
+      "league_id": 248
     },
     {
       "Fecha": "2025-06-01",
@@ -46926,7 +49214,8 @@ window.dashboardData = {
       "Banca Fijo": 12013.0,
       "Stake Compuesto": 1053091.49,
       "Beneficio Compuesto": 473891.17,
-      "Banca Compuesto": 53128465.73
+      "Banca Compuesto": 53128465.73,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-01",
@@ -46944,7 +49233,8 @@ window.dashboardData = {
       "Banca Fijo": 12022.0,
       "Stake Compuesto": 1062569.31,
       "Beneficio Compuesto": 478156.19,
-      "Banca Compuesto": 53606621.92
+      "Banca Compuesto": 53606621.92,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-01",
@@ -46962,7 +49252,8 @@ window.dashboardData = {
       "Banca Fijo": 12031.0,
       "Stake Compuesto": 1072132.44,
       "Beneficio Compuesto": 482459.6,
-      "Banca Compuesto": 54089081.52
+      "Banca Compuesto": 54089081.52,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-01",
@@ -46980,7 +49271,8 @@ window.dashboardData = {
       "Banca Fijo": 12040.0,
       "Stake Compuesto": 1081781.63,
       "Beneficio Compuesto": 486801.73,
-      "Banca Compuesto": 54575883.25
+      "Banca Compuesto": 54575883.25,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-01",
@@ -46998,7 +49290,8 @@ window.dashboardData = {
       "Banca Fijo": 12049.0,
       "Stake Compuesto": 1091517.67,
       "Beneficio Compuesto": 491182.95,
-      "Banca Compuesto": 55067066.2
+      "Banca Compuesto": 55067066.2,
+      "league_id": 119
     },
     {
       "Fecha": "2025-06-02",
@@ -47016,7 +49309,8 @@ window.dashboardData = {
       "Banca Fijo": 12029.0,
       "Stake Compuesto": 1101341.32,
       "Beneficio Compuesto": -1101341.32,
-      "Banca Compuesto": 53965724.88
+      "Banca Compuesto": 53965724.88,
+      "league_id": 164
     },
     {
       "Fecha": "2025-06-02",
@@ -47034,7 +49328,8 @@ window.dashboardData = {
       "Banca Fijo": 12038.0,
       "Stake Compuesto": 1079314.5,
       "Beneficio Compuesto": 485691.52,
-      "Banca Compuesto": 54451416.4
+      "Banca Compuesto": 54451416.4,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-02",
@@ -47052,7 +49347,8 @@ window.dashboardData = {
       "Banca Fijo": 12047.0,
       "Stake Compuesto": 1089028.33,
       "Beneficio Compuesto": 490062.75,
-      "Banca Compuesto": 54941479.15
+      "Banca Compuesto": 54941479.15,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-02",
@@ -47070,7 +49366,8 @@ window.dashboardData = {
       "Banca Fijo": 12027.0,
       "Stake Compuesto": 1098829.58,
       "Beneficio Compuesto": -1098829.58,
-      "Banca Compuesto": 53842649.56
+      "Banca Compuesto": 53842649.56,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-03",
@@ -47088,7 +49385,8 @@ window.dashboardData = {
       "Banca Fijo": 12036.0,
       "Stake Compuesto": 1076852.99,
       "Beneficio Compuesto": 484583.85,
-      "Banca Compuesto": 54327233.41
+      "Banca Compuesto": 54327233.41,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-03",
@@ -47106,7 +49404,8 @@ window.dashboardData = {
       "Banca Fijo": 12045.0,
       "Stake Compuesto": 1086544.67,
       "Beneficio Compuesto": 488945.1,
-      "Banca Compuesto": 54816178.51
+      "Banca Compuesto": 54816178.51,
+      "league_id": 492
     },
     {
       "Fecha": "2025-06-03",
@@ -47124,7 +49423,8 @@ window.dashboardData = {
       "Banca Fijo": 12054.0,
       "Stake Compuesto": 1096323.57,
       "Beneficio Compuesto": 493345.61,
-      "Banca Compuesto": 55309524.12
+      "Banca Compuesto": 55309524.12,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-04",
@@ -47142,7 +49442,8 @@ window.dashboardData = {
       "Banca Fijo": 12063.0,
       "Stake Compuesto": 1106190.48,
       "Beneficio Compuesto": 497785.72,
-      "Banca Compuesto": 55807309.83
+      "Banca Compuesto": 55807309.83,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-04",
@@ -47160,7 +49461,8 @@ window.dashboardData = {
       "Banca Fijo": 12072.0,
       "Stake Compuesto": 1116146.2,
       "Beneficio Compuesto": 502265.79,
-      "Banca Compuesto": 56309575.62
+      "Banca Compuesto": 56309575.62,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-04",
@@ -47178,7 +49480,8 @@ window.dashboardData = {
       "Banca Fijo": 12081.0,
       "Stake Compuesto": 1126191.51,
       "Beneficio Compuesto": 506786.18,
-      "Banca Compuesto": 56816361.8
+      "Banca Compuesto": 56816361.8,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-04",
@@ -47196,7 +49499,8 @@ window.dashboardData = {
       "Banca Fijo": 12090.0,
       "Stake Compuesto": 1136327.24,
       "Beneficio Compuesto": 511347.26,
-      "Banca Compuesto": 57327709.06
+      "Banca Compuesto": 57327709.06,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-04",
@@ -47214,7 +49518,8 @@ window.dashboardData = {
       "Banca Fijo": 12099.0,
       "Stake Compuesto": 1146554.18,
       "Beneficio Compuesto": 515949.38,
-      "Banca Compuesto": 57843658.44
+      "Banca Compuesto": 57843658.44,
+      "league_id": 492
     },
     {
       "Fecha": "2025-06-06",
@@ -47232,7 +49537,8 @@ window.dashboardData = {
       "Banca Fijo": 12079.0,
       "Stake Compuesto": 1156873.17,
       "Beneficio Compuesto": -1156873.17,
-      "Banca Compuesto": 56686785.27
+      "Banca Compuesto": 56686785.27,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-06",
@@ -47250,7 +49556,8 @@ window.dashboardData = {
       "Banca Fijo": 12088.0,
       "Stake Compuesto": 1133735.71,
       "Beneficio Compuesto": 510181.07,
-      "Banca Compuesto": 57196966.34
+      "Banca Compuesto": 57196966.34,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-06",
@@ -47268,7 +49575,8 @@ window.dashboardData = {
       "Banca Fijo": 12097.0,
       "Stake Compuesto": 1143939.33,
       "Beneficio Compuesto": 514772.7,
-      "Banca Compuesto": 57711739.04
+      "Banca Compuesto": 57711739.04,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-07",
@@ -47286,7 +49594,8 @@ window.dashboardData = {
       "Banca Fijo": 12077.0,
       "Stake Compuesto": 1154234.78,
       "Beneficio Compuesto": -1154234.78,
-      "Banca Compuesto": 56557504.26
+      "Banca Compuesto": 56557504.26,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-07",
@@ -47304,7 +49613,8 @@ window.dashboardData = {
       "Banca Fijo": 12086.0,
       "Stake Compuesto": 1131150.09,
       "Beneficio Compuesto": 509017.54,
-      "Banca Compuesto": 57066521.79
+      "Banca Compuesto": 57066521.79,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-07",
@@ -47322,7 +49632,8 @@ window.dashboardData = {
       "Banca Fijo": 12095.0,
       "Stake Compuesto": 1141330.44,
       "Beneficio Compuesto": 513598.7,
-      "Banca Compuesto": 57580120.49
+      "Banca Compuesto": 57580120.49,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-07",
@@ -47340,7 +49651,8 @@ window.dashboardData = {
       "Banca Fijo": 12104.0,
       "Stake Compuesto": 1151602.41,
       "Beneficio Compuesto": 518221.08,
-      "Banca Compuesto": 58098341.58
+      "Banca Compuesto": 58098341.58,
+      "league_id": 492
     },
     {
       "Fecha": "2025-06-08",
@@ -47358,7 +49670,8 @@ window.dashboardData = {
       "Banca Fijo": 12113.0,
       "Stake Compuesto": 1161966.83,
       "Beneficio Compuesto": 522885.07,
-      "Banca Compuesto": 58621226.65
+      "Banca Compuesto": 58621226.65,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-08",
@@ -47376,7 +49689,8 @@ window.dashboardData = {
       "Banca Fijo": 12122.0,
       "Stake Compuesto": 1172424.53,
       "Beneficio Compuesto": 527591.04,
-      "Banca Compuesto": 59148817.69
+      "Banca Compuesto": 59148817.69,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-08",
@@ -47394,7 +49708,8 @@ window.dashboardData = {
       "Banca Fijo": 12131.0,
       "Stake Compuesto": 1182976.35,
       "Beneficio Compuesto": 532339.36,
-      "Banca Compuesto": 59681157.05
+      "Banca Compuesto": 59681157.05,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-08",
@@ -47412,7 +49727,8 @@ window.dashboardData = {
       "Banca Fijo": 12140.0,
       "Stake Compuesto": 1193623.14,
       "Beneficio Compuesto": 537130.41,
-      "Banca Compuesto": 60218287.46
+      "Banca Compuesto": 60218287.46,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-08",
@@ -47430,7 +49746,8 @@ window.dashboardData = {
       "Banca Fijo": 12149.0,
       "Stake Compuesto": 1204365.75,
       "Beneficio Compuesto": 541964.59,
-      "Banca Compuesto": 60760252.05
+      "Banca Compuesto": 60760252.05,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-08",
@@ -47448,7 +49765,8 @@ window.dashboardData = {
       "Banca Fijo": 12158.0,
       "Stake Compuesto": 1215205.04,
       "Beneficio Compuesto": 546842.27,
-      "Banca Compuesto": 61307094.32
+      "Banca Compuesto": 61307094.32,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-08",
@@ -47466,7 +49784,8 @@ window.dashboardData = {
       "Banca Fijo": 12167.0,
       "Stake Compuesto": 1226141.89,
       "Beneficio Compuesto": 551763.85,
-      "Banca Compuesto": 61858858.17
+      "Banca Compuesto": 61858858.17,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-08",
@@ -47484,7 +49803,8 @@ window.dashboardData = {
       "Banca Fijo": 12176.0,
       "Stake Compuesto": 1237177.16,
       "Beneficio Compuesto": 556729.72,
-      "Banca Compuesto": 62415587.89
+      "Banca Compuesto": 62415587.89,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-08",
@@ -47502,7 +49822,8 @@ window.dashboardData = {
       "Banca Fijo": 12156.0,
       "Stake Compuesto": 1248311.76,
       "Beneficio Compuesto": -1248311.76,
-      "Banca Compuesto": 61167276.13
+      "Banca Compuesto": 61167276.13,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-09",
@@ -47520,7 +49841,8 @@ window.dashboardData = {
       "Banca Fijo": 12165.0,
       "Stake Compuesto": 1223345.52,
       "Beneficio Compuesto": 550505.49,
-      "Banca Compuesto": 61717781.62
+      "Banca Compuesto": 61717781.62,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-09",
@@ -47538,7 +49860,8 @@ window.dashboardData = {
       "Banca Fijo": 12174.0,
       "Stake Compuesto": 1234355.63,
       "Beneficio Compuesto": 555460.03,
-      "Banca Compuesto": 62273241.65
+      "Banca Compuesto": 62273241.65,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-09",
@@ -47556,7 +49879,8 @@ window.dashboardData = {
       "Banca Fijo": 12183.0,
       "Stake Compuesto": 1245464.83,
       "Beneficio Compuesto": 560459.17,
-      "Banca Compuesto": 62833700.83
+      "Banca Compuesto": 62833700.83,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-09",
@@ -47574,7 +49898,8 @@ window.dashboardData = {
       "Banca Fijo": 12192.0,
       "Stake Compuesto": 1256674.02,
       "Beneficio Compuesto": 565503.31,
-      "Banca Compuesto": 63399204.13
+      "Banca Compuesto": 63399204.13,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-09",
@@ -47592,7 +49917,8 @@ window.dashboardData = {
       "Banca Fijo": 12201.0,
       "Stake Compuesto": 1267984.08,
       "Beneficio Compuesto": 570592.84,
-      "Banca Compuesto": 63969796.97
+      "Banca Compuesto": 63969796.97,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-09",
@@ -47610,7 +49936,8 @@ window.dashboardData = {
       "Banca Fijo": 12210.0,
       "Stake Compuesto": 1279395.94,
       "Beneficio Compuesto": 575728.17,
-      "Banca Compuesto": 64545525.14
+      "Banca Compuesto": 64545525.14,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-09",
@@ -47628,7 +49955,8 @@ window.dashboardData = {
       "Banca Fijo": 12219.0,
       "Stake Compuesto": 1290910.5,
       "Beneficio Compuesto": 580909.73,
-      "Banca Compuesto": 65126434.87
+      "Banca Compuesto": 65126434.87,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-11",
@@ -47646,7 +49974,8 @@ window.dashboardData = {
       "Banca Fijo": 12228.0,
       "Stake Compuesto": 1302528.7,
       "Beneficio Compuesto": 586137.91,
-      "Banca Compuesto": 65712572.78
+      "Banca Compuesto": 65712572.78,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-11",
@@ -47664,7 +49993,8 @@ window.dashboardData = {
       "Banca Fijo": 12208.0,
       "Stake Compuesto": 1314251.46,
       "Beneficio Compuesto": -1314251.46,
-      "Banca Compuesto": 64398321.33
+      "Banca Compuesto": 64398321.33,
+      "league_id": 492
     },
     {
       "Fecha": "2025-06-12",
@@ -47682,7 +50012,8 @@ window.dashboardData = {
       "Banca Fijo": 12217.0,
       "Stake Compuesto": 1287966.43,
       "Beneficio Compuesto": 579584.89,
-      "Banca Compuesto": 64977906.22
+      "Banca Compuesto": 64977906.22,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-12",
@@ -47700,7 +50031,8 @@ window.dashboardData = {
       "Banca Fijo": 12226.0,
       "Stake Compuesto": 1299558.12,
       "Beneficio Compuesto": 584801.16,
-      "Banca Compuesto": 65562707.38
+      "Banca Compuesto": 65562707.38,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-13",
@@ -47718,7 +50050,8 @@ window.dashboardData = {
       "Banca Fijo": 12235.0,
       "Stake Compuesto": 1311254.15,
       "Beneficio Compuesto": 590064.37,
-      "Banca Compuesto": 66152771.74
+      "Banca Compuesto": 66152771.74,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-13",
@@ -47736,7 +50069,8 @@ window.dashboardData = {
       "Banca Fijo": 12215.0,
       "Stake Compuesto": 1323055.43,
       "Beneficio Compuesto": -1323055.43,
-      "Banca Compuesto": 64829716.31
+      "Banca Compuesto": 64829716.31,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-13",
@@ -47754,7 +50088,8 @@ window.dashboardData = {
       "Banca Fijo": 12224.0,
       "Stake Compuesto": 1296594.33,
       "Beneficio Compuesto": 583467.45,
-      "Banca Compuesto": 65413183.75
+      "Banca Compuesto": 65413183.75,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-13",
@@ -47772,7 +50107,8 @@ window.dashboardData = {
       "Banca Fijo": 12233.0,
       "Stake Compuesto": 1308263.68,
       "Beneficio Compuesto": 588718.65,
-      "Banca Compuesto": 66001902.41
+      "Banca Compuesto": 66001902.41,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-14",
@@ -47790,7 +50126,8 @@ window.dashboardData = {
       "Banca Fijo": 12242.0,
       "Stake Compuesto": 1320038.05,
       "Beneficio Compuesto": 594017.12,
-      "Banca Compuesto": 66595919.53
+      "Banca Compuesto": 66595919.53,
+      "league_id": 104
     },
     {
       "Fecha": "2025-06-14",
@@ -47808,7 +50145,8 @@ window.dashboardData = {
       "Banca Fijo": 12251.0,
       "Stake Compuesto": 1331918.39,
       "Beneficio Compuesto": 599363.28,
-      "Banca Compuesto": 67195282.81
+      "Banca Compuesto": 67195282.81,
+      "league_id": 164
     },
     {
       "Fecha": "2025-06-14",
@@ -47826,7 +50164,8 @@ window.dashboardData = {
       "Banca Fijo": 12231.0,
       "Stake Compuesto": 1343905.66,
       "Beneficio Compuesto": -1343905.66,
-      "Banca Compuesto": 65851377.15
+      "Banca Compuesto": 65851377.15,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-14",
@@ -47844,7 +50183,8 @@ window.dashboardData = {
       "Banca Fijo": 12240.0,
       "Stake Compuesto": 1317027.54,
       "Beneficio Compuesto": 592662.39,
-      "Banca Compuesto": 66444039.54
+      "Banca Compuesto": 66444039.54,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-14",
@@ -47862,7 +50202,8 @@ window.dashboardData = {
       "Banca Fijo": 12249.0,
       "Stake Compuesto": 1328880.79,
       "Beneficio Compuesto": 597996.36,
-      "Banca Compuesto": 67042035.9
+      "Banca Compuesto": 67042035.9,
+      "league_id": 244
     },
     {
       "Fecha": "2025-06-14",
@@ -47880,7 +50221,8 @@ window.dashboardData = {
       "Banca Fijo": 12258.0,
       "Stake Compuesto": 1340840.72,
       "Beneficio Compuesto": 603378.32,
-      "Banca Compuesto": 67645414.22
+      "Banca Compuesto": 67645414.22,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-14",
@@ -47898,7 +50240,8 @@ window.dashboardData = {
       "Banca Fijo": 12238.0,
       "Stake Compuesto": 1352908.28,
       "Beneficio Compuesto": -1352908.28,
-      "Banca Compuesto": 66292505.94
+      "Banca Compuesto": 66292505.94,
+      "league_id": 248
     },
     {
       "Fecha": "2025-06-14",
@@ -47916,7 +50259,8 @@ window.dashboardData = {
       "Banca Fijo": 12247.0,
       "Stake Compuesto": 1325850.12,
       "Beneficio Compuesto": 596632.55,
-      "Banca Compuesto": 66889138.49
+      "Banca Compuesto": 66889138.49,
+      "league_id": 248
     },
     {
       "Fecha": "2025-06-14",
@@ -47934,7 +50278,8 @@ window.dashboardData = {
       "Banca Fijo": 12256.0,
       "Stake Compuesto": 1337782.77,
       "Beneficio Compuesto": 602002.25,
-      "Banca Compuesto": 67491140.74
+      "Banca Compuesto": 67491140.74,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-14",
@@ -47952,7 +50297,8 @@ window.dashboardData = {
       "Banca Fijo": 12265.0,
       "Stake Compuesto": 1349822.81,
       "Beneficio Compuesto": 607420.27,
-      "Banca Compuesto": 68098561.01
+      "Banca Compuesto": 68098561.01,
+      "league_id": 329
     },
     {
       "Fecha": "2025-06-14",
@@ -47970,7 +50316,8 @@ window.dashboardData = {
       "Banca Fijo": 12274.0,
       "Stake Compuesto": 1361971.22,
       "Beneficio Compuesto": 612887.05,
-      "Banca Compuesto": 68711448.05
+      "Banca Compuesto": 68711448.05,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-14",
@@ -47988,7 +50335,8 @@ window.dashboardData = {
       "Banca Fijo": 12283.0,
       "Stake Compuesto": 1374228.96,
       "Beneficio Compuesto": 618403.03,
-      "Banca Compuesto": 69329851.09
+      "Banca Compuesto": 69329851.09,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-14",
@@ -48006,7 +50354,8 @@ window.dashboardData = {
       "Banca Fijo": 12292.0,
       "Stake Compuesto": 1386597.02,
       "Beneficio Compuesto": 623968.66,
-      "Banca Compuesto": 69953819.75
+      "Banca Compuesto": 69953819.75,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-14",
@@ -48024,7 +50373,8 @@ window.dashboardData = {
       "Banca Fijo": 12301.0,
       "Stake Compuesto": 1399076.39,
       "Beneficio Compuesto": 629584.38,
-      "Banca Compuesto": 70583404.12
+      "Banca Compuesto": 70583404.12,
+      "league_id": 492
     },
     {
       "Fecha": "2025-06-14",
@@ -48042,7 +50392,8 @@ window.dashboardData = {
       "Banca Fijo": 12310.0,
       "Stake Compuesto": 1411668.08,
       "Beneficio Compuesto": 635250.64,
-      "Banca Compuesto": 71218654.76
+      "Banca Compuesto": 71218654.76,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-14",
@@ -48060,7 +50411,8 @@ window.dashboardData = {
       "Banca Fijo": 12319.0,
       "Stake Compuesto": 1424373.1,
       "Beneficio Compuesto": 640967.89,
-      "Banca Compuesto": 71859622.65
+      "Banca Compuesto": 71859622.65,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-15",
@@ -48078,7 +50430,8 @@ window.dashboardData = {
       "Banca Fijo": 12328.0,
       "Stake Compuesto": 1437192.45,
       "Beneficio Compuesto": 646736.6,
-      "Banca Compuesto": 72506359.26
+      "Banca Compuesto": 72506359.26,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-15",
@@ -48096,7 +50449,8 @@ window.dashboardData = {
       "Banca Fijo": 12337.0,
       "Stake Compuesto": 1450127.19,
       "Beneficio Compuesto": 652557.23,
-      "Banca Compuesto": 73158916.49
+      "Banca Compuesto": 73158916.49,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-15",
@@ -48114,7 +50468,8 @@ window.dashboardData = {
       "Banca Fijo": 12317.0,
       "Stake Compuesto": 1463178.33,
       "Beneficio Compuesto": -1463178.33,
-      "Banca Compuesto": 71695738.16
+      "Banca Compuesto": 71695738.16,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-15",
@@ -48132,7 +50487,8 @@ window.dashboardData = {
       "Banca Fijo": 12297.0,
       "Stake Compuesto": 1433914.76,
       "Beneficio Compuesto": -1433914.76,
-      "Banca Compuesto": 70261823.4
+      "Banca Compuesto": 70261823.4,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-15",
@@ -48150,7 +50506,8 @@ window.dashboardData = {
       "Banca Fijo": 12277.0,
       "Stake Compuesto": 1405236.47,
       "Beneficio Compuesto": -1405236.47,
-      "Banca Compuesto": 68856586.93
+      "Banca Compuesto": 68856586.93,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-15",
@@ -48168,7 +50525,8 @@ window.dashboardData = {
       "Banca Fijo": 12286.0,
       "Stake Compuesto": 1377131.74,
       "Beneficio Compuesto": 619709.28,
-      "Banca Compuesto": 69476296.21
+      "Banca Compuesto": 69476296.21,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-15",
@@ -48186,7 +50544,8 @@ window.dashboardData = {
       "Banca Fijo": 12266.0,
       "Stake Compuesto": 1389525.92,
       "Beneficio Compuesto": -1389525.92,
-      "Banca Compuesto": 68086770.29
+      "Banca Compuesto": 68086770.29,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-15",
@@ -48204,7 +50563,8 @@ window.dashboardData = {
       "Banca Fijo": 12246.0,
       "Stake Compuesto": 1361735.41,
       "Beneficio Compuesto": -1361735.41,
-      "Banca Compuesto": 66725034.88
+      "Banca Compuesto": 66725034.88,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-16",
@@ -48222,7 +50582,8 @@ window.dashboardData = {
       "Banca Fijo": 12255.0,
       "Stake Compuesto": 1334500.7,
       "Beneficio Compuesto": 600525.31,
-      "Banca Compuesto": 67325560.2
+      "Banca Compuesto": 67325560.2,
+      "league_id": 164
     },
     {
       "Fecha": "2025-06-16",
@@ -48240,7 +50601,8 @@ window.dashboardData = {
       "Banca Fijo": 12264.0,
       "Stake Compuesto": 1346511.2,
       "Beneficio Compuesto": 605930.04,
-      "Banca Compuesto": 67931490.24
+      "Banca Compuesto": 67931490.24,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-16",
@@ -48258,7 +50620,8 @@ window.dashboardData = {
       "Banca Fijo": 12273.0,
       "Stake Compuesto": 1358629.8,
       "Beneficio Compuesto": 611383.41,
-      "Banca Compuesto": 68542873.65
+      "Banca Compuesto": 68542873.65,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-18",
@@ -48276,7 +50639,8 @@ window.dashboardData = {
       "Banca Fijo": 12282.0,
       "Stake Compuesto": 1370857.47,
       "Beneficio Compuesto": 616885.86,
-      "Banca Compuesto": 69159759.51
+      "Banca Compuesto": 69159759.51,
+      "league_id": 244
     },
     {
       "Fecha": "2025-06-18",
@@ -48294,7 +50658,8 @@ window.dashboardData = {
       "Banca Fijo": 12291.0,
       "Stake Compuesto": 1383195.19,
       "Beneficio Compuesto": 622437.84,
-      "Banca Compuesto": 69782197.35
+      "Banca Compuesto": 69782197.35,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-18",
@@ -48312,7 +50677,8 @@ window.dashboardData = {
       "Banca Fijo": 12300.0,
       "Stake Compuesto": 1395643.95,
       "Beneficio Compuesto": 628039.78,
-      "Banca Compuesto": 70410237.13
+      "Banca Compuesto": 70410237.13,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-18",
@@ -48330,7 +50696,8 @@ window.dashboardData = {
       "Banca Fijo": 12309.0,
       "Stake Compuesto": 1408204.74,
       "Beneficio Compuesto": 633692.13,
-      "Banca Compuesto": 71043929.26
+      "Banca Compuesto": 71043929.26,
+      "league_id": 329
     },
     {
       "Fecha": "2025-06-18",
@@ -48348,7 +50715,8 @@ window.dashboardData = {
       "Banca Fijo": 12318.0,
       "Stake Compuesto": 1420878.59,
       "Beneficio Compuesto": 639395.36,
-      "Banca Compuesto": 71683324.62
+      "Banca Compuesto": 71683324.62,
+      "league_id": 329
     },
     {
       "Fecha": "2025-06-19",
@@ -48366,7 +50734,8 @@ window.dashboardData = {
       "Banca Fijo": 12327.0,
       "Stake Compuesto": 1433666.49,
       "Beneficio Compuesto": 645149.92,
-      "Banca Compuesto": 72328474.54
+      "Banca Compuesto": 72328474.54,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-19",
@@ -48384,7 +50753,8 @@ window.dashboardData = {
       "Banca Fijo": 12336.0,
       "Stake Compuesto": 1446569.49,
       "Beneficio Compuesto": 650956.27,
-      "Banca Compuesto": 72979430.82
+      "Banca Compuesto": 72979430.82,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-19",
@@ -48402,7 +50772,8 @@ window.dashboardData = {
       "Banca Fijo": 12345.0,
       "Stake Compuesto": 1459588.62,
       "Beneficio Compuesto": 656814.88,
-      "Banca Compuesto": 73636245.69
+      "Banca Compuesto": 73636245.69,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-19",
@@ -48420,7 +50791,8 @@ window.dashboardData = {
       "Banca Fijo": 12354.0,
       "Stake Compuesto": 1472724.91,
       "Beneficio Compuesto": 662726.21,
-      "Banca Compuesto": 74298971.9
+      "Banca Compuesto": 74298971.9,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-19",
@@ -48438,7 +50810,8 @@ window.dashboardData = {
       "Banca Fijo": 12363.0,
       "Stake Compuesto": 1485979.44,
       "Beneficio Compuesto": 668690.75,
-      "Banca Compuesto": 74967662.65
+      "Banca Compuesto": 74967662.65,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-19",
@@ -48456,7 +50829,8 @@ window.dashboardData = {
       "Banca Fijo": 12372.0,
       "Stake Compuesto": 1499353.25,
       "Beneficio Compuesto": 674708.96,
-      "Banca Compuesto": 75642371.61
+      "Banca Compuesto": 75642371.61,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-19",
@@ -48474,7 +50848,8 @@ window.dashboardData = {
       "Banca Fijo": 12381.0,
       "Stake Compuesto": 1512847.43,
       "Beneficio Compuesto": 680781.34,
-      "Banca Compuesto": 76323152.96
+      "Banca Compuesto": 76323152.96,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-20",
@@ -48492,7 +50867,8 @@ window.dashboardData = {
       "Banca Fijo": 12390.0,
       "Stake Compuesto": 1526463.06,
       "Beneficio Compuesto": 686908.38,
-      "Banca Compuesto": 77010061.34
+      "Banca Compuesto": 77010061.34,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-20",
@@ -48510,7 +50886,8 @@ window.dashboardData = {
       "Banca Fijo": 12399.0,
       "Stake Compuesto": 1540201.23,
       "Beneficio Compuesto": 693090.55,
-      "Banca Compuesto": 77703151.89
+      "Banca Compuesto": 77703151.89,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-20",
@@ -48528,7 +50905,8 @@ window.dashboardData = {
       "Banca Fijo": 12408.0,
       "Stake Compuesto": 1554063.04,
       "Beneficio Compuesto": 699328.37,
-      "Banca Compuesto": 78402480.26
+      "Banca Compuesto": 78402480.26,
+      "league_id": 328
     },
     {
       "Fecha": "2025-06-20",
@@ -48546,7 +50924,8 @@ window.dashboardData = {
       "Banca Fijo": 12417.0,
       "Stake Compuesto": 1568049.61,
       "Beneficio Compuesto": 705622.32,
-      "Banca Compuesto": 79108102.58
+      "Banca Compuesto": 79108102.58,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-20",
@@ -48564,7 +50943,8 @@ window.dashboardData = {
       "Banca Fijo": 12426.0,
       "Stake Compuesto": 1582162.05,
       "Beneficio Compuesto": 711972.92,
-      "Banca Compuesto": 79820075.5
+      "Banca Compuesto": 79820075.5,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-21",
@@ -48582,7 +50962,8 @@ window.dashboardData = {
       "Banca Fijo": 12435.0,
       "Stake Compuesto": 1596401.51,
       "Beneficio Compuesto": 718380.68,
-      "Banca Compuesto": 80538456.18
+      "Banca Compuesto": 80538456.18,
+      "league_id": 103
     },
     {
       "Fecha": "2025-06-21",
@@ -48600,7 +50981,8 @@ window.dashboardData = {
       "Banca Fijo": 12444.0,
       "Stake Compuesto": 1610769.12,
       "Beneficio Compuesto": 724846.11,
-      "Banca Compuesto": 81263302.29
+      "Banca Compuesto": 81263302.29,
+      "league_id": 104
     },
     {
       "Fecha": "2025-06-21",
@@ -48618,7 +51000,8 @@ window.dashboardData = {
       "Banca Fijo": 12453.0,
       "Stake Compuesto": 1625266.05,
       "Beneficio Compuesto": 731369.72,
-      "Banca Compuesto": 81994672.01
+      "Banca Compuesto": 81994672.01,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-21",
@@ -48636,7 +51019,8 @@ window.dashboardData = {
       "Banca Fijo": 12462.0,
       "Stake Compuesto": 1639893.44,
       "Beneficio Compuesto": 737952.05,
-      "Banca Compuesto": 82732624.05
+      "Banca Compuesto": 82732624.05,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-21",
@@ -48654,7 +51038,8 @@ window.dashboardData = {
       "Banca Fijo": 12471.0,
       "Stake Compuesto": 1654652.48,
       "Beneficio Compuesto": 744593.62,
-      "Banca Compuesto": 83477217.67
+      "Banca Compuesto": 83477217.67,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-21",
@@ -48672,7 +51057,8 @@ window.dashboardData = {
       "Banca Fijo": 12480.0,
       "Stake Compuesto": 1669544.35,
       "Beneficio Compuesto": 751294.96,
-      "Banca Compuesto": 84228512.63
+      "Banca Compuesto": 84228512.63,
+      "league_id": 329
     },
     {
       "Fecha": "2025-06-21",
@@ -48690,7 +51076,8 @@ window.dashboardData = {
       "Banca Fijo": 12460.0,
       "Stake Compuesto": 1684570.25,
       "Beneficio Compuesto": -1684570.25,
-      "Banca Compuesto": 82543942.38
+      "Banca Compuesto": 82543942.38,
+      "league_id": 329
     },
     {
       "Fecha": "2025-06-21",
@@ -48708,7 +51095,8 @@ window.dashboardData = {
       "Banca Fijo": 12469.0,
       "Stake Compuesto": 1650878.85,
       "Beneficio Compuesto": 742895.48,
-      "Banca Compuesto": 83286837.86
+      "Banca Compuesto": 83286837.86,
+      "league_id": 474
     },
     {
       "Fecha": "2025-06-21",
@@ -48726,7 +51114,8 @@ window.dashboardData = {
       "Banca Fijo": 12478.0,
       "Stake Compuesto": 1665736.76,
       "Beneficio Compuesto": 749581.54,
-      "Banca Compuesto": 84036419.4
+      "Banca Compuesto": 84036419.4,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-21",
@@ -48744,7 +51133,8 @@ window.dashboardData = {
       "Banca Fijo": 12487.0,
       "Stake Compuesto": 1680728.39,
       "Beneficio Compuesto": 756327.77,
-      "Banca Compuesto": 84792747.17
+      "Banca Compuesto": 84792747.17,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-22",
@@ -48762,7 +51152,8 @@ window.dashboardData = {
       "Banca Fijo": 12496.0,
       "Stake Compuesto": 1695854.94,
       "Beneficio Compuesto": 763134.72,
-      "Banca Compuesto": 85555881.9
+      "Banca Compuesto": 85555881.9,
+      "league_id": 103
     },
     {
       "Fecha": "2025-06-22",
@@ -48780,7 +51171,8 @@ window.dashboardData = {
       "Banca Fijo": 12505.0,
       "Stake Compuesto": 1711117.64,
       "Beneficio Compuesto": 770002.94,
-      "Banca Compuesto": 86325884.84
+      "Banca Compuesto": 86325884.84,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-22",
@@ -48798,7 +51190,8 @@ window.dashboardData = {
       "Banca Fijo": 12485.0,
       "Stake Compuesto": 1726517.7,
       "Beneficio Compuesto": -1726517.7,
-      "Banca Compuesto": 84599367.14
+      "Banca Compuesto": 84599367.14,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-22",
@@ -48816,7 +51209,8 @@ window.dashboardData = {
       "Banca Fijo": 12494.0,
       "Stake Compuesto": 1691987.34,
       "Beneficio Compuesto": 761394.3,
-      "Banca Compuesto": 85360761.44
+      "Banca Compuesto": 85360761.44,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-23",
@@ -48834,7 +51228,8 @@ window.dashboardData = {
       "Banca Fijo": 12503.0,
       "Stake Compuesto": 1707215.23,
       "Beneficio Compuesto": 768246.85,
-      "Banca Compuesto": 86129008.3
+      "Banca Compuesto": 86129008.3,
+      "league_id": 164
     },
     {
       "Fecha": "2025-06-25",
@@ -48852,7 +51247,8 @@ window.dashboardData = {
       "Banca Fijo": 12483.0,
       "Stake Compuesto": 1722580.17,
       "Beneficio Compuesto": -1722580.17,
-      "Banca Compuesto": 84406428.13
+      "Banca Compuesto": 84406428.13,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-26",
@@ -48870,7 +51266,8 @@ window.dashboardData = {
       "Banca Fijo": 12492.0,
       "Stake Compuesto": 1688128.56,
       "Beneficio Compuesto": 759657.85,
-      "Banca Compuesto": 85166085.98
+      "Banca Compuesto": 85166085.98,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-27",
@@ -48888,7 +51285,8 @@ window.dashboardData = {
       "Banca Fijo": 12501.0,
       "Stake Compuesto": 1703321.72,
       "Beneficio Compuesto": 766494.77,
-      "Banca Compuesto": 85932580.76
+      "Banca Compuesto": 85932580.76,
+      "league_id": 164
     },
     {
       "Fecha": "2025-06-27",
@@ -48906,7 +51304,8 @@ window.dashboardData = {
       "Banca Fijo": 12510.0,
       "Stake Compuesto": 1718651.62,
       "Beneficio Compuesto": 773393.23,
-      "Banca Compuesto": 86705973.98
+      "Banca Compuesto": 86705973.98,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-27",
@@ -48924,7 +51323,8 @@ window.dashboardData = {
       "Banca Fijo": 12519.0,
       "Stake Compuesto": 1734119.48,
       "Beneficio Compuesto": 780353.77,
-      "Banca Compuesto": 87486327.75
+      "Banca Compuesto": 87486327.75,
+      "league_id": 165
     },
     {
       "Fecha": "2025-06-27",
@@ -48942,7 +51342,8 @@ window.dashboardData = {
       "Banca Fijo": 12528.0,
       "Stake Compuesto": 1749726.55,
       "Beneficio Compuesto": 787376.95,
-      "Banca Compuesto": 88273704.7
+      "Banca Compuesto": 88273704.7,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-27",
@@ -48960,7 +51361,8 @@ window.dashboardData = {
       "Banca Fijo": 12537.0,
       "Stake Compuesto": 1765474.09,
       "Beneficio Compuesto": 794463.34,
-      "Banca Compuesto": 89068168.04
+      "Banca Compuesto": 89068168.04,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-27",
@@ -48978,7 +51380,8 @@ window.dashboardData = {
       "Banca Fijo": 12546.0,
       "Stake Compuesto": 1781363.36,
       "Beneficio Compuesto": 801613.51,
-      "Banca Compuesto": 89869781.55
+      "Banca Compuesto": 89869781.55,
+      "league_id": 329
     },
     {
       "Fecha": "2025-06-27",
@@ -48996,7 +51399,8 @@ window.dashboardData = {
       "Banca Fijo": 12555.0,
       "Stake Compuesto": 1797395.63,
       "Beneficio Compuesto": 808828.03,
-      "Banca Compuesto": 90678609.59
+      "Banca Compuesto": 90678609.59,
+      "league_id": 563
     },
     {
       "Fecha": "2025-06-27",
@@ -49014,7 +51418,8 @@ window.dashboardData = {
       "Banca Fijo": 12564.0,
       "Stake Compuesto": 1813572.19,
       "Beneficio Compuesto": 816107.49,
-      "Banca Compuesto": 91494717.07
+      "Banca Compuesto": 91494717.07,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-06-28",
@@ -49032,7 +51437,8 @@ window.dashboardData = {
       "Banca Fijo": 12573.0,
       "Stake Compuesto": 1829894.34,
       "Beneficio Compuesto": 823452.45,
-      "Banca Compuesto": 92318169.53
+      "Banca Compuesto": 92318169.53,
+      "league_id": 244
     },
     {
       "Fecha": "2025-06-28",
@@ -49050,7 +51456,8 @@ window.dashboardData = {
       "Banca Fijo": 12582.0,
       "Stake Compuesto": 1846363.39,
       "Beneficio Compuesto": 830863.53,
-      "Banca Compuesto": 93149033.05
+      "Banca Compuesto": 93149033.05,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-28",
@@ -49068,7 +51475,8 @@ window.dashboardData = {
       "Banca Fijo": 12562.0,
       "Stake Compuesto": 1862980.66,
       "Beneficio Compuesto": -1862980.66,
-      "Banca Compuesto": 91286052.39
+      "Banca Compuesto": 91286052.39,
+      "league_id": 245
     },
     {
       "Fecha": "2025-06-28",
@@ -49086,7 +51494,8 @@ window.dashboardData = {
       "Banca Fijo": 12571.0,
       "Stake Compuesto": 1825721.05,
       "Beneficio Compuesto": 821574.47,
-      "Banca Compuesto": 92107626.86
+      "Banca Compuesto": 92107626.86,
+      "league_id": 247
     },
     {
       "Fecha": "2025-06-28",
@@ -49104,7 +51513,8 @@ window.dashboardData = {
       "Banca Fijo": 12580.0,
       "Stake Compuesto": 1842152.54,
       "Beneficio Compuesto": 828968.64,
-      "Banca Compuesto": 92936595.51
+      "Banca Compuesto": 92936595.51,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-28",
@@ -49122,7 +51532,8 @@ window.dashboardData = {
       "Banca Fijo": 12589.0,
       "Stake Compuesto": 1858731.91,
       "Beneficio Compuesto": 836429.36,
-      "Banca Compuesto": 93773024.87
+      "Banca Compuesto": 93773024.87,
+      "league_id": 473
     },
     {
       "Fecha": "2025-06-28",
@@ -49140,7 +51551,8 @@ window.dashboardData = {
       "Banca Fijo": 12569.0,
       "Stake Compuesto": 1875460.5,
       "Beneficio Compuesto": -1875460.5,
-      "Banca Compuesto": 91897564.37
+      "Banca Compuesto": 91897564.37,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-29",
@@ -49158,7 +51570,8 @@ window.dashboardData = {
       "Banca Fijo": 12578.0,
       "Stake Compuesto": 1837951.29,
       "Beneficio Compuesto": 827078.08,
-      "Banca Compuesto": 92724642.45
+      "Banca Compuesto": 92724642.45,
+      "league_id": 103
     },
     {
       "Fecha": "2025-06-29",
@@ -49176,7 +51589,8 @@ window.dashboardData = {
       "Banca Fijo": 12587.0,
       "Stake Compuesto": 1854492.85,
       "Beneficio Compuesto": 834521.78,
-      "Banca Compuesto": 93559164.23
+      "Banca Compuesto": 93559164.23,
+      "league_id": 103
     },
     {
       "Fecha": "2025-06-29",
@@ -49194,7 +51608,8 @@ window.dashboardData = {
       "Banca Fijo": 12567.0,
       "Stake Compuesto": 1871183.28,
       "Beneficio Compuesto": -1871183.28,
-      "Banca Compuesto": 91687980.95
+      "Banca Compuesto": 91687980.95,
+      "league_id": 164
     },
     {
       "Fecha": "2025-06-29",
@@ -49212,7 +51627,8 @@ window.dashboardData = {
       "Banca Fijo": 12547.0,
       "Stake Compuesto": 1833759.62,
       "Beneficio Compuesto": -1833759.62,
-      "Banca Compuesto": 89854221.33
+      "Banca Compuesto": 89854221.33,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-29",
@@ -49230,7 +51646,8 @@ window.dashboardData = {
       "Banca Fijo": 12556.0,
       "Stake Compuesto": 1797084.43,
       "Beneficio Compuesto": 808687.99,
-      "Banca Compuesto": 90662909.32
+      "Banca Compuesto": 90662909.32,
+      "league_id": 166
     },
     {
       "Fecha": "2025-06-29",
@@ -49248,7 +51665,8 @@ window.dashboardData = {
       "Banca Fijo": 12565.0,
       "Stake Compuesto": 1813258.19,
       "Beneficio Compuesto": 815966.18,
-      "Banca Compuesto": 91478875.5
+      "Banca Compuesto": 91478875.5,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-29",
@@ -49266,7 +51684,8 @@ window.dashboardData = {
       "Banca Fijo": 12574.0,
       "Stake Compuesto": 1829577.51,
       "Beneficio Compuesto": 823309.88,
-      "Banca Compuesto": 92302185.38
+      "Banca Compuesto": 92302185.38,
+      "league_id": 909
     },
     {
       "Fecha": "2025-06-30",
@@ -49284,7 +51703,8 @@ window.dashboardData = {
       "Banca Fijo": 12583.0,
       "Stake Compuesto": 1846043.71,
       "Beneficio Compuesto": 830719.67,
-      "Banca Compuesto": 93132905.05
+      "Banca Compuesto": 93132905.05,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-01",
@@ -49302,7 +51722,8 @@ window.dashboardData = {
       "Banca Fijo": 12592.0,
       "Stake Compuesto": 1862658.1,
       "Beneficio Compuesto": 838196.15,
-      "Banca Compuesto": 93971101.2
+      "Banca Compuesto": 93971101.2,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-02",
@@ -49320,7 +51741,8 @@ window.dashboardData = {
       "Banca Fijo": 12601.0,
       "Stake Compuesto": 1879422.02,
       "Beneficio Compuesto": 845739.91,
-      "Banca Compuesto": 94816841.11
+      "Banca Compuesto": 94816841.11,
+      "league_id": 244
     },
     {
       "Fecha": "2025-07-02",
@@ -49338,7 +51760,8 @@ window.dashboardData = {
       "Banca Fijo": 12610.0,
       "Stake Compuesto": 1896336.82,
       "Beneficio Compuesto": 853351.57,
-      "Banca Compuesto": 95670192.68
+      "Banca Compuesto": 95670192.68,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-02",
@@ -49356,7 +51779,8 @@ window.dashboardData = {
       "Banca Fijo": 12619.0,
       "Stake Compuesto": 1913403.85,
       "Beneficio Compuesto": 861031.73,
-      "Banca Compuesto": 96531224.41
+      "Banca Compuesto": 96531224.41,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-02",
@@ -49374,7 +51798,8 @@ window.dashboardData = {
       "Banca Fijo": 12628.0,
       "Stake Compuesto": 1930624.49,
       "Beneficio Compuesto": 868781.02,
-      "Banca Compuesto": 97400005.43
+      "Banca Compuesto": 97400005.43,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-02",
@@ -49392,7 +51817,8 @@ window.dashboardData = {
       "Banca Fijo": 12608.0,
       "Stake Compuesto": 1948000.11,
       "Beneficio Compuesto": -1948000.11,
-      "Banca Compuesto": 95452005.32
+      "Banca Compuesto": 95452005.32,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-02",
@@ -49410,7 +51836,8 @@ window.dashboardData = {
       "Banca Fijo": 12617.0,
       "Stake Compuesto": 1909040.11,
       "Beneficio Compuesto": 859068.05,
-      "Banca Compuesto": 96311073.37
+      "Banca Compuesto": 96311073.37,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-02",
@@ -49428,7 +51855,8 @@ window.dashboardData = {
       "Banca Fijo": 12626.0,
       "Stake Compuesto": 1926221.47,
       "Beneficio Compuesto": 866799.66,
-      "Banca Compuesto": 97177873.03
+      "Banca Compuesto": 97177873.03,
+      "league_id": 248
     },
     {
       "Fecha": "2025-07-02",
@@ -49446,7 +51874,8 @@ window.dashboardData = {
       "Banca Fijo": 12635.0,
       "Stake Compuesto": 1943557.46,
       "Beneficio Compuesto": 874600.86,
-      "Banca Compuesto": 98052473.89
+      "Banca Compuesto": 98052473.89,
+      "league_id": 248
     },
     {
       "Fecha": "2025-07-03",
@@ -49464,7 +51893,8 @@ window.dashboardData = {
       "Banca Fijo": 12615.0,
       "Stake Compuesto": 1961049.48,
       "Beneficio Compuesto": -1961049.48,
-      "Banca Compuesto": 96091424.41
+      "Banca Compuesto": 96091424.41,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-03",
@@ -49482,7 +51912,8 @@ window.dashboardData = {
       "Banca Fijo": 12624.0,
       "Stake Compuesto": 1921828.49,
       "Beneficio Compuesto": 864822.82,
-      "Banca Compuesto": 96956247.23
+      "Banca Compuesto": 96956247.23,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-03",
@@ -49500,7 +51931,8 @@ window.dashboardData = {
       "Banca Fijo": 12633.0,
       "Stake Compuesto": 1939124.94,
       "Beneficio Compuesto": 872606.23,
-      "Banca Compuesto": 97828853.45
+      "Banca Compuesto": 97828853.45,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-07-03",
@@ -49518,7 +51950,8 @@ window.dashboardData = {
       "Banca Fijo": 12642.0,
       "Stake Compuesto": 1956577.07,
       "Beneficio Compuesto": 880459.68,
-      "Banca Compuesto": 98709313.14
+      "Banca Compuesto": 98709313.14,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-07-04",
@@ -49536,7 +51969,8 @@ window.dashboardData = {
       "Banca Fijo": 12651.0,
       "Stake Compuesto": 1974186.26,
       "Beneficio Compuesto": 888383.82,
-      "Banca Compuesto": 99597696.95
+      "Banca Compuesto": 99597696.95,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-04",
@@ -49554,7 +51988,8 @@ window.dashboardData = {
       "Banca Fijo": 12660.0,
       "Stake Compuesto": 1991953.94,
       "Beneficio Compuesto": 896379.27,
-      "Banca Compuesto": 100494076.23
+      "Banca Compuesto": 100494076.23,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-04",
@@ -49572,7 +52007,8 @@ window.dashboardData = {
       "Banca Fijo": 12640.0,
       "Stake Compuesto": 2009881.52,
       "Beneficio Compuesto": -2009881.52,
-      "Banca Compuesto": 98484194.7
+      "Banca Compuesto": 98484194.7,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-04",
@@ -49590,7 +52026,8 @@ window.dashboardData = {
       "Banca Fijo": 12649.0,
       "Stake Compuesto": 1969683.89,
       "Beneficio Compuesto": 886357.75,
-      "Banca Compuesto": 99370552.45
+      "Banca Compuesto": 99370552.45,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-04",
@@ -49608,7 +52045,8 @@ window.dashboardData = {
       "Banca Fijo": 12658.0,
       "Stake Compuesto": 1987411.05,
       "Beneficio Compuesto": 894334.97,
-      "Banca Compuesto": 100264887.43
+      "Banca Compuesto": 100264887.43,
+      "league_id": 329
     },
     {
       "Fecha": "2025-07-04",
@@ -49626,7 +52064,8 @@ window.dashboardData = {
       "Banca Fijo": 12667.0,
       "Stake Compuesto": 2005297.75,
       "Beneficio Compuesto": 902383.99,
-      "Banca Compuesto": 101167271.41
+      "Banca Compuesto": 101167271.41,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-05",
@@ -49644,7 +52083,8 @@ window.dashboardData = {
       "Banca Fijo": 12676.0,
       "Stake Compuesto": 2023345.43,
       "Beneficio Compuesto": 910505.44,
-      "Banca Compuesto": 102077776.86
+      "Banca Compuesto": 102077776.86,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-05",
@@ -49662,7 +52102,8 @@ window.dashboardData = {
       "Banca Fijo": 12685.0,
       "Stake Compuesto": 2041555.54,
       "Beneficio Compuesto": 918699.99,
-      "Banca Compuesto": 102996476.85
+      "Banca Compuesto": 102996476.85,
+      "league_id": 164
     },
     {
       "Fecha": "2025-07-05",
@@ -49680,7 +52121,8 @@ window.dashboardData = {
       "Banca Fijo": 12694.0,
       "Stake Compuesto": 2059929.54,
       "Beneficio Compuesto": 926968.29,
-      "Banca Compuesto": 103923445.14
+      "Banca Compuesto": 103923445.14,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-05",
@@ -49698,7 +52140,8 @@ window.dashboardData = {
       "Banca Fijo": 12703.0,
       "Stake Compuesto": 2078468.9,
       "Beneficio Compuesto": 935311.01,
-      "Banca Compuesto": 104858756.14
+      "Banca Compuesto": 104858756.14,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-05",
@@ -49716,7 +52159,8 @@ window.dashboardData = {
       "Banca Fijo": 12712.0,
       "Stake Compuesto": 2097175.12,
       "Beneficio Compuesto": 943728.81,
-      "Banca Compuesto": 105802484.95
+      "Banca Compuesto": 105802484.95,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-05",
@@ -49734,7 +52178,8 @@ window.dashboardData = {
       "Banca Fijo": 12721.0,
       "Stake Compuesto": 2116049.7,
       "Beneficio Compuesto": 952222.36,
-      "Banca Compuesto": 106754707.31
+      "Banca Compuesto": 106754707.31,
+      "league_id": 244
     },
     {
       "Fecha": "2025-07-05",
@@ -49752,7 +52197,8 @@ window.dashboardData = {
       "Banca Fijo": 12730.0,
       "Stake Compuesto": 2135094.15,
       "Beneficio Compuesto": 960792.37,
-      "Banca Compuesto": 107715499.68
+      "Banca Compuesto": 107715499.68,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-05",
@@ -49770,7 +52216,8 @@ window.dashboardData = {
       "Banca Fijo": 12739.0,
       "Stake Compuesto": 2154309.99,
       "Beneficio Compuesto": 969439.5,
-      "Banca Compuesto": 108684939.18
+      "Banca Compuesto": 108684939.18,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-05",
@@ -49788,7 +52235,8 @@ window.dashboardData = {
       "Banca Fijo": 12748.0,
       "Stake Compuesto": 2173698.78,
       "Beneficio Compuesto": 978164.45,
-      "Banca Compuesto": 109663103.63
+      "Banca Compuesto": 109663103.63,
+      "league_id": 473
     },
     {
       "Fecha": "2025-07-05",
@@ -49806,7 +52254,8 @@ window.dashboardData = {
       "Banca Fijo": 12757.0,
       "Stake Compuesto": 2193262.07,
       "Beneficio Compuesto": 986967.93,
-      "Banca Compuesto": 110650071.56
+      "Banca Compuesto": 110650071.56,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-06",
@@ -49824,7 +52273,8 @@ window.dashboardData = {
       "Banca Fijo": 12766.0,
       "Stake Compuesto": 2213001.43,
       "Beneficio Compuesto": 995850.64,
-      "Banca Compuesto": 111645922.21
+      "Banca Compuesto": 111645922.21,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-06",
@@ -49842,7 +52292,8 @@ window.dashboardData = {
       "Banca Fijo": 12775.0,
       "Stake Compuesto": 2232918.44,
       "Beneficio Compuesto": 1004813.3,
-      "Banca Compuesto": 112650735.51
+      "Banca Compuesto": 112650735.51,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-07",
@@ -49860,7 +52311,8 @@ window.dashboardData = {
       "Banca Fijo": 12784.0,
       "Stake Compuesto": 2253014.71,
       "Beneficio Compuesto": 1013856.62,
-      "Banca Compuesto": 113664592.13
+      "Banca Compuesto": 113664592.13,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-07",
@@ -49878,7 +52330,8 @@ window.dashboardData = {
       "Banca Fijo": 12764.0,
       "Stake Compuesto": 2273291.84,
       "Beneficio Compuesto": -2273291.84,
-      "Banca Compuesto": 111391300.28
+      "Banca Compuesto": 111391300.28,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-07",
@@ -49896,7 +52349,8 @@ window.dashboardData = {
       "Banca Fijo": 12773.0,
       "Stake Compuesto": 2227826.01,
       "Beneficio Compuesto": 1002521.7,
-      "Banca Compuesto": 112393821.99
+      "Banca Compuesto": 112393821.99,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-08",
@@ -49914,7 +52368,8 @@ window.dashboardData = {
       "Banca Fijo": 12782.0,
       "Stake Compuesto": 2247876.44,
       "Beneficio Compuesto": 1011544.4,
-      "Banca Compuesto": 113405366.38
+      "Banca Compuesto": 113405366.38,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-08",
@@ -49932,7 +52387,8 @@ window.dashboardData = {
       "Banca Fijo": 12791.0,
       "Stake Compuesto": 2268107.33,
       "Beneficio Compuesto": 1020648.3,
-      "Banca Compuesto": 114426014.68
+      "Banca Compuesto": 114426014.68,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-09",
@@ -49950,7 +52406,8 @@ window.dashboardData = {
       "Banca Fijo": 12800.0,
       "Stake Compuesto": 2288520.29,
       "Beneficio Compuesto": 1029834.13,
-      "Banca Compuesto": 115455848.81
+      "Banca Compuesto": 115455848.81,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-07-11",
@@ -49968,7 +52425,8 @@ window.dashboardData = {
       "Banca Fijo": 12809.0,
       "Stake Compuesto": 2309116.98,
       "Beneficio Compuesto": 1039102.64,
-      "Banca Compuesto": 116494951.45
+      "Banca Compuesto": 116494951.45,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-11",
@@ -49986,7 +52444,8 @@ window.dashboardData = {
       "Banca Fijo": 12818.0,
       "Stake Compuesto": 2329899.03,
       "Beneficio Compuesto": 1048454.56,
-      "Banca Compuesto": 117543406.02
+      "Banca Compuesto": 117543406.02,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-11",
@@ -50004,7 +52463,8 @@ window.dashboardData = {
       "Banca Fijo": 12827.0,
       "Stake Compuesto": 2350868.12,
       "Beneficio Compuesto": 1057890.65,
-      "Banca Compuesto": 118601296.67
+      "Banca Compuesto": 118601296.67,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-12",
@@ -50022,7 +52482,8 @@ window.dashboardData = {
       "Banca Fijo": 12807.0,
       "Stake Compuesto": 2372025.93,
       "Beneficio Compuesto": -2372025.93,
-      "Banca Compuesto": 116229270.74
+      "Banca Compuesto": 116229270.74,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-12",
@@ -50040,7 +52501,8 @@ window.dashboardData = {
       "Banca Fijo": 12816.0,
       "Stake Compuesto": 2324585.41,
       "Beneficio Compuesto": 1046063.44,
-      "Banca Compuesto": 117275334.17
+      "Banca Compuesto": 117275334.17,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-12",
@@ -50058,7 +52520,8 @@ window.dashboardData = {
       "Banca Fijo": 12825.0,
       "Stake Compuesto": 2345506.68,
       "Beneficio Compuesto": 1055478.01,
-      "Banca Compuesto": 118330812.18
+      "Banca Compuesto": 118330812.18,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-12",
@@ -50076,7 +52539,8 @@ window.dashboardData = {
       "Banca Fijo": 12834.0,
       "Stake Compuesto": 2366616.24,
       "Beneficio Compuesto": 1064977.31,
-      "Banca Compuesto": 119395789.49
+      "Banca Compuesto": 119395789.49,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-12",
@@ -50094,7 +52558,8 @@ window.dashboardData = {
       "Banca Fijo": 12843.0,
       "Stake Compuesto": 2387915.79,
       "Beneficio Compuesto": 1074562.11,
-      "Banca Compuesto": 120470351.6
+      "Banca Compuesto": 120470351.6,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-12",
@@ -50112,7 +52577,8 @@ window.dashboardData = {
       "Banca Fijo": 12852.0,
       "Stake Compuesto": 2409407.03,
       "Beneficio Compuesto": 1084233.16,
-      "Banca Compuesto": 121554584.76
+      "Banca Compuesto": 121554584.76,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-12",
@@ -50130,7 +52596,8 @@ window.dashboardData = {
       "Banca Fijo": 12861.0,
       "Stake Compuesto": 2431091.7,
       "Beneficio Compuesto": 1093991.26,
-      "Banca Compuesto": 122648576.02
+      "Banca Compuesto": 122648576.02,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-12",
@@ -50148,7 +52615,8 @@ window.dashboardData = {
       "Banca Fijo": 12870.0,
       "Stake Compuesto": 2452971.52,
       "Beneficio Compuesto": 1103837.18,
-      "Banca Compuesto": 123752413.21
+      "Banca Compuesto": 123752413.21,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-12",
@@ -50166,7 +52634,8 @@ window.dashboardData = {
       "Banca Fijo": 12879.0,
       "Stake Compuesto": 2475048.26,
       "Beneficio Compuesto": 1113771.72,
-      "Banca Compuesto": 124866184.93
+      "Banca Compuesto": 124866184.93,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-12",
@@ -50184,7 +52653,8 @@ window.dashboardData = {
       "Banca Fijo": 12888.0,
       "Stake Compuesto": 2497323.7,
       "Beneficio Compuesto": 1123795.66,
-      "Banca Compuesto": 125989980.59
+      "Banca Compuesto": 125989980.59,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-13",
@@ -50202,7 +52672,8 @@ window.dashboardData = {
       "Banca Fijo": 12897.0,
       "Stake Compuesto": 2519799.61,
       "Beneficio Compuesto": 1133909.83,
-      "Banca Compuesto": 127123890.42
+      "Banca Compuesto": 127123890.42,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-13",
@@ -50220,7 +52691,8 @@ window.dashboardData = {
       "Banca Fijo": 12906.0,
       "Stake Compuesto": 2542477.81,
       "Beneficio Compuesto": 1144115.01,
-      "Banca Compuesto": 128268005.43
+      "Banca Compuesto": 128268005.43,
+      "league_id": 473
     },
     {
       "Fecha": "2025-07-13",
@@ -50238,7 +52710,8 @@ window.dashboardData = {
       "Banca Fijo": 12915.0,
       "Stake Compuesto": 2565360.11,
       "Beneficio Compuesto": 1154412.05,
-      "Banca Compuesto": 129422417.48
+      "Banca Compuesto": 129422417.48,
+      "league_id": 473
     },
     {
       "Fecha": "2025-07-13",
@@ -50256,7 +52729,8 @@ window.dashboardData = {
       "Banca Fijo": 12924.0,
       "Stake Compuesto": 2588448.35,
       "Beneficio Compuesto": 1164801.76,
-      "Banca Compuesto": 130587219.24
+      "Banca Compuesto": 130587219.24,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-14",
@@ -50274,7 +52748,8 @@ window.dashboardData = {
       "Banca Fijo": 12904.0,
       "Stake Compuesto": 2611744.38,
       "Beneficio Compuesto": -2611744.38,
-      "Banca Compuesto": 127975474.85
+      "Banca Compuesto": 127975474.85,
+      "league_id": 164
     },
     {
       "Fecha": "2025-07-14",
@@ -50292,7 +52767,8 @@ window.dashboardData = {
       "Banca Fijo": 12913.0,
       "Stake Compuesto": 2559509.5,
       "Beneficio Compuesto": 1151779.27,
-      "Banca Compuesto": 129127254.13
+      "Banca Compuesto": 129127254.13,
+      "league_id": 248
     },
     {
       "Fecha": "2025-07-14",
@@ -50310,7 +52786,8 @@ window.dashboardData = {
       "Banca Fijo": 12922.0,
       "Stake Compuesto": 2582545.08,
       "Beneficio Compuesto": 1162145.29,
-      "Banca Compuesto": 130289399.41
+      "Banca Compuesto": 130289399.41,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-14",
@@ -50328,7 +52805,8 @@ window.dashboardData = {
       "Banca Fijo": 12931.0,
       "Stake Compuesto": 2605787.99,
       "Beneficio Compuesto": 1172604.59,
-      "Banca Compuesto": 131462004.01
+      "Banca Compuesto": 131462004.01,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-07-16",
@@ -50346,7 +52824,8 @@ window.dashboardData = {
       "Banca Fijo": 12911.0,
       "Stake Compuesto": 2629240.08,
       "Beneficio Compuesto": -2629240.08,
-      "Banca Compuesto": 128832763.93
+      "Banca Compuesto": 128832763.93,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-16",
@@ -50364,7 +52843,8 @@ window.dashboardData = {
       "Banca Fijo": 12920.0,
       "Stake Compuesto": 2576655.28,
       "Beneficio Compuesto": 1159494.88,
-      "Banca Compuesto": 129992258.8
+      "Banca Compuesto": 129992258.8,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-17",
@@ -50382,7 +52862,8 @@ window.dashboardData = {
       "Banca Fijo": 12900.0,
       "Stake Compuesto": 2599845.18,
       "Beneficio Compuesto": -2599845.18,
-      "Banca Compuesto": 127392413.63
+      "Banca Compuesto": 127392413.63,
+      "league_id": 248
     },
     {
       "Fecha": "2025-07-18",
@@ -50400,7 +52881,8 @@ window.dashboardData = {
       "Banca Fijo": 12909.0,
       "Stake Compuesto": 2547848.27,
       "Beneficio Compuesto": 1146531.72,
-      "Banca Compuesto": 128538945.35
+      "Banca Compuesto": 128538945.35,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-18",
@@ -50418,7 +52900,8 @@ window.dashboardData = {
       "Banca Fijo": 12918.0,
       "Stake Compuesto": 2570778.91,
       "Beneficio Compuesto": 1156850.51,
-      "Banca Compuesto": 129695795.86
+      "Banca Compuesto": 129695795.86,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-18",
@@ -50436,7 +52919,8 @@ window.dashboardData = {
       "Banca Fijo": 12927.0,
       "Stake Compuesto": 2593915.92,
       "Beneficio Compuesto": 1167262.16,
-      "Banca Compuesto": 130863058.02
+      "Banca Compuesto": 130863058.02,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-18",
@@ -50454,7 +52938,8 @@ window.dashboardData = {
       "Banca Fijo": 12936.0,
       "Stake Compuesto": 2617261.16,
       "Beneficio Compuesto": 1177767.52,
-      "Banca Compuesto": 132040825.54
+      "Banca Compuesto": 132040825.54,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-18",
@@ -50472,7 +52957,8 @@ window.dashboardData = {
       "Banca Fijo": 12945.0,
       "Stake Compuesto": 2640816.51,
       "Beneficio Compuesto": 1188367.43,
-      "Banca Compuesto": 133229192.97
+      "Banca Compuesto": 133229192.97,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-18",
@@ -50490,7 +52976,8 @@ window.dashboardData = {
       "Banca Fijo": 12954.0,
       "Stake Compuesto": 2664583.86,
       "Beneficio Compuesto": 1199062.74,
-      "Banca Compuesto": 134428255.71
+      "Banca Compuesto": 134428255.71,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-07-19",
@@ -50508,7 +52995,8 @@ window.dashboardData = {
       "Banca Fijo": 12963.0,
       "Stake Compuesto": 2688565.11,
       "Beneficio Compuesto": 1209854.3,
-      "Banca Compuesto": 135638110.01
+      "Banca Compuesto": 135638110.01,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-19",
@@ -50526,7 +53014,8 @@ window.dashboardData = {
       "Banca Fijo": 12972.0,
       "Stake Compuesto": 2712762.2,
       "Beneficio Compuesto": 1220742.99,
-      "Banca Compuesto": 136858853.0
+      "Banca Compuesto": 136858853.0,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-19",
@@ -50544,7 +53033,8 @@ window.dashboardData = {
       "Banca Fijo": 12952.0,
       "Stake Compuesto": 2737177.06,
       "Beneficio Compuesto": -2737177.06,
-      "Banca Compuesto": 134121675.94
+      "Banca Compuesto": 134121675.94,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-19",
@@ -50562,7 +53052,8 @@ window.dashboardData = {
       "Banca Fijo": 12961.0,
       "Stake Compuesto": 2682433.52,
       "Beneficio Compuesto": 1207095.08,
-      "Banca Compuesto": 135328771.02
+      "Banca Compuesto": 135328771.02,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-19",
@@ -50580,7 +53071,8 @@ window.dashboardData = {
       "Banca Fijo": 12941.0,
       "Stake Compuesto": 2706575.42,
       "Beneficio Compuesto": -2706575.42,
-      "Banca Compuesto": 132622195.6
+      "Banca Compuesto": 132622195.6,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-19",
@@ -50598,7 +53090,8 @@ window.dashboardData = {
       "Banca Fijo": 12950.0,
       "Stake Compuesto": 2652443.91,
       "Beneficio Compuesto": 1193599.76,
-      "Banca Compuesto": 133815795.36
+      "Banca Compuesto": 133815795.36,
+      "league_id": 329
     },
     {
       "Fecha": "2025-07-19",
@@ -50616,7 +53109,8 @@ window.dashboardData = {
       "Banca Fijo": 12959.0,
       "Stake Compuesto": 2676315.91,
       "Beneficio Compuesto": 1204342.16,
-      "Banca Compuesto": 135020137.52
+      "Banca Compuesto": 135020137.52,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-19",
@@ -50634,7 +53128,8 @@ window.dashboardData = {
       "Banca Fijo": 12968.0,
       "Stake Compuesto": 2700402.75,
       "Beneficio Compuesto": 1215181.24,
-      "Banca Compuesto": 136235318.76
+      "Banca Compuesto": 136235318.76,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-19",
@@ -50652,7 +53147,8 @@ window.dashboardData = {
       "Banca Fijo": 12977.0,
       "Stake Compuesto": 2724706.38,
       "Beneficio Compuesto": 1226117.87,
-      "Banca Compuesto": 137461436.63
+      "Banca Compuesto": 137461436.63,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-19",
@@ -50670,7 +53166,8 @@ window.dashboardData = {
       "Banca Fijo": 12986.0,
       "Stake Compuesto": 2749228.73,
       "Beneficio Compuesto": 1237152.93,
-      "Banca Compuesto": 138698589.56
+      "Banca Compuesto": 138698589.56,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-19",
@@ -50688,7 +53185,8 @@ window.dashboardData = {
       "Banca Fijo": 12995.0,
       "Stake Compuesto": 2773971.79,
       "Beneficio Compuesto": 1248287.31,
-      "Banca Compuesto": 139946876.86
+      "Banca Compuesto": 139946876.86,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-20",
@@ -50706,7 +53204,8 @@ window.dashboardData = {
       "Banca Fijo": 13004.0,
       "Stake Compuesto": 2798937.54,
       "Beneficio Compuesto": 1259521.89,
-      "Banca Compuesto": 141206398.76
+      "Banca Compuesto": 141206398.76,
+      "league_id": 119
     },
     {
       "Fecha": "2025-07-20",
@@ -50724,7 +53223,8 @@ window.dashboardData = {
       "Banca Fijo": 13013.0,
       "Stake Compuesto": 2824127.98,
       "Beneficio Compuesto": 1270857.59,
-      "Banca Compuesto": 142477256.34
+      "Banca Compuesto": 142477256.34,
+      "league_id": 164
     },
     {
       "Fecha": "2025-07-20",
@@ -50742,7 +53242,8 @@ window.dashboardData = {
       "Banca Fijo": 13022.0,
       "Stake Compuesto": 2849545.13,
       "Beneficio Compuesto": 1282295.31,
-      "Banca Compuesto": 143759551.65
+      "Banca Compuesto": 143759551.65,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-20",
@@ -50760,7 +53261,8 @@ window.dashboardData = {
       "Banca Fijo": 13031.0,
       "Stake Compuesto": 2875191.03,
       "Beneficio Compuesto": 1293835.96,
-      "Banca Compuesto": 145053387.62
+      "Banca Compuesto": 145053387.62,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-20",
@@ -50778,7 +53280,8 @@ window.dashboardData = {
       "Banca Fijo": 13040.0,
       "Stake Compuesto": 2901067.75,
       "Beneficio Compuesto": 1305480.49,
-      "Banca Compuesto": 146358868.1
+      "Banca Compuesto": 146358868.1,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-20",
@@ -50796,7 +53299,8 @@ window.dashboardData = {
       "Banca Fijo": 13049.0,
       "Stake Compuesto": 2927177.36,
       "Beneficio Compuesto": 1317229.81,
-      "Banca Compuesto": 147676097.92
+      "Banca Compuesto": 147676097.92,
+      "league_id": 244
     },
     {
       "Fecha": "2025-07-20",
@@ -50814,7 +53318,8 @@ window.dashboardData = {
       "Banca Fijo": 13058.0,
       "Stake Compuesto": 2953521.96,
       "Beneficio Compuesto": 1329084.88,
-      "Banca Compuesto": 149005182.8
+      "Banca Compuesto": 149005182.8,
+      "league_id": 244
     },
     {
       "Fecha": "2025-07-20",
@@ -50832,7 +53337,8 @@ window.dashboardData = {
       "Banca Fijo": 13067.0,
       "Stake Compuesto": 2980103.66,
       "Beneficio Compuesto": 1341046.65,
-      "Banca Compuesto": 150346229.44
+      "Banca Compuesto": 150346229.44,
+      "league_id": 329
     },
     {
       "Fecha": "2025-07-20",
@@ -50850,7 +53356,8 @@ window.dashboardData = {
       "Banca Fijo": 13076.0,
       "Stake Compuesto": 3006924.59,
       "Beneficio Compuesto": 1353116.06,
-      "Banca Compuesto": 151699345.51
+      "Banca Compuesto": 151699345.51,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-21",
@@ -50868,7 +53375,8 @@ window.dashboardData = {
       "Banca Fijo": 13085.0,
       "Stake Compuesto": 3033986.91,
       "Beneficio Compuesto": 1365294.11,
-      "Banca Compuesto": 153064639.62
+      "Banca Compuesto": 153064639.62,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-21",
@@ -50886,7 +53394,8 @@ window.dashboardData = {
       "Banca Fijo": 13094.0,
       "Stake Compuesto": 3061292.79,
       "Beneficio Compuesto": 1377581.76,
-      "Banca Compuesto": 154442221.38
+      "Banca Compuesto": 154442221.38,
+      "league_id": 248
     },
     {
       "Fecha": "2025-07-21",
@@ -50904,7 +53413,8 @@ window.dashboardData = {
       "Banca Fijo": 13103.0,
       "Stake Compuesto": 3088844.43,
       "Beneficio Compuesto": 1389979.99,
-      "Banca Compuesto": 155832201.37
+      "Banca Compuesto": 155832201.37,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-23",
@@ -50922,7 +53432,8 @@ window.dashboardData = {
       "Banca Fijo": 13112.0,
       "Stake Compuesto": 3116644.03,
       "Beneficio Compuesto": 1402489.81,
-      "Banca Compuesto": 157234691.18
+      "Banca Compuesto": 157234691.18,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-23",
@@ -50940,7 +53451,8 @@ window.dashboardData = {
       "Banca Fijo": 13121.0,
       "Stake Compuesto": 3144693.82,
       "Beneficio Compuesto": 1415112.22,
-      "Banca Compuesto": 158649803.4
+      "Banca Compuesto": 158649803.4,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-24",
@@ -50958,7 +53470,8 @@ window.dashboardData = {
       "Banca Fijo": 13130.0,
       "Stake Compuesto": 3172996.07,
       "Beneficio Compuesto": 1427848.23,
-      "Banca Compuesto": 160077651.63
+      "Banca Compuesto": 160077651.63,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-25",
@@ -50976,7 +53489,8 @@ window.dashboardData = {
       "Banca Fijo": 13139.0,
       "Stake Compuesto": 3201553.03,
       "Beneficio Compuesto": 1440698.86,
-      "Banca Compuesto": 161518350.5
+      "Banca Compuesto": 161518350.5,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-25",
@@ -50994,7 +53508,8 @@ window.dashboardData = {
       "Banca Fijo": 13148.0,
       "Stake Compuesto": 3230367.01,
       "Beneficio Compuesto": 1453665.15,
-      "Banca Compuesto": 162972015.65
+      "Banca Compuesto": 162972015.65,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-25",
@@ -51012,7 +53527,8 @@ window.dashboardData = {
       "Banca Fijo": 13157.0,
       "Stake Compuesto": 3259440.31,
       "Beneficio Compuesto": 1466748.14,
-      "Banca Compuesto": 164438763.79
+      "Banca Compuesto": 164438763.79,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-25",
@@ -51030,7 +53546,8 @@ window.dashboardData = {
       "Banca Fijo": 13166.0,
       "Stake Compuesto": 3288775.28,
       "Beneficio Compuesto": 1479948.87,
-      "Banca Compuesto": 165918712.67
+      "Banca Compuesto": 165918712.67,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-25",
@@ -51048,7 +53565,8 @@ window.dashboardData = {
       "Banca Fijo": 13175.0,
       "Stake Compuesto": 3318374.25,
       "Beneficio Compuesto": 1493268.41,
-      "Banca Compuesto": 167411981.08
+      "Banca Compuesto": 167411981.08,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-25",
@@ -51066,7 +53584,8 @@ window.dashboardData = {
       "Banca Fijo": 13184.0,
       "Stake Compuesto": 3348239.62,
       "Beneficio Compuesto": 1506707.83,
-      "Banca Compuesto": 168918688.91
+      "Banca Compuesto": 168918688.91,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-07-26",
@@ -51084,7 +53603,8 @@ window.dashboardData = {
       "Banca Fijo": 13193.0,
       "Stake Compuesto": 3378373.78,
       "Beneficio Compuesto": 1520268.2,
-      "Banca Compuesto": 170438957.11
+      "Banca Compuesto": 170438957.11,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-26",
@@ -51102,7 +53622,8 @@ window.dashboardData = {
       "Banca Fijo": 13202.0,
       "Stake Compuesto": 3408779.14,
       "Beneficio Compuesto": 1533950.61,
-      "Banca Compuesto": 171972907.72
+      "Banca Compuesto": 171972907.72,
+      "league_id": 104
     },
     {
       "Fecha": "2025-07-26",
@@ -51120,7 +53641,8 @@ window.dashboardData = {
       "Banca Fijo": 13211.0,
       "Stake Compuesto": 3439458.15,
       "Beneficio Compuesto": 1547756.17,
-      "Banca Compuesto": 173520663.89
+      "Banca Compuesto": 173520663.89,
+      "league_id": 119
     },
     {
       "Fecha": "2025-07-26",
@@ -51138,7 +53660,8 @@ window.dashboardData = {
       "Banca Fijo": 13220.0,
       "Stake Compuesto": 3470413.28,
       "Beneficio Compuesto": 1561685.98,
-      "Banca Compuesto": 175082349.87
+      "Banca Compuesto": 175082349.87,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-26",
@@ -51156,7 +53679,8 @@ window.dashboardData = {
       "Banca Fijo": 13229.0,
       "Stake Compuesto": 3501647.0,
       "Beneficio Compuesto": 1575741.15,
-      "Banca Compuesto": 176658091.02
+      "Banca Compuesto": 176658091.02,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-26",
@@ -51174,7 +53698,8 @@ window.dashboardData = {
       "Banca Fijo": 13238.0,
       "Stake Compuesto": 3533161.82,
       "Beneficio Compuesto": 1589922.82,
-      "Banca Compuesto": 178248013.84
+      "Banca Compuesto": 178248013.84,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-26",
@@ -51192,7 +53717,8 @@ window.dashboardData = {
       "Banca Fijo": 13247.0,
       "Stake Compuesto": 3564960.28,
       "Beneficio Compuesto": 1604232.12,
-      "Banca Compuesto": 179852245.96
+      "Banca Compuesto": 179852245.96,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-26",
@@ -51210,7 +53736,8 @@ window.dashboardData = {
       "Banca Fijo": 13256.0,
       "Stake Compuesto": 3597044.92,
       "Beneficio Compuesto": 1618670.21,
-      "Banca Compuesto": 181470916.17
+      "Banca Compuesto": 181470916.17,
+      "league_id": 247
     },
     {
       "Fecha": "2025-07-26",
@@ -51228,7 +53755,8 @@ window.dashboardData = {
       "Banca Fijo": 13265.0,
       "Stake Compuesto": 3629418.32,
       "Beneficio Compuesto": 1633238.25,
-      "Banca Compuesto": 183104154.42
+      "Banca Compuesto": 183104154.42,
+      "league_id": 248
     },
     {
       "Fecha": "2025-07-26",
@@ -51246,7 +53774,8 @@ window.dashboardData = {
       "Banca Fijo": 13274.0,
       "Stake Compuesto": 3662083.09,
       "Beneficio Compuesto": 1647937.39,
-      "Banca Compuesto": 184752091.81
+      "Banca Compuesto": 184752091.81,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-26",
@@ -51264,7 +53793,8 @@ window.dashboardData = {
       "Banca Fijo": 13283.0,
       "Stake Compuesto": 3695041.84,
       "Beneficio Compuesto": 1662768.83,
-      "Banca Compuesto": 186414860.64
+      "Banca Compuesto": 186414860.64,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-26",
@@ -51282,7 +53812,8 @@ window.dashboardData = {
       "Banca Fijo": 13292.0,
       "Stake Compuesto": 3728297.21,
       "Beneficio Compuesto": 1677733.75,
-      "Banca Compuesto": 188092594.38
+      "Banca Compuesto": 188092594.38,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-26",
@@ -51300,7 +53831,8 @@ window.dashboardData = {
       "Banca Fijo": 13272.0,
       "Stake Compuesto": 3761851.89,
       "Beneficio Compuesto": -3761851.89,
-      "Banca Compuesto": 184330742.49
+      "Banca Compuesto": 184330742.49,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-27",
@@ -51318,7 +53850,8 @@ window.dashboardData = {
       "Banca Fijo": 13281.0,
       "Stake Compuesto": 3686614.85,
       "Beneficio Compuesto": 1658976.68,
-      "Banca Compuesto": 185989719.18
+      "Banca Compuesto": 185989719.18,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-27",
@@ -51336,7 +53869,8 @@ window.dashboardData = {
       "Banca Fijo": 13290.0,
       "Stake Compuesto": 3719794.38,
       "Beneficio Compuesto": 1673907.47,
-      "Banca Compuesto": 187663626.65
+      "Banca Compuesto": 187663626.65,
+      "league_id": 164
     },
     {
       "Fecha": "2025-07-27",
@@ -51354,7 +53888,8 @@ window.dashboardData = {
       "Banca Fijo": 13299.0,
       "Stake Compuesto": 3753272.53,
       "Beneficio Compuesto": 1688972.64,
-      "Banca Compuesto": 189352599.29
+      "Banca Compuesto": 189352599.29,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-27",
@@ -51372,7 +53907,8 @@ window.dashboardData = {
       "Banca Fijo": 13308.0,
       "Stake Compuesto": 3787051.99,
       "Beneficio Compuesto": 1704173.39,
-      "Banca Compuesto": 191056772.68
+      "Banca Compuesto": 191056772.68,
+      "league_id": 474
     },
     {
       "Fecha": "2025-07-27",
@@ -51390,7 +53926,8 @@ window.dashboardData = {
       "Banca Fijo": 13317.0,
       "Stake Compuesto": 3821135.45,
       "Beneficio Compuesto": 1719510.95,
-      "Banca Compuesto": 192776283.64
+      "Banca Compuesto": 192776283.64,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-28",
@@ -51408,7 +53945,8 @@ window.dashboardData = {
       "Banca Fijo": 13326.0,
       "Stake Compuesto": 3855525.67,
       "Beneficio Compuesto": 1734986.55,
-      "Banca Compuesto": 194511270.19
+      "Banca Compuesto": 194511270.19,
+      "league_id": 245
     },
     {
       "Fecha": "2025-07-28",
@@ -51426,7 +53964,8 @@ window.dashboardData = {
       "Banca Fijo": 13335.0,
       "Stake Compuesto": 3890225.4,
       "Beneficio Compuesto": 1750601.43,
-      "Banca Compuesto": 196261871.62
+      "Banca Compuesto": 196261871.62,
+      "league_id": 328
     },
     {
       "Fecha": "2025-07-28",
@@ -51444,7 +53983,8 @@ window.dashboardData = {
       "Banca Fijo": 13344.0,
       "Stake Compuesto": 3925237.43,
       "Beneficio Compuesto": 1766356.84,
-      "Banca Compuesto": 198028228.47
+      "Banca Compuesto": 198028228.47,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-29",
@@ -51462,7 +54002,8 @@ window.dashboardData = {
       "Banca Fijo": 13324.0,
       "Stake Compuesto": 3960564.57,
       "Beneficio Compuesto": -3960564.57,
-      "Banca Compuesto": 194067663.9
+      "Banca Compuesto": 194067663.9,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-29",
@@ -51480,7 +54021,8 @@ window.dashboardData = {
       "Banca Fijo": 13333.0,
       "Stake Compuesto": 3881353.28,
       "Beneficio Compuesto": 1746608.98,
-      "Banca Compuesto": 195814272.87
+      "Banca Compuesto": 195814272.87,
+      "league_id": 165
     },
     {
       "Fecha": "2025-07-30",
@@ -51498,7 +54040,8 @@ window.dashboardData = {
       "Banca Fijo": 13342.0,
       "Stake Compuesto": 3916285.46,
       "Beneficio Compuesto": 1762328.46,
-      "Banca Compuesto": 197576601.33
+      "Banca Compuesto": 197576601.33,
+      "league_id": 103
     },
     {
       "Fecha": "2025-07-30",
@@ -51516,7 +54059,8 @@ window.dashboardData = {
       "Banca Fijo": 13351.0,
       "Stake Compuesto": 3951532.03,
       "Beneficio Compuesto": 1778189.41,
-      "Banca Compuesto": 199354790.74
+      "Banca Compuesto": 199354790.74,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-30",
@@ -51534,7 +54078,8 @@ window.dashboardData = {
       "Banca Fijo": 13360.0,
       "Stake Compuesto": 3987095.81,
       "Beneficio Compuesto": 1794193.12,
-      "Banca Compuesto": 201148983.86
+      "Banca Compuesto": 201148983.86,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-30",
@@ -51552,7 +54097,8 @@ window.dashboardData = {
       "Banca Fijo": 13369.0,
       "Stake Compuesto": 4022979.68,
       "Beneficio Compuesto": 1810340.85,
-      "Banca Compuesto": 202959324.71
+      "Banca Compuesto": 202959324.71,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-30",
@@ -51570,7 +54116,8 @@ window.dashboardData = {
       "Banca Fijo": 13378.0,
       "Stake Compuesto": 4059186.49,
       "Beneficio Compuesto": 1826633.92,
-      "Banca Compuesto": 204785958.63
+      "Banca Compuesto": 204785958.63,
+      "league_id": 166
     },
     {
       "Fecha": "2025-07-30",
@@ -51588,7 +54135,8 @@ window.dashboardData = {
       "Banca Fijo": 13387.0,
       "Stake Compuesto": 4095719.17,
       "Beneficio Compuesto": 1843073.63,
-      "Banca Compuesto": 206629032.26
+      "Banca Compuesto": 206629032.26,
+      "league_id": 909
     },
     {
       "Fecha": "2025-07-30",
@@ -51606,7 +54154,8 @@ window.dashboardData = {
       "Banca Fijo": 13396.0,
       "Stake Compuesto": 4132580.65,
       "Beneficio Compuesto": 1859661.29,
-      "Banca Compuesto": 208488693.55
+      "Banca Compuesto": 208488693.55,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-01",
@@ -51624,7 +54173,8 @@ window.dashboardData = {
       "Banca Fijo": 13405.0,
       "Stake Compuesto": 4169773.87,
       "Beneficio Compuesto": 1876398.24,
-      "Banca Compuesto": 210365091.79
+      "Banca Compuesto": 210365091.79,
+      "league_id": 119
     },
     {
       "Fecha": "2025-08-01",
@@ -51642,7 +54192,8 @@ window.dashboardData = {
       "Banca Fijo": 13414.0,
       "Stake Compuesto": 4207301.84,
       "Beneficio Compuesto": 1893285.83,
-      "Banca Compuesto": 212258377.62
+      "Banca Compuesto": 212258377.62,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-01",
@@ -51660,7 +54211,8 @@ window.dashboardData = {
       "Banca Fijo": 13423.0,
       "Stake Compuesto": 4245167.55,
       "Beneficio Compuesto": 1910325.4,
-      "Banca Compuesto": 214168703.02
+      "Banca Compuesto": 214168703.02,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-01",
@@ -51678,7 +54230,8 @@ window.dashboardData = {
       "Banca Fijo": 13432.0,
       "Stake Compuesto": 4283374.06,
       "Beneficio Compuesto": 1927518.33,
-      "Banca Compuesto": 216096221.34
+      "Banca Compuesto": 216096221.34,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-02",
@@ -51696,7 +54249,8 @@ window.dashboardData = {
       "Banca Fijo": 13441.0,
       "Stake Compuesto": 4321924.43,
       "Beneficio Compuesto": 1944865.99,
-      "Banca Compuesto": 218041087.34
+      "Banca Compuesto": 218041087.34,
+      "league_id": 104
     },
     {
       "Fecha": "2025-08-02",
@@ -51714,7 +54268,8 @@ window.dashboardData = {
       "Banca Fijo": 13450.0,
       "Stake Compuesto": 4360821.75,
       "Beneficio Compuesto": 1962369.79,
-      "Banca Compuesto": 220003457.12
+      "Banca Compuesto": 220003457.12,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-02",
@@ -51732,7 +54287,8 @@ window.dashboardData = {
       "Banca Fijo": 13459.0,
       "Stake Compuesto": 4400069.14,
       "Beneficio Compuesto": 1980031.11,
-      "Banca Compuesto": 221983488.24
+      "Banca Compuesto": 221983488.24,
+      "league_id": 248
     },
     {
       "Fecha": "2025-08-02",
@@ -51750,7 +54306,8 @@ window.dashboardData = {
       "Banca Fijo": 13468.0,
       "Stake Compuesto": 4439669.76,
       "Beneficio Compuesto": 1997851.39,
-      "Banca Compuesto": 223981339.63
+      "Banca Compuesto": 223981339.63,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-02",
@@ -51768,7 +54325,8 @@ window.dashboardData = {
       "Banca Fijo": 13477.0,
       "Stake Compuesto": 4479626.79,
       "Beneficio Compuesto": 2015832.06,
-      "Banca Compuesto": 225997171.69
+      "Banca Compuesto": 225997171.69,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-02",
@@ -51786,7 +54344,8 @@ window.dashboardData = {
       "Banca Fijo": 13486.0,
       "Stake Compuesto": 4519943.43,
       "Beneficio Compuesto": 2033974.55,
-      "Banca Compuesto": 228031146.23
+      "Banca Compuesto": 228031146.23,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-02",
@@ -51804,7 +54363,8 @@ window.dashboardData = {
       "Banca Fijo": 13495.0,
       "Stake Compuesto": 4560622.92,
       "Beneficio Compuesto": 2052280.32,
-      "Banca Compuesto": 230083426.55
+      "Banca Compuesto": 230083426.55,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-02",
@@ -51822,7 +54382,8 @@ window.dashboardData = {
       "Banca Fijo": 13504.0,
       "Stake Compuesto": 4601668.53,
       "Beneficio Compuesto": 2070750.84,
-      "Banca Compuesto": 232154177.39
+      "Banca Compuesto": 232154177.39,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-02",
@@ -51840,7 +54401,8 @@ window.dashboardData = {
       "Banca Fijo": 13513.0,
       "Stake Compuesto": 4643083.55,
       "Beneficio Compuesto": 2089387.6,
-      "Banca Compuesto": 234243564.98
+      "Banca Compuesto": 234243564.98,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-02",
@@ -51858,7 +54420,8 @@ window.dashboardData = {
       "Banca Fijo": 13522.0,
       "Stake Compuesto": 4684871.3,
       "Beneficio Compuesto": 2108192.08,
-      "Banca Compuesto": 236351757.07
+      "Banca Compuesto": 236351757.07,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-02",
@@ -51876,7 +54439,8 @@ window.dashboardData = {
       "Banca Fijo": 13531.0,
       "Stake Compuesto": 4727035.14,
       "Beneficio Compuesto": 2127165.81,
-      "Banca Compuesto": 238478922.88
+      "Banca Compuesto": 238478922.88,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-02",
@@ -51894,7 +54458,8 @@ window.dashboardData = {
       "Banca Fijo": 13540.0,
       "Stake Compuesto": 4769578.46,
       "Beneficio Compuesto": 2146310.31,
-      "Banca Compuesto": 240625233.19
+      "Banca Compuesto": 240625233.19,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-03",
@@ -51912,7 +54477,8 @@ window.dashboardData = {
       "Banca Fijo": 13549.0,
       "Stake Compuesto": 4812504.66,
       "Beneficio Compuesto": 2165627.1,
-      "Banca Compuesto": 242790860.29
+      "Banca Compuesto": 242790860.29,
+      "league_id": 103
     },
     {
       "Fecha": "2025-08-03",
@@ -51930,7 +54496,8 @@ window.dashboardData = {
       "Banca Fijo": 13558.0,
       "Stake Compuesto": 4855817.21,
       "Beneficio Compuesto": 2185117.74,
-      "Banca Compuesto": 244975978.03
+      "Banca Compuesto": 244975978.03,
+      "league_id": 244
     },
     {
       "Fecha": "2025-08-03",
@@ -51948,7 +54515,8 @@ window.dashboardData = {
       "Banca Fijo": 13538.0,
       "Stake Compuesto": 4899519.56,
       "Beneficio Compuesto": -4899519.56,
-      "Banca Compuesto": 240076458.47
+      "Banca Compuesto": 240076458.47,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-03",
@@ -51966,7 +54534,8 @@ window.dashboardData = {
       "Banca Fijo": 13547.0,
       "Stake Compuesto": 4801529.17,
       "Beneficio Compuesto": 2160688.13,
-      "Banca Compuesto": 242237146.6
+      "Banca Compuesto": 242237146.6,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-03",
@@ -51984,7 +54553,8 @@ window.dashboardData = {
       "Banca Fijo": 13556.0,
       "Stake Compuesto": 4844742.93,
       "Beneficio Compuesto": 2180134.32,
-      "Banca Compuesto": 244417280.92
+      "Banca Compuesto": 244417280.92,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-03",
@@ -52002,7 +54572,8 @@ window.dashboardData = {
       "Banca Fijo": 13565.0,
       "Stake Compuesto": 4888345.62,
       "Beneficio Compuesto": 2199755.53,
-      "Banca Compuesto": 246617036.44
+      "Banca Compuesto": 246617036.44,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-03",
@@ -52020,7 +54591,8 @@ window.dashboardData = {
       "Banca Fijo": 13574.0,
       "Stake Compuesto": 4932340.73,
       "Beneficio Compuesto": 2219553.33,
-      "Banca Compuesto": 248836589.77
+      "Banca Compuesto": 248836589.77,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-04",
@@ -52038,7 +54610,8 @@ window.dashboardData = {
       "Banca Fijo": 13583.0,
       "Stake Compuesto": 4976731.8,
       "Beneficio Compuesto": 2239529.31,
-      "Banca Compuesto": 251076119.08
+      "Banca Compuesto": 251076119.08,
+      "league_id": 244
     },
     {
       "Fecha": "2025-08-04",
@@ -52056,7 +54629,8 @@ window.dashboardData = {
       "Banca Fijo": 13563.0,
       "Stake Compuesto": 5021522.38,
       "Beneficio Compuesto": -5021522.38,
-      "Banca Compuesto": 246054596.7
+      "Banca Compuesto": 246054596.7,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-04",
@@ -52074,7 +54648,8 @@ window.dashboardData = {
       "Banca Fijo": 13572.0,
       "Stake Compuesto": 4921091.93,
       "Beneficio Compuesto": 2214491.37,
-      "Banca Compuesto": 248269088.07
+      "Banca Compuesto": 248269088.07,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-04",
@@ -52092,7 +54667,8 @@ window.dashboardData = {
       "Banca Fijo": 13581.0,
       "Stake Compuesto": 4965381.76,
       "Beneficio Compuesto": 2234421.79,
-      "Banca Compuesto": 250503509.86
+      "Banca Compuesto": 250503509.86,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-04",
@@ -52110,7 +54686,8 @@ window.dashboardData = {
       "Banca Fijo": 13590.0,
       "Stake Compuesto": 5010070.2,
       "Beneficio Compuesto": 2254531.59,
-      "Banca Compuesto": 252758041.45
+      "Banca Compuesto": 252758041.45,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-05",
@@ -52128,7 +54705,8 @@ window.dashboardData = {
       "Banca Fijo": 13599.0,
       "Stake Compuesto": 5055160.83,
       "Beneficio Compuesto": 2274822.37,
-      "Banca Compuesto": 255032863.82
+      "Banca Compuesto": 255032863.82,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-06",
@@ -52146,7 +54724,8 @@ window.dashboardData = {
       "Banca Fijo": 13608.0,
       "Stake Compuesto": 5100657.28,
       "Beneficio Compuesto": 2295295.77,
-      "Banca Compuesto": 257328159.6
+      "Banca Compuesto": 257328159.6,
+      "league_id": 104
     },
     {
       "Fecha": "2025-08-06",
@@ -52164,7 +54743,8 @@ window.dashboardData = {
       "Banca Fijo": 13617.0,
       "Stake Compuesto": 5146563.19,
       "Beneficio Compuesto": 2315953.44,
-      "Banca Compuesto": 259644113.03
+      "Banca Compuesto": 259644113.03,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-06",
@@ -52182,7 +54762,8 @@ window.dashboardData = {
       "Banca Fijo": 13626.0,
       "Stake Compuesto": 5192882.26,
       "Beneficio Compuesto": 2336797.02,
-      "Banca Compuesto": 261980910.05
+      "Banca Compuesto": 261980910.05,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-06",
@@ -52200,7 +54781,8 @@ window.dashboardData = {
       "Banca Fijo": 13635.0,
       "Stake Compuesto": 5239618.2,
       "Beneficio Compuesto": 2357828.19,
-      "Banca Compuesto": 264338738.24
+      "Banca Compuesto": 264338738.24,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-07",
@@ -52218,7 +54800,8 @@ window.dashboardData = {
       "Banca Fijo": 13644.0,
       "Stake Compuesto": 5286774.76,
       "Beneficio Compuesto": 2379048.64,
-      "Banca Compuesto": 266717786.88
+      "Banca Compuesto": 266717786.88,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-08",
@@ -52236,7 +54819,8 @@ window.dashboardData = {
       "Banca Fijo": 13653.0,
       "Stake Compuesto": 5334355.74,
       "Beneficio Compuesto": 2400460.08,
-      "Banca Compuesto": 269118246.97
+      "Banca Compuesto": 269118246.97,
+      "league_id": 89
     },
     {
       "Fecha": "2025-08-08",
@@ -52254,7 +54838,8 @@ window.dashboardData = {
       "Banca Fijo": 13662.0,
       "Stake Compuesto": 5382364.94,
       "Beneficio Compuesto": 2422064.22,
-      "Banca Compuesto": 271540311.19
+      "Banca Compuesto": 271540311.19,
+      "league_id": 89
     },
     {
       "Fecha": "2025-08-08",
@@ -52272,7 +54857,8 @@ window.dashboardData = {
       "Banca Fijo": 13671.0,
       "Stake Compuesto": 5430806.22,
       "Beneficio Compuesto": 2443862.8,
-      "Banca Compuesto": 273984173.99
+      "Banca Compuesto": 273984173.99,
+      "league_id": 119
     },
     {
       "Fecha": "2025-08-08",
@@ -52290,7 +54876,8 @@ window.dashboardData = {
       "Banca Fijo": 13680.0,
       "Stake Compuesto": 5479683.48,
       "Beneficio Compuesto": 2465857.57,
-      "Banca Compuesto": 276450031.56
+      "Banca Compuesto": 276450031.56,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-08",
@@ -52308,7 +54895,8 @@ window.dashboardData = {
       "Banca Fijo": 13689.0,
       "Stake Compuesto": 5529000.63,
       "Beneficio Compuesto": 2488050.28,
-      "Banca Compuesto": 278938081.84
+      "Banca Compuesto": 278938081.84,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-08",
@@ -52326,7 +54914,8 @@ window.dashboardData = {
       "Banca Fijo": 13698.0,
       "Stake Compuesto": 5578761.64,
       "Beneficio Compuesto": 2510442.74,
-      "Banca Compuesto": 281448524.58
+      "Banca Compuesto": 281448524.58,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-08",
@@ -52344,7 +54933,8 @@ window.dashboardData = {
       "Banca Fijo": 13707.0,
       "Stake Compuesto": 5628970.49,
       "Beneficio Compuesto": 2533036.72,
-      "Banca Compuesto": 283981561.3
+      "Banca Compuesto": 283981561.3,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-08",
@@ -52362,7 +54952,8 @@ window.dashboardData = {
       "Banca Fijo": 13687.0,
       "Stake Compuesto": 5679631.23,
       "Beneficio Compuesto": -5679631.23,
-      "Banca Compuesto": 278301930.07
+      "Banca Compuesto": 278301930.07,
+      "league_id": 248
     },
     {
       "Fecha": "2025-08-08",
@@ -52380,7 +54971,8 @@ window.dashboardData = {
       "Banca Fijo": 13696.0,
       "Stake Compuesto": 5566038.6,
       "Beneficio Compuesto": 2504717.37,
-      "Banca Compuesto": 280806647.44
+      "Banca Compuesto": 280806647.44,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-09",
@@ -52398,7 +54990,8 @@ window.dashboardData = {
       "Banca Fijo": 13705.0,
       "Stake Compuesto": 5616132.95,
       "Beneficio Compuesto": 2527259.83,
-      "Banca Compuesto": 283333907.27
+      "Banca Compuesto": 283333907.27,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-09",
@@ -52416,7 +55009,8 @@ window.dashboardData = {
       "Banca Fijo": 13714.0,
       "Stake Compuesto": 5666678.15,
       "Beneficio Compuesto": 2550005.17,
-      "Banca Compuesto": 285883912.44
+      "Banca Compuesto": 285883912.44,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-09",
@@ -52434,7 +55028,8 @@ window.dashboardData = {
       "Banca Fijo": 13723.0,
       "Stake Compuesto": 5717678.25,
       "Beneficio Compuesto": 2572955.21,
-      "Banca Compuesto": 288456867.65
+      "Banca Compuesto": 288456867.65,
+      "league_id": 103
     },
     {
       "Fecha": "2025-08-09",
@@ -52452,7 +55047,8 @@ window.dashboardData = {
       "Banca Fijo": 13732.0,
       "Stake Compuesto": 5769137.35,
       "Beneficio Compuesto": 2596111.81,
-      "Banca Compuesto": 291052979.46
+      "Banca Compuesto": 291052979.46,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-09",
@@ -52470,7 +55066,8 @@ window.dashboardData = {
       "Banca Fijo": 13741.0,
       "Stake Compuesto": 5821059.59,
       "Beneficio Compuesto": 2619476.82,
-      "Banca Compuesto": 293672456.27
+      "Banca Compuesto": 293672456.27,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-09",
@@ -52488,7 +55085,8 @@ window.dashboardData = {
       "Banca Fijo": 13750.0,
       "Stake Compuesto": 5873449.13,
       "Beneficio Compuesto": 2643052.11,
-      "Banca Compuesto": 296315508.38
+      "Banca Compuesto": 296315508.38,
+      "league_id": 248
     },
     {
       "Fecha": "2025-08-09",
@@ -52506,7 +55104,8 @@ window.dashboardData = {
       "Banca Fijo": 13759.0,
       "Stake Compuesto": 5926310.17,
       "Beneficio Compuesto": 2666839.58,
-      "Banca Compuesto": 298982347.95
+      "Banca Compuesto": 298982347.95,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-09",
@@ -52524,7 +55123,8 @@ window.dashboardData = {
       "Banca Fijo": 13768.0,
       "Stake Compuesto": 5979646.96,
       "Beneficio Compuesto": 2690841.13,
-      "Banca Compuesto": 301673189.08
+      "Banca Compuesto": 301673189.08,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-09",
@@ -52542,7 +55142,8 @@ window.dashboardData = {
       "Banca Fijo": 13777.0,
       "Stake Compuesto": 6033463.78,
       "Beneficio Compuesto": 2715058.7,
-      "Banca Compuesto": 304388247.79
+      "Banca Compuesto": 304388247.79,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-09",
@@ -52560,7 +55161,8 @@ window.dashboardData = {
       "Banca Fijo": 13786.0,
       "Stake Compuesto": 6087764.96,
       "Beneficio Compuesto": 2739494.23,
-      "Banca Compuesto": 307127742.02
+      "Banca Compuesto": 307127742.02,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-10",
@@ -52578,7 +55180,8 @@ window.dashboardData = {
       "Banca Fijo": 13795.0,
       "Stake Compuesto": 6142554.84,
       "Beneficio Compuesto": 2764149.68,
-      "Banca Compuesto": 309891891.69
+      "Banca Compuesto": 309891891.69,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-10",
@@ -52596,7 +55199,8 @@ window.dashboardData = {
       "Banca Fijo": 13804.0,
       "Stake Compuesto": 6197837.83,
       "Beneficio Compuesto": 2789027.03,
-      "Banca Compuesto": 312680918.72
+      "Banca Compuesto": 312680918.72,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-10",
@@ -52614,7 +55218,8 @@ window.dashboardData = {
       "Banca Fijo": 13813.0,
       "Stake Compuesto": 6253618.37,
       "Beneficio Compuesto": 2814128.27,
-      "Banca Compuesto": 315495046.99
+      "Banca Compuesto": 315495046.99,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-10",
@@ -52632,7 +55237,8 @@ window.dashboardData = {
       "Banca Fijo": 13822.0,
       "Stake Compuesto": 6309900.94,
       "Beneficio Compuesto": 2839455.42,
-      "Banca Compuesto": 318334502.41
+      "Banca Compuesto": 318334502.41,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-10",
@@ -52650,7 +55256,8 @@ window.dashboardData = {
       "Banca Fijo": 13831.0,
       "Stake Compuesto": 6366690.05,
       "Beneficio Compuesto": 2865010.52,
-      "Banca Compuesto": 321199512.93
+      "Banca Compuesto": 321199512.93,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-10",
@@ -52668,7 +55275,8 @@ window.dashboardData = {
       "Banca Fijo": 13840.0,
       "Stake Compuesto": 6423990.26,
       "Beneficio Compuesto": 2890795.62,
-      "Banca Compuesto": 324090308.55
+      "Banca Compuesto": 324090308.55,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-10",
@@ -52686,7 +55294,8 @@ window.dashboardData = {
       "Banca Fijo": 13849.0,
       "Stake Compuesto": 6481806.17,
       "Beneficio Compuesto": 2916812.78,
-      "Banca Compuesto": 327007121.33
+      "Banca Compuesto": 327007121.33,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-10",
@@ -52704,7 +55313,8 @@ window.dashboardData = {
       "Banca Fijo": 13858.0,
       "Stake Compuesto": 6540142.43,
       "Beneficio Compuesto": 2943064.09,
-      "Banca Compuesto": 329950185.42
+      "Banca Compuesto": 329950185.42,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-10",
@@ -52722,7 +55332,8 @@ window.dashboardData = {
       "Banca Fijo": 13867.0,
       "Stake Compuesto": 6599003.71,
       "Beneficio Compuesto": 2969551.67,
-      "Banca Compuesto": 332919737.09
+      "Banca Compuesto": 332919737.09,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-10",
@@ -52740,7 +55351,8 @@ window.dashboardData = {
       "Banca Fijo": 13876.0,
       "Stake Compuesto": 6658394.74,
       "Beneficio Compuesto": 2996277.63,
-      "Banca Compuesto": 335916014.72
+      "Banca Compuesto": 335916014.72,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-10",
@@ -52758,7 +55370,8 @@ window.dashboardData = {
       "Banca Fijo": 13885.0,
       "Stake Compuesto": 6718320.29,
       "Beneficio Compuesto": 3023244.13,
-      "Banca Compuesto": 338939258.85
+      "Banca Compuesto": 338939258.85,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-10",
@@ -52776,7 +55389,8 @@ window.dashboardData = {
       "Banca Fijo": 13894.0,
       "Stake Compuesto": 6778785.18,
       "Beneficio Compuesto": 3050453.33,
-      "Banca Compuesto": 341989712.18
+      "Banca Compuesto": 341989712.18,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-10",
@@ -52794,7 +55408,8 @@ window.dashboardData = {
       "Banca Fijo": 13903.0,
       "Stake Compuesto": 6839794.24,
       "Beneficio Compuesto": 3077907.41,
-      "Banca Compuesto": 345067619.59
+      "Banca Compuesto": 345067619.59,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-11",
@@ -52812,7 +55427,8 @@ window.dashboardData = {
       "Banca Fijo": 13883.0,
       "Stake Compuesto": 6901352.39,
       "Beneficio Compuesto": -6901352.39,
-      "Banca Compuesto": 338166267.2
+      "Banca Compuesto": 338166267.2,
+      "league_id": 244
     },
     {
       "Fecha": "2025-08-11",
@@ -52830,7 +55446,8 @@ window.dashboardData = {
       "Banca Fijo": 13892.0,
       "Stake Compuesto": 6763325.34,
       "Beneficio Compuesto": 3043496.4,
-      "Banca Compuesto": 341209763.61
+      "Banca Compuesto": 341209763.61,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-11",
@@ -52848,7 +55465,8 @@ window.dashboardData = {
       "Banca Fijo": 13901.0,
       "Stake Compuesto": 6824195.27,
       "Beneficio Compuesto": 3070887.87,
-      "Banca Compuesto": 344280651.48
+      "Banca Compuesto": 344280651.48,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-11",
@@ -52866,7 +55484,8 @@ window.dashboardData = {
       "Banca Fijo": 13910.0,
       "Stake Compuesto": 6885613.03,
       "Beneficio Compuesto": 3098525.86,
-      "Banca Compuesto": 347379177.34
+      "Banca Compuesto": 347379177.34,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-11",
@@ -52884,7 +55503,8 @@ window.dashboardData = {
       "Banca Fijo": 13919.0,
       "Stake Compuesto": 6947583.55,
       "Beneficio Compuesto": 3126412.6,
-      "Banca Compuesto": 350505589.94
+      "Banca Compuesto": 350505589.94,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-13",
@@ -52902,7 +55522,8 @@ window.dashboardData = {
       "Banca Fijo": 13928.0,
       "Stake Compuesto": 7010111.8,
       "Beneficio Compuesto": 3154550.31,
-      "Banca Compuesto": 353660140.25
+      "Banca Compuesto": 353660140.25,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-13",
@@ -52920,7 +55541,8 @@ window.dashboardData = {
       "Banca Fijo": 13937.0,
       "Stake Compuesto": 7073202.8,
       "Beneficio Compuesto": 3182941.26,
-      "Banca Compuesto": 356843081.51
+      "Banca Compuesto": 356843081.51,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-13",
@@ -52938,7 +55560,8 @@ window.dashboardData = {
       "Banca Fijo": 13946.0,
       "Stake Compuesto": 7136861.63,
       "Beneficio Compuesto": 3211587.73,
-      "Banca Compuesto": 360054669.24
+      "Banca Compuesto": 360054669.24,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-13",
@@ -52956,7 +55579,8 @@ window.dashboardData = {
       "Banca Fijo": 13955.0,
       "Stake Compuesto": 7201093.38,
       "Beneficio Compuesto": 3240492.02,
-      "Banca Compuesto": 363295161.27
+      "Banca Compuesto": 363295161.27,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-13",
@@ -52974,7 +55598,8 @@ window.dashboardData = {
       "Banca Fijo": 13964.0,
       "Stake Compuesto": 7265903.23,
       "Beneficio Compuesto": 3269656.45,
-      "Banca Compuesto": 366564817.72
+      "Banca Compuesto": 366564817.72,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-13",
@@ -52992,7 +55617,8 @@ window.dashboardData = {
       "Banca Fijo": 13973.0,
       "Stake Compuesto": 7331296.35,
       "Beneficio Compuesto": 3299083.36,
-      "Banca Compuesto": 369863901.08
+      "Banca Compuesto": 369863901.08,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-13",
@@ -53010,7 +55636,8 @@ window.dashboardData = {
       "Banca Fijo": 13982.0,
       "Stake Compuesto": 7397278.02,
       "Beneficio Compuesto": 3328775.11,
-      "Banca Compuesto": 373192676.19
+      "Banca Compuesto": 373192676.19,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-15",
@@ -53028,7 +55655,8 @@ window.dashboardData = {
       "Banca Fijo": 13962.0,
       "Stake Compuesto": 7463853.52,
       "Beneficio Compuesto": -7463853.52,
-      "Banca Compuesto": 365728822.66
+      "Banca Compuesto": 365728822.66,
+      "league_id": 89
     },
     {
       "Fecha": "2025-08-15",
@@ -53046,7 +55674,8 @@ window.dashboardData = {
       "Banca Fijo": 13971.0,
       "Stake Compuesto": 7314576.45,
       "Beneficio Compuesto": 3291559.4,
-      "Banca Compuesto": 369020382.07
+      "Banca Compuesto": 369020382.07,
+      "league_id": 103
     },
     {
       "Fecha": "2025-08-15",
@@ -53064,7 +55693,8 @@ window.dashboardData = {
       "Banca Fijo": 13980.0,
       "Stake Compuesto": 7380407.64,
       "Beneficio Compuesto": 3321183.44,
-      "Banca Compuesto": 372341565.5
+      "Banca Compuesto": 372341565.5,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-15",
@@ -53082,7 +55712,8 @@ window.dashboardData = {
       "Banca Fijo": 13989.0,
       "Stake Compuesto": 7446831.31,
       "Beneficio Compuesto": 3351074.09,
-      "Banca Compuesto": 375692639.59
+      "Banca Compuesto": 375692639.59,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-16",
@@ -53100,7 +55731,8 @@ window.dashboardData = {
       "Banca Fijo": 13998.0,
       "Stake Compuesto": 7513852.79,
       "Beneficio Compuesto": 3381233.76,
-      "Banca Compuesto": 379073873.35
+      "Banca Compuesto": 379073873.35,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-16",
@@ -53118,7 +55750,8 @@ window.dashboardData = {
       "Banca Fijo": 14007.0,
       "Stake Compuesto": 7581477.47,
       "Beneficio Compuesto": 3411664.86,
-      "Banca Compuesto": 382485538.21
+      "Banca Compuesto": 382485538.21,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-16",
@@ -53136,7 +55769,8 @@ window.dashboardData = {
       "Banca Fijo": 14016.0,
       "Stake Compuesto": 7649710.76,
       "Beneficio Compuesto": 3442369.84,
-      "Banca Compuesto": 385927908.05
+      "Banca Compuesto": 385927908.05,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-16",
@@ -53154,7 +55788,8 @@ window.dashboardData = {
       "Banca Fijo": 14025.0,
       "Stake Compuesto": 7718558.16,
       "Beneficio Compuesto": 3473351.17,
-      "Banca Compuesto": 389401259.23
+      "Banca Compuesto": 389401259.23,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-16",
@@ -53172,7 +55807,8 @@ window.dashboardData = {
       "Banca Fijo": 14034.0,
       "Stake Compuesto": 7788025.18,
       "Beneficio Compuesto": 3504611.33,
-      "Banca Compuesto": 392905870.56
+      "Banca Compuesto": 392905870.56,
+      "league_id": 247
     },
     {
       "Fecha": "2025-08-16",
@@ -53190,7 +55826,8 @@ window.dashboardData = {
       "Banca Fijo": 14043.0,
       "Stake Compuesto": 7858117.41,
       "Beneficio Compuesto": 3536152.84,
-      "Banca Compuesto": 396442023.4
+      "Banca Compuesto": 396442023.4,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-16",
@@ -53208,7 +55845,8 @@ window.dashboardData = {
       "Banca Fijo": 14052.0,
       "Stake Compuesto": 7928840.47,
       "Beneficio Compuesto": 3567978.21,
-      "Banca Compuesto": 400010001.61
+      "Banca Compuesto": 400010001.61,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-16",
@@ -53226,7 +55864,8 @@ window.dashboardData = {
       "Banca Fijo": 14061.0,
       "Stake Compuesto": 8000200.03,
       "Beneficio Compuesto": 3600090.01,
-      "Banca Compuesto": 403610091.62
+      "Banca Compuesto": 403610091.62,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-16",
@@ -53244,7 +55883,8 @@ window.dashboardData = {
       "Banca Fijo": 14070.0,
       "Stake Compuesto": 8072201.83,
       "Beneficio Compuesto": 3632490.82,
-      "Banca Compuesto": 407242582.44
+      "Banca Compuesto": 407242582.44,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-16",
@@ -53262,7 +55902,8 @@ window.dashboardData = {
       "Banca Fijo": 14079.0,
       "Stake Compuesto": 8144851.65,
       "Beneficio Compuesto": 3665183.24,
-      "Banca Compuesto": 410907765.69
+      "Banca Compuesto": 410907765.69,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-16",
@@ -53280,7 +55921,8 @@ window.dashboardData = {
       "Banca Fijo": 14059.0,
       "Stake Compuesto": 8218155.31,
       "Beneficio Compuesto": -8218155.31,
-      "Banca Compuesto": 402689610.37
+      "Banca Compuesto": 402689610.37,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-16",
@@ -53298,7 +55940,8 @@ window.dashboardData = {
       "Banca Fijo": 14068.0,
       "Stake Compuesto": 8053792.21,
       "Beneficio Compuesto": 3624206.49,
-      "Banca Compuesto": 406313816.87
+      "Banca Compuesto": 406313816.87,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-16",
@@ -53316,7 +55959,8 @@ window.dashboardData = {
       "Banca Fijo": 14077.0,
       "Stake Compuesto": 8126276.34,
       "Beneficio Compuesto": 3656824.35,
-      "Banca Compuesto": 409970641.22
+      "Banca Compuesto": 409970641.22,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-17",
@@ -53334,7 +55978,8 @@ window.dashboardData = {
       "Banca Fijo": 14086.0,
       "Stake Compuesto": 8199412.82,
       "Beneficio Compuesto": 3689735.77,
-      "Banca Compuesto": 413660376.99
+      "Banca Compuesto": 413660376.99,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-17",
@@ -53352,7 +55997,8 @@ window.dashboardData = {
       "Banca Fijo": 14095.0,
       "Stake Compuesto": 8273207.54,
       "Beneficio Compuesto": 3722943.39,
-      "Banca Compuesto": 417383320.38
+      "Banca Compuesto": 417383320.38,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-17",
@@ -53370,7 +56016,8 @@ window.dashboardData = {
       "Banca Fijo": 14104.0,
       "Stake Compuesto": 8347666.41,
       "Beneficio Compuesto": 3756449.88,
-      "Banca Compuesto": 421139770.27
+      "Banca Compuesto": 421139770.27,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-17",
@@ -53388,7 +56035,8 @@ window.dashboardData = {
       "Banca Fijo": 14113.0,
       "Stake Compuesto": 8422795.41,
       "Beneficio Compuesto": 3790257.93,
-      "Banca Compuesto": 424930028.2
+      "Banca Compuesto": 424930028.2,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-17",
@@ -53406,7 +56054,8 @@ window.dashboardData = {
       "Banca Fijo": 14093.0,
       "Stake Compuesto": 8498600.56,
       "Beneficio Compuesto": -8498600.56,
-      "Banca Compuesto": 416431427.63
+      "Banca Compuesto": 416431427.63,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-17",
@@ -53424,7 +56073,8 @@ window.dashboardData = {
       "Banca Fijo": 14102.0,
       "Stake Compuesto": 8328628.55,
       "Beneficio Compuesto": 3747882.85,
-      "Banca Compuesto": 420179310.48
+      "Banca Compuesto": 420179310.48,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-17",
@@ -53442,7 +56092,8 @@ window.dashboardData = {
       "Banca Fijo": 14111.0,
       "Stake Compuesto": 8403586.21,
       "Beneficio Compuesto": 3781613.79,
-      "Banca Compuesto": 423960924.28
+      "Banca Compuesto": 423960924.28,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-17",
@@ -53460,7 +56111,8 @@ window.dashboardData = {
       "Banca Fijo": 14120.0,
       "Stake Compuesto": 8479218.49,
       "Beneficio Compuesto": 3815648.32,
-      "Banca Compuesto": 427776572.6
+      "Banca Compuesto": 427776572.6,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-17",
@@ -53478,7 +56130,8 @@ window.dashboardData = {
       "Banca Fijo": 14100.0,
       "Stake Compuesto": 8555531.45,
       "Beneficio Compuesto": -8555531.45,
-      "Banca Compuesto": 419221041.14
+      "Banca Compuesto": 419221041.14,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-17",
@@ -53496,7 +56149,8 @@ window.dashboardData = {
       "Banca Fijo": 14109.0,
       "Stake Compuesto": 8384420.82,
       "Beneficio Compuesto": 3772989.37,
-      "Banca Compuesto": 422994030.51
+      "Banca Compuesto": 422994030.51,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-17",
@@ -53514,7 +56168,8 @@ window.dashboardData = {
       "Banca Fijo": 14118.0,
       "Stake Compuesto": 8459880.61,
       "Beneficio Compuesto": 3806946.27,
-      "Banca Compuesto": 426800976.79
+      "Banca Compuesto": 426800976.79,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-17",
@@ -53532,7 +56187,8 @@ window.dashboardData = {
       "Banca Fijo": 14127.0,
       "Stake Compuesto": 8536019.54,
       "Beneficio Compuesto": 3841208.79,
-      "Banca Compuesto": 430642185.58
+      "Banca Compuesto": 430642185.58,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-18",
@@ -53550,7 +56206,8 @@ window.dashboardData = {
       "Banca Fijo": 14136.0,
       "Stake Compuesto": 8612843.71,
       "Beneficio Compuesto": 3875779.67,
-      "Banca Compuesto": 434517965.25
+      "Banca Compuesto": 434517965.25,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-18",
@@ -53568,7 +56225,8 @@ window.dashboardData = {
       "Banca Fijo": 14145.0,
       "Stake Compuesto": 8690359.3,
       "Beneficio Compuesto": 3910661.69,
-      "Banca Compuesto": 438428626.94
+      "Banca Compuesto": 438428626.94,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-18",
@@ -53586,7 +56244,8 @@ window.dashboardData = {
       "Banca Fijo": 14154.0,
       "Stake Compuesto": 8768572.54,
       "Beneficio Compuesto": 3945857.64,
-      "Banca Compuesto": 442374484.58
+      "Banca Compuesto": 442374484.58,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-18",
@@ -53604,7 +56263,8 @@ window.dashboardData = {
       "Banca Fijo": 14163.0,
       "Stake Compuesto": 8847489.69,
       "Beneficio Compuesto": 3981370.36,
-      "Banca Compuesto": 446355854.94
+      "Banca Compuesto": 446355854.94,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-18",
@@ -53622,7 +56282,8 @@ window.dashboardData = {
       "Banca Fijo": 14172.0,
       "Stake Compuesto": 8927117.1,
       "Beneficio Compuesto": 4017202.69,
-      "Banca Compuesto": 450373057.64
+      "Banca Compuesto": 450373057.64,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-21",
@@ -53640,7 +56301,8 @@ window.dashboardData = {
       "Banca Fijo": 14181.0,
       "Stake Compuesto": 9007461.15,
       "Beneficio Compuesto": 4053357.52,
-      "Banca Compuesto": 454426415.15
+      "Banca Compuesto": 454426415.15,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-22",
@@ -53658,7 +56320,8 @@ window.dashboardData = {
       "Banca Fijo": 14161.0,
       "Stake Compuesto": 9088528.3,
       "Beneficio Compuesto": -9088528.3,
-      "Banca Compuesto": 445337886.85
+      "Banca Compuesto": 445337886.85,
+      "league_id": 89
     },
     {
       "Fecha": "2025-08-22",
@@ -53676,7 +56339,8 @@ window.dashboardData = {
       "Banca Fijo": 14170.0,
       "Stake Compuesto": 8906757.74,
       "Beneficio Compuesto": 4008040.98,
-      "Banca Compuesto": 449345927.83
+      "Banca Compuesto": 449345927.83,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-22",
@@ -53694,7 +56358,8 @@ window.dashboardData = {
       "Banca Fijo": 14179.0,
       "Stake Compuesto": 8986918.56,
       "Beneficio Compuesto": 4044113.35,
-      "Banca Compuesto": 453390041.18
+      "Banca Compuesto": 453390041.18,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-22",
@@ -53712,7 +56377,8 @@ window.dashboardData = {
       "Banca Fijo": 14188.0,
       "Stake Compuesto": 9067800.82,
       "Beneficio Compuesto": 4080510.37,
-      "Banca Compuesto": 457470551.55
+      "Banca Compuesto": 457470551.55,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-23",
@@ -53730,7 +56396,8 @@ window.dashboardData = {
       "Banca Fijo": 14197.0,
       "Stake Compuesto": 9149411.03,
       "Beneficio Compuesto": 4117234.96,
-      "Banca Compuesto": 461587786.52
+      "Banca Compuesto": 461587786.52,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-23",
@@ -53748,7 +56415,8 @@ window.dashboardData = {
       "Banca Fijo": 14206.0,
       "Stake Compuesto": 9231755.73,
       "Beneficio Compuesto": 4154290.08,
-      "Banca Compuesto": 465742076.6
+      "Banca Compuesto": 465742076.6,
+      "league_id": 104
     },
     {
       "Fecha": "2025-08-23",
@@ -53766,7 +56434,8 @@ window.dashboardData = {
       "Banca Fijo": 14215.0,
       "Stake Compuesto": 9314841.53,
       "Beneficio Compuesto": 4191678.69,
-      "Banca Compuesto": 469933755.29
+      "Banca Compuesto": 469933755.29,
+      "league_id": 119
     },
     {
       "Fecha": "2025-08-23",
@@ -53784,7 +56453,8 @@ window.dashboardData = {
       "Banca Fijo": 14224.0,
       "Stake Compuesto": 9398675.11,
       "Beneficio Compuesto": 4229403.8,
-      "Banca Compuesto": 474163159.08
+      "Banca Compuesto": 474163159.08,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-23",
@@ -53802,7 +56472,8 @@ window.dashboardData = {
       "Banca Fijo": 14233.0,
       "Stake Compuesto": 9483263.18,
       "Beneficio Compuesto": 4267468.43,
-      "Banca Compuesto": 478430627.52
+      "Banca Compuesto": 478430627.52,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-23",
@@ -53820,7 +56491,8 @@ window.dashboardData = {
       "Banca Fijo": 14242.0,
       "Stake Compuesto": 9568612.55,
       "Beneficio Compuesto": 4305875.65,
-      "Banca Compuesto": 482736503.16
+      "Banca Compuesto": 482736503.16,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-23",
@@ -53838,7 +56510,8 @@ window.dashboardData = {
       "Banca Fijo": 14251.0,
       "Stake Compuesto": 9654730.06,
       "Beneficio Compuesto": 4344628.53,
-      "Banca Compuesto": 487081131.69
+      "Banca Compuesto": 487081131.69,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-23",
@@ -53856,7 +56529,8 @@ window.dashboardData = {
       "Banca Fijo": 14260.0,
       "Stake Compuesto": 9741622.63,
       "Beneficio Compuesto": 4383730.19,
-      "Banca Compuesto": 491464861.88
+      "Banca Compuesto": 491464861.88,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-23",
@@ -53874,7 +56548,8 @@ window.dashboardData = {
       "Banca Fijo": 14269.0,
       "Stake Compuesto": 9829297.24,
       "Beneficio Compuesto": 4423183.76,
-      "Banca Compuesto": 495888045.63
+      "Banca Compuesto": 495888045.63,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-23",
@@ -53892,7 +56567,8 @@ window.dashboardData = {
       "Banca Fijo": 14278.0,
       "Stake Compuesto": 9917760.91,
       "Beneficio Compuesto": 4462992.41,
-      "Banca Compuesto": 500351038.04
+      "Banca Compuesto": 500351038.04,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-23",
@@ -53910,7 +56586,8 @@ window.dashboardData = {
       "Banca Fijo": 14287.0,
       "Stake Compuesto": 10007020.76,
       "Beneficio Compuesto": 4503159.34,
-      "Banca Compuesto": 504854197.39
+      "Banca Compuesto": 504854197.39,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-23",
@@ -53928,7 +56605,8 @@ window.dashboardData = {
       "Banca Fijo": 14296.0,
       "Stake Compuesto": 10097083.95,
       "Beneficio Compuesto": 4543687.78,
-      "Banca Compuesto": 509397885.16
+      "Banca Compuesto": 509397885.16,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-23",
@@ -53946,7 +56624,8 @@ window.dashboardData = {
       "Banca Fijo": 14305.0,
       "Stake Compuesto": 10187957.7,
       "Beneficio Compuesto": 4584580.97,
-      "Banca Compuesto": 513982466.13
+      "Banca Compuesto": 513982466.13,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-23",
@@ -53964,7 +56643,8 @@ window.dashboardData = {
       "Banca Fijo": 14314.0,
       "Stake Compuesto": 10279649.32,
       "Beneficio Compuesto": 4625842.2,
-      "Banca Compuesto": 518608308.32
+      "Banca Compuesto": 518608308.32,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-23",
@@ -53982,7 +56662,8 @@ window.dashboardData = {
       "Banca Fijo": 14323.0,
       "Stake Compuesto": 10372166.17,
       "Beneficio Compuesto": 4667474.77,
-      "Banca Compuesto": 523275783.1
+      "Banca Compuesto": 523275783.1,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-23",
@@ -54000,7 +56681,8 @@ window.dashboardData = {
       "Banca Fijo": 14303.0,
       "Stake Compuesto": 10465515.66,
       "Beneficio Compuesto": -10465515.66,
-      "Banca Compuesto": 512810267.44
+      "Banca Compuesto": 512810267.44,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-24",
@@ -54018,7 +56700,8 @@ window.dashboardData = {
       "Banca Fijo": 14312.0,
       "Stake Compuesto": 10256205.35,
       "Beneficio Compuesto": 4615292.41,
-      "Banca Compuesto": 517425559.84
+      "Banca Compuesto": 517425559.84,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-24",
@@ -54036,7 +56719,8 @@ window.dashboardData = {
       "Banca Fijo": 14321.0,
       "Stake Compuesto": 10348511.2,
       "Beneficio Compuesto": 4656830.04,
-      "Banca Compuesto": 522082389.88
+      "Banca Compuesto": 522082389.88,
+      "league_id": 89
     },
     {
       "Fecha": "2025-08-24",
@@ -54054,7 +56738,8 @@ window.dashboardData = {
       "Banca Fijo": 14330.0,
       "Stake Compuesto": 10441647.8,
       "Beneficio Compuesto": 4698741.51,
-      "Banca Compuesto": 526781131.39
+      "Banca Compuesto": 526781131.39,
+      "league_id": 103
     },
     {
       "Fecha": "2025-08-24",
@@ -54072,7 +56757,8 @@ window.dashboardData = {
       "Banca Fijo": 14339.0,
       "Stake Compuesto": 10535622.63,
       "Beneficio Compuesto": 4741030.18,
-      "Banca Compuesto": 531522161.57
+      "Banca Compuesto": 531522161.57,
+      "league_id": 244
     },
     {
       "Fecha": "2025-08-24",
@@ -54090,7 +56776,8 @@ window.dashboardData = {
       "Banca Fijo": 14348.0,
       "Stake Compuesto": 10630443.23,
       "Beneficio Compuesto": 4783699.45,
-      "Banca Compuesto": 536305861.03
+      "Banca Compuesto": 536305861.03,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-24",
@@ -54108,7 +56795,8 @@ window.dashboardData = {
       "Banca Fijo": 14357.0,
       "Stake Compuesto": 10726117.22,
       "Beneficio Compuesto": 4826752.75,
-      "Banca Compuesto": 541132613.78
+      "Banca Compuesto": 541132613.78,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-24",
@@ -54126,7 +56814,8 @@ window.dashboardData = {
       "Banca Fijo": 14337.0,
       "Stake Compuesto": 10822652.28,
       "Beneficio Compuesto": -10822652.28,
-      "Banca Compuesto": 530309961.5
+      "Banca Compuesto": 530309961.5,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-24",
@@ -54144,7 +56833,8 @@ window.dashboardData = {
       "Banca Fijo": 14346.0,
       "Stake Compuesto": 10606199.23,
       "Beneficio Compuesto": 4772789.65,
-      "Banca Compuesto": 535082751.16
+      "Banca Compuesto": 535082751.16,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-24",
@@ -54162,7 +56852,8 @@ window.dashboardData = {
       "Banca Fijo": 14355.0,
       "Stake Compuesto": 10701655.02,
       "Beneficio Compuesto": 4815744.76,
-      "Banca Compuesto": 539898495.92
+      "Banca Compuesto": 539898495.92,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-24",
@@ -54180,7 +56871,8 @@ window.dashboardData = {
       "Banca Fijo": 14364.0,
       "Stake Compuesto": 10797969.92,
       "Beneficio Compuesto": 4859086.46,
-      "Banca Compuesto": 544757582.38
+      "Banca Compuesto": 544757582.38,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-24",
@@ -54198,7 +56890,8 @@ window.dashboardData = {
       "Banca Fijo": 14373.0,
       "Stake Compuesto": 10895151.65,
       "Beneficio Compuesto": 4902818.24,
-      "Banca Compuesto": 549660400.62
+      "Banca Compuesto": 549660400.62,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-25",
@@ -54216,7 +56909,8 @@ window.dashboardData = {
       "Banca Fijo": 14382.0,
       "Stake Compuesto": 10993208.01,
       "Beneficio Compuesto": 4946943.61,
-      "Banca Compuesto": 554607344.23
+      "Banca Compuesto": 554607344.23,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-25",
@@ -54234,7 +56928,8 @@ window.dashboardData = {
       "Banca Fijo": 14391.0,
       "Stake Compuesto": 11092146.88,
       "Beneficio Compuesto": 4991466.1,
-      "Banca Compuesto": 559598810.32
+      "Banca Compuesto": 559598810.32,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-25",
@@ -54252,7 +56947,8 @@ window.dashboardData = {
       "Banca Fijo": 14400.0,
       "Stake Compuesto": 11191976.21,
       "Beneficio Compuesto": 5036389.29,
-      "Banca Compuesto": 564635199.62
+      "Banca Compuesto": 564635199.62,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-26",
@@ -54270,7 +56966,8 @@ window.dashboardData = {
       "Banca Fijo": 14409.0,
       "Stake Compuesto": 11292703.99,
       "Beneficio Compuesto": 5081716.8,
-      "Banca Compuesto": 569716916.41
+      "Banca Compuesto": 569716916.41,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-26",
@@ -54288,7 +56985,8 @@ window.dashboardData = {
       "Banca Fijo": 14418.0,
       "Stake Compuesto": 11394338.33,
       "Beneficio Compuesto": 5127452.25,
-      "Banca Compuesto": 574844368.66
+      "Banca Compuesto": 574844368.66,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-27",
@@ -54306,7 +57004,8 @@ window.dashboardData = {
       "Banca Fijo": 14398.0,
       "Stake Compuesto": 11496887.37,
       "Beneficio Compuesto": -11496887.37,
-      "Banca Compuesto": 563347481.29
+      "Banca Compuesto": 563347481.29,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-28",
@@ -54324,7 +57023,8 @@ window.dashboardData = {
       "Banca Fijo": 14407.0,
       "Stake Compuesto": 11266949.63,
       "Beneficio Compuesto": 5070127.33,
-      "Banca Compuesto": 568417608.62
+      "Banca Compuesto": 568417608.62,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-29",
@@ -54342,7 +57042,8 @@ window.dashboardData = {
       "Banca Fijo": 14387.0,
       "Stake Compuesto": 11368352.17,
       "Beneficio Compuesto": -11368352.17,
-      "Banca Compuesto": 557049256.45
+      "Banca Compuesto": 557049256.45,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-29",
@@ -54360,7 +57061,8 @@ window.dashboardData = {
       "Banca Fijo": 14396.0,
       "Stake Compuesto": 11140985.13,
       "Beneficio Compuesto": 5013443.31,
-      "Banca Compuesto": 562062699.76
+      "Banca Compuesto": 562062699.76,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-30",
@@ -54378,7 +57080,8 @@ window.dashboardData = {
       "Banca Fijo": 14405.0,
       "Stake Compuesto": 11241254.0,
       "Beneficio Compuesto": 5058564.3,
-      "Banca Compuesto": 567121264.05
+      "Banca Compuesto": 567121264.05,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-30",
@@ -54396,7 +57099,8 @@ window.dashboardData = {
       "Banca Fijo": 14414.0,
       "Stake Compuesto": 11342425.28,
       "Beneficio Compuesto": 5104091.38,
-      "Banca Compuesto": 572225355.43
+      "Banca Compuesto": 572225355.43,
+      "league_id": 165
     },
     {
       "Fecha": "2025-08-30",
@@ -54414,7 +57118,8 @@ window.dashboardData = {
       "Banca Fijo": 14423.0,
       "Stake Compuesto": 11444507.11,
       "Beneficio Compuesto": 5150028.2,
-      "Banca Compuesto": 577375383.63
+      "Banca Compuesto": 577375383.63,
+      "league_id": 166
     },
     {
       "Fecha": "2025-08-30",
@@ -54432,7 +57137,8 @@ window.dashboardData = {
       "Banca Fijo": 14432.0,
       "Stake Compuesto": 11547507.67,
       "Beneficio Compuesto": 5196378.45,
-      "Banca Compuesto": 582571762.08
+      "Banca Compuesto": 582571762.08,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-30",
@@ -54450,7 +57156,8 @@ window.dashboardData = {
       "Banca Fijo": 14412.0,
       "Stake Compuesto": 11651435.24,
       "Beneficio Compuesto": -11651435.24,
-      "Banca Compuesto": 570920326.84
+      "Banca Compuesto": 570920326.84,
+      "league_id": 245
     },
     {
       "Fecha": "2025-08-30",
@@ -54468,7 +57175,8 @@ window.dashboardData = {
       "Banca Fijo": 14421.0,
       "Stake Compuesto": 11418406.54,
       "Beneficio Compuesto": 5138282.94,
-      "Banca Compuesto": 576058609.78
+      "Banca Compuesto": 576058609.78,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-30",
@@ -54486,7 +57194,8 @@ window.dashboardData = {
       "Banca Fijo": 14401.0,
       "Stake Compuesto": 11521172.2,
       "Beneficio Compuesto": -11521172.2,
-      "Banca Compuesto": 564537437.59
+      "Banca Compuesto": 564537437.59,
+      "league_id": 329
     },
     {
       "Fecha": "2025-08-30",
@@ -54504,7 +57213,8 @@ window.dashboardData = {
       "Banca Fijo": 14410.0,
       "Stake Compuesto": 11290748.75,
       "Beneficio Compuesto": 5080836.94,
-      "Banca Compuesto": 569618274.52
+      "Banca Compuesto": 569618274.52,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-30",
@@ -54522,7 +57232,8 @@ window.dashboardData = {
       "Banca Fijo": 14390.0,
       "Stake Compuesto": 11392365.49,
       "Beneficio Compuesto": -11392365.49,
-      "Banca Compuesto": 558225909.03
+      "Banca Compuesto": 558225909.03,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-30",
@@ -54540,7 +57251,8 @@ window.dashboardData = {
       "Banca Fijo": 14399.0,
       "Stake Compuesto": 11164518.18,
       "Beneficio Compuesto": 5024033.18,
-      "Banca Compuesto": 563249942.21
+      "Banca Compuesto": 563249942.21,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-30",
@@ -54558,7 +57270,8 @@ window.dashboardData = {
       "Banca Fijo": 14408.0,
       "Stake Compuesto": 11264998.84,
       "Beneficio Compuesto": 5069249.48,
-      "Banca Compuesto": 568319191.69
+      "Banca Compuesto": 568319191.69,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-08-31",
@@ -54576,7 +57289,8 @@ window.dashboardData = {
       "Banca Fijo": 14417.0,
       "Stake Compuesto": 11366383.83,
       "Beneficio Compuesto": 5114872.73,
-      "Banca Compuesto": 573434064.42
+      "Banca Compuesto": 573434064.42,
+      "league_id": 88
     },
     {
       "Fecha": "2025-08-31",
@@ -54594,7 +57308,8 @@ window.dashboardData = {
       "Banca Fijo": 14397.0,
       "Stake Compuesto": 11468681.29,
       "Beneficio Compuesto": -11468681.29,
-      "Banca Compuesto": 561965383.13
+      "Banca Compuesto": 561965383.13,
+      "league_id": 103
     },
     {
       "Fecha": "2025-08-31",
@@ -54612,7 +57327,8 @@ window.dashboardData = {
       "Banca Fijo": 14406.0,
       "Stake Compuesto": 11239307.66,
       "Beneficio Compuesto": 5057688.45,
-      "Banca Compuesto": 567023071.58
+      "Banca Compuesto": 567023071.58,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-31",
@@ -54630,7 +57346,8 @@ window.dashboardData = {
       "Banca Fijo": 14415.0,
       "Stake Compuesto": 11340461.43,
       "Beneficio Compuesto": 5103207.64,
-      "Banca Compuesto": 572126279.22
+      "Banca Compuesto": 572126279.22,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-31",
@@ -54648,7 +57365,8 @@ window.dashboardData = {
       "Banca Fijo": 14424.0,
       "Stake Compuesto": 11442525.58,
       "Beneficio Compuesto": 5149136.51,
-      "Banca Compuesto": 577275415.74
+      "Banca Compuesto": 577275415.74,
+      "league_id": 164
     },
     {
       "Fecha": "2025-08-31",
@@ -54666,7 +57384,8 @@ window.dashboardData = {
       "Banca Fijo": 14433.0,
       "Stake Compuesto": 11545508.31,
       "Beneficio Compuesto": 5195478.74,
-      "Banca Compuesto": 582470894.48
+      "Banca Compuesto": 582470894.48,
+      "league_id": 244
     },
     {
       "Fecha": "2025-08-31",
@@ -54684,7 +57403,8 @@ window.dashboardData = {
       "Banca Fijo": 14442.0,
       "Stake Compuesto": 11649417.89,
       "Beneficio Compuesto": 5242238.05,
-      "Banca Compuesto": 587713132.53
+      "Banca Compuesto": 587713132.53,
+      "league_id": 328
     },
     {
       "Fecha": "2025-08-31",
@@ -54702,7 +57422,8 @@ window.dashboardData = {
       "Banca Fijo": 14451.0,
       "Stake Compuesto": 11754262.65,
       "Beneficio Compuesto": 5289418.19,
-      "Banca Compuesto": 593002550.72
+      "Banca Compuesto": 593002550.72,
+      "league_id": 473
     },
     {
       "Fecha": "2025-08-31",
@@ -54720,7 +57441,8 @@ window.dashboardData = {
       "Banca Fijo": 14460.0,
       "Stake Compuesto": 11860051.01,
       "Beneficio Compuesto": 5337022.96,
-      "Banca Compuesto": 598339573.68
+      "Banca Compuesto": 598339573.68,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-31",
@@ -54738,7 +57460,8 @@ window.dashboardData = {
       "Banca Fijo": 14469.0,
       "Stake Compuesto": 11966791.47,
       "Beneficio Compuesto": 5385056.16,
-      "Banca Compuesto": 603724629.84
+      "Banca Compuesto": 603724629.84,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-31",
@@ -54756,7 +57479,8 @@ window.dashboardData = {
       "Banca Fijo": 14478.0,
       "Stake Compuesto": 12074492.6,
       "Beneficio Compuesto": 5433521.67,
-      "Banca Compuesto": 609158151.51
+      "Banca Compuesto": 609158151.51,
+      "league_id": 474
     },
     {
       "Fecha": "2025-08-31",
@@ -54774,7 +57498,8 @@ window.dashboardData = {
       "Banca Fijo": 14458.0,
       "Stake Compuesto": 12183163.03,
       "Beneficio Compuesto": -12183163.03,
-      "Banca Compuesto": 596974988.48
+      "Banca Compuesto": 596974988.48,
+      "league_id": 563
     },
     {
       "Fecha": "2025-08-31",
@@ -54792,7 +57517,8 @@ window.dashboardData = {
       "Banca Fijo": 14467.0,
       "Stake Compuesto": 11939499.77,
       "Beneficio Compuesto": 5372774.9,
-      "Banca Compuesto": 602347763.38
+      "Banca Compuesto": 602347763.38,
+      "league_id": 909
     },
     {
       "Fecha": "2025-08-31",
@@ -54810,7 +57536,8 @@ window.dashboardData = {
       "Banca Fijo": 14476.0,
       "Stake Compuesto": 12046955.27,
       "Beneficio Compuesto": 5421129.87,
-      "Banca Compuesto": 607768893.25
+      "Banca Compuesto": 607768893.25,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-01",
@@ -54828,7 +57555,8 @@ window.dashboardData = {
       "Banca Fijo": 14485.0,
       "Stake Compuesto": 12155377.86,
       "Beneficio Compuesto": 5469920.04,
-      "Banca Compuesto": 613238813.29
+      "Banca Compuesto": 613238813.29,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-01",
@@ -54846,7 +57574,8 @@ window.dashboardData = {
       "Banca Fijo": 14494.0,
       "Stake Compuesto": 12264776.27,
       "Beneficio Compuesto": 5519149.32,
-      "Banca Compuesto": 618757962.61
+      "Banca Compuesto": 618757962.61,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-05",
@@ -54864,7 +57593,8 @@ window.dashboardData = {
       "Banca Fijo": 14503.0,
       "Stake Compuesto": 12375159.25,
       "Beneficio Compuesto": 5568821.66,
-      "Banca Compuesto": 624326784.27
+      "Banca Compuesto": 624326784.27,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-05",
@@ -54882,7 +57612,8 @@ window.dashboardData = {
       "Banca Fijo": 14512.0,
       "Stake Compuesto": 12486535.69,
       "Beneficio Compuesto": 5618941.06,
-      "Banca Compuesto": 629945725.33
+      "Banca Compuesto": 629945725.33,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-05",
@@ -54900,7 +57631,8 @@ window.dashboardData = {
       "Banca Fijo": 14492.0,
       "Stake Compuesto": 12598914.51,
       "Beneficio Compuesto": -12598914.51,
-      "Banca Compuesto": 617346810.82
+      "Banca Compuesto": 617346810.82,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-05",
@@ -54918,7 +57650,8 @@ window.dashboardData = {
       "Banca Fijo": 14501.0,
       "Stake Compuesto": 12346936.22,
       "Beneficio Compuesto": 5556121.3,
-      "Banca Compuesto": 622902932.12
+      "Banca Compuesto": 622902932.12,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-09-06",
@@ -54936,7 +57669,8 @@ window.dashboardData = {
       "Banca Fijo": 14510.0,
       "Stake Compuesto": 12458058.64,
       "Beneficio Compuesto": 5606126.39,
-      "Banca Compuesto": 628509058.51
+      "Banca Compuesto": 628509058.51,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-06",
@@ -54954,7 +57688,8 @@ window.dashboardData = {
       "Banca Fijo": 14519.0,
       "Stake Compuesto": 12570181.17,
       "Beneficio Compuesto": 5656581.53,
-      "Banca Compuesto": 634165640.03
+      "Banca Compuesto": 634165640.03,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-06",
@@ -54972,7 +57707,8 @@ window.dashboardData = {
       "Banca Fijo": 14528.0,
       "Stake Compuesto": 12683312.8,
       "Beneficio Compuesto": 5707490.76,
-      "Banca Compuesto": 639873130.79
+      "Banca Compuesto": 639873130.79,
+      "league_id": 166
     },
     {
       "Fecha": "2025-09-06",
@@ -54990,7 +57726,8 @@ window.dashboardData = {
       "Banca Fijo": 14537.0,
       "Stake Compuesto": 12797462.62,
       "Beneficio Compuesto": 5758858.18,
-      "Banca Compuesto": 645631988.97
+      "Banca Compuesto": 645631988.97,
+      "league_id": 166
     },
     {
       "Fecha": "2025-09-06",
@@ -55008,7 +57745,8 @@ window.dashboardData = {
       "Banca Fijo": 14546.0,
       "Stake Compuesto": 12912639.78,
       "Beneficio Compuesto": 5810687.9,
-      "Banca Compuesto": 651442676.87
+      "Banca Compuesto": 651442676.87,
+      "league_id": 166
     },
     {
       "Fecha": "2025-09-06",
@@ -55026,7 +57764,8 @@ window.dashboardData = {
       "Banca Fijo": 14555.0,
       "Stake Compuesto": 13028853.54,
       "Beneficio Compuesto": 5862984.09,
-      "Banca Compuesto": 657305660.96
+      "Banca Compuesto": 657305660.96,
+      "league_id": 166
     },
     {
       "Fecha": "2025-09-06",
@@ -55044,7 +57783,8 @@ window.dashboardData = {
       "Banca Fijo": 14564.0,
       "Stake Compuesto": 13146113.22,
       "Beneficio Compuesto": 5915750.95,
-      "Banca Compuesto": 663221411.91
+      "Banca Compuesto": 663221411.91,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-06",
@@ -55062,7 +57802,8 @@ window.dashboardData = {
       "Banca Fijo": 14573.0,
       "Stake Compuesto": 13264428.24,
       "Beneficio Compuesto": 5968992.71,
-      "Banca Compuesto": 669190404.62
+      "Banca Compuesto": 669190404.62,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-06",
@@ -55080,7 +57821,8 @@ window.dashboardData = {
       "Banca Fijo": 14582.0,
       "Stake Compuesto": 13383808.09,
       "Beneficio Compuesto": 6022713.64,
-      "Banca Compuesto": 675213118.26
+      "Banca Compuesto": 675213118.26,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-06",
@@ -55098,7 +57840,8 @@ window.dashboardData = {
       "Banca Fijo": 14562.0,
       "Stake Compuesto": 13504262.37,
       "Beneficio Compuesto": -13504262.37,
-      "Banca Compuesto": 661708855.9
+      "Banca Compuesto": 661708855.9,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-07",
@@ -55116,7 +57859,8 @@ window.dashboardData = {
       "Banca Fijo": 14571.0,
       "Stake Compuesto": 13234177.12,
       "Beneficio Compuesto": 5955379.7,
-      "Banca Compuesto": 667664235.6
+      "Banca Compuesto": 667664235.6,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-07",
@@ -55134,7 +57878,8 @@ window.dashboardData = {
       "Banca Fijo": 14580.0,
       "Stake Compuesto": 13353284.71,
       "Beneficio Compuesto": 6008978.12,
-      "Banca Compuesto": 673673213.72
+      "Banca Compuesto": 673673213.72,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-07",
@@ -55152,7 +57897,8 @@ window.dashboardData = {
       "Banca Fijo": 14589.0,
       "Stake Compuesto": 13473464.27,
       "Beneficio Compuesto": 6063058.92,
-      "Banca Compuesto": 679736272.64
+      "Banca Compuesto": 679736272.64,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-12",
@@ -55170,7 +57916,8 @@ window.dashboardData = {
       "Banca Fijo": 14598.0,
       "Stake Compuesto": 13594725.45,
       "Beneficio Compuesto": 6117626.45,
-      "Banca Compuesto": 685853899.1
+      "Banca Compuesto": 685853899.1,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-12",
@@ -55188,7 +57935,8 @@ window.dashboardData = {
       "Banca Fijo": 14607.0,
       "Stake Compuesto": 13717077.98,
       "Beneficio Compuesto": 6172685.09,
-      "Banca Compuesto": 692026584.19
+      "Banca Compuesto": 692026584.19,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-12",
@@ -55206,7 +57954,8 @@ window.dashboardData = {
       "Banca Fijo": 14616.0,
       "Stake Compuesto": 13840531.68,
       "Beneficio Compuesto": 6228239.26,
-      "Banca Compuesto": 698254823.45
+      "Banca Compuesto": 698254823.45,
+      "league_id": 103
     },
     {
       "Fecha": "2025-09-12",
@@ -55224,7 +57973,8 @@ window.dashboardData = {
       "Banca Fijo": 14625.0,
       "Stake Compuesto": 13965096.47,
       "Beneficio Compuesto": 6284293.41,
-      "Banca Compuesto": 704539116.86
+      "Banca Compuesto": 704539116.86,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-13",
@@ -55242,7 +57992,8 @@ window.dashboardData = {
       "Banca Fijo": 14634.0,
       "Stake Compuesto": 14090782.34,
       "Beneficio Compuesto": 6340852.05,
-      "Banca Compuesto": 710879968.91
+      "Banca Compuesto": 710879968.91,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-13",
@@ -55260,7 +58011,8 @@ window.dashboardData = {
       "Banca Fijo": 14643.0,
       "Stake Compuesto": 14217599.38,
       "Beneficio Compuesto": 6397919.72,
-      "Banca Compuesto": 717277888.63
+      "Banca Compuesto": 717277888.63,
+      "league_id": 104
     },
     {
       "Fecha": "2025-09-13",
@@ -55278,7 +58030,8 @@ window.dashboardData = {
       "Banca Fijo": 14652.0,
       "Stake Compuesto": 14345557.77,
       "Beneficio Compuesto": 6455501.0,
-      "Banca Compuesto": 723733389.63
+      "Banca Compuesto": 723733389.63,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-13",
@@ -55296,7 +58049,8 @@ window.dashboardData = {
       "Banca Fijo": 14661.0,
       "Stake Compuesto": 14474667.79,
       "Beneficio Compuesto": 6513600.51,
-      "Banca Compuesto": 730246990.13
+      "Banca Compuesto": 730246990.13,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-13",
@@ -55314,7 +58068,8 @@ window.dashboardData = {
       "Banca Fijo": 14670.0,
       "Stake Compuesto": 14604939.8,
       "Beneficio Compuesto": 6572222.91,
-      "Banca Compuesto": 736819213.04
+      "Banca Compuesto": 736819213.04,
+      "league_id": 166
     },
     {
       "Fecha": "2025-09-13",
@@ -55332,7 +58087,8 @@ window.dashboardData = {
       "Banca Fijo": 14679.0,
       "Stake Compuesto": 14736384.26,
       "Beneficio Compuesto": 6631372.92,
-      "Banca Compuesto": 743450585.96
+      "Banca Compuesto": 743450585.96,
+      "league_id": 166
     },
     {
       "Fecha": "2025-09-13",
@@ -55350,7 +58106,8 @@ window.dashboardData = {
       "Banca Fijo": 14688.0,
       "Stake Compuesto": 14869011.72,
       "Beneficio Compuesto": 6691055.27,
-      "Banca Compuesto": 750141641.24
+      "Banca Compuesto": 750141641.24,
+      "league_id": 244
     },
     {
       "Fecha": "2025-09-13",
@@ -55368,7 +58125,8 @@ window.dashboardData = {
       "Banca Fijo": 14697.0,
       "Stake Compuesto": 15002832.82,
       "Beneficio Compuesto": 6751274.77,
-      "Banca Compuesto": 756892916.01
+      "Banca Compuesto": 756892916.01,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-13",
@@ -55386,7 +58144,8 @@ window.dashboardData = {
       "Banca Fijo": 14706.0,
       "Stake Compuesto": 15137858.32,
       "Beneficio Compuesto": 6812036.24,
-      "Banca Compuesto": 763704952.25
+      "Banca Compuesto": 763704952.25,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-13",
@@ -55404,7 +58163,8 @@ window.dashboardData = {
       "Banca Fijo": 14715.0,
       "Stake Compuesto": 15274099.05,
       "Beneficio Compuesto": 6873344.57,
-      "Banca Compuesto": 770578296.82
+      "Banca Compuesto": 770578296.82,
+      "league_id": 329
     },
     {
       "Fecha": "2025-09-13",
@@ -55422,7 +58182,8 @@ window.dashboardData = {
       "Banca Fijo": 14695.0,
       "Stake Compuesto": 15411565.94,
       "Beneficio Compuesto": -15411565.94,
-      "Banca Compuesto": 755166730.88
+      "Banca Compuesto": 755166730.88,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-13",
@@ -55440,7 +58201,8 @@ window.dashboardData = {
       "Banca Fijo": 14704.0,
       "Stake Compuesto": 15103334.62,
       "Beneficio Compuesto": 6796500.58,
-      "Banca Compuesto": 761963231.46
+      "Banca Compuesto": 761963231.46,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-13",
@@ -55458,7 +58220,8 @@ window.dashboardData = {
       "Banca Fijo": 14713.0,
       "Stake Compuesto": 15239264.63,
       "Beneficio Compuesto": 6857669.08,
-      "Banca Compuesto": 768820900.55
+      "Banca Compuesto": 768820900.55,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-13",
@@ -55476,7 +58239,8 @@ window.dashboardData = {
       "Banca Fijo": 14722.0,
       "Stake Compuesto": 15376418.01,
       "Beneficio Compuesto": 6919388.1,
-      "Banca Compuesto": 775740288.65
+      "Banca Compuesto": 775740288.65,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-13",
@@ -55494,7 +58258,8 @@ window.dashboardData = {
       "Banca Fijo": 14702.0,
       "Stake Compuesto": 15514805.77,
       "Beneficio Compuesto": -15514805.77,
-      "Banca Compuesto": 760225482.88
+      "Banca Compuesto": 760225482.88,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-13",
@@ -55512,7 +58277,8 @@ window.dashboardData = {
       "Banca Fijo": 14682.0,
       "Stake Compuesto": 15204509.66,
       "Beneficio Compuesto": -15204509.66,
-      "Banca Compuesto": 745020973.22
+      "Banca Compuesto": 745020973.22,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-13",
@@ -55530,7 +58296,8 @@ window.dashboardData = {
       "Banca Fijo": 14691.0,
       "Stake Compuesto": 14900419.46,
       "Beneficio Compuesto": 6705188.76,
-      "Banca Compuesto": 751726161.98
+      "Banca Compuesto": 751726161.98,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-13",
@@ -55548,7 +58315,8 @@ window.dashboardData = {
       "Banca Fijo": 14700.0,
       "Stake Compuesto": 15034523.24,
       "Beneficio Compuesto": 6765535.46,
-      "Banca Compuesto": 758491697.44
+      "Banca Compuesto": 758491697.44,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-13",
@@ -55566,7 +58334,8 @@ window.dashboardData = {
       "Banca Fijo": 14709.0,
       "Stake Compuesto": 15169833.95,
       "Beneficio Compuesto": 6826425.28,
-      "Banca Compuesto": 765318122.71
+      "Banca Compuesto": 765318122.71,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-14",
@@ -55584,7 +58353,8 @@ window.dashboardData = {
       "Banca Fijo": 14718.0,
       "Stake Compuesto": 15306362.45,
       "Beneficio Compuesto": 6887863.1,
-      "Banca Compuesto": 772205985.82
+      "Banca Compuesto": 772205985.82,
+      "league_id": 103
     },
     {
       "Fecha": "2025-09-14",
@@ -55602,7 +58372,8 @@ window.dashboardData = {
       "Banca Fijo": 14727.0,
       "Stake Compuesto": 15444119.72,
       "Beneficio Compuesto": 6949853.87,
-      "Banca Compuesto": 779155839.69
+      "Banca Compuesto": 779155839.69,
+      "league_id": 119
     },
     {
       "Fecha": "2025-09-14",
@@ -55620,7 +58391,8 @@ window.dashboardData = {
       "Banca Fijo": 14736.0,
       "Stake Compuesto": 15583116.79,
       "Beneficio Compuesto": 7012402.56,
-      "Banca Compuesto": 786168242.25
+      "Banca Compuesto": 786168242.25,
+      "league_id": 164
     },
     {
       "Fecha": "2025-09-14",
@@ -55638,7 +58410,8 @@ window.dashboardData = {
       "Banca Fijo": 14745.0,
       "Stake Compuesto": 15723364.84,
       "Beneficio Compuesto": 7075514.18,
-      "Banca Compuesto": 793243756.43
+      "Banca Compuesto": 793243756.43,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-14",
@@ -55656,7 +58429,8 @@ window.dashboardData = {
       "Banca Fijo": 14725.0,
       "Stake Compuesto": 15864875.13,
       "Beneficio Compuesto": -15864875.13,
-      "Banca Compuesto": 777378881.3
+      "Banca Compuesto": 777378881.3,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-14",
@@ -55674,7 +58448,8 @@ window.dashboardData = {
       "Banca Fijo": 14734.0,
       "Stake Compuesto": 15547577.63,
       "Beneficio Compuesto": 6996409.93,
-      "Banca Compuesto": 784375291.23
+      "Banca Compuesto": 784375291.23,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-14",
@@ -55692,7 +58467,8 @@ window.dashboardData = {
       "Banca Fijo": 14743.0,
       "Stake Compuesto": 15687505.82,
       "Beneficio Compuesto": 7059377.62,
-      "Banca Compuesto": 791434668.85
+      "Banca Compuesto": 791434668.85,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-14",
@@ -55710,7 +58486,8 @@ window.dashboardData = {
       "Banca Fijo": 14752.0,
       "Stake Compuesto": 15828693.38,
       "Beneficio Compuesto": 7122912.02,
-      "Banca Compuesto": 798557580.87
+      "Banca Compuesto": 798557580.87,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-14",
@@ -55728,7 +58505,8 @@ window.dashboardData = {
       "Banca Fijo": 14761.0,
       "Stake Compuesto": 15971151.62,
       "Beneficio Compuesto": 7187018.23,
-      "Banca Compuesto": 805744599.1
+      "Banca Compuesto": 805744599.1,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-14",
@@ -55746,7 +58524,8 @@ window.dashboardData = {
       "Banca Fijo": 14770.0,
       "Stake Compuesto": 16114891.98,
       "Beneficio Compuesto": 7251701.39,
-      "Banca Compuesto": 812996300.49
+      "Banca Compuesto": 812996300.49,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-09-14",
@@ -55764,7 +58543,8 @@ window.dashboardData = {
       "Banca Fijo": 14779.0,
       "Stake Compuesto": 16259926.01,
       "Beneficio Compuesto": 7316966.7,
-      "Banca Compuesto": 820313267.2
+      "Banca Compuesto": 820313267.2,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-09-15",
@@ -55782,7 +58562,8 @@ window.dashboardData = {
       "Banca Fijo": 14788.0,
       "Stake Compuesto": 16406265.34,
       "Beneficio Compuesto": 7382819.4,
-      "Banca Compuesto": 827696086.6
+      "Banca Compuesto": 827696086.6,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-15",
@@ -55800,7 +58581,8 @@ window.dashboardData = {
       "Banca Fijo": 14797.0,
       "Stake Compuesto": 16553921.73,
       "Beneficio Compuesto": 7449264.78,
-      "Banca Compuesto": 835145351.38
+      "Banca Compuesto": 835145351.38,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-15",
@@ -55818,7 +58600,8 @@ window.dashboardData = {
       "Banca Fijo": 14806.0,
       "Stake Compuesto": 16702907.03,
       "Beneficio Compuesto": 7516308.16,
-      "Banca Compuesto": 842661659.54
+      "Banca Compuesto": 842661659.54,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-17",
@@ -55836,7 +58619,8 @@ window.dashboardData = {
       "Banca Fijo": 14786.0,
       "Stake Compuesto": 16853233.19,
       "Beneficio Compuesto": -16853233.19,
-      "Banca Compuesto": 825808426.35
+      "Banca Compuesto": 825808426.35,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-17",
@@ -55854,7 +58638,8 @@ window.dashboardData = {
       "Banca Fijo": 14795.0,
       "Stake Compuesto": 16516168.53,
       "Beneficio Compuesto": 7432275.84,
-      "Banca Compuesto": 833240702.19
+      "Banca Compuesto": 833240702.19,
+      "league_id": 329
     },
     {
       "Fecha": "2025-09-18",
@@ -55872,7 +58657,8 @@ window.dashboardData = {
       "Banca Fijo": 14804.0,
       "Stake Compuesto": 16664814.04,
       "Beneficio Compuesto": 7499166.32,
-      "Banca Compuesto": 840739868.51
+      "Banca Compuesto": 840739868.51,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-18",
@@ -55890,7 +58676,8 @@ window.dashboardData = {
       "Banca Fijo": 14813.0,
       "Stake Compuesto": 16814797.37,
       "Beneficio Compuesto": 7566658.82,
-      "Banca Compuesto": 848306527.33
+      "Banca Compuesto": 848306527.33,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-18",
@@ -55908,7 +58695,8 @@ window.dashboardData = {
       "Banca Fijo": 14822.0,
       "Stake Compuesto": 16966130.55,
       "Beneficio Compuesto": 7634758.75,
-      "Banca Compuesto": 855941286.07
+      "Banca Compuesto": 855941286.07,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-19",
@@ -55926,7 +58714,8 @@ window.dashboardData = {
       "Banca Fijo": 14802.0,
       "Stake Compuesto": 17118825.72,
       "Beneficio Compuesto": -17118825.72,
-      "Banca Compuesto": 838822460.35
+      "Banca Compuesto": 838822460.35,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-19",
@@ -55944,7 +58733,8 @@ window.dashboardData = {
       "Banca Fijo": 14811.0,
       "Stake Compuesto": 16776449.21,
       "Beneficio Compuesto": 7549402.14,
-      "Banca Compuesto": 846371862.49
+      "Banca Compuesto": 846371862.49,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-19",
@@ -55962,7 +58752,8 @@ window.dashboardData = {
       "Banca Fijo": 14820.0,
       "Stake Compuesto": 16927437.25,
       "Beneficio Compuesto": 7617346.76,
-      "Banca Compuesto": 853989209.26
+      "Banca Compuesto": 853989209.26,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-09-20",
@@ -55980,7 +58771,8 @@ window.dashboardData = {
       "Banca Fijo": 14829.0,
       "Stake Compuesto": 17079784.19,
       "Beneficio Compuesto": 7685902.88,
-      "Banca Compuesto": 861675112.14
+      "Banca Compuesto": 861675112.14,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-20",
@@ -55998,7 +58790,8 @@ window.dashboardData = {
       "Banca Fijo": 14838.0,
       "Stake Compuesto": 17233502.24,
       "Beneficio Compuesto": 7755076.01,
-      "Banca Compuesto": 869430188.15
+      "Banca Compuesto": 869430188.15,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-20",
@@ -56016,7 +58809,8 @@ window.dashboardData = {
       "Banca Fijo": 14847.0,
       "Stake Compuesto": 17388603.76,
       "Beneficio Compuesto": 7824871.69,
-      "Banca Compuesto": 877255059.84
+      "Banca Compuesto": 877255059.84,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-20",
@@ -56034,7 +58828,8 @@ window.dashboardData = {
       "Banca Fijo": 14856.0,
       "Stake Compuesto": 17545101.2,
       "Beneficio Compuesto": 7895295.54,
-      "Banca Compuesto": 885150355.38
+      "Banca Compuesto": 885150355.38,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-20",
@@ -56052,7 +58847,8 @@ window.dashboardData = {
       "Banca Fijo": 14865.0,
       "Stake Compuesto": 17703007.11,
       "Beneficio Compuesto": 7966353.2,
-      "Banca Compuesto": 893116708.58
+      "Banca Compuesto": 893116708.58,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-20",
@@ -56070,7 +58866,8 @@ window.dashboardData = {
       "Banca Fijo": 14874.0,
       "Stake Compuesto": 17862334.17,
       "Beneficio Compuesto": 8038050.38,
-      "Banca Compuesto": 901154758.96
+      "Banca Compuesto": 901154758.96,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-20",
@@ -56088,7 +58885,8 @@ window.dashboardData = {
       "Banca Fijo": 14883.0,
       "Stake Compuesto": 18023095.18,
       "Beneficio Compuesto": 8110392.83,
-      "Banca Compuesto": 909265151.79
+      "Banca Compuesto": 909265151.79,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-20",
@@ -56106,7 +58904,8 @@ window.dashboardData = {
       "Banca Fijo": 14892.0,
       "Stake Compuesto": 18185303.04,
       "Beneficio Compuesto": 8183386.37,
-      "Banca Compuesto": 917448538.15
+      "Banca Compuesto": 917448538.15,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-20",
@@ -56124,7 +58923,8 @@ window.dashboardData = {
       "Banca Fijo": 14901.0,
       "Stake Compuesto": 18348970.76,
       "Beneficio Compuesto": 8257036.84,
-      "Banca Compuesto": 925705575.0
+      "Banca Compuesto": 925705575.0,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-21",
@@ -56142,7 +58942,8 @@ window.dashboardData = {
       "Banca Fijo": 14910.0,
       "Stake Compuesto": 18514111.5,
       "Beneficio Compuesto": 8331350.17,
-      "Banca Compuesto": 934036925.17
+      "Banca Compuesto": 934036925.17,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-21",
@@ -56160,7 +58961,8 @@ window.dashboardData = {
       "Banca Fijo": 14919.0,
       "Stake Compuesto": 18680738.5,
       "Beneficio Compuesto": 8406332.33,
-      "Banca Compuesto": 942443257.5
+      "Banca Compuesto": 942443257.5,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-21",
@@ -56178,7 +58980,8 @@ window.dashboardData = {
       "Banca Fijo": 14928.0,
       "Stake Compuesto": 18848865.15,
       "Beneficio Compuesto": 8481989.32,
-      "Banca Compuesto": 950925246.81
+      "Banca Compuesto": 950925246.81,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-21",
@@ -56196,7 +58999,8 @@ window.dashboardData = {
       "Banca Fijo": 14937.0,
       "Stake Compuesto": 19018504.94,
       "Beneficio Compuesto": 8558327.22,
-      "Banca Compuesto": 959483574.04
+      "Banca Compuesto": 959483574.04,
+      "league_id": 103
     },
     {
       "Fecha": "2025-09-21",
@@ -56214,7 +59018,8 @@ window.dashboardData = {
       "Banca Fijo": 14946.0,
       "Stake Compuesto": 19189671.48,
       "Beneficio Compuesto": 8635352.17,
-      "Banca Compuesto": 968118926.2
+      "Banca Compuesto": 968118926.2,
+      "league_id": 119
     },
     {
       "Fecha": "2025-09-21",
@@ -56232,7 +59037,8 @@ window.dashboardData = {
       "Banca Fijo": 14955.0,
       "Stake Compuesto": 19362378.52,
       "Beneficio Compuesto": 8713070.34,
-      "Banca Compuesto": 976831996.54
+      "Banca Compuesto": 976831996.54,
+      "league_id": 164
     },
     {
       "Fecha": "2025-09-21",
@@ -56250,7 +59056,8 @@ window.dashboardData = {
       "Banca Fijo": 14935.0,
       "Stake Compuesto": 19536639.93,
       "Beneficio Compuesto": -19536639.93,
-      "Banca Compuesto": 957295356.61
+      "Banca Compuesto": 957295356.61,
+      "league_id": 164
     },
     {
       "Fecha": "2025-09-21",
@@ -56268,7 +59075,8 @@ window.dashboardData = {
       "Banca Fijo": 14944.0,
       "Stake Compuesto": 19145907.13,
       "Beneficio Compuesto": 8615658.21,
-      "Banca Compuesto": 965911014.82
+      "Banca Compuesto": 965911014.82,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-21",
@@ -56286,7 +59094,8 @@ window.dashboardData = {
       "Banca Fijo": 14953.0,
       "Stake Compuesto": 19318220.3,
       "Beneficio Compuesto": 8693199.13,
-      "Banca Compuesto": 974604213.95
+      "Banca Compuesto": 974604213.95,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-21",
@@ -56304,7 +59113,8 @@ window.dashboardData = {
       "Banca Fijo": 14933.0,
       "Stake Compuesto": 19492084.28,
       "Beneficio Compuesto": -19492084.28,
-      "Banca Compuesto": 955112129.67
+      "Banca Compuesto": 955112129.67,
+      "league_id": 329
     },
     {
       "Fecha": "2025-09-21",
@@ -56322,7 +59132,8 @@ window.dashboardData = {
       "Banca Fijo": 14942.0,
       "Stake Compuesto": 19102242.59,
       "Beneficio Compuesto": 8596009.17,
-      "Banca Compuesto": 963708138.84
+      "Banca Compuesto": 963708138.84,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-21",
@@ -56340,7 +59151,8 @@ window.dashboardData = {
       "Banca Fijo": 14951.0,
       "Stake Compuesto": 19274162.78,
       "Beneficio Compuesto": 8673373.25,
-      "Banca Compuesto": 972381512.09
+      "Banca Compuesto": 972381512.09,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-22",
@@ -56358,7 +59170,8 @@ window.dashboardData = {
       "Banca Fijo": 14960.0,
       "Stake Compuesto": 19447630.24,
       "Beneficio Compuesto": 8751433.61,
-      "Banca Compuesto": 981132945.7
+      "Banca Compuesto": 981132945.7,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-22",
@@ -56376,7 +59189,8 @@ window.dashboardData = {
       "Banca Fijo": 14940.0,
       "Stake Compuesto": 19622658.91,
       "Beneficio Compuesto": -19622658.91,
-      "Banca Compuesto": 961510286.78
+      "Banca Compuesto": 961510286.78,
+      "league_id": 164
     },
     {
       "Fecha": "2025-09-22",
@@ -56394,7 +59208,8 @@ window.dashboardData = {
       "Banca Fijo": 14949.0,
       "Stake Compuesto": 19230205.74,
       "Beneficio Compuesto": 8653592.58,
-      "Banca Compuesto": 970163879.36
+      "Banca Compuesto": 970163879.36,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-22",
@@ -56412,7 +59227,8 @@ window.dashboardData = {
       "Banca Fijo": 14958.0,
       "Stake Compuesto": 19403277.59,
       "Beneficio Compuesto": 8731474.91,
-      "Banca Compuesto": 978895354.28
+      "Banca Compuesto": 978895354.28,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-22",
@@ -56430,7 +59246,8 @@ window.dashboardData = {
       "Banca Fijo": 14967.0,
       "Stake Compuesto": 19577907.09,
       "Beneficio Compuesto": 8810058.19,
-      "Banca Compuesto": 987705412.47
+      "Banca Compuesto": 987705412.47,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-22",
@@ -56448,7 +59265,8 @@ window.dashboardData = {
       "Banca Fijo": 14976.0,
       "Stake Compuesto": 19754108.25,
       "Beneficio Compuesto": 8889348.71,
-      "Banca Compuesto": 996594761.18
+      "Banca Compuesto": 996594761.18,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-24",
@@ -56466,7 +59284,8 @@ window.dashboardData = {
       "Banca Fijo": 14985.0,
       "Stake Compuesto": 19931895.22,
       "Beneficio Compuesto": 8969352.85,
-      "Banca Compuesto": 1005564114.03
+      "Banca Compuesto": 1005564114.03,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-24",
@@ -56484,7 +59303,8 @@ window.dashboardData = {
       "Banca Fijo": 14994.0,
       "Stake Compuesto": 20111282.28,
       "Beneficio Compuesto": 9050077.03,
-      "Banca Compuesto": 1014614191.06
+      "Banca Compuesto": 1014614191.06,
+      "league_id": 329
     },
     {
       "Fecha": "2025-09-26",
@@ -56502,7 +59322,8 @@ window.dashboardData = {
       "Banca Fijo": 15003.0,
       "Stake Compuesto": 20292283.82,
       "Beneficio Compuesto": 9131527.72,
-      "Banca Compuesto": 1023745718.77
+      "Banca Compuesto": 1023745718.77,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-26",
@@ -56520,7 +59341,8 @@ window.dashboardData = {
       "Banca Fijo": 15012.0,
       "Stake Compuesto": 20474914.38,
       "Beneficio Compuesto": 9213711.47,
-      "Banca Compuesto": 1032959430.24
+      "Banca Compuesto": 1032959430.24,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-26",
@@ -56538,7 +59360,8 @@ window.dashboardData = {
       "Banca Fijo": 15021.0,
       "Stake Compuesto": 20659188.6,
       "Beneficio Compuesto": 9296634.87,
-      "Banca Compuesto": 1042256065.12
+      "Banca Compuesto": 1042256065.12,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-26",
@@ -56556,7 +59379,8 @@ window.dashboardData = {
       "Banca Fijo": 15030.0,
       "Stake Compuesto": 20845121.3,
       "Beneficio Compuesto": 9380304.59,
-      "Banca Compuesto": 1051636369.7
+      "Banca Compuesto": 1051636369.7,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-26",
@@ -56574,7 +59398,8 @@ window.dashboardData = {
       "Banca Fijo": 15039.0,
       "Stake Compuesto": 21032727.39,
       "Beneficio Compuesto": 9464727.33,
-      "Banca Compuesto": 1061101097.03
+      "Banca Compuesto": 1061101097.03,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-27",
@@ -56592,7 +59417,8 @@ window.dashboardData = {
       "Banca Fijo": 15048.0,
       "Stake Compuesto": 21222021.94,
       "Beneficio Compuesto": 9549909.87,
-      "Banca Compuesto": 1070651006.9
+      "Banca Compuesto": 1070651006.9,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-27",
@@ -56610,7 +59436,8 @@ window.dashboardData = {
       "Banca Fijo": 15057.0,
       "Stake Compuesto": 21413020.14,
       "Beneficio Compuesto": 9635859.06,
-      "Banca Compuesto": 1080286865.96
+      "Banca Compuesto": 1080286865.96,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-27",
@@ -56628,7 +59455,8 @@ window.dashboardData = {
       "Banca Fijo": 15066.0,
       "Stake Compuesto": 21605737.32,
       "Beneficio Compuesto": 9722581.79,
-      "Banca Compuesto": 1090009447.76
+      "Banca Compuesto": 1090009447.76,
+      "league_id": 164
     },
     {
       "Fecha": "2025-09-27",
@@ -56646,7 +59474,8 @@ window.dashboardData = {
       "Banca Fijo": 15075.0,
       "Stake Compuesto": 21800188.96,
       "Beneficio Compuesto": 9810085.03,
-      "Banca Compuesto": 1099819532.79
+      "Banca Compuesto": 1099819532.79,
+      "league_id": 165
     },
     {
       "Fecha": "2025-09-27",
@@ -56664,7 +59493,8 @@ window.dashboardData = {
       "Banca Fijo": 15084.0,
       "Stake Compuesto": 21996390.66,
       "Beneficio Compuesto": 9898375.8,
-      "Banca Compuesto": 1109717908.58
+      "Banca Compuesto": 1109717908.58,
+      "league_id": 244
     },
     {
       "Fecha": "2025-09-27",
@@ -56682,7 +59512,8 @@ window.dashboardData = {
       "Banca Fijo": 15093.0,
       "Stake Compuesto": 22194358.17,
       "Beneficio Compuesto": 9987461.18,
-      "Banca Compuesto": 1119705369.76
+      "Banca Compuesto": 1119705369.76,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-27",
@@ -56700,7 +59531,8 @@ window.dashboardData = {
       "Banca Fijo": 15102.0,
       "Stake Compuesto": 22394107.4,
       "Beneficio Compuesto": 10077348.33,
-      "Banca Compuesto": 1129782718.09
+      "Banca Compuesto": 1129782718.09,
+      "league_id": 328
     },
     {
       "Fecha": "2025-09-27",
@@ -56718,7 +59550,8 @@ window.dashboardData = {
       "Banca Fijo": 15111.0,
       "Stake Compuesto": 22595654.36,
       "Beneficio Compuesto": 10168044.46,
-      "Banca Compuesto": 1139950762.55
+      "Banca Compuesto": 1139950762.55,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-27",
@@ -56736,7 +59569,8 @@ window.dashboardData = {
       "Banca Fijo": 15120.0,
       "Stake Compuesto": 22799015.25,
       "Beneficio Compuesto": 10259556.86,
-      "Banca Compuesto": 1150210319.41
+      "Banca Compuesto": 1150210319.41,
+      "league_id": 473
     },
     {
       "Fecha": "2025-09-27",
@@ -56754,7 +59588,8 @@ window.dashboardData = {
       "Banca Fijo": 15129.0,
       "Stake Compuesto": 23004206.39,
       "Beneficio Compuesto": 10351892.87,
-      "Banca Compuesto": 1160562212.29
+      "Banca Compuesto": 1160562212.29,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-27",
@@ -56772,7 +59607,8 @@ window.dashboardData = {
       "Banca Fijo": 15109.0,
       "Stake Compuesto": 23211244.25,
       "Beneficio Compuesto": -23211244.25,
-      "Banca Compuesto": 1137350968.04
+      "Banca Compuesto": 1137350968.04,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-27",
@@ -56790,7 +59626,8 @@ window.dashboardData = {
       "Banca Fijo": 15118.0,
       "Stake Compuesto": 22747019.36,
       "Beneficio Compuesto": 10236158.71,
-      "Banca Compuesto": 1147587126.76
+      "Banca Compuesto": 1147587126.76,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-27",
@@ -56808,7 +59645,8 @@ window.dashboardData = {
       "Banca Fijo": 15127.0,
       "Stake Compuesto": 22951742.54,
       "Beneficio Compuesto": 10328284.14,
-      "Banca Compuesto": 1157915410.9
+      "Banca Compuesto": 1157915410.9,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-27",
@@ -56826,7 +59664,8 @@ window.dashboardData = {
       "Banca Fijo": 15136.0,
       "Stake Compuesto": 23158308.22,
       "Beneficio Compuesto": 10421238.7,
-      "Banca Compuesto": 1168336649.59
+      "Banca Compuesto": 1168336649.59,
+      "league_id": 563
     },
     {
       "Fecha": "2025-09-27",
@@ -56844,7 +59683,8 @@ window.dashboardData = {
       "Banca Fijo": 15145.0,
       "Stake Compuesto": 23366732.99,
       "Beneficio Compuesto": 10515029.85,
-      "Banca Compuesto": 1178851679.44
+      "Banca Compuesto": 1178851679.44,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-27",
@@ -56862,7 +59702,8 @@ window.dashboardData = {
       "Banca Fijo": 15154.0,
       "Stake Compuesto": 23577033.59,
       "Beneficio Compuesto": 10609665.11,
-      "Banca Compuesto": 1189461344.56
+      "Banca Compuesto": 1189461344.56,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-09-27",
@@ -56880,7 +59721,8 @@ window.dashboardData = {
       "Banca Fijo": 15163.0,
       "Stake Compuesto": 23789226.89,
       "Beneficio Compuesto": 10705152.1,
-      "Banca Compuesto": 1200166496.66
+      "Banca Compuesto": 1200166496.66,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-09-28",
@@ -56898,7 +59740,8 @@ window.dashboardData = {
       "Banca Fijo": 15172.0,
       "Stake Compuesto": 24003329.93,
       "Beneficio Compuesto": 10801498.47,
-      "Banca Compuesto": 1210967995.13
+      "Banca Compuesto": 1210967995.13,
+      "league_id": 88
     },
     {
       "Fecha": "2025-09-28",
@@ -56916,7 +59759,8 @@ window.dashboardData = {
       "Banca Fijo": 15181.0,
       "Stake Compuesto": 24219359.9,
       "Beneficio Compuesto": 10898711.96,
-      "Banca Compuesto": 1221866707.08
+      "Banca Compuesto": 1221866707.08,
+      "league_id": 119
     },
     {
       "Fecha": "2025-09-28",
@@ -56934,7 +59778,8 @@ window.dashboardData = {
       "Banca Fijo": 15190.0,
       "Stake Compuesto": 24437334.14,
       "Beneficio Compuesto": 10996800.36,
-      "Banca Compuesto": 1232863507.45
+      "Banca Compuesto": 1232863507.45,
+      "league_id": 164
     },
     {
       "Fecha": "2025-09-28",
@@ -56952,7 +59797,8 @@ window.dashboardData = {
       "Banca Fijo": 15199.0,
       "Stake Compuesto": 24657270.15,
       "Beneficio Compuesto": 11095771.57,
-      "Banca Compuesto": 1243959279.01
+      "Banca Compuesto": 1243959279.01,
+      "league_id": 245
     },
     {
       "Fecha": "2025-09-28",
@@ -56970,7 +59816,8 @@ window.dashboardData = {
       "Banca Fijo": 15208.0,
       "Stake Compuesto": 24879185.58,
       "Beneficio Compuesto": 11195633.51,
-      "Banca Compuesto": 1255154912.52
+      "Banca Compuesto": 1255154912.52,
+      "league_id": 329
     },
     {
       "Fecha": "2025-09-28",
@@ -56988,7 +59835,8 @@ window.dashboardData = {
       "Banca Fijo": 15217.0,
       "Stake Compuesto": 25103098.25,
       "Beneficio Compuesto": 11296394.21,
-      "Banca Compuesto": 1266451306.74
+      "Banca Compuesto": 1266451306.74,
+      "league_id": 329
     },
     {
       "Fecha": "2025-09-28",
@@ -57006,7 +59854,8 @@ window.dashboardData = {
       "Banca Fijo": 15226.0,
       "Stake Compuesto": 25329026.13,
       "Beneficio Compuesto": 11398061.76,
-      "Banca Compuesto": 1277849368.5
+      "Banca Compuesto": 1277849368.5,
+      "league_id": 474
     },
     {
       "Fecha": "2025-09-28",
@@ -57024,7 +59873,8 @@ window.dashboardData = {
       "Banca Fijo": 15235.0,
       "Stake Compuesto": 25556987.37,
       "Beneficio Compuesto": 11500644.32,
-      "Banca Compuesto": 1289350012.81
+      "Banca Compuesto": 1289350012.81,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-28",
@@ -57042,7 +59892,8 @@ window.dashboardData = {
       "Banca Fijo": 15244.0,
       "Stake Compuesto": 25787000.26,
       "Beneficio Compuesto": 11604150.12,
-      "Banca Compuesto": 1300954162.93
+      "Banca Compuesto": 1300954162.93,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-28",
@@ -57060,7 +59911,8 @@ window.dashboardData = {
       "Banca Fijo": 15253.0,
       "Stake Compuesto": 26019083.26,
       "Beneficio Compuesto": 11708587.47,
-      "Banca Compuesto": 1312662750.4
+      "Banca Compuesto": 1312662750.4,
+      "league_id": 909
     },
     {
       "Fecha": "2025-09-29",
@@ -57078,7 +59930,8 @@ window.dashboardData = {
       "Banca Fijo": 15262.0,
       "Stake Compuesto": 26253255.01,
       "Beneficio Compuesto": 11813964.75,
-      "Banca Compuesto": 1324476715.15
+      "Banca Compuesto": 1324476715.15,
+      "league_id": 89
     },
     {
       "Fecha": "2025-09-29",
@@ -57096,7 +59949,8 @@ window.dashboardData = {
       "Banca Fijo": 15271.0,
       "Stake Compuesto": 26489534.3,
       "Beneficio Compuesto": 11920290.44,
-      "Banca Compuesto": 1336397005.59
+      "Banca Compuesto": 1336397005.59,
+      "league_id": 104
     },
     {
       "Fecha": "2025-09-29",
@@ -57114,7 +59968,8 @@ window.dashboardData = {
       "Banca Fijo": 15280.0,
       "Stake Compuesto": 26727940.11,
       "Beneficio Compuesto": 12027573.05,
-      "Banca Compuesto": 1348424578.64
+      "Banca Compuesto": 1348424578.64,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-02",
@@ -57132,7 +59987,8 @@ window.dashboardData = {
       "Banca Fijo": 15289.0,
       "Stake Compuesto": 26968491.57,
       "Beneficio Compuesto": 12135821.21,
-      "Banca Compuesto": 1360560399.84
+      "Banca Compuesto": 1360560399.84,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-03",
@@ -57150,7 +60006,8 @@ window.dashboardData = {
       "Banca Fijo": 15298.0,
       "Stake Compuesto": 27211208.0,
       "Beneficio Compuesto": 12245043.6,
-      "Banca Compuesto": 1372805443.44
+      "Banca Compuesto": 1372805443.44,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-03",
@@ -57168,7 +60025,8 @@ window.dashboardData = {
       "Banca Fijo": 15307.0,
       "Stake Compuesto": 27456108.87,
       "Beneficio Compuesto": 12355248.99,
-      "Banca Compuesto": 1385160692.43
+      "Banca Compuesto": 1385160692.43,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-03",
@@ -57186,7 +60044,8 @@ window.dashboardData = {
       "Banca Fijo": 15316.0,
       "Stake Compuesto": 27703213.85,
       "Beneficio Compuesto": 12466446.23,
-      "Banca Compuesto": 1397627138.67
+      "Banca Compuesto": 1397627138.67,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-03",
@@ -57204,7 +60063,8 @@ window.dashboardData = {
       "Banca Fijo": 15325.0,
       "Stake Compuesto": 27952542.77,
       "Beneficio Compuesto": 12578644.25,
-      "Banca Compuesto": 1410205782.91
+      "Banca Compuesto": 1410205782.91,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-03",
@@ -57222,7 +60082,8 @@ window.dashboardData = {
       "Banca Fijo": 15334.0,
       "Stake Compuesto": 28204115.66,
       "Beneficio Compuesto": 12691852.05,
-      "Banca Compuesto": 1422897634.96
+      "Banca Compuesto": 1422897634.96,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-03",
@@ -57240,7 +60101,8 @@ window.dashboardData = {
       "Banca Fijo": 15343.0,
       "Stake Compuesto": 28457952.7,
       "Beneficio Compuesto": 12806078.71,
-      "Banca Compuesto": 1435703713.67
+      "Banca Compuesto": 1435703713.67,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-03",
@@ -57258,7 +60120,8 @@ window.dashboardData = {
       "Banca Fijo": 15323.0,
       "Stake Compuesto": 28714074.27,
       "Beneficio Compuesto": -28714074.27,
-      "Banca Compuesto": 1406989639.4
+      "Banca Compuesto": 1406989639.4,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-10-04",
@@ -57276,7 +60139,8 @@ window.dashboardData = {
       "Banca Fijo": 15332.0,
       "Stake Compuesto": 28139792.79,
       "Beneficio Compuesto": 12662906.75,
-      "Banca Compuesto": 1419652546.16
+      "Banca Compuesto": 1419652546.16,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-04",
@@ -57294,7 +60158,8 @@ window.dashboardData = {
       "Banca Fijo": 15312.0,
       "Stake Compuesto": 28393050.92,
       "Beneficio Compuesto": -28393050.92,
-      "Banca Compuesto": 1391259495.23
+      "Banca Compuesto": 1391259495.23,
+      "league_id": 103
     },
     {
       "Fecha": "2025-10-04",
@@ -57312,7 +60177,8 @@ window.dashboardData = {
       "Banca Fijo": 15321.0,
       "Stake Compuesto": 27825189.9,
       "Beneficio Compuesto": 12521335.46,
-      "Banca Compuesto": 1403780830.69
+      "Banca Compuesto": 1403780830.69,
+      "league_id": 164
     },
     {
       "Fecha": "2025-10-04",
@@ -57330,7 +60196,8 @@ window.dashboardData = {
       "Banca Fijo": 15330.0,
       "Stake Compuesto": 28075616.61,
       "Beneficio Compuesto": 12634027.48,
-      "Banca Compuesto": 1416414858.17
+      "Banca Compuesto": 1416414858.17,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-04",
@@ -57348,7 +60215,8 @@ window.dashboardData = {
       "Banca Fijo": 15339.0,
       "Stake Compuesto": 28328297.16,
       "Beneficio Compuesto": 12747733.72,
-      "Banca Compuesto": 1429162591.89
+      "Banca Compuesto": 1429162591.89,
+      "league_id": 245
     },
     {
       "Fecha": "2025-10-04",
@@ -57366,7 +60234,8 @@ window.dashboardData = {
       "Banca Fijo": 15319.0,
       "Stake Compuesto": 28583251.84,
       "Beneficio Compuesto": -28583251.84,
-      "Banca Compuesto": 1400579340.05
+      "Banca Compuesto": 1400579340.05,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-04",
@@ -57384,7 +60253,8 @@ window.dashboardData = {
       "Banca Fijo": 15328.0,
       "Stake Compuesto": 28011586.8,
       "Beneficio Compuesto": 12605214.06,
-      "Banca Compuesto": 1413184554.11
+      "Banca Compuesto": 1413184554.11,
+      "league_id": 329
     },
     {
       "Fecha": "2025-10-04",
@@ -57402,7 +60272,8 @@ window.dashboardData = {
       "Banca Fijo": 15337.0,
       "Stake Compuesto": 28263691.08,
       "Beneficio Compuesto": 12718660.99,
-      "Banca Compuesto": 1425903215.1
+      "Banca Compuesto": 1425903215.1,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-04",
@@ -57420,7 +60291,8 @@ window.dashboardData = {
       "Banca Fijo": 15346.0,
       "Stake Compuesto": 28518064.3,
       "Beneficio Compuesto": 12833128.94,
-      "Banca Compuesto": 1438736344.04
+      "Banca Compuesto": 1438736344.04,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-04",
@@ -57438,7 +60310,8 @@ window.dashboardData = {
       "Banca Fijo": 15326.0,
       "Stake Compuesto": 28774726.88,
       "Beneficio Compuesto": -28774726.88,
-      "Banca Compuesto": 1409961617.15
+      "Banca Compuesto": 1409961617.15,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-04",
@@ -57456,7 +60329,8 @@ window.dashboardData = {
       "Banca Fijo": 15306.0,
       "Stake Compuesto": 28199232.34,
       "Beneficio Compuesto": -28199232.34,
-      "Banca Compuesto": 1381762384.81
+      "Banca Compuesto": 1381762384.81,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-10-05",
@@ -57474,7 +60348,8 @@ window.dashboardData = {
       "Banca Fijo": 15315.0,
       "Stake Compuesto": 27635247.7,
       "Beneficio Compuesto": 12435861.46,
-      "Banca Compuesto": 1394198246.27
+      "Banca Compuesto": 1394198246.27,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-05",
@@ -57492,7 +60367,8 @@ window.dashboardData = {
       "Banca Fijo": 15324.0,
       "Stake Compuesto": 27883964.93,
       "Beneficio Compuesto": 12547784.22,
-      "Banca Compuesto": 1406746030.49
+      "Banca Compuesto": 1406746030.49,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-05",
@@ -57510,7 +60386,8 @@ window.dashboardData = {
       "Banca Fijo": 15333.0,
       "Stake Compuesto": 28134920.61,
       "Beneficio Compuesto": 12660714.27,
-      "Banca Compuesto": 1419406744.77
+      "Banca Compuesto": 1419406744.77,
+      "league_id": 103
     },
     {
       "Fecha": "2025-10-05",
@@ -57528,7 +60405,8 @@ window.dashboardData = {
       "Banca Fijo": 15342.0,
       "Stake Compuesto": 28388134.9,
       "Beneficio Compuesto": 12774660.7,
-      "Banca Compuesto": 1432181405.47
+      "Banca Compuesto": 1432181405.47,
+      "league_id": 119
     },
     {
       "Fecha": "2025-10-05",
@@ -57546,7 +60424,8 @@ window.dashboardData = {
       "Banca Fijo": 15351.0,
       "Stake Compuesto": 28643628.11,
       "Beneficio Compuesto": 12889632.65,
-      "Banca Compuesto": 1445071038.12
+      "Banca Compuesto": 1445071038.12,
+      "league_id": 164
     },
     {
       "Fecha": "2025-10-05",
@@ -57564,7 +60443,8 @@ window.dashboardData = {
       "Banca Fijo": 15360.0,
       "Stake Compuesto": 28901420.76,
       "Beneficio Compuesto": 13005639.34,
-      "Banca Compuesto": 1458076677.46
+      "Banca Compuesto": 1458076677.46,
+      "league_id": 245
     },
     {
       "Fecha": "2025-10-05",
@@ -57582,7 +60462,8 @@ window.dashboardData = {
       "Banca Fijo": 15369.0,
       "Stake Compuesto": 29161533.55,
       "Beneficio Compuesto": 13122690.1,
-      "Banca Compuesto": 1471199367.56
+      "Banca Compuesto": 1471199367.56,
+      "league_id": 329
     },
     {
       "Fecha": "2025-10-05",
@@ -57600,7 +60481,8 @@ window.dashboardData = {
       "Banca Fijo": 15378.0,
       "Stake Compuesto": 29423987.35,
       "Beneficio Compuesto": 13240794.31,
-      "Banca Compuesto": 1484440161.87
+      "Banca Compuesto": 1484440161.87,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-05",
@@ -57618,7 +60500,8 @@ window.dashboardData = {
       "Banca Fijo": 15387.0,
       "Stake Compuesto": 29688803.24,
       "Beneficio Compuesto": 13359961.46,
-      "Banca Compuesto": 1497800123.32
+      "Banca Compuesto": 1497800123.32,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-05",
@@ -57636,7 +60519,8 @@ window.dashboardData = {
       "Banca Fijo": 15396.0,
       "Stake Compuesto": 29956002.47,
       "Beneficio Compuesto": 13480201.11,
-      "Banca Compuesto": 1511280324.43
+      "Banca Compuesto": 1511280324.43,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-05",
@@ -57654,7 +60538,8 @@ window.dashboardData = {
       "Banca Fijo": 15405.0,
       "Stake Compuesto": 30225606.49,
       "Beneficio Compuesto": 13601522.92,
-      "Banca Compuesto": 1524881847.35
+      "Banca Compuesto": 1524881847.35,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-05",
@@ -57672,7 +60557,8 @@ window.dashboardData = {
       "Banca Fijo": 15414.0,
       "Stake Compuesto": 30497636.95,
       "Beneficio Compuesto": 13723936.63,
-      "Banca Compuesto": 1538605783.98
+      "Banca Compuesto": 1538605783.98,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-05",
@@ -57690,7 +60576,8 @@ window.dashboardData = {
       "Banca Fijo": 15423.0,
       "Stake Compuesto": 30772115.68,
       "Beneficio Compuesto": 13847452.06,
-      "Banca Compuesto": 1552453236.03
+      "Banca Compuesto": 1552453236.03,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-05",
@@ -57708,7 +60595,8 @@ window.dashboardData = {
       "Banca Fijo": 15432.0,
       "Stake Compuesto": 31049064.72,
       "Beneficio Compuesto": 13972079.12,
-      "Banca Compuesto": 1566425315.16
+      "Banca Compuesto": 1566425315.16,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-06",
@@ -57726,7 +60614,8 @@ window.dashboardData = {
       "Banca Fijo": 15441.0,
       "Stake Compuesto": 31328506.3,
       "Beneficio Compuesto": 14097827.84,
-      "Banca Compuesto": 1580523143.0
+      "Banca Compuesto": 1580523143.0,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-08",
@@ -57744,7 +60633,8 @@ window.dashboardData = {
       "Banca Fijo": 15450.0,
       "Stake Compuesto": 31610462.86,
       "Beneficio Compuesto": 14224708.29,
-      "Banca Compuesto": 1594747851.28
+      "Banca Compuesto": 1594747851.28,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-11",
@@ -57762,7 +60652,8 @@ window.dashboardData = {
       "Banca Fijo": 15459.0,
       "Stake Compuesto": 31894957.03,
       "Beneficio Compuesto": 14352730.66,
-      "Banca Compuesto": 1609100581.94
+      "Banca Compuesto": 1609100581.94,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-11",
@@ -57780,7 +60671,8 @@ window.dashboardData = {
       "Banca Fijo": 15468.0,
       "Stake Compuesto": 32182011.64,
       "Beneficio Compuesto": 14481905.24,
-      "Banca Compuesto": 1623582487.18
+      "Banca Compuesto": 1623582487.18,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-11",
@@ -57798,7 +60690,8 @@ window.dashboardData = {
       "Banca Fijo": 15477.0,
       "Stake Compuesto": 32471649.74,
       "Beneficio Compuesto": 14612242.38,
-      "Banca Compuesto": 1638194729.57
+      "Banca Compuesto": 1638194729.57,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-11",
@@ -57816,7 +60709,8 @@ window.dashboardData = {
       "Banca Fijo": 15486.0,
       "Stake Compuesto": 32763894.59,
       "Beneficio Compuesto": 14743752.57,
-      "Banca Compuesto": 1652938482.13
+      "Banca Compuesto": 1652938482.13,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-11",
@@ -57834,7 +60728,8 @@ window.dashboardData = {
       "Banca Fijo": 15466.0,
       "Stake Compuesto": 33058769.64,
       "Beneficio Compuesto": -33058769.64,
-      "Banca Compuesto": 1619879712.49
+      "Banca Compuesto": 1619879712.49,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-11",
@@ -57852,7 +60747,8 @@ window.dashboardData = {
       "Banca Fijo": 15475.0,
       "Stake Compuesto": 32397594.25,
       "Beneficio Compuesto": 14578917.41,
-      "Banca Compuesto": 1634458629.9
+      "Banca Compuesto": 1634458629.9,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-12",
@@ -57870,7 +60766,8 @@ window.dashboardData = {
       "Banca Fijo": 15484.0,
       "Stake Compuesto": 32689172.6,
       "Beneficio Compuesto": 14710127.67,
-      "Banca Compuesto": 1649168757.57
+      "Banca Compuesto": 1649168757.57,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-12",
@@ -57888,7 +60785,8 @@ window.dashboardData = {
       "Banca Fijo": 15493.0,
       "Stake Compuesto": 32983375.15,
       "Beneficio Compuesto": 14842518.82,
-      "Banca Compuesto": 1664011276.39
+      "Banca Compuesto": 1664011276.39,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-12",
@@ -57906,7 +60804,8 @@ window.dashboardData = {
       "Banca Fijo": 15502.0,
       "Stake Compuesto": 33280225.53,
       "Beneficio Compuesto": 14976101.49,
-      "Banca Compuesto": 1678987377.88
+      "Banca Compuesto": 1678987377.88,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-18",
@@ -57924,7 +60823,8 @@ window.dashboardData = {
       "Banca Fijo": 15511.0,
       "Stake Compuesto": 33579747.56,
       "Beneficio Compuesto": 15110886.4,
-      "Banca Compuesto": 1694098264.28
+      "Banca Compuesto": 1694098264.28,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-18",
@@ -57942,7 +60842,8 @@ window.dashboardData = {
       "Banca Fijo": 15520.0,
       "Stake Compuesto": 33881965.29,
       "Beneficio Compuesto": 15246884.38,
-      "Banca Compuesto": 1709345148.66
+      "Banca Compuesto": 1709345148.66,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-18",
@@ -57960,7 +60861,8 @@ window.dashboardData = {
       "Banca Fijo": 15529.0,
       "Stake Compuesto": 34186902.97,
       "Beneficio Compuesto": 15384106.34,
-      "Banca Compuesto": 1724729254.99
+      "Banca Compuesto": 1724729254.99,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-18",
@@ -57978,7 +60880,8 @@ window.dashboardData = {
       "Banca Fijo": 15538.0,
       "Stake Compuesto": 34494585.1,
       "Beneficio Compuesto": 15522563.29,
-      "Banca Compuesto": 1740251818.29
+      "Banca Compuesto": 1740251818.29,
+      "league_id": 103
     },
     {
       "Fecha": "2025-10-18",
@@ -57996,7 +60899,8 @@ window.dashboardData = {
       "Banca Fijo": 15547.0,
       "Stake Compuesto": 34805036.37,
       "Beneficio Compuesto": 15662266.36,
-      "Banca Compuesto": 1755914084.65
+      "Banca Compuesto": 1755914084.65,
+      "league_id": 329
     },
     {
       "Fecha": "2025-10-18",
@@ -58014,7 +60918,8 @@ window.dashboardData = {
       "Banca Fijo": 15556.0,
       "Stake Compuesto": 35118281.69,
       "Beneficio Compuesto": 15803226.76,
-      "Banca Compuesto": 1771717311.41
+      "Banca Compuesto": 1771717311.41,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-18",
@@ -58032,7 +60937,8 @@ window.dashboardData = {
       "Banca Fijo": 15565.0,
       "Stake Compuesto": 35434346.23,
       "Beneficio Compuesto": 15945455.8,
-      "Banca Compuesto": 1787662767.22
+      "Banca Compuesto": 1787662767.22,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-18",
@@ -58050,7 +60956,8 @@ window.dashboardData = {
       "Banca Fijo": 15574.0,
       "Stake Compuesto": 35753255.34,
       "Beneficio Compuesto": 16088964.9,
-      "Banca Compuesto": 1803751732.12
+      "Banca Compuesto": 1803751732.12,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-10-19",
@@ -58068,7 +60975,8 @@ window.dashboardData = {
       "Banca Fijo": 15583.0,
       "Stake Compuesto": 36075034.64,
       "Beneficio Compuesto": 16233765.59,
-      "Banca Compuesto": 1819985497.71
+      "Banca Compuesto": 1819985497.71,
+      "league_id": 119
     },
     {
       "Fecha": "2025-10-19",
@@ -58086,7 +60994,8 @@ window.dashboardData = {
       "Banca Fijo": 15592.0,
       "Stake Compuesto": 36399709.95,
       "Beneficio Compuesto": 16379869.48,
-      "Banca Compuesto": 1836365367.19
+      "Banca Compuesto": 1836365367.19,
+      "league_id": 164
     },
     {
       "Fecha": "2025-10-19",
@@ -58104,7 +61013,8 @@ window.dashboardData = {
       "Banca Fijo": 15601.0,
       "Stake Compuesto": 36727307.34,
       "Beneficio Compuesto": 16527288.3,
-      "Banca Compuesto": 1852892655.5
+      "Banca Compuesto": 1852892655.5,
+      "league_id": 245
     },
     {
       "Fecha": "2025-10-19",
@@ -58122,7 +61032,8 @@ window.dashboardData = {
       "Banca Fijo": 15610.0,
       "Stake Compuesto": 37057853.11,
       "Beneficio Compuesto": 16676033.9,
-      "Banca Compuesto": 1869568689.4
+      "Banca Compuesto": 1869568689.4,
+      "league_id": 245
     },
     {
       "Fecha": "2025-10-19",
@@ -58140,7 +61051,8 @@ window.dashboardData = {
       "Banca Fijo": 15619.0,
       "Stake Compuesto": 37391373.79,
       "Beneficio Compuesto": 16826118.2,
-      "Banca Compuesto": 1886394807.6
+      "Banca Compuesto": 1886394807.6,
+      "league_id": 245
     },
     {
       "Fecha": "2025-10-19",
@@ -58158,7 +61070,8 @@ window.dashboardData = {
       "Banca Fijo": 15628.0,
       "Stake Compuesto": 37727896.15,
       "Beneficio Compuesto": 16977553.27,
-      "Banca Compuesto": 1903372360.87
+      "Banca Compuesto": 1903372360.87,
+      "league_id": 245
     },
     {
       "Fecha": "2025-10-19",
@@ -58176,7 +61089,8 @@ window.dashboardData = {
       "Banca Fijo": 15608.0,
       "Stake Compuesto": 38067447.22,
       "Beneficio Compuesto": -38067447.22,
-      "Banca Compuesto": 1865304913.65
+      "Banca Compuesto": 1865304913.65,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-19",
@@ -58194,7 +61108,8 @@ window.dashboardData = {
       "Banca Fijo": 15617.0,
       "Stake Compuesto": 37306098.27,
       "Beneficio Compuesto": 16787744.22,
-      "Banca Compuesto": 1882092657.87
+      "Banca Compuesto": 1882092657.87,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-19",
@@ -58212,7 +61127,8 @@ window.dashboardData = {
       "Banca Fijo": 15626.0,
       "Stake Compuesto": 37641853.16,
       "Beneficio Compuesto": 16938833.92,
-      "Banca Compuesto": 1899031491.79
+      "Banca Compuesto": 1899031491.79,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-19",
@@ -58230,7 +61146,8 @@ window.dashboardData = {
       "Banca Fijo": 15635.0,
       "Stake Compuesto": 37980629.84,
       "Beneficio Compuesto": 17091283.43,
-      "Banca Compuesto": 1916122775.22
+      "Banca Compuesto": 1916122775.22,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-19",
@@ -58248,7 +61165,8 @@ window.dashboardData = {
       "Banca Fijo": 15644.0,
       "Stake Compuesto": 38322455.5,
       "Beneficio Compuesto": 17245104.98,
-      "Banca Compuesto": 1933367880.2
+      "Banca Compuesto": 1933367880.2,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-19",
@@ -58266,7 +61184,8 @@ window.dashboardData = {
       "Banca Fijo": 15653.0,
       "Stake Compuesto": 38667357.6,
       "Beneficio Compuesto": 17400310.92,
-      "Banca Compuesto": 1950768191.12
+      "Banca Compuesto": 1950768191.12,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-20",
@@ -58284,7 +61203,8 @@ window.dashboardData = {
       "Banca Fijo": 15633.0,
       "Stake Compuesto": 39015363.82,
       "Beneficio Compuesto": -39015363.82,
-      "Banca Compuesto": 1911752827.3
+      "Banca Compuesto": 1911752827.3,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-20",
@@ -58302,7 +61222,8 @@ window.dashboardData = {
       "Banca Fijo": 15642.0,
       "Stake Compuesto": 38235056.55,
       "Beneficio Compuesto": 17205775.45,
-      "Banca Compuesto": 1928958602.74
+      "Banca Compuesto": 1928958602.74,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-20",
@@ -58320,7 +61241,8 @@ window.dashboardData = {
       "Banca Fijo": 15651.0,
       "Stake Compuesto": 38579172.05,
       "Beneficio Compuesto": 17360627.42,
-      "Banca Compuesto": 1946319230.17
+      "Banca Compuesto": 1946319230.17,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-20",
@@ -58338,7 +61260,8 @@ window.dashboardData = {
       "Banca Fijo": 15660.0,
       "Stake Compuesto": 38926384.6,
       "Beneficio Compuesto": 17516873.07,
-      "Banca Compuesto": 1963836103.24
+      "Banca Compuesto": 1963836103.24,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-21",
@@ -58356,7 +61279,8 @@ window.dashboardData = {
       "Banca Fijo": 15640.0,
       "Stake Compuesto": 39276722.06,
       "Beneficio Compuesto": -39276722.06,
-      "Banca Compuesto": 1924559381.17
+      "Banca Compuesto": 1924559381.17,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-22",
@@ -58374,7 +61298,8 @@ window.dashboardData = {
       "Banca Fijo": 15649.0,
       "Stake Compuesto": 38491187.62,
       "Beneficio Compuesto": 17321034.43,
-      "Banca Compuesto": 1941880415.6
+      "Banca Compuesto": 1941880415.6,
+      "league_id": 104
     },
     {
       "Fecha": "2025-10-22",
@@ -58392,7 +61317,8 @@ window.dashboardData = {
       "Banca Fijo": 15658.0,
       "Stake Compuesto": 38837608.31,
       "Beneficio Compuesto": 17476923.74,
-      "Banca Compuesto": 1959357339.35
+      "Banca Compuesto": 1959357339.35,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-22",
@@ -58410,7 +61336,8 @@ window.dashboardData = {
       "Banca Fijo": 15667.0,
       "Stake Compuesto": 39187146.79,
       "Beneficio Compuesto": 17634216.05,
-      "Banca Compuesto": 1976991555.4
+      "Banca Compuesto": 1976991555.4,
+      "league_id": 329
     },
     {
       "Fecha": "2025-10-23",
@@ -58428,7 +61355,8 @@ window.dashboardData = {
       "Banca Fijo": 15647.0,
       "Stake Compuesto": 39539831.11,
       "Beneficio Compuesto": -39539831.11,
-      "Banca Compuesto": 1937451724.29
+      "Banca Compuesto": 1937451724.29,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-23",
@@ -58446,7 +61374,8 @@ window.dashboardData = {
       "Banca Fijo": 15656.0,
       "Stake Compuesto": 38749034.49,
       "Beneficio Compuesto": 17437065.52,
-      "Banca Compuesto": 1954888789.81
+      "Banca Compuesto": 1954888789.81,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-23",
@@ -58464,7 +61393,8 @@ window.dashboardData = {
       "Banca Fijo": 15665.0,
       "Stake Compuesto": 39097775.8,
       "Beneficio Compuesto": 17593999.11,
-      "Banca Compuesto": 1972482788.92
+      "Banca Compuesto": 1972482788.92,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-23",
@@ -58482,7 +61412,8 @@ window.dashboardData = {
       "Banca Fijo": 15674.0,
       "Stake Compuesto": 39449655.78,
       "Beneficio Compuesto": 17752345.1,
-      "Banca Compuesto": 1990235134.02
+      "Banca Compuesto": 1990235134.02,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-23",
@@ -58500,7 +61431,8 @@ window.dashboardData = {
       "Banca Fijo": 15683.0,
       "Stake Compuesto": 39804702.68,
       "Beneficio Compuesto": 17912116.21,
-      "Banca Compuesto": 2008147250.22
+      "Banca Compuesto": 2008147250.22,
+      "league_id": 1087
     },
     {
       "Fecha": "2025-10-24",
@@ -58518,7 +61450,8 @@ window.dashboardData = {
       "Banca Fijo": 15663.0,
       "Stake Compuesto": 40162945.0,
       "Beneficio Compuesto": -40162945.0,
-      "Banca Compuesto": 1967984305.22
+      "Banca Compuesto": 1967984305.22,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-24",
@@ -58536,7 +61469,8 @@ window.dashboardData = {
       "Banca Fijo": 15672.0,
       "Stake Compuesto": 39359686.1,
       "Beneficio Compuesto": 17711858.75,
-      "Banca Compuesto": 1985696163.97
+      "Banca Compuesto": 1985696163.97,
+      "league_id": 89
     },
     {
       "Fecha": "2025-10-25",
@@ -58554,7 +61488,8 @@ window.dashboardData = {
       "Banca Fijo": 15681.0,
       "Stake Compuesto": 39713923.28,
       "Beneficio Compuesto": 17871265.48,
-      "Banca Compuesto": 2003567429.44
+      "Banca Compuesto": 2003567429.44,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-25",
@@ -58572,7 +61507,8 @@ window.dashboardData = {
       "Banca Fijo": 15690.0,
       "Stake Compuesto": 40071348.59,
       "Beneficio Compuesto": 18032106.86,
-      "Banca Compuesto": 2021599536.31
+      "Banca Compuesto": 2021599536.31,
+      "league_id": 164
     },
     {
       "Fecha": "2025-10-25",
@@ -58590,7 +61526,8 @@ window.dashboardData = {
       "Banca Fijo": 15699.0,
       "Stake Compuesto": 40431990.73,
       "Beneficio Compuesto": 18194395.83,
-      "Banca Compuesto": 2039793932.13
+      "Banca Compuesto": 2039793932.13,
+      "league_id": 164
     },
     {
       "Fecha": "2025-10-25",
@@ -58608,7 +61545,8 @@ window.dashboardData = {
       "Banca Fijo": 15708.0,
       "Stake Compuesto": 40795878.64,
       "Beneficio Compuesto": 18358145.39,
-      "Banca Compuesto": 2058152077.52
+      "Banca Compuesto": 2058152077.52,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-25",
@@ -58626,7 +61564,8 @@ window.dashboardData = {
       "Banca Fijo": 15717.0,
       "Stake Compuesto": 41163041.55,
       "Beneficio Compuesto": 18523368.7,
-      "Banca Compuesto": 2076675446.22
+      "Banca Compuesto": 2076675446.22,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-25",
@@ -58644,7 +61583,8 @@ window.dashboardData = {
       "Banca Fijo": 15726.0,
       "Stake Compuesto": 41533508.92,
       "Beneficio Compuesto": 18690079.02,
-      "Banca Compuesto": 2095365525.24
+      "Banca Compuesto": 2095365525.24,
+      "league_id": 473
     },
     {
       "Fecha": "2025-10-25",
@@ -58662,7 +61602,8 @@ window.dashboardData = {
       "Banca Fijo": 15735.0,
       "Stake Compuesto": 41907310.5,
       "Beneficio Compuesto": 18858289.73,
-      "Banca Compuesto": 2114223814.96
+      "Banca Compuesto": 2114223814.96,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-25",
@@ -58680,7 +61621,8 @@ window.dashboardData = {
       "Banca Fijo": 15744.0,
       "Stake Compuesto": 42284476.3,
       "Beneficio Compuesto": 19028014.33,
-      "Banca Compuesto": 2133251829.3
+      "Banca Compuesto": 2133251829.3,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-25",
@@ -58698,7 +61640,8 @@ window.dashboardData = {
       "Banca Fijo": 15724.0,
       "Stake Compuesto": 42665036.59,
       "Beneficio Compuesto": -42665036.59,
-      "Banca Compuesto": 2090586792.71
+      "Banca Compuesto": 2090586792.71,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-25",
@@ -58716,7 +61659,8 @@ window.dashboardData = {
       "Banca Fijo": 15733.0,
       "Stake Compuesto": 41811735.85,
       "Beneficio Compuesto": 18815281.13,
-      "Banca Compuesto": 2109402073.85
+      "Banca Compuesto": 2109402073.85,
+      "league_id": 474
     },
     {
       "Fecha": "2025-10-25",
@@ -58734,7 +61678,8 @@ window.dashboardData = {
       "Banca Fijo": 15742.0,
       "Stake Compuesto": 42188041.48,
       "Beneficio Compuesto": 18984618.66,
-      "Banca Compuesto": 2128386692.51
+      "Banca Compuesto": 2128386692.51,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-25",
@@ -58752,7 +61697,8 @@ window.dashboardData = {
       "Banca Fijo": 15722.0,
       "Stake Compuesto": 42567733.85,
       "Beneficio Compuesto": -42567733.85,
-      "Banca Compuesto": 2085818958.66
+      "Banca Compuesto": 2085818958.66,
+      "league_id": 909
     },
     {
       "Fecha": "2025-10-26",
@@ -58770,7 +61716,8 @@ window.dashboardData = {
       "Banca Fijo": 15731.0,
       "Stake Compuesto": 41716379.17,
       "Beneficio Compuesto": 18772370.63,
-      "Banca Compuesto": 2104591329.29
+      "Banca Compuesto": 2104591329.29,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-26",
@@ -58788,7 +61735,8 @@ window.dashboardData = {
       "Banca Fijo": 15740.0,
       "Stake Compuesto": 42091826.59,
       "Beneficio Compuesto": 18941321.96,
-      "Banca Compuesto": 2123532651.25
+      "Banca Compuesto": 2123532651.25,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-26",
@@ -58806,7 +61754,8 @@ window.dashboardData = {
       "Banca Fijo": 15749.0,
       "Stake Compuesto": 42470653.03,
       "Beneficio Compuesto": 19111793.86,
-      "Banca Compuesto": 2142644445.12
+      "Banca Compuesto": 2142644445.12,
+      "league_id": 103
     },
     {
       "Fecha": "2025-10-26",
@@ -58824,7 +61773,8 @@ window.dashboardData = {
       "Banca Fijo": 15758.0,
       "Stake Compuesto": 42852888.9,
       "Beneficio Compuesto": 19283800.01,
-      "Banca Compuesto": 2161928245.12
+      "Banca Compuesto": 2161928245.12,
+      "league_id": 103
     },
     {
       "Fecha": "2025-10-26",
@@ -58842,7 +61792,8 @@ window.dashboardData = {
       "Banca Fijo": 15738.0,
       "Stake Compuesto": 43238564.9,
       "Beneficio Compuesto": -43238564.9,
-      "Banca Compuesto": 2118689680.22
+      "Banca Compuesto": 2118689680.22,
+      "league_id": 119
     },
     {
       "Fecha": "2025-10-26",
@@ -58860,7 +61811,8 @@ window.dashboardData = {
       "Banca Fijo": 15747.0,
       "Stake Compuesto": 42373793.6,
       "Beneficio Compuesto": 19068207.12,
-      "Banca Compuesto": 2137757887.34
+      "Banca Compuesto": 2137757887.34,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-26",
@@ -58878,7 +61830,8 @@ window.dashboardData = {
       "Banca Fijo": 15756.0,
       "Stake Compuesto": 42755157.75,
       "Beneficio Compuesto": 19239820.99,
-      "Banca Compuesto": 2156997708.33
+      "Banca Compuesto": 2156997708.33,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-26",
@@ -58896,7 +61849,8 @@ window.dashboardData = {
       "Banca Fijo": 15765.0,
       "Stake Compuesto": 43139954.17,
       "Beneficio Compuesto": 19412979.37,
-      "Banca Compuesto": 2176410687.7
+      "Banca Compuesto": 2176410687.7,
+      "league_id": 329
     },
     {
       "Fecha": "2025-10-26",
@@ -58914,7 +61868,8 @@ window.dashboardData = {
       "Banca Fijo": 15774.0,
       "Stake Compuesto": 43528213.75,
       "Beneficio Compuesto": 19587696.19,
-      "Banca Compuesto": 2195998383.89
+      "Banca Compuesto": 2195998383.89,
+      "league_id": 329
     },
     {
       "Fecha": "2025-10-26",
@@ -58932,7 +61887,8 @@ window.dashboardData = {
       "Banca Fijo": 15783.0,
       "Stake Compuesto": 43919967.68,
       "Beneficio Compuesto": 19763985.46,
-      "Banca Compuesto": 2215762369.35
+      "Banca Compuesto": 2215762369.35,
+      "league_id": 563
     },
     {
       "Fecha": "2025-10-27",
@@ -58950,7 +61906,8 @@ window.dashboardData = {
       "Banca Fijo": 15763.0,
       "Stake Compuesto": 44315247.39,
       "Beneficio Compuesto": -44315247.39,
-      "Banca Compuesto": 2171447121.96
+      "Banca Compuesto": 2171447121.96,
+      "league_id": 244
     },
     {
       "Fecha": "2025-10-27",
@@ -58968,7 +61925,8 @@ window.dashboardData = {
       "Banca Fijo": 15772.0,
       "Stake Compuesto": 43428942.44,
       "Beneficio Compuesto": 19543024.1,
-      "Banca Compuesto": 2190990146.06
+      "Banca Compuesto": 2190990146.06,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-27",
@@ -58986,7 +61944,8 @@ window.dashboardData = {
       "Banca Fijo": 15781.0,
       "Stake Compuesto": 43819802.92,
       "Beneficio Compuesto": 19718911.31,
-      "Banca Compuesto": 2210709057.37
+      "Banca Compuesto": 2210709057.37,
+      "league_id": 328
     },
     {
       "Fecha": "2025-10-29",
@@ -59004,7 +61963,8 @@ window.dashboardData = {
       "Banca Fijo": 15790.0,
       "Stake Compuesto": 44214181.15,
       "Beneficio Compuesto": 19896381.52,
-      "Banca Compuesto": 2230605438.89
+      "Banca Compuesto": 2230605438.89,
+      "league_id": 103
     },
     {
       "Fecha": "2025-10-31",
@@ -59022,7 +61982,8 @@ window.dashboardData = {
       "Banca Fijo": 15799.0,
       "Stake Compuesto": 44612108.78,
       "Beneficio Compuesto": 20075448.95,
-      "Banca Compuesto": 2250680887.84
+      "Banca Compuesto": 2250680887.84,
+      "league_id": 88
     },
     {
       "Fecha": "2025-10-31",
@@ -59040,7 +62001,8 @@ window.dashboardData = {
       "Banca Fijo": 15808.0,
       "Stake Compuesto": 45013617.76,
       "Beneficio Compuesto": 20256127.99,
-      "Banca Compuesto": 2270937015.83
+      "Banca Compuesto": 2270937015.83,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-01",
@@ -59058,7 +62020,8 @@ window.dashboardData = {
       "Banca Fijo": 15817.0,
       "Stake Compuesto": 45418740.32,
       "Beneficio Compuesto": 20438433.14,
-      "Banca Compuesto": 2291375448.97
+      "Banca Compuesto": 2291375448.97,
+      "league_id": 103
     },
     {
       "Fecha": "2025-11-01",
@@ -59076,7 +62039,8 @@ window.dashboardData = {
       "Banca Fijo": 15826.0,
       "Stake Compuesto": 45827508.98,
       "Beneficio Compuesto": 20622379.04,
-      "Banca Compuesto": 2311997828.01
+      "Banca Compuesto": 2311997828.01,
+      "league_id": 104
     },
     {
       "Fecha": "2025-11-01",
@@ -59094,7 +62058,8 @@ window.dashboardData = {
       "Banca Fijo": 15835.0,
       "Stake Compuesto": 46239956.56,
       "Beneficio Compuesto": 20807980.45,
-      "Banca Compuesto": 2332805808.46
+      "Banca Compuesto": 2332805808.46,
+      "league_id": 119
     },
     {
       "Fecha": "2025-11-01",
@@ -59112,7 +62077,8 @@ window.dashboardData = {
       "Banca Fijo": 15844.0,
       "Stake Compuesto": 46656116.17,
       "Beneficio Compuesto": 20995252.28,
-      "Banca Compuesto": 2353801060.74
+      "Banca Compuesto": 2353801060.74,
+      "league_id": 563
     },
     {
       "Fecha": "2025-11-01",
@@ -59130,7 +62096,8 @@ window.dashboardData = {
       "Banca Fijo": 15853.0,
       "Stake Compuesto": 47076021.21,
       "Beneficio Compuesto": 21184209.55,
-      "Banca Compuesto": 2374985270.29
+      "Banca Compuesto": 2374985270.29,
+      "league_id": 909
     },
     {
       "Fecha": "2025-11-02",
@@ -59148,7 +62115,8 @@ window.dashboardData = {
       "Banca Fijo": 15862.0,
       "Stake Compuesto": 47499705.41,
       "Beneficio Compuesto": 21374867.43,
-      "Banca Compuesto": 2396360137.72
+      "Banca Compuesto": 2396360137.72,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-02",
@@ -59166,7 +62134,8 @@ window.dashboardData = {
       "Banca Fijo": 15871.0,
       "Stake Compuesto": 47927202.75,
       "Beneficio Compuesto": 21567241.24,
-      "Banca Compuesto": 2417927378.96
+      "Banca Compuesto": 2417927378.96,
+      "league_id": 119
     },
     {
       "Fecha": "2025-11-02",
@@ -59184,7 +62153,8 @@ window.dashboardData = {
       "Banca Fijo": 15880.0,
       "Stake Compuesto": 48358547.58,
       "Beneficio Compuesto": 21761346.41,
-      "Banca Compuesto": 2439688725.37
+      "Banca Compuesto": 2439688725.37,
+      "league_id": 329
     },
     {
       "Fecha": "2025-11-02",
@@ -59202,7 +62172,8 @@ window.dashboardData = {
       "Banca Fijo": 15889.0,
       "Stake Compuesto": 48793774.51,
       "Beneficio Compuesto": 21957198.53,
-      "Banca Compuesto": 2461645923.9
+      "Banca Compuesto": 2461645923.9,
+      "league_id": 563
     },
     {
       "Fecha": "2025-11-03",
@@ -59220,7 +62191,8 @@ window.dashboardData = {
       "Banca Fijo": 15898.0,
       "Stake Compuesto": 49232918.48,
       "Beneficio Compuesto": 22154813.32,
-      "Banca Compuesto": 2483800737.21
+      "Banca Compuesto": 2483800737.21,
+      "league_id": 328
     },
     {
       "Fecha": "2025-11-03",
@@ -59238,7 +62210,8 @@ window.dashboardData = {
       "Banca Fijo": 15907.0,
       "Stake Compuesto": 49676014.74,
       "Beneficio Compuesto": 22354206.63,
-      "Banca Compuesto": 2506154943.85
+      "Banca Compuesto": 2506154943.85,
+      "league_id": 328
     },
     {
       "Fecha": "2025-11-03",
@@ -59256,7 +62229,8 @@ window.dashboardData = {
       "Banca Fijo": 15916.0,
       "Stake Compuesto": 50123098.88,
       "Beneficio Compuesto": 22555394.49,
-      "Banca Compuesto": 2528710338.34
+      "Banca Compuesto": 2528710338.34,
+      "league_id": 563
     },
     {
       "Fecha": "2025-11-06",
@@ -59274,7 +62248,8 @@ window.dashboardData = {
       "Banca Fijo": 15925.0,
       "Stake Compuesto": 50574206.77,
       "Beneficio Compuesto": 22758393.05,
-      "Banca Compuesto": 2551468731.39
+      "Banca Compuesto": 2551468731.39,
+      "league_id": 328
     },
     {
       "Fecha": "2025-11-07",
@@ -59292,7 +62267,8 @@ window.dashboardData = {
       "Banca Fijo": 15934.0,
       "Stake Compuesto": 51029374.63,
       "Beneficio Compuesto": 22963218.58,
-      "Banca Compuesto": 2574431949.97
+      "Banca Compuesto": 2574431949.97,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-08",
@@ -59310,7 +62286,8 @@ window.dashboardData = {
       "Banca Fijo": 15943.0,
       "Stake Compuesto": 51488639.0,
       "Beneficio Compuesto": 23169887.55,
-      "Banca Compuesto": 2597601837.52
+      "Banca Compuesto": 2597601837.52,
+      "league_id": 329
     },
     {
       "Fecha": "2025-11-08",
@@ -59328,7 +62305,8 @@ window.dashboardData = {
       "Banca Fijo": 15952.0,
       "Stake Compuesto": 51952036.75,
       "Beneficio Compuesto": 23378416.54,
-      "Banca Compuesto": 2620980254.06
+      "Banca Compuesto": 2620980254.06,
+      "league_id": 329
     },
     {
       "Fecha": "2025-11-09",
@@ -59346,7 +62324,8 @@ window.dashboardData = {
       "Banca Fijo": 15932.0,
       "Stake Compuesto": 52419605.08,
       "Beneficio Compuesto": -52419605.08,
-      "Banca Compuesto": 2568560648.98
+      "Banca Compuesto": 2568560648.98,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-09",
@@ -59364,7 +62343,8 @@ window.dashboardData = {
       "Banca Fijo": 15941.0,
       "Stake Compuesto": 51371212.98,
       "Beneficio Compuesto": 23117045.84,
-      "Banca Compuesto": 2591677694.82
+      "Banca Compuesto": 2591677694.82,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-09",
@@ -59382,7 +62362,8 @@ window.dashboardData = {
       "Banca Fijo": 15950.0,
       "Stake Compuesto": 51833553.9,
       "Beneficio Compuesto": 23325099.25,
-      "Banca Compuesto": 2615002794.07
+      "Banca Compuesto": 2615002794.07,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-09",
@@ -59400,7 +62381,8 @@ window.dashboardData = {
       "Banca Fijo": 15959.0,
       "Stake Compuesto": 52300055.88,
       "Beneficio Compuesto": 23535025.15,
-      "Banca Compuesto": 2638537819.22
+      "Banca Compuesto": 2638537819.22,
+      "league_id": 103
     },
     {
       "Fecha": "2025-11-09",
@@ -59418,7 +62400,8 @@ window.dashboardData = {
       "Banca Fijo": 15968.0,
       "Stake Compuesto": 52770756.38,
       "Beneficio Compuesto": 23746840.37,
-      "Banca Compuesto": 2662284659.59
+      "Banca Compuesto": 2662284659.59,
+      "league_id": 103
     },
     {
       "Fecha": "2025-11-09",
@@ -59436,7 +62419,8 @@ window.dashboardData = {
       "Banca Fijo": 15977.0,
       "Stake Compuesto": 53245693.19,
       "Beneficio Compuesto": 23960561.94,
-      "Banca Compuesto": 2686245221.53
+      "Banca Compuesto": 2686245221.53,
+      "league_id": 244
     },
     {
       "Fecha": "2025-11-09",
@@ -59454,7 +62438,8 @@ window.dashboardData = {
       "Banca Fijo": 15986.0,
       "Stake Compuesto": 53724904.43,
       "Beneficio Compuesto": 24176206.99,
-      "Banca Compuesto": 2710421428.52
+      "Banca Compuesto": 2710421428.52,
+      "league_id": 244
     },
     {
       "Fecha": "2025-11-09",
@@ -59472,7 +62457,8 @@ window.dashboardData = {
       "Banca Fijo": 15995.0,
       "Stake Compuesto": 54208428.57,
       "Beneficio Compuesto": 24393792.86,
-      "Banca Compuesto": 2734815221.38
+      "Banca Compuesto": 2734815221.38,
+      "league_id": 328
     },
     {
       "Fecha": "2025-11-09",
@@ -59490,7 +62476,8 @@ window.dashboardData = {
       "Banca Fijo": 16004.0,
       "Stake Compuesto": 54696304.43,
       "Beneficio Compuesto": 24613336.99,
-      "Banca Compuesto": 2759428558.37
+      "Banca Compuesto": 2759428558.37,
+      "league_id": 328
     },
     {
       "Fecha": "2025-11-09",
@@ -59508,7 +62495,8 @@ window.dashboardData = {
       "Banca Fijo": 16013.0,
       "Stake Compuesto": 55188571.17,
       "Beneficio Compuesto": 24834857.03,
-      "Banca Compuesto": 2784263415.39
+      "Banca Compuesto": 2784263415.39,
+      "league_id": 563
     },
     {
       "Fecha": "2025-11-09",
@@ -59526,7 +62514,8 @@ window.dashboardData = {
       "Banca Fijo": 16022.0,
       "Stake Compuesto": 55685268.31,
       "Beneficio Compuesto": 25058370.74,
-      "Banca Compuesto": 2809321786.13
+      "Banca Compuesto": 2809321786.13,
+      "league_id": 563
     },
     {
       "Fecha": "2025-11-21",
@@ -59544,7 +62533,8 @@ window.dashboardData = {
       "Banca Fijo": 16031.0,
       "Stake Compuesto": 56186435.72,
       "Beneficio Compuesto": 25283896.08,
-      "Banca Compuesto": 2834605682.21
+      "Banca Compuesto": 2834605682.21,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-21",
@@ -59562,7 +62552,8 @@ window.dashboardData = {
       "Banca Fijo": 16040.0,
       "Stake Compuesto": 56692113.64,
       "Beneficio Compuesto": 25511451.14,
-      "Banca Compuesto": 2860117133.35
+      "Banca Compuesto": 2860117133.35,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-21",
@@ -59580,7 +62571,8 @@ window.dashboardData = {
       "Banca Fijo": 16049.0,
       "Stake Compuesto": 57202342.67,
       "Beneficio Compuesto": 25741054.2,
-      "Banca Compuesto": 2885858187.55
+      "Banca Compuesto": 2885858187.55,
+      "league_id": 103
     },
     {
       "Fecha": "2025-11-22",
@@ -59598,7 +62590,8 @@ window.dashboardData = {
       "Banca Fijo": 16058.0,
       "Stake Compuesto": 57717163.75,
       "Beneficio Compuesto": 25972723.69,
-      "Banca Compuesto": 2911830911.24
+      "Banca Compuesto": 2911830911.24,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-23",
@@ -59616,7 +62609,8 @@ window.dashboardData = {
       "Banca Fijo": 16067.0,
       "Stake Compuesto": 58236618.22,
       "Beneficio Compuesto": 26206478.2,
-      "Banca Compuesto": 2938037389.44
+      "Banca Compuesto": 2938037389.44,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-23",
@@ -59634,7 +62628,8 @@ window.dashboardData = {
       "Banca Fijo": 16047.0,
       "Stake Compuesto": 58760747.79,
       "Beneficio Compuesto": -58760747.79,
-      "Banca Compuesto": 2879276641.65
+      "Banca Compuesto": 2879276641.65,
+      "league_id": 119
     },
     {
       "Fecha": "2025-11-24",
@@ -59652,7 +62647,8 @@ window.dashboardData = {
       "Banca Fijo": 16027.0,
       "Stake Compuesto": 57585532.83,
       "Beneficio Compuesto": -57585532.83,
-      "Banca Compuesto": 2821691108.81
+      "Banca Compuesto": 2821691108.81,
+      "league_id": 119
     },
     {
       "Fecha": "2025-11-25",
@@ -59670,7 +62666,8 @@ window.dashboardData = {
       "Banca Fijo": 16036.0,
       "Stake Compuesto": 56433822.18,
       "Beneficio Compuesto": 25395219.98,
-      "Banca Compuesto": 2847086328.79
+      "Banca Compuesto": 2847086328.79,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-25",
@@ -59688,7 +62685,8 @@ window.dashboardData = {
       "Banca Fijo": 16045.0,
       "Stake Compuesto": 56941726.58,
       "Beneficio Compuesto": 25623776.96,
-      "Banca Compuesto": 2872710105.75
+      "Banca Compuesto": 2872710105.75,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-28",
@@ -59706,7 +62704,8 @@ window.dashboardData = {
       "Banca Fijo": 16054.0,
       "Stake Compuesto": 57454202.12,
       "Beneficio Compuesto": 25854390.95,
-      "Banca Compuesto": 2898564496.71
+      "Banca Compuesto": 2898564496.71,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-29",
@@ -59724,7 +62723,8 @@ window.dashboardData = {
       "Banca Fijo": 16063.0,
       "Stake Compuesto": 57971289.93,
       "Beneficio Compuesto": 26087080.47,
-      "Banca Compuesto": 2924651577.18
+      "Banca Compuesto": 2924651577.18,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-30",
@@ -59742,7 +62742,8 @@ window.dashboardData = {
       "Banca Fijo": 16072.0,
       "Stake Compuesto": 58493031.54,
       "Beneficio Compuesto": 26321864.19,
-      "Banca Compuesto": 2950973441.37
+      "Banca Compuesto": 2950973441.37,
+      "league_id": 88
     },
     {
       "Fecha": "2025-11-30",
@@ -59760,7 +62761,8 @@ window.dashboardData = {
       "Banca Fijo": 16081.0,
       "Stake Compuesto": 59019468.83,
       "Beneficio Compuesto": 26558760.97,
-      "Banca Compuesto": 2977532202.34
+      "Banca Compuesto": 2977532202.34,
+      "league_id": 89
     },
     {
       "Fecha": "2025-11-30",
@@ -59778,7 +62780,8 @@ window.dashboardData = {
       "Banca Fijo": 16090.0,
       "Stake Compuesto": 59550644.05,
       "Beneficio Compuesto": 26797789.82,
-      "Banca Compuesto": 3004329992.16
+      "Banca Compuesto": 3004329992.16,
+      "league_id": 103
     },
     {
       "Fecha": "2025-11-30",
@@ -59796,7 +62799,8 @@ window.dashboardData = {
       "Banca Fijo": 16099.0,
       "Stake Compuesto": 60086599.84,
       "Beneficio Compuesto": 27038969.93,
-      "Banca Compuesto": 3031368962.09
+      "Banca Compuesto": 3031368962.09,
+      "league_id": 103
     },
     {
       "Fecha": "2025-12-04",
@@ -59814,7 +62818,8 @@ window.dashboardData = {
       "Banca Fijo": 16108.0,
       "Stake Compuesto": 60627379.24,
       "Beneficio Compuesto": 27282320.66,
-      "Banca Compuesto": 3058651282.75
+      "Banca Compuesto": 3058651282.75,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-05",
@@ -59832,7 +62837,8 @@ window.dashboardData = {
       "Banca Fijo": 16117.0,
       "Stake Compuesto": 61173025.66,
       "Beneficio Compuesto": 27527861.54,
-      "Banca Compuesto": 3086179144.3
+      "Banca Compuesto": 3086179144.3,
+      "league_id": 119
     },
     {
       "Fecha": "2025-12-06",
@@ -59850,7 +62856,8 @@ window.dashboardData = {
       "Banca Fijo": 16126.0,
       "Stake Compuesto": 61723582.89,
       "Beneficio Compuesto": 27775612.3,
-      "Banca Compuesto": 3113954756.6
+      "Banca Compuesto": 3113954756.6,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-07",
@@ -59868,7 +62875,8 @@ window.dashboardData = {
       "Banca Fijo": 16135.0,
       "Stake Compuesto": 62279095.13,
       "Beneficio Compuesto": 28025592.81,
-      "Banca Compuesto": 3141980349.4
+      "Banca Compuesto": 3141980349.4,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-07",
@@ -59886,7 +62894,8 @@ window.dashboardData = {
       "Banca Fijo": 16144.0,
       "Stake Compuesto": 62839606.99,
       "Beneficio Compuesto": 28277823.14,
-      "Banca Compuesto": 3170258172.55
+      "Banca Compuesto": 3170258172.55,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-07",
@@ -59904,7 +62913,8 @@ window.dashboardData = {
       "Banca Fijo": 16124.0,
       "Stake Compuesto": 63405163.45,
       "Beneficio Compuesto": -63405163.45,
-      "Banca Compuesto": 3106853009.1
+      "Banca Compuesto": 3106853009.1,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-07",
@@ -59922,7 +62932,8 @@ window.dashboardData = {
       "Banca Fijo": 16133.0,
       "Stake Compuesto": 62137060.18,
       "Beneficio Compuesto": 27961677.08,
-      "Banca Compuesto": 3134814686.18
+      "Banca Compuesto": 3134814686.18,
+      "league_id": 119
     },
     {
       "Fecha": "2025-12-08",
@@ -59940,7 +62951,8 @@ window.dashboardData = {
       "Banca Fijo": 16142.0,
       "Stake Compuesto": 62696293.72,
       "Beneficio Compuesto": 28213332.18,
-      "Banca Compuesto": 3163028018.36
+      "Banca Compuesto": 3163028018.36,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-10",
@@ -59958,7 +62970,8 @@ window.dashboardData = {
       "Banca Fijo": 16151.0,
       "Stake Compuesto": 63260560.37,
       "Beneficio Compuesto": 28467252.17,
-      "Banca Compuesto": 3191495270.52
+      "Banca Compuesto": 3191495270.52,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-12",
@@ -59976,7 +62989,8 @@ window.dashboardData = {
       "Banca Fijo": 16160.0,
       "Stake Compuesto": 63829905.41,
       "Beneficio Compuesto": 28723457.43,
-      "Banca Compuesto": 3220218727.96
+      "Banca Compuesto": 3220218727.96,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-12",
@@ -59994,7 +63008,8 @@ window.dashboardData = {
       "Banca Fijo": 16140.0,
       "Stake Compuesto": 64404374.56,
       "Beneficio Compuesto": -64404374.56,
-      "Banca Compuesto": 3155814353.4
+      "Banca Compuesto": 3155814353.4,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-13",
@@ -60012,7 +63027,8 @@ window.dashboardData = {
       "Banca Fijo": 16149.0,
       "Stake Compuesto": 63116287.07,
       "Beneficio Compuesto": 28402329.18,
-      "Banca Compuesto": 3184216682.58
+      "Banca Compuesto": 3184216682.58,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-13",
@@ -60030,7 +63046,8 @@ window.dashboardData = {
       "Banca Fijo": 16158.0,
       "Stake Compuesto": 63684333.65,
       "Beneficio Compuesto": 28657950.14,
-      "Banca Compuesto": 3212874632.72
+      "Banca Compuesto": 3212874632.72,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-20",
@@ -60048,7 +63065,8 @@ window.dashboardData = {
       "Banca Fijo": 16167.0,
       "Stake Compuesto": 64257492.65,
       "Beneficio Compuesto": 28915871.69,
-      "Banca Compuesto": 3241790504.41
+      "Banca Compuesto": 3241790504.41,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-20",
@@ -60066,7 +63084,8 @@ window.dashboardData = {
       "Banca Fijo": 16176.0,
       "Stake Compuesto": 64835810.09,
       "Beneficio Compuesto": 29176114.54,
-      "Banca Compuesto": 3270966618.95
+      "Banca Compuesto": 3270966618.95,
+      "league_id": 89
     },
     {
       "Fecha": "2025-12-21",
@@ -60084,7 +63103,8 @@ window.dashboardData = {
       "Banca Fijo": 16185.0,
       "Stake Compuesto": 65419332.38,
       "Beneficio Compuesto": 29438699.57,
-      "Banca Compuesto": 3300405318.53
+      "Banca Compuesto": 3300405318.53,
+      "league_id": 88
     },
     {
       "Fecha": "2025-12-21",
@@ -60102,7 +63122,8 @@ window.dashboardData = {
       "Banca Fijo": 16194.0,
       "Stake Compuesto": 66008106.37,
       "Beneficio Compuesto": 29703647.87,
-      "Banca Compuesto": 3330108966.39
+      "Banca Compuesto": 3330108966.39,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-10",
@@ -60120,7 +63141,8 @@ window.dashboardData = {
       "Banca Fijo": 16203.0,
       "Stake Compuesto": 66602179.33,
       "Beneficio Compuesto": 29970980.7,
-      "Banca Compuesto": 3360079947.09
+      "Banca Compuesto": 3360079947.09,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-10",
@@ -60138,7 +63160,8 @@ window.dashboardData = {
       "Banca Fijo": 16212.0,
       "Stake Compuesto": 67201598.94,
       "Beneficio Compuesto": 30240719.52,
-      "Banca Compuesto": 3390320666.61
+      "Banca Compuesto": 3390320666.61,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-17",
@@ -60156,7 +63179,8 @@ window.dashboardData = {
       "Banca Fijo": 16221.0,
       "Stake Compuesto": 67806413.33,
       "Beneficio Compuesto": 30512886.0,
-      "Banca Compuesto": 3420833552.61
+      "Banca Compuesto": 3420833552.61,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-17",
@@ -60174,7 +63198,8 @@ window.dashboardData = {
       "Banca Fijo": 16230.0,
       "Stake Compuesto": 68416671.05,
       "Beneficio Compuesto": 30787501.97,
-      "Banca Compuesto": 3451621054.59
+      "Banca Compuesto": 3451621054.59,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-18",
@@ -60192,7 +63217,8 @@ window.dashboardData = {
       "Banca Fijo": 16239.0,
       "Stake Compuesto": 69032421.09,
       "Beneficio Compuesto": 31064589.49,
-      "Banca Compuesto": 3482685644.08
+      "Banca Compuesto": 3482685644.08,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-18",
@@ -60210,7 +63236,8 @@ window.dashboardData = {
       "Banca Fijo": 16219.0,
       "Stake Compuesto": 69653712.88,
       "Beneficio Compuesto": -69653712.88,
-      "Banca Compuesto": 3413031931.2
+      "Banca Compuesto": 3413031931.2,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-21",
@@ -60228,7 +63255,8 @@ window.dashboardData = {
       "Banca Fijo": 16199.0,
       "Stake Compuesto": 68260638.62,
       "Beneficio Compuesto": -68260638.62,
-      "Banca Compuesto": 3344771292.57
+      "Banca Compuesto": 3344771292.57,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-23",
@@ -60246,7 +63274,8 @@ window.dashboardData = {
       "Banca Fijo": 16208.0,
       "Stake Compuesto": 66895425.85,
       "Beneficio Compuesto": 30102941.63,
-      "Banca Compuesto": 3374874234.21
+      "Banca Compuesto": 3374874234.21,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-23",
@@ -60264,7 +63293,8 @@ window.dashboardData = {
       "Banca Fijo": 16217.0,
       "Stake Compuesto": 67497484.68,
       "Beneficio Compuesto": 30373868.11,
-      "Banca Compuesto": 3405248102.31
+      "Banca Compuesto": 3405248102.31,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-24",
@@ -60282,7 +63312,8 @@ window.dashboardData = {
       "Banca Fijo": 16226.0,
       "Stake Compuesto": 68104962.05,
       "Beneficio Compuesto": 30647232.92,
-      "Banca Compuesto": 3435895335.23
+      "Banca Compuesto": 3435895335.23,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-24",
@@ -60300,7 +63331,8 @@ window.dashboardData = {
       "Banca Fijo": 16235.0,
       "Stake Compuesto": 68717906.7,
       "Beneficio Compuesto": 30923058.02,
-      "Banca Compuesto": 3466818393.25
+      "Banca Compuesto": 3466818393.25,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-26",
@@ -60318,7 +63350,8 @@ window.dashboardData = {
       "Banca Fijo": 16244.0,
       "Stake Compuesto": 69336367.87,
       "Beneficio Compuesto": 31201365.54,
-      "Banca Compuesto": 3498019758.79
+      "Banca Compuesto": 3498019758.79,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-30",
@@ -60336,7 +63369,8 @@ window.dashboardData = {
       "Banca Fijo": 16253.0,
       "Stake Compuesto": 69960395.18,
       "Beneficio Compuesto": 31482177.83,
-      "Banca Compuesto": 3529501936.62
+      "Banca Compuesto": 3529501936.62,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-30",
@@ -60354,7 +63388,8 @@ window.dashboardData = {
       "Banca Fijo": 16233.0,
       "Stake Compuesto": 70590038.73,
       "Beneficio Compuesto": -70590038.73,
-      "Banca Compuesto": 3458911897.89
+      "Banca Compuesto": 3458911897.89,
+      "league_id": 89
     },
     {
       "Fecha": "2026-01-31",
@@ -60372,7 +63407,8 @@ window.dashboardData = {
       "Banca Fijo": 16242.0,
       "Stake Compuesto": 69178237.96,
       "Beneficio Compuesto": 31130207.08,
-      "Banca Compuesto": 3490042104.97
+      "Banca Compuesto": 3490042104.97,
+      "league_id": 88
     },
     {
       "Fecha": "2026-01-31",
@@ -60390,7 +63426,8 @@ window.dashboardData = {
       "Banca Fijo": 16222.0,
       "Stake Compuesto": 69800842.1,
       "Beneficio Compuesto": -69800842.1,
-      "Banca Compuesto": 3420241262.87
+      "Banca Compuesto": 3420241262.87,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-01",
@@ -60408,7 +63445,8 @@ window.dashboardData = {
       "Banca Fijo": 16231.0,
       "Stake Compuesto": 68404825.26,
       "Beneficio Compuesto": 30782171.37,
-      "Banca Compuesto": 3451023434.23
+      "Banca Compuesto": 3451023434.23,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-02",
@@ -60426,7 +63464,8 @@ window.dashboardData = {
       "Banca Fijo": 16240.0,
       "Stake Compuesto": 69020468.68,
       "Beneficio Compuesto": 31059210.91,
-      "Banca Compuesto": 3482082645.14
+      "Banca Compuesto": 3482082645.14,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-06",
@@ -60444,7 +63483,8 @@ window.dashboardData = {
       "Banca Fijo": 16249.0,
       "Stake Compuesto": 69641652.9,
       "Beneficio Compuesto": 31338743.81,
-      "Banca Compuesto": 3513421388.95
+      "Banca Compuesto": 3513421388.95,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-07",
@@ -60462,7 +63502,8 @@ window.dashboardData = {
       "Banca Fijo": 16258.0,
       "Stake Compuesto": 70268427.78,
       "Beneficio Compuesto": 31620792.5,
-      "Banca Compuesto": 3545042181.45
+      "Banca Compuesto": 3545042181.45,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-08",
@@ -60480,7 +63521,8 @@ window.dashboardData = {
       "Banca Fijo": 16238.0,
       "Stake Compuesto": 70900843.63,
       "Beneficio Compuesto": -70900843.63,
-      "Banca Compuesto": 3474141337.82
+      "Banca Compuesto": 3474141337.82,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-08",
@@ -60498,7 +63540,8 @@ window.dashboardData = {
       "Banca Fijo": 16247.0,
       "Stake Compuesto": 69482826.76,
       "Beneficio Compuesto": 31267272.04,
-      "Banca Compuesto": 3505408609.86
+      "Banca Compuesto": 3505408609.86,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-09",
@@ -60516,7 +63559,8 @@ window.dashboardData = {
       "Banca Fijo": 16256.0,
       "Stake Compuesto": 70108172.2,
       "Beneficio Compuesto": 31548677.49,
-      "Banca Compuesto": 3536957287.35
+      "Banca Compuesto": 3536957287.35,
+      "league_id": 119
     },
     {
       "Fecha": "2026-02-11",
@@ -60534,7 +63578,8 @@ window.dashboardData = {
       "Banca Fijo": 16265.0,
       "Stake Compuesto": 70739145.75,
       "Beneficio Compuesto": 31832615.59,
-      "Banca Compuesto": 3568789902.94
+      "Banca Compuesto": 3568789902.94,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-12",
@@ -60552,7 +63597,8 @@ window.dashboardData = {
       "Banca Fijo": 16245.0,
       "Stake Compuesto": 71375798.06,
       "Beneficio Compuesto": -71375798.06,
-      "Banca Compuesto": 3497414104.88
+      "Banca Compuesto": 3497414104.88,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-13",
@@ -60570,7 +63616,8 @@ window.dashboardData = {
       "Banca Fijo": 16225.0,
       "Stake Compuesto": 69948282.1,
       "Beneficio Compuesto": -69948282.1,
-      "Banca Compuesto": 3427465822.78
+      "Banca Compuesto": 3427465822.78,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-13",
@@ -60588,7 +63635,8 @@ window.dashboardData = {
       "Banca Fijo": 16234.0,
       "Stake Compuesto": 68549316.46,
       "Beneficio Compuesto": 30847192.41,
-      "Banca Compuesto": 3458313015.18
+      "Banca Compuesto": 3458313015.18,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-14",
@@ -60606,7 +63654,8 @@ window.dashboardData = {
       "Banca Fijo": 16243.0,
       "Stake Compuesto": 69166260.3,
       "Beneficio Compuesto": 31124817.14,
-      "Banca Compuesto": 3489437832.32
+      "Banca Compuesto": 3489437832.32,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-14",
@@ -60624,7 +63673,8 @@ window.dashboardData = {
       "Banca Fijo": 16252.0,
       "Stake Compuesto": 69788756.65,
       "Beneficio Compuesto": 31404940.49,
-      "Banca Compuesto": 3520842772.81
+      "Banca Compuesto": 3520842772.81,
+      "league_id": 119
     },
     {
       "Fecha": "2026-02-17",
@@ -60642,7 +63692,8 @@ window.dashboardData = {
       "Banca Fijo": 16232.0,
       "Stake Compuesto": 70416855.46,
       "Beneficio Compuesto": -70416855.46,
-      "Banca Compuesto": 3450425917.36
+      "Banca Compuesto": 3450425917.36,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-20",
@@ -60660,7 +63711,8 @@ window.dashboardData = {
       "Banca Fijo": 16212.0,
       "Stake Compuesto": 69008518.35,
       "Beneficio Compuesto": -69008518.35,
-      "Banca Compuesto": 3381417399.01
+      "Banca Compuesto": 3381417399.01,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-21",
@@ -60678,7 +63730,8 @@ window.dashboardData = {
       "Banca Fijo": 16221.0,
       "Stake Compuesto": 67628347.98,
       "Beneficio Compuesto": 30432756.59,
-      "Banca Compuesto": 3411850155.6
+      "Banca Compuesto": 3411850155.6,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-21",
@@ -60696,7 +63749,8 @@ window.dashboardData = {
       "Banca Fijo": 16230.0,
       "Stake Compuesto": 68237003.11,
       "Beneficio Compuesto": 30706651.4,
-      "Banca Compuesto": 3442556807.0
+      "Banca Compuesto": 3442556807.0,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-22",
@@ -60714,7 +63768,8 @@ window.dashboardData = {
       "Banca Fijo": 16210.0,
       "Stake Compuesto": 68851136.14,
       "Beneficio Compuesto": -68851136.14,
-      "Banca Compuesto": 3373705670.86
+      "Banca Compuesto": 3373705670.86,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-27",
@@ -60732,7 +63787,8 @@ window.dashboardData = {
       "Banca Fijo": 16219.0,
       "Stake Compuesto": 67474113.42,
       "Beneficio Compuesto": 30363351.04,
-      "Banca Compuesto": 3404069021.9
+      "Banca Compuesto": 3404069021.9,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-27",
@@ -60750,7 +63806,8 @@ window.dashboardData = {
       "Banca Fijo": 16228.0,
       "Stake Compuesto": 68081380.44,
       "Beneficio Compuesto": 30636621.2,
-      "Banca Compuesto": 3434705643.09
+      "Banca Compuesto": 3434705643.09,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-27",
@@ -60768,7 +63825,8 @@ window.dashboardData = {
       "Banca Fijo": 16237.0,
       "Stake Compuesto": 68694112.86,
       "Beneficio Compuesto": 30912350.79,
-      "Banca Compuesto": 3465617993.88
+      "Banca Compuesto": 3465617993.88,
+      "league_id": 89
     },
     {
       "Fecha": "2026-02-28",
@@ -60786,7 +63844,8 @@ window.dashboardData = {
       "Banca Fijo": 16246.0,
       "Stake Compuesto": 69312359.88,
       "Beneficio Compuesto": 31190561.94,
-      "Banca Compuesto": 3496808555.83
+      "Banca Compuesto": 3496808555.83,
+      "league_id": 88
     },
     {
       "Fecha": "2026-02-28",
@@ -60804,7 +63863,8 @@ window.dashboardData = {
       "Banca Fijo": 16255.0,
       "Stake Compuesto": 69936171.12,
       "Beneficio Compuesto": 31471277.0,
-      "Banca Compuesto": 3528279832.83
+      "Banca Compuesto": 3528279832.83,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-01",
@@ -60822,7 +63882,8 @@ window.dashboardData = {
       "Banca Fijo": 16264.0,
       "Stake Compuesto": 70565596.66,
       "Beneficio Compuesto": 31754518.5,
-      "Banca Compuesto": 3560034351.33
+      "Banca Compuesto": 3560034351.33,
+      "league_id": 119
     },
     {
       "Fecha": "2026-03-01",
@@ -60840,7 +63901,8 @@ window.dashboardData = {
       "Banca Fijo": 16273.0,
       "Stake Compuesto": 71200687.03,
       "Beneficio Compuesto": 32040309.16,
-      "Banca Compuesto": 3592074660.49
+      "Banca Compuesto": 3592074660.49,
+      "league_id": 119
     },
     {
       "Fecha": "2026-03-07",
@@ -60858,7 +63920,8 @@ window.dashboardData = {
       "Banca Fijo": 16282.0,
       "Stake Compuesto": 71841493.21,
       "Beneficio Compuesto": 32328671.94,
-      "Banca Compuesto": 3624403332.43
+      "Banca Compuesto": 3624403332.43,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-08",
@@ -60876,7 +63939,8 @@ window.dashboardData = {
       "Banca Fijo": 16291.0,
       "Stake Compuesto": 72488066.65,
       "Beneficio Compuesto": 32619629.99,
-      "Banca Compuesto": 3657022962.42
+      "Banca Compuesto": 3657022962.42,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-08",
@@ -60894,7 +63958,8 @@ window.dashboardData = {
       "Banca Fijo": 16300.0,
       "Stake Compuesto": 73140459.25,
       "Beneficio Compuesto": 32913206.66,
-      "Banca Compuesto": 3689936169.09
+      "Banca Compuesto": 3689936169.09,
+      "league_id": 89
     },
     {
       "Fecha": "2026-03-13",
@@ -60912,7 +63977,8 @@ window.dashboardData = {
       "Banca Fijo": 16309.0,
       "Stake Compuesto": 73798723.38,
       "Beneficio Compuesto": 33209425.52,
-      "Banca Compuesto": 3723145594.61
+      "Banca Compuesto": 3723145594.61,
+      "league_id": 89
     },
     {
       "Fecha": "2026-03-14",
@@ -60930,7 +63996,8 @@ window.dashboardData = {
       "Banca Fijo": 16318.0,
       "Stake Compuesto": 74462911.89,
       "Beneficio Compuesto": 33508310.35,
-      "Banca Compuesto": 3756653904.96
+      "Banca Compuesto": 3756653904.96,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-14",
@@ -60948,7 +64015,8 @@ window.dashboardData = {
       "Banca Fijo": 16327.0,
       "Stake Compuesto": 75133078.1,
       "Beneficio Compuesto": 33809885.14,
-      "Banca Compuesto": 3790463790.1
+      "Banca Compuesto": 3790463790.1,
+      "league_id": 89
     },
     {
       "Fecha": "2026-03-15",
@@ -60966,7 +64034,8 @@ window.dashboardData = {
       "Banca Fijo": 16336.0,
       "Stake Compuesto": 75809275.8,
       "Beneficio Compuesto": 34114174.11,
-      "Banca Compuesto": 3824577964.21
+      "Banca Compuesto": 3824577964.21,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-16",
@@ -60984,7 +64053,8 @@ window.dashboardData = {
       "Banca Fijo": 16345.0,
       "Stake Compuesto": 76491559.28,
       "Beneficio Compuesto": 34421201.68,
-      "Banca Compuesto": 3858999165.89
+      "Banca Compuesto": 3858999165.89,
+      "league_id": 89
     },
     {
       "Fecha": "2026-03-20",
@@ -61002,7 +64072,8 @@ window.dashboardData = {
       "Banca Fijo": 16354.0,
       "Stake Compuesto": 77179983.32,
       "Beneficio Compuesto": 34730992.49,
-      "Banca Compuesto": 3893730158.39
+      "Banca Compuesto": 3893730158.39,
+      "league_id": 119
     },
     {
       "Fecha": "2026-03-22",
@@ -61020,7 +64091,8 @@ window.dashboardData = {
       "Banca Fijo": 16363.0,
       "Stake Compuesto": 77874603.17,
       "Beneficio Compuesto": 35043571.43,
-      "Banca Compuesto": 3928773729.81
+      "Banca Compuesto": 3928773729.81,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-22",
@@ -61038,7 +64110,8 @@ window.dashboardData = {
       "Banca Fijo": 16372.0,
       "Stake Compuesto": 78575474.6,
       "Beneficio Compuesto": 35358963.57,
-      "Banca Compuesto": 3964132693.38
+      "Banca Compuesto": 3964132693.38,
+      "league_id": 88
     },
     {
       "Fecha": "2026-03-22",
@@ -61056,7 +64129,8 @@ window.dashboardData = {
       "Banca Fijo": 16381.0,
       "Stake Compuesto": 79282653.87,
       "Beneficio Compuesto": 35677194.24,
-      "Banca Compuesto": 3999809887.62
+      "Banca Compuesto": 3999809887.62,
+      "league_id": 89
     },
     {
       "Fecha": "2026-03-22",
@@ -61074,7 +64148,8 @@ window.dashboardData = {
       "Banca Fijo": 16390.0,
       "Stake Compuesto": 79996197.75,
       "Beneficio Compuesto": 35998288.99,
-      "Banca Compuesto": 4035808176.61
+      "Banca Compuesto": 4035808176.61,
+      "league_id": 119
     },
     {
       "Fecha": "2026-03-28",
@@ -61092,7 +64167,8 @@ window.dashboardData = {
       "Banca Fijo": 16399.0,
       "Stake Compuesto": 80716163.53,
       "Beneficio Compuesto": 36322273.59,
-      "Banca Compuesto": 4072130450.2
+      "Banca Compuesto": 4072130450.2,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-03",
@@ -61110,7 +64186,8 @@ window.dashboardData = {
       "Banca Fijo": 16408.0,
       "Stake Compuesto": 81442609.0,
       "Beneficio Compuesto": 36649174.05,
-      "Banca Compuesto": 4108779624.25
+      "Banca Compuesto": 4108779624.25,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-03",
@@ -61128,7 +64205,8 @@ window.dashboardData = {
       "Banca Fijo": 16388.0,
       "Stake Compuesto": 82175592.48,
       "Beneficio Compuesto": -82175592.48,
-      "Banca Compuesto": 4026604031.76
+      "Banca Compuesto": 4026604031.76,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-04",
@@ -61146,7 +64224,8 @@ window.dashboardData = {
       "Banca Fijo": 16397.0,
       "Stake Compuesto": 80532080.64,
       "Beneficio Compuesto": 36239436.29,
-      "Banca Compuesto": 4062843468.05
+      "Banca Compuesto": 4062843468.05,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-04",
@@ -61164,7 +64243,8 @@ window.dashboardData = {
       "Banca Fijo": 16406.0,
       "Stake Compuesto": 81256869.36,
       "Beneficio Compuesto": 36565591.21,
-      "Banca Compuesto": 4099409059.26
+      "Banca Compuesto": 4099409059.26,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-04",
@@ -61182,7 +64262,8 @@ window.dashboardData = {
       "Banca Fijo": 16415.0,
       "Stake Compuesto": 81988181.19,
       "Beneficio Compuesto": 36894681.53,
-      "Banca Compuesto": 4136303740.8
+      "Banca Compuesto": 4136303740.8,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-05",
@@ -61200,7 +64281,8 @@ window.dashboardData = {
       "Banca Fijo": 16424.0,
       "Stake Compuesto": 82726074.82,
       "Beneficio Compuesto": 37226733.67,
-      "Banca Compuesto": 4173530474.46
+      "Banca Compuesto": 4173530474.46,
+      "league_id": 119
     },
     {
       "Fecha": "2026-04-06",
@@ -61218,7 +64300,8 @@ window.dashboardData = {
       "Banca Fijo": 16433.0,
       "Stake Compuesto": 83470609.49,
       "Beneficio Compuesto": 37561774.27,
-      "Banca Compuesto": 4211092248.73
+      "Banca Compuesto": 4211092248.73,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-06",
@@ -61236,7 +64319,8 @@ window.dashboardData = {
       "Banca Fijo": 16442.0,
       "Stake Compuesto": 84221844.97,
       "Beneficio Compuesto": 37899830.24,
-      "Banca Compuesto": 4248992078.97
+      "Banca Compuesto": 4248992078.97,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-10",
@@ -61254,7 +64338,8 @@ window.dashboardData = {
       "Banca Fijo": 16422.0,
       "Stake Compuesto": 84979841.58,
       "Beneficio Compuesto": -84979841.58,
-      "Banca Compuesto": 4164012237.39
+      "Banca Compuesto": 4164012237.39,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-11",
@@ -61272,7 +64357,8 @@ window.dashboardData = {
       "Banca Fijo": 16431.0,
       "Stake Compuesto": 83280244.75,
       "Beneficio Compuesto": 37476110.14,
-      "Banca Compuesto": 4201488347.53
+      "Banca Compuesto": 4201488347.53,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-11",
@@ -61290,7 +64376,8 @@ window.dashboardData = {
       "Banca Fijo": 16440.0,
       "Stake Compuesto": 84029766.95,
       "Beneficio Compuesto": 37813395.13,
-      "Banca Compuesto": 4239301742.66
+      "Banca Compuesto": 4239301742.66,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-12",
@@ -61308,7 +64395,8 @@ window.dashboardData = {
       "Banca Fijo": 16449.0,
       "Stake Compuesto": 84786034.85,
       "Beneficio Compuesto": 38153715.68,
-      "Banca Compuesto": 4277455458.34
+      "Banca Compuesto": 4277455458.34,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-12",
@@ -61326,7 +64414,8 @@ window.dashboardData = {
       "Banca Fijo": 16458.0,
       "Stake Compuesto": 85549109.17,
       "Beneficio Compuesto": 38497099.13,
-      "Banca Compuesto": 4315952557.47
+      "Banca Compuesto": 4315952557.47,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-12",
@@ -61344,7 +64433,8 @@ window.dashboardData = {
       "Banca Fijo": 16467.0,
       "Stake Compuesto": 86319051.15,
       "Beneficio Compuesto": 38843573.02,
-      "Banca Compuesto": 4354796130.48
+      "Banca Compuesto": 4354796130.48,
+      "league_id": 119
     },
     {
       "Fecha": "2026-04-17",
@@ -61362,7 +64452,8 @@ window.dashboardData = {
       "Banca Fijo": 16476.0,
       "Stake Compuesto": 87095922.61,
       "Beneficio Compuesto": 39193165.17,
-      "Banca Compuesto": 4393989295.66
+      "Banca Compuesto": 4393989295.66,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-17",
@@ -61380,7 +64471,8 @@ window.dashboardData = {
       "Banca Fijo": 16456.0,
       "Stake Compuesto": 87879785.91,
       "Beneficio Compuesto": -87879785.91,
-      "Banca Compuesto": 4306109509.74
+      "Banca Compuesto": 4306109509.74,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-20",
@@ -61398,7 +64490,8 @@ window.dashboardData = {
       "Banca Fijo": 16465.0,
       "Stake Compuesto": 86122190.19,
       "Beneficio Compuesto": 38754985.59,
-      "Banca Compuesto": 4344864495.33
+      "Banca Compuesto": 4344864495.33,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-22",
@@ -61416,7 +64509,8 @@ window.dashboardData = {
       "Banca Fijo": 16474.0,
       "Stake Compuesto": 86897289.91,
       "Beneficio Compuesto": 39103780.46,
-      "Banca Compuesto": 4383968275.79
+      "Banca Compuesto": 4383968275.79,
+      "league_id": 119
     },
     {
       "Fecha": "2026-04-23",
@@ -61434,7 +64528,8 @@ window.dashboardData = {
       "Banca Fijo": 16483.0,
       "Stake Compuesto": 87679365.52,
       "Beneficio Compuesto": 39455714.48,
-      "Banca Compuesto": 4423423990.27
+      "Banca Compuesto": 4423423990.27,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-24",
@@ -61452,7 +64547,8 @@ window.dashboardData = {
       "Banca Fijo": 16463.0,
       "Stake Compuesto": 88468479.81,
       "Beneficio Compuesto": -88468479.81,
-      "Banca Compuesto": 4334955510.47
+      "Banca Compuesto": 4334955510.47,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-24",
@@ -61470,7 +64566,8 @@ window.dashboardData = {
       "Banca Fijo": 16472.0,
       "Stake Compuesto": 86699110.21,
       "Beneficio Compuesto": 39014599.59,
-      "Banca Compuesto": 4373970110.06
+      "Banca Compuesto": 4373970110.06,
+      "league_id": 89
     },
     {
       "Fecha": "2026-04-25",
@@ -61488,7 +64585,8 @@ window.dashboardData = {
       "Banca Fijo": 16481.0,
       "Stake Compuesto": 87479402.2,
       "Beneficio Compuesto": 39365730.99,
-      "Banca Compuesto": 4413335841.05
+      "Banca Compuesto": 4413335841.05,
+      "league_id": 88
     },
     {
       "Fecha": "2026-04-26",
@@ -61506,7 +64604,8 @@ window.dashboardData = {
       "Banca Fijo": 16490.0,
       "Stake Compuesto": 88266716.82,
       "Beneficio Compuesto": 39720022.57,
-      "Banca Compuesto": 4453055863.62
+      "Banca Compuesto": 4453055863.62,
+      "league_id": 119
     },
     {
       "Fecha": "2026-04-27",
@@ -61524,7 +64623,8 @@ window.dashboardData = {
       "Banca Fijo": 16499.0,
       "Stake Compuesto": 89061117.27,
       "Beneficio Compuesto": 40077502.77,
-      "Banca Compuesto": 4493133366.39
+      "Banca Compuesto": 4493133366.39,
+      "league_id": 119
     },
     {
       "Fecha": "2026-04-29",
@@ -61542,7 +64642,8 @@ window.dashboardData = {
       "Banca Fijo": 16508.0,
       "Stake Compuesto": 89862667.33,
       "Beneficio Compuesto": 40438200.3,
-      "Banca Compuesto": 4533571566.69
+      "Banca Compuesto": 4533571566.69,
+      "league_id": 89
     },
     {
       "Fecha": "2026-05-02",
@@ -61560,7 +64661,8 @@ window.dashboardData = {
       "Banca Fijo": 16517.0,
       "Stake Compuesto": 90671431.33,
       "Beneficio Compuesto": 40802144.1,
-      "Banca Compuesto": 4574373710.79
+      "Banca Compuesto": 4574373710.79,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-02",
@@ -61578,7 +64680,8 @@ window.dashboardData = {
       "Banca Fijo": 16526.0,
       "Stake Compuesto": 91487474.22,
       "Beneficio Compuesto": 41169363.4,
-      "Banca Compuesto": 4615543074.19
+      "Banca Compuesto": 4615543074.19,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-03",
@@ -61596,7 +64699,8 @@ window.dashboardData = {
       "Banca Fijo": 16535.0,
       "Stake Compuesto": 92310861.48,
       "Beneficio Compuesto": 41539887.67,
-      "Banca Compuesto": 4657082961.86
+      "Banca Compuesto": 4657082961.86,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-06",
@@ -61614,7 +64718,8 @@ window.dashboardData = {
       "Banca Fijo": 16544.0,
       "Stake Compuesto": 93141659.24,
       "Beneficio Compuesto": 41913746.66,
-      "Banca Compuesto": 4698996708.51
+      "Banca Compuesto": 4698996708.51,
+      "league_id": 89
     },
     {
       "Fecha": "2026-05-09",
@@ -61632,7 +64737,8 @@ window.dashboardData = {
       "Banca Fijo": 16553.0,
       "Stake Compuesto": 93979934.17,
       "Beneficio Compuesto": 42290970.38,
-      "Banca Compuesto": 4741287678.89
+      "Banca Compuesto": 4741287678.89,
+      "league_id": 89
     },
     {
       "Fecha": "2026-05-10",
@@ -61650,7 +64756,8 @@ window.dashboardData = {
       "Banca Fijo": 16562.0,
       "Stake Compuesto": 94825753.58,
       "Beneficio Compuesto": 42671589.11,
-      "Banca Compuesto": 4783959268.0
+      "Banca Compuesto": 4783959268.0,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-10",
@@ -61668,7 +64775,8 @@ window.dashboardData = {
       "Banca Fijo": 16571.0,
       "Stake Compuesto": 95679185.36,
       "Beneficio Compuesto": 43055633.41,
-      "Banca Compuesto": 4827014901.41
+      "Banca Compuesto": 4827014901.41,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-11",
@@ -61686,7 +64794,8 @@ window.dashboardData = {
       "Banca Fijo": 16580.0,
       "Stake Compuesto": 96540298.03,
       "Beneficio Compuesto": 43443134.11,
-      "Banca Compuesto": 4870458035.52
+      "Banca Compuesto": 4870458035.52,
+      "league_id": 119
     },
     {
       "Fecha": "2026-05-17",
@@ -61704,7 +64813,8 @@ window.dashboardData = {
       "Banca Fijo": 16589.0,
       "Stake Compuesto": 97409160.71,
       "Beneficio Compuesto": 43834122.32,
-      "Banca Compuesto": 4914292157.84
+      "Banca Compuesto": 4914292157.84,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-17",
@@ -61722,7 +64832,8 @@ window.dashboardData = {
       "Banca Fijo": 16598.0,
       "Stake Compuesto": 98285843.16,
       "Beneficio Compuesto": 44228629.42,
-      "Banca Compuesto": 4958520787.26
+      "Banca Compuesto": 4958520787.26,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-17",
@@ -61740,7 +64851,8 @@ window.dashboardData = {
       "Banca Fijo": 16607.0,
       "Stake Compuesto": 99170415.75,
       "Beneficio Compuesto": 44626687.09,
-      "Banca Compuesto": 5003147474.35
+      "Banca Compuesto": 5003147474.35,
+      "league_id": 88
     },
     {
       "Fecha": "2026-05-17",
@@ -61758,7 +64870,8 @@ window.dashboardData = {
       "Banca Fijo": 16616.0,
       "Stake Compuesto": 100062949.49,
       "Beneficio Compuesto": 45028327.27,
-      "Banca Compuesto": 5048175801.62
+      "Banca Compuesto": 5048175801.62,
+      "league_id": 119
     }
   ],
   "backtest_summary": {
