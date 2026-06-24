@@ -385,7 +385,8 @@ def run_backtest_simulation(fixtures_df, league_current_season_map):
                         'Clase': clase,
                         'Sustento': sustento,
                         'Cuota': cuota_val,
-                        'Bookmaker': bookmaker_val
+                        'Bookmaker': bookmaker_val,
+                        'league_id': int(match['league_id']) if pd.notna(match.get('league_id')) else None
                     })
         return _calculate_bankroll_evolution(backtest_rows)
 
@@ -472,7 +473,8 @@ def run_backtest_simulation(fixtures_df, league_current_season_map):
                     'Clase': clase,
                     'Sustento': sustento,
                     'Cuota': cuota_val,
-                    'Bookmaker': bookmaker_val
+                    'Bookmaker': bookmaker_val,
+                    'league_id': int(match['league_id']) if pd.notna(match.get('league_id')) else None
                 })
                 
     return _calculate_bankroll_evolution(backtest_rows)
