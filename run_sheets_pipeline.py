@@ -753,7 +753,9 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
                 df_all_teams[col] = (df_all_teams[col] * 100).round(1)
             for col in ['avg_goals_ht_general', 'avg_goals_ht_rol']:
                 df_all_teams[col] = df_all_teams[col].round(2)
-            teams_data = df_all_teams[['league_name', 'team_name', 'role', 'ht_05_pct', 'ht_15_pct', 'bts_pct', 'rendimiento_ht', 'avg_goals_ht_general', 'avg_goals_ht_rol', 'racha_ht', 'racha_detalles']].to_dict(orient='records')
+            export_cols_teams = ['league_id', 'league_name', 'team_name', 'role', 'ht_05_pct', 'ht_15_pct', 'bts_pct', 'rendimiento_ht', 'avg_goals_ht_general', 'avg_goals_ht_rol', 'racha_ht', 'racha_detalles']
+            export_cols_teams = [c for c in export_cols_teams if c in df_all_teams.columns]
+            teams_data = df_all_teams[export_cols_teams].to_dict(orient='records')
         
     # 3. Backtest
     backtest_data = []
@@ -768,11 +770,10 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
         "rendimiento_compuesto": "+0.0%"
     }
     if not df_backtest.empty:
-        # Usar columnas seguras incluyendo las nuevas de simulación de banca
         backtest_cols = [
             'Fecha', 'Liga', 'Local', 'Visitante', 'Goles HT', 'Resultado', 'Clase', 'Sustento',
             'Cuota', 'Bookmaker', 'Stake Fijo', 'Beneficio Fijo', 'Banca Fijo',
-            'Stake Compuesto', 'Beneficio Compuesto', 'Banca Compuesto'
+            'Stake Compuesto', 'Beneficio Compuesto', 'Banca Compuesto', 'league_id'
         ]
         backtest_cols = [c for c in backtest_cols if c in df_backtest.columns]
         backtest_data = df_backtest[backtest_cols].to_dict(orient='records')
