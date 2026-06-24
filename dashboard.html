@@ -1364,8 +1364,8 @@
                                     ${getTierBadgeHtml(pick.tier)}
                                 </div>
                                 <span class="text-[10px] text-gray-400 font-light flex items-center gap-1">
-                                    <span>${getLeagueFlagHtml(pick.liga)}</span>
-                                    <span>${getLeagueCountry(pick.liga).name}</span>
+                                    <span>${getLeagueFlagHtml(pick.liga, pick.league_id)}</span>
+                                    <span>${getLeagueCountry(pick.liga, pick.league_id).name}</span>
                                 </span>
                             </div>
                             <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
@@ -1690,8 +1690,8 @@
                                 ${classBadge}
                             </div>
                             <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueFlagHtml(pick.liga)}</span>
-                                <span>${getLeagueCountry(pick.liga).name}</span>
+                                <span>${getLeagueFlagHtml(pick.liga, pick.league_id)}</span>
+                                <span>${getLeagueCountry(pick.liga, pick.league_id).name}</span>
                             </span>
                         </div>
                     </td>
@@ -1785,6 +1785,7 @@
                 if (!leagueData[liga]) {
                     leagueData[liga] = {
                         name: liga,
+                        league_id: p.league_id,
                         tier: tier,
                         total: 0,
                         wins: 0,
@@ -1844,8 +1845,8 @@
                         <div class="flex flex-col">
                             <span class="font-semibold text-white text-xs md:text-sm">${data.name}</span>
                             <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueFlagHtml(data.name)}</span>
-                                <span>${getLeagueCountry(data.name).name}</span>
+                                <span>${getLeagueFlagHtml(data.name, data.league_id)}</span>
+                                <span>${getLeagueCountry(data.name, data.league_id).name}</span>
                             </span>
                         </div>
                     </td>
@@ -1954,7 +1955,7 @@
                 ? window.dashboardData.picks_history[pickIndex] 
                 : window.dashboardData.picks[pickIndex];
             
-            document.getElementById('modal-league-pill').innerHTML = `<span class="mr-1.5 align-middle">${getLeagueFlagHtml(pick.liga)}</span> ${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
+            document.getElementById('modal-league-pill').innerHTML = `<span class="mr-1.5 align-middle">${getLeagueFlagHtml(pick.liga, pick.league_id)}</span> ${pick.liga} &nbsp; ${getTierBadgeHtml(pick.tier)}`;
             document.getElementById('modal-home-team').innerText = pick.local;
             document.getElementById('modal-away-team').innerText = pick.visitante;
             
@@ -2210,8 +2211,14 @@
                 const globalIdx = start + idx;
                 tr.innerHTML = `
                     <td class="py-3 text-xs md:text-sm">${r.Fecha}</td>
-                    <td class="py-3 text-xs md:text-sm font-semibold flex items-center gap-1.5 font-sans">
-                        ${r.Liga} ${classBadge}
+                    <td class="py-3 text-xs md:text-sm font-sans">
+                        <div class="flex flex-col">
+                            <span class="font-semibold text-white">${r.Liga} ${classBadge}</span>
+                            <span class="text-[10px] text-gray-400 font-light flex items-center gap-1 mt-0.5">
+                                <span>${getLeagueFlagHtml(r.Liga, r.league_id)}</span>
+                                <span>${getLeagueCountry(r.Liga, r.league_id).name}</span>
+                            </span>
+                        </div>
                     </td>
                     <td class="py-3 text-right text-xs md:text-sm font-medium text-white">${r.Local}</td>
                     <td class="py-3 text-center text-gray-500 text-xs px-4">vs</td>
@@ -2367,8 +2374,10 @@
             
             // Obtener mapeo de ligas a tiers
             const leagueNameMap = {};
+            const leagueIdMap = {};
             (leaguesData || []).forEach(l => {
                 leagueNameMap[l.league_name] = l.tier;
+                leagueIdMap[l.league_name] = l.league_id;
             });
             
             // Obtener filtros activos (Clase y Tier) para la agrupación
@@ -2389,6 +2398,7 @@
                 if (!leagueData[liga]) {
                     leagueData[liga] = {
                         name: liga,
+                        league_id: leagueIdMap[liga] || null,
                         tier: tier,
                         total: 0,
                         wins: 0,
@@ -2446,8 +2456,8 @@
                         <div class="flex flex-col">
                             <span class="font-semibold text-white text-xs md:text-sm">${data.name}</span>
                             <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueFlagHtml(data.name)}</span>
-                                <span>${getLeagueCountry(data.name).name}</span>
+                                <span>${getLeagueFlagHtml(data.name, data.league_id)}</span>
+                                <span>${getLeagueCountry(data.name, data.league_id).name}</span>
                             </span>
                         </div>
                     </td>
@@ -2966,8 +2976,8 @@
                                 ${getTierBadgeHtml(tier)}
                             </div>
                             <span class="text-[10px] text-gray-400 font-light mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueFlagHtml(t.league_name)}</span>
-                                <span>${getLeagueCountry(t.league_name).name}</span>
+                                <span>${getLeagueFlagHtml(t.league_name, t.league_id)}</span>
+                                <span>${getLeagueCountry(t.league_name, t.league_id).name}</span>
                             </span>
                         </div>
                     </td>
@@ -3017,7 +3027,13 @@
             return 'Otros';
         }
 
-        function getLeagueCountry(leagueName) {
+        function getLeagueCountry(leagueName, leagueId = null) {
+            if (leagueId) {
+                const id = parseInt(leagueId);
+                if (id === 39) return { name: 'Inglaterra', code: 'gb' };
+                if (id === 702) return { name: 'Inglaterra (Sub-21)', code: 'gb' };
+                if (id === 368) return { name: 'Singapur', code: 'sg' };
+            }
             if (!leagueName) return { name: 'Otros', code: 'un' };
             const name = leagueName.toLowerCase();
             
@@ -3076,8 +3092,8 @@
             return { name: 'Otros', code: 'un' };
         }
 
-        function getLeagueFlagHtml(leagueName) {
-            const country = getLeagueCountry(leagueName);
+        function getLeagueFlagHtml(leagueName, leagueId = null) {
+            const country = getLeagueCountry(leagueName, leagueId);
             if (country.code === 'un') {
                 return `<i data-lucide="globe" class="w-3.5 h-3.5 text-gray-500 inline-block align-middle"></i>`;
             }
@@ -3113,12 +3129,12 @@
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
                             <h4 class="font-bold text-gray-300 text-base flex items-center gap-1.5">
-                                <span>${getLeagueFlagHtml(l.league_name)}</span>
+                                <span>${getLeagueFlagHtml(l.league_name, l.league_id)}</span>
                                 <span>${l.league_name}</span>
                             </h4>
                             ${getTierBadgeHtml(l.tier)}
                         </div>
-                        <p class="text-gray-500 text-xs mt-0.5">${getLeagueCountry(l.league_name).name} | Temporada ${l.season}</p>
+                        <p class="text-gray-500 text-xs mt-0.5">${getLeagueCountry(l.league_name, l.league_id).name} | Temporada ${l.season}</p>
                     </div>
                     ${statusBadge}
                 </div>
@@ -3217,12 +3233,12 @@
                     <div>
                         <div class="flex items-center gap-2 flex-wrap">
                             <h4 class="font-bold text-white text-base flex items-center gap-1.5">
-                                <span>${getLeagueFlagHtml(l.league_name)}</span>
+                                <span>${getLeagueFlagHtml(l.league_name, l.league_id)}</span>
                                 <span>${l.league_name}</span>
                             </h4>
                             ${getTierBadgeHtml(l.tier)}
                         </div>
-                        <p class="text-gray-400 text-xs mt-0.5">${getLeagueCountry(l.league_name).name} | Temporada ${l.season}</p>
+                        <p class="text-gray-400 text-xs mt-0.5">${getLeagueCountry(l.league_name, l.league_id).name} | Temporada ${l.season}</p>
                     </div>
                     <span class="px-2 py-0.5 rounded-full text-xs font-extrabold border ${badgeClass}">${l.Estado}</span>
                 </div>
@@ -3611,8 +3627,8 @@
                         <div class="flex flex-col">
                             <span class="font-semibold text-white">${pick.liga}</span>
                             <span class="text-[10px] text-gray-400 font-normal mt-0.5 flex items-center gap-1">
-                                <span>${getLeagueFlagHtml(pick.liga)}</span>
-                                <span>${getLeagueCountry(pick.liga).name}</span>
+                                <span>${getLeagueFlagHtml(pick.liga, pick.league_id)}</span>
+                                <span>${getLeagueCountry(pick.liga, pick.league_id).name}</span>
                             </span>
                         </div>
                     </td>
