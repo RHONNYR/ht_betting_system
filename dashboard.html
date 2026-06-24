@@ -3100,6 +3100,12 @@
             const l = leagues.find(x => x.league_id === parseInt(leagueId)) || leagues.find(x => x.league_name === leagueName);
             if (!l) return { status: 'yellow', label: 'Neutral', textClass: 'text-amber-400', bgClass: 'bg-amber-500/10 border-amber-500/20', dot: '🟡', recentWR: 1.0, totalResolved: 0, realWR: null };
             
+            // 0. Si no tiene picks ejecutados en el historial, es Neutral
+            const hasPicks = picksHistory.some(p => p.league_id === l.league_id || p.liga === l.league_name);
+            if (!hasPicks) {
+                return { status: 'yellow', label: 'Neutral', textClass: 'text-amber-400', bgClass: 'bg-amber-500/10 border-amber-500/20', dot: '🟡', recentWR: 0.0, totalResolved: 0, realWR: null };
+            }
+            
             // 1. Parámetros generales
             const isApproved = l.Estado === 'APROBADA';
             
@@ -3165,8 +3171,13 @@
             let yellowCount = 0;
             let redCount = 0;
             
-            // Filtrar SOLO ligas activas (con partidos restantes en la temporada actual)
-            const activeLeagues = (leaguesData || []).filter(l => (l.partidos_restantes || 0) > 0);
+            // Filtrar SOLO ligas activas (con partidos restantes en la temporada actual) y con picks ejecutados
+            const picksHistory = window.dashboardData.picks_history || [];
+            const activeLeagues = (leaguesData || []).filter(l => {
+                const hasRemaining = (l.partidos_restantes || 0) > 0;
+                const hasPicks = picksHistory.some(p => p.league_id === l.league_id || p.liga === l.league_name);
+                return hasRemaining && hasPicks;
+            });
             
             activeLeagues.forEach(l => {
                 const analysis = getLeagueStatus(l.league_name, l.league_id);
