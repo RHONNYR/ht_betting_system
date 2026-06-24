@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-24 13:55:27",
+  "last_updated": "2026-06-24 15:24:49",
   "leagues": [
     {
       "league_id": 40,
@@ -79792,5 +79792,46 @@ window.dashboardData = {
     "Ykkönen": 1.0,
     "Ykkösliiga": 0.8,
     "Úrvalsdeild": 0.8
+  },
+  "league_current_season_recent_rates": {
+    "Championship": 1.0,
+    "League One": 1.0,
+    "Serie A": 1.0,
+    "Serie B": 1.0,
+    "Serie C": 1.0,
+    "Bundesliga": 0.9,
+    "2. Bundesliga": 1.0,
+    "3. Liga": 0.9,
+    "Regionalliga - Bayern": 1.0,
+    "Regionalliga - Nord": 1.0,
+    "Regionalliga - SudWest": 0.8,
+    "Regionalliga - West": 0.8,
+    "Primeira Liga": 1.0,
+    "Eliteserien": 1.0,
+    "1. Division": 0.9,
+    "Allsvenskan": 1.0,
+    "Superettan": 1.0,
+    "La Liga": 1.0,
+    "Úrvalsdeild": 0.9,
+    "1. Deild": 0.857,
+    "2. Deild": 0.8,
+    "Veikkausliiga": 1.0,
+    "Ykkönen": 0.9,
+    "Kakkonen - Lohko A": 0.9,
+    "Kakkonen - Lohko B": 1.0,
+    "Kakkonen - Lohko C": 0.9,
+    "Major League Soccer": 1.0,
+    "Esiliiga A": 0.8,
+    "Meistriliiga": 1.0,
+    "Premier League": 0.8,
+    "2. Division - Group 1": 1.0,
+    "2. Division - Group 2": 0.9,
+    "USL League One": 1.0,
+    "Tweede Divisie": 0.9,
+    "Ettan - Norra": 1.0,
+    "Ettan - Södra": 1.0,
+    "Premier League 2 Division One": 0.9,
+    "MLS Next Pro": 0.8,
+    "Ykkösliiga": 1.0
   }
 };
