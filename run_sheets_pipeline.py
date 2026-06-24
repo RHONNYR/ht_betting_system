@@ -723,6 +723,59 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
         name_to_tier[info['league_name']] = tier
         name_to_id[info['league_name']] = api_id
 
+    # Calcular win rate reciente de candidatos en la temporada actual para cada liga
+    league_current_season_recent_wr = {}
+    local_candidates_map = {}
+    away_candidates_map = {}
+    
+    if not df_local.empty:
+        for _, row in df_local[df_local['is_candidate'] == True].iterrows():
+            lid = row.get('league_id') or name_to_id.get(row['league_name'])
+            if lid:
+                local_candidates_map.setdefault(int(lid), set()).add(row['team_name'])
+                
+    if not df_away.empty:
+        for _, row in df_away[df_away['is_candidate'] == True].iterrows():
+            lid = row.get('league_id') or name_to_id.get(row['league_name'])
+            if lid:
+                away_candidates_map.setdefault(int(lid), set()).add(row['team_name'])
+                
+    if all_fixtures is not None and not all_fixtures.empty and not df_leagues.empty:
+        try:
+            df_ft = all_fixtures[all_fixtures['status'] == 'FT'].copy()
+            df_ft['ht_total_goals'] = df_ft['ht_home_goals'] + df_ft['ht_away_goals']
+            
+            for _, l_row in df_leagues.iterrows():
+                lid = int(l_row['league_id'])
+                l_name = l_row['league_name']
+                curr_season = int(l_row['season'])
+                
+                df_league_season = df_ft[(df_ft['league_id'] == lid) & (df_ft['season'] == curr_season)].copy()
+                if df_league_season.empty:
+                    league_current_season_recent_wr[l_name] = 1.0
+                    continue
+                    
+                l_cands = local_candidates_map.get(lid, set())
+                a_cands = away_candidates_map.get(lid, set())
+                
+                is_cand_match = df_league_season.apply(
+                    lambda r: r['home_team_name'] in l_cands or r['away_team_name'] in a_cands,
+                    axis=1
+                )
+                df_cand_matches = df_league_season[is_cand_match].copy()
+                
+                if df_cand_matches.empty:
+                    league_current_season_recent_wr[l_name] = 1.0
+                    continue
+                    
+                df_cand_matches = df_cand_matches.sort_values(by='date')
+                recent_matches = df_cand_matches.tail(10)
+                wins = (recent_matches['ht_total_goals'] > 0).sum()
+                wr = round(float(wins / len(recent_matches)), 3)
+                league_current_season_recent_wr[l_name] = wr
+        except Exception as e:
+            print(f"Error al calcular league_current_season_recent_wr: {e}")
+
     # 1. Ligas
     leagues_data = []
     if not df_leagues.empty:
@@ -940,7 +993,8 @@ def save_dashboard_data_js(df_leagues, df_local, df_away, df_backtest, df_picks,
         'backtest_summary': backtest_summary,
         'picks': picks_data,
         'picks_history': picks_history,
-        'league_recent_win_rates': league_recent_wr
+        'league_recent_win_rates': league_recent_wr,
+        'league_current_season_recent_rates': league_current_season_recent_wr
     }
     
     output_dir = os.path.join('data', 'picks')
