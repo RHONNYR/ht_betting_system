@@ -767,6 +767,13 @@
                                 <option value="PENDIENTE">PENDIENTES</option>
                             </select>
                         </div>
+                        <div class="col-span-2">
+                            <label for="history-filter-only-mine" class="text-[10px] uppercase text-gray-400 font-semibold block mb-1">Ver Mis Apuestas</label>
+                            <select id="history-filter-only-mine" onchange="renderHistoryTable()" class="w-full bg-black/40 border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                                <option value="all">Todos los Picks</option>
+                                <option value="mine">Solo Mis Apuestas Realizadas</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Panel de Evaluación Dinámica -->
@@ -1670,9 +1677,14 @@
             const filterTier = document.getElementById('history-filter-tier').value;
             const filterClass = document.getElementById('history-filter-class').value;
             const filterResult = document.getElementById('history-filter-result').value;
+            const filterOnlyMine = document.getElementById('history-filter-only-mine') ? document.getElementById('history-filter-only-mine').value : 'all';
 
             // Apply filters
             const filtered = history.filter(p => {
+                if (filterOnlyMine === 'mine') {
+                    const isChecked = localStorage.getItem(`my_bet_checked_${p.match_id}`) === 'true';
+                    if (!isChecked) return false;
+                }
                 const matchLeague = (filterLeague === 'all' || p.liga === filterLeague);
                 const matchRegion = (filterRegion === 'all' || getLeagueRegion(p.liga) === filterRegion);
                 const matchTier = (filterTier === 'all' || String(p.tier) === filterTier);
@@ -1832,7 +1844,18 @@
                     <td class="py-3 text-center font-extrabold text-white text-base">${marcador}</td>
                     <td class="py-3 text-center">${resultBadge}</td>
                     <td class="py-3 text-center">
-                        <input type="checkbox" onchange="toggleRealBet('${pick.match_id}', this.checked)" class="rounded bg-black/40 border-white/10 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer" ${localStorage.getItem(`my_bet_checked_${pick.match_id}`) === 'true' ? 'checked' : ''}>
+                        <div class="flex flex-col items-center gap-1">
+                            <label class="inline-flex items-center gap-1.5 cursor-pointer">
+                                <input type="checkbox" onchange="toggleRealBet('${pick.match_id}', this.checked)" class="rounded bg-black/40 border-white/10 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer" ${localStorage.getItem(`my_bet_checked_${pick.match_id}`) === 'true' ? 'checked' : ''}>
+                                <span class="text-[10px] text-gray-400 font-medium">Apostado</span>
+                            </label>
+                            ${localStorage.getItem(`my_bet_checked_${pick.match_id}`) === 'true' ? `
+                                <div class="flex items-center gap-1 mt-1 text-[10px]">
+                                    <span class="text-gray-500">Cuota:</span>
+                                    <input type="number" step="0.01" min="1.01" value="${localStorage.getItem(`my_bet_odds_${pick.match_id}`) || pick.cuota_recomendada || '1.45'}" onchange="changeRealBetOdds('${pick.match_id}', this.value)" class="w-14 bg-black/60 border border-white/10 rounded px-1 py-0.5 text-center text-emerald-400 focus:outline-none focus:border-emerald-500">
+                                </div>
+                            ` : ''}
+                        </div>
                     </td>
                     <td class="py-3 text-center">
                         <button onclick="openModal(${origIndex}, true)" class="p-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-lg transition-all" title="Ver Análisis">
@@ -1857,8 +1880,23 @@
         function toggleRealBet(matchId, isChecked) {
             if (isChecked) {
                 localStorage.setItem(`my_bet_checked_${matchId}`, 'true');
+                // Sincronizar cuota recomendada inicial si no hay ninguna guardada
+                const history = window.dashboardData.picks_history || [];
+                const p = history.find(x => x.match_id === matchId);
+                if (p && !localStorage.getItem(`my_bet_odds_${matchId}`)) {
+                    localStorage.setItem(`my_bet_odds_${matchId}`, p.cuota_recomendada || '1.45');
+                }
             } else {
                 localStorage.removeItem(`my_bet_checked_${matchId}`);
+                localStorage.removeItem(`my_bet_odds_${matchId}`);
+            }
+            renderHistoryTable(); // Forzar repintado completo para actualizar filtros e inputs
+        }
+
+        function changeRealBetOdds(matchId, oddsValue) {
+            const val = parseFloat(oddsValue);
+            if (val > 1.0) {
+                localStorage.setItem(`my_bet_odds_${matchId}`, val.toFixed(2));
             }
             updateRealLedgerMetrics();
         }
@@ -1889,7 +1927,7 @@
                     else if (tier === 2) stake = 10.0;
                     else stake = 5.0;
                     
-                    const odds = parseFloat(p.cuota_recomendada) || 1.45;
+                    const odds = parseFloat(localStorage.getItem(`my_bet_odds_${p.match_id}`) || p.cuota_recomendada) || 1.45;
                     if (p.resultado_apuesta === 'GANADA') {
                         netProfit += stake * (odds - 1.0);
                     } else {
