@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-27 23:15:12",
+  "last_updated": "2026-06-28 12:57:43",
   "leagues": [
     {
       "league_id": 40,
@@ -49,10 +49,10 @@ window.dashboardData = {
       "league_id": 75,
       "league_name": "Serie C",
       "season": 2026,
-      "over_15_pct": 67.5,
-      "over_25_pct": 43.9,
-      "partidos_jugados": 114,
-      "partidos_restantes": 76,
+      "over_15_pct": 67.8,
+      "over_25_pct": 43.5,
+      "partidos_jugados": 115,
+      "partidos_restantes": 75,
       "Estado": "RECHAZADA",
       "tier": 3
     },
@@ -181,10 +181,10 @@ window.dashboardData = {
       "league_id": 114,
       "league_name": "Superettan",
       "season": 2026,
-      "over_15_pct": 78.9,
-      "over_25_pct": 59.6,
-      "partidos_jugados": 109,
-      "partidos_restantes": 131,
+      "over_15_pct": 77.5,
+      "over_25_pct": 58.6,
+      "partidos_jugados": 111,
+      "partidos_restantes": 128,
       "Estado": "RECHAZADA",
       "tier": 2
     },
@@ -247,10 +247,10 @@ window.dashboardData = {
       "league_id": 245,
       "league_name": "Ykkönen",
       "season": 2026,
-      "over_15_pct": 85.5,
-      "over_25_pct": 62.3,
-      "partidos_jugados": 69,
-      "partidos_restantes": 63,
+      "over_15_pct": 85.7,
+      "over_25_pct": 62.9,
+      "partidos_jugados": 70,
+      "partidos_restantes": 61,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -269,10 +269,10 @@ window.dashboardData = {
       "league_id": 248,
       "league_name": "Kakkonen - Lohko B",
       "season": 2026,
-      "over_15_pct": 85.4,
-      "over_25_pct": 62.5,
-      "partidos_jugados": 48,
-      "partidos_restantes": 42,
+      "over_15_pct": 85.7,
+      "over_25_pct": 63.3,
+      "partidos_jugados": 49,
+      "partidos_restantes": 41,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -313,10 +313,10 @@ window.dashboardData = {
       "league_id": 329,
       "league_name": "Meistriliiga",
       "season": 2026,
-      "over_15_pct": 77.4,
-      "over_25_pct": 63.1,
-      "partidos_jugados": 84,
-      "partidos_restantes": 96,
+      "over_15_pct": 77.6,
+      "over_25_pct": 62.4,
+      "partidos_jugados": 85,
+      "partidos_restantes": 94,
       "Estado": "RECHAZADA",
       "tier": 3
     },
@@ -338,7 +338,7 @@ window.dashboardData = {
       "over_15_pct": 80.7,
       "over_25_pct": 57.8,
       "partidos_jugados": 83,
-      "partidos_restantes": 99,
+      "partidos_restantes": 98,
       "Estado": "RECHAZADA",
       "tier": 3
     },
@@ -346,10 +346,10 @@ window.dashboardData = {
       "league_id": 474,
       "league_name": "2. Division - Group 2",
       "season": 2026,
-      "over_15_pct": 83.8,
-      "over_25_pct": 75.0,
-      "partidos_jugados": 80,
-      "partidos_restantes": 102,
+      "over_15_pct": 84.3,
+      "over_25_pct": 73.5,
+      "partidos_jugados": 83,
+      "partidos_restantes": 99,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -379,10 +379,10 @@ window.dashboardData = {
       "league_id": 563,
       "league_name": "Ettan - Norra",
       "season": 2026,
-      "over_15_pct": 82.0,
-      "over_25_pct": 59.5,
-      "partidos_jugados": 111,
-      "partidos_restantes": 129,
+      "over_15_pct": 82.1,
+      "over_25_pct": 59.8,
+      "partidos_jugados": 112,
+      "partidos_restantes": 128,
       "Estado": "RECHAZADA",
       "tier": 3
     },
@@ -390,21 +390,10 @@ window.dashboardData = {
       "league_id": 564,
       "league_name": "Ettan - Södra",
       "season": 2026,
-      "over_15_pct": 82.0,
-      "over_25_pct": 62.2,
-      "partidos_jugados": 111,
-      "partidos_restantes": 129,
-      "Estado": "APROBADA",
-      "tier": 3
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "season": 2025,
-      "over_15_pct": 85.1,
-      "over_25_pct": 69.2,
-      "partidos_jugados": 305,
-      "partidos_restantes": 1,
+      "over_15_pct": 82.1,
+      "over_25_pct": 62.5,
+      "partidos_jugados": 112,
+      "partidos_restantes": 128,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -412,9 +401,9 @@ window.dashboardData = {
       "league_id": 909,
       "league_name": "MLS Next Pro",
       "season": 2026,
-      "over_15_pct": 84.4,
-      "over_25_pct": 70.5,
-      "partidos_jugados": 225,
+      "over_15_pct": 84.5,
+      "over_25_pct": 70.7,
+      "partidos_jugados": 226,
       "partidos_restantes": 194,
       "Estado": "APROBADA",
       "tier": 3
@@ -423,10 +412,10 @@ window.dashboardData = {
       "league_id": 1087,
       "league_name": "Ykkösliiga",
       "season": 2026,
-      "over_15_pct": 59.3,
-      "over_25_pct": 39.0,
-      "partidos_jugados": 59,
-      "partidos_restantes": 76,
+      "over_15_pct": 60.0,
+      "over_25_pct": 40.0,
+      "partidos_jugados": 60,
+      "partidos_restantes": 75,
       "Estado": "RECHAZADA",
       "tier": 3
     }
@@ -3411,18 +3400,10 @@ window.dashboardData = {
       "ht_15_pct": 60.0,
       "bts_pct": 60.0,
       "rendimiento_ht": 70.0,
-      "avg_goals_ht_general": 1.09,
+      "avg_goals_ht_general": 1.08,
       "avg_goals_ht_rol": 1.2,
       "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-16",
-          "rival": "Trygg/Lade",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        },
         {
           "fecha": "2026-05-25",
           "rival": "Lørenskog",
@@ -3454,6 +3435,14 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 2,
           "local": true
+        },
+        {
+          "fecha": "2026-06-28",
+          "rival": "Follo",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
         }
       ]
     },
@@ -3462,22 +3451,14 @@ window.dashboardData = {
       "league_name": "2. Division - Group 2",
       "team_name": "Skeid",
       "role": "Local",
-      "ht_05_pct": 80.0,
-      "ht_15_pct": 60.0,
-      "bts_pct": 60.0,
-      "rendimiento_ht": 60.0,
-      "avg_goals_ht_general": 0.82,
-      "avg_goals_ht_rol": 1.2,
+      "ht_05_pct": 83.3,
+      "ht_15_pct": 66.7,
+      "bts_pct": 66.7,
+      "rendimiento_ht": 66.7,
+      "avg_goals_ht_general": 0.92,
+      "avg_goals_ht_rol": 1.33,
       "racha_ht": "5/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-16",
-          "rival": "Kjelsås",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
         {
           "fecha": "2026-05-23",
           "rival": "Follo",
@@ -3509,6 +3490,14 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 2,
           "local": false
+        },
+        {
+          "fecha": "2026-06-28",
+          "rival": "Trygg/Lade",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
         }
       ]
     },
@@ -3957,22 +3946,14 @@ window.dashboardData = {
       "league_name": "Ettan - Södra",
       "team_name": "Olympic",
       "role": "Local",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 83.3,
-      "bts_pct": 83.3,
-      "rendimiento_ht": 83.3,
-      "avg_goals_ht_general": 1.0,
-      "avg_goals_ht_rol": 1.17,
-      "racha_ht": "5/5",
+      "ht_05_pct": 85.7,
+      "ht_15_pct": 71.4,
+      "bts_pct": 85.7,
+      "rendimiento_ht": 71.4,
+      "avg_goals_ht_general": 0.93,
+      "avg_goals_ht_rol": 1.0,
+      "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-23",
-          "rival": "Rosengård",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
         {
           "fecha": "2026-06-03",
           "rival": "Lund",
@@ -4004,610 +3985,13 @@ window.dashboardData = {
           "goles_contra_ht": 0,
           "total_ht": 2,
           "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Aston Villa U21",
-      "role": "Local",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 72.7,
-      "bts_pct": 54.5,
-      "rendimiento_ht": 68.2,
-      "avg_goals_ht_general": 0.86,
-      "avg_goals_ht_rol": 0.82,
-      "racha_ht": "4/5",
-      "racha_detalles": [
+        },
         {
-          "fecha": "2026-04-03",
-          "rival": "Brighton U21",
+          "fecha": "2026-06-28",
+          "rival": "Eskilsminne",
           "goles_favor_ht": 0,
           "goles_contra_ht": 0,
           "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-06",
-          "rival": "Blackburn Rovers U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-10",
-          "rival": "Middlesbrough U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-17",
-          "rival": "Stoke City U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-01",
-          "rival": "Manchester City U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Norwich City U21",
-      "role": "Local",
-      "ht_05_pct": 90.0,
-      "ht_15_pct": 60.0,
-      "bts_pct": 80.0,
-      "rendimiento_ht": 75.0,
-      "avg_goals_ht_general": 0.8,
-      "avg_goals_ht_rol": 0.8,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-02-27",
-          "rival": "Stoke City U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-06",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "West Bromwich Albion U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Manchester City U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Ipswich Town U21",
-      "role": "Local",
-      "ht_05_pct": 90.9,
-      "ht_15_pct": 63.6,
-      "bts_pct": 72.7,
-      "rendimiento_ht": 54.5,
-      "avg_goals_ht_general": 1.24,
-      "avg_goals_ht_rol": 1.09,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-06",
-          "rival": "West Bromwich Albion U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-23",
-          "rival": "Burnley U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-10",
-          "rival": "Birmingham City U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-17",
-          "rival": "Everton U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 3,
-          "total_ht": 5,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-24",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Newcastle United U21",
-      "role": "Local",
-      "ht_05_pct": 90.0,
-      "ht_15_pct": 70.0,
-      "bts_pct": 60.0,
-      "rendimiento_ht": 65.0,
-      "avg_goals_ht_general": 0.9,
-      "avg_goals_ht_rol": 1.0,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-09",
-          "rival": "Leicester City U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Blackburn Rovers U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "Nottingham Forest U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-10",
-          "rival": "Manchester United U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Wolves U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Leicester City U21",
-      "role": "Local",
-      "ht_05_pct": 90.0,
-      "ht_15_pct": 90.0,
-      "bts_pct": 100.0,
-      "rendimiento_ht": 65.0,
-      "avg_goals_ht_general": 1.0,
-      "avg_goals_ht_rol": 1.1,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-09",
-          "rival": "Newcastle United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 1,
-          "total_ht": 4,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Leeds United U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-24",
-          "rival": "Tottenham Hotspur U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Sunderland U21",
-      "role": "Local",
-      "ht_05_pct": 80.0,
-      "ht_15_pct": 70.0,
-      "bts_pct": 100.0,
-      "rendimiento_ht": 70.0,
-      "avg_goals_ht_general": 1.0,
-      "avg_goals_ht_rol": 1.1,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-14",
-          "rival": "Chelsea U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-23",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-30",
-          "rival": "Reading U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-06",
-          "rival": "Derby County U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-26",
-          "rival": "Manchester United U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Manchester United U21",
-      "role": "Local",
-      "ht_05_pct": 90.9,
-      "ht_15_pct": 54.5,
-      "bts_pct": 81.8,
-      "rendimiento_ht": 59.1,
-      "avg_goals_ht_general": 1.08,
-      "avg_goals_ht_rol": 0.82,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-10",
-          "rival": "Newcastle United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-26",
-          "rival": "Sunderland U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-04",
-          "rival": "Crystal Palace U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-08",
-          "rival": "Manchester City U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 1,
-          "total_ht": 4,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-16",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Manchester City U21",
-      "role": "Local",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 58.3,
-      "bts_pct": 41.7,
-      "rendimiento_ht": 62.5,
-      "avg_goals_ht_general": 1.35,
-      "avg_goals_ht_rol": 1.58,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-03",
-          "rival": "Derby County U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Norwich City U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-25",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-01",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-08",
-          "rival": "Manchester United U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 3,
-          "total_ht": 4,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Liverpool U21",
-      "role": "Local",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 90.0,
-      "bts_pct": 80.0,
-      "rendimiento_ht": 85.0,
-      "avg_goals_ht_general": 1.35,
-      "avg_goals_ht_rol": 2.0,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-02-20",
-          "rival": "Nottingham Forest U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-01",
-          "rival": "Tottenham Hotspur U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-08",
-          "rival": "Wolves U21",
-          "goles_favor_ht": 5,
-          "goles_contra_ht": 0,
-          "total_ht": 5,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-16",
-          "rival": "Manchester City U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-22",
-          "rival": "Crystal Palace U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Fulham U21",
-      "role": "Local",
-      "ht_05_pct": 80.0,
-      "ht_15_pct": 40.0,
-      "bts_pct": 80.0,
-      "rendimiento_ht": 55.0,
-      "avg_goals_ht_general": 1.2,
-      "avg_goals_ht_rol": 1.0,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-02-27",
-          "rival": "Burnley U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-06",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Nottingham Forest U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-23",
-          "rival": "Stoke City U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-10",
-          "rival": "Chelsea U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Crystal Palace U21",
-      "role": "Local",
-      "ht_05_pct": 90.9,
-      "ht_15_pct": 54.5,
-      "bts_pct": 54.5,
-      "rendimiento_ht": 59.1,
-      "avg_goals_ht_general": 0.95,
-      "avg_goals_ht_rol": 1.18,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-14",
-          "rival": "Wolves U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-22",
-          "rival": "Liverpool U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-03",
-          "rival": "Nottingham Forest U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-04",
-          "rival": "Manchester United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
           "local": true
         }
       ]
@@ -6821,18 +6205,10 @@ window.dashboardData = {
       "ht_15_pct": 80.0,
       "bts_pct": 100.0,
       "rendimiento_ht": 80.0,
-      "avg_goals_ht_general": 1.38,
+      "avg_goals_ht_general": 1.22,
       "avg_goals_ht_rol": 1.8,
       "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-08",
-          "rival": "Honka",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
         {
           "fecha": "2026-05-17",
           "rival": "P-Iirot",
@@ -6864,6 +6240,14 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 5,
           "local": false
+        },
+        {
+          "fecha": "2026-06-28",
+          "rival": "EBK",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
         }
       ]
     },
@@ -7642,22 +7026,14 @@ window.dashboardData = {
       "league_name": "2. Division - Group 2",
       "team_name": "Levanger",
       "role": "Visitante",
-      "ht_05_pct": 83.3,
-      "ht_15_pct": 50.0,
-      "bts_pct": 66.7,
-      "rendimiento_ht": 58.3,
-      "avg_goals_ht_general": 1.09,
+      "ht_05_pct": 85.7,
+      "ht_15_pct": 42.9,
+      "bts_pct": 57.1,
+      "rendimiento_ht": 57.1,
+      "avg_goals_ht_general": 1.08,
       "avg_goals_ht_rol": 1.0,
       "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-16",
-          "rival": "Trygg/Lade",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        },
         {
           "fecha": "2026-05-25",
           "rival": "Lørenskog",
@@ -7689,6 +7065,14 @@ window.dashboardData = {
           "goles_contra_ht": 1,
           "total_ht": 2,
           "local": true
+        },
+        {
+          "fecha": "2026-06-28",
+          "rival": "Follo",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
         }
       ]
     },
@@ -7921,18 +7305,10 @@ window.dashboardData = {
       "ht_15_pct": 57.1,
       "bts_pct": 71.4,
       "rendimiento_ht": 50.0,
-      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_general": 0.93,
       "avg_goals_ht_rol": 0.86,
-      "racha_ht": "5/5",
+      "racha_ht": "4/5",
       "racha_detalles": [
-        {
-          "fecha": "2026-05-23",
-          "rival": "Rosengård",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
         {
           "fecha": "2026-06-03",
           "rival": "Lund",
@@ -7964,555 +7340,13 @@ window.dashboardData = {
           "goles_contra_ht": 0,
           "total_ht": 2,
           "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Norwich City U21",
-      "role": "Visitante",
-      "ht_05_pct": 90.0,
-      "ht_15_pct": 60.0,
-      "bts_pct": 70.0,
-      "rendimiento_ht": 70.0,
-      "avg_goals_ht_general": 0.8,
-      "avg_goals_ht_rol": 0.8,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-02-27",
-          "rival": "Stoke City U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
         },
         {
-          "fecha": "2026-03-06",
-          "rival": "Arsenal U21",
+          "fecha": "2026-06-28",
+          "rival": "Eskilsminne",
           "goles_favor_ht": 0,
           "goles_contra_ht": 0,
           "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "West Bromwich Albion U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Manchester City U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Ipswich Town U21",
-      "role": "Visitante",
-      "ht_05_pct": 90.0,
-      "ht_15_pct": 80.0,
-      "bts_pct": 70.0,
-      "rendimiento_ht": 75.0,
-      "avg_goals_ht_general": 1.24,
-      "avg_goals_ht_rol": 1.4,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-06",
-          "rival": "West Bromwich Albion U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-23",
-          "rival": "Burnley U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-10",
-          "rival": "Birmingham City U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-17",
-          "rival": "Everton U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 3,
-          "total_ht": 5,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-24",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Leicester City U21",
-      "role": "Visitante",
-      "ht_05_pct": 81.8,
-      "ht_15_pct": 63.6,
-      "bts_pct": 54.5,
-      "rendimiento_ht": 59.1,
-      "avg_goals_ht_general": 1.0,
-      "avg_goals_ht_rol": 0.91,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-09",
-          "rival": "Newcastle United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 1,
-          "total_ht": 4,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Leeds United U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-24",
-          "rival": "Tottenham Hotspur U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "West Ham United U21",
-      "role": "Visitante",
-      "ht_05_pct": 81.8,
-      "ht_15_pct": 63.6,
-      "bts_pct": 81.8,
-      "rendimiento_ht": 63.6,
-      "avg_goals_ht_general": 0.95,
-      "avg_goals_ht_rol": 0.82,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-06",
-          "rival": "Derby County U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Reading U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "Blackburn Rovers U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-04",
-          "rival": "Tottenham Hotspur U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-04",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Sunderland U21",
-      "role": "Visitante",
-      "ht_05_pct": 81.8,
-      "ht_15_pct": 54.5,
-      "bts_pct": 54.5,
-      "rendimiento_ht": 54.5,
-      "avg_goals_ht_general": 1.0,
-      "avg_goals_ht_rol": 0.91,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-14",
-          "rival": "Chelsea U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-23",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-30",
-          "rival": "Reading U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-06",
-          "rival": "Derby County U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-26",
-          "rival": "Manchester United U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Manchester United U21",
-      "role": "Visitante",
-      "ht_05_pct": 84.6,
-      "ht_15_pct": 61.5,
-      "bts_pct": 69.2,
-      "rendimiento_ht": 69.2,
-      "avg_goals_ht_general": 1.08,
-      "avg_goals_ht_rol": 1.31,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-10",
-          "rival": "Newcastle United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-26",
-          "rival": "Sunderland U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-04",
-          "rival": "Crystal Palace U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-08",
-          "rival": "Manchester City U21",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 1,
-          "total_ht": 4,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-16",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Manchester City U21",
-      "role": "Visitante",
-      "ht_05_pct": 81.8,
-      "ht_15_pct": 63.6,
-      "bts_pct": 63.6,
-      "rendimiento_ht": 54.5,
-      "avg_goals_ht_general": 1.35,
-      "avg_goals_ht_rol": 1.09,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-03",
-          "rival": "Derby County U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-13",
-          "rival": "Norwich City U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-25",
-          "rival": "Arsenal U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-01",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-08",
-          "rival": "Manchester United U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 3,
-          "total_ht": 4,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Tottenham Hotspur U21",
-      "role": "Visitante",
-      "ht_05_pct": 81.8,
-      "ht_15_pct": 54.5,
-      "bts_pct": 81.8,
-      "rendimiento_ht": 68.2,
-      "avg_goals_ht_general": 0.83,
-      "avg_goals_ht_rol": 1.18,
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-04-10",
-          "rival": "Wolves U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-17",
-          "rival": "Blackburn Rovers U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-24",
-          "rival": "Leicester City U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-01",
-          "rival": "Chelsea U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-08",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Blackburn Rovers U21",
-      "role": "Visitante",
-      "ht_05_pct": 80.0,
-      "ht_15_pct": 60.0,
-      "bts_pct": 50.0,
-      "rendimiento_ht": 55.0,
-      "avg_goals_ht_general": 0.8,
-      "avg_goals_ht_rol": 1.1,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-03-13",
-          "rival": "Newcastle United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-20",
-          "rival": "West Ham United U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-06",
-          "rival": "Aston Villa U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-04-12",
-          "rival": "Burnley U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-17",
-          "rival": "Tottenham Hotspur U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        }
-      ]
-    },
-    {
-      "league_id": 702,
-      "league_name": "Premier League 2 Division One",
-      "team_name": "Fulham U21",
-      "role": "Visitante",
-      "ht_05_pct": 100.0,
-      "ht_15_pct": 80.0,
-      "bts_pct": 80.0,
-      "rendimiento_ht": 75.0,
-      "avg_goals_ht_general": 1.2,
-      "avg_goals_ht_rol": 1.4,
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-02-27",
-          "rival": "Burnley U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-06",
-          "rival": "Brighton U21",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-03-13",
-          "rival": "Nottingham Forest U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-03-23",
-          "rival": "Stoke City U21",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-04-10",
-          "rival": "Chelsea U21",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
           "local": true
         }
       ]
@@ -65170,389 +64004,6 @@ window.dashboardData = {
   },
   "picks": [
     {
-      "match_id": 1504481,
-      "league_id": 564,
-      "tier": 3,
-      "fecha": "2026-06-28",
-      "hora": "11:00",
-      "liga": "Ettan - Södra",
-      "local": "Olympic",
-      "visitante": "Eskilsminne",
-      "probabilidad": "100.0%",
-      "clase": "Clase B",
-      "sustento": "Local",
-      "cuota_recomendada": 1.22,
-      "bookmaker_recomendado": "Marathonbet",
-      "otras_cuotas": {
-        "Betfair": 1.22,
-        "1xBet": 1.22
-      },
-      "local_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "83.3%",
-        "bts_pct": "83.3%",
-        "rendimiento_ht": "83.3%",
-        "avg_goals_ht_general": "1.00",
-        "avg_goals_ht_rol": "1.17",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-23",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-03",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-08",
-            "rival": "Angelholms FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-13",
-            "rival": "Laholm",
-            "goles_favor_ht": 3,
-            "goles_contra_ht": 1,
-            "total_ht": 4,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-21",
-            "rival": "AFC Malmo",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "visitante_stats": {
-        "ht_05_pct": "83.3%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "50.0%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.77",
-        "avg_goals_ht_rol": "0.83",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-22",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "Trelleborg",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 1,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-07",
-            "rival": "AFC Malmo",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-13",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 3,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-18",
-            "rival": "Trollhättan",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "league_recent_win_rate": 1.0,
-      "is_drawdown": false
-    },
-    {
-      "match_id": 1496278,
-      "league_id": 474,
-      "tier": 3,
-      "fecha": "2026-06-28",
-      "hora": "12:00",
-      "liga": "2. Division - Group 2",
-      "local": "Skeid",
-      "visitante": "Trygg/Lade",
-      "probabilidad": "80.0%",
-      "clase": "Clase B",
-      "sustento": "Local",
-      "cuota_recomendada": 1.2,
-      "bookmaker_recomendado": "William Hill",
-      "otras_cuotas": {
-        "10Bet": 1.18,
-        "Betfair": 1.2,
-        "1xBet": 1.19
-      },
-      "local_stats": {
-        "ht_05_pct": "80.0%",
-        "ht_15_pct": "60.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "60.0%",
-        "avg_goals_ht_general": "0.82",
-        "avg_goals_ht_rol": "1.20",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-16",
-            "rival": "Kjelsås",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Follo",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-31",
-            "rival": "Tromsdalen Uil",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-14",
-            "rival": "Rana",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 2,
-            "total_ht": 4,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-20",
-            "rival": "Levanger",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "visitante_stats": {
-        "ht_05_pct": "66.7%",
-        "ht_15_pct": "33.3%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "41.7%",
-        "avg_goals_ht_general": "0.73",
-        "avg_goals_ht_rol": "0.33",
-        "racha_ht": "3/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-16",
-            "rival": "Levanger",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 3,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-24",
-            "rival": "Tromsdalen Uil",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-31",
-            "rival": "Grorud",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-14",
-            "rival": "Stjørdals-Blink",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-21",
-            "rival": "Lørenskog",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 2,
-            "total_ht": 3,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "league_recent_win_rate": 0.9,
-      "is_drawdown": false
-    },
-    {
-      "match_id": 1496275,
-      "league_id": 474,
-      "tier": 3,
-      "fecha": "2026-06-28",
-      "hora": "13:00",
-      "liga": "2. Division - Group 2",
-      "local": "Follo",
-      "visitante": "Levanger",
-      "probabilidad": "83.3%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "cuota_recomendada": 1.25,
-      "bookmaker_recomendado": "10Bet",
-      "otras_cuotas": {
-        "William Hill": 1.22,
-        "Betfair": 1.22,
-        "1xBet": 1.23
-      },
-      "local_stats": {
-        "ht_05_pct": "66.7%",
-        "ht_15_pct": "33.3%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.50",
-        "avg_goals_ht_rol": "0.50",
-        "racha_ht": "3/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Eidsvold",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-16",
-            "rival": "Lørenskog",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Skeid",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "Ull/Kisa",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-12",
-            "rival": "Kjelsås",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 3,
-            "total_ht": 4,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "83.3%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "58.3%",
-        "avg_goals_ht_general": "1.09",
-        "avg_goals_ht_rol": "1.00",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-16",
-            "rival": "Trygg/Lade",
-            "goles_favor_ht": 3,
-            "goles_contra_ht": 0,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-25",
-            "rival": "Lørenskog",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-31",
-            "rival": "Junkeren",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-14",
-            "rival": "Eidsvold",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-20",
-            "rival": "Skeid",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "league_recent_win_rate": 0.9,
-      "is_drawdown": false
-    },
-    {
       "match_id": 1508791,
       "league_id": 164,
       "tier": 2,
@@ -66343,18 +64794,10 @@ window.dashboardData = {
         "ht_15_pct": "60.0%",
         "bts_pct": "60.0%",
         "rendimiento_ht": "60.0%",
-        "avg_goals_ht_general": "0.44",
+        "avg_goals_ht_general": "0.50",
         "avg_goals_ht_rol": "0.60",
         "racha_ht": "5/5",
         "racha_detalles": [
-          {
-            "fecha": "2026-05-17",
-            "rival": "HJS Akatemia",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
           {
             "fecha": "2026-05-24",
             "rival": "GrIFK",
@@ -66386,6 +64829,14 @@ window.dashboardData = {
             "goles_contra_ht": 2,
             "total_ht": 2,
             "local": true
+          },
+          {
+            "fecha": "2026-06-28",
+            "rival": "Ilves II",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": false
           }
         ],
         "sequia_ht": false,
@@ -68439,401 +66890,6 @@ window.dashboardData = {
         ],
         "sequia_ht": false,
         "is_candidate": false
-      },
-      "league_recent_win_rate": 0.9,
-      "is_drawdown": false
-    },
-    {
-      "match_id": 1504481,
-      "league_id": 564,
-      "tier": 3,
-      "fecha": "2026-06-28",
-      "hora": "11:00",
-      "liga": "Ettan - Södra",
-      "local": "Olympic",
-      "visitante": "Eskilsminne",
-      "probabilidad": "100.0%",
-      "clase": "Clase B",
-      "sustento": "Local",
-      "status": "NS",
-      "goles_ht": null,
-      "resultado_apuesta": null,
-      "marcador_ht": null,
-      "cuota_recomendada": 1.22,
-      "bookmaker_recomendado": "Marathonbet",
-      "otras_cuotas": {
-        "Betfair": 1.22,
-        "1xBet": 1.22
-      },
-      "local_stats": {
-        "ht_05_pct": "100.0%",
-        "ht_15_pct": "83.3%",
-        "bts_pct": "83.3%",
-        "rendimiento_ht": "83.3%",
-        "avg_goals_ht_general": "1.00",
-        "avg_goals_ht_rol": "1.17",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-23",
-            "rival": "Rosengård",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-03",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-08",
-            "rival": "Angelholms FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-13",
-            "rival": "Laholm",
-            "goles_favor_ht": 3,
-            "goles_contra_ht": 1,
-            "total_ht": 4,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-21",
-            "rival": "AFC Malmo",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "visitante_stats": {
-        "ht_05_pct": "83.3%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "50.0%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.77",
-        "avg_goals_ht_rol": "0.83",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-22",
-            "rival": "Lund",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "Trelleborg",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 1,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-07",
-            "rival": "AFC Malmo",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-13",
-            "rival": "Atvidabergs FF",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 3,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-18",
-            "rival": "Trollhättan",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "league_recent_win_rate": 1.0,
-      "is_drawdown": false
-    },
-    {
-      "match_id": 1496278,
-      "league_id": 474,
-      "tier": 3,
-      "fecha": "2026-06-28",
-      "hora": "12:00",
-      "liga": "2. Division - Group 2",
-      "local": "Skeid",
-      "visitante": "Trygg/Lade",
-      "probabilidad": "80.0%",
-      "clase": "Clase B",
-      "sustento": "Local",
-      "status": "NS",
-      "goles_ht": null,
-      "resultado_apuesta": null,
-      "marcador_ht": null,
-      "cuota_recomendada": 1.2,
-      "bookmaker_recomendado": "William Hill",
-      "otras_cuotas": {
-        "10Bet": 1.18,
-        "Betfair": 1.2,
-        "1xBet": 1.19
-      },
-      "local_stats": {
-        "ht_05_pct": "80.0%",
-        "ht_15_pct": "60.0%",
-        "bts_pct": "60.0%",
-        "rendimiento_ht": "60.0%",
-        "avg_goals_ht_general": "0.82",
-        "avg_goals_ht_rol": "1.20",
-        "racha_ht": "5/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-16",
-            "rival": "Kjelsås",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Follo",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-31",
-            "rival": "Tromsdalen Uil",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 1,
-            "total_ht": 1,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-14",
-            "rival": "Rana",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 2,
-            "total_ht": 4,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-20",
-            "rival": "Levanger",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": false
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
-      },
-      "visitante_stats": {
-        "ht_05_pct": "66.7%",
-        "ht_15_pct": "33.3%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "41.7%",
-        "avg_goals_ht_general": "0.73",
-        "avg_goals_ht_rol": "0.33",
-        "racha_ht": "3/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-16",
-            "rival": "Levanger",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 3,
-            "total_ht": 3,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-24",
-            "rival": "Tromsdalen Uil",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-31",
-            "rival": "Grorud",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-14",
-            "rival": "Stjørdals-Blink",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-21",
-            "rival": "Lørenskog",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 2,
-            "total_ht": 3,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "league_recent_win_rate": 0.9,
-      "is_drawdown": false
-    },
-    {
-      "match_id": 1496275,
-      "league_id": 474,
-      "tier": 3,
-      "fecha": "2026-06-28",
-      "hora": "13:00",
-      "liga": "2. Division - Group 2",
-      "local": "Follo",
-      "visitante": "Levanger",
-      "probabilidad": "83.3%",
-      "clase": "Clase B",
-      "sustento": "Visitante",
-      "status": "NS",
-      "goles_ht": null,
-      "resultado_apuesta": null,
-      "marcador_ht": null,
-      "cuota_recomendada": 1.25,
-      "bookmaker_recomendado": "10Bet",
-      "otras_cuotas": {
-        "William Hill": 1.22,
-        "Betfair": 1.22,
-        "1xBet": 1.23
-      },
-      "local_stats": {
-        "ht_05_pct": "66.7%",
-        "ht_15_pct": "33.3%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "50.0%",
-        "avg_goals_ht_general": "0.50",
-        "avg_goals_ht_rol": "0.50",
-        "racha_ht": "3/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-09",
-            "rival": "Eidsvold",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-16",
-            "rival": "Lørenskog",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-23",
-            "rival": "Skeid",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 2,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-30",
-            "rival": "Ull/Kisa",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-12",
-            "rival": "Kjelsås",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 3,
-            "total_ht": 4,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": false
-      },
-      "visitante_stats": {
-        "ht_05_pct": "83.3%",
-        "ht_15_pct": "50.0%",
-        "bts_pct": "66.7%",
-        "rendimiento_ht": "58.3%",
-        "avg_goals_ht_general": "1.09",
-        "avg_goals_ht_rol": "1.00",
-        "racha_ht": "4/5",
-        "racha_detalles": [
-          {
-            "fecha": "2026-05-16",
-            "rival": "Trygg/Lade",
-            "goles_favor_ht": 3,
-            "goles_contra_ht": 0,
-            "total_ht": 3,
-            "local": true
-          },
-          {
-            "fecha": "2026-05-25",
-            "rival": "Lørenskog",
-            "goles_favor_ht": 0,
-            "goles_contra_ht": 0,
-            "total_ht": 0,
-            "local": false
-          },
-          {
-            "fecha": "2026-05-31",
-            "rival": "Junkeren",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 0,
-            "total_ht": 1,
-            "local": true
-          },
-          {
-            "fecha": "2026-06-14",
-            "rival": "Eidsvold",
-            "goles_favor_ht": 2,
-            "goles_contra_ht": 0,
-            "total_ht": 2,
-            "local": false
-          },
-          {
-            "fecha": "2026-06-20",
-            "rival": "Skeid",
-            "goles_favor_ht": 1,
-            "goles_contra_ht": 1,
-            "total_ht": 2,
-            "local": true
-          }
-        ],
-        "sequia_ht": false,
-        "is_candidate": true
       },
       "league_recent_win_rate": 0.9,
       "is_drawdown": false
@@ -71813,6 +69869,401 @@ window.dashboardData = {
         "is_candidate": false
       },
       "league_recent_win_rate": 0.9,
+      "is_drawdown": false
+    },
+    {
+      "match_id": 1496275,
+      "league_id": 474,
+      "tier": 3,
+      "fecha": "2026-06-28",
+      "hora": "13:00",
+      "liga": "2. Division - Group 2",
+      "local": "Follo",
+      "visitante": "Levanger",
+      "probabilidad": "83.3%",
+      "clase": "Clase B",
+      "sustento": "Visitante",
+      "status": "FT",
+      "goles_ht": 1,
+      "resultado_apuesta": "GANADA",
+      "marcador_ht": "0 - 1",
+      "cuota_recomendada": 1.25,
+      "bookmaker_recomendado": "10Bet",
+      "otras_cuotas": {
+        "William Hill": 1.22,
+        "Betfair": 1.22,
+        "1xBet": 1.23
+      },
+      "local_stats": {
+        "ht_05_pct": "66.7%",
+        "ht_15_pct": "33.3%",
+        "bts_pct": "66.7%",
+        "rendimiento_ht": "50.0%",
+        "avg_goals_ht_general": "0.50",
+        "avg_goals_ht_rol": "0.50",
+        "racha_ht": "3/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-09",
+            "rival": "Eidsvold",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 2,
+            "total_ht": 2,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-16",
+            "rival": "Lørenskog",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-23",
+            "rival": "Skeid",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 2,
+            "total_ht": 2,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-30",
+            "rival": "Ull/Kisa",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": true
+          },
+          {
+            "fecha": "2026-06-12",
+            "rival": "Kjelsås",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 3,
+            "total_ht": 4,
+            "local": true
+          }
+        ],
+        "sequia_ht": false,
+        "is_candidate": false
+      },
+      "visitante_stats": {
+        "ht_05_pct": "83.3%",
+        "ht_15_pct": "50.0%",
+        "bts_pct": "66.7%",
+        "rendimiento_ht": "58.3%",
+        "avg_goals_ht_general": "1.09",
+        "avg_goals_ht_rol": "1.00",
+        "racha_ht": "4/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-16",
+            "rival": "Trygg/Lade",
+            "goles_favor_ht": 3,
+            "goles_contra_ht": 0,
+            "total_ht": 3,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-25",
+            "rival": "Lørenskog",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-31",
+            "rival": "Junkeren",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": true
+          },
+          {
+            "fecha": "2026-06-14",
+            "rival": "Eidsvold",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-20",
+            "rival": "Skeid",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": true
+          }
+        ],
+        "sequia_ht": false,
+        "is_candidate": true
+      },
+      "league_recent_win_rate": 0.9,
+      "is_drawdown": false
+    },
+    {
+      "match_id": 1496278,
+      "league_id": 474,
+      "tier": 3,
+      "fecha": "2026-06-28",
+      "hora": "12:00",
+      "liga": "2. Division - Group 2",
+      "local": "Skeid",
+      "visitante": "Trygg/Lade",
+      "probabilidad": "80.0%",
+      "clase": "Clase B",
+      "sustento": "Local",
+      "status": "FT",
+      "goles_ht": 3,
+      "resultado_apuesta": "GANADA",
+      "marcador_ht": "2 - 1",
+      "cuota_recomendada": 1.2,
+      "bookmaker_recomendado": "William Hill",
+      "otras_cuotas": {
+        "10Bet": 1.18,
+        "Betfair": 1.2,
+        "1xBet": 1.19
+      },
+      "local_stats": {
+        "ht_05_pct": "80.0%",
+        "ht_15_pct": "60.0%",
+        "bts_pct": "60.0%",
+        "rendimiento_ht": "60.0%",
+        "avg_goals_ht_general": "0.82",
+        "avg_goals_ht_rol": "1.20",
+        "racha_ht": "5/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-16",
+            "rival": "Kjelsås",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-23",
+            "rival": "Follo",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-31",
+            "rival": "Tromsdalen Uil",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-14",
+            "rival": "Rana",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 2,
+            "total_ht": 4,
+            "local": true
+          },
+          {
+            "fecha": "2026-06-20",
+            "rival": "Levanger",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": false
+          }
+        ],
+        "sequia_ht": false,
+        "is_candidate": true
+      },
+      "visitante_stats": {
+        "ht_05_pct": "66.7%",
+        "ht_15_pct": "33.3%",
+        "bts_pct": "66.7%",
+        "rendimiento_ht": "41.7%",
+        "avg_goals_ht_general": "0.73",
+        "avg_goals_ht_rol": "0.33",
+        "racha_ht": "3/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-16",
+            "rival": "Levanger",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 3,
+            "total_ht": 3,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-24",
+            "rival": "Tromsdalen Uil",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 2,
+            "total_ht": 2,
+            "local": true
+          },
+          {
+            "fecha": "2026-05-31",
+            "rival": "Grorud",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-14",
+            "rival": "Stjørdals-Blink",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 0,
+            "total_ht": 0,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-21",
+            "rival": "Lørenskog",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 2,
+            "total_ht": 3,
+            "local": true
+          }
+        ],
+        "sequia_ht": false,
+        "is_candidate": false
+      },
+      "league_recent_win_rate": 0.9,
+      "is_drawdown": false
+    },
+    {
+      "match_id": 1504481,
+      "league_id": 564,
+      "tier": 3,
+      "fecha": "2026-06-28",
+      "hora": "11:00",
+      "liga": "Ettan - Södra",
+      "local": "Olympic",
+      "visitante": "Eskilsminne",
+      "probabilidad": "100.0%",
+      "clase": "Clase B",
+      "sustento": "Local",
+      "status": "FT",
+      "goles_ht": 0,
+      "resultado_apuesta": "PERDIDA",
+      "marcador_ht": "0 - 0",
+      "cuota_recomendada": 1.22,
+      "bookmaker_recomendado": "Marathonbet",
+      "otras_cuotas": {
+        "Betfair": 1.22,
+        "1xBet": 1.22
+      },
+      "local_stats": {
+        "ht_05_pct": "100.0%",
+        "ht_15_pct": "83.3%",
+        "bts_pct": "83.3%",
+        "rendimiento_ht": "83.3%",
+        "avg_goals_ht_general": "1.00",
+        "avg_goals_ht_rol": "1.17",
+        "racha_ht": "5/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-23",
+            "rival": "Rosengård",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-03",
+            "rival": "Lund",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": true
+          },
+          {
+            "fecha": "2026-06-08",
+            "rival": "Angelholms FF",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-13",
+            "rival": "Laholm",
+            "goles_favor_ht": 3,
+            "goles_contra_ht": 1,
+            "total_ht": 4,
+            "local": true
+          },
+          {
+            "fecha": "2026-06-21",
+            "rival": "AFC Malmo",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 0,
+            "total_ht": 2,
+            "local": false
+          }
+        ],
+        "sequia_ht": false,
+        "is_candidate": true
+      },
+      "visitante_stats": {
+        "ht_05_pct": "83.3%",
+        "ht_15_pct": "50.0%",
+        "bts_pct": "50.0%",
+        "rendimiento_ht": "50.0%",
+        "avg_goals_ht_general": "0.77",
+        "avg_goals_ht_rol": "0.83",
+        "racha_ht": "5/5",
+        "racha_detalles": [
+          {
+            "fecha": "2026-05-22",
+            "rival": "Lund",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 1,
+            "total_ht": 2,
+            "local": false
+          },
+          {
+            "fecha": "2026-05-30",
+            "rival": "Trelleborg",
+            "goles_favor_ht": 2,
+            "goles_contra_ht": 1,
+            "total_ht": 3,
+            "local": true
+          },
+          {
+            "fecha": "2026-06-07",
+            "rival": "AFC Malmo",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 1,
+            "total_ht": 1,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-13",
+            "rival": "Atvidabergs FF",
+            "goles_favor_ht": 0,
+            "goles_contra_ht": 3,
+            "total_ht": 3,
+            "local": false
+          },
+          {
+            "fecha": "2026-06-18",
+            "rival": "Trollhättan",
+            "goles_favor_ht": 1,
+            "goles_contra_ht": 0,
+            "total_ht": 1,
+            "local": true
+          }
+        ],
+        "sequia_ht": false,
+        "is_candidate": false
+      },
+      "league_recent_win_rate": 1.0,
       "is_drawdown": false
     },
     {
@@ -82304,12 +80755,11 @@ window.dashboardData = {
     "Meistriliiga": 1.0,
     "Premier League": 0.8,
     "2. Division - Group 1": 1.0,
-    "2. Division - Group 2": 0.9,
+    "2. Division - Group 2": 1.0,
     "USL League One": 1.0,
     "Tweede Divisie": 0.9,
     "Ettan - Norra": 1.0,
-    "Ettan - Södra": 1.0,
-    "Premier League 2 Division One": 0.9,
+    "Ettan - Södra": 0.9,
     "MLS Next Pro": 0.9,
     "Ykkösliiga": 1.0
   }
