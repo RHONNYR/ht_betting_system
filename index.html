@@ -1221,7 +1221,7 @@
             
             // Cargar Picks
             renderPicks(picks);
-            generateParlays();
+            generateParlays(picks);
             
             // Llenar dropdown de ligas del backtest
             const backtestLeagueSelect = document.getElementById('backtest-filter-league');
@@ -1555,12 +1555,12 @@
         }
 
         // --- QUANTITATIVE PARLAY GENERATOR ---
-        function generateParlays() {
+        function generateParlays(picks) {
             const container = document.getElementById('parlay-generator-container');
             if (!container) return;
             container.innerHTML = '';
 
-            const allPicks = window.dashboardData.picks || [];
+            const allPicks = picks || [];
             
             // Filtrar picks aptos para parley:
             // 1. Liga NO debe estar en Alerta (Rojo)
@@ -1568,7 +1568,7 @@
             const candidates = allPicks.filter(p => {
                 const statusObj = getLeagueStatus(p.liga, p.league_id);
                 const isRed = statusObj && statusObj.status === 'red';
-                const hasDrought = p.local_stats.sequia_ht || p.visitante_stats.sequia_ht;
+                const hasDrought = (p.local_stats && p.local_stats.sequia_ht) || (p.visitante_stats && p.visitante_stats.sequia_ht);
                 return !isRed && !hasDrought;
             });
 
