@@ -1220,15 +1220,13 @@
                         }
                     }
                     
-                    // Salvaguarda: si el partido comenzó hace más de 2.5 horas, no lo mostramos en activos
+                    // Salvaguarda: si el partido ya comenzó (hora de inicio alcanzada o superada), no lo mostramos en activos
                     if (p.fecha && p.hora) {
                         try {
                             const kickoff = new Date(`${p.fecha}T${p.hora}:00Z`); // UTC
                             const now = new Date();
-                            const diffMs = now - kickoff;
-                            const diffHours = diffMs / (1000 * 60 * 60);
-                            if (diffHours > 2.5) {
-                                return false; // Ya pasó
+                            if (now >= kickoff) {
+                                return false; // Ya comenzó o ya pasó
                             }
                         } catch (e) {}
                     }
