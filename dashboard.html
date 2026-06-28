@@ -218,6 +218,14 @@
                             <span class="w-2 h-2 rounded-full bg-amber-500"></span> Tier 3 (Exótica)
                         </button>
                     </div>
+
+                    <!-- Filtro Ocultar Alertas -->
+                    <div class="flex bg-white/5 border border-white/10 rounded-xl p-1 text-xs font-semibold gap-1 items-center px-3">
+                        <label class="flex items-center gap-2 cursor-pointer text-gray-300 hover:text-white select-none">
+                            <input type="checkbox" id="chk-hide-alerts" onchange="applyUnifiedFilters()" class="rounded bg-black/40 border-white/10 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer">
+                            <span>Ocultar Alertas 🔴</span>
+                        </label>
+                    </div>
                 </div>
             </div>
             
@@ -806,6 +814,33 @@
                         <span class="text-lg font-extrabold text-emerald-400" id="hist-stats-clv-freq">--%</span>
                     </div>
                 </div>
+
+                <!-- Panel de Bitácora Real (Personal Ledger) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-emerald-500/[0.02] border border-emerald-500/15 p-4 rounded-xl text-center items-center my-4">
+                    <div class="md:col-span-1 text-left flex items-center gap-2">
+                        <div class="p-2 bg-emerald-500/10 rounded-xl text-emerald-400">
+                            <i data-lucide="book-open" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Mi Bitácora Real</h4>
+                            <p class="text-gray-400 text-[10px] font-light">Métricas calculadas exclusivamente de los picks que marcaste como apostados.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 md:col-span-2">
+                        <div class="p-2 bg-black/30 rounded-lg border border-white/5">
+                            <span class="text-[8px] uppercase text-gray-400 font-semibold block">Picks Reales</span>
+                            <span class="text-sm font-extrabold text-white" id="real-ledger-count">0</span>
+                        </div>
+                        <div class="p-2 bg-black/30 rounded-lg border border-white/5">
+                            <span class="text-[8px] uppercase text-gray-400 font-semibold block">Beneficio Real</span>
+                            <span class="text-sm font-extrabold text-white text-emerald-400" id="real-ledger-profit">$0.00</span>
+                        </div>
+                        <div class="p-2 bg-black/30 rounded-lg border border-white/5">
+                            <span class="text-[8px] uppercase text-gray-400 font-semibold block">ROI Real</span>
+                            <span class="text-sm font-extrabold text-white text-emerald-400" id="real-ledger-roi">0.0%</span>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm whitespace-nowrap">
@@ -820,6 +855,7 @@
                                 <th class="pb-3 text-center">Cuota / Casa</th>
                                 <th class="pb-3 text-center">Marcador HT</th>
                                 <th class="pb-3 text-center">Resultado</th>
+                                <th class="pb-3 text-center">¿Apostado?</th>
                                 <th class="pb-3 text-center">Detalle</th>
                             </tr>
                         </thead>
@@ -879,6 +915,10 @@
                                 <option value="0.20">1/5 Kelly (0.20)</option>
                                 <option value="0.50">1/2 Kelly (0.50)</option>
                             </select>
+                        </div>
+                        <div>
+                            <label for="sim-input-min-odds" class="text-[9px] uppercase text-gray-400 font-semibold block mb-1">Cuota Mínima</label>
+                            <input type="number" id="sim-input-min-odds" step="0.01" min="1.01" oninput="runSimulation()" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" value="1.20">
                         </div>
                     </div>
                 </div>
@@ -1526,9 +1566,20 @@
 
         function applyUnifiedFilters() {
             const allPicks = window.dashboardData.picks || [];
+            const hideAlertsChk = document.getElementById('chk-hide-alerts');
+            const hideAlerts = hideAlertsChk ? hideAlertsChk.checked : false;
+
             const filtered = allPicks.filter(p => {
                 const matchClass = currentClassFilter === 'all' || p.clase === currentClassFilter;
                 const matchTier = currentTierFilter === 'all' || parseInt(p.tier) === parseInt(currentTierFilter);
+                
+                if (hideAlerts) {
+                    const statusObj = getLeagueStatus(p.liga, p.league_id);
+                    if (statusObj && statusObj.status === 'red') {
+                        return false;
+                    }
+                }
+                
                 return matchClass && matchTier;
             });
             renderPicks(filtered);
@@ -1781,6 +1832,9 @@
                     <td class="py-3 text-center font-extrabold text-white text-base">${marcador}</td>
                     <td class="py-3 text-center">${resultBadge}</td>
                     <td class="py-3 text-center">
+                        <input type="checkbox" onchange="toggleRealBet('${pick.match_id}', this.checked)" class="rounded bg-black/40 border-white/10 text-emerald-600 focus:ring-emerald-500 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer" ${localStorage.getItem(`my_bet_checked_${pick.match_id}`) === 'true' ? 'checked' : ''}>
+                    </td>
+                    <td class="py-3 text-center">
                         <button onclick="openModal(${origIndex}, true)" class="p-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 rounded-lg transition-all" title="Ver Análisis">
                             <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
                         </button>
@@ -1790,9 +1844,77 @@
             });
             lucide.createIcons();
             
+            // Actualizar métricas de la bitácora real
+            updateRealLedgerMetrics();
+            
             // Actualizar gráfico de evolución de banca real
             if (typeof updateRealBankrollChart === 'function') {
                 updateRealBankrollChart();
+            }
+        }
+
+        // --- PERSONAL LEDGER FUNCTIONS ---
+        function toggleRealBet(matchId, isChecked) {
+            if (isChecked) {
+                localStorage.setItem(`my_bet_checked_${matchId}`, 'true');
+            } else {
+                localStorage.removeItem(`my_bet_checked_${matchId}`);
+            }
+            updateRealLedgerMetrics();
+        }
+
+        function updateRealLedgerMetrics() {
+            const history = window.dashboardData.picks_history || [];
+            const resolvedBets = history.filter(p => p.resultado_apuesta === 'GANADA' || p.resultado_apuesta === 'PERDIDA');
+            
+            let count = 0;
+            let netProfit = 0.0;
+            let totalStaked = 0.0;
+            
+            // Contar todos los picks apostados (activos y resueltos)
+            history.forEach(p => {
+                const isChecked = localStorage.getItem(`my_bet_checked_${p.match_id}`) === 'true';
+                if (isChecked) {
+                    count++;
+                }
+            });
+            
+            // Calcular ganancias netas y ROI de los resueltos
+            resolvedBets.forEach(p => {
+                const isChecked = localStorage.getItem(`my_bet_checked_${p.match_id}`) === 'true';
+                if (isChecked) {
+                    const tier = parseInt(p.tier) || 3;
+                    let stake = 20.0;
+                    if (tier === 1) stake = 20.0;
+                    else if (tier === 2) stake = 10.0;
+                    else stake = 5.0;
+                    
+                    const odds = parseFloat(p.cuota_recomendada) || 1.45;
+                    if (p.resultado_apuesta === 'GANADA') {
+                        netProfit += stake * (odds - 1.0);
+                    } else {
+                        netProfit -= stake;
+                    }
+                    totalStaked += stake;
+                }
+            });
+            
+            const roi = totalStaked > 0 ? (netProfit / totalStaked * 100.0) : 0.0;
+            
+            const countEl = document.getElementById('real-ledger-count');
+            const profitEl = document.getElementById('real-ledger-profit');
+            const roiEl = document.getElementById('real-ledger-roi');
+            
+            if (countEl) countEl.innerText = count;
+            if (profitEl) {
+                const profitSign = netProfit >= 0 ? '+' : '';
+                profitEl.innerText = `${profitSign}$${netProfit.toFixed(2)}`;
+                profitEl.className = netProfit >= 0 ? 'text-sm font-extrabold text-emerald-400' : 'text-sm font-extrabold text-rose-400';
+            }
+            if (roiEl) {
+                const roiSign = roi >= 0 ? '+' : '';
+                roiEl.innerText = `${roiSign}${roi.toFixed(1)}%`;
+                roiEl.className = roi >= 0 ? 'text-sm font-extrabold text-emerald-400' : 'text-sm font-extrabold text-rose-400';
             }
         }
 
@@ -3547,10 +3669,12 @@
             const inputBank = document.getElementById('sim-input-bankroll');
             const inputFlat = document.getElementById('sim-input-flat-stake');
             const inputKelly = document.getElementById('sim-input-kelly-fraction');
+            const inputMinOdds = document.getElementById('sim-input-min-odds');
             
             if (inputBank) inputBank.value = 1000;
             if (inputFlat) inputFlat.value = 20;
             if (inputKelly) inputKelly.value = "0.10";
+            if (inputMinOdds) inputMinOdds.value = "1.20";
             
             runSimulation();
             renderTutorLeaguesAnalysis();
@@ -3560,10 +3684,12 @@
             const inputBank = document.getElementById('sim-input-bankroll');
             const inputFlat = document.getElementById('sim-input-flat-stake');
             const inputKelly = document.getElementById('sim-input-kelly-fraction');
+            const inputMinOdds = document.getElementById('sim-input-min-odds');
 
             const initialBank = inputBank ? (parseFloat(inputBank.value) || 1000.0) : 1000.0;
             const globalFlatStake = inputFlat ? (parseFloat(inputFlat.value) || 20.0) : 20.0;
             const globalKellyFraction = inputKelly ? (parseFloat(inputKelly.value) || 0.10) : 0.10;
+            const minOdds = inputMinOdds ? (parseFloat(inputMinOdds.value) || 1.20) : 1.20;
 
             let bankAllFlat = initialBank;
             let bankAllKelly = initialBank;
@@ -3592,9 +3718,11 @@
                 // Verificar si la liga califica como Clave (green)
                 const isGreenLeague = getLeagueStatus(p.liga, p.league_id).status === 'green';
 
+                const meetsMinOdds = odds >= minOdds;
+
                 // --- 1. SIMULACIÓN ALL ---
                 // Flat
-                const stakeAllFlat = globalFlatStake;
+                const stakeAllFlat = meetsMinOdds ? globalFlatStake : 0;
                 const profitAllFlat = isWin ? stakeAllFlat * bVal : -stakeAllFlat;
                 bankAllFlat += profitAllFlat;
                 totalStakedAllFlat += stakeAllFlat;
@@ -3604,12 +3732,14 @@
                 let stakeF = kellyF * globalKellyFraction;
                 if (isDd) stakeF *= 0.5;
                 stakeF = Math.max(0.005, Math.min(0.03, stakeF));
-                const stakeAllKelly = stakeF * initialBank;
+                const stakeAllKelly = meetsMinOdds ? (stakeF * initialBank) : 0;
                 const profitAllKelly = isWin ? stakeAllKelly * bVal : -stakeAllKelly;
                 bankAllKelly += profitAllKelly;
                 totalStakedAllKelly += stakeAllKelly;
 
-                countAll++;
+                if (meetsMinOdds) {
+                    countAll++;
+                }
 
                 // --- 2. SIMULACIÓN SELECTIVA (Solo Ligas Claves) ---
                 let profitSelectFlat = 0;
@@ -3617,18 +3747,20 @@
 
                 if (isGreenLeague) {
                     // Flat
-                    const stakeSelectFlat = globalFlatStake;
+                    const stakeSelectFlat = meetsMinOdds ? globalFlatStake : 0;
                     profitSelectFlat = isWin ? stakeSelectFlat * bVal : -stakeSelectFlat;
                     bankSelectFlat += profitSelectFlat;
                     totalStakedSelectFlat += stakeSelectFlat;
 
                     // Kelly
-                    const stakeSelectKelly = stakeAllKelly; // Mismo stake kelly calculado
+                    const stakeSelectKelly = stakeAllKelly; // Mismo stake kelly calculado (ya es 0 si no cumple minOdds)
                     profitSelectKelly = isWin ? stakeSelectKelly * bVal : -stakeSelectKelly;
                     bankSelectKelly += profitSelectKelly;
                     totalStakedSelectKelly += stakeSelectKelly;
 
-                    countSelect++;
+                    if (meetsMinOdds) {
+                        countSelect++;
+                    }
                 }
 
                 // Guardar histórico para el gráfico según el modo activo (Kelly o Flat)
