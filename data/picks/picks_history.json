@@ -128,401 +128,6 @@
     "is_drawdown": false
   },
   {
-    "match_id": 1504481,
-    "league_id": 564,
-    "tier": 3,
-    "fecha": "2026-06-28",
-    "hora": "11:00",
-    "liga": "Ettan - Södra",
-    "local": "Olympic",
-    "visitante": "Eskilsminne",
-    "probabilidad": "100.0%",
-    "clase": "Clase B",
-    "sustento": "Local",
-    "status": "NS",
-    "goles_ht": null,
-    "resultado_apuesta": null,
-    "marcador_ht": null,
-    "cuota_recomendada": 1.22,
-    "bookmaker_recomendado": "Marathonbet",
-    "otras_cuotas": {
-      "Betfair": 1.22,
-      "1xBet": 1.22
-    },
-    "local_stats": {
-      "ht_05_pct": "100.0%",
-      "ht_15_pct": "83.3%",
-      "bts_pct": "83.3%",
-      "rendimiento_ht": "83.3%",
-      "avg_goals_ht_general": "1.00",
-      "avg_goals_ht_rol": "1.17",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-23",
-          "rival": "Rosengård",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-03",
-          "rival": "Lund",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-08",
-          "rival": "Angelholms FF",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-13",
-          "rival": "Laholm",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 1,
-          "total_ht": 4,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "AFC Malmo",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": true
-    },
-    "visitante_stats": {
-      "ht_05_pct": "83.3%",
-      "ht_15_pct": "50.0%",
-      "bts_pct": "50.0%",
-      "rendimiento_ht": "50.0%",
-      "avg_goals_ht_general": "0.77",
-      "avg_goals_ht_rol": "0.83",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-22",
-          "rival": "Lund",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-30",
-          "rival": "Trelleborg",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 1,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-07",
-          "rival": "AFC Malmo",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-13",
-          "rival": "Atvidabergs FF",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-18",
-          "rival": "Trollhättan",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": false
-    },
-    "league_recent_win_rate": 1.0,
-    "is_drawdown": false
-  },
-  {
-    "match_id": 1496278,
-    "league_id": 474,
-    "tier": 3,
-    "fecha": "2026-06-28",
-    "hora": "12:00",
-    "liga": "2. Division - Group 2",
-    "local": "Skeid",
-    "visitante": "Trygg/Lade",
-    "probabilidad": "80.0%",
-    "clase": "Clase B",
-    "sustento": "Local",
-    "status": "NS",
-    "goles_ht": null,
-    "resultado_apuesta": null,
-    "marcador_ht": null,
-    "cuota_recomendada": 1.2,
-    "bookmaker_recomendado": "William Hill",
-    "otras_cuotas": {
-      "10Bet": 1.18,
-      "Betfair": 1.2,
-      "1xBet": 1.19
-    },
-    "local_stats": {
-      "ht_05_pct": "80.0%",
-      "ht_15_pct": "60.0%",
-      "bts_pct": "60.0%",
-      "rendimiento_ht": "60.0%",
-      "avg_goals_ht_general": "0.82",
-      "avg_goals_ht_rol": "1.20",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-16",
-          "rival": "Kjelsås",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-23",
-          "rival": "Follo",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "Tromsdalen Uil",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-14",
-          "rival": "Rana",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 2,
-          "total_ht": 4,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-20",
-          "rival": "Levanger",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": false
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": true
-    },
-    "visitante_stats": {
-      "ht_05_pct": "66.7%",
-      "ht_15_pct": "33.3%",
-      "bts_pct": "66.7%",
-      "rendimiento_ht": "41.7%",
-      "avg_goals_ht_general": "0.73",
-      "avg_goals_ht_rol": "0.33",
-      "racha_ht": "3/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-16",
-          "rival": "Levanger",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-24",
-          "rival": "Tromsdalen Uil",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "Grorud",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-14",
-          "rival": "Stjørdals-Blink",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "Lørenskog",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": true
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": false
-    },
-    "league_recent_win_rate": 0.9,
-    "is_drawdown": false
-  },
-  {
-    "match_id": 1496275,
-    "league_id": 474,
-    "tier": 3,
-    "fecha": "2026-06-28",
-    "hora": "13:00",
-    "liga": "2. Division - Group 2",
-    "local": "Follo",
-    "visitante": "Levanger",
-    "probabilidad": "83.3%",
-    "clase": "Clase B",
-    "sustento": "Visitante",
-    "status": "NS",
-    "goles_ht": null,
-    "resultado_apuesta": null,
-    "marcador_ht": null,
-    "cuota_recomendada": 1.25,
-    "bookmaker_recomendado": "10Bet",
-    "otras_cuotas": {
-      "William Hill": 1.22,
-      "Betfair": 1.22,
-      "1xBet": 1.23
-    },
-    "local_stats": {
-      "ht_05_pct": "66.7%",
-      "ht_15_pct": "33.3%",
-      "bts_pct": "66.7%",
-      "rendimiento_ht": "50.0%",
-      "avg_goals_ht_general": "0.50",
-      "avg_goals_ht_rol": "0.50",
-      "racha_ht": "3/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-09",
-          "rival": "Eidsvold",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-16",
-          "rival": "Lørenskog",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-23",
-          "rival": "Skeid",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-30",
-          "rival": "Ull/Kisa",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-12",
-          "rival": "Kjelsås",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 3,
-          "total_ht": 4,
-          "local": true
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": false
-    },
-    "visitante_stats": {
-      "ht_05_pct": "83.3%",
-      "ht_15_pct": "50.0%",
-      "bts_pct": "66.7%",
-      "rendimiento_ht": "58.3%",
-      "avg_goals_ht_general": "1.09",
-      "avg_goals_ht_rol": "1.00",
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-16",
-          "rival": "Trygg/Lade",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-25",
-          "rival": "Lørenskog",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "Junkeren",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-14",
-          "rival": "Eidsvold",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-20",
-          "rival": "Skeid",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 1,
-          "total_ht": 2,
-          "local": true
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": true
-    },
-    "league_recent_win_rate": 0.9,
-    "is_drawdown": false
-  },
-  {
     "match_id": 1508791,
     "league_id": 164,
     "tier": 2,
@@ -3497,6 +3102,401 @@
       "is_candidate": false
     },
     "league_recent_win_rate": 0.9,
+    "is_drawdown": false
+  },
+  {
+    "match_id": 1496275,
+    "league_id": 474,
+    "tier": 3,
+    "fecha": "2026-06-28",
+    "hora": "13:00",
+    "liga": "2. Division - Group 2",
+    "local": "Follo",
+    "visitante": "Levanger",
+    "probabilidad": "83.3%",
+    "clase": "Clase B",
+    "sustento": "Visitante",
+    "status": "FT",
+    "goles_ht": 1,
+    "resultado_apuesta": "GANADA",
+    "marcador_ht": "0 - 1",
+    "cuota_recomendada": 1.25,
+    "bookmaker_recomendado": "10Bet",
+    "otras_cuotas": {
+      "William Hill": 1.22,
+      "Betfair": 1.22,
+      "1xBet": 1.23
+    },
+    "local_stats": {
+      "ht_05_pct": "66.7%",
+      "ht_15_pct": "33.3%",
+      "bts_pct": "66.7%",
+      "rendimiento_ht": "50.0%",
+      "avg_goals_ht_general": "0.50",
+      "avg_goals_ht_rol": "0.50",
+      "racha_ht": "3/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-09",
+          "rival": "Eidsvold",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-16",
+          "rival": "Lørenskog",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-23",
+          "rival": "Skeid",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-30",
+          "rival": "Ull/Kisa",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-12",
+          "rival": "Kjelsås",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 3,
+          "total_ht": 4,
+          "local": true
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": false
+    },
+    "visitante_stats": {
+      "ht_05_pct": "83.3%",
+      "ht_15_pct": "50.0%",
+      "bts_pct": "66.7%",
+      "rendimiento_ht": "58.3%",
+      "avg_goals_ht_general": "1.09",
+      "avg_goals_ht_rol": "1.00",
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-16",
+          "rival": "Trygg/Lade",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-25",
+          "rival": "Lørenskog",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Junkeren",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-14",
+          "rival": "Eidsvold",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-20",
+          "rival": "Skeid",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": true
+    },
+    "league_recent_win_rate": 0.9,
+    "is_drawdown": false
+  },
+  {
+    "match_id": 1496278,
+    "league_id": 474,
+    "tier": 3,
+    "fecha": "2026-06-28",
+    "hora": "12:00",
+    "liga": "2. Division - Group 2",
+    "local": "Skeid",
+    "visitante": "Trygg/Lade",
+    "probabilidad": "80.0%",
+    "clase": "Clase B",
+    "sustento": "Local",
+    "status": "FT",
+    "goles_ht": 3,
+    "resultado_apuesta": "GANADA",
+    "marcador_ht": "2 - 1",
+    "cuota_recomendada": 1.2,
+    "bookmaker_recomendado": "William Hill",
+    "otras_cuotas": {
+      "10Bet": 1.18,
+      "Betfair": 1.2,
+      "1xBet": 1.19
+    },
+    "local_stats": {
+      "ht_05_pct": "80.0%",
+      "ht_15_pct": "60.0%",
+      "bts_pct": "60.0%",
+      "rendimiento_ht": "60.0%",
+      "avg_goals_ht_general": "0.82",
+      "avg_goals_ht_rol": "1.20",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-16",
+          "rival": "Kjelsås",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-23",
+          "rival": "Follo",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Tromsdalen Uil",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-14",
+          "rival": "Rana",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 2,
+          "total_ht": 4,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-20",
+          "rival": "Levanger",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": true
+    },
+    "visitante_stats": {
+      "ht_05_pct": "66.7%",
+      "ht_15_pct": "33.3%",
+      "bts_pct": "66.7%",
+      "rendimiento_ht": "41.7%",
+      "avg_goals_ht_general": "0.73",
+      "avg_goals_ht_rol": "0.33",
+      "racha_ht": "3/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-16",
+          "rival": "Levanger",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-24",
+          "rival": "Tromsdalen Uil",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Grorud",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-14",
+          "rival": "Stjørdals-Blink",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "Lørenskog",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": true
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": false
+    },
+    "league_recent_win_rate": 0.9,
+    "is_drawdown": false
+  },
+  {
+    "match_id": 1504481,
+    "league_id": 564,
+    "tier": 3,
+    "fecha": "2026-06-28",
+    "hora": "11:00",
+    "liga": "Ettan - Södra",
+    "local": "Olympic",
+    "visitante": "Eskilsminne",
+    "probabilidad": "100.0%",
+    "clase": "Clase B",
+    "sustento": "Local",
+    "status": "FT",
+    "goles_ht": 0,
+    "resultado_apuesta": "PERDIDA",
+    "marcador_ht": "0 - 0",
+    "cuota_recomendada": 1.22,
+    "bookmaker_recomendado": "Marathonbet",
+    "otras_cuotas": {
+      "Betfair": 1.22,
+      "1xBet": 1.22
+    },
+    "local_stats": {
+      "ht_05_pct": "100.0%",
+      "ht_15_pct": "83.3%",
+      "bts_pct": "83.3%",
+      "rendimiento_ht": "83.3%",
+      "avg_goals_ht_general": "1.00",
+      "avg_goals_ht_rol": "1.17",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-23",
+          "rival": "Rosengård",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-03",
+          "rival": "Lund",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-08",
+          "rival": "Angelholms FF",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-13",
+          "rival": "Laholm",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "AFC Malmo",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": true
+    },
+    "visitante_stats": {
+      "ht_05_pct": "83.3%",
+      "ht_15_pct": "50.0%",
+      "bts_pct": "50.0%",
+      "rendimiento_ht": "50.0%",
+      "avg_goals_ht_general": "0.77",
+      "avg_goals_ht_rol": "0.83",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-22",
+          "rival": "Lund",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-30",
+          "rival": "Trelleborg",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-07",
+          "rival": "AFC Malmo",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-13",
+          "rival": "Atvidabergs FF",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-18",
+          "rival": "Trollhättan",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": false
+    },
+    "league_recent_win_rate": 1.0,
     "is_drawdown": false
   },
   {
