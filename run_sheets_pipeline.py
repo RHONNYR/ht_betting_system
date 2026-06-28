@@ -423,7 +423,7 @@ def update_picks_history(df_picks, df_local, df_away, all_fixtures, league_recen
         # Query in batches of 20
         for i in range(0, len(pending_ids), 20):
             batch = pending_ids[i:i+20]
-            ids_str = ",".join(str(x) for x in batch)
+            ids_str = "-".join(str(x) for x in batch)
             url = f"{base_url}/fixtures"
             try:
                 r = requests.get(url, headers=headers, params={'ids': ids_str}, timeout=15)
