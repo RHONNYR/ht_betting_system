@@ -128,405 +128,6 @@
     "is_drawdown": false
   },
   {
-    "match_id": 1508791,
-    "league_id": 164,
-    "tier": 2,
-    "fecha": "2026-06-28",
-    "hora": "17:00",
-    "liga": "Úrvalsdeild",
-    "local": "Keflavik",
-    "visitante": "KR Reykjavik",
-    "probabilidad": "100.0%",
-    "clase": "Clase B",
-    "sustento": "Visitante",
-    "status": "NS",
-    "goles_ht": null,
-    "resultado_apuesta": null,
-    "marcador_ht": null,
-    "cuota_recomendada": 1.17,
-    "bookmaker_recomendado": "Betano",
-    "otras_cuotas": {
-      "William Hill": 1.14,
-      "Marathonbet": 1.12,
-      "Betfair": 1.13,
-      "1xBet": 1.12
-    },
-    "local_stats": {
-      "ht_05_pct": "80.0%",
-      "ht_15_pct": "40.0%",
-      "bts_pct": "60.0%",
-      "rendimiento_ht": "50.0%",
-      "avg_goals_ht_general": "0.45",
-      "avg_goals_ht_rol": "0.60",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-17",
-          "rival": "Stjarnan",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-22",
-          "rival": "Thor Akureyri",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "IBV Vestmannaeyjar",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-14",
-          "rival": "FH hafnarfjordur",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "Valur Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": false
-    },
-    "visitante_stats": {
-      "ht_05_pct": "100.0%",
-      "ht_15_pct": "80.0%",
-      "bts_pct": "80.0%",
-      "rendimiento_ht": "60.0%",
-      "avg_goals_ht_general": "1.92",
-      "avg_goals_ht_rol": "1.60",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-22",
-          "rival": "Breidablik",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 4,
-          "total_ht": 6,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-26",
-          "rival": "Valur Reykjavik",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 0,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "KA Akureyri",
-          "goles_favor_ht": 3,
-          "goles_contra_ht": 0,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-16",
-          "rival": "Vikingur Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-22",
-          "rival": "IA Akranes",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 2,
-          "total_ht": 4,
-          "local": true
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": true
-    },
-    "league_recent_win_rate": 0.8,
-    "is_drawdown": false
-  },
-  {
-    "match_id": 1508792,
-    "league_id": 164,
-    "tier": 2,
-    "fecha": "2026-06-28",
-    "hora": "17:00",
-    "liga": "Úrvalsdeild",
-    "local": "Stjarnan",
-    "visitante": "KA Akureyri",
-    "probabilidad": "85.7%",
-    "clase": "Clase B",
-    "sustento": "Local",
-    "status": "NS",
-    "goles_ht": null,
-    "resultado_apuesta": null,
-    "marcador_ht": null,
-    "cuota_recomendada": 1.23,
-    "bookmaker_recomendado": "Betano",
-    "otras_cuotas": {
-      "William Hill": 1.17,
-      "Marathonbet": 1.16,
-      "Betfair": 1.17,
-      "1xBet": 1.16
-    },
-    "local_stats": {
-      "ht_05_pct": "85.7%",
-      "ht_15_pct": "71.4%",
-      "bts_pct": "85.7%",
-      "rendimiento_ht": "64.3%",
-      "avg_goals_ht_general": "1.00",
-      "avg_goals_ht_rol": "1.14",
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-22",
-          "rival": "Fram Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-26",
-          "rival": "Vikingur Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "Thor Akureyri",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-16",
-          "rival": "Breidablik",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 3,
-          "total_ht": 5,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "IBV Vestmannaeyjar",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 2,
-          "total_ht": 3,
-          "local": false
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": true
-    },
-    "visitante_stats": {
-      "ht_05_pct": "60.0%",
-      "ht_15_pct": "20.0%",
-      "bts_pct": "80.0%",
-      "rendimiento_ht": "30.0%",
-      "avg_goals_ht_general": "0.45",
-      "avg_goals_ht_rol": "0.00",
-      "racha_ht": "4/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-17",
-          "rival": "FH hafnarfjordur",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-22",
-          "rival": "Valur Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "KR Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-15",
-          "rival": "Fram Reykjavik",
-          "goles_favor_ht": 2,
-          "goles_contra_ht": 3,
-          "total_ht": 5,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "Breidablik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 0,
-          "total_ht": 0,
-          "local": false
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": false
-    },
-    "league_recent_win_rate": 0.8,
-    "is_drawdown": false
-  },
-  {
-    "match_id": 1508793,
-    "league_id": 164,
-    "tier": 2,
-    "fecha": "2026-06-28",
-    "hora": "17:00",
-    "liga": "Úrvalsdeild",
-    "local": "Thor Akureyri",
-    "visitante": "Valur Reykjavik",
-    "probabilidad": "100.0%",
-    "clase": "Clase B",
-    "sustento": "Visitante",
-    "status": "NS",
-    "goles_ht": null,
-    "resultado_apuesta": null,
-    "marcador_ht": null,
-    "cuota_recomendada": 1.22,
-    "bookmaker_recomendado": "Betano",
-    "otras_cuotas": {
-      "William Hill": 1.18,
-      "Marathonbet": 1.15,
-      "Betfair": 1.17,
-      "1xBet": 1.15
-    },
-    "local_stats": {
-      "ht_05_pct": "60.0%",
-      "ht_15_pct": "20.0%",
-      "bts_pct": "60.0%",
-      "rendimiento_ht": "30.0%",
-      "avg_goals_ht_general": "0.18",
-      "avg_goals_ht_rol": "0.20",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-17",
-          "rival": "IA Akranes",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-05-22",
-          "rival": "Keflavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "Stjarnan",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-14",
-          "rival": "IBV Vestmannaeyjar",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "FH hafnarfjordur",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": false
-    },
-    "visitante_stats": {
-      "ht_05_pct": "100.0%",
-      "ht_15_pct": "60.0%",
-      "bts_pct": "60.0%",
-      "rendimiento_ht": "70.0%",
-      "avg_goals_ht_general": "1.00",
-      "avg_goals_ht_rol": "1.00",
-      "racha_ht": "5/5",
-      "racha_detalles": [
-        {
-          "fecha": "2026-05-22",
-          "rival": "KA Akureyri",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-26",
-          "rival": "KR Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 2,
-          "total_ht": 2,
-          "local": false
-        },
-        {
-          "fecha": "2026-05-31",
-          "rival": "Vikingur Reykjavik",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 3,
-          "total_ht": 3,
-          "local": true
-        },
-        {
-          "fecha": "2026-06-16",
-          "rival": "IA Akranes",
-          "goles_favor_ht": 0,
-          "goles_contra_ht": 1,
-          "total_ht": 1,
-          "local": false
-        },
-        {
-          "fecha": "2026-06-21",
-          "rival": "Keflavik",
-          "goles_favor_ht": 1,
-          "goles_contra_ht": 0,
-          "total_ht": 1,
-          "local": true
-        }
-      ],
-      "sequia_ht": false,
-      "is_candidate": true
-    },
-    "league_recent_win_rate": 0.8,
-    "is_drawdown": false
-  },
-  {
     "match_id": 1513186,
     "league_id": 909,
     "tier": 3,
@@ -538,7 +139,7 @@
     "probabilidad": "85.7%",
     "clase": "Clase B",
     "sustento": "Visitante",
-    "status": "NS",
+    "status": "1H",
     "goles_ht": null,
     "resultado_apuesta": null,
     "marcador_ht": null,
@@ -3112,6 +2713,405 @@
       "is_candidate": false
     },
     "league_recent_win_rate": 0.9,
+    "is_drawdown": false
+  },
+  {
+    "match_id": 1508791,
+    "league_id": 164,
+    "tier": 2,
+    "fecha": "2026-06-28",
+    "hora": "17:00",
+    "liga": "Úrvalsdeild",
+    "local": "Keflavik",
+    "visitante": "KR Reykjavik",
+    "probabilidad": "100.0%",
+    "clase": "Clase B",
+    "sustento": "Visitante",
+    "status": "FT",
+    "goles_ht": 2,
+    "resultado_apuesta": "GANADA",
+    "marcador_ht": "1 - 1",
+    "cuota_recomendada": 1.17,
+    "bookmaker_recomendado": "Betano",
+    "otras_cuotas": {
+      "William Hill": 1.14,
+      "Marathonbet": 1.12,
+      "Betfair": 1.13,
+      "1xBet": 1.12
+    },
+    "local_stats": {
+      "ht_05_pct": "80.0%",
+      "ht_15_pct": "40.0%",
+      "bts_pct": "60.0%",
+      "rendimiento_ht": "50.0%",
+      "avg_goals_ht_general": "0.45",
+      "avg_goals_ht_rol": "0.60",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-17",
+          "rival": "Stjarnan",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-22",
+          "rival": "Thor Akureyri",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "IBV Vestmannaeyjar",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-14",
+          "rival": "FH hafnarfjordur",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "Valur Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": false
+    },
+    "visitante_stats": {
+      "ht_05_pct": "100.0%",
+      "ht_15_pct": "80.0%",
+      "bts_pct": "80.0%",
+      "rendimiento_ht": "60.0%",
+      "avg_goals_ht_general": "1.92",
+      "avg_goals_ht_rol": "1.60",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-22",
+          "rival": "Breidablik",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 4,
+          "total_ht": 6,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-26",
+          "rival": "Valur Reykjavik",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "KA Akureyri",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-16",
+          "rival": "Vikingur Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-22",
+          "rival": "IA Akranes",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 2,
+          "total_ht": 4,
+          "local": true
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": true
+    },
+    "league_recent_win_rate": 0.8,
+    "is_drawdown": false
+  },
+  {
+    "match_id": 1508792,
+    "league_id": 164,
+    "tier": 2,
+    "fecha": "2026-06-28",
+    "hora": "17:00",
+    "liga": "Úrvalsdeild",
+    "local": "Stjarnan",
+    "visitante": "KA Akureyri",
+    "probabilidad": "85.7%",
+    "clase": "Clase B",
+    "sustento": "Local",
+    "status": "FT",
+    "goles_ht": 2,
+    "resultado_apuesta": "GANADA",
+    "marcador_ht": "2 - 0",
+    "cuota_recomendada": 1.23,
+    "bookmaker_recomendado": "Betano",
+    "otras_cuotas": {
+      "William Hill": 1.17,
+      "Marathonbet": 1.16,
+      "Betfair": 1.17,
+      "1xBet": 1.16
+    },
+    "local_stats": {
+      "ht_05_pct": "85.7%",
+      "ht_15_pct": "71.4%",
+      "bts_pct": "85.7%",
+      "rendimiento_ht": "64.3%",
+      "avg_goals_ht_general": "1.00",
+      "avg_goals_ht_rol": "1.14",
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-22",
+          "rival": "Fram Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-26",
+          "rival": "Vikingur Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Thor Akureyri",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-16",
+          "rival": "Breidablik",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 3,
+          "total_ht": 5,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "IBV Vestmannaeyjar",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": false
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": true
+    },
+    "visitante_stats": {
+      "ht_05_pct": "60.0%",
+      "ht_15_pct": "20.0%",
+      "bts_pct": "80.0%",
+      "rendimiento_ht": "30.0%",
+      "avg_goals_ht_general": "0.45",
+      "avg_goals_ht_rol": "0.00",
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-17",
+          "rival": "FH hafnarfjordur",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-22",
+          "rival": "Valur Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "KR Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-15",
+          "rival": "Fram Reykjavik",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 3,
+          "total_ht": 5,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "Breidablik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": false
+    },
+    "league_recent_win_rate": 0.8,
+    "is_drawdown": false
+  },
+  {
+    "match_id": 1508793,
+    "league_id": 164,
+    "tier": 2,
+    "fecha": "2026-06-28",
+    "hora": "17:00",
+    "liga": "Úrvalsdeild",
+    "local": "Thor Akureyri",
+    "visitante": "Valur Reykjavik",
+    "probabilidad": "100.0%",
+    "clase": "Clase B",
+    "sustento": "Visitante",
+    "status": "FT",
+    "goles_ht": 2,
+    "resultado_apuesta": "GANADA",
+    "marcador_ht": "0 - 2",
+    "cuota_recomendada": 1.22,
+    "bookmaker_recomendado": "Betano",
+    "otras_cuotas": {
+      "William Hill": 1.18,
+      "Marathonbet": 1.15,
+      "Betfair": 1.17,
+      "1xBet": 1.15
+    },
+    "local_stats": {
+      "ht_05_pct": "60.0%",
+      "ht_15_pct": "20.0%",
+      "bts_pct": "60.0%",
+      "rendimiento_ht": "30.0%",
+      "avg_goals_ht_general": "0.18",
+      "avg_goals_ht_rol": "0.20",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-17",
+          "rival": "IA Akranes",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-22",
+          "rival": "Keflavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Stjarnan",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-14",
+          "rival": "IBV Vestmannaeyjar",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "FH hafnarfjordur",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": false
+    },
+    "visitante_stats": {
+      "ht_05_pct": "100.0%",
+      "ht_15_pct": "60.0%",
+      "bts_pct": "60.0%",
+      "rendimiento_ht": "70.0%",
+      "avg_goals_ht_general": "1.00",
+      "avg_goals_ht_rol": "1.00",
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-05-22",
+          "rival": "KA Akureyri",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-26",
+          "rival": "KR Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-31",
+          "rival": "Vikingur Reykjavik",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-06-16",
+          "rival": "IA Akranes",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-06-21",
+          "rival": "Keflavik",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        }
+      ],
+      "sequia_ht": false,
+      "is_candidate": true
+    },
+    "league_recent_win_rate": 0.8,
     "is_drawdown": false
   },
   {
