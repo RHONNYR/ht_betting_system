@@ -1199,6 +1199,43 @@
             // Cargar actualización
             document.getElementById('update-time').innerText = data.last_updated ? data.last_updated + ' (VET)' : 'Desconocido';
             
+            // Filtrar picks finalizados, cancelados o que comenzaron hace más de 2.5 horas
+            const historyMap = {};
+            if (data.picks_history) {
+                data.picks_history.forEach(hp => {
+                    if (hp.match_id) {
+                        historyMap[hp.match_id] = hp;
+                    }
+                });
+            }
+
+            if (data.picks) {
+                data.picks = data.picks.filter(p => {
+                    const hist = historyMap[p.match_id];
+                    if (hist) {
+                        const status = hist.status || '';
+                        const hasResult = hist.resultado_apuesta !== null && hist.resultado_apuesta !== undefined && hist.resultado_apuesta !== '';
+                        if (['FT', 'AET', 'PEN', 'CANCELADO', 'POSTPONED'].includes(status) || hasResult) {
+                            return false; // Excluir si ya terminó o tiene resultado
+                        }
+                    }
+                    
+                    // Salvaguarda: si el partido comenzó hace más de 2.5 horas, no lo mostramos en activos
+                    if (p.fecha && p.hora) {
+                        try {
+                            const kickoff = new Date(`${p.fecha}T${p.hora}:00Z`); // UTC
+                            const now = new Date();
+                            const diffMs = now - kickoff;
+                            const diffHours = diffMs / (1000 * 60 * 60);
+                            if (diffHours > 2.5) {
+                                return false; // Ya pasó
+                            }
+                        } catch (e) {}
+                    }
+                    return true;
+                });
+            }
+            
             // Cargar KPIs
             const picks = data.picks || [];
             const picksA = picks.filter(p => p.clase === 'Clase A').length;
