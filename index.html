@@ -1518,13 +1518,13 @@
                 card.innerHTML = `
                     <div class="space-y-4">
                         <div class="flex justify-between items-start border-b border-white/5 pb-3">
-                            <div class="flex flex-col gap-1">
+                            <div class="flex flex-col gap-1.5">
                                 <div class="flex items-center gap-1.5 flex-wrap">
-                                    <span class="text-xs font-bold text-white">${pick.liga}</span>
+                                    <span class="text-sm font-bold text-white">${pick.liga}</span>
                                     ${getTierBadgeHtml(pick.tier)}
                                     ${getLeagueStatusBadgeHtml(pick.liga, pick.league_id)}
                                 </div>
-                                <span class="text-[10px] text-gray-400 font-light flex items-center gap-1">
+                                <span class="text-xs text-gray-400 font-light flex items-center gap-1">
                                     <span>${getLeagueFlagHtml(pick.liga, pick.league_id)}</span>
                                     <span>${getLeagueCountry(pick.liga, pick.league_id).name}</span>
                                 </span>
@@ -1543,39 +1543,39 @@
                         ${drawdownAlert}
                         ${tierWarning}
                         
-                        <div class="py-2 text-center">
-                            <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
+                        <div class="py-3 text-center">
+                            <h4 class="text-xl font-extrabold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
                                 ${pick.local}
-                                ${pick.local_stats.is_candidate ? '<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 inline-block" title="Aprobado en Radar"></i>' : '<i data-lucide="minus-circle" class="w-4 h-4 text-gray-600 inline-block" title="No Aprobado"></i>'}
+                                ${pick.local_stats.is_candidate ? '<i data-lucide="check-circle-2" class="w-4.5 h-4.5 text-emerald-400 inline-block" title="Aprobado en Radar"></i>' : '<i data-lucide="minus-circle" class="w-4.5 h-4.5 text-gray-600 inline-block" title="No Aprobado"></i>'}
                             </h4>
                             <p class="text-gray-500 text-xs font-semibold py-1">vs</p>
-                            <h4 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
+                            <h4 class="text-xl font-extrabold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center justify-center gap-2">
                                 ${pick.visitante}
-                                ${pick.visitante_stats.is_candidate ? '<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 inline-block" title="Aprobado en Radar"></i>' : '<i data-lucide="minus-circle" class="w-4 h-4 text-gray-600 inline-block" title="No Aprobado"></i>'}
+                                ${pick.visitante_stats.is_candidate ? '<i data-lucide="check-circle-2" class="w-4.5 h-4.5 text-emerald-400 inline-block" title="Aprobado en Radar"></i>' : '<i data-lucide="minus-circle" class="w-4.5 h-4.5 text-gray-600 inline-block" title="No Aprobado"></i>'}
                             </h4>
                         </div>
                         
                         <div class="grid grid-cols-2 gap-2">
                             <div class="flex flex-col bg-emerald-500/5 border border-emerald-500/10 rounded-xl px-3 py-2 text-center">
-                                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Probabilidad</span>
-                                <span class="text-base font-extrabold text-emerald-400 mt-0.5">${pick.probabilidad}</span>
+                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Probabilidad</span>
+                                <span class="text-lg font-extrabold text-emerald-400 mt-0.5">${pick.probabilidad}</span>
                             </div>
                             <div class="flex flex-col bg-blue-500/5 border border-blue-500/10 rounded-xl px-3 py-2 text-center relative group/odds cursor-help">
-                                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Mejor Cuota</span>
-                                <span class="text-base font-extrabold text-blue-400 mt-0.5">${pick.cuota_recomendada || '1.45'}</span>
-                                <span class="text-[10px] text-gray-400 font-medium truncate block mt-0.5" title="${pick.bookmaker_recomendado || 'Por determinar'}">${pick.bookmaker_recomendado || 'Por determinar'}</span>
+                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Mejor Cuota</span>
+                                <span class="text-lg font-extrabold text-blue-400 mt-0.5">${pick.cuota_recomendada || '1.45'}</span>
+                                <span class="text-xs text-gray-400 font-medium truncate block mt-0.5" title="${pick.bookmaker_recomendado || 'Por determinar'}">${pick.bookmaker_recomendado || 'Por determinar'}</span>
                                 ${renderOtherOddsTooltip(pick.otras_cuotas)}
                             </div>
                         </div>
 
                         <div class="grid grid-cols-2 gap-2 border-t border-white/5 pt-3">
                             <div class="flex flex-col bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-center">
-                                <span class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Stake Sugerido (Tier)</span>
-                                <span class="text-sm font-extrabold text-gray-200 mt-0.5">${finalTierStakePct} ($${finalTierStakeUsd.toFixed(2)})</span>
+                                <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Stake Sugerido</span>
+                                <span class="text-base font-extrabold text-gray-200 mt-0.5">${finalTierStakePct} ($${finalTierStakeUsd.toFixed(2)})</span>
                             </div>
                             <div class="flex flex-col bg-purple-500/5 border border-purple-500/10 rounded-xl px-3 py-2 text-center relative group/kelly cursor-help" title="Stake dinámico basado en Criterio de Kelly (Fraccional 1/10) ajustado según la cuota y la probabilidad.">
-                                <span class="text-[10px] text-purple-400 font-semibold uppercase tracking-wider">Stake Kelly (1/10)</span>
-                                <span class="text-sm font-extrabold text-purple-300 mt-0.5">${kellyStakePct}% ($${kellyStakeUsd})</span>
+                                <span class="text-xs text-purple-400 font-semibold uppercase tracking-wider">Stake Kelly (1/10)</span>
+                                <span class="text-base font-extrabold text-purple-300 mt-0.5">${kellyStakePct}% ($${kellyStakeUsd})</span>
                             </div>
                         </div>
                     </div>
@@ -1718,16 +1718,16 @@
                 picksHtml += `
                     <div class="flex justify-between items-start py-2.5 border-b border-white/5 last:border-0 text-xs">
                         <div class="flex flex-col max-w-[75%] space-y-0.5">
-                            <div class="flex items-center gap-1 flex-wrap text-[10px] text-gray-400">
+                            <div class="flex items-center gap-1 flex-wrap text-xs text-gray-400">
                                 <span class="flex items-center gap-1 flex-shrink-0">
                                     ${flagHtml}
                                     <span class="font-medium text-gray-300">${countryObj.name}</span>
                                 </span>
                                 <span class="w-0.5 h-0.5 bg-gray-500 rounded-full"></span>
-                                <span class="truncate text-[10px]">${p.liga}</span>
+                                <span class="truncate text-xs">${p.liga}</span>
                             </div>
-                            <span class="font-bold text-white truncate text-xs sm:text-sm">${p.local} vs ${p.visitante}</span>
-                            <span class="text-[10px] text-gray-500 flex items-center gap-1.5 flex-wrap">
+                            <span class="font-bold text-white truncate text-sm">${p.local} vs ${p.visitante}</span>
+                            <span class="text-xs text-gray-500 flex items-center gap-1.5 flex-wrap">
                                 <span class="${classColor} font-bold">${classLabel}</span>
                                 <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
                                 <span class="flex items-center gap-1 text-amber-400/90 font-medium">
@@ -1736,8 +1736,8 @@
                             </span>
                         </div>
                         <div class="text-right flex flex-col justify-center items-end self-center">
-                            <span class="font-extrabold text-blue-400 text-sm">@${odds.toFixed(2)}</span>
-                            <span class="text-[10px] text-emerald-400 font-bold mt-0.5">${p.probabilidad}</span>
+                            <span class="font-extrabold text-blue-400 text-base">@${odds.toFixed(2)}</span>
+                            <span class="text-xs text-emerald-400 font-bold mt-0.5">${p.probabilidad}</span>
                         </div>
                     </div>
                 `;
@@ -1753,10 +1753,10 @@
             card.innerHTML = `
                 <div>
                     <div class="flex justify-between items-start gap-2">
-                        <h5 class="font-extrabold text-xs text-amber-400 tracking-wide uppercase">${title}</h5>
-                        <span class="px-1.5 py-0.5 rounded text-[8px] font-bold border ${badgeColorClass} uppercase">${picks.length} picks</span>
+                        <h5 class="font-extrabold text-sm text-amber-400 tracking-wide uppercase">${title}</h5>
+                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${badgeColorClass} uppercase">${picks.length} picks</span>
                     </div>
-                    <p class="text-gray-400 text-[10px] mt-1 font-light leading-relaxed">${description}</p>
+                    <p class="text-gray-400 text-xs mt-1 font-light leading-relaxed">${description}</p>
                     
                     <div class="mt-4 p-2 bg-black/40 rounded-xl border border-white/5 divide-y divide-white/5">
                         ${picksHtml}
@@ -1766,16 +1766,16 @@
                 <div class="mt-4 pt-3 border-t border-white/5">
                     <div class="grid grid-cols-3 gap-2 text-center">
                         <div class="flex flex-col bg-blue-500/5 border border-blue-500/10 rounded-lg py-1 px-1">
-                            <span class="text-[8px] text-gray-500 font-semibold uppercase">Cuota Comb.</span>
-                            <span class="text-sm font-extrabold text-blue-400 mt-0.5">@${combinedOdds.toFixed(2)}</span>
+                            <span class="text-[10px] text-gray-500 font-semibold uppercase">Cuota Comb.</span>
+                            <span class="text-base font-extrabold text-blue-400 mt-0.5">@${combinedOdds.toFixed(2)}</span>
                         </div>
                         <div class="flex flex-col bg-emerald-500/5 border border-emerald-500/10 rounded-lg py-1 px-1">
-                            <span class="text-[8px] text-gray-500 font-semibold uppercase">Prob. Comb.</span>
-                            <span class="text-sm font-extrabold text-emerald-400 mt-0.5">${combinedProb.toFixed(0)}%</span>
+                            <span class="text-[10px] text-gray-500 font-semibold uppercase">Prob. Comb.</span>
+                            <span class="text-base font-extrabold text-emerald-400 mt-0.5">${combinedProb.toFixed(0)}%</span>
                         </div>
                         <div class="flex flex-col bg-purple-500/5 border border-purple-500/10 rounded-lg py-1 px-1">
-                            <span class="text-[8px] text-gray-500 font-semibold uppercase">Stake Sug.</span>
-                            <span class="text-sm font-extrabold text-purple-300 mt-0.5">${finalStake}</span>
+                            <span class="text-[10px] text-gray-500 font-semibold uppercase">Stake Sug.</span>
+                            <span class="text-base font-extrabold text-purple-300 mt-0.5">${finalStake}</span>
                         </div>
                     </div>
                 </div>
