@@ -242,6 +242,11 @@
                 </div>
             </div>
 
+            <!-- GENERADOR DE PARLAYS CUANTITATIVOS -->
+            <div id="parlay-generator-container" class="space-y-4">
+                <!-- Se puebla dinámicamente -->
+            </div>
+
             <div id="picks-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Se cargan dinámicamente -->
             </div>
@@ -1216,6 +1221,7 @@
             
             // Cargar Picks
             renderPicks(picks);
+            generateParlays();
             
             // Llenar dropdown de ligas del backtest
             const backtestLeagueSelect = document.getElementById('backtest-filter-league');
@@ -1546,6 +1552,189 @@
                 grid.appendChild(card);
             });
             lucide.createIcons();
+        }
+
+        // --- QUANTITATIVE PARLAY GENERATOR ---
+        function generateParlays() {
+            const container = document.getElementById('parlay-generator-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const allPicks = window.dashboardData.picks || [];
+            
+            // Filtrar picks aptos para parley:
+            // 1. Liga NO debe estar en Alerta (Rojo)
+            // 2. Sin alerta de sequía HT
+            const candidates = allPicks.filter(p => {
+                const statusObj = getLeagueStatus(p.liga, p.league_id);
+                const isRed = statusObj && statusObj.status === 'red';
+                const hasDrought = p.local_stats.sequia_ht || p.visitante_stats.sequia_ht;
+                return !isRed && !hasDrought;
+            });
+
+            // Encabezado de la sección
+            const header = document.createElement('div');
+            header.className = "flex items-center gap-2 mt-2";
+            header.innerHTML = `
+                <div class="p-1.5 bg-amber-500/10 rounded-lg text-amber-400">
+                    <i data-lucide="zap" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-sm text-gray-200 uppercase tracking-wider flex items-center gap-1.5">
+                        Generador de Parlays Cuantitativos
+                        <span class="px-2 py-0.5 rounded-full text-[9px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold uppercase tracking-normal normal-case">Híbrido</span>
+                    </h4>
+                    <p class="text-gray-400 text-[10px] font-light">Combinaciones de picks con máxima probabilidad (excluyendo ligas en Alerta y sequías de goles).</p>
+                </div>
+            `;
+            container.appendChild(header);
+
+            if (candidates.length < 2) {
+                const emptyCard = document.createElement('div');
+                emptyCard.className = "glass-card p-4 rounded-xl border border-white/5 bg-white/[0.005] text-xs text-gray-400 flex items-center gap-2.5";
+                emptyCard.innerHTML = `
+                    <i data-lucide="info" class="w-4 h-4 text-blue-400 flex-shrink-0"></i>
+                    <span>No hay suficientes picks elegibles para formar parleys hoy. Se necesitan al menos 2 picks (excluyendo ligas en Alerta) para armar combinaciones.</span>
+                `;
+                container.appendChild(emptyCard);
+                lucide.createIcons();
+                return;
+            }
+
+            // Ordenar por probabilidad de mayor a menor
+            const sorted = [...candidates].sort((a, b) => {
+                const probA = parseFloat(a.probabilidad.replace('%', '')) || 0;
+                const probB = parseFloat(b.probabilidad.replace('%', '')) || 0;
+                return probB - probA;
+            });
+
+            const cardsGrid = document.createElement('div');
+            cardsGrid.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
+            container.appendChild(cardsGrid);
+
+            // Determinar si una combinación es Premium (todas sus ligas son verdes y todos son Clase A)
+            function checkIsPremium(picksList) {
+                return picksList.every(p => {
+                    const isA = p.clase === 'Clase A';
+                    const statusObj = getLeagueStatus(p.liga, p.league_id);
+                    const isGreen = statusObj && statusObj.status === 'green';
+                    return isA && isGreen;
+                });
+            }
+
+            // 1. Dupla #1 (Picks 1 y 2)
+            if (sorted.length >= 2) {
+                const picksList = [sorted[0], sorted[1]];
+                const isPremium = checkIsPremium(picksList);
+                const title = isPremium ? "Dupla Premium #1 (Máxima Probabilidad)" : "Dupla Mixta / de Valor #1";
+                const desc = isPremium 
+                    ? "Formada por las dos selecciones con mayor probabilidad del radar cuantitativo. Ligas Claves y picks Premium." 
+                    : "Combinación de alta probabilidad que mezcla picks Clase A/B en ligas seguras/estables.";
+                createParlayCard(cardsGrid, title, picksList, desc, isPremium);
+            }
+
+            // 2. Tripla (Picks 1, 2 y 3) si hay al menos 3
+            if (sorted.length >= 3) {
+                const picksList = [sorted[0], sorted[1], sorted[2]];
+                const isPremium = checkIsPremium(picksList);
+                const title = isPremium ? "Tripla Premium Especial" : "Tripla Mixta de Valor";
+                const desc = isPremium 
+                    ? "Tres selecciones de máxima efectividad agrupadas. Reduce el stake recomendado debido al efecto de tres partidos." 
+                    : "Combinada de tres selecciones en ligas estables. Ideal para stake mínimo.";
+                createParlayCard(cardsGrid, title, picksList, desc, isPremium);
+            }
+
+            // 3. Dupla #2 (Picks 3 y 4) si hay al menos 4
+            if (sorted.length >= 4) {
+                const picksList = [sorted[2], sorted[3]];
+                const isPremium = checkIsPremium(picksList);
+                const title = isPremium ? "Dupla Premium #2 (Línea de Respaldo)" : "Dupla Mixta / de Valor #2";
+                const desc = isPremium 
+                    ? "Dupla premium alternativa para diversificar el riesgo de la dupla principal." 
+                    : "Dupla secundaria con excelente rentabilidad y probabilidad ajustada.";
+                createParlayCard(cardsGrid, title, picksList, desc, isPremium);
+            }
+
+            lucide.createIcons();
+        }
+
+        function createParlayCard(gridElement, title, picks, description, isPremium) {
+            const card = document.createElement('div');
+            card.className = "glass-card p-5 rounded-xl border border-white/5 hover:border-amber-500/20 hover:shadow-lg hover:shadow-amber-500/[0.02] flex flex-col justify-between transition-all duration-300 bg-white/[0.01]";
+            
+            let combinedOdds = 1.0;
+            let combinedProb = 1.0;
+            let picksHtml = '';
+
+            picks.forEach(p => {
+                const odds = parseFloat(p.cuota_recomendada) || 1.25;
+                const prob = (parseFloat(p.probabilidad.replace('%', '')) || 85.0) / 100.0;
+                combinedOdds *= odds;
+                combinedProb *= prob;
+
+                const localTime = formatLocalTime(p.fecha, p.hora);
+                
+                const classLabel = p.clase === 'Clase A' ? 'Prem. (A)' : 'Val. (B)';
+                const classColor = p.clase === 'Clase A' ? 'text-amber-400' : 'text-blue-400';
+
+                picksHtml += `
+                    <div class="flex justify-between items-start py-2 border-b border-white/5 last:border-0 text-xs">
+                        <div class="flex flex-col max-w-[70%]">
+                            <span class="font-semibold text-white truncate">${p.local} vs ${p.visitante}</span>
+                            <span class="text-[10px] text-gray-500 truncate flex items-center gap-1">
+                                <span class="${classColor} font-bold">${classLabel}</span>
+                                <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                                <span>${p.liga}</span>
+                                <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                                <span>${localTime.time} (VET)</span>
+                            </span>
+                        </div>
+                        <div class="text-right flex flex-col">
+                            <span class="font-extrabold text-blue-400">@${odds.toFixed(2)}</span>
+                            <span class="text-[10px] text-gray-400">${p.probabilidad}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            combinedProb = combinedProb * 100.0;
+            const finalStake = picks.length === 2 ? (isPremium ? "1.0%" : "0.75%") : "0.5%";
+            
+            const badgeColorClass = isPremium 
+                ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
+                : "bg-amber-500/10 border-amber-500/20 text-amber-300";
+
+            card.innerHTML = `
+                <div>
+                    <div class="flex justify-between items-start gap-2">
+                        <h5 class="font-extrabold text-xs text-amber-400 tracking-wide uppercase">${title}</h5>
+                        <span class="px-1.5 py-0.5 rounded text-[8px] font-bold border ${badgeColorClass} uppercase">${picks.length} picks</span>
+                    </div>
+                    <p class="text-gray-400 text-[10px] mt-1 font-light leading-relaxed">${description}</p>
+                    
+                    <div class="mt-4 p-2 bg-black/40 rounded-xl border border-white/5 divide-y divide-white/5">
+                        ${picksHtml}
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-white/5">
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        <div class="flex flex-col bg-blue-500/5 border border-blue-500/10 rounded-lg py-1 px-1">
+                            <span class="text-[8px] text-gray-500 font-semibold uppercase">Cuota Comb.</span>
+                            <span class="text-sm font-extrabold text-blue-400 mt-0.5">@${combinedOdds.toFixed(2)}</span>
+                        </div>
+                        <div class="flex flex-col bg-emerald-500/5 border border-emerald-500/10 rounded-lg py-1 px-1">
+                            <span class="text-[8px] text-gray-500 font-semibold uppercase">Prob. Comb.</span>
+                            <span class="text-sm font-extrabold text-emerald-400 mt-0.5">${combinedProb.toFixed(0)}%</span>
+                        </div>
+                        <div class="flex flex-col bg-purple-500/5 border border-purple-500/10 rounded-lg py-1 px-1">
+                            <span class="text-[8px] text-gray-500 font-semibold uppercase">Stake Sug.</span>
+                            <span class="text-sm font-extrabold text-purple-300 mt-0.5">${finalStake}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            gridElement.appendChild(card);
         }
 
         function getTierBadgeHtml(tier) {
