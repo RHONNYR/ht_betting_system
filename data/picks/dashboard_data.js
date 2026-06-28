@@ -1,5 +1,5 @@
 window.dashboardData = {
-  "last_updated": "2026-06-28 12:57:43",
+  "last_updated": "2026-06-28 18:34:20",
   "leagues": [
     {
       "league_id": 40,
@@ -394,6 +394,17 @@ window.dashboardData = {
       "over_25_pct": 62.5,
       "partidos_jugados": 112,
       "partidos_restantes": 128,
+      "Estado": "APROBADA",
+      "tier": 3
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "season": 2025,
+      "over_15_pct": 85.1,
+      "over_25_pct": 69.2,
+      "partidos_jugados": 305,
+      "partidos_restantes": 1,
       "Estado": "APROBADA",
       "tier": 3
     },
@@ -3997,6 +4008,611 @@ window.dashboardData = {
       ]
     },
     {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Aston Villa U21",
+      "role": "Local",
+      "ht_05_pct": 100.0,
+      "ht_15_pct": 72.7,
+      "bts_pct": 54.5,
+      "rendimiento_ht": 68.2,
+      "avg_goals_ht_general": 0.86,
+      "avg_goals_ht_rol": 0.82,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-04-03",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-06",
+          "rival": "Blackburn Rovers U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-10",
+          "rival": "Middlesbrough U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-17",
+          "rival": "Stoke City U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-01",
+          "rival": "Manchester City U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Norwich City U21",
+      "role": "Local",
+      "ht_05_pct": 90.0,
+      "ht_15_pct": 60.0,
+      "bts_pct": 80.0,
+      "rendimiento_ht": 75.0,
+      "avg_goals_ht_general": 0.8,
+      "avg_goals_ht_rol": 0.8,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-02-27",
+          "rival": "Stoke City U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-06",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "West Bromwich Albion U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Manchester City U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Ipswich Town U21",
+      "role": "Local",
+      "ht_05_pct": 90.9,
+      "ht_15_pct": 63.6,
+      "bts_pct": 72.7,
+      "rendimiento_ht": 54.5,
+      "avg_goals_ht_general": 1.24,
+      "avg_goals_ht_rol": 1.09,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-06",
+          "rival": "West Bromwich Albion U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-23",
+          "rival": "Burnley U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-10",
+          "rival": "Birmingham City U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-17",
+          "rival": "Everton U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 3,
+          "total_ht": 5,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-24",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Newcastle United U21",
+      "role": "Local",
+      "ht_05_pct": 90.0,
+      "ht_15_pct": 70.0,
+      "bts_pct": 60.0,
+      "rendimiento_ht": 65.0,
+      "avg_goals_ht_general": 0.9,
+      "avg_goals_ht_rol": 1.0,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-09",
+          "rival": "Leicester City U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Blackburn Rovers U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "Nottingham Forest U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-10",
+          "rival": "Manchester United U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Wolves U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Leicester City U21",
+      "role": "Local",
+      "ht_05_pct": 90.0,
+      "ht_15_pct": 90.0,
+      "bts_pct": 100.0,
+      "rendimiento_ht": 65.0,
+      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_rol": 1.1,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-09",
+          "rival": "Newcastle United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Leeds United U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-24",
+          "rival": "Tottenham Hotspur U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Sunderland U21",
+      "role": "Local",
+      "ht_05_pct": 80.0,
+      "ht_15_pct": 70.0,
+      "bts_pct": 100.0,
+      "rendimiento_ht": 70.0,
+      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_rol": 1.1,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-14",
+          "rival": "Chelsea U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-23",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-30",
+          "rival": "Reading U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-06",
+          "rival": "Derby County U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-26",
+          "rival": "Manchester United U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Manchester United U21",
+      "role": "Local",
+      "ht_05_pct": 90.9,
+      "ht_15_pct": 54.5,
+      "bts_pct": 81.8,
+      "rendimiento_ht": 59.1,
+      "avg_goals_ht_general": 1.08,
+      "avg_goals_ht_rol": 0.82,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-04-10",
+          "rival": "Newcastle United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-26",
+          "rival": "Sunderland U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-04",
+          "rival": "Crystal Palace U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-08",
+          "rival": "Manchester City U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-16",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Manchester City U21",
+      "role": "Local",
+      "ht_05_pct": 100.0,
+      "ht_15_pct": 58.3,
+      "bts_pct": 41.7,
+      "rendimiento_ht": 62.5,
+      "avg_goals_ht_general": 1.35,
+      "avg_goals_ht_rol": 1.58,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-04-03",
+          "rival": "Derby County U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Norwich City U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-25",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-01",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-08",
+          "rival": "Manchester United U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 3,
+          "total_ht": 4,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Liverpool U21",
+      "role": "Local",
+      "ht_05_pct": 100.0,
+      "ht_15_pct": 90.0,
+      "bts_pct": 80.0,
+      "rendimiento_ht": 85.0,
+      "avg_goals_ht_general": 1.35,
+      "avg_goals_ht_rol": 2.0,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-02-20",
+          "rival": "Nottingham Forest U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-01",
+          "rival": "Tottenham Hotspur U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-08",
+          "rival": "Wolves U21",
+          "goles_favor_ht": 5,
+          "goles_contra_ht": 0,
+          "total_ht": 5,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-16",
+          "rival": "Manchester City U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-22",
+          "rival": "Crystal Palace U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Fulham U21",
+      "role": "Local",
+      "ht_05_pct": 80.0,
+      "ht_15_pct": 40.0,
+      "bts_pct": 80.0,
+      "rendimiento_ht": 55.0,
+      "avg_goals_ht_general": 1.2,
+      "avg_goals_ht_rol": 1.0,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-02-27",
+          "rival": "Burnley U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-06",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Nottingham Forest U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-23",
+          "rival": "Stoke City U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-10",
+          "rival": "Chelsea U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Crystal Palace U21",
+      "role": "Local",
+      "ht_05_pct": 90.9,
+      "ht_15_pct": 54.5,
+      "bts_pct": 54.5,
+      "rendimiento_ht": 59.1,
+      "avg_goals_ht_general": 0.95,
+      "avg_goals_ht_rol": 1.18,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-14",
+          "rival": "Wolves U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-22",
+          "rival": "Liverpool U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-03",
+          "rival": "Nottingham Forest U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-04",
+          "rival": "Manchester United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        }
+      ]
+    },
+    {
       "league_id": 909,
       "league_name": "MLS Next Pro",
       "team_name": "St. Louis City II",
@@ -7347,6 +7963,556 @@ window.dashboardData = {
           "goles_favor_ht": 0,
           "goles_contra_ht": 0,
           "total_ht": 0,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Norwich City U21",
+      "role": "Visitante",
+      "ht_05_pct": 90.0,
+      "ht_15_pct": 60.0,
+      "bts_pct": 70.0,
+      "rendimiento_ht": 70.0,
+      "avg_goals_ht_general": 0.8,
+      "avg_goals_ht_rol": 0.8,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-02-27",
+          "rival": "Stoke City U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-06",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "West Bromwich Albion U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Manchester City U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Ipswich Town U21",
+      "role": "Visitante",
+      "ht_05_pct": 90.0,
+      "ht_15_pct": 80.0,
+      "bts_pct": 70.0,
+      "rendimiento_ht": 75.0,
+      "avg_goals_ht_general": 1.24,
+      "avg_goals_ht_rol": 1.4,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-06",
+          "rival": "West Bromwich Albion U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-23",
+          "rival": "Burnley U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-10",
+          "rival": "Birmingham City U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-17",
+          "rival": "Everton U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 3,
+          "total_ht": 5,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-24",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Leicester City U21",
+      "role": "Visitante",
+      "ht_05_pct": 81.8,
+      "ht_15_pct": 63.6,
+      "bts_pct": 54.5,
+      "rendimiento_ht": 59.1,
+      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_rol": 0.91,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-09",
+          "rival": "Newcastle United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Leeds United U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-24",
+          "rival": "Tottenham Hotspur U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "West Ham United U21",
+      "role": "Visitante",
+      "ht_05_pct": 81.8,
+      "ht_15_pct": 63.6,
+      "bts_pct": 81.8,
+      "rendimiento_ht": 63.6,
+      "avg_goals_ht_general": 0.95,
+      "avg_goals_ht_rol": 0.82,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-06",
+          "rival": "Derby County U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Reading U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "Blackburn Rovers U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-04",
+          "rival": "Tottenham Hotspur U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-04",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Sunderland U21",
+      "role": "Visitante",
+      "ht_05_pct": 81.8,
+      "ht_15_pct": 54.5,
+      "bts_pct": 54.5,
+      "rendimiento_ht": 54.5,
+      "avg_goals_ht_general": 1.0,
+      "avg_goals_ht_rol": 0.91,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-14",
+          "rival": "Chelsea U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 3,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-23",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 0,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-30",
+          "rival": "Reading U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-06",
+          "rival": "Derby County U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-26",
+          "rival": "Manchester United U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Manchester United U21",
+      "role": "Visitante",
+      "ht_05_pct": 84.6,
+      "ht_15_pct": 61.5,
+      "bts_pct": 69.2,
+      "rendimiento_ht": 69.2,
+      "avg_goals_ht_general": 1.08,
+      "avg_goals_ht_rol": 1.31,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-04-10",
+          "rival": "Newcastle United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-26",
+          "rival": "Sunderland U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-04",
+          "rival": "Crystal Palace U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-08",
+          "rival": "Manchester City U21",
+          "goles_favor_ht": 3,
+          "goles_contra_ht": 1,
+          "total_ht": 4,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-16",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Manchester City U21",
+      "role": "Visitante",
+      "ht_05_pct": 81.8,
+      "ht_15_pct": 63.6,
+      "bts_pct": 63.6,
+      "rendimiento_ht": 54.5,
+      "avg_goals_ht_general": 1.35,
+      "avg_goals_ht_rol": 1.09,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-04-03",
+          "rival": "Derby County U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-13",
+          "rival": "Norwich City U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-25",
+          "rival": "Arsenal U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-01",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 1,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-08",
+          "rival": "Manchester United U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 3,
+          "total_ht": 4,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Tottenham Hotspur U21",
+      "role": "Visitante",
+      "ht_05_pct": 81.8,
+      "ht_15_pct": 54.5,
+      "bts_pct": 81.8,
+      "rendimiento_ht": 68.2,
+      "avg_goals_ht_general": 0.83,
+      "avg_goals_ht_rol": 1.18,
+      "racha_ht": "5/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-04-10",
+          "rival": "Wolves U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-17",
+          "rival": "Blackburn Rovers U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-24",
+          "rival": "Leicester City U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-05-01",
+          "rival": "Chelsea U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-05-08",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Blackburn Rovers U21",
+      "role": "Visitante",
+      "ht_05_pct": 80.0,
+      "ht_15_pct": 60.0,
+      "bts_pct": 50.0,
+      "rendimiento_ht": 55.0,
+      "avg_goals_ht_general": 0.8,
+      "avg_goals_ht_rol": 1.1,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-03-13",
+          "rival": "Newcastle United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 2,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-20",
+          "rival": "West Ham United U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-06",
+          "rival": "Aston Villa U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": true
+        },
+        {
+          "fecha": "2026-04-12",
+          "rival": "Burnley U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 0,
+          "total_ht": 1,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-17",
+          "rival": "Tottenham Hotspur U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
+          "local": true
+        }
+      ]
+    },
+    {
+      "league_id": 702,
+      "league_name": "Premier League 2 Division One",
+      "team_name": "Fulham U21",
+      "role": "Visitante",
+      "ht_05_pct": 100.0,
+      "ht_15_pct": 80.0,
+      "bts_pct": 80.0,
+      "rendimiento_ht": 75.0,
+      "avg_goals_ht_general": 1.2,
+      "avg_goals_ht_rol": 1.4,
+      "racha_ht": "4/5",
+      "racha_detalles": [
+        {
+          "fecha": "2026-02-27",
+          "rival": "Burnley U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 1,
+          "total_ht": 3,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-06",
+          "rival": "Brighton U21",
+          "goles_favor_ht": 1,
+          "goles_contra_ht": 2,
+          "total_ht": 3,
+          "local": false
+        },
+        {
+          "fecha": "2026-03-13",
+          "rival": "Nottingham Forest U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 0,
+          "total_ht": 0,
+          "local": true
+        },
+        {
+          "fecha": "2026-03-23",
+          "rival": "Stoke City U21",
+          "goles_favor_ht": 2,
+          "goles_contra_ht": 0,
+          "total_ht": 2,
+          "local": false
+        },
+        {
+          "fecha": "2026-04-10",
+          "rival": "Chelsea U21",
+          "goles_favor_ht": 0,
+          "goles_contra_ht": 1,
+          "total_ht": 1,
           "local": true
         }
       ]
@@ -65158,9 +66324,13 @@ window.dashboardData = {
       "probabilidad": "100.0%",
       "clase": "Clase B",
       "sustento": "Visitante",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.14,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.12,
+        "Betfair": 1.1,
+        "1xBet": 1.09
+      },
       "local_stats": {
         "ht_05_pct": "60.0%",
         "ht_15_pct": "20.0%",
@@ -65412,9 +66582,15 @@ window.dashboardData = {
       "probabilidad": "100.0%",
       "clase": "Clase B",
       "sustento": "Visitante",
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.23,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.17,
+        "Marathonbet": 1.17,
+        "Betfair": 1.14,
+        "BetVictor": 1.17,
+        "1xBet": 1.17
+      },
       "local_stats": {
         "ht_05_pct": "75.0%",
         "ht_15_pct": "25.0%",
@@ -68217,9 +69393,13 @@ window.dashboardData = {
       "goles_ht": null,
       "resultado_apuesta": null,
       "marcador_ht": null,
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.14,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.12,
+        "Betfair": 1.1,
+        "1xBet": 1.09
+      },
       "local_stats": {
         "ht_05_pct": "60.0%",
         "ht_15_pct": "20.0%",
@@ -68479,9 +69659,15 @@ window.dashboardData = {
       "goles_ht": null,
       "resultado_apuesta": null,
       "marcador_ht": null,
-      "cuota_recomendada": 1.45,
-      "bookmaker_recomendado": "Por determinar",
-      "otras_cuotas": {},
+      "cuota_recomendada": 1.23,
+      "bookmaker_recomendado": "Betano",
+      "otras_cuotas": {
+        "William Hill": 1.17,
+        "Marathonbet": 1.17,
+        "Betfair": 1.14,
+        "BetVictor": 1.17,
+        "1xBet": 1.17
+      },
       "local_stats": {
         "ht_05_pct": "75.0%",
         "ht_15_pct": "25.0%",
@@ -80760,6 +81946,7 @@ window.dashboardData = {
     "Tweede Divisie": 0.9,
     "Ettan - Norra": 1.0,
     "Ettan - Södra": 0.9,
+    "Premier League 2 Division One": 0.9,
     "MLS Next Pro": 0.9,
     "Ykkösliiga": 1.0
   }
