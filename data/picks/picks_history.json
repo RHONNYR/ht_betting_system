@@ -1450,9 +1450,13 @@
     "goles_ht": null,
     "resultado_apuesta": null,
     "marcador_ht": null,
-    "cuota_recomendada": 1.45,
-    "bookmaker_recomendado": "Por determinar",
-    "otras_cuotas": {},
+    "cuota_recomendada": 1.14,
+    "bookmaker_recomendado": "Betano",
+    "otras_cuotas": {
+      "William Hill": 1.12,
+      "Betfair": 1.1,
+      "1xBet": 1.09
+    },
     "local_stats": {
       "ht_05_pct": "60.0%",
       "ht_15_pct": "20.0%",
@@ -1712,9 +1716,15 @@
     "goles_ht": null,
     "resultado_apuesta": null,
     "marcador_ht": null,
-    "cuota_recomendada": 1.45,
-    "bookmaker_recomendado": "Por determinar",
-    "otras_cuotas": {},
+    "cuota_recomendada": 1.23,
+    "bookmaker_recomendado": "Betano",
+    "otras_cuotas": {
+      "William Hill": 1.17,
+      "Marathonbet": 1.17,
+      "Betfair": 1.14,
+      "BetVictor": 1.17,
+      "1xBet": 1.17
+    },
     "local_stats": {
       "ht_05_pct": "75.0%",
       "ht_15_pct": "25.0%",
