@@ -134,6 +134,66 @@ def check_and_send_recess_reminder(token, chat_id, state):
         return True
     return False
 
+def get_league_status(league_name, league_id, leagues, recent_rates, picks_history):
+    l = None
+    target_id = None
+    try:
+        target_id = int(league_id) if league_id is not None else None
+    except Exception:
+        pass
+        
+    for x in leagues:
+        if (target_id is not None and x.get('league_id') == target_id) or x.get('league_name') == league_name:
+            l = x
+            break
+            
+    if not l:
+        return 'yellow', 'Neutral', '🟡'
+        
+    has_picks = False
+    for p in picks_history:
+        p_liga = p.get('liga')
+        p_league_id = p.get('league_id')
+        p_target_id = None
+        try:
+            p_target_id = int(p_league_id) if p_league_id is not None else None
+        except Exception:
+            pass
+            
+        if (target_id is not None and p_target_id == target_id) or p_liga == league_name:
+            has_picks = True
+            break
+            
+    if not has_picks:
+        return 'yellow', 'Neutral', '🟡'
+        
+    is_approved = l.get('Estado') == 'APROBADA'
+    recent_wr = recent_rates.get(l.get('league_name'), 1.0)
+    
+    resolved_picks = []
+    for p in picks_history:
+        p_liga = p.get('liga')
+        p_league_id = p.get('league_id')
+        p_target_id = None
+        try:
+            p_target_id = int(p_league_id) if p_league_id is not None else None
+        except Exception:
+            pass
+            
+        if ((target_id is not None and p_target_id == target_id) or p_liga == league_name) and p.get('resultado_apuesta') in ['GANADA', 'PERDIDA']:
+            resolved_picks.append(p)
+            
+    total_resolved = len(resolved_picks)
+    wins = len([p for p in resolved_picks if p.get('resultado_apuesta') == 'GANADA'])
+    real_wr = (wins / total_resolved) if total_resolved > 0 else None
+    
+    if not is_approved or recent_wr < 0.75 or (real_wr is not None and total_resolved >= 3 and real_wr < 0.70):
+        return 'red', 'Alerta', '🔴'
+    elif is_approved and recent_wr >= 0.82 and (real_wr is None or total_resolved < 3 or real_wr >= 0.75):
+        return 'green', 'Clave', '🟢'
+        
+    return 'yellow', 'Neutral', '🟡'
+
 def run_telegram_notifications():
     # 1. Resolve Bot Token and Chat ID
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or getattr(settings, 'TELEGRAM_BOT_TOKEN', '').strip()
@@ -154,6 +214,21 @@ def run_telegram_notifications():
         
     with open(history_file, 'r', encoding='utf-8') as f:
         picks = json.load(f)
+
+    # Load leagues and recent rates from dashboard_data.js
+    leagues = []
+    recent_rates = {}
+    db_file = os.path.join('data', 'picks', 'dashboard_data.js')
+    if os.path.exists(db_file):
+        try:
+            with open(db_file, 'r', encoding='utf-8') as f_db:
+                content = f_db.read()
+            json_str = content.replace('window.dashboardData = ', '').strip().rstrip(';')
+            data = json.loads(json_str)
+            leagues = data.get('leagues', [])
+            recent_rates = data.get('league_current_season_recent_rates', {})
+        except Exception as e:
+            print(f"[Telegram Notifier] Error al parsear dashboard_data.js: {e}")
         
     # Define current time in UTC (naive)
     dt_now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
@@ -198,6 +273,18 @@ def run_telegram_notifications():
         is_pending = res_bet is None or res_bet == 'PENDIENTE' or res_bet == ''
         
         if is_pending and str(match_id) not in state["sent_upcoming"]:
+            # Evaluate league status
+            status_val, status_label, status_emoji = get_league_status(
+                p.get('liga'), p.get('league_id'), leagues, recent_rates, picks
+            )
+            
+            # Skip sending if league is in Alerta (red)
+            if status_val == 'red':
+                print(f"   -> Saltando alerta de pick para partido {match_id} ({p.get('local')} vs {p.get('visitante')}) porque la liga {p.get('liga')} está en ALERTA (rojo).")
+                state["sent_upcoming"].append(str(match_id))
+                updated_state = True
+                continue
+
             date_str = p.get('fecha')
             time_str = p.get('hora')
             
@@ -274,7 +361,7 @@ def run_telegram_notifications():
                 
             # Formulate HTML message
             msg = (
-                f"🆕 <b>NUEVO PICK DETECTADO (HT Over 0.5)</b>\n\n"
+                f"🆕 <b>NUEVO PICK DETECTADO (HT Over 0.5)</b> {status_emoji} <b>[LIGA {status_label.upper()}]</b>\n\n"
                 f"{drawdown_alert}"
                 f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
                 f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
@@ -333,6 +420,18 @@ def run_telegram_notifications():
                 
                 # Send reminder if match starts in 2 hours (7200 seconds) or less
                 if 0 <= seconds_to_kickoff <= 7200 and str(match_id) not in state["sent_reminders"]:
+                    # Evaluate league status
+                    status_val, status_label, status_emoji = get_league_status(
+                        p.get('liga'), p.get('league_id'), leagues, recent_rates, picks
+                    )
+                    
+                    # Skip reminder if league is in Alerta (red)
+                    if status_val == 'red':
+                        print(f"   -> Saltando recordatorio de partido {match_id} porque la liga está en ALERTA (rojo).")
+                        state["sent_reminders"].append(str(match_id))
+                        updated_state = True
+                        continue
+
                     # Format kickoff time to VET (UTC-4)
                     dt_vet = dt_kickoff - datetime.timedelta(hours=4)
                     fecha_vet = dt_vet.strftime("%Y-%m-%d")
@@ -385,7 +484,7 @@ def run_telegram_notifications():
                         drawdown_alert = f"⚠️ <b>ALERTA RACHA NEGATIVA EN LIGA ({recent_wr:.1f}% WR)</b>\n\n"
                         
                     msg = (
-                        f"⏰ <b>RECORDATORIO DE PARTIDO (Empieza pronto)</b>\n\n"
+                        f"⏰ <b>RECORDATORIO DE PARTIDO (HT Over 0.5)</b> {status_emoji} <b>[LIGA {status_label.upper()}]</b>\n\n"
                         f"{drawdown_alert}"
                         f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
                         f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
@@ -414,6 +513,18 @@ def run_telegram_notifications():
             
         res_bet = p.get('resultado_apuesta')
         if res_bet in ['GANADA', 'PERDIDA', 'CANCELADO'] and str(match_id) not in state["sent_resolved"]:
+            # Evaluate league status
+            status_val, status_label, status_emoji = get_league_status(
+                p.get('liga'), p.get('league_id'), leagues, recent_rates, picks
+            )
+            
+            # Skip resolved pick notification if league is in Alerta (red)
+            if status_val == 'red':
+                print(f"   -> Saltando resultado de partido {match_id} ({p.get('local')} vs {p.get('visitante')}) porque la liga está en ALERTA (rojo).")
+                state["sent_resolved"].append(str(match_id))
+                updated_state = True
+                continue
+
             date_str = p.get('fecha')
             time_str = p.get('hora')
             
@@ -473,7 +584,7 @@ def run_telegram_notifications():
                 profit_str = "<b>$0.00 (Reembolso)</b>"
                 
             msg = (
-                f"🏁 <b>RESULTADO DE PICK HT OVER 0.5</b>\n\n"
+                f"🏁 <b>RESULTADO DE PICK HT OVER 0.5</b> {status_emoji} <b>[LIGA {status_label.upper()}]</b>\n\n"
                 f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
                 f"🏆 <b>Liga:</b> {p.get('liga')}\n"
                 f"📅 <b>Fecha:</b> {fecha_vet} {hora_vet} (VET)\n"
