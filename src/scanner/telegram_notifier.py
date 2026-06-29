@@ -312,8 +312,7 @@ def run_telegram_notifications():
             days_since_last = (dt_now_vet - last_date).days
         except:
             pass
-            
-    if len(upcoming_picks) > 0 and (len(new_ids) > 0 or days_since_last >= 7):
+    if len(upcoming_picks) > 0 and (days_since_last >= 6 or not state.get("last_weekly_summary_date")):
         print("[Telegram Notifier] Generando resumen semanal...")
         msg = f"📋 <b>NUEVOS PICKS PROGRAMADOS (PRÓXIMOS 7 DÍAS)</b>\n"
         msg += f"<i>Total picks detectados: {len(upcoming_picks)}</i>\n\n"
