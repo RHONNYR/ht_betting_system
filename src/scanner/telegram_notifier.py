@@ -2,12 +2,30 @@ import json
 import os
 import sys
 import datetime
-import base64
 import requests
+import base64
 
 sys.path.append('.')
 from config import settings
 from src.scanner.visual_generator import generate_pick_infographic
+
+COUNTRY_EMOJIS = {
+    'Germany': '🇩🇪', 'Finland': '🇫🇮', 'Iceland': '🇮🇸', 'Estonia': '🇪🇪',
+    'Norway': '🇳🇴', 'Sweden': '🇸🇪', 'USA': '🇺🇸', 'England': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    'Spain': '🇪🇸', 'Italy': '🇮🇹', 'France': '🇫🇷', 'Netherlands': '🇳🇱',
+    'Portugal': '🇵🇹', 'Scotland': '🏴󠁧󠁢󠁳󠁣󠁴󠁿', 'Switzerland': '🇨🇭',
+    'Brazil': '🇧🇷', 'Argentina': '🇦🇷', 'Japan': '🇯🇵', 'Korea': '🇰🇷',
+    'Austria': '🇦🇹', 'Belgium': '🇧🇪', 'Denmark': '🇩🇰', 'Ireland': '🇮🇪'
+}
+
+def get_league_info(liga_name):
+    # Buscar en la configuración de ligas para obtener el país
+    for info in settings.API_FOOTBALL_LEAGUE_TARGETS.values():
+        if info['league_name'] == liga_name:
+            country = info.get('country', '')
+            emoji = COUNTRY_EMOJIS.get(country, '⚽')
+            return country, emoji
+    return '', '⚽'
 
 def upload_file_to_github(local_file_path, repo_file_path):
     token = getattr(settings, 'GITHUB_TOKEN', '').strip()
@@ -95,16 +113,10 @@ def send_telegram_message(token, chat_id, text):
         return False
 
 def check_and_send_recess_reminder(token, chat_id, state):
-    """
-    Checks if the current date is in June, July, or August and if the recess reminder
-    for the current year has already been sent. If not, sends a calendar reminder
-    about the upcoming winter league starts.
-    """
     now = datetime.datetime.now()
     current_year = now.year
     current_month = now.month
     
-    # Only run in June, July or August
     if current_month not in [6, 7, 8]:
         return False
         
@@ -195,11 +207,10 @@ def get_league_status(league_name, league_id, leagues, recent_rates, picks_histo
     return 'yellow', 'Neutral', '🟡'
 
 def run_telegram_notifications():
-    # 1. Resolve Bot Token and Chat ID
+    # 1. Resolver Bot Token y Chat ID
     token = os.environ.get("TELEGRAM_BOT_TOKEN") or getattr(settings, 'TELEGRAM_BOT_TOKEN', '').strip()
     chat_id = os.environ.get("TELEGRAM_CHAT_ID") or getattr(settings, 'TELEGRAM_CHAT_ID', '').strip()
     
-    # Redact print for security
     token_display = f"{token[:8]}...{token[-4:]}" if len(token) > 12 else "No configurado"
     print(f"[Telegram Notifier] Inicializando... Chat ID: {chat_id} | Token: {token_display}")
     
@@ -215,7 +226,7 @@ def run_telegram_notifications():
     with open(history_file, 'r', encoding='utf-8') as f:
         picks = json.load(f)
 
-    # Load leagues and recent rates from dashboard_data.js
+    # Cargar datos de ligas desde el dashboard
     leagues = []
     recent_rates = {}
     db_file = os.path.join('data', 'picks', 'dashboard_data.js')
@@ -229,11 +240,29 @@ def run_telegram_notifications():
             recent_rates = data.get('league_current_season_recent_rates', {})
         except Exception as e:
             print(f"[Telegram Notifier] Error al parsear dashboard_data.js: {e}")
+            
+    # Cargar estado de notificaciones enviadas
+    state_file = os.path.join('data', 'picks', 'telegram_sent_state.json')
+    state = {"sent_weekly_picks_ids": [], "last_weekly_summary_date": "", "sent_daily_agenda_date": "", "sent_resolved_daily": []}
+    if os.path.exists(state_file):
+        try:
+            with open(state_file, 'r', encoding='utf-8') as f:
+                loaded = json.load(f)
+                for k, v in loaded.items():
+                    state[k] = v
+        except Exception:
+            pass
+            
+    if not isinstance(state.get("sent_weekly_picks_ids"), list):
+        state["sent_weekly_picks_ids"] = []
+    if not isinstance(state.get("sent_resolved_daily"), list):
+        state["sent_resolved_daily"] = []
         
-    # Define current time in UTC (naive)
-    dt_now = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+    dt_now_utc = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+    dt_now_vet = dt_now_utc - datetime.timedelta(hours=4)
+    current_date_vet_str = dt_now_vet.strftime("%Y-%m-%d")
     
-    # Sort picks chronologically (ascending, oldest kickoff first)
+    # Ordenar cronológicamente
     def parse_dt(p):
         try:
             return datetime.datetime.strptime(f"{p.get('fecha', '1970-01-01')} {p.get('hora', '00:00')}", "%Y-%m-%d %H:%M")
@@ -241,97 +270,169 @@ def run_telegram_notifications():
             return datetime.datetime.min
 
     picks = sorted(picks, key=parse_dt)
-        
-    state_file = os.path.join('data', 'picks', 'telegram_sent_state.json')
-    if os.path.exists(state_file):
-        try:
-            with open(state_file, 'r', encoding='utf-8') as f:
-                state = json.load(f)
-        except Exception:
-            state = {"sent_upcoming": [], "sent_resolved": []}
-    else:
-        state = {"sent_upcoming": [], "sent_resolved": []}
-        
-    if "sent_upcoming" not in state:
-        state["sent_upcoming"] = []
-    if "sent_resolved" not in state:
-        state["sent_resolved"] = []
-    if "sent_reminders" not in state:
-        state["sent_reminders"] = []
-        
     updated_state = False
-    
-    # 2. Process Upcoming Picks
-    print("[Telegram Notifier] Procesando nuevos picks por enviar...")
+
+    def utc_to_vet_str(date_str, time_str):
+        try:
+            dt_utc = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+            dt_vet = dt_utc - datetime.timedelta(hours=4)
+            return dt_vet.strftime("%Y-%m-%d"), dt_vet.strftime("%H:%M")
+        except:
+            return date_str, time_str
+
+    # --- REPORTE 1: RESUMEN SEMANAL DE PICKS ---
+    upcoming_picks = []
     for p in picks:
         match_id = p.get('match_id')
         if not match_id:
             continue
-            
-        # A pick is upcoming if it's pending/active and hasn't been sent
         res_bet = p.get('resultado_apuesta')
         is_pending = res_bet is None or res_bet == 'PENDIENTE' or res_bet == ''
         
-        if is_pending and str(match_id) not in state["sent_upcoming"]:
-            # Evaluate league status
-            status_val, status_label, status_emoji = get_league_status(
-                p.get('liga'), p.get('league_id'), leagues, recent_rates, picks
+        date_str = p.get('fecha')
+        time_str = p.get('hora')
+        try:
+            dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
+            if is_pending and dt_kickoff > dt_now_utc:
+                status_val, _, _ = get_league_status(p.get('liga'), p.get('league_id'), leagues, recent_rates, picks)
+                if status_val != 'red':
+                    upcoming_picks.append(p)
+        except Exception:
+            pass
+
+    print(f"[Telegram Notifier] {len(upcoming_picks)} picks futuros aptos para el resumen semanal.")
+
+    upcoming_ids = [str(p['match_id']) for p in upcoming_picks]
+    new_ids = [x for x in upcoming_ids if x not in state["sent_weekly_picks_ids"]]
+    
+    days_since_last = 99
+    if state.get("last_weekly_summary_date"):
+        try:
+            last_date = datetime.datetime.strptime(state["last_weekly_summary_date"], "%Y-%m-%d")
+            days_since_last = (dt_now_vet - last_date).days
+        except:
+            pass
+            
+    if len(upcoming_picks) > 0 and (len(new_ids) > 0 or days_since_last >= 7):
+        print("[Telegram Notifier] Generando resumen semanal...")
+        msg = f"📋 <b>NUEVOS PICKS PROGRAMADOS (PRÓXIMOS 7 DÍAS)</b>\n"
+        msg += f"<i>Total picks detectados: {len(upcoming_picks)}</i>\n\n"
+        
+        grouped_picks = {}
+        for p in upcoming_picks:
+            fecha_vet, hora_vet = utc_to_vet_str(p['fecha'], p['hora'])
+            grouped_picks.setdefault(fecha_vet, []).append((p, hora_vet))
+            
+        for f_vet in sorted(grouped_picks.keys()):
+            try:
+                dt_f = datetime.datetime.strptime(f_vet, "%Y-%m-%d")
+                dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+                day_name = dias[dt_f.weekday()]
+                date_header = f"📅 <b>{day_name} {f_vet}</b>"
+            except:
+                date_header = f"📅 <b>{f_vet}</b>"
+                
+            msg += f"{date_header}\n"
+            for p, h_vet in grouped_picks[f_vet]:
+                country, emoji = get_league_info(p.get('liga'))
+                status_val, status_label, status_emoji = get_league_status(p.get('liga'), p.get('league_id'), leagues, recent_rates, picks)
+                
+                clase_lbl = "Premium" if p.get('clase') == 'Clase A' else "Valor"
+                tier = int(p.get('tier', 3))
+                stake_pct = "2.0%" if tier == 1 else ("1.0%" if tier == 2 else "0.5%")
+                
+                msg += (
+                    f"• {emoji} <b>{p.get('local')} vs {p.get('visitante')}</b>\n"
+                    f"  🏆 {p.get('liga')} ({status_emoji} {status_label}) | ⏰ {h_vet} (VET)\n"
+                    f"  📈 {clase_lbl} | 💵 Cuota: {p.get('cuota_recomendada')} | ⚖️ Stake: {stake_pct}\n\n"
+                )
+        
+        success = send_telegram_message(token, chat_id, msg)
+        if success:
+            state["sent_weekly_picks_ids"] = upcoming_ids
+            state["last_weekly_summary_date"] = current_date_vet_str
+            updated_state = True
+
+    # --- REPORTE 2: AGENDA CONSOLIDADA DEL DÍA ---
+    today_picks = []
+    for p in picks:
+        match_id = p.get('match_id')
+        if not match_id:
+            continue
+        res_bet = p.get('resultado_apuesta')
+        is_pending = res_bet is None or res_bet == 'PENDIENTE' or res_bet == ''
+        
+        fecha_vet, hora_vet = utc_to_vet_str(p['fecha'], p['hora'])
+        if is_pending and fecha_vet == current_date_vet_str:
+            status_val, _, _ = get_league_status(p.get('liga'), p.get('league_id'), leagues, recent_rates, picks)
+            if status_val != 'red':
+                try:
+                    dt_kickoff = datetime.datetime.strptime(f"{p['fecha']} {p['hora']}", "%Y-%m-%d %H:%M")
+                    if dt_kickoff > dt_now_utc:
+                        today_picks.append((p, hora_vet))
+                except:
+                    today_picks.append((p, hora_vet))
+
+    print(f"[Telegram Notifier] {len(today_picks)} picks programados para HOY.")
+
+    if len(today_picks) > 0 and state.get("sent_daily_agenda_date") != current_date_vet_str:
+        print("[Telegram Notifier] Enviando agenda del día...")
+        msg = f"📅 <b>AGENDA DE PARTIDOS - HOY ({current_date_vet_str})</b> 📅\n\n"
+        
+        for p, h_vet in today_picks:
+            country, emoji = get_league_info(p.get('liga'))
+            status_val, status_label, status_emoji = get_league_status(p.get('liga'), p.get('league_id'), leagues, recent_rates, picks)
+            
+            clase_lbl = "Premium" if p.get('clase') == 'Clase A' else "Valor"
+            tier = int(p.get('tier', 3))
+            stake_pct = "2.0%" if tier == 1 else ("1.0%" if tier == 2 else "0.5%")
+            
+            msg += (
+                f"• {emoji} <b>{p.get('local')} vs {p.get('visitante')}</b>\n"
+                f"  🏆 {p.get('liga')} ({status_emoji} {status_label}) | ⏰ <b>{h_vet}</b> (VET)\n"
+                f"  💵 Cuota: {p.get('cuota_recomendada')} | ⚖️ Stake: {stake_pct}\n\n"
             )
             
-            # Skip sending if league is in Alerta (red)
-            if status_val == 'red':
-                print(f"   -> Saltando alerta de pick para partido {match_id} ({p.get('local')} vs {p.get('visitante')}) porque la liga {p.get('liga')} está en ALERTA (rojo).")
-                state["sent_upcoming"].append(str(match_id))
-                updated_state = True
-                continue
+        msg += f"<i>Consulta el dashboard en vivo para seguir los partidos o live betting.</i>"
+        success = send_telegram_message(token, chat_id, msg)
+        if success:
+            state["sent_daily_agenda_date"] = current_date_vet_str
+            updated_state = True
 
-            date_str = p.get('fecha')
-            time_str = p.get('hora')
-            
-            # Safeguard: skip upcoming picks that already started
-            try:
-                dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-                if dt_kickoff < dt_now:
-                    print(f"   -> El partido {match_id} ya comenzó ({date_str} {time_str}). Marcando como sent_upcoming en silencio.")
-                    state["sent_upcoming"].append(str(match_id))
-                    updated_state = True
-                    continue
-            except Exception:
-                pass
+    # --- REPORTE 3: REPORTE DIARIO DE RESULTADOS ---
+    resolved_picks = []
+    for p in picks:
+        match_id = p.get('match_id')
+        if not match_id:
+            continue
+        res_bet = p.get('resultado_apuesta')
+        if res_bet in ['GANADA', 'PERDIDA', 'CANCELADO'] and str(match_id) not in state["sent_resolved_daily"]:
+            status_val, _, _ = get_league_status(p.get('liga'), p.get('league_id'), leagues, recent_rates, picks)
+            if status_val != 'red':
+                resolved_picks.append(p)
 
-            # Format kickoff time from UTC to VET (UTC-4)
-            fecha_vet = date_str
-            hora_vet = time_str
+    print(f"[Telegram Notifier] {len(resolved_picks)} nuevos resultados por reportar.")
+
+    if len(resolved_picks) > 0:
+        print("[Telegram Notifier] Enviando reporte de resultados...")
+        msg = f"🏁 <b>RESUMEN DE RESULTADOS DIARIOS</b> 🏁\n"
+        msg += f"<i>Total partidos resueltos: {len(resolved_picks)}</i>\n\n"
+        
+        total_staked = 0.0
+        total_profit = 0.0
+        
+        for p in resolved_picks:
+            country, emoji = get_league_info(p.get('liga'))
+            status_val, status_label, status_emoji = get_league_status(p.get('liga'), p.get('league_id'), leagues, recent_rates, picks)
             
-            try:
-                dt_utc = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-                dt_vet = dt_utc - datetime.timedelta(hours=4)
-                fecha_vet = dt_vet.strftime("%Y-%m-%d")
-                hora_vet = dt_vet.strftime("%H:%M")
-            except Exception:
-                pass # Fallback to original
-                
+            res_bet = p.get('resultado_apuesta')
+            status_icon = "✅" if res_bet == 'GANADA' else ("❌" if res_bet == 'PERDIDA' else "🟡")
+            
             tier = int(p.get('tier', 3))
-            tier_names = {1: "Tier 1 (Alta Liquidez)", 2: "Tier 2 (Media Liquidez)", 3: "Tier 3 (Exótica)"}
-            tier_name = tier_names.get(tier, f"Tier {tier}")
-            
-            # Suggest dynamic stakes
-            if tier == 1:
-                stake_pct = "2.0%"
-                stake_usd_tier = 20.0
-            elif tier == 2:
-                stake_pct = "1.0%"
-                stake_usd_tier = 10.0
-            else:
-                stake_pct = "0.5%"
-                stake_usd_tier = 5.0
-                
-            # Kelly stake sizing (1/10 Kelly)
-            prob_str = p.get('probabilidad', '0.0%').replace('%', '')
-            try:
-                prob_val = float(prob_str) / 100.0
-            except:
-                prob_val = 0.75
+            stake_usd = 20.0 if tier == 1 else (10.0 if tier == 2 else 5.0)
+            is_drawdown = p.get('is_drawdown', False)
+            if is_drawdown:
+                stake_usd *= 0.5
                 
             odds = p.get('cuota_recomendada')
             try:
@@ -339,287 +440,66 @@ def run_telegram_notifications():
             except:
                 odds_val = 1.45
                 
-            b_val = odds_val - 1.0
-            kelly_f = (prob_val * b_val - (1.0 - prob_val)) / b_val if b_val > 0 else 0.0
-            stake_f = kelly_f * 0.10  # 1/10 Kelly
-            
-            is_drawdown = p.get('is_drawdown', False)
-            if is_drawdown:
-                stake_f = stake_f * 0.5  # Cut stake in half
-                
-            # Clamp Kelly stake between 0.5% and 3.0%
-            stake_f = max(0.005, min(0.03, stake_f))
-            
-            ref_bankroll = 1000.0
-            stake_usd_kelly = stake_f * ref_bankroll
-            
-            # Format drawdown warning prefix if applicable
-            drawdown_alert = ""
-            if is_drawdown:
-                recent_wr = p.get('league_recent_win_rate', 1.0) * 100
-                drawdown_alert = f"⚠️ <b>ALERTA RACHA NEGATIVA EN LIGA ({recent_wr:.1f}% WR)</b>\n<i>Esta liga está en racha de pérdidas reciente. Se recomienda precaución o reducir stake.</i>\n\n"
-                
-            # Formulate HTML message
-            msg = (
-                f"🆕 <b>NUEVO PICK DETECTADO (HT Over 0.5)</b> {status_emoji} <b>[LIGA {status_label.upper()}]</b>\n\n"
-                f"{drawdown_alert}"
-                f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
-                f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
-                f"📅 <b>Fecha:</b> {fecha_vet} (VET)\n"
-                f"⏰ <b>Hora:</b> {hora_vet} (VET)\n"
-                f"📈 <b>Clase:</b> {p.get('clase')} (Prob: {p.get('probabilidad')})\n"
-                f"📊 <b>Sustento:</b> {p.get('sustento')}\n"
-                f"💵 <b>Cuota Recomendada:</b> {p.get('cuota_recomendada')} ({p.get('bookmaker_recomendado')})\n\n"
-                f"⚖️ <b>Stake Sugerido (Tier):</b> {stake_pct} (Ref: ${stake_usd_tier:.2f})\n"
-                f"📊 <b>Stake Kelly Dinámico (1/10 Kelly):</b> {stake_f*100:.2f}% (Ref: ${stake_usd_kelly:.2f})\n"
-            )
-            
-            print(f"   -> Enviando alerta de pick para: {p.get('local')} vs {p.get('visitante')}")
-            
-            # Generate infographic image in a temporary path
-            temp_dir = os.path.join('data', 'picks', 'temp_infographics')
-            os.makedirs(temp_dir, exist_ok=True)
-            temp_path = os.path.join(temp_dir, f"pick_{match_id}.png")
-            
-            img_success = generate_pick_infographic(p, temp_path)
-            
-            success = False
-            if img_success and os.path.exists(temp_path):
-                # Try sending photo first
-                success = send_telegram_photo(token, chat_id, temp_path, msg)
-                try:
-                    os.remove(temp_path)
-                except:
-                    pass
-            
-            # Fallback to text message if photo failed
-            if not success:
-                success = send_telegram_message(token, chat_id, msg)
-                
-            if success:
-                state["sent_upcoming"].append(str(match_id))
-                updated_state = True
-                
-    # 2.5. Process Kickoff Reminders
-    print("[Telegram Notifier] Procesando recordatorios de partidos cercanos...")
-    for p in picks:
-        match_id = p.get('match_id')
-        if not match_id:
-            continue
-            
-        res_bet = p.get('resultado_apuesta')
-        is_pending = res_bet is None or res_bet == 'PENDIENTE' or res_bet == ''
-        
-        if is_pending:
-            try:
-                date_str = p.get('fecha')
-                time_str = p.get('hora')
-                dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-                time_diff = dt_kickoff - dt_now
-                seconds_to_kickoff = time_diff.total_seconds()
-                
-                # Send reminder if match starts in 2 hours (7200 seconds) or less
-                if 0 <= seconds_to_kickoff <= 7200 and str(match_id) not in state["sent_reminders"]:
-                    # Evaluate league status
-                    status_val, status_label, status_emoji = get_league_status(
-                        p.get('liga'), p.get('league_id'), leagues, recent_rates, picks
-                    )
-                    
-                    # Skip reminder if league is in Alerta (red)
-                    if status_val == 'red':
-                        print(f"   -> Saltando recordatorio de partido {match_id} porque la liga está en ALERTA (rojo).")
-                        state["sent_reminders"].append(str(match_id))
-                        updated_state = True
-                        continue
-
-                    # Format kickoff time to VET (UTC-4)
-                    dt_vet = dt_kickoff - datetime.timedelta(hours=4)
-                    fecha_vet = dt_vet.strftime("%Y-%m-%d")
-                    hora_vet = dt_vet.strftime("%H:%M")
-                    
-                    tier = int(p.get('tier', 3))
-                    tier_names = {1: "Tier 1 (Alta Liquidez)", 2: "Tier 2 (Media Liquidez)", 3: "Tier 3 (Exótica)"}
-                    tier_name = tier_names.get(tier, f"Tier {tier}")
-                    
-                    # Suggest dynamic stakes
-                    if tier == 1:
-                        stake_pct = "2.0%"
-                        stake_usd_tier = 20.0
-                    elif tier == 2:
-                        stake_pct = "1.0%"
-                        stake_usd_tier = 10.0
-                    else:
-                        stake_pct = "0.5%"
-                        stake_usd_tier = 5.0
-                        
-                    # Kelly stake sizing (1/10 Kelly)
-                    prob_str = p.get('probabilidad', '0.0%').replace('%', '')
-                    try:
-                        prob_val = float(prob_str) / 100.0
-                    except:
-                        prob_val = 0.75
-                        
-                    odds = p.get('cuota_recomendada')
-                    try:
-                        odds_val = float(odds) if odds is not None else 1.45
-                    except:
-                        odds_val = 1.45
-                        
-                    b_val = odds_val - 1.0
-                    kelly_f = (prob_val * b_val - (1.0 - prob_val)) / b_val if b_val > 0 else 0.0
-                    stake_f = kelly_f * 0.10  # 1/10 Kelly
-                    
-                    is_drawdown = p.get('is_drawdown', False)
-                    if is_drawdown:
-                        stake_f = stake_f * 0.5  # Cut stake in half
-                        
-                    stake_f = max(0.005, min(0.03, stake_f))
-                    ref_bankroll = 1000.0
-                    stake_usd_kelly = stake_f * ref_bankroll
-                    
-                    # Format drawdown warning prefix if applicable
-                    drawdown_alert = ""
-                    if is_drawdown:
-                        recent_wr = p.get('league_recent_win_rate', 1.0) * 100
-                        drawdown_alert = f"⚠️ <b>ALERTA RACHA NEGATIVA EN LIGA ({recent_wr:.1f}% WR)</b>\n\n"
-                        
-                    msg = (
-                        f"⏰ <b>RECORDATORIO DE PARTIDO (HT Over 0.5)</b> {status_emoji} <b>[LIGA {status_label.upper()}]</b>\n\n"
-                        f"{drawdown_alert}"
-                        f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
-                        f"🏆 <b>Liga:</b> {p.get('liga')} (<i>{tier_name}</i>)\n"
-                        f"⏰ <b>Kickoff:</b> {hora_vet} (VET) | Fecha: {fecha_vet}\n"
-                        f"📈 <b>Clase:</b> {p.get('clase')} (Prob: {p.get('probabilidad')})\n"
-                        f"💵 <b>Cuota Recomendada:</b> {p.get('cuota_recomendada')} ({p.get('bookmaker_recomendado')})\n\n"
-                        f"⚖️ <b>Stake Sugerido (Tier):</b> {stake_pct} (Ref: ${stake_usd_tier:.2f})\n"
-                        f"📊 <b>Stake Kelly Dinámico (1/10 Kelly):</b> {stake_f*100:.2f}% (Ref: ${stake_usd_kelly:.2f})\n\n"
-                        f"<i>Asegúrate de colocar tu apuesta antes del inicio.</i>"
-                    )
-                    
-                    print(f"   -> Enviando recordatorio para: {p.get('local')} vs {p.get('visitante')}")
-                    success = send_telegram_message(token, chat_id, msg)
-                    if success:
-                        state["sent_reminders"].append(str(match_id))
-                        updated_state = True
-            except Exception as e:
-                print(f"[Telegram Notifier] Error al calcular recordatorio para match_id {match_id}: {e}")
-                
-    # 3. Process Resolved Picks
-    print("[Telegram Notifier] Procesando resultados de partidos recientes...")
-    for p in picks:
-        match_id = p.get('match_id')
-        if not match_id:
-            continue
-            
-        res_bet = p.get('resultado_apuesta')
-        if res_bet in ['GANADA', 'PERDIDA', 'CANCELADO'] and str(match_id) not in state["sent_resolved"]:
-            # Evaluate league status
-            status_val, status_label, status_emoji = get_league_status(
-                p.get('liga'), p.get('league_id'), leagues, recent_rates, picks
-            )
-            
-            # Skip resolved pick notification if league is in Alerta (red)
-            if status_val == 'red':
-                print(f"   -> Saltando resultado de partido {match_id} ({p.get('local')} vs {p.get('visitante')}) porque la liga está en ALERTA (rojo).")
-                state["sent_resolved"].append(str(match_id))
-                updated_state = True
-                continue
-
-            date_str = p.get('fecha')
-            time_str = p.get('hora')
-            
-            # Safeguard: only send results for matches played in the last 2 days
-            try:
-                dt_kickoff = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-                if (dt_now - dt_kickoff).days > 2:
-                    print(f"   -> El resultado del partido {match_id} ({date_str}) es de hace más de 2 días. Marcando como sent_resolved en silencio.")
-                    state["sent_resolved"].append(str(match_id))
-                    updated_state = True
-                    continue
-            except Exception:
-                pass
-
-            # Format kickoff time from UTC to VET (UTC-4)
-            fecha_vet = date_str
-            hora_vet = time_str
-            
-            try:
-                dt_utc = datetime.datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-                dt_vet = dt_utc - datetime.timedelta(hours=4)
-                fecha_vet = dt_vet.strftime("%Y-%m-%d")
-                hora_vet = dt_vet.strftime("%H:%M")
-            except Exception:
-                pass
-                
-            tier = int(p.get('tier', 3))
-            
-            # Dynamic stakes reference
-            if tier == 1:
-                stake_usd = 20.0
-            elif tier == 2:
-                stake_usd = 10.0
-            else:
-                stake_usd = 5.0
-                
-            is_drawdown = p.get('is_drawdown', False)
-            if is_drawdown:
-                stake_usd = stake_usd * 0.5
-                drawdown_suffix = " (Stake reducido por Drawdown Guard)"
-            else:
-                drawdown_suffix = ""
-                
-            odds = p.get('cuota_recomendada')
-            odds_val = float(odds) if odds is not None else 1.45
-            
-            # Calculate financial result for telegram report
+            net_profit = 0.0
             if res_bet == 'GANADA':
-                status_icon = "✅"
-                profit = stake_usd * (odds_val - 1.0)
-                profit_str = f"<b>+${profit:.2f}</b>"
+                net_profit = stake_usd * (odds_val - 1.0)
+                profit_lbl = f"+${net_profit:.2f}"
             elif res_bet == 'PERDIDA':
-                status_icon = "❌"
-                profit_str = f"<b>-${stake_usd:.2f}</b>"
+                net_profit = -stake_usd
+                profit_lbl = f"-${stake_usd:.2f}"
             else:
-                status_icon = "🟡"
-                profit_str = "<b>$0.00 (Reembolso)</b>"
+                profit_lbl = "$0.00"
                 
-            msg = (
-                f"🏁 <b>RESULTADO DE PICK HT OVER 0.5</b> {status_emoji} <b>[LIGA {status_label.upper()}]</b>\n\n"
-                f"🆚 <b>Partido:</b> {p.get('local')} vs {p.get('visitante')}\n"
-                f"🏆 <b>Liga:</b> {p.get('liga')}\n"
-                f"📅 <b>Fecha:</b> {fecha_vet} {hora_vet} (VET)\n"
-                f"📊 <b>Clase:</b> {p.get('clase')} (Tier {tier})\n"
-                f"⏱️ <b>Marcador HT:</b> {p.get('marcador_ht') or 'N/A'}\n\n"
-                f"✨ <b>Resultado:</b> {status_icon} <b>{res_bet}</b>\n"
-                f"💰 <b>Cuota:</b> {odds_val:.2f}\n"
-                f"💵 <b>Balance:</b> {profit_str} (Stake: ${stake_usd:.2f}{drawdown_suffix})\n"
+            total_staked += stake_usd
+            total_profit += net_profit
+            
+            fecha_vet, hora_vet = utc_to_vet_str(p['fecha'], p['hora'])
+            
+            msg += (
+                f"• {emoji} <b>{p.get('local')} vs {p.get('visitante')}</b>\n"
+                f"  🏆 {p.get('liga')} | HT: {p.get('marcador_ht') or 'N/A'}\n"
+                f"  ✨ Estado: {status_icon} <b>{res_bet}</b> | Cuota: @{odds_val:.2f}\n"
+                f"  💰 Balance: <b>{profit_lbl}</b> (Stake: ${stake_usd:.2f}{' [Reducido]' if is_drawdown else ''})\n\n"
             )
             
-            print(f"   -> Enviando alerta de resultado para: {p.get('local')} vs {p.get('visitante')} ({res_bet})")
-            success = send_telegram_message(token, chat_id, msg)
-            if success:
-                state["sent_resolved"].append(str(match_id))
-                updated_state = True
-                
-    # 4. Check for recess/off-season reminder
+        yield_pct = (total_profit / total_staked * 100.0) if total_staked > 0 else 0.0
+        profit_sign = "+" if total_profit >= 0 else ""
+        yield_sign = "+" if yield_pct >= 0 else ""
+        
+        balance_summary = (
+            f"📊 <b>BALANCE DE LA JORNADA</b>\n"
+            f"<pre>"
+            f"Inversión Total : ${total_staked:.2f}\n"
+            f"Retorno Neto    : {profit_sign}${total_profit:.2f}\n"
+            f"Rendimiento/Yield: {yield_sign}{yield_pct:.1f}%\n"
+            f"</pre>"
+        )
+        msg += balance_summary
+        
+        success = send_telegram_message(token, chat_id, msg)
+        if success:
+            for p in resolved_picks:
+                state["sent_resolved_daily"].append(str(p['match_id']))
+            updated_state = True
+
+    # 4. Recordatorio estacional de receso de verano
     recess_reminder_sent = check_and_send_recess_reminder(token, chat_id, state)
     if recess_reminder_sent:
         updated_state = True
         
-    # 5. Save updated state if changes occurred
+    # 5. Guardar estado si hubo cambios
     if updated_state:
         os.makedirs(os.path.dirname(state_file), exist_ok=True)
         with open(state_file, 'w', encoding='utf-8') as f:
             json.dump(state, f, ensure_ascii=False, indent=2)
         print("[Telegram Notifier] Estado guardado correctamente en telegram_sent_state.json.")
         
-        # Sincronizar telegram_sent_state.json a GitHub para mantener consistencia
         if getattr(settings, 'GITHUB_ENABLED', False) and os.environ.get("GITHUB_ACTIONS") != "true":
             print("[Telegram Notifier] Sincronizando estado con GitHub...")
             try:
                 upload_file_to_github(state_file, 'data/picks/telegram_sent_state.json')
             except Exception as e:
                 print(f"[Telegram Notifier] Error al subir estado a GitHub: {e}")
-                
+
 if __name__ == "__main__":
     run_telegram_notifications()
