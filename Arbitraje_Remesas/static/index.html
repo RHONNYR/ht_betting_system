@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbitraje & Remesas - Control Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="glass-container auth-container">
+        <div class="auth-box">
+            <h1 class="glow-text">📈 Arbitraje</h1>
+            <p class="subtitle">Inicia sesión para acceder a tu panel</p>
+            <div id="login-error" class="alert error hidden"></div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" required placeholder="Ingresa tu usuario">
+                </div>
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application Dashboard (Hidden until login) -->
+    <div id="app-container" class="hidden">
+        <header class="main-header">
+            <div class="header-logo">
+                <span class="logo-icon">📈</span>
+                <div>
+                    <h1>Arbitraje & Remesas</h1>
+                    <p class="subtitle">Eficiencia Operativa</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="bcv-widget">
+                    <span class="bcv-label">Tasa BCV:</span>
+                    <span id="bcv-rate-display" class="bcv-value">--.-- Bs</span>
+                    <span id="bcv-source" class="badge">Oficial</span>
+                    <button id="btn-edit-bcv" class="btn btn-icon" title="Editar tasa manual">✏️</button>
+                </div>
+                <button id="btn-change-password-modal" class="btn btn-secondary">🔑 Contraseña</button>
+                <button id="btn-logout" class="btn btn-danger">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-link active" data-tab="tab-capital">💼 Capital & Tarjetas</button>
+            <button class="tab-link" data-tab="tab-calculadora">🧮 Calculadora de Ciclos</button>
+            <button class="tab-link" data-tab="tab-historial">📜 Historial & Bitácoras</button>
+        </nav>
+
+        <main class="tab-content-container">
+            <!-- TAB 1: CAPITAL & TARJETAS -->
+            <section id="tab-capital" class="tab-pane active">
+                <div class="grid-2col">
+                    <!-- Capital Distribution -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Distribución del Capital</h2>
+                            <button id="btn-snapshot-capital" class="btn btn-secondary btn-sm">📸 Guardar Foto Diaria</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="capital-summary-cards">
+                                <div class="mini-summary-card">
+                                    <span class="label">Equivalente Total USD</span>
+                                    <span id="total-capital-usd" class="value text-glow">$0.00</span>
+                                </div>
+                                <div class="mini-summary-card">
+                                    <span class="label">Post-Comisiones (Simulado)</span>
+                                    <span id="total-capital-simulado" class="value text-glow text-success">$0.00</span>
+                                </div>
+                            </div>
+                            <form id="capital-form">
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Plataforma</th>
+                                                <th>Monto USD</th>
+                                                <th>Monto VES</th>
+                                                <th>Equiv. USD</th>
+                                                <th>Simulado USD</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="capital-table-body">
+                                            <!-- Dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="submit" class="btn btn-primary float-right mt-3">Guardar Cambios de Capital</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Cards & Limits -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Control de Tarjetas y Límites</h2>
+                            <div>
+                                <button id="btn-add-titular" class="btn btn-secondary btn-sm">👤 Agregar Titular</button>
+                                <button id="btn-add-card" class="btn btn-secondary btn-sm">💳 Agregar Tarjeta</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="cards-container" class="cards-list-grid">
+                                <!-- Cards dynamically populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: CALCULADORA DE CICLOS -->
+            <section id="tab-calculadora" class="tab-pane">
+                <div class="grid-2col">
+                    <!-- Calculator Inputs -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Calculadora Operativa de Ciclos</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="ciclo-calculator-form">
+                                <div class="grid-2col-form">
+                                    <div class="input-group">
+                                        <label for="calc-usdt-vendidos">USDT a Vender</label>
+                                        <input type="number" step="any" id="calc-usdt-vendidos" required placeholder="Monto USDT (Ej. 900)">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-tasa-venta">Tasa de Venta (P2P)</label>
+                                        <input type="number" step="any" id="calc-tasa-venta" required placeholder="Tasa VES/USDT (Ej. 751.9)">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-banco-venta">Banco Recibe Bolívares</label>
+                                        <select id="calc-banco-venta" required>
+                                            <option value="Mercantil">Mercantil</option>
+                                            <option value="Provincial">Provincial</option>
+                                            <option value="Banco de Venezuela">Banco de Venezuela</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-tarjeta-compra">Tarjeta/Método de Compra</label>
+                                        <select id="calc-tarjeta-compra" required>
+                                            <!-- Dynamically populated from database cards -->
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-divisas-compradas">Divisas Compradas $</label>
+                                        <input type="number" step="any" id="calc-divisas-compradas" required placeholder="Monto en $ (Ej. 1000)">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-divisas-procesadas">Divisas Procesadas en Binance $</label>
+                                        <input type="number" step="any" id="calc-divisas-procesadas" required placeholder="Monto en $ (Ej. 995)">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-transferencias-ves">Comisiones de Transferencias (VES)</label>
+                                        <input type="number" step="any" id="calc-transferencias-ves" value="0" placeholder="Ej. Pago móvil 0.3%">
+                                    </div>
+                                    <div class="input-group flex-row-align">
+                                        <label for="calc-pago-movil-auto">¿Aplicar 0.3% Pago Móvil auto?</label>
+                                        <input type="checkbox" id="calc-pago-movil-auto">
+                                    </div>
+                                </div>
+                                <div class="calc-actions mt-4">
+                                    <button type="button" id="btn-calcular-ciclo" class="btn btn-secondary btn-block">🧮 Calcular Ciclo</button>
+                                    <button type="button" id="btn-guardar-ciclo" class="btn btn-primary btn-block hidden">💾 Registrar Ciclo en Bitácora</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Results Preview -->
+                    <div class="card glass-card result-card">
+                        <div class="card-header">
+                            <h2>Resultado del Ciclo</h2>
+                        </div>
+                        <div class="card-body" id="calc-results-preview">
+                            <div class="empty-state">
+                                <span class="large-icon">📊</span>
+                                <p>Introduce los datos y presiona "Calcular Ciclo" para ver los resultados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: HISTORIAL & BITÁCORAS -->
+            <section id="tab-historial" class="tab-pane">
+                <!-- Navigation sub-tabs -->
+                <div class="sub-nav-tabs">
+                    <button class="sub-tab-link active" data-subtab="subtab-historial-ciclos">🔄 Ciclos Ejecutados</button>
+                    <button class="sub-tab-link" data-subtab="subtab-historial-compras">💳 Bitácora de Compras de Divisas</button>
+                    <button class="sub-tab-link" data-subtab="subtab-historial-capital">📈 Bitácora Diaria de Capital</button>
+                </div>
+
+                <!-- SUB-TAB 1: HISTORIAL DE CICLOS -->
+                <div id="subtab-historial-ciclos" class="sub-tab-pane active">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Historial de Ciclos de Arbitraje</h2>
+                            <div class="total-ganado-badge">
+                                <span>Ganancia Total:</span>
+                                <strong id="total-ganancia-ciclos">$0.00</strong>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>USDT Vendidos</th>
+                                            <th>Tasa Venta</th>
+                                            <th>Banco Venta</th>
+                                            <th>$ Comprados</th>
+                                            <th>Tasa BCV</th>
+                                            <th>$ Recibidos Binance</th>
+                                            <th>Ganancia USD</th>
+                                            <th>Rentabilidad</th>
+                                            <th>VES Restantes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ciclos-table-body">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB 2: BITÁCORA DE COMPRAS DE DIVISAS -->
+                <div id="subtab-historial-compras" class="sub-tab-pane">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Registro de Compras de Divisas Oficiales</h2>
+                            <button id="btn-registrar-compra-manual" class="btn btn-primary btn-sm">➕ Registrar Compra a BCV</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Titular</th>
+                                            <th>Banco</th>
+                                            <th>Tarjeta / Método</th>
+                                            <th>Monto Comprado ($)</th>
+                                            <th>Tasa BCV</th>
+                                            <th>Monto en VES</th>
+                                            <th>Comisión VES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="compras-table-body">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB 3: BITÁCORA DIARIA DE CAPITAL -->
+                <div id="subtab-historial-capital" class="sub-tab-pane">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Evolución Diaria del Capital</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha y Hora</th>
+                                            <th>Capital Total USD Equivalente</th>
+                                            <th>Detalle de Distribución</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="capital-history-table-body">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL: EDITAR TASA BCV -->
+    <div id="modal-bcv" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Fijar Tasa BCV Manual</h3>
+            <p>Introduce la tasa oficial del día. Deja vacío para volver a la tasa automática del BCV.</p>
+            <div class="input-group">
+                <label for="modal-bcv-input">Tasa en VES/$</label>
+                <input type="number" step="any" id="modal-bcv-input" placeholder="Ej. 36.42">
+            </div>
+            <div class="modal-actions mt-4">
+                <button id="btn-save-modal-bcv" class="btn btn-primary">Fijar Tasa</button>
+                <button id="btn-close-modal-bcv" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: REGISTRAR COMPRA DE DIVISAS -->
+    <div id="modal-compra" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Registrar Compra de Divisas (BCV)</h3>
+            <p>Esto sumará el monto al consumo de la tarjeta y calculará las comisiones según el titular.</p>
+            <form id="compra-divisa-form">
+                <div class="input-group">
+                    <label for="compra-tarjeta-select">Tarjeta / Cuenta Utilizada</label>
+                    <select id="compra-tarjeta-select" required>
+                        <!-- Dynamically populated -->
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="compra-monto-usd">Monto en $ Comprado</label>
+                    <input type="number" step="any" id="compra-monto-usd" required placeholder="Ej. 1000">
+                </div>
+                <div class="input-group">
+                    <label for="compra-tasa-bcv">Tasa BCV de Compra</label>
+                    <input type="number" step="any" id="compra-tasa-bcv" required placeholder="Ej. 633.36">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Registrar Compra</button>
+                    <button type="button" id="btn-close-modal-compra" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: AGREGAR TITULAR -->
+    <div id="modal-titular" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Agregar Nuevo Titular</h3>
+            <form id="titular-form">
+                <div class="input-group">
+                    <label for="titular-nombre">Nombre del Titular</label>
+                    <input type="text" id="titular-nombre" required placeholder="Ej. Juan Pérez">
+                </div>
+                <div class="input-group flex-row-align mt-2">
+                    <label for="titular-tercera-edad">¿Es de la Tercera Edad?</label>
+                    <input type="checkbox" id="titular-tercera-edad">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Crear Titular</button>
+                    <button type="button" id="btn-close-modal-titular" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: AGREGAR TARJETA -->
+    <div id="modal-tarjeta" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Agregar Nueva Tarjeta</h3>
+            <form id="tarjeta-form">
+                <div class="input-group">
+                    <label for="tarjeta-titular-select">Titular</label>
+                    <select id="tarjeta-titular-select" required>
+                        <!-- Dynamically populated -->
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="tarjeta-banco">Banco</label>
+                    <select id="tarjeta-banco" required>
+                        <option value="BDV">Banco de Venezuela (BDV)</option>
+                        <option value="Provincial">Provincial</option>
+                        <option value="Mercantil">Mercantil</option>
+                        <option value="Zinli">Zinli</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="tarjeta-tipo">Tipo de Tarjeta/Cuenta</label>
+                    <select id="tarjeta-tipo" required>
+                        <option value="Internacional $">Tarjeta Internacional $</option>
+                        <option value="Master Debit">Master Debit (Débito Internacional)</option>
+                        <option value="Zinli Wallet">Zinli Wallet / Virtual Card</option>
+                        <option value="Cuenta Corriente">Cuenta Corriente (Solo Transferencia)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="tarjeta-limite-diario">Límite Diario ($)</label>
+                    <input type="number" step="any" id="tarjeta-limite-diario" value="1000" required>
+                </div>
+                <div class="input-group">
+                    <label for="tarjeta-limite-mensual">Límite Mensual ($)</label>
+                    <input type="number" step="any" id="tarjeta-limite-mensual" value="5000" required>
+                </div>
+                <div class="input-group">
+                    <label for="tarjeta-comision">Comisión de Tarjeta del Banco (%)</label>
+                    <input type="number" step="any" id="tarjeta-comision" value="0.0" placeholder="Ej. 1.5">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Agregar Tarjeta</button>
+                    <button type="button" id="btn-close-modal-tarjeta" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: CAMBIAR CONTRASEÑA -->
+    <div id="modal-password" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Cambiar Contraseña</h3>
+            <div id="password-error" class="alert error hidden"></div>
+            <div id="password-success" class="alert success hidden"></div>
+            <form id="password-form">
+                <div class="input-group">
+                    <label for="password-old">Contraseña Actual</label>
+                    <input type="password" id="password-old" required>
+                </div>
+                <div class="input-group">
+                    <label for="password-new">Nueva Contraseña</label>
+                    <input type="password" id="password-new" required placeholder="Mínimo 6 caracteres">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Actualizar Contraseña</button>
+                    <button type="button" id="btn-close-modal-password" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
