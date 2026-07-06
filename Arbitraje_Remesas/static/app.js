@@ -6,7 +6,8 @@ const state = {
     bcvSource: 'Oficial',
     capitalItems: [],
     titulares: [],
-    currentCalculatedCiclo: null
+    currentCalculatedCiclo: null,
+    divisasCompradasManuallyEdited: false
 };
 
 // DOM Elements
@@ -183,6 +184,7 @@ async function fetchBCV() {
         } else {
             els.bcvSource.className = 'badge text-glow text-success';
         }
+        updateSuggestedDivisas();
     } catch (err) {
         console.error("Error fetching BCV:", err);
     }
@@ -349,6 +351,22 @@ async function loadTitularesAndCards() {
         
     } catch (err) {
         console.error("Error loading cards:", err);
+    }
+}
+
+function updateSuggestedDivisas() {
+    if (state.divisasCompradasManuallyEdited) return;
+    
+    const usdt = parseFloat(els.calcUsdtVendidos.value);
+    const tasa = parseFloat(els.calcTasaVenta.value);
+    if (!isNaN(usdt) && !isNaN(tasa) && state.bcvRate > 0) {
+        const binanceFeePct = 0.0025; // 0.25%
+        const usdtNetos = usdt * (1 - binanceFeePct);
+        const bsRecibidos = usdtNetos * tasa;
+        const suggestedUSD = Math.floor(bsRecibidos / state.bcvRate);
+        
+        els.calcDivisasCompradas.value = suggestedUSD;
+        els.calcDivisasProcesadas.value = suggestedUSD;
     }
 }
 
@@ -618,6 +636,15 @@ function setupEventListeners() {
     // Calculator
     els.btnCalcularCiclo.addEventListener('click', handleCalcularCiclo);
     els.btnGuardarCiclo.addEventListener('click', handleGuardarCiclo);
+    
+    els.calcUsdtVendidos.addEventListener('input', updateSuggestedDivisas);
+    els.calcTasaVenta.addEventListener('input', updateSuggestedDivisas);
+    els.calcDivisasCompradas.addEventListener('input', () => {
+        state.divisasCompradasManuallyEdited = true;
+    });
+    els.calcForm.addEventListener('reset', () => {
+        state.divisasCompradasManuallyEdited = false;
+    });
     
     // Add Titular / Card modals triggers
     els.btnAddTitular.addEventListener('click', () => openModal(els.modalTitular));
