@@ -456,5 +456,24 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
     db.commit()
     return {"message": "Ciclo de arbitraje registrado exitosamente", "id": ciclo.id}
 
+@app.on_event("startup")
+def on_startup():
+    try:
+        from database import init_db, SessionLocal, User
+        from seed import seed_data
+        print("Initializing database...")
+        init_db()
+        db = SessionLocal()
+        # Seed default data if empty
+        if db.query(User).first() is None:
+            print("Database is empty. Running seed...")
+            db.close()
+            seed_data()
+        else:
+            db.close()
+            print("Database has existing data. Skipping seed.")
+    except Exception as e:
+        print(f"Error during database initialization: {e}")
+
 # Serve static frontend files
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
