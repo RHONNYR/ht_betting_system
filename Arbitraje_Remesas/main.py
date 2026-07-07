@@ -139,23 +139,20 @@ def scrape_bcv_rate():
     except Exception as e:
         print(f"BCV Scraping failed: {e}")
 
-    # Method 2: Public API Fallback (pyDolarVenezuela backend or similar)
+    # Method 2: DolarApi.com VE (Highly stable public API)
     try:
-        url = "https://pydolarvenezuela-api.vercel.app/api/v1/dollar?page=bcv"
-        res = requests.get(url, timeout=5)
+        url = "https://ve.dolarapi.com/v1/dolares/oficial"
+        res = requests.get(url, timeout=10)
         if res.status_code == 200:
             data = res.json()
-            # Depending on API structure
-            monitors = data.get("monitors", {})
-            bcv_data = monitors.get("bcv", {}) or monitors.get("usd", {})
-            rate_val = bcv_data.get("price") or data.get("price")
+            rate_val = data.get("promedio") or data.get("venta")
             if rate_val:
                 rate = float(rate_val)
                 bcv_state.cached_rate = rate
                 bcv_state.last_fetch = datetime.datetime.now()
                 return rate
     except Exception as e:
-        print(f"BCV Fallback API failed: {e}")
+        print(f"BCV Fallback API (DolarApi) failed: {e}")
         
     return bcv_state.cached_rate
 
