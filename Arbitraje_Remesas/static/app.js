@@ -445,39 +445,43 @@ function handleCalcularCiclo() {
     
     els.calcResultsPreview.innerHTML = `
         <div class="results-display-list">
-            <div class="result-item">
+            <div class="result-item" data-tooltip="Bolívares recibidos en tu banco tras vender USDT en P2P (neto de la comisión de Binance 0.25%).">
                 <span class="label">Bolívares Recibidos (Venta USDT):</span>
                 <span class="value">${formatVES(bolivaresRecibidos)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item" data-tooltip="El costo en Bolívares de las divisas oficiales compradas en el banco, calculado a la tasa oficial del BCV (Divisas Compradas * Tasa BCV).">
                 <span class="label">Costo Base Divisas (Tasa BCV ${state.bcvRate}):</span>
                 <span class="value">${formatVES(costoBaseVES)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item" data-tooltip="Comisión bancaria de compra (0.5% del costo base). Exenta si el titular es de la Tercera Edad.">
                 <span class="label">Comisión Compra VES (${isTerceraEdad ? 'Tercera Edad Exenta' : '0.5%'}):</span>
                 <span class="value">${formatVES(comisionCompraVES)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item" data-tooltip="Comisiones por transferencias bancarias o Pago Móvil (0.3% si está activo).">
                 <span class="label">Transferencias VES:</span>
                 <span class="value">${formatVES(transferenciasVes)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item" data-tooltip="Monto total de Bolívares que gastaste en la operación (Costo Base + Comisión de Compra + Comisiones de Transferencia).">
                 <span class="label">Bolívares Gastados Totales:</span>
                 <span class="value">${formatVES(bolivaresGastadosTotales)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item highlight-alt" data-tooltip="Costo equivalente en USDT de los Bolívares gastados en la operación, calculado como: Bolívares Gastados Totales / Tasa de Venta P2P.">
+                <span class="label">USDT Gastados (Costo Operación):</span>
+                <span class="value text-danger">${ustdCostOfOperation.toFixed(2)} USDT</span>
+            </div>
+            <div class="result-item" data-tooltip="Los Bolívares que te quedaron en tu cuenta bancaria tras pagar la compra de divisas (Bolívares Recibidos - Bolívares Gastados Totales).">
                 <span class="label">Bolívares Restantes en Banco:</span>
                 <span class="value ${bolivaresRestantes >= 0 ? 'text-success' : 'text-danger'}">${formatVES(bolivaresRestantes)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item" data-tooltip="Los dólares netos que efectivamente llegaron a tu billetera de Binance tras descontar la comisión de la tarjeta del banco y la comisión de depósito de Binance (4.1%).">
                 <span class="label">USD Netos Recibidos en Binance:</span>
                 <span class="value text-success">${formatUSD(usdNetosRecibidosBinance)}</span>
             </div>
-            <div class="result-item highlight">
+            <div class="result-item highlight" data-tooltip="Tu ganancia neta del ciclo en dólares, calculada como: USD Netos Recibidos en Binance - Costo de Operación en USDT.">
                 <span class="label">Ganancia Estimada USD:</span>
                 <span class="value ${profitClass}">${formatUSD(gananciaUsd)}</span>
             </div>
-            <div class="result-item">
+            <div class="result-item" data-tooltip="El rendimiento porcentual de la operación con respecto al capital invertido, calculado como: (Ganancia en USD / Costo de Operación en USDT) * 100.">
                 <span class="label">Porcentaje de Rendimiento:</span>
                 <span class="value ${profitClass}">${gananciaPorcentaje.toFixed(2)}%</span>
             </div>
@@ -740,8 +744,28 @@ function setupEventListeners() {
     });
 }
 
+// Theme Selector logic
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'blue';
+    setTheme(savedTheme);
+    
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.getAttribute('data-theme');
+            setTheme(theme);
+        });
+    });
+}
+
+function setTheme(theme) {
+    document.body.classList.remove('theme-blue', 'theme-orange', 'theme-green', 'theme-purple');
+    document.body.classList.add(`theme-${theme}`);
+    localStorage.setItem('theme', theme);
+}
+
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     setupEventListeners();
     checkAuth();
 });
