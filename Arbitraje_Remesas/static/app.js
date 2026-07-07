@@ -224,7 +224,7 @@ async function loadCapital() {
             const tr = document.createElement('tr');
             
             // Format simulation commission as percentage
-            const comPct = (item.comision_simulacion * 100).toFixed(1);
+            const comPct = parseFloat((item.comision_simulacion * 100).toFixed(2));
             
             tr.innerHTML = `
                 <td><strong>${item.plataforma}</strong></td>
@@ -263,8 +263,10 @@ async function handleCapitalSubmit(e) {
     
     try {
         await apiCall('/capital', 'PUT', updates);
-        alert("Distribución de Capital actualizada con éxito.");
+        const snap = await apiCall('/capital/snapshot', 'POST');
+        alert(`Distribución de Capital y Foto Histórica guardadas con éxito. Total USD: $${snap.total_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
         await loadCapital();
+        await loadCapitalSnapshots();
     } catch (err) {
         alert("Error al actualizar capital: " + err.message);
     }
