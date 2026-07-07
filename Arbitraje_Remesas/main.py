@@ -459,7 +459,7 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
 @app.on_event("startup")
 def on_startup():
     try:
-        from database import init_db, SessionLocal, User
+        from database import init_db, SessionLocal, User, DistribucionCapital
         from seed import seed_data
         print("Initializing database...")
         init_db()
@@ -470,8 +470,39 @@ def on_startup():
             db.close()
             seed_data()
         else:
+            print("Running database migrations/updates...")
+            # 1. Update existing simulation commissions
+            # Zinli -> 4.6%
+            zinli = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zinli").first()
+            if zinli:
+                zinli.comision_simulacion = 0.046
+                
+            # Binance -> 0.25%
+            binance = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Binance (USDT)").first()
+            if binance:
+                binance.comision_simulacion = 0.0025
+                
+            # Zelle -> 2.0%
+            zelle = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+            if zelle:
+                zelle.comision_simulacion = 0.02
+                
+            # 2. Add new platforms if they don't exist
+            new_platforms = [
+                {"plataforma": "Banco Mercantil (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.046},
+                {"plataforma": "Bancamiga (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
+                {"plataforma": "Bancamiga (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046}
+            ]
+            
+            for plat in new_platforms:
+                existing = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == plat["plataforma"]).first()
+                if not existing:
+                    db.add(DistribucionCapital(**plat))
+                    print(f"Migration: Added platform '{plat['plataforma']}'")
+            
+            db.commit()
             db.close()
-            print("Database has existing data. Skipping seed.")
+            print("Database updates completed successfully.")
     except Exception as e:
         print(f"Error during database initialization: {e}")
 
