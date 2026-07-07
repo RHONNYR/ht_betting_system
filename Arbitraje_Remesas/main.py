@@ -21,6 +21,10 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
 
 security = HTTPBearer()
 
+def get_venezuela_time():
+    # Render servers run in UTC, so we subtract 4 hours to get Venezuela time (UTC-4)
+    return datetime.datetime.utcnow() - datetime.timedelta(hours=4)
+
 app = FastAPI(title="Sistema de Arbitraje y Remesas")
 
 # CORS middleware for local testing/cross-origin access
@@ -134,7 +138,7 @@ def scrape_bcv_rate():
                     rate = float(rate_str)
                     if rate > 0:
                         bcv_state.cached_rate = rate
-                        bcv_state.last_fetch = datetime.datetime.now()
+                        bcv_state.last_fetch = get_venezuela_time()
                         return rate
     except Exception as e:
         print(f"BCV Scraping failed: {e}")
@@ -149,7 +153,7 @@ def scrape_bcv_rate():
             if rate_val:
                 rate = float(rate_val)
                 bcv_state.cached_rate = rate
-                bcv_state.last_fetch = datetime.datetime.now()
+                bcv_state.last_fetch = get_venezuela_time()
                 return rate
     except Exception as e:
         print(f"BCV Fallback API (DolarApi) failed: {e}")
@@ -278,7 +282,7 @@ def save_capital_snapshot(username: str = Depends(get_current_user), db: Session
         })
         
     snapshot = HistorialCapitalDiario(
-        fecha_registro=datetime.datetime.now(),
+        fecha_registro=get_venezuela_time(),
         total_usd=total_usd_equivalente,
         detalle_json=json.dumps(detail)
     )
@@ -305,7 +309,7 @@ def get_titulares(username: str = Depends(get_current_user), db: Session = Depen
     titulares = db.query(Titular).all()
     
     # Calculate monthly consumption per card
-    now = datetime.datetime.now()
+    now = get_venezuela_time()
     start_of_month = datetime.datetime(now.year, now.month, 1)
     
     result = []
@@ -399,7 +403,7 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
     
     compra = CompraDivisa(
         tarjeta_id=req.tarjeta_id,
-        fecha=datetime.datetime.now(),
+        fecha=get_venezuela_time(),
         monto_usd=req.monto_usd,
         tasa_bcv=req.tasa_bcv,
         comision_ves=comision_ves
@@ -435,7 +439,7 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
 @app.post("/api/ciclos")
 def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     ciclo = HistorialCiclos(
-        fecha=datetime.datetime.now(),
+        fecha=get_venezuela_time(),
         usdt_vendidos=req.usdt_vendidos,
         tasa_venta=req.tasa_venta,
         banco_venta=req.banco_venta,
