@@ -17,14 +17,17 @@ def seed_data():
     # Seed default platforms for capital
     default_platforms = [
         {"plataforma": "Binance (USDT)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.0025},
-        {"plataforma": "Zinli", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.04},
-        {"plataforma": "Zelle", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.0},
+        {"plataforma": "Zinli", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.046},
+        {"plataforma": "Zelle", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.02},
         {"plataforma": "Efectivo USD", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.0},
         {"plataforma": "Banco de Venezuela (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.071},
         {"plataforma": "Banco Provincial (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
         {"plataforma": "Banco Mercantil (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
+        {"plataforma": "Bancamiga (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
         {"plataforma": "Banco de Venezuela (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.066},
-        {"plataforma": "Banco Provincial (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041}
+        {"plataforma": "Banco Provincial (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
+        {"plataforma": "Banco Mercantil (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.046},
+        {"plataforma": "Bancamiga (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041}
     ]
     
     for plat in default_platforms:
