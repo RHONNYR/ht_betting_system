@@ -94,5 +94,20 @@ class HistorialCapitalDiario(Base):
     total_usd = Column(Float)
     detalle_json = Column(String)  # JSON string representing the snapshot state
 
+class HistorialRemesas(Base):
+    __tablename__ = "historial_remesas"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    cliente_nombre = Column(String, default="Cliente")
+    monto_usd = Column(Float)
+    tasa_p2p = Column(Float)
+    tasa_cliente = Column(Float)
+    monto_ves = Column(Float)
+    ganancia_usd = Column(Float)
+    metodo_pago = Column(String)  # Zelle, Zinli, Cash, etc.
+    banco_receptor = Column(String)  # Banesco, Pago Móvil, etc.
+    costo_adquisicion_usdt = Column(Float)  # e.g., 0.02 (2.0%)
+    comision_binance = Column(Float)  # e.g., 0.0035 (0.35%)
+
 def init_db():
     Base.metadata.create_all(bind=engine)
