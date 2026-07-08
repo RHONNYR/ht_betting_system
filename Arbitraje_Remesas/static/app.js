@@ -7,6 +7,7 @@ const state = {
     capitalItems: [],
     titulares: [],
     currentCalculatedCiclo: null,
+    currentCalculatedRemesa: null,
     divisasCompradasManuallyEdited: false
 };
 
@@ -62,6 +63,30 @@ const els = {
     totalGananciaCiclos: document.getElementById('total-ganancia-ciclos'),
     comprasTableBody: document.getElementById('compras-table-body'),
     capitalHistoryTableBody: document.getElementById('capital-history-table-body'),
+    
+    // Remesas Elements
+    remesaForm: document.getElementById('remesa-form'),
+    remesaCliente: document.getElementById('remesa-cliente'),
+    remesaMontoUsd: document.getElementById('remesa-monto-usd'),
+    remesaMargen: document.getElementById('remesa-margen'),
+    remesaMetodoPago: document.getElementById('remesa-metodo-pago'),
+    remesaBancoReceptor: document.getElementById('remesa-banco-receptor'),
+    remesaCostoAdq: document.getElementById('remesa-costo-adq'),
+    remesaComisionBin: document.getElementById('remesa-comision-bin'),
+    remesaPagoMovilAuto: document.getElementById('remesa-pago-movil-auto'),
+    remesaP2pRef: document.getElementById('remesa-p2p-ref'),
+    btnConsultarP2p: document.getElementById('btn-consultar-p2p'),
+    p2pRatesPanel: document.getElementById('p2p-rates-panel'),
+    p2pRatesTableBody: document.getElementById('p2p-rates-table-body'),
+    p2pAvgRateDisplay: document.getElementById('p2p-avg-rate-display'),
+    btnUsarTasaP2pAvg: document.getElementById('btn-usar-tasa-p2p-avg'),
+    remesaResultsDisplay: document.getElementById('remesa-results-display'),
+    whatsappBoxContainer: document.getElementById('whatsapp-box-container'),
+    remesaWhatsappText: document.getElementById('remesa-whatsapp-text'),
+    btnCopiarRemesaText: document.getElementById('btn-copiar-remesa-text'),
+    btnRegistrarRemesa: document.getElementById('btn-registrar-remesa'),
+    remesasTableBody: document.getElementById('remesas-table-body'),
+    totalGananciaRemesas: document.getElementById('total-ganancia-remesas'),
     
     // Modals buttons and elements
     btnAddTitular: document.getElementById('btn-add-titular'),
@@ -168,6 +193,7 @@ async function initDashboard() {
     await loadCiclos();
     await loadCompras();
     await loadCapitalSnapshots();
+    await loadRemesas();
 }
 
 // BCV Handlers
@@ -742,6 +768,40 @@ function setupEventListeners() {
             els.passwordError.classList.remove('hidden');
         }
     });
+
+    // Remesas Event Listeners
+    if (els.btnConsultarP2p) els.btnConsultarP2p.addEventListener('click', handleConsultarP2P);
+    
+    if (els.btnUsarTasaP2pAvg) {
+        els.btnUsarTasaP2pAvg.addEventListener('click', () => {
+            if (state.tempAvgP2pRate) {
+                els.remesaP2pRef.value = state.tempAvgP2pRate.toFixed(2);
+                calculateRemesa();
+            }
+        });
+    }
+    
+    if (els.btnCopiarRemesaText) els.btnCopiarRemesaText.addEventListener('click', copyRemesaText);
+    if (els.btnRegistrarRemesa) els.btnRegistrarRemesa.addEventListener('click', registrarRemesa);
+    
+    const remesaInputs = [
+        els.remesaCliente,
+        els.remesaMontoUsd,
+        els.remesaMargen,
+        els.remesaMetodoPago,
+        els.remesaBancoReceptor,
+        els.remesaCostoAdq,
+        els.remesaComisionBin,
+        els.remesaPagoMovilAuto,
+        els.remesaP2pRef
+    ];
+    
+    remesaInputs.forEach(input => {
+        if (input) {
+            input.addEventListener('input', calculateRemesa);
+            input.addEventListener('change', calculateRemesa);
+        }
+    });
 }
 
 // Theme Selector logic
@@ -761,6 +821,257 @@ function setTheme(theme) {
     document.body.classList.remove('theme-blue', 'theme-orange', 'theme-green', 'theme-purple');
     document.body.classList.add(`theme-${theme}`);
     localStorage.setItem('theme', theme);
+}
+
+// Remesas Module Handlers
+async function loadRemesas() {
+    try {
+        const remesas = await apiCall('/remesas');
+        els.remesasTableBody.innerHTML = '';
+        
+        let totalGain = 0;
+        remesas.forEach(r => {
+            totalGain += r.ganancia_usd;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${r.fecha}</td>
+                <td><strong>${r.cliente_nombre}</strong></td>
+                <td>$${r.monto_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                <td>${r.tasa_p2p.toFixed(2)} Bs</td>
+                <td>${r.tasa_cliente.toFixed(2)} Bs</td>
+                <td>${r.monto_ves.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES</td>
+                <td>${(r.costo_adquisicion_usdt * 100).toFixed(1)}%</td>
+                <td>${(r.comision_binance * 100).toFixed(2)}%</td>
+                <td class="text-success">+$${r.ganancia_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+            `;
+            els.remesasTableBody.appendChild(tr);
+        });
+        
+        els.totalGananciaRemesas.textContent = `$${totalGain.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    } catch (err) {
+        console.error("Error loading remesas:", err);
+    }
+}
+
+async function handleConsultarP2P() {
+    const amount = parseFloat(els.remesaMontoUsd.value) || 0;
+    const banco = els.remesaBancoReceptor.value;
+    
+    // Map payTypes
+    const payTypeMap = {
+        "Pago Móvil": ["Pago_Movil"],
+        "Banesco": ["Banesco"],
+        "Mercantil": ["Mercantil"],
+        "Provincial": ["Provincial"],
+        "Bancamiga": ["Bancamiga"],
+        "Otros Bancos": []
+    };
+    
+    const pay_types = payTypeMap[banco] || [];
+    
+    // Estimate VES search range using state.bcvRate
+    const estimatedVes = amount * (state.bcvRate || 700.0);
+    
+    try {
+        els.btnConsultarP2p.textContent = "⏳ Buscando...";
+        els.btnConsultarP2p.disabled = true;
+        
+        const reqData = {
+            fiat: "VES",
+            asset: "USDT",
+            trade_type: "SELL",
+            pay_types: pay_types,
+            amount: estimatedVes > 0 ? estimatedVes : null
+        };
+        
+        const res = await apiCall('/p2p-rate', 'POST', reqData);
+        els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
+        els.btnConsultarP2p.disabled = false;
+        
+        if (res.success && res.rates && res.rates.length > 0) {
+            els.p2pRatesPanel.classList.remove('hidden');
+            els.p2pRatesTableBody.innerHTML = '';
+            
+            let sumTop3 = 0;
+            let countTop3 = 0;
+            
+            res.rates.forEach((rate, index) => {
+                if (index < 3) {
+                    sumTop3 += rate.price;
+                    countTop3++;
+                }
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${rate.advertiser}</strong></td>
+                    <td class="text-success">${rate.price.toFixed(2)} VES</td>
+                    <td>${rate.min_amount.toLocaleString('es-VE')} - ${rate.max_amount.toLocaleString('es-VE')} VES</td>
+                    <td style="font-size:0.75rem; color:var(--text-secondary);">${rate.methods.join(', ')}</td>
+                `;
+                els.p2pRatesTableBody.appendChild(tr);
+            });
+            
+            const avgRate = sumTop3 / countTop3;
+            state.tempAvgP2pRate = avgRate;
+            els.p2pAvgRateDisplay.textContent = `${avgRate.toFixed(2)} VES`;
+            
+            // Auto fill reference rate
+            els.remesaP2pRef.value = avgRate.toFixed(2);
+            calculateRemesa();
+        } else {
+            alert("No se encontraron tasas activas para este método en Binance P2P.");
+        }
+    } catch (err) {
+        els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
+        els.btnConsultarP2p.disabled = false;
+        alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
+    }
+}
+
+function calculateRemesa() {
+    const montoUsd = parseFloat(els.remesaMontoUsd.value) || 0;
+    const p2pRate = parseFloat(els.remesaP2pRef.value) || 0;
+    const margenPct = (parseFloat(els.remesaMargen.value) || 0) / 100;
+    const costoAdqPct = (parseFloat(els.remesaCostoAdq.value) || 0) / 100;
+    const comisionBinPct = (parseFloat(els.remesaComisionBin.value) || 0) / 100;
+    const pagoMovilAuto = els.remesaPagoMovilAuto.checked;
+    
+    if (montoUsd <= 0 || p2pRate <= 0) {
+        els.remesaResultsDisplay.innerHTML = `
+            <div class="empty-state">
+                <span class="large-icon">💸</span>
+                <p>Ingresa el Monto USD y la Tasa P2P para calcular la cotización.</p>
+            </div>
+        `;
+        els.whatsappBoxContainer.classList.add('hidden');
+        state.currentCalculatedRemesa = null;
+        return;
+    }
+    
+    // Factor de costo real del USDT
+    const fCosto = 1 + costoAdqPct + comisionBinPct;
+    
+    // Pago Móvil percentage
+    const pmFeePct = pagoMovilAuto ? 0.003 : 0.0;
+    
+    // Client exchange rate offered
+    const tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+    
+    // Total VES beneficiary receives
+    const vesARecibir = montoUsd * tasaCliente;
+    
+    // Total VES spent by operator (including transaction fee)
+    const vesGastadosTotales = vesARecibir * (1 + pmFeePct);
+    
+    // USDT needed to sell on P2P to fund the vesGastadosTotales
+    const usdtGastados = vesGastadosTotales / p2pRate;
+    
+    // Real acquisition cost of that USDT in USD
+    const costoRealUsdt = usdtGastados * fCosto;
+    
+    // Net profit in USD
+    const gananciaUsd = montoUsd - costoRealUsdt;
+    
+    state.currentCalculatedRemesa = {
+        cliente_nombre: els.remesaCliente.value || "Cliente",
+        monto_usd: montoUsd,
+        tasa_p2p: p2pRate,
+        tasa_cliente: tasaCliente,
+        monto_ves: vesARecibir,
+        ganancia_usd: gananciaUsd,
+        metodo_pago: els.remesaMetodoPago.value,
+        banco_receptor: els.remesaBancoReceptor.value,
+        costo_adquisicion_usdt: costoAdqPct,
+        comision_binance: comisionBinPct
+    };
+    
+    // Render results
+    const formatVES = (v) => `${v.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
+    const formatUSD = (u) => `$${u.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    
+    els.remesaResultsDisplay.innerHTML = `
+        <div class="results-display-list">
+            <div class="result-item" data-tooltip="La tasa de cambio en vivo actual de Binance P2P.">
+                <span class="label">Tasa P2P Referencial:</span>
+                <span class="value">${p2pRate.toFixed(2)} VES</span>
+            </div>
+            <div class="result-item" data-tooltip="Costo de comprar 1 USDT (Zelle Premium + Binance Exchange Fee).">
+                <span class="label">Costo Real Adquisición USDT:</span>
+                <span class="value">${(fCosto * 100 - 100).toFixed(2)}% ($${fCosto.toFixed(4)} por USDT)</span>
+            </div>
+            <div class="result-item highlight" data-tooltip="La tasa final ofrecida al cliente, ajustada por tu margen de ganancia y comisiones.">
+                <span class="label">Tasa Cotizada al Cliente:</span>
+                <span class="value text-success">${tasaCliente.toFixed(2)} VES</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Monto Recibido del Cliente (USD):</span>
+                <span class="value">${formatUSD(montoUsd)}</span>
+            </div>
+            <div class="result-item highlight">
+                <span class="label">Monto Payout Beneficiario (VES):</span>
+                <span class="value text-success">${formatVES(vesARecibir)}</span>
+            </div>
+            <div class="result-item highlight-alt" data-tooltip="Monto en USDT que debes vender en P2P (incluyendo comisiones interbancarias).">
+                <span class="label">USDT a Consumir P2P:</span>
+                <span class="value text-danger">${usdtGastados.toFixed(2)} USDT</span>
+            </div>
+            <div class="result-item" data-tooltip="Costo equivalente en USD reales para reponer los USDT gastados.">
+                <span class="label">Reposición de USDT (Costo Real):</span>
+                <span class="value">${formatUSD(costoRealUsdt)}</span>
+            </div>
+            <div class="result-item highlight" data-tooltip="Tu beneficio neto en dólares de esta remesa, tras deducir todas las comisiones.">
+                <span class="label">Ganancia Neta Remesa:</span>
+                <span class="value text-success">${formatUSD(gananciaUsd)}</span>
+            </div>
+        </div>
+    `;
+    
+    // Generate WhatsApp Text
+    const clientName = els.remesaCliente.value || "Cliente";
+    const paymentMethod = els.remesaMetodoPago.value;
+    const recvBank = els.remesaBancoReceptor.value;
+    
+    const waMessage = `*Cotización de Remesa* 💸\n\n` +
+                      `👤 *Cliente:* ${clientName}\n` +
+                      `💵 *Envías:* ${formatUSD(montoUsd)} (Vía ${paymentMethod})\n` +
+                      `🇻🇪 *Tasa del día:* ${tasaCliente.toFixed(2)} VES/$\n` +
+                      `🏦 *Recibe en Venezuela:* ${formatVES(vesARecibir)} (${recvBank})\n\n` +
+                      `_Escríbenos para confirmar tu pago y realizar la transferencia de inmediato._ 🤝`;
+                      
+    els.remesaWhatsappText.value = waMessage;
+    els.whatsappBoxContainer.classList.remove('hidden');
+}
+
+function copyRemesaText() {
+    els.remesaWhatsappText.select();
+    els.remesaWhatsappText.setSelectionRange(0, 99999); // Mobile support
+    navigator.clipboard.writeText(els.remesaWhatsappText.value);
+    alert("Mensaje de WhatsApp copiado al portapapeles.");
+}
+
+async function registrarRemesa() {
+    if (!state.currentCalculatedRemesa) return;
+    try {
+        await apiCall('/remesas', 'POST', state.currentCalculatedRemesa);
+        alert("Remesa registrada en el historial con éxito.");
+        
+        // Reset form
+        els.remesaForm.reset();
+        els.p2pRatesPanel.classList.add('hidden');
+        els.whatsappBoxContainer.classList.add('hidden');
+        els.remesaResultsDisplay.innerHTML = `
+            <div class="empty-state">
+                <span class="large-icon">💸</span>
+                <p>Completa el formulario y presiona 'Consultar Binance P2P' o ingresa una tasa para calcular la cotización.</p>
+            </div>
+        `;
+        state.currentCalculatedRemesa = null;
+        
+        // Reload all data
+        await initDashboard();
+    } catch (err) {
+        alert("Error al registrar remesa: " + err.message);
+    }
 }
 
 // DOM Content Loaded entry point
