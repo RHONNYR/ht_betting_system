@@ -12,7 +12,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -101,6 +101,25 @@ class CicloCreate(BaseModel):
 class PasswordChange(BaseModel):
     old_password: str
     new_password: str
+
+class P2PRateRequest(BaseModel):
+    fiat: str = "VES"
+    asset: str = "USDT"
+    trade_type: str = "SELL"
+    pay_types: Optional[List[str]] = []
+    amount: Optional[float] = None
+
+class RemesaCreate(BaseModel):
+    cliente_nombre: str
+    monto_usd: float
+    tasa_p2p: float
+    tasa_cliente: float
+    monto_ves: float
+    ganancia_usd: float
+    metodo_pago: str
+    banco_receptor: str
+    costo_adquisicion_usdt: float
+    comision_binance: float
 
 # Helpers
 def create_access_token(data: dict):
@@ -456,6 +475,96 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
     db.add(ciclo)
     db.commit()
     return {"message": "Ciclo de arbitraje registrado exitosamente", "id": ciclo.id}
+
+# Remittance Routes
+@app.post("/api/p2p-rate")
+def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user)):
+    url = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
+    payload = {
+        "asset": req.asset,
+        "fiat": req.fiat,
+        "merchantCheck": False,
+        "page": 1,
+        "payTypes": req.pay_types,
+        "publisherType": None,
+        "rows": 5,
+        "tradeType": req.trade_type
+    }
+    if req.amount:
+        payload["transAmount"] = str(req.amount)
+        
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Content-Type": "application/json",
+        "Accept": "*/*",
+        "Origin": "https://p2p.binance.com",
+        "Referer": f"https://p2p.binance.com/en/trade/all-payments/{req.asset}?fiat={req.fiat}"
+    }
+    
+    try:
+        res = requests.post(url, json=payload, headers=headers, timeout=10)
+        if res.status_code == 200:
+            data = res.json()
+            advs = data.get("data", [])
+            rates = []
+            for item in advs:
+                adv = item.get("adv", {})
+                price = float(adv.get("price"))
+                min_single = float(adv.get("minSingleTransAmount"))
+                max_single = float(adv.get("maxSingleTransAmount"))
+                methods = [m.get("tradeMethodName") for m in item.get("methods", [])]
+                rates.append({
+                    "price": price,
+                    "min_amount": min_single,
+                    "max_amount": max_single,
+                    "methods": methods,
+                    "advertiser": item.get("advertiser", {}).get("nickName")
+                })
+            return {"success": True, "rates": rates}
+        else:
+            raise HTTPException(status_code=res.status_code, detail=f"Binance P2P error: {res.text}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to fetch P2P rates: {str(e)}")
+
+@app.post("/api/remesas")
+def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    remesa = HistorialRemesas(
+        fecha=get_venezuela_time(),
+        cliente_nombre=req.cliente_nombre,
+        monto_usd=req.monto_usd,
+        tasa_p2p=req.tasa_p2p,
+        tasa_cliente=req.tasa_cliente,
+        monto_ves=req.monto_ves,
+        ganancia_usd=req.ganancia_usd,
+        metodo_pago=req.metodo_pago,
+        banco_receptor=req.banco_receptor,
+        costo_adquisicion_usdt=req.costo_adquisicion_usdt,
+        comision_binance=req.comision_binance
+    )
+    db.add(remesa)
+    db.commit()
+    return {"message": "Remesa registrada con éxito", "id": remesa.id}
+
+@app.get("/api/remesas")
+def get_remesas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    remesas = db.query(HistorialRemesas).order_by(HistorialRemesas.fecha.desc()).limit(100).all()
+    result = []
+    for r in remesas:
+        result.append({
+            "id": r.id,
+            "fecha": r.fecha.strftime("%d/%m/%Y %I:%M %p"),
+            "cliente_nombre": r.cliente_nombre,
+            "monto_usd": r.monto_usd,
+            "tasa_p2p": r.tasa_p2p,
+            "tasa_cliente": r.tasa_cliente,
+            "monto_ves": r.monto_ves,
+            "ganancia_usd": r.ganancia_usd,
+            "metodo_pago": r.metodo_pago,
+            "banco_receptor": r.banco_receptor,
+            "costo_adquisicion_usdt": r.costo_adquisicion_usdt,
+            "comision_binance": r.comision_binance
+        })
+    return result
 
 @app.on_event("startup")
 def on_startup():
