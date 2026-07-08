@@ -866,3 +866,53 @@ body {
     stroke: var(--primary);
     filter: drop-shadow(0 0 10px var(--primary-glow));
 }
+
+/* WhatsApp Textarea */
+.whatsapp-textarea {
+    width: 100%;
+    background: rgba(10, 15, 25, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text-primary);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    resize: vertical;
+    margin-top: 8px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.whatsapp-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* P2P Live Panel */
+.p2p-summary-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.p2p-summary-box span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.p2p-summary-box strong {
+    font-size: 1.1rem;
+    color: var(--secondary);
+    text-shadow: 0 0 8px var(--secondary-glow);
+}
+
+/* Highlight styles */
+.result-item.highlight-alt {
+    background: rgba(239, 68, 68, 0.05);
+    border-left: 3px solid var(--danger);
+    padding-left: 8px;
+}
