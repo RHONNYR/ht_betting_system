@@ -78,6 +78,7 @@
         <nav class="nav-tabs">
             <button class="tab-link active" data-tab="tab-capital">💼 Capital & Tarjetas</button>
             <button class="tab-link" data-tab="tab-calculadora">🧮 Calculadora de Ciclos</button>
+            <button class="tab-link" data-tab="tab-remesas">💸 Remesas & Cotizaciones</button>
             <button class="tab-link" data-tab="tab-historial">📜 Historial & Bitácoras</button>
         </nav>
 
@@ -215,6 +216,127 @@
                 </div>
             </section>
 
+            <!-- TAB: REMESAS & COTIZACIONES -->
+            <section id="tab-remesas" class="tab-pane">
+                <div class="grid-2col">
+                    <!-- Left: Form & Live Rates -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Cotizador de Remesas (USD ➔ VES)</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="remesa-form">
+                                <div class="form-grid">
+                                    <div class="input-group">
+                                        <label for="remesa-cliente">Nombre del Cliente</label>
+                                        <input type="text" id="remesa-cliente" required placeholder="Ej. Juan Pérez">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="remesa-monto-usd">Monto a Enviar (USD)</label>
+                                        <input type="number" step="any" id="remesa-monto-usd" required placeholder="Ej. 100">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="remesa-margen">Margen Deseado (%)</label>
+                                        <input type="number" step="any" id="remesa-margen" value="3.0" placeholder="Ej. 3">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="remesa-metodo-pago">Método de Recibo USD</label>
+                                        <select id="remesa-metodo-pago" required>
+                                            <option value="Zelle">Zelle</option>
+                                            <option value="Zinli">Zinli</option>
+                                            <option value="Efectivo USD">Efectivo USD</option>
+                                            <option value="Merca USD">Mercantil USD</option>
+                                            <option value="Amiga USD">Bancamiga USD</option>
+                                            <option value="Binance Pay">Binance Pay</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="remesa-banco-receptor">Banco Receptor VES</label>
+                                        <select id="remesa-banco-receptor" required>
+                                            <option value="Pago Móvil">Pago Móvil</option>
+                                            <option value="Banesco">Banesco</option>
+                                            <option value="Mercantil">Mercantil</option>
+                                            <option value="Provincial">Provincial</option>
+                                            <option value="Bancamiga">Bancamiga</option>
+                                            <option value="Otros Bancos">Otros Bancos</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="remesa-costo-adq">Adquisición USDT (Zelle Premium %)</label>
+                                        <input type="number" step="any" id="remesa-costo-adq" value="2.0" placeholder="Ej. 2">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="remesa-comision-bin">Binance Cambio Fee (%)</label>
+                                        <input type="number" step="any" id="remesa-comision-bin" value="0.35" placeholder="Ej. 0.35">
+                                    </div>
+                                    <div class="input-group flex-row-align mt-3" style="grid-column: span 2;">
+                                        <label for="remesa-pago-movil-auto">¿Aplicar 0.3% Pago Móvil/Transferencia VES?</label>
+                                        <input type="checkbox" id="remesa-pago-movil-auto" checked>
+                                    </div>
+                                </div>
+                                <div class="input-group mt-4">
+                                    <label for="remesa-p2p-ref">Tasa P2P de Referencia (VES/USDT)</label>
+                                    <div class="flex-row-align">
+                                        <input type="number" step="any" id="remesa-p2p-ref" required placeholder="Tasa P2P referencial">
+                                        <button type="button" id="btn-consultar-p2p" class="btn btn-secondary">⚡ Consultar Binance P2P</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <!-- P2P Live Rates Display -->
+                            <div id="p2p-rates-panel" class="mt-4 hidden">
+                                <h3>Tasas Activas en Binance P2P</h3>
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Anunciante</th>
+                                                <th>Precio (VES)</th>
+                                                <th>Límites</th>
+                                                <th>Métodos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="p2p-rates-table-body">
+                                            <!-- Dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="p2p-summary-box mt-3">
+                                    <span>Promedio Top 3 P2P:</span>
+                                    <strong id="p2p-avg-rate-display">--.-- VES</strong>
+                                    <button type="button" id="btn-usar-tasa-p2p-avg" class="btn btn-sm btn-secondary">Usar Promedio</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Results Card & WhatsApp -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Cotización Calculada</h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="remesa-results-display" class="results-display-list">
+                                <div class="empty-state">
+                                    <span class="large-icon">💸</span>
+                                    <p>Completa el formulario y presiona "Consultar Binance P2P" o ingresa una tasa para calcular la cotización.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- WhatsApp Template Output -->
+                            <div id="whatsapp-box-container" class="mt-4 hidden">
+                                <label for="remesa-whatsapp-text">Mensaje Formateado (WhatsApp)</label>
+                                <textarea id="remesa-whatsapp-text" rows="8" readonly class="whatsapp-textarea"></textarea>
+                                <div class="calc-actions mt-3">
+                                    <button type="button" id="btn-copiar-remesa-text" class="btn btn-secondary btn-block">📋 Copiar Mensaje</button>
+                                    <button type="button" id="btn-registrar-remesa" class="btn btn-primary btn-block">💾 Registrar Remesa en Historial</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- TAB 3: HISTORIAL & BITÁCORAS -->
             <section id="tab-historial" class="tab-pane">
                 <!-- Navigation sub-tabs -->
@@ -222,6 +344,7 @@
                     <button class="sub-tab-link active" data-subtab="subtab-historial-ciclos">🔄 Ciclos Ejecutados</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-compras">💳 Bitácora de Compras de Divisas</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-capital">📈 Bitácora Diaria de Capital</button>
+                    <button class="sub-tab-link" data-subtab="subtab-historial-remesas">💸 Remesas Enviadas</button>
                 </div>
 
                 <!-- SUB-TAB 1: HISTORIAL DE CICLOS -->
@@ -308,6 +431,40 @@
                                         </tr>
                                     </thead>
                                     <tbody id="capital-history-table-body">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- SUB-TAB 4: HISTORIAL DE REMESAS ENVIADAS -->
+                <div id="subtab-historial-remesas" class="sub-tab-pane">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
+                            <div class="total-ganado-badge">
+                                <span>Ganancia Total Remesas:</span>
+                                <strong id="total-ganancia-remesas">$0.00</strong>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha y Hora</th>
+                                            <th>Cliente</th>
+                                            <th>Monto Enviado ($)</th>
+                                            <th>Tasa P2P</th>
+                                            <th>Tasa Cliente</th>
+                                            <th>Monto VES</th>
+                                            <th>Adq. USDT</th>
+                                            <th>Comisión Bin.</th>
+                                            <th>Ganancia ($)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="remesas-table-body">
                                         <!-- Dynamically populated -->
                                     </tbody>
                                 </table>
