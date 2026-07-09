@@ -875,8 +875,9 @@ async function handleConsultarP2P() {
     
     const pay_types = payTypeMap[banco] || [];
     
-    // Estimate VES search range using state.bcvRate
-    const estimatedVes = amount * (state.bcvRate || 700.0);
+    // Maker minimum of 100 USD search volume to get the correct competitive maker rate
+    const queryUsd = Math.max(amount, 100.0);
+    const estimatedVes = queryUsd * (state.bcvRate || 700.0);
     
     try {
         els.btnConsultarP2p.textContent = "⏳ Buscando...";
