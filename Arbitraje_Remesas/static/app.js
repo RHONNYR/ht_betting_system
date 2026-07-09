@@ -69,6 +69,7 @@ const els = {
     remesaCliente: document.getElementById('remesa-cliente'),
     remesaMontoUsd: document.getElementById('remesa-monto-usd'),
     remesaMargen: document.getElementById('remesa-margen'),
+    remesaTasaCliente: document.getElementById('remesa-tasa-cliente'),
     remesaMetodoPago: document.getElementById('remesa-metodo-pago'),
     remesaBancoReceptor: document.getElementById('remesa-banco-receptor'),
     remesaCostoAdq: document.getElementById('remesa-costo-adq'),
@@ -776,7 +777,7 @@ function setupEventListeners() {
         els.btnUsarTasaP2pAvg.addEventListener('click', () => {
             if (state.tempAvgP2pRate) {
                 els.remesaP2pRef.value = state.tempAvgP2pRate.toFixed(2);
-                calculateRemesa();
+                calculateRemesa('margin');
             }
         });
     }
@@ -798,10 +799,15 @@ function setupEventListeners() {
     
     remesaInputs.forEach(input => {
         if (input) {
-            input.addEventListener('input', calculateRemesa);
-            input.addEventListener('change', calculateRemesa);
+            input.addEventListener('input', () => calculateRemesa('margin'));
+            input.addEventListener('change', () => calculateRemesa('margin'));
         }
     });
+
+    if (els.remesaTasaCliente) {
+        els.remesaTasaCliente.addEventListener('input', () => calculateRemesa('tasa'));
+        els.remesaTasaCliente.addEventListener('change', () => calculateRemesa('tasa'));
+    }
 }
 
 // Theme Selector logic
@@ -928,25 +934,12 @@ async function handleConsultarP2P() {
     }
 }
 
-function calculateRemesa() {
+function calculateRemesa(source = 'margin') {
     const montoUsd = parseFloat(els.remesaMontoUsd.value) || 0;
     const p2pRate = parseFloat(els.remesaP2pRef.value) || 0;
-    const margenPct = (parseFloat(els.remesaMargen.value) || 0) / 100;
     const costoAdqPct = (parseFloat(els.remesaCostoAdq.value) || 0) / 100;
     const comisionBinPct = (parseFloat(els.remesaComisionBin.value) || 0) / 100;
     const pagoMovilAuto = els.remesaPagoMovilAuto.checked;
-    
-    if (montoUsd <= 0 || p2pRate <= 0) {
-        els.remesaResultsDisplay.innerHTML = `
-            <div class="empty-state">
-                <span class="large-icon">💸</span>
-                <p>Ingresa el Monto USD y la Tasa P2P para calcular la cotización.</p>
-            </div>
-        `;
-        els.whatsappBoxContainer.classList.add('hidden');
-        state.currentCalculatedRemesa = null;
-        return;
-    }
     
     // Factor de costo real del USDT
     const fCosto = 1 + costoAdqPct + comisionBinPct;
@@ -954,8 +947,34 @@ function calculateRemesa() {
     // Pago Móvil percentage
     const pmFeePct = pagoMovilAuto ? 0.003 : 0.0;
     
-    // Client exchange rate offered
-    const tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+    let margenPct = 0;
+    let tasaCliente = 0;
+    
+    if (source === 'tasa') {
+        tasaCliente = parseFloat(els.remesaTasaCliente.value) || 0;
+        if (p2pRate > 0 && tasaCliente > 0) {
+            margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
+            els.remesaMargen.value = (margenPct * 100).toFixed(2);
+        }
+    } else {
+        margenPct = (parseFloat(els.remesaMargen.value) || 0) / 100;
+        if (p2pRate > 0) {
+            tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+            els.remesaTasaCliente.value = tasaCliente.toFixed(2);
+        }
+    }
+    
+    if (montoUsd <= 0 || p2pRate <= 0 || tasaCliente <= 0) {
+        els.remesaResultsDisplay.innerHTML = `
+            <div class="empty-state">
+                <span class="large-icon">💸</span>
+                <p>Ingresa el Monto USD, la Tasa P2P y la Tasa o Margen para calcular la cotización.</p>
+            </div>
+        `;
+        els.whatsappBoxContainer.classList.add('hidden');
+        state.currentCalculatedRemesa = null;
+        return;
+    }
     
     // Total VES beneficiary receives
     const vesARecibir = montoUsd * tasaCliente;
