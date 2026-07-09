@@ -75,6 +75,7 @@ const els = {
     remesaCostoAdq: document.getElementById('remesa-costo-adq'),
     remesaComisionBin: document.getElementById('remesa-comision-bin'),
     remesaPagoMovilAuto: document.getElementById('remesa-pago-movil-auto'),
+    remesaRolP2p: document.getElementById('remesa-rol-p2p'),
     remesaP2pRef: document.getElementById('remesa-p2p-ref'),
     btnConsultarP2p: document.getElementById('btn-consultar-p2p'),
     p2pRatesPanel: document.getElementById('p2p-rates-panel'),
@@ -794,6 +795,7 @@ function setupEventListeners() {
         els.remesaCostoAdq,
         els.remesaComisionBin,
         els.remesaPagoMovilAuto,
+        els.remesaRolP2p,
         els.remesaP2pRef
     ];
     
@@ -862,6 +864,7 @@ async function loadRemesas() {
 async function handleConsultarP2P() {
     const amount = parseFloat(els.remesaMontoUsd.value) || 0;
     const banco = els.remesaBancoReceptor.value;
+    const p2pRol = els.remesaRolP2p ? els.remesaRolP2p.value : 'maker';
     
     // Map payTypes
     const payTypeMap = {
@@ -875,8 +878,18 @@ async function handleConsultarP2P() {
     
     const pay_types = payTypeMap[banco] || [];
     
-    // Maker minimum of 100 USD search volume to get the correct competitive maker rate
-    const queryUsd = Math.max(amount, 100.0);
+    // Determine tradeType and search amount threshold
+    let trade_type = 'BUY'; // Default Maker competes on user "Comprar" tab
+    let queryUsd = 100.0;
+    
+    if (p2pRol === 'maker') {
+        trade_type = 'BUY';
+        queryUsd = Math.max(amount, 100.0);
+    } else {
+        trade_type = 'SELL'; // Taker sells directly on user "Vender" tab
+        queryUsd = Math.max(amount, 10.0); // minimum $10 P2P threshold
+    }
+    
     const estimatedVes = queryUsd * (state.bcvRate || 700.0);
     
     try {
@@ -886,7 +899,7 @@ async function handleConsultarP2P() {
         const reqData = {
             fiat: "VES",
             asset: "USDT",
-            trade_type: "BUY",
+            trade_type: trade_type,
             pay_types: pay_types,
             amount: estimatedVes > 0 ? estimatedVes : null
         };
