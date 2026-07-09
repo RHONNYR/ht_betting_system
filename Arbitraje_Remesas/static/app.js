@@ -886,7 +886,7 @@ async function handleConsultarP2P() {
         const reqData = {
             fiat: "VES",
             asset: "USDT",
-            trade_type: "SELL",
+            trade_type: "BUY",
             pay_types: pay_types,
             amount: estimatedVes > 0 ? estimatedVes : null
         };
