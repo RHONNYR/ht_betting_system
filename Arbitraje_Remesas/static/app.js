@@ -1022,6 +1022,10 @@ function calculateRemesa(source = 'margin') {
                 <span class="label">Tasa Cotizada al Cliente:</span>
                 <span class="value text-success">${tasaCliente.toFixed(2)} VES</span>
             </div>
+            <div class="result-item highlight-margin" data-tooltip="Margen de ganancia neto de la operación tras descontar todos los costos y comisiones.">
+                <span class="label">Margen de Ganancia Neto:</span>
+                <span class="value-badge">${(margenPct * 100).toFixed(2)}%</span>
+            </div>
             <div class="result-item">
                 <span class="label">Monto Recibido del Cliente (USD):</span>
                 <span class="value">${formatUSD(montoUsd)}</span>
