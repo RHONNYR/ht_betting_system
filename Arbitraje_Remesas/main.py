@@ -12,7 +12,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -120,6 +120,10 @@ class RemesaCreate(BaseModel):
     banco_receptor: str
     costo_adquisicion_usdt: float
     comision_binance: float
+
+class ClienteCreate(BaseModel):
+    nombre: str
+    telefono: Optional[str] = None
 
 # Helpers
 def create_access_token(data: dict):
@@ -528,6 +532,15 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
 
 @app.post("/api/remesas")
 def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    # Auto-add client if not exists
+    cliente_nombre_clean = req.cliente_nombre.strip()
+    if cliente_nombre_clean:
+        existing_cliente = db.query(Cliente).filter(Cliente.nombre == cliente_nombre_clean).first()
+        if not existing_cliente:
+            new_cliente = Cliente(nombre=cliente_nombre_clean)
+            db.add(new_cliente)
+            db.commit()
+
     remesa = HistorialRemesas(
         fecha=get_venezuela_time(),
         cliente_nombre=req.cliente_nombre,
@@ -565,6 +578,33 @@ def get_remesas(username: str = Depends(get_current_user), db: Session = Depends
             "comision_binance": r.comision_binance
         })
     return result
+
+@app.get("/api/clientes")
+def get_clientes(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    clientes = db.query(Cliente).order_by(Cliente.nombre.asc()).all()
+    return [{"id": c.id, "nombre": c.nombre, "telefono": c.telefono} for c in clientes]
+
+@app.post("/api/clientes")
+def create_cliente(req: ClienteCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    nombre_clean = req.nombre.strip()
+    if not nombre_clean:
+        raise HTTPException(status_code=400, detail="El nombre del cliente no puede estar vacío.")
+    existing = db.query(Cliente).filter(Cliente.nombre == nombre_clean).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Este cliente ya está registrado en la agenda.")
+    cliente = Cliente(nombre=nombre_clean, telefono=req.telefono)
+    db.add(cliente)
+    db.commit()
+    return {"message": "Cliente registrado en la agenda", "id": cliente.id, "nombre": cliente.nombre}
+
+@app.delete("/api/clientes/{cliente_id}")
+def delete_cliente(cliente_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    cliente = db.query(Cliente).filter(Cliente.id == cliente_id).first()
+    if not cliente:
+        raise HTTPException(status_code=404, detail="Cliente no encontrado en la agenda.")
+    db.delete(cliente)
+    db.commit()
+    return {"message": "Cliente eliminado de la agenda"}
 
 @app.on_event("startup")
 def on_startup():
