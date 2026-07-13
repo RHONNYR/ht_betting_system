@@ -886,7 +886,7 @@ async function handleConsultarP2P() {
         "Mercantil": ["Mercantil"],
         "Provincial": ["Provincial"],
         "Bancamiga": ["Bancamiga"],
-        "Venezuela": ["Banco_de_Venezuela"],
+        "Venezuela": ["BancoDeVenezuela"],
         "Otros Bancos": []
     };
     
@@ -969,7 +969,7 @@ async function handleCalcConsultarP2P() {
     
     // Map payTypes
     const payTypeMap = {
-        "Venezuela": ["Banco_de_Venezuela"],
+        "Venezuela": ["BancoDeVenezuela"],
         "Provincial": ["Provincial"],
         "Bancamiga": ["Bancamiga"],
         "Banesco": ["Banesco"],
