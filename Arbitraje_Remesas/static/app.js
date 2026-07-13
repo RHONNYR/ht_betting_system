@@ -1157,7 +1157,7 @@ function calculateRemesa(source = 'margin') {
                       `👤 *Cliente:* ${clientName}\n` +
                       `💵 *Envías:* ${formatUSD(montoUsd)} (Vía ${paymentMethod})\n` +
                       `🇻🇪 *Tasa del día:* ${tasaCliente.toFixed(2)} VES/$\n` +
-                      `🏦 *Recibe en Venezuela:* ${formatVES(vesARecibir)} (${recvBank})\n\n` +
+                      `🏦 *Recibe en Venezuela:* ${formatVES(vesARecibir)}\n\n` +
                       `_Escríbenos para confirmar tu pago y realizar la transferencia de acuerdo a nuestros tiempos operativos._ 🤝`;
                       
     els.remesaWhatsappText.value = waMessage;
