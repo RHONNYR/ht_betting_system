@@ -109,5 +109,11 @@ class HistorialRemesas(Base):
     costo_adquisicion_usdt = Column(Float)  # e.g., 0.02 (2.0%)
     comision_binance = Column(Float)  # e.g., 0.0035 (0.35%)
 
+class Cliente(Base):
+    __tablename__ = "clientes"
+    id = Column(Integer, primary_key=True, index=True)
+    nombre = Column(String, unique=True, index=True, nullable=False)
+    telefono = Column(String, nullable=True)
+
 def init_db():
     Base.metadata.create_all(bind=engine)
