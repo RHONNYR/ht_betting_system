@@ -610,6 +610,28 @@ def on_startup():
                     db.add(DistribucionCapital(**plat))
                     print(f"Migration: Added platform '{plat['plataforma']}'")
             
+            # 3. Add titular Anaisabel and card if they don't exist
+            anaisabel = db.query(Titular).filter(Titular.nombre == "Anaisabel").first()
+            if not anaisabel:
+                anaisabel = Titular(nombre="Anaisabel", tercera_edad=False)
+                db.add(anaisabel)
+                db.commit()
+                print("Migration: Added titular 'Anaisabel'")
+            
+            prov_card = db.query(Tarjeta).filter(Tarjeta.titular_id == anaisabel.id, Tarjeta.banco == "Provincial", Tarjeta.tipo_tarjeta == "Master Debit").first()
+            if not prov_card:
+                prov_card = Tarjeta(
+                    titular_id=anaisabel.id,
+                    banco="Provincial",
+                    tipo_tarjeta="Master Debit",
+                    limite_diario=2000.0,
+                    limite_mensual=20000.0,
+                    comision_porcentaje=0.0
+                )
+                db.add(prov_card)
+                db.commit()
+                print("Migration: Added Provincial card for Anaisabel")
+                
             db.commit()
             db.close()
             print("Database updates completed successfully.")
