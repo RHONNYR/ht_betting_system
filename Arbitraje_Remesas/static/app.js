@@ -974,6 +974,38 @@ async function loadRemesas() {
     }
 }
 
+function getGenderEmoji(name) {
+    if (!name) return '🧑';
+    const nameLower = name.trim().toLowerCase();
+    const parts = nameLower.split(/\s+/);
+    const firstName = parts[0];
+    
+    // Common Spanish female names & suffixes
+    const femaleNames = [
+        'maria', 'maría', 'ana', 'carmen', 'isabel', 'sol', 'solanda', 
+        'beatriz', 'ruth', 'ines', 'inés', 'elena', 'irene', 'abril', 
+        'belen', 'belén', 'raquel', 'esther', 'ester', 'pilar', 'luz', 
+        'concepcion', 'concepción', 'mercedes', 'rosario', 'dolores', 
+        'rocio', 'rocío', 'judith', 'miriam', 'míriam', 'elizabeth', 
+        'genesis', 'génesis', 'anaisabel', 'solangie', 'solangel', 'solanda',
+        'anais', 'anaís', 'sandra', 'valeria', 'patricia', 'camila', 'alejandra',
+        'marian', 'mariana', 'gabriela', 'daniela', 'paola', 'sol', 'monica', 'mónica'
+    ];
+    
+    const maleEndsInA = [
+        'josua', 'joshua', 'luca', 'lucas', 'andrea'
+    ];
+    
+    if (femaleNames.includes(firstName)) return '👩';
+    
+    // Check if ends in 'a' (excluding common male ones like Luca or Joshua)
+    if (firstName.endsWith('a') && !maleEndsInA.includes(firstName)) {
+        return '👩';
+    }
+    
+    return '👨'; // Default to man
+}
+
 async function loadClientes() {
     try {
         const data = await apiCall('/clientes');
@@ -1005,12 +1037,14 @@ function renderAgenda(filterText = '') {
         const row = document.createElement('div');
         row.className = 'contact-row';
         
-        // Get initials
-        const initials = c.nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-        
+        const genderEmoji = getGenderEmoji(c.nombre);
+        const avatarBg = genderEmoji === '👩' 
+            ? 'linear-gradient(135deg, #ec4899, #a855f7)' // Pink-purple
+            : 'linear-gradient(135deg, #3b82f6, #06b6d4)'; // Blue-cyan
+            
         row.innerHTML = `
             <div class="contact-main">
-                <div class="contact-avatar">${initials}</div>
+                <div class="contact-avatar" style="background: ${avatarBg}; font-size: 1.15rem; display: flex; align-items: center; justify-content: center; min-width: 32px;">${genderEmoji}</div>
                 <div class="contact-details">
                     <span class="contact-name">${c.nombre}</span>
                     <span class="contact-phone">${c.telefono || 'Sin teléfono'}</span>
@@ -1081,9 +1115,10 @@ function showAutocompleteDropdown(filterText) {
     filtered.forEach(c => {
         const item = document.createElement('div');
         item.className = 'autocomplete-item';
+        const genderEmoji = getGenderEmoji(c.nombre);
         item.innerHTML = `
             <div class="contact-info">
-                <span>👤</span>
+                <span>${genderEmoji}</span>
                 <strong>${c.nombre}</strong>
             </div>
             <span class="contact-phone">${c.telefono || ''}</span>
