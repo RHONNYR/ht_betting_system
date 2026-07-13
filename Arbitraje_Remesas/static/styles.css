@@ -998,48 +998,59 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Scrollable Tab bar */
+    /* 2x2 Grid Tab bar */
     .nav-tabs {
-        overflow-x: auto;
-        white-space: nowrap;
-        flex-wrap: nowrap;
-        gap: 0.35rem;
-        padding: 0.25rem;
-        border-radius: 10px;
-        scrollbar-width: none; /* Firefox */
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .nav-tabs::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+        padding: 0.3rem;
+        border-radius: 12px;
+        overflow-x: visible;
+        white-space: normal;
+        flex-wrap: wrap;
     }
     
     .tab-link {
-        flex: 0 0 auto;
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
+        flex: none;
+        width: 100%;
+        padding: 0.55rem 0.5rem;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
     
-    /* Scrollable Sub tabs */
+    /* 2x2 Grid Sub tabs */
     .sub-nav-tabs {
-        overflow-x: auto;
-        white-space: nowrap;
-        flex-wrap: nowrap;
-        gap: 0.35rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
         padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border-color);
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .sub-nav-tabs::-webkit-scrollbar {
-        display: none;
+        border-bottom: none;
+        overflow-x: visible;
+        white-space: normal;
+        flex-wrap: wrap;
     }
     
     .sub-tab-link {
-        flex: 0 0 auto;
-        padding: 0.5rem 0.85rem;
-        font-size: 0.8rem;
+        flex: none;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .sub-tab-link.active {
+        border-color: var(--primary);
+        background: rgba(88, 86, 214, 0.15);
+        color: var(--primary);
     }
     
     /* Cards and Grids */
