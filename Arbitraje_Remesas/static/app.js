@@ -873,6 +873,7 @@ async function handleConsultarP2P() {
         "Mercantil": ["Mercantil"],
         "Provincial": ["Provincial"],
         "Bancamiga": ["Bancamiga"],
+        "Venezuela": ["Banco_de_Venezuela"],
         "Otros Bancos": []
     };
     
