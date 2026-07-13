@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=19">
+    <link rel="stylesheet" href="styles.css?v=20">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -279,7 +279,7 @@
                                         </select>
                                     </div>
                                     <div class="input-group">
-                                        <label for="remesa-banco-receptor">Banco Receptor VES</label>
+                                        <label for="remesa-banco-receptor">Banco Emisor VES</label>
                                         <select id="remesa-banco-receptor" required>
                                             <option value="Provincial">Provincial</option>
                                             <option value="Venezuela">Venezuela</option>
@@ -296,7 +296,7 @@
                                     </div>
                                     <div class="input-group">
                                         <label for="remesa-comision-bin">Binance Cambio Fee (%)</label>
-                                        <input type="number" step="any" id="remesa-comision-bin" value="0.35" placeholder="Ej. 0.35">
+                                        <input type="number" step="any" id="remesa-comision-bin" value="0.25" placeholder="Ej. 0.25">
                                     </div>
                                     <div class="input-group flex-row-align mt-3">
                                         <label for="remesa-pago-movil-auto">¿Aplicar 0.3% Pago Móvil/VES?</label>
@@ -706,6 +706,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=19"></script>
+    <script src="app.js?v=20"></script>
 </body>
 </html>
