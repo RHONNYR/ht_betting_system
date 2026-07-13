@@ -54,6 +54,8 @@ const els = {
     calcDivisasProcesadas: document.getElementById('calc-divisas-procesadas'),
     calcTransferenciasVes: document.getElementById('calc-transferencias-ves'),
     calcPagoMovilAuto: document.getElementById('calc-pago-movil-auto'),
+    calcRolP2p: document.getElementById('calc-rol-p2p'),
+    btnCalcConsultarP2p: document.getElementById('btn-calc-consultar-p2p'),
     btnCalcularCiclo: document.getElementById('btn-calcular-ciclo'),
     btnGuardarCiclo: document.getElementById('btn-guardar-ciclo'),
     calcResultsPreview: document.getElementById('calc-results-preview'),
@@ -670,6 +672,17 @@ function setupEventListeners() {
     // Calculator
     els.btnCalcularCiclo.addEventListener('click', handleCalcularCiclo);
     els.btnGuardarCiclo.addEventListener('click', handleGuardarCiclo);
+    if (els.btnCalcConsultarP2p) {
+        els.btnCalcConsultarP2p.addEventListener('click', handleCalcConsultarP2P);
+    }
+    if (els.calcPagoMovilAuto) {
+        els.calcPagoMovilAuto.addEventListener('change', () => {
+            if (!els.calcPagoMovilAuto.checked) {
+                els.calcTransferenciasVes.value = "0";
+            }
+            handleCalcularCiclo();
+        });
+    }
     
     els.calcUsdtVendidos.addEventListener('input', updateSuggestedDivisas);
     els.calcTasaVenta.addEventListener('input', updateSuggestedDivisas);
@@ -945,6 +958,77 @@ async function handleConsultarP2P() {
     } catch (err) {
         els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
         els.btnConsultarP2p.disabled = false;
+        alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
+    }
+}
+
+async function handleCalcConsultarP2P() {
+    const amount = parseFloat(els.calcUsdtVendidos.value) || 0;
+    const banco = els.calcBancoVenta.value;
+    const p2pRol = els.calcRolP2p ? els.calcRolP2p.value : 'maker';
+    
+    // Map payTypes
+    const payTypeMap = {
+        "Venezuela": ["Banco_de_Venezuela"],
+        "Provincial": ["Provincial"],
+        "Bancamiga": ["Bancamiga"],
+        "Banesco": ["Banesco"],
+        "Mercantil": ["Mercantil"]
+    };
+    
+    const pay_types = payTypeMap[banco] || [];
+    
+    let trade_type = 'BUY'; // Maker competes on "Comprar" tab
+    let queryUsd = 100.0;
+    
+    if (p2pRol === 'maker') {
+        trade_type = 'BUY';
+        queryUsd = Math.max(amount, 100.0);
+    } else {
+        trade_type = 'SELL'; // Taker sells directly on "Vender" tab
+        queryUsd = Math.max(amount, 10.0);
+    }
+    
+    const estimatedVes = queryUsd * (state.bcvRate || 700.0);
+    
+    try {
+        els.btnCalcConsultarP2p.textContent = "⏳...";
+        els.btnCalcConsultarP2p.disabled = true;
+        
+        const reqData = {
+            fiat: "VES",
+            asset: "USDT",
+            trade_type: trade_type,
+            pay_types: pay_types,
+            amount: estimatedVes > 0 ? estimatedVes : null
+        };
+        
+        const res = await apiCall('/p2p-rate', 'POST', reqData);
+        els.btnCalcConsultarP2p.textContent = "⚡ P2P";
+        els.btnCalcConsultarP2p.disabled = false;
+        
+        if (res.success && res.rates && res.rates.length > 0) {
+            let sumTop3 = 0;
+            let countTop3 = 0;
+            
+            res.rates.forEach((rate, index) => {
+                if (index < 3) {
+                    sumTop3 += rate.price;
+                    countTop3++;
+                }
+            });
+            
+            const avgRate = sumTop3 / countTop3;
+            els.calcTasaVenta.value = avgRate.toFixed(2);
+            
+            updateSuggestedDivisas();
+            handleCalcularCiclo();
+        } else {
+            alert("No se encontraron tasas en Binance P2P.");
+        }
+    } catch (err) {
+        els.btnCalcConsultarP2p.textContent = "⚡ P2P";
+        els.btnCalcConsultarP2p.disabled = false;
         alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
     }
 }
