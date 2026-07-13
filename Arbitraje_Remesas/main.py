@@ -606,6 +606,25 @@ def delete_cliente(cliente_id: int, username: str = Depends(get_current_user), d
     db.commit()
     return {"message": "Cliente eliminado de la agenda"}
 
+@app.put("/api/clientes/{cliente_id}")
+def update_cliente(cliente_id: int, req: ClienteCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    cliente = db.query(Cliente).filter(Cliente.id == cliente_id).first()
+    if not cliente:
+        raise HTTPException(status_code=404, detail="Cliente no encontrado en la agenda.")
+    
+    nombre_clean = req.nombre.strip()
+    if not nombre_clean:
+        raise HTTPException(status_code=400, detail="El nombre del cliente no puede estar vacío.")
+    
+    existing = db.query(Cliente).filter(Cliente.nombre == nombre_clean, Cliente.id != cliente_id).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Ya existe otro cliente con este nombre en la agenda.")
+    
+    cliente.nombre = nombre_clean
+    cliente.telefono = req.telefono
+    db.commit()
+    return {"message": "Cliente actualizado", "id": cliente.id}
+
 @app.on_event("startup")
 def on_startup():
     try:
