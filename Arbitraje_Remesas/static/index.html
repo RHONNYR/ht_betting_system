@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=16">
+    <link rel="stylesheet" href="styles.css?v=17">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -241,7 +241,13 @@
                                 <div class="grid-2col-form">
                                     <div class="input-group">
                                         <label for="remesa-cliente">Nombre del Cliente</label>
-                                        <input type="text" id="remesa-cliente" required placeholder="Ej. Juan Pérez">
+                                        <div class="flex-row-align">
+                                            <div style="position: relative; flex-grow: 1;">
+                                                <input type="text" id="remesa-cliente" required placeholder="Ej. Juan Pérez" autocomplete="off" style="width: 100%;">
+                                                <div id="autocomplete-clientes-list" class="autocomplete-dropdown hidden"></div>
+                                            </div>
+                                            <button type="button" id="btn-abrir-agenda" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 1rem;" title="Abrir Agenda de Clientes">📖</button>
+                                        </div>
                                     </div>
                                     <div class="input-group">
                                         <label for="remesa-monto-usd">Monto a Enviar (USD)</label>
@@ -621,6 +627,39 @@
         </div>
     </div>
 
+    <!-- MODAL: AGENDA DE CLIENTES -->
+    <div id="modal-agenda" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 500px; width: 90%;">
+            <div class="flex-row-space-between mb-3">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">📖 Agenda de Clientes</h3>
+                <button type="button" id="btn-close-modal-agenda" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">✕</button>
+            </div>
+            
+            <!-- Quick Add Form inside modal -->
+            <form id="agenda-quick-add-form" class="mb-3" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <div class="grid-2col-form" style="gap: 0.5rem; grid-template-columns: 1fr 1fr;">
+                    <div class="input-group" style="margin: 0;">
+                        <input type="text" id="agenda-nuevo-nombre" required placeholder="Nombre del contacto" style="font-size: 0.85rem; padding: 0.5rem;">
+                    </div>
+                    <div class="input-group flex-row-align" style="gap: 0.5rem; margin: 0;">
+                        <input type="text" id="agenda-nuevo-telefono" placeholder="Teléfono (Opcional)" style="font-size: 0.85rem; padding: 0.5rem; flex-grow: 1;">
+                        <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">➕</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Search input -->
+            <div class="input-group mb-3" style="margin-bottom: 1rem;">
+                <input type="text" id="agenda-buscar" placeholder="🔍 Buscar contacto..." style="width: 100%;">
+            </div>
+
+            <!-- Contacts list -->
+            <div id="agenda-contacts-list" class="contacts-list-container" style="max-height: 300px; overflow-y: auto;">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL: CAMBIAR CONTRASEÑA -->
     <div id="modal-password" class="modal hidden">
         <div class="modal-content glass-card">
@@ -642,6 +681,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=16"></script>
+    <script src="app.js?v=17"></script>
 </body>
 </html>
