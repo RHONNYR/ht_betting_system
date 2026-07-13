@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=17">
+    <link rel="stylesheet" href="styles.css?v=18">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -660,6 +660,31 @@
         </div>
     </div>
 
+    <!-- MODAL: EDITAR CLIENTE -->
+    <div id="modal-editar-cliente" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 400px; width: 90%;">
+            <div class="flex-row-space-between mb-3">
+                <h3 style="margin:0;">✏️ Editar Contacto</h3>
+                <button type="button" id="btn-close-modal-editar-cliente" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">✕</button>
+            </div>
+            <form id="agenda-edit-form">
+                <input type="hidden" id="agenda-edit-id">
+                <div class="input-group mb-3">
+                    <label for="agenda-edit-nombre">Nombre</label>
+                    <input type="text" id="agenda-edit-nombre" required placeholder="Nombre del cliente" style="width:100%;">
+                </div>
+                <div class="input-group mb-3">
+                    <label for="agenda-edit-telefono">Teléfono (Opcional)</label>
+                    <input type="text" id="agenda-edit-telefono" placeholder="Teléfono del cliente" style="width:100%;">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btn-cancelar-modal-editar-cliente" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- MODAL: CAMBIAR CONTRASEÑA -->
     <div id="modal-password" class="modal hidden">
         <div class="modal-content glass-card">
@@ -681,6 +706,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=17"></script>
+    <script src="app.js?v=18"></script>
 </body>
 </html>
