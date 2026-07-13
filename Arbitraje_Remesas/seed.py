@@ -64,6 +64,13 @@ def seed_data():
                 {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.015},
                 {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.0}
             ]
+        },
+        {
+            "nombre": "Anaisabel",
+            "tercera_edad": False,
+            "tarjetas": [
+                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.0}
+            ]
         }
     ]
     
