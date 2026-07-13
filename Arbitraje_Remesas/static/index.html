@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=13">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -160,14 +160,26 @@
                                     </div>
                                     <div class="input-group">
                                         <label for="calc-tasa-venta">Tasa de Venta (P2P)</label>
-                                        <input type="number" step="any" id="calc-tasa-venta" required placeholder="Tasa VES/USDT (Ej. 751.9)">
+                                        <div class="flex-row-align">
+                                            <input type="number" step="any" id="calc-tasa-venta" required placeholder="Tasa VES/USDT (Ej. 751.9)">
+                                            <button type="button" id="btn-calc-consultar-p2p" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 0.85rem;" title="Consultar Binance P2P en vivo">⚡ Consultar P2P</button>
+                                        </div>
                                     </div>
                                     <div class="input-group">
-                                        <label for="calc-banco-venta">Banco Recibe Bolívares</label>
+                                        <label for="calc-banco-venta">Banco receptor de bolívares</label>
                                         <select id="calc-banco-venta" required>
-                                            <option value="Mercantil">Mercantil</option>
                                             <option value="Provincial">Provincial</option>
-                                            <option value="Banco de Venezuela">Banco de Venezuela</option>
+                                            <option value="Venezuela">Venezuela</option>
+                                            <option value="Bancamiga">Bancamiga</option>
+                                            <option value="Banesco">Banesco</option>
+                                            <option value="Mercantil">Mercantil</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="calc-rol-p2p">Rol en Binance P2P</label>
+                                        <select id="calc-rol-p2p" required>
+                                            <option value="maker">Maker (Anuncio, min. $100)</option>
+                                            <option value="taker">Taker (Vender directo)</option>
                                         </select>
                                     </div>
                                     <div class="input-group">
@@ -630,6 +642,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=12"></script>
+    <script src="app.js?v=13"></script>
 </body>
 </html>
