@@ -74,6 +74,13 @@ const els = {
     btnAbrirAgenda: document.getElementById('btn-abrir-agenda'),
     modalAgenda: document.getElementById('modal-agenda'),
     btnCloseModalAgenda: document.getElementById('btn-close-modal-agenda'),
+    modalEditarCliente: document.getElementById('modal-editar-cliente'),
+    btnCloseModalEditarCliente: document.getElementById('btn-close-modal-editar-cliente'),
+    btnCancelarModalEditarCliente: document.getElementById('btn-cancelar-modal-editar-cliente'),
+    agendaEditForm: document.getElementById('agenda-edit-form'),
+    agendaEditId: document.getElementById('agenda-edit-id'),
+    agendaEditNombre: document.getElementById('agenda-edit-nombre'),
+    agendaEditTelefono: document.getElementById('agenda-edit-telefono'),
     agendaQuickAddForm: document.getElementById('agenda-quick-add-form'),
     agendaNuevoNombre: document.getElementById('agenda-nuevo-nombre'),
     agendaNuevoTelefono: document.getElementById('agenda-nuevo-telefono'),
@@ -861,6 +868,36 @@ function setupEventListeners() {
             }
         });
     }
+
+    if (els.btnCloseModalEditarCliente) {
+        els.btnCloseModalEditarCliente.addEventListener('click', () => {
+            closeModal(els.modalEditarCliente);
+        });
+    }
+
+    if (els.btnCancelarModalEditarCliente) {
+        els.btnCancelarModalEditarCliente.addEventListener('click', () => {
+            closeModal(els.modalEditarCliente);
+        });
+    }
+
+    if (els.agendaEditForm) {
+        els.agendaEditForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const clienteId = els.agendaEditId.value;
+            const nombre = els.agendaEditNombre.value.trim();
+            const telefono = els.agendaEditTelefono.value.trim();
+            
+            try {
+                await apiCall(`/clientes/${clienteId}`, 'PUT', { nombre, telefono: telefono || null });
+                closeModal(els.modalEditarCliente);
+                await loadClientes();
+                renderAgenda(els.agendaBuscar.value);
+            } catch (err) {
+                alert(err.message || "Error al actualizar contacto");
+            }
+        });
+    }
     
     const remesaInputs = [
         els.remesaCliente,
@@ -979,17 +1016,29 @@ function renderAgenda(filterText = '') {
                     <span class="contact-phone">${c.telefono || 'Sin teléfono'}</span>
                 </div>
             </div>
+            <button type="button" class="btn-edit-contact" data-id="${c.id}" title="Editar contacto" style="background:transparent; border:none; color:var(--text-secondary); cursor:pointer; padding:0.4rem; border-radius:4px; transition:all 0.2s ease; margin-left:auto; margin-right:0.25rem; z-index:10;">✏️</button>
             <button type="button" class="btn-delete-contact" data-id="${c.id}" title="Eliminar contacto">🗑️</button>
         `;
         
-        // Clicking the row (except delete button) selects the contact
+        // Clicking the row (except delete/edit buttons) selects the contact
         row.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-delete-contact') || e.target.closest('.btn-delete-contact')) {
+            if (e.target.classList.contains('btn-delete-contact') || e.target.closest('.btn-delete-contact') ||
+                e.target.classList.contains('btn-edit-contact') || e.target.closest('.btn-edit-contact')) {
                 return;
             }
             els.remesaCliente.value = c.nombre;
             closeModal(els.modalAgenda);
             calculateRemesa();
+        });
+        
+        // Clicking edit button
+        const btnEdit = row.querySelector('.btn-edit-contact');
+        btnEdit.addEventListener('click', (e) => {
+            e.stopPropagation();
+            els.agendaEditId.value = c.id;
+            els.agendaEditNombre.value = c.nombre;
+            els.agendaEditTelefono.value = c.telefono || '';
+            openModal(els.modalEditarCliente);
         });
         
         // Clicking delete button
