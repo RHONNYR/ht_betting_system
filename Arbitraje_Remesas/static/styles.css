@@ -953,6 +953,131 @@ body {
     align-items: center;
 }
 
+/* Autocomplete Dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    margin-top: 4px;
+}
+
+.autocomplete-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-primary);
+    transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-item:hover {
+    background: var(--bg-hover);
+}
+
+.autocomplete-item .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.autocomplete-item .contact-phone {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Contacts List for Agenda Modal */
+.contacts-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.contact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.contact-row:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.contact-row .contact-main {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.contact-row .contact-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.contact-row .contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-row .contact-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.contact-row .contact-phone {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.contact-row .btn-delete-contact {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    margin-left: 0.5rem;
+    z-index: 10;
+}
+
+.contact-row .btn-delete-contact:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
 /* Mobile Responsive Optimizations (max-width: 768px) */
 @media (max-width: 768px) {
     /* Main Layout */
