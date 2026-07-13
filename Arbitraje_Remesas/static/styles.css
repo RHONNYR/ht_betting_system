@@ -987,9 +987,26 @@ body {
     }
     
     .bcv-widget {
+        background: rgba(245, 158, 11, 0.08);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         width: 100%;
-        justify-content: center;
-        padding: 0.6rem 1rem;
+        gap: 0.75rem;
+    }
+    
+    .bcv-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    
+    .bcv-value {
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
     }
     
     .header-actions button {
@@ -1060,8 +1077,99 @@ body {
         margin-bottom: 1rem;
     }
     
+    .card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    
     .card-header h2 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
+    .card-header button, 
+    .card-header .btn-sm {
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    
+    .card-header div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    /* Capital Table responsive cards on mobile */
+    #tab-capital .table-container {
+        border: none;
+        background: transparent;
+    }
+    
+    #tab-capital .data-table, 
+    #tab-capital .data-table thead, 
+    #tab-capital .data-table tbody, 
+    #tab-capital .data-table th, 
+    #tab-capital .data-table td, 
+    #tab-capital .data-table tr {
+        display: block;
+    }
+    
+    #tab-capital .data-table thead {
+        display: none;
+    }
+    
+    #tab-capital .data-table tr {
+        border: 1px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 14px;
+        margin-bottom: 1rem;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    
+    #tab-capital .data-table td {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.65rem 0;
+        text-align: right;
+    }
+    
+    #tab-capital .data-table td:last-child {
+        border-bottom: none;
+    }
+    
+    #tab-capital .data-table td::before {
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    
+    #tab-capital .data-table td:nth-of-type(1)::before { content: "Plataforma"; }
+    #tab-capital .data-table td:nth-of-type(2)::before { content: "Monto USD"; }
+    #tab-capital .data-table td:nth-of-type(3)::before { content: "Monto VES"; }
+    #tab-capital .data-table td:nth-of-type(4)::before { content: "Equivalente USD"; }
+    #tab-capital .data-table td:nth-of-type(5)::before { content: "Simulado USD"; }
+
+    #tab-capital .data-table input[type="number"] {
+        width: 130px;
+        padding: 0.45rem 0.65rem;
+        font-size: 0.9rem;
+        text-align: right;
+    }
+    
+    /* Full-width save button on mobile */
+    #tab-capital button[type="submit"] {
+        width: 100%;
+        float: none;
+        margin-top: 1rem;
+        padding: 0.85rem;
     }
     
     .capital-summary-cards {
