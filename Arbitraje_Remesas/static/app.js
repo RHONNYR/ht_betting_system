@@ -8,7 +8,8 @@ const state = {
     titulares: [],
     currentCalculatedCiclo: null,
     currentCalculatedRemesa: null,
-    divisasCompradasManuallyEdited: false
+    divisasCompradasManuallyEdited: false,
+    clientes: []
 };
 
 // DOM Elements
@@ -69,6 +70,15 @@ const els = {
     // Remesas Elements
     remesaForm: document.getElementById('remesa-form'),
     remesaCliente: document.getElementById('remesa-cliente'),
+    autocompleteClientesList: document.getElementById('autocomplete-clientes-list'),
+    btnAbrirAgenda: document.getElementById('btn-abrir-agenda'),
+    modalAgenda: document.getElementById('modal-agenda'),
+    btnCloseModalAgenda: document.getElementById('btn-close-modal-agenda'),
+    agendaQuickAddForm: document.getElementById('agenda-quick-add-form'),
+    agendaNuevoNombre: document.getElementById('agenda-nuevo-nombre'),
+    agendaNuevoTelefono: document.getElementById('agenda-nuevo-telefono'),
+    agendaBuscar: document.getElementById('agenda-buscar'),
+    agendaContactsList: document.getElementById('agenda-contacts-list'),
     remesaMontoUsd: document.getElementById('remesa-monto-usd'),
     remesaMargen: document.getElementById('remesa-margen'),
     remesaTasaCliente: document.getElementById('remesa-tasa-cliente'),
@@ -198,6 +208,7 @@ async function initDashboard() {
     await loadCompras();
     await loadCapitalSnapshots();
     await loadRemesas();
+    await loadClientes();
 }
 
 // BCV Handlers
@@ -799,6 +810,58 @@ function setupEventListeners() {
     if (els.btnCopiarRemesaText) els.btnCopiarRemesaText.addEventListener('click', copyRemesaText);
     if (els.btnRegistrarRemesa) els.btnRegistrarRemesa.addEventListener('click', registrarRemesa);
     
+    // Customer Database Agenda Event Listeners
+    if (els.remesaCliente) {
+        els.remesaCliente.addEventListener('input', (e) => {
+            showAutocompleteDropdown(e.target.value);
+        });
+        
+        // Hide autocomplete when clicking outside
+        document.addEventListener('click', (e) => {
+            if (els.autocompleteClientesList && !els.remesaCliente.contains(e.target) && !els.autocompleteClientesList.contains(e.target)) {
+                els.autocompleteClientesList.classList.add('hidden');
+            }
+        });
+    }
+
+    if (els.btnAbrirAgenda) {
+        els.btnAbrirAgenda.addEventListener('click', async () => {
+            await loadClientes();
+            if (els.agendaBuscar) els.agendaBuscar.value = '';
+            renderAgenda();
+            openModal(els.modalAgenda);
+        });
+    }
+
+    if (els.btnCloseModalAgenda) {
+        els.btnCloseModalAgenda.addEventListener('click', () => {
+            closeModal(els.modalAgenda);
+        });
+    }
+
+    if (els.agendaBuscar) {
+        els.agendaBuscar.addEventListener('input', (e) => {
+            renderAgenda(e.target.value);
+        });
+    }
+
+    if (els.agendaQuickAddForm) {
+        els.agendaQuickAddForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nombre = els.agendaNuevoNombre.value.trim();
+            const telefono = els.agendaNuevoTelefono.value.trim();
+            
+            try {
+                await apiCall('/clientes', 'POST', { nombre, telefono: telefono || null });
+                els.agendaQuickAddForm.reset();
+                await loadClientes();
+                renderAgenda(els.agendaBuscar.value);
+            } catch (err) {
+                alert(err.message || "Error al agregar contacto");
+            }
+        });
+    }
+    
     const remesaInputs = [
         els.remesaCliente,
         els.remesaMontoUsd,
@@ -872,6 +935,121 @@ async function loadRemesas() {
     } catch (err) {
         console.error("Error loading remesas:", err);
     }
+}
+
+async function loadClientes() {
+    try {
+        const data = await apiCall('/clientes');
+        state.clientes = data || [];
+    } catch (err) {
+        console.error("Error loading clientes:", err);
+    }
+}
+
+function renderAgenda(filterText = '') {
+    if (!els.agendaContactsList) return;
+    els.agendaContactsList.innerHTML = '';
+    
+    const filtered = state.clientes.filter(c => 
+        c.nombre.toLowerCase().includes(filterText.toLowerCase()) ||
+        (c.telefono && c.telefono.includes(filterText))
+    );
+    
+    if (filtered.length === 0) {
+        els.agendaContactsList.innerHTML = `
+            <div class="empty-state" style="padding: 1.5rem 0;">
+                <p>No se encontraron contactos.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    filtered.forEach(c => {
+        const row = document.createElement('div');
+        row.className = 'contact-row';
+        
+        // Get initials
+        const initials = c.nombre.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        
+        row.innerHTML = `
+            <div class="contact-main">
+                <div class="contact-avatar">${initials}</div>
+                <div class="contact-details">
+                    <span class="contact-name">${c.nombre}</span>
+                    <span class="contact-phone">${c.telefono || 'Sin teléfono'}</span>
+                </div>
+            </div>
+            <button type="button" class="btn-delete-contact" data-id="${c.id}" title="Eliminar contacto">🗑️</button>
+        `;
+        
+        // Clicking the row (except delete button) selects the contact
+        row.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-delete-contact') || e.target.closest('.btn-delete-contact')) {
+                return;
+            }
+            els.remesaCliente.value = c.nombre;
+            closeModal(els.modalAgenda);
+            calculateRemesa();
+        });
+        
+        // Clicking delete button
+        const btnDelete = row.querySelector('.btn-delete-contact');
+        btnDelete.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            if (confirm(`¿Estás seguro de que deseas eliminar a ${c.nombre} de tu agenda?`)) {
+                try {
+                    await apiCall(`/clientes/${c.id}`, 'DELETE');
+                    await loadClientes();
+                    renderAgenda(els.agendaBuscar.value);
+                } catch (err) {
+                    alert(err.message || "Error al eliminar contacto");
+                }
+            }
+        });
+        
+        els.agendaContactsList.appendChild(row);
+    });
+}
+
+function showAutocompleteDropdown(filterText) {
+    if (!els.autocompleteClientesList) return;
+    els.autocompleteClientesList.innerHTML = '';
+    
+    if (!filterText.trim()) {
+        els.autocompleteClientesList.classList.add('hidden');
+        return;
+    }
+    
+    const filtered = state.clientes.filter(c => 
+        c.nombre.toLowerCase().includes(filterText.toLowerCase())
+    ).slice(0, 5); // Limit to top 5 matches
+    
+    if (filtered.length === 0) {
+        els.autocompleteClientesList.classList.add('hidden');
+        return;
+    }
+    
+    filtered.forEach(c => {
+        const item = document.createElement('div');
+        item.className = 'autocomplete-item';
+        item.innerHTML = `
+            <div class="contact-info">
+                <span>👤</span>
+                <strong>${c.nombre}</strong>
+            </div>
+            <span class="contact-phone">${c.telefono || ''}</span>
+        `;
+        
+        item.addEventListener('click', () => {
+            els.remesaCliente.value = c.nombre;
+            els.autocompleteClientesList.classList.add('hidden');
+            calculateRemesa();
+        });
+        
+        els.autocompleteClientesList.appendChild(item);
+    });
+    
+    els.autocompleteClientesList.classList.remove('hidden');
 }
 
 async function handleConsultarP2P() {
