@@ -717,12 +717,13 @@ def on_startup():
                 
             # 4. Migrate Client table to add 'genero' column if missing
             try:
-                db.execute("ALTER TABLE clientes ADD COLUMN genero VARCHAR DEFAULT 'Masculino'")
-                db.commit()
+                from sqlalchemy import text
+                with engine.begin() as conn:
+                    conn.execute(text("ALTER TABLE clientes ADD COLUMN genero VARCHAR DEFAULT 'Masculino'"))
                 print("Migration: Added 'genero' column to 'clientes' table.")
             except Exception as e:
-                # If column already exists or any SQLite error, ignore
-                pass
+                # If column already exists or any SQL error, ignore
+                print(f"Migration 'genero' check/add: {e}")
                 
             # 5. Seed default Clientes if not present
             try:
