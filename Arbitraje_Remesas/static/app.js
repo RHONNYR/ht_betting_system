@@ -70,6 +70,7 @@ const els = {
     // Remesas Elements
     remesaForm: document.getElementById('remesa-form'),
     remesaCliente: document.getElementById('remesa-cliente'),
+    remesaClienteGenero: document.getElementById('remesa-cliente-genero'),
     autocompleteClientesList: document.getElementById('autocomplete-clientes-list'),
     btnAbrirAgenda: document.getElementById('btn-abrir-agenda'),
     modalAgenda: document.getElementById('modal-agenda'),
@@ -823,6 +824,8 @@ function setupEventListeners() {
     if (els.remesaCliente) {
         els.remesaCliente.addEventListener('input', (e) => {
             showAutocompleteDropdown(e.target.value);
+            const guessedGender = getGenderEmoji(e.target.value) === '👩' ? 'Femenino' : 'Masculino';
+            if (els.remesaClienteGenero) els.remesaClienteGenero.value = guessedGender;
         });
         
         // Hide autocomplete when clicking outside
@@ -905,6 +908,7 @@ function setupEventListeners() {
     
     const remesaInputs = [
         els.remesaCliente,
+        els.remesaClienteGenero,
         els.remesaMontoUsd,
         els.remesaMargen,
         els.remesaMetodoPago,
@@ -1065,6 +1069,7 @@ function renderAgenda(filterText = '') {
                 return;
             }
             els.remesaCliente.value = c.nombre;
+            if (els.remesaClienteGenero) els.remesaClienteGenero.value = c.genero || 'Masculino';
             closeModal(els.modalAgenda);
             calculateRemesa();
         });
@@ -1131,6 +1136,7 @@ function showAutocompleteDropdown(filterText) {
         
         item.addEventListener('click', () => {
             els.remesaCliente.value = c.nombre;
+            if (els.remesaClienteGenero) els.remesaClienteGenero.value = c.genero || 'Masculino';
             els.autocompleteClientesList.classList.add('hidden');
             calculateRemesa();
         });
@@ -1367,7 +1373,8 @@ function calculateRemesa(source = 'margin') {
         metodo_pago: els.remesaMetodoPago.value,
         banco_receptor: els.remesaBancoReceptor.value,
         costo_adquisicion_usdt: costoAdqPct,
-        comision_binance: comisionBinPct
+        comision_binance: comisionBinPct,
+        cliente_genero: els.remesaClienteGenero ? els.remesaClienteGenero.value : "Masculino"
     };
     
     // Render results
