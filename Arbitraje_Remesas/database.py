@@ -114,6 +114,7 @@ class Cliente(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True, nullable=False)
     telefono = Column(String, nullable=True)
+    genero = Column(String, default="Masculino")
 
 def init_db():
     Base.metadata.create_all(bind=engine)
