@@ -120,6 +120,7 @@ class RemesaCreate(BaseModel):
     banco_receptor: str
     costo_adquisicion_usdt: float
     comision_binance: float
+    cliente_genero: Optional[str] = "Masculino"
 
 class ClienteCreate(BaseModel):
     nombre: str
@@ -559,7 +560,7 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
     if cliente_nombre_clean:
         existing_cliente = db.query(Cliente).filter(Cliente.nombre == cliente_nombre_clean).first()
         if not existing_cliente:
-            new_cliente = Cliente(nombre=cliente_nombre_clean, genero=get_default_gender(cliente_nombre_clean))
+            new_cliente = Cliente(nombre=cliente_nombre_clean, genero=req.cliente_genero)
             db.add(new_cliente)
             db.commit()
 
