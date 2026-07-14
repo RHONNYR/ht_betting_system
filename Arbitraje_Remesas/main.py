@@ -124,8 +124,30 @@ class RemesaCreate(BaseModel):
 class ClienteCreate(BaseModel):
     nombre: str
     telefono: Optional[str] = None
+    genero: Optional[str] = "Masculino"
 
 # Helpers
+def get_default_gender(nombre: str) -> str:
+    name_parts = nombre.strip().lower().split()
+    if not name_parts:
+        return "Masculino"
+    first_name = name_parts[0]
+    female_names = {
+        'maria', 'maría', 'ana', 'carmen', 'isabel', 'sol', 'solanda', 
+        'beatriz', 'ruth', 'ines', 'inés', 'elena', 'irene', 'abril', 
+        'belen', 'belén', 'raquel', 'esther', 'ester', 'pilar', 'luz', 
+        'concepcion', 'concepción', 'mercedes', 'rosario', 'dolores', 
+        'rocio', 'rocío', 'judith', 'miriam', 'míriam', 'elizabeth', 
+        'genesis', 'génesis', 'anaisabel', 'solangie', 'solangel', 'solanda',
+        'anais', 'anaís', 'sandra', 'valeria', 'patricia', 'camila', 'alejandra',
+        'marian', 'mariana', 'gabriela', 'daniela', 'paola', 'monica', 'mónica'
+    }
+    if first_name in female_names:
+        return "Femenino"
+    if first_name.endswith('a') and first_name not in {'josua', 'joshua', 'luca', 'lucas', 'andrea'}:
+        return "Femenino"
+    return "Masculino"
+
 def create_access_token(data: dict):
     to_encode = data.copy()
     expire = datetime.datetime.utcnow() + datetime.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -537,7 +559,7 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
     if cliente_nombre_clean:
         existing_cliente = db.query(Cliente).filter(Cliente.nombre == cliente_nombre_clean).first()
         if not existing_cliente:
-            new_cliente = Cliente(nombre=cliente_nombre_clean)
+            new_cliente = Cliente(nombre=cliente_nombre_clean, genero=get_default_gender(cliente_nombre_clean))
             db.add(new_cliente)
             db.commit()
 
@@ -582,7 +604,7 @@ def get_remesas(username: str = Depends(get_current_user), db: Session = Depends
 @app.get("/api/clientes")
 def get_clientes(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     clientes = db.query(Cliente).order_by(Cliente.nombre.asc()).all()
-    return [{"id": c.id, "nombre": c.nombre, "telefono": c.telefono} for c in clientes]
+    return [{"id": c.id, "nombre": c.nombre, "telefono": c.telefono, "genero": c.genero} for c in clientes]
 
 @app.post("/api/clientes")
 def create_cliente(req: ClienteCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -592,7 +614,7 @@ def create_cliente(req: ClienteCreate, username: str = Depends(get_current_user)
     existing = db.query(Cliente).filter(Cliente.nombre == nombre_clean).first()
     if existing:
         raise HTTPException(status_code=400, detail="Este cliente ya está registrado en la agenda.")
-    cliente = Cliente(nombre=nombre_clean, telefono=req.telefono)
+    cliente = Cliente(nombre=nombre_clean, telefono=req.telefono, genero=req.genero)
     db.add(cliente)
     db.commit()
     return {"message": "Cliente registrado en la agenda", "id": cliente.id, "nombre": cliente.nombre}
@@ -622,6 +644,7 @@ def update_cliente(cliente_id: int, req: ClienteCreate, username: str = Depends(
     
     cliente.nombre = nombre_clean
     cliente.telefono = req.telefono
+    cliente.genero = req.genero
     db.commit()
     return {"message": "Cliente actualizado", "id": cliente.id}
 
@@ -690,6 +713,15 @@ def on_startup():
                 db.add(prov_card)
                 db.commit()
                 print("Migration: Added Provincial card for Anaisabel")
+                
+            # 4. Migrate Client table to add 'genero' column if missing
+            try:
+                db.execute("ALTER TABLE clientes ADD COLUMN genero VARCHAR DEFAULT 'Masculino'")
+                db.commit()
+                print("Migration: Added 'genero' column to 'clientes' table.")
+            except Exception as e:
+                # If column already exists or any SQLite error, ignore
+                pass
                 
             db.commit()
             db.close()
