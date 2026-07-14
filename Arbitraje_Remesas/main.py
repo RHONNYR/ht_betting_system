@@ -12,7 +12,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, engine
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
