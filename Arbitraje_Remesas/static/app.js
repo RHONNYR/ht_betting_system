@@ -931,6 +931,72 @@ function setupEventListeners() {
         els.remesaTasaCliente.addEventListener('input', () => calculateRemesa('tasa'));
         els.remesaTasaCliente.addEventListener('change', () => calculateRemesa('tasa'));
     }
+
+    // Edit Remesa Modal Event Listeners
+    const btnCloseModalEditarRemesa = document.getElementById('btn-close-modal-editar-remesa');
+    const btnCancelarModalEditarRemesa = document.getElementById('btn-cancelar-modal-editar-remesa');
+    const remesaEditForm = document.getElementById('remesa-edit-form');
+
+    if (btnCloseModalEditarRemesa) {
+        btnCloseModalEditarRemesa.addEventListener('click', () => {
+            document.getElementById('modal-editar-remesa').classList.add('hidden');
+        });
+    }
+    if (btnCancelarModalEditarRemesa) {
+        btnCancelarModalEditarRemesa.addEventListener('click', () => {
+            document.getElementById('modal-editar-remesa').classList.add('hidden');
+        });
+    }
+    if (remesaEditForm) {
+        remesaEditForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('edit-remesa-id').value;
+            const cliente = document.getElementById('edit-remesa-cliente').value.trim();
+            const montoUsd = parseFloat(document.getElementById('edit-remesa-monto-usd').value);
+            const tasaP2p = parseFloat(document.getElementById('edit-remesa-tasa-p2p').value);
+            const tasaCliente = parseFloat(document.getElementById('edit-remesa-tasa-cliente').value);
+            const metodoPago = document.getElementById('edit-remesa-metodo-pago').value;
+            const bancoReceptor = document.getElementById('edit-remesa-banco-receptor').value;
+            const costoAdqPct = parseFloat(document.getElementById('edit-remesa-costo-adquisicion').value) / 100;
+            const comisionBinPct = parseFloat(document.getElementById('edit-remesa-comision-binance').value) / 100;
+            
+            // Recalculate Ves and Profit
+            const montoVes = montoUsd * tasaCliente;
+            let pmFeePct = 0;
+            if (bancoReceptor === 'Pago Móvil') {
+                pmFeePct = 0.003;
+            }
+            const vesGastadosTotales = montoVes * (1 + pmFeePct);
+            const usdtGastados = vesGastadosTotales / tasaP2p;
+            const fCosto = (1 + costoAdqPct) / (1 - comisionBinPct);
+            const costoRealUsdt = usdtGastados * fCosto;
+            const gananciaUsd = montoUsd - costoRealUsdt;
+            
+            // Gender default for clients auto-save
+            const guessedGender = getGenderEmoji(cliente) === '👩' ? 'Femenino' : 'Masculino';
+            
+            try {
+                await apiCall(`/remesas/${id}`, 'PUT', {
+                    cliente_nombre: cliente,
+                    monto_usd: montoUsd,
+                    tasa_p2p: tasaP2p,
+                    tasa_cliente: tasaCliente,
+                    monto_ves: montoVes,
+                    ganancia_usd: gananciaUsd,
+                    metodo_pago: metodoPago,
+                    banco_receptor: bancoReceptor,
+                    costo_adquisicion_usdt: costoAdqPct,
+                    comision_binance: comisionBinPct,
+                    cliente_genero: guessedGender
+                });
+                document.getElementById('modal-editar-remesa').classList.add('hidden');
+                alert("Remesa actualizada correctamente.");
+                await initDashboard();
+            } catch (err) {
+                alert("Error al actualizar remesa: " + err.message);
+            }
+        });
+    }
 }
 
 // Theme Selector logic
@@ -956,6 +1022,7 @@ function setTheme(theme) {
 async function loadRemesas() {
     try {
         const remesas = await apiCall('/remesas');
+        state.rawRemesas = remesas || [];
         els.remesasTableBody.innerHTML = '';
         
         let totalGain = 0;
@@ -972,6 +1039,12 @@ async function loadRemesas() {
                 <td>${(r.costo_adquisicion_usdt * 100).toFixed(1)}%</td>
                 <td>${(r.comision_binance * 100).toFixed(2)}%</td>
                 <td class="text-success">+$${r.ganancia_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                <td>
+                    <div style="display: flex; gap: 0.5rem; justify-content: center; align-items: center;">
+                        <button type="button" class="btn-icon-only text-primary" onclick="iniciarEditarRemesa(${r.id})" title="Editar Remesa" style="background: transparent; border: none; cursor: pointer; padding: 4px; font-size: 1.1rem;">✏️</button>
+                        <button type="button" class="btn-icon-only text-danger" onclick="eliminarRemesa(${r.id})" title="Eliminar Remesa" style="background: transparent; border: none; cursor: pointer; padding: 4px; font-size: 1.1rem;">🗑️</button>
+                    </div>
+                </td>
             `;
             els.remesasTableBody.appendChild(tr);
         });
@@ -1469,6 +1542,44 @@ async function registrarRemesa() {
         alert("Error al registrar remesa: " + err.message);
     }
 }
+
+// Remesa Edit and Delete functions
+async function eliminarRemesa(id) {
+    if (!confirm("¿Estás seguro de que deseas eliminar esta remesa del historial? Esta acción no se puede deshacer.")) return;
+    try {
+        await apiCall(`/remesas/${id}`, 'DELETE');
+        alert("Remesa eliminada correctamente.");
+        await initDashboard();
+    } catch (err) {
+        alert("Error al eliminar remesa: " + err.message);
+    }
+}
+
+function iniciarEditarRemesa(id) {
+    const r = (state.rawRemesas || []).find(rem => rem.id === id);
+    if (!r) return;
+    
+    document.getElementById('edit-remesa-id').value = r.id;
+    document.getElementById('edit-remesa-cliente').value = r.cliente_nombre;
+    document.getElementById('edit-remesa-monto-usd').value = r.monto_usd;
+    document.getElementById('edit-remesa-tasa-p2p').value = r.tasa_p2p;
+    document.getElementById('edit-remesa-tasa-cliente').value = r.tasa_cliente;
+    document.getElementById('edit-remesa-metodo-pago').value = r.metodo_pago;
+    document.getElementById('edit-remesa-banco-receptor').value = r.banco_receptor;
+    document.getElementById('edit-remesa-costo-adquisicion').value = r.costo_adquisicion_usdt * 100;
+    document.getElementById('edit-remesa-comision-binance').value = r.comision_binance * 100;
+    
+    document.getElementById('modal-editar-remesa').classList.remove('hidden');
+}
+
+function cerrarModalEditarRemesa() {
+    document.getElementById('modal-editar-remesa').classList.add('hidden');
+}
+
+// Bind to window
+window.eliminarRemesa = eliminarRemesa;
+window.iniciarEditarRemesa = iniciarEditarRemesa;
+window.cerrarModalEditarRemesa = cerrarModalEditarRemesa;
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
