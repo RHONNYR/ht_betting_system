@@ -602,6 +602,44 @@ def get_remesas(username: str = Depends(get_current_user), db: Session = Depends
         })
     return result
 
+@app.put("/api/remesas/{remesa_id}")
+def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    remesa = db.query(HistorialRemesas).filter(HistorialRemesas.id == remesa_id).first()
+    if not remesa:
+        raise HTTPException(status_code=404, detail="Remesa no encontrada.")
+    
+    # Auto-add client if not exists
+    cliente_nombre_clean = req.cliente_nombre.strip()
+    if cliente_nombre_clean:
+        existing_cliente = db.query(Cliente).filter(Cliente.nombre == cliente_nombre_clean).first()
+        if not existing_cliente:
+            new_cliente = Cliente(nombre=cliente_nombre_clean, genero=req.cliente_genero)
+            db.add(new_cliente)
+            db.commit()
+
+    remesa.cliente_nombre = req.cliente_nombre
+    remesa.monto_usd = req.monto_usd
+    remesa.tasa_p2p = req.tasa_p2p
+    remesa.tasa_cliente = req.tasa_cliente
+    remesa.monto_ves = req.monto_ves
+    remesa.ganancia_usd = req.ganancia_usd
+    remesa.metodo_pago = req.metodo_pago
+    remesa.banco_receptor = req.banco_receptor
+    remesa.costo_adquisicion_usdt = req.costo_adquisicion_usdt
+    remesa.comision_binance = req.comision_binance
+    
+    db.commit()
+    return {"message": "Remesa actualizada correctamente."}
+
+@app.delete("/api/remesas/{remesa_id}")
+def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    remesa = db.query(HistorialRemesas).filter(HistorialRemesas.id == remesa_id).first()
+    if not remesa:
+        raise HTTPException(status_code=404, detail="Remesa no encontrada.")
+    db.delete(remesa)
+    db.commit()
+    return {"message": "Remesa eliminada correctamente."}
+
 @app.get("/api/clientes")
 def get_clientes(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     clientes = db.query(Cliente).order_by(Cliente.nombre.asc()).all()
