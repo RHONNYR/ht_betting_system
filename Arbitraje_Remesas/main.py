@@ -724,6 +724,23 @@ def on_startup():
                 # If column already exists or any SQLite error, ignore
                 pass
                 
+            # 5. Seed default Clientes if not present
+            try:
+                default_clientes = [
+                    {"nombre": "Solanda", "genero": "Femenino"},
+                    {"nombre": "Aristides", "genero": "Masculino"},
+                    {"nombre": "Anaisabel", "genero": "Femenino"}
+                ]
+                for cl in default_clientes:
+                    existing = db.query(Cliente).filter(Cliente.nombre == cl["nombre"]).first()
+                    if not existing:
+                        new_cl = Cliente(nombre=cl["nombre"], genero=cl["genero"])
+                        db.add(new_cl)
+                        db.commit()
+                        print(f"Migration: Added default client '{cl['nombre']}'")
+            except Exception as e:
+                print(f"Error seeding default clients: {e}")
+                
             db.commit()
             db.close()
             print("Database updates completed successfully.")
