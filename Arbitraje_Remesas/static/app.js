@@ -81,9 +81,11 @@ const els = {
     agendaEditId: document.getElementById('agenda-edit-id'),
     agendaEditNombre: document.getElementById('agenda-edit-nombre'),
     agendaEditTelefono: document.getElementById('agenda-edit-telefono'),
+    agendaEditGenero: document.getElementById('agenda-edit-genero'),
     agendaQuickAddForm: document.getElementById('agenda-quick-add-form'),
     agendaNuevoNombre: document.getElementById('agenda-nuevo-nombre'),
     agendaNuevoTelefono: document.getElementById('agenda-nuevo-telefono'),
+    agendaNuevoGenero: document.getElementById('agenda-nuevo-genero'),
     agendaBuscar: document.getElementById('agenda-buscar'),
     agendaContactsList: document.getElementById('agenda-contacts-list'),
     remesaMontoUsd: document.getElementById('remesa-monto-usd'),
@@ -857,9 +859,10 @@ function setupEventListeners() {
             e.preventDefault();
             const nombre = els.agendaNuevoNombre.value.trim();
             const telefono = els.agendaNuevoTelefono.value.trim();
+            const genero = els.agendaNuevoGenero.value;
             
             try {
-                await apiCall('/clientes', 'POST', { nombre, telefono: telefono || null });
+                await apiCall('/clientes', 'POST', { nombre, telefono: telefono || null, genero });
                 els.agendaQuickAddForm.reset();
                 await loadClientes();
                 renderAgenda(els.agendaBuscar.value);
@@ -887,9 +890,10 @@ function setupEventListeners() {
             const clienteId = els.agendaEditId.value;
             const nombre = els.agendaEditNombre.value.trim();
             const telefono = els.agendaEditTelefono.value.trim();
+            const genero = els.agendaEditGenero.value;
             
             try {
-                await apiCall(`/clientes/${clienteId}`, 'PUT', { nombre, telefono: telefono || null });
+                await apiCall(`/clientes/${clienteId}`, 'PUT', { nombre, telefono: telefono || null, genero });
                 closeModal(els.modalEditarCliente);
                 await loadClientes();
                 renderAgenda(els.agendaBuscar.value);
@@ -1037,7 +1041,7 @@ function renderAgenda(filterText = '') {
         const row = document.createElement('div');
         row.className = 'contact-row';
         
-        const genderEmoji = getGenderEmoji(c.nombre);
+        const genderEmoji = c.genero === 'Femenino' ? '👩' : '👨';
         const avatarBg = genderEmoji === '👩' 
             ? 'linear-gradient(135deg, #ec4899, #a855f7)' // Pink-purple
             : 'linear-gradient(135deg, #3b82f6, #06b6d4)'; // Blue-cyan
@@ -1072,6 +1076,7 @@ function renderAgenda(filterText = '') {
             els.agendaEditId.value = c.id;
             els.agendaEditNombre.value = c.nombre;
             els.agendaEditTelefono.value = c.telefono || '';
+            els.agendaEditGenero.value = c.genero || 'Masculino';
             openModal(els.modalEditarCliente);
         });
         
@@ -1115,7 +1120,7 @@ function showAutocompleteDropdown(filterText) {
     filtered.forEach(c => {
         const item = document.createElement('div');
         item.className = 'autocomplete-item';
-        const genderEmoji = getGenderEmoji(c.nombre);
+        const genderEmoji = c.genero === 'Femenino' ? '👩' : '👨';
         item.innerHTML = `
             <div class="contact-info">
                 <span>${genderEmoji}</span>
