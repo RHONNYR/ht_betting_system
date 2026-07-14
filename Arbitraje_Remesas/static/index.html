@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="stylesheet" href="styles.css?v=22">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -241,11 +241,15 @@
                                 <div class="grid-2col-form">
                                     <div class="input-group">
                                         <label for="remesa-cliente">Nombre del Cliente</label>
-                                        <div class="flex-row-align">
+                                        <div class="flex-row-align" style="gap: 0.35rem;">
                                             <div style="position: relative; flex-grow: 1;">
                                                 <input type="text" id="remesa-cliente" required placeholder="Ej. Juan Pérez" autocomplete="off" style="width: 100%;">
                                                 <div id="autocomplete-clientes-list" class="autocomplete-dropdown hidden"></div>
                                             </div>
+                                            <select id="remesa-cliente-genero" style="padding: 0.75rem 0.5rem; font-size: 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-primary); cursor: pointer;" title="Género del cliente para avatar">
+                                                <option value="Masculino">👨</option>
+                                                <option value="Femenino">👩</option>
+                                            </select>
                                             <button type="button" id="btn-abrir-agenda" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 1rem;" title="Abrir Agenda de Clientes">📖</button>
                                         </div>
                                     </div>
@@ -717,6 +721,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=21"></script>
+    <script src="app.js?v=22"></script>
 </body>
 </html>
