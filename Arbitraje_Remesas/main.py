@@ -607,26 +607,6 @@ def get_clientes(username: str = Depends(get_current_user), db: Session = Depend
     clientes = db.query(Cliente).order_by(Cliente.nombre.asc()).all()
     return [{"id": c.id, "nombre": c.nombre, "telefono": c.telefono, "genero": c.genero} for c in clientes]
 
-@app.get("/api/test-db-error")
-def test_db_error(db: Session = Depends(get_db)):
-    try:
-        res = db.query(Cliente).all()
-        return {"status": "ok", "count": len(res)}
-    except Exception as e:
-        import traceback
-        return {"status": "error", "error": str(e), "traceback": traceback.format_exc()}
-
-@app.get("/api/run-migration")
-def run_migration():
-    try:
-        from sqlalchemy import text
-        with engine.begin() as conn:
-            conn.execute(text("ALTER TABLE clientes ADD COLUMN genero VARCHAR DEFAULT 'Masculino'"))
-        return {"status": "success", "message": "ALTER TABLE completed successfully."}
-    except Exception as e:
-        import traceback
-        return {"status": "error", "error": str(e), "traceback": traceback.format_exc()}
-
 @app.post("/api/clientes")
 def create_cliente(req: ClienteCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     nombre_clean = req.nombre.strip()
