@@ -741,6 +741,28 @@ def on_startup():
             except Exception as e:
                 print(f"Error seeding default clients: {e}")
                 
+            # 6. Import historical client names from HistorialRemesas to Cliente table if not present
+            try:
+                from database import HistorialRemesas
+                remesa_names = db.query(HistorialRemesas.cliente_nombre).distinct().all()
+                imported_count = 0
+                for r_name in remesa_names:
+                    name = r_name[0]
+                    if name:
+                        name_clean = name.strip()
+                        if name_clean:
+                            existing = db.query(Cliente).filter(Cliente.nombre == name_clean).first()
+                            if not existing:
+                                gender = get_default_gender(name_clean)
+                                new_cl = Cliente(nombre=name_clean, genero=gender)
+                                db.add(new_cl)
+                                imported_count += 1
+                if imported_count > 0:
+                    db.commit()
+                    print(f"Migration: Imported {imported_count} historical clients from remesas history.")
+            except Exception as e:
+                print(f"Error importing historical clients: {e}")
+                
             db.commit()
             db.close()
             print("Database updates completed successfully.")
