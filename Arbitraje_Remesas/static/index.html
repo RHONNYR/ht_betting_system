@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=25">
+    <link rel="stylesheet" href="styles.css?v=26">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -505,6 +505,7 @@
                                             <th>Adq. USDT</th>
                                             <th>Comisión Bin.</th>
                                             <th>Ganancia ($)</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="remesas-table-body">
@@ -702,6 +703,76 @@
         </div>
     </div>
 
+    <!-- MODAL: EDITAR REMESA -->
+    <div id="modal-editar-remesa" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 500px; width: 90%;">
+            <div class="flex-row-space-between mb-3">
+                <h3 style="margin:0;">✏️ Editar Remesa</h3>
+                <button type="button" id="btn-close-modal-editar-remesa" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">✕</button>
+            </div>
+            <form id="remesa-edit-form">
+                <input type="hidden" id="edit-remesa-id">
+                
+                <div class="grid-2col-form">
+                    <div class="input-group">
+                        <label for="edit-remesa-cliente">Nombre del Cliente</label>
+                        <input type="text" id="edit-remesa-cliente" required placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-monto-usd">Monto Enviado (USD)</label>
+                        <input type="number" step="any" id="edit-remesa-monto-usd" required placeholder="Ej. 100">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-tasa-p2p">Tasa P2P (VES/USDT)</label>
+                        <input type="number" step="any" id="edit-remesa-tasa-p2p" required placeholder="Ej. 38.50">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-tasa-cliente">Tasa Ofrecida (VES/$)</label>
+                        <input type="number" step="any" id="edit-remesa-tasa-cliente" required placeholder="Ej. 37.20">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-metodo-pago">Método Recibo USD</label>
+                        <select id="edit-remesa-metodo-pago">
+                            <option value="Zelle">Zelle</option>
+                            <option value="Zinli">Zinli</option>
+                            <option value="Cash (Margarita)">Cash (Margarita)</option>
+                            <option value="Cash (Caracas)">Cash (Caracas)</option>
+                            <option value="Mony">Mony</option>
+                            <option value="Paypal">Paypal</option>
+                            <option value="Binance Pay">Binance Pay</option>
+                            <option value="Transferencia Panamá">Transferencia Panamá</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-banco-receptor">Banco Emisor VES</label>
+                        <select id="edit-remesa-banco-receptor">
+                            <option value="Provincial">Provincial</option>
+                            <option value="Banesco">Banesco</option>
+                            <option value="Pago Móvil">Pago Móvil</option>
+                            <option value="Mercantil">Mercantil</option>
+                            <option value="BDV">BDV</option>
+                            <option value="BNC">BNC</option>
+                            <option value="Bancaribe">Bancaribe</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-costo-adquisicion">Adquisición USDT (%)</label>
+                        <input type="number" step="any" id="edit-remesa-costo-adquisicion" required placeholder="Ej. 2.0">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit-remesa-comision-binance">Binance Fee (%)</label>
+                        <input type="number" step="any" id="edit-remesa-comision-binance" required placeholder="Ej. 0.25">
+                    </div>
+                </div>
+
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btn-cancelar-modal-editar-remesa" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- MODAL: CAMBIAR CONTRASEÑA -->
     <div id="modal-password" class="modal hidden">
         <div class="modal-content glass-card">
@@ -723,6 +794,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=25"></script>
+    <script src="app.js?v=26"></script>
 </body>
 </html>
