@@ -59,7 +59,18 @@ const els = {
     btnCalcConsultarP2p: document.getElementById('btn-calc-consultar-p2p'),
     btnCalcularCiclo: document.getElementById('btn-calcular-ciclo'),
     btnGuardarCiclo: document.getElementById('btn-guardar-ciclo'),
+    btnAbrirSobreCiclo: document.getElementById('btn-abrir-sobre-ciclo'),
+    activeEnvelopesCard: document.getElementById('active-envelopes-card'),
+    activeEnvelopesList: document.getElementById('active-envelopes-list'),
     calcResultsPreview: document.getElementById('calc-results-preview'),
+    
+    // Envelopes Modals
+    modalCompraParcial: document.getElementById('modal-compra-parcial'),
+    compraParcialForm: document.getElementById('compra-parcial-form'),
+    btnCloseModalCompraParcial: document.getElementById('btn-close-modal-compra-parcial'),
+    modalPivotVes: document.getElementById('modal-pivot-ves'),
+    pivotVesForm: document.getElementById('pivot-ves-form'),
+    btnCloseModalPivotVes: document.getElementById('btn-close-modal-pivot-ves'),
     
     // History Tab
     ciclosTableBody: document.getElementById('ciclos-table-body'),
@@ -215,6 +226,7 @@ async function initDashboard() {
     await loadCapital();
     await loadTitularesAndCards();
     await loadCiclos();
+    await loadActiveEnvelopes();
     await loadCompras();
     await loadCapitalSnapshots();
     await loadRemesas();
@@ -680,6 +692,7 @@ async function handleGuardarCiclo() {
         // Reset form
         els.calcForm.reset();
         els.btnGuardarCiclo.classList.add('hidden');
+        if (els.btnAbrirSobreCiclo) els.btnAbrirSobreCiclo.classList.add('hidden');
         els.calcResultsPreview.innerHTML = `
             <div class="empty-state">
                 <span class="large-icon">📊</span>
@@ -696,6 +709,231 @@ async function handleGuardarCiclo() {
     }
 }
 
+async function handleAbrirSobreCiclo() {
+    if (!state.currentCalculatedCiclo) return;
+    
+    // Set status to "abierto"
+    const openCicloData = {
+        ...state.currentCalculatedCiclo,
+        status: "abierto",
+        bolivares_sobre_restantes: state.currentCalculatedCiclo.usdt_vendidos * 0.9975 * state.currentCalculatedCiclo.tasa_venta,
+        divisas_compradas: 0.0,
+        usd_procesados_binance: 0.0,
+        usd_recibidos_binance: 0.0,
+        comision_compra_ves: 0.0,
+        transferencias_ves: 0.0,
+        ganancia_usd: 0.0,
+        ganancia_porcentaje: 0.0,
+        bolivares_restantes: state.currentCalculatedCiclo.usdt_vendidos * 0.9975 * state.currentCalculatedCiclo.tasa_venta
+    };
+    
+    // Link selected card
+    if (els.calcTarjetaCompra && els.calcTarjetaCompra.selectedIndex >= 0) {
+        const selectedOption = els.calcTarjetaCompra.options[els.calcTarjetaCompra.selectedIndex];
+        if (selectedOption) {
+            openCicloData.tarjeta_id = parseInt(selectedOption.value);
+        }
+    }
+    
+    try {
+        await apiCall('/ciclos', 'POST', openCicloData);
+        alert("Ciclo fraccionado iniciado. El sobre de bolívares se encuentra activo.");
+        
+        // Reset form
+        els.calcForm.reset();
+        els.btnGuardarCiclo.classList.add('hidden');
+        if (els.btnAbrirSobreCiclo) els.btnAbrirSobreCiclo.classList.add('hidden');
+        els.calcResultsPreview.innerHTML = `
+            <div class="empty-state">
+                <span class="large-icon">📊</span>
+                <p>Introduce los datos y presiona "Calcular Ciclo" para ver los resultados.</p>
+            </div>
+        `;
+        
+        state.currentCalculatedCiclo = null;
+        
+        // Reload all data
+        await initDashboard();
+    } catch (err) {
+        alert("Error al iniciar ciclo: " + err.message);
+    }
+}
+
+async function loadActiveEnvelopes() {
+    try {
+        const activos = await apiCall('/ciclos/activos');
+        if (activos.length > 0) {
+            els.activeEnvelopesCard.classList.remove('hidden');
+            els.activeEnvelopesList.innerHTML = '';
+            
+            activos.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'envelope-item-row';
+                div.style.background = 'rgba(255, 255, 255, 0.02)';
+                div.style.border = '1px solid var(--border-color)';
+                div.style.borderRadius = '10px';
+                div.style.padding = '1rem';
+                div.style.display = 'flex';
+                div.style.flexDirection = 'column';
+                div.style.gap = '0.75rem';
+                
+                const initialVES = c.usdt_vendidos * 0.9975 * c.tasa_venta;
+                const progressPct = initialVES > 0 ? ((initialVES - c.bolivares_sobre_restantes) / initialVES) * 100 : 0;
+                
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">📁 Sobre #${c.id} (${c.banco_venta})</span>
+                        <span style="font-size: 0.72rem; color: var(--text-secondary);">Tasa venta P2P: ${c.tasa_venta.toFixed(2)} Bs</span>
+                    </div>
+                    
+                    <div style="font-size: 0.82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.25rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Bolívares Remanentes:</span>
+                            <strong style="color: var(--text-primary);">${c.bolivares_sobre_restantes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Dólares acumulados:</span>
+                            <strong style="color: var(--text-success);">$${c.divisas_compradas.toFixed(2)} USD</strong>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden;">
+                        <div style="width: ${progressPct.toFixed(1)}%; height: 100%; background: var(--primary-color);"></div>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.25rem;">
+                        <button class="btn btn-secondary" onclick="openPartialBuy(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500;">➕ Compra</button>
+                        <button class="btn btn-secondary" onclick="openPivotVES(${c.id}, ${c.bolivares_sobre_restantes})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500;">🔄 Pivotar</button>
+                        <button class="btn btn-danger" onclick="closeEnvelopeManual(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🔒 Cerrar</button>
+                    </div>
+                `;
+                els.activeEnvelopesList.appendChild(div);
+            });
+        } else {
+            els.activeEnvelopesCard.classList.add('hidden');
+        }
+    } catch (err) {
+        console.error("Error loading active envelopes:", err);
+    }
+}
+
+window.openPartialBuy = function(cicloId) {
+    document.getElementById('compra-parcial-ciclo-id').value = cicloId;
+    document.getElementById('compra-parcial-usd').value = '';
+    document.getElementById('compra-parcial-tasa').value = state.bcvRate;
+    openModal(els.modalCompraParcial);
+};
+
+window.openPivotVES = function(cicloId, maxMonto) {
+    document.getElementById('pivot-ves-ciclo-id').value = cicloId;
+    document.getElementById('pivot-ves-monto').value = '';
+    document.getElementById('pivot-ves-monto').max = maxMonto;
+    
+    // Populate cards
+    const targetSelect = document.getElementById('pivot-ves-tarjeta-destino');
+    if (targetSelect && els.calcTarjetaCompra) {
+        targetSelect.innerHTML = els.calcTarjetaCompra.innerHTML;
+    }
+    
+    openModal(els.modalPivotVes);
+};
+
+window.closeEnvelopeManual = async function(cicloId) {
+    if (!confirm("¿Estás seguro de que deseas cerrar este sobre manualmente? Los bolívares remanentes se registrarán en cero y se consolidará la ganancia final del ciclo.")) return;
+    try {
+        await apiCall(`/ciclos/${cicloId}/close`, 'POST');
+        alert("Ciclo cerrado exitosamente.");
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
+async function handleCompraParcialSubmit(e) {
+    e.preventDefault();
+    const cicloId = parseInt(document.getElementById('compra-parcial-ciclo-id').value);
+    const usd = parseFloat(document.getElementById('compra-parcial-usd').value);
+    const tasa = parseFloat(document.getElementById('compra-parcial-tasa').value);
+    const applyPm = document.getElementById('compra-parcial-pago-movil').checked;
+    
+    if (isNaN(usd) || isNaN(tasa) || usd <= 0 || tasa <= 0) {
+        alert("Por favor introduce montos válidos.");
+        return;
+    }
+    
+    let cardComisionPct = 0.0;
+    let isTerceraEdad = false;
+    
+    try {
+        const activos = await apiCall('/ciclos/activos');
+        const c = activos.find(item => item.id === cicloId);
+        if (c && c.tarjeta_id) {
+            const option = els.calcTarjetaCompra.querySelector(`option[value="${c.tarjeta_id}"]`);
+            if (option) {
+                cardComisionPct = parseFloat(option.getAttribute('data-comision')) || 0.0;
+                isTerceraEdad = option.getAttribute('data-tercera-edad') === 'true';
+            }
+        }
+    } catch (err) {
+        console.error("Error retrieving active card details:", err);
+    }
+    
+    const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+    const costoBaseVES = usd * tasa;
+    const comisionCompraVES = costoBaseVES * compraComisionPct;
+    const transferenciasVes = applyPm ? (costoBaseVES * 0.003) : 0.0;
+    
+    const binanceDepositFeePct = 0.041; // 4.1%
+    const usdNetosRecibidosBinance = usd * (1 - cardComisionPct) * (1 - binanceDepositFeePct);
+    
+    const payload = {
+        usd_comprados: usd,
+        usd_procesados: usd,
+        tasa_bcv: tasa,
+        comision_compra_ves: comisionCompraVES,
+        transferencias_ves: transferenciasVes,
+        usd_recibidos_binance: usdNetosRecibidosBinance
+    };
+    
+    try {
+        const res = await apiCall(`/ciclos/${cicloId}/compras`, 'POST', payload);
+        alert(res.message);
+        closeModal(els.modalCompraParcial);
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+async function handlePivotVESSubmit(e) {
+    e.preventDefault();
+    const cicloId = parseInt(document.getElementById('pivot-ves-ciclo-id').value);
+    const monto = parseFloat(document.getElementById('pivot-ves-monto').value);
+    const cardDestinoId = parseInt(document.getElementById('pivot-ves-tarjeta-destino').value);
+    
+    if (isNaN(monto) || monto <= 0 || isNaN(cardDestinoId)) {
+        alert("Por favor ingresa montos y tarjeta de destino válidos.");
+        return;
+    }
+    
+    const transferFeeVES = monto * 0.003;
+    
+    try {
+        await apiCall(`/ciclos/${cicloId}/pivot`, 'POST', {
+            tarjeta_destino_id: cardDestinoId,
+            monto_ves_transferido: monto,
+            comision_transferencia_ves: transferFeeVES
+        });
+        alert("Transferencia interbancaria registrada y vinculada a la nueva tarjeta con éxito.");
+        closeModal(els.modalPivotVes);
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
 // Historial tabs loads
 async function loadCiclos() {
     try {
@@ -708,11 +946,15 @@ async function loadCiclos() {
             const tr = document.createElement('tr');
             const profitClass = c.ganancia_usd >= 0 ? 'text-success' : 'text-danger';
             
+            const statusBadge = c.status === 'abierto' 
+                ? ` <span class="badge" style="font-size: 0.7rem; background: rgba(245,158,11,0.15); color: #f59e0b; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(245,158,11,0.3);">Abierto</span>`
+                : '';
+            
             tr.innerHTML = `
                 <td>${c.fecha}</td>
                 <td>${c.usdt_vendidos.toFixed(2)}</td>
                 <td>${c.tasa_venta.toFixed(2)}</td>
-                <td>${c.banco_venta}</td>
+                <td>${c.banco_venta}${statusBadge}</td>
                 <td>$${c.divisas_compradas.toFixed(2)}</td>
                 <td>${c.tasa_bcv.toFixed(2)}</td>
                 <td>$${c.usd_recibidos_binance.toFixed(2)}</td>
@@ -846,6 +1088,9 @@ function setupEventListeners() {
     // Calculator
     els.btnCalcularCiclo.addEventListener('click', handleCalcularCiclo);
     els.btnGuardarCiclo.addEventListener('click', handleGuardarCiclo);
+    if (els.btnAbrirSobreCiclo) {
+        els.btnAbrirSobreCiclo.addEventListener('click', handleAbrirSobreCiclo);
+    }
     if (els.btnCalcConsultarP2p) {
         els.btnCalcConsultarP2p.addEventListener('click', handleCalcConsultarP2P);
     }
@@ -869,6 +1114,20 @@ function setupEventListeners() {
     els.calcForm.addEventListener('reset', () => {
         state.divisasCompradasManuallyEdited = false;
     });
+    
+    // Envelopes Modals Event Listeners
+    if (els.compraParcialForm) {
+        els.compraParcialForm.addEventListener('submit', handleCompraParcialSubmit);
+    }
+    if (els.btnCloseModalCompraParcial) {
+        els.btnCloseModalCompraParcial.addEventListener('click', () => closeModal(els.modalCompraParcial));
+    }
+    if (els.pivotVesForm) {
+        els.pivotVesForm.addEventListener('submit', handlePivotVESSubmit);
+    }
+    if (els.btnCloseModalPivotVes) {
+        els.btnCloseModalPivotVes.addEventListener('click', () => closeModal(els.modalPivotVes));
+    }
     
     // Add Titular / Card modals triggers
     els.btnAddTitular.addEventListener('click', () => openModal(els.modalTitular));
