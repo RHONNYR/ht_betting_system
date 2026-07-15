@@ -681,6 +681,9 @@ function handleCalcularCiclo() {
     `;
     
     els.btnGuardarCiclo.classList.remove('hidden');
+    if (els.btnAbrirSobreCiclo) {
+        els.btnAbrirSobreCiclo.classList.remove('hidden');
+    }
 }
 
 async function handleGuardarCiclo() {
@@ -1113,6 +1116,8 @@ function setupEventListeners() {
     });
     els.calcForm.addEventListener('reset', () => {
         state.divisasCompradasManuallyEdited = false;
+        els.btnGuardarCiclo.classList.add('hidden');
+        if (els.btnAbrirSobreCiclo) els.btnAbrirSobreCiclo.classList.add('hidden');
     });
     
     // Envelopes Modals Event Listeners
