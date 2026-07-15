@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=26">
+    <link rel="stylesheet" href="styles.css?v=27">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -63,10 +63,17 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div class="bcv-widget">
+                <div class="bcv-widget" style="display: flex; align-items: center; gap: 0.5rem;">
                     <span class="bcv-label">Tasa BCV:</span>
                     <span id="bcv-rate-display" class="bcv-value">--.-- Bs</span>
                     <span id="bcv-source" class="badge">Oficial</span>
+                    
+                    <!-- Capsule toggles for today / tomorrow -->
+                    <div id="bcv-toggles" class="hidden" style="display: flex; gap: 3px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 2px; border-radius: 6px; margin-left: 2px;">
+                        <button id="btn-bcv-today" style="font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; border: none; cursor: pointer; font-weight: 500; font-family: inherit; transition: all 0.2s;" title="Usar tasa de hoy">Hoy</button>
+                        <button id="btn-bcv-tomorrow" style="font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; border: none; cursor: pointer; font-weight: 500; font-family: inherit; transition: all 0.2s;" title="Usar tasa de mañana">Mañana</button>
+                    </div>
+                    
                     <button id="btn-edit-bcv" class="btn btn-icon" title="Editar tasa manual">✏️</button>
                 </div>
                 <button id="btn-change-password-modal" class="btn btn-secondary">🔑 Contraseña</button>
@@ -794,6 +801,6 @@
                 </div>
             </form>
         </div>
-    <script src="app.js?v=26"></script>
+    <script src="app.js?v=27"></script>
 </body>
 </html>
