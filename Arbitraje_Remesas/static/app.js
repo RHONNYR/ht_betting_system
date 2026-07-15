@@ -235,6 +235,37 @@ async function fetchBCV() {
         } else {
             els.bcvSource.className = 'badge text-glow text-success';
         }
+        
+        // Handle Toggles for Today/Tomorrow rate
+        const bcvToggles = document.getElementById('bcv-toggles');
+        const btnBcvToday = document.getElementById('btn-bcv-today');
+        const btnBcvTomorrow = document.getElementById('btn-bcv-tomorrow');
+        
+        if (bcvToggles && btnBcvToday && btnBcvTomorrow) {
+            if (data.has_tomorrow && state.bcvSource !== 'Manual') {
+                bcvToggles.classList.remove('hidden');
+                
+                // Style Today button
+                if (data.active_mode === 'today') {
+                    btnBcvToday.style.background = 'var(--primary-color)';
+                    btnBcvToday.style.color = '#ffffff';
+                    btnBcvTomorrow.style.background = 'var(--bg-hover)';
+                    btnBcvTomorrow.style.color = 'var(--text-secondary)';
+                } else {
+                    btnBcvToday.style.background = 'var(--bg-hover)';
+                    btnBcvToday.style.color = 'var(--text-secondary)';
+                    btnBcvTomorrow.style.background = 'var(--primary-color)';
+                    btnBcvTomorrow.style.color = '#ffffff';
+                }
+                
+                // Set titles to show rates on hover
+                btnBcvToday.title = `Usar tasa de hoy: ${data.today_rate.toFixed(2)} Bs`;
+                btnBcvTomorrow.title = `Usar tasa de mañana: ${data.tomorrow_rate.toFixed(2)} Bs`;
+            } else {
+                bcvToggles.classList.add('hidden');
+            }
+        }
+        
         updateSuggestedDivisas();
     } catch (err) {
         console.error("Error fetching BCV:", err);
@@ -681,6 +712,30 @@ function setupEventListeners() {
             alert(err.message);
         }
     });
+    
+    // BCV Toggles click handlers
+    const btnBcvToday = document.getElementById('btn-bcv-today');
+    const btnBcvTomorrow = document.getElementById('btn-bcv-tomorrow');
+    if (btnBcvToday) {
+        btnBcvToday.addEventListener('click', async () => {
+            try {
+                await apiCall('/bcv/mode', 'POST', { mode: 'today' });
+                await initDashboard();
+            } catch (err) {
+                alert(err.message);
+            }
+        });
+    }
+    if (btnBcvTomorrow) {
+        btnBcvTomorrow.addEventListener('click', async () => {
+            try {
+                await apiCall('/bcv/mode', 'POST', { mode: 'tomorrow' });
+                await initDashboard();
+            } catch (err) {
+                alert(err.message);
+            }
+        });
+    }
     
     // Navigation Tabs
     els.tabLinks.forEach(link => link.addEventListener('click', handleTabSwitch));
