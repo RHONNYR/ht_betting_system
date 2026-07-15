@@ -76,6 +76,25 @@ class HistorialCiclos(Base):
     ganancia_usd = Column(Float)
     ganancia_porcentaje = Column(Float)
     bolivares_restantes = Column(Float)
+    status = Column(String, default="completado")  # "abierto" or "completado"
+    bolivares_sobre_restantes = Column(Float, default=0.0)
+    tarjeta_id = Column(Integer, nullable=True)
+    
+    compras_parciales = relationship("CompraCicloParcial", back_populates="ciclo", cascade="all, delete-orphan")
+
+class CompraCicloParcial(Base):
+    __tablename__ = "compras_ciclos_parciales"
+    id = Column(Integer, primary_key=True, index=True)
+    ciclo_id = Column(Integer, ForeignKey("historial_ciclos.id", ondelete="CASCADE"))
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    usd_comprados = Column(Float)
+    usd_procesados = Column(Float)
+    tasa_bcv = Column(Float)
+    comision_compra_ves = Column(Float)
+    transferencias_ves = Column(Float)
+    usd_recibidos_binance = Column(Float)
+    
+    ciclo = relationship("HistorialCiclos", back_populates="compras_parciales")
 
 class DistribucionCapital(Base):
     __tablename__ = "distribucion_capital"
