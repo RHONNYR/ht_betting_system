@@ -43,6 +43,8 @@ class BCVState:
         self.last_fetch = None
         self.cached_rate = 36.50  # fallback baseline
         self.active_mode = "tomorrow"  # "today" or "tomorrow"
+        self.cached_today_rate = None
+        self.cached_tomorrow_rate = None
 
 bcv_state = BCVState()
 
@@ -172,6 +174,13 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Security(securi
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido o expirado")
 
 def fetch_both_bcv_rates():
+    # Cache check (30 minutes)
+    now = get_venezuela_time()
+    if bcv_state.last_fetch and bcv_state.cached_today_rate and bcv_state.cached_tomorrow_rate:
+        diff = (now - bcv_state.last_fetch).total_seconds()
+        if diff < 1800:  # 30 minutes
+            return bcv_state.cached_today_rate, bcv_state.cached_tomorrow_rate
+
     rate_site = None
     rate_api = None
     
@@ -207,6 +216,8 @@ def fetch_both_bcv_rates():
 
     # Fallbacks and baseline cache update
     if not rate_site and not rate_api:
+        if bcv_state.cached_today_rate and bcv_state.cached_tomorrow_rate:
+            return bcv_state.cached_today_rate, bcv_state.cached_tomorrow_rate
         return bcv_state.cached_rate, bcv_state.cached_rate
         
     if not rate_site:
@@ -215,7 +226,9 @@ def fetch_both_bcv_rates():
         rate_api = rate_site
 
     bcv_state.cached_rate = rate_site
-    bcv_state.last_fetch = get_venezuela_time()
+    bcv_state.cached_today_rate = rate_api
+    bcv_state.cached_tomorrow_rate = rate_site
+    bcv_state.last_fetch = now
     
     return rate_api, rate_site
 
