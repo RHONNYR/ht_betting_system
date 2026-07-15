@@ -726,6 +726,43 @@ def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user),
     db.commit()
     return {"message": "Ciclo cerrado manualmente", "status": ciclo.status}
 
+@app.delete("/api/ciclos/compras/{compra_id}")
+def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    compra = db.query(CompraCicloParcial).filter(CompraCicloParcial.id == compra_id).first()
+    if not compra:
+        raise HTTPException(status_code=404, detail="Compra parcial no encontrada")
+        
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == compra.ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    costo_ves = compra.usd_comprados * compra.tasa_bcv
+    total_ves_gastado = costo_ves + compra.comision_compra_ves + compra.transferencias_ves
+    
+    initial_ves = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
+    ciclo.bolivares_sobre_restantes = min(initial_ves, ciclo.bolivares_sobre_restantes + total_ves_gastado)
+    
+    ciclo.divisas_compradas = max(0.0, ciclo.divisas_compradas - compra.usd_comprados)
+    ciclo.usd_procesados_binance = max(0.0, ciclo.usd_procesados_binance - compra.usd_procesados)
+    ciclo.usd_recibidos_binance = max(0.0, ciclo.usd_recibidos_binance - compra.usd_recibidos_binance)
+    ciclo.comision_compra_ves = max(0.0, ciclo.comision_compra_ves - compra.comision_compra_ves)
+    ciclo.transferencias_ves = max(0.0, ciclo.transferencias_ves - compra.transferencias_ves)
+    
+    bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
+    
+    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
+    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    
+    if ciclo.bolivares_sobre_restantes > 0.01:
+        ciclo.status = "abierto"
+        
+    db.delete(compra)
+    db.commit()
+    
+    return {"message": "Compra parcial eliminada y saldo de sobre restaurado", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
+
 # Remittance Routes
 @app.post("/api/p2p-rate")
 def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user)):
