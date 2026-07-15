@@ -170,9 +170,11 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Security(securi
 def scrape_bcv_rate():
     # Method 1: Scraping official website
     try:
-        url = "http://www.bcv.org.ve/"
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        url = "https://www.bcv.org.ve/"
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-        res = requests.get(url, headers=headers, timeout=5)
+        res = requests.get(url, headers=headers, timeout=5, verify=False)
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, "html.parser")
             # The USD rate is inside a div with id 'dolar'
