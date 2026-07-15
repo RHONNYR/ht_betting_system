@@ -804,9 +804,28 @@ async function loadActiveEnvelopes() {
                     <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden;">
                         <div style="width: ${progressPct.toFixed(1)}%; height: 100%; background: var(--primary-color);"></div>
                     </div>
+
+                    <!-- Collapsible Purchases List -->
+                    ${c.compras_parciales && c.compras_parciales.length > 0 ? `
+                    <div style="border-top: 1px solid var(--border-color); padding-top: 0.5rem; margin-top: 0.25rem; width: 100%;">
+                        <details style="width: 100%;">
+                            <summary style="font-size: 0.78rem; color: var(--primary-color); cursor: pointer; user-select: none; font-weight: 500; outline: none;">
+                                📋 Compras registradas (${c.compras_parciales.length})
+                            </summary>
+                            <div style="display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.4rem; max-height: 110px; overflow-y: auto; padding-right: 0.25rem;">
+                                ${c.compras_parciales.map(cp => `
+                                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-secondary); background: rgba(0,0,0,0.15); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border-color);">
+                                        <span>$${cp.usd_comprados.toFixed(2)} a ${cp.tasa_bcv.toFixed(2)} Bs</span>
+                                        <button onclick="deletePartialBuy(${cp.id})" style="background: none; border: none; color: var(--text-danger); cursor: pointer; padding: 2px 4px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;" title="Eliminar compra">🗑️</button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </details>
+                    </div>
+                    ` : ''}
                     
                     <!-- Actions -->
-                    <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.25rem;">
+                    <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.25rem; width: 100%;">
                         <button class="btn btn-secondary" onclick="openPartialBuy(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500;">➕ Compra</button>
                         <button class="btn btn-secondary" onclick="openPivotVES(${c.id}, ${c.bolivares_sobre_restantes})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500;">🔄 Pivotar</button>
                         <button class="btn btn-danger" onclick="closeEnvelopeManual(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🔒 Cerrar</button>
@@ -848,6 +867,17 @@ window.closeEnvelopeManual = async function(cicloId) {
     try {
         await apiCall(`/ciclos/${cicloId}/close`, 'POST');
         alert("Ciclo cerrado exitosamente.");
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
+window.deletePartialBuy = async function(compraId) {
+    if (!confirm("¿Estás seguro de que deseas eliminar esta compra parcial? Se restarán los dólares acumulados y se restaurarán los bolívares al sobre.")) return;
+    try {
+        await apiCall(`/ciclos/compras/${compraId}`, 'DELETE');
+        alert("Compra parcial eliminada. Saldo restaurado con éxito.");
         await initDashboard();
     } catch (err) {
         alert(err.message);
