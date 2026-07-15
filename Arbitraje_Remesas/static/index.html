@@ -153,70 +153,86 @@
             <!-- TAB 2: CALCULADORA DE CICLOS -->
             <section id="tab-calculadora" class="tab-pane">
                 <div class="grid-2col">
-                    <!-- Calculator Inputs -->
-                    <div class="card glass-card">
-                        <div class="card-header">
-                            <h2>Calculadora Operativa de Ciclos</h2>
-                        </div>
-                        <div class="card-body">
-                            <form id="ciclo-calculator-form">
-                                <div class="grid-2col-form">
-                                    <div class="input-group">
-                                        <label for="calc-usdt-vendidos">USDT a Vender</label>
-                                        <input type="number" step="any" id="calc-usdt-vendidos" required placeholder="Monto USDT (Ej. 900)">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="calc-tasa-venta">Tasa de Venta (P2P)</label>
-                                        <div class="flex-row-align">
-                                            <input type="number" step="any" id="calc-tasa-venta" required placeholder="Tasa VES/USDT (Ej. 751.9)">
-                                            <button type="button" id="btn-calc-consultar-p2p" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 0.85rem;" title="Consultar Binance P2P en vivo">⚡ Consultar P2P</button>
+                    <!-- Calculator Inputs and Active Envelopes Stack -->
+                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h2>Calculadora Operativa de Ciclos</h2>
+                            </div>
+                            <div class="card-body">
+                                <form id="ciclo-calculator-form">
+                                    <div class="grid-2col-form">
+                                        <div class="input-group">
+                                            <label for="calc-usdt-vendidos">USDT a Vender</label>
+                                            <input type="number" step="any" id="calc-usdt-vendidos" required placeholder="Monto USDT (Ej. 900)">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-tasa-venta">Tasa de Venta (P2P)</label>
+                                            <div class="flex-row-align">
+                                                <input type="number" step="any" id="calc-tasa-venta" required placeholder="Tasa VES/USDT (Ej. 751.9)">
+                                                <button type="button" id="btn-calc-consultar-p2p" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 0.85rem;" title="Consultar Binance P2P en vivo">⚡ Consultar P2P</button>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-banco-venta">Banco receptor de bolívares</label>
+                                            <select id="calc-banco-venta" required>
+                                                <option value="Provincial">Provincial</option>
+                                                <option value="Venezuela">Venezuela</option>
+                                                <option value="Bancamiga">Bancamiga</option>
+                                                <option value="Banesco">Banesco</option>
+                                                <option value="Mercantil">Mercantil</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-rol-p2p">Rol en Binance P2P</label>
+                                            <select id="calc-rol-p2p" required>
+                                                <option value="maker">Maker (Anuncio, min. $100)</option>
+                                                <option value="taker">Taker (Vender directo)</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-tarjeta-compra">Tarjeta/Método de Compra</label>
+                                            <select id="calc-tarjeta-compra" required>
+                                                <!-- Dynamically populated from database cards -->
+                                            </select>
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-divisas-compradas">Divisas Compradas $</label>
+                                            <input type="number" step="any" id="calc-divisas-compradas" required placeholder="Monto en $ (Ej. 1000)">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-divisas-procesadas">Divisas Procesadas en Binance $</label>
+                                            <input type="number" step="any" id="calc-divisas-procesadas" required placeholder="Monto en $ (Ej. 995)">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="calc-transferencias-ves">Comisiones de Transferencias (VES)</label>
+                                            <input type="number" step="any" id="calc-transferencias-ves" value="0" placeholder="Ej. Pago móvil 0.3%">
+                                        </div>
+                                        <div class="input-group flex-row-align">
+                                            <label for="calc-pago-movil-auto">¿Aplicar 0.3% Pago Móvil auto?</label>
+                                            <input type="checkbox" id="calc-pago-movil-auto">
                                         </div>
                                     </div>
-                                    <div class="input-group">
-                                        <label for="calc-banco-venta">Banco receptor de bolívares</label>
-                                        <select id="calc-banco-venta" required>
-                                            <option value="Provincial">Provincial</option>
-                                            <option value="Venezuela">Venezuela</option>
-                                            <option value="Bancamiga">Bancamiga</option>
-                                            <option value="Banesco">Banesco</option>
-                                            <option value="Mercantil">Mercantil</option>
-                                        </select>
+                                    <div class="calc-actions mt-4" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                        <button type="button" id="btn-calcular-ciclo" class="btn btn-secondary btn-block">🧮 Calcular Ciclo</button>
+                                        <div class="flex-row-align" style="gap: 0.5rem; width: 100%;">
+                                            <button type="button" id="btn-guardar-ciclo" class="btn btn-success btn-block hidden" style="flex: 1; padding: 0.75rem 0.5rem; font-size: 0.82rem;">💾 Registrar al 100%</button>
+                                            <button type="button" id="btn-abrir-sobre-ciclo" class="btn btn-primary btn-block hidden" style="flex: 1; padding: 0.75rem 0.5rem; font-size: 0.82rem;">📂 Iniciar Ciclo Fraccionado</button>
+                                        </div>
                                     </div>
-                                    <div class="input-group">
-                                        <label for="calc-rol-p2p">Rol en Binance P2P</label>
-                                        <select id="calc-rol-p2p" required>
-                                            <option value="maker">Maker (Anuncio, min. $100)</option>
-                                            <option value="taker">Taker (Vender directo)</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="calc-tarjeta-compra">Tarjeta/Método de Compra</label>
-                                        <select id="calc-tarjeta-compra" required>
-                                            <!-- Dynamically populated from database cards -->
-                                        </select>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="calc-divisas-compradas">Divisas Compradas $</label>
-                                        <input type="number" step="any" id="calc-divisas-compradas" required placeholder="Monto en $ (Ej. 1000)">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="calc-divisas-procesadas">Divisas Procesadas en Binance $</label>
-                                        <input type="number" step="any" id="calc-divisas-procesadas" required placeholder="Monto en $ (Ej. 995)">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="calc-transferencias-ves">Comisiones de Transferencias (VES)</label>
-                                        <input type="number" step="any" id="calc-transferencias-ves" value="0" placeholder="Ej. Pago móvil 0.3%">
-                                    </div>
-                                    <div class="input-group flex-row-align">
-                                        <label for="calc-pago-movil-auto">¿Aplicar 0.3% Pago Móvil auto?</label>
-                                        <input type="checkbox" id="calc-pago-movil-auto">
-                                    </div>
-                                </div>
-                                <div class="calc-actions mt-4">
-                                    <button type="button" id="btn-calcular-ciclo" class="btn btn-secondary btn-block">🧮 Calcular Ciclo</button>
-                                    <button type="button" id="btn-guardar-ciclo" class="btn btn-primary btn-block hidden">💾 Registrar Ciclo en Bitácora</button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Active Envelopes (Ciclos Abiertos) -->
+                        <div id="active-envelopes-card" class="card glass-card hidden">
+                            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+                                <h2 style="font-size: 1.1rem; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 0.5rem;">📁 Sobres de Ciclos Activos</h2>
+                                <span class="badge text-success text-glow" style="font-size: 0.75rem; background: rgba(16,185,129,0.1); padding: 3px 8px; border-radius: 6px;">Pendientes</span>
+                            </div>
+                            <div class="card-body" id="active-envelopes-list" style="display: flex; flex-direction: column; gap: 1rem; padding: 0;">
+                                <!-- Dynamically populated open cycles -->
+                            </div>
                         </div>
                     </div>
 
@@ -801,6 +817,69 @@
                 </div>
             </form>
         </div>
+    <!-- Modal: Registrar Compra Parcial -->
+    <div id="modal-compra-parcial" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Registrar Compra Parcial (Banco)</h3>
+            <div style="background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-secondary);">
+                ℹ️ Esta compra se deducirá de tu sobre activo y recalculará la rentabilidad consolidada de este ciclo.
+            </div>
+            <form id="compra-parcial-form">
+                <input type="hidden" id="compra-parcial-ciclo-id">
+                
+                <div class="input-group">
+                    <label for="compra-parcial-usd">Dólares Aprobados/Comprados ($)</label>
+                    <input type="number" step="any" id="compra-parcial-usd" required placeholder="Ej. 175">
+                </div>
+                
+                <div class="input-group">
+                    <label for="compra-parcial-tasa">Tasa BCV Aplicada (Bs)</label>
+                    <input type="number" step="any" id="compra-parcial-tasa" required placeholder="Tasa del día (Hoy/Mañana)">
+                </div>
+                
+                <div class="input-group flex-row-align" style="gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
+                    <input type="checkbox" id="compra-parcial-pago-movil" checked style="width: auto;">
+                    <label for="compra-parcial-pago-movil" style="margin: 0;">¿Aplicar 0.3% Pago Móvil / Transferencia?</label>
+                </div>
+                
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Registrar Compra</button>
+                    <button type="button" id="btn-close-modal-compra-parcial" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Pivotar Bolívares (Transferir a otro banco) -->
+    <div id="modal-pivot-ves" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Transferir Bolívares Remanentes (Pivot)</h3>
+            <div style="background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-secondary);">
+                ℹ️ Se aplicará automáticamente una comisión por transferencia de <strong>0.3%</strong> sobre el monto enviado. Esto se deducirá de tu sobre y se sumará a los gastos de transferencia.
+            </div>
+            <form id="pivot-ves-form">
+                <input type="hidden" id="pivot-ves-ciclo-id">
+                
+                <div class="input-group">
+                    <label for="pivot-ves-monto">Monto de Bolívares a Transferir (VES)</label>
+                    <input type="number" step="any" id="pivot-ves-monto" required placeholder="Monto a mover de este sobre">
+                </div>
+                
+                <div class="input-group">
+                    <label for="pivot-ves-tarjeta-destino">Tarjeta / Banco de Destino</label>
+                    <select id="pivot-ves-tarjeta-destino" required>
+                        <!-- Dynamically populated from JS -->
+                    </select>
+                </div>
+                
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Ejecutar Transferencia</button>
+                    <button type="button" id="btn-close-modal-pivot-ves" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="app.js?v=27"></script>
 </body>
 </html>
