@@ -42,6 +42,7 @@ class BCVState:
         self.manual_rate = None
         self.last_fetch = None
         self.cached_rate = 36.50  # fallback baseline
+        self.active_mode = "tomorrow"  # "today" or "tomorrow"
 
 bcv_state = BCVState()
 
@@ -127,6 +128,9 @@ class ClienteCreate(BaseModel):
     telefono: Optional[str] = None
     genero: Optional[str] = "Masculino"
 
+class BCVModeRequest(BaseModel):
+    mode: str
+
 # Helpers
 def get_default_gender(nombre: str) -> str:
     name_parts = nombre.strip().lower().split()
@@ -167,8 +171,11 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Security(securi
     except JWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token inválido o expirado")
 
-def scrape_bcv_rate():
-    # Method 1: Scraping official website
+def fetch_both_bcv_rates():
+    rate_site = None
+    rate_api = None
+    
+    # Method 1: Scraping official website (gives tomorrow's rate after 6 PM)
     try:
         import urllib3
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -177,21 +184,16 @@ def scrape_bcv_rate():
         res = requests.get(url, headers=headers, timeout=5, verify=False)
         if res.status_code == 200:
             soup = BeautifulSoup(res.text, "html.parser")
-            # The USD rate is inside a div with id 'dolar'
             div_dolar = soup.find("div", {"id": "dolar"})
             if div_dolar:
                 strong_val = div_dolar.find("strong")
                 if strong_val:
                     rate_str = strong_val.text.strip().replace(",", ".")
-                    rate = float(rate_str)
-                    if rate > 0:
-                        bcv_state.cached_rate = rate
-                        bcv_state.last_fetch = get_venezuela_time()
-                        return rate
+                    rate_site = float(rate_str)
     except Exception as e:
         print(f"BCV Scraping failed: {e}")
 
-    # Method 2: DolarApi.com VE (Highly stable public API)
+    # Method 2: DolarApi.com VE (gives today's calendar date rate)
     try:
         url = "https://ve.dolarapi.com/v1/dolares/oficial"
         res = requests.get(url, timeout=10)
@@ -199,14 +201,27 @@ def scrape_bcv_rate():
             data = res.json()
             rate_val = data.get("promedio") or data.get("venta")
             if rate_val:
-                rate = float(rate_val)
-                bcv_state.cached_rate = rate
-                bcv_state.last_fetch = get_venezuela_time()
-                return rate
+                rate_api = float(rate_val)
     except Exception as e:
         print(f"BCV Fallback API (DolarApi) failed: {e}")
+
+    # Fallbacks and baseline cache update
+    if not rate_site and not rate_api:
+        return bcv_state.cached_rate, bcv_state.cached_rate
         
-    return bcv_state.cached_rate
+    if not rate_site:
+        rate_site = rate_api
+    if not rate_api:
+        rate_api = rate_site
+
+    bcv_state.cached_rate = rate_site
+    bcv_state.last_fetch = get_venezuela_time()
+    
+    return rate_api, rate_site
+
+def scrape_bcv_rate():
+    tasa_hoy, tasa_manana = fetch_both_bcv_rates()
+    return tasa_hoy if bcv_state.active_mode == "today" else tasa_manana
 
 # Auth Routes
 @app.post("/api/login", response_model=TokenResponse)
@@ -232,12 +247,27 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
 # BCV Rates Routes
 @app.get("/api/bcv")
 def get_bcv_rate(username: str = Depends(get_current_user)):
-    if bcv_state.manual_rate:
-        return {"rate": bcv_state.manual_rate, "source": "Manual"}
+    tasa_hoy, tasa_manana = fetch_both_bcv_rates()
     
-    # Auto scrape/fetch
-    rate = scrape_bcv_rate()
-    return {"rate": rate, "source": "BCV Oficial"}
+    if bcv_state.manual_rate:
+        return {
+            "rate": bcv_state.manual_rate,
+            "source": "Manual",
+            "today_rate": tasa_hoy,
+            "tomorrow_rate": tasa_manana,
+            "has_tomorrow": abs(tasa_manana - tasa_hoy) > 0.001,
+            "active_mode": "manual"
+        }
+    
+    active_rate = tasa_hoy if bcv_state.active_mode == "today" else tasa_manana
+    return {
+        "rate": active_rate,
+        "source": "BCV Oficial",
+        "today_rate": tasa_hoy,
+        "tomorrow_rate": tasa_manana,
+        "has_tomorrow": abs(tasa_manana - tasa_hoy) > 0.001,
+        "active_mode": bcv_state.active_mode
+    }
 
 @app.post("/api/bcv")
 def set_manual_bcv(req: dict, username: str = Depends(get_current_user)):
@@ -250,6 +280,21 @@ def set_manual_bcv(req: dict, username: str = Depends(get_current_user)):
         return {"message": f"Tasa manual establecida en {bcv_state.manual_rate}", "rate": bcv_state.manual_rate}
     except ValueError:
         raise HTTPException(status_code=400, detail="Tasa inválida")
+
+@app.post("/api/bcv/mode")
+def set_bcv_mode(req: BCVModeRequest, username: str = Depends(get_current_user)):
+    if req.mode not in ["today", "tomorrow"]:
+        raise HTTPException(status_code=400, detail="Modo no válido")
+    bcv_state.active_mode = req.mode
+    bcv_state.manual_rate = None  # Reset manual override when switching mode
+    
+    tasa_hoy, tasa_manana = fetch_both_bcv_rates()
+    active_rate = tasa_hoy if bcv_state.active_mode == "today" else tasa_manana
+    return {
+        "message": f"Modo BCV establecido en {bcv_state.active_mode}",
+        "rate": active_rate,
+        "active_mode": bcv_state.active_mode
+    }
 
 # Capital Routes
 @app.get("/api/capital")
