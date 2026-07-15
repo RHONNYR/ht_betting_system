@@ -12,7 +12,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, engine
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, engine
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -100,6 +100,22 @@ class CicloCreate(BaseModel):
     ganancia_usd: float
     ganancia_porcentaje: float
     bolivares_restantes: float
+    status: Optional[str] = "completado"
+    bolivares_sobre_restantes: Optional[float] = 0.0
+    tarjeta_id: Optional[int] = None
+
+class CompraCicloParcialCreate(BaseModel):
+    usd_comprados: float
+    usd_procesados: float
+    tasa_bcv: float
+    comision_compra_ves: float
+    transferencias_ves: float
+    usd_recibidos_binance: float
+
+class PivotVESRequest(BaseModel):
+    tarjeta_destino_id: int
+    monto_ves_transferido: float
+    comision_transferencia_ves: float
 
 class PasswordChange(BaseModel):
     old_password: str
@@ -524,6 +540,18 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
     ciclos = db.query(HistorialCiclos).order_by(HistorialCiclos.fecha.desc()).limit(100).all()
     result = []
     for c in ciclos:
+        compras = []
+        for cp in c.compras_parciales:
+            compras.append({
+                "id": cp.id,
+                "fecha": cp.fecha.strftime("%d/%m/%Y %I:%M %p"),
+                "usd_comprados": cp.usd_comprados,
+                "usd_procesados": cp.usd_procesados,
+                "tasa_bcv": cp.tasa_bcv,
+                "comision_compra_ves": cp.comision_compra_ves,
+                "transferencias_ves": cp.transferencias_ves,
+                "usd_recibidos_binance": cp.usd_recibidos_binance
+            })
         result.append({
             "id": c.id,
             "fecha": c.fecha.strftime("%d/%m/%Y %I:%M %p"),
@@ -538,7 +566,11 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
             "usd_recibidos_binance": c.usd_recibidos_binance,
             "ganancia_usd": c.ganancia_usd,
             "ganancia_porcentaje": c.ganancia_porcentaje,
-            "bolivares_restantes": c.bolivares_restantes
+            "bolivares_restantes": c.bolivares_restantes,
+            "status": c.status or "completado",
+            "bolivares_sobre_restantes": c.bolivares_sobre_restantes or 0.0,
+            "tarjeta_id": c.tarjeta_id,
+            "compras_parciales": compras
         })
     return result
 
@@ -557,11 +589,142 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
         usd_recibidos_binance=req.usd_recibidos_binance,
         ganancia_usd=req.ganancia_usd,
         ganancia_porcentaje=req.ganancia_porcentaje,
-        bolivares_restantes=req.bolivares_restantes
+        bolivares_restantes=req.bolivares_restantes,
+        status=req.status or "completado",
+        bolivares_sobre_restantes=req.bolivares_sobre_restantes or 0.0,
+        tarjeta_id=req.tarjeta_id
     )
     db.add(ciclo)
     db.commit()
     return {"message": "Ciclo de arbitraje registrado exitosamente", "id": ciclo.id}
+
+@app.get("/api/ciclos/activos")
+def get_ciclos_activos(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclos = db.query(HistorialCiclos).filter(HistorialCiclos.status == "abierto").order_by(HistorialCiclos.fecha.desc()).all()
+    result = []
+    for c in ciclos:
+        compras = []
+        for cp in c.compras_parciales:
+            compras.append({
+                "id": cp.id,
+                "fecha": cp.fecha.strftime("%d/%m/%Y %I:%M %p"),
+                "usd_comprados": cp.usd_comprados,
+                "usd_procesados": cp.usd_procesados,
+                "tasa_bcv": cp.tasa_bcv,
+                "comision_compra_ves": cp.comision_compra_ves,
+                "transferencias_ves": cp.transferencias_ves,
+                "usd_recibidos_binance": cp.usd_recibidos_binance
+            })
+        result.append({
+            "id": c.id,
+            "fecha": c.fecha.strftime("%d/%m/%Y %I:%M %p"),
+            "usdt_vendidos": c.usdt_vendidos,
+            "tasa_venta": c.tasa_venta,
+            "banco_venta": c.banco_venta,
+            "divisas_compradas": c.divisas_compradas,
+            "tasa_bcv": c.tasa_bcv,
+            "comision_compra_ves": c.comision_compra_ves,
+            "transferencias_ves": c.transferencias_ves,
+            "usd_procesados_binance": c.usd_procesados_binance,
+            "usd_recibidos_binance": c.usd_recibidos_binance,
+            "ganancia_usd": c.ganancia_usd,
+            "ganancia_porcentaje": c.ganancia_porcentaje,
+            "bolivares_restantes": c.bolivares_restantes,
+            "status": c.status,
+            "bolivares_sobre_restantes": c.bolivares_sobre_restantes,
+            "tarjeta_id": c.tarjeta_id,
+            "compras_parciales": compras
+        })
+    return result
+
+@app.post("/api/ciclos/{ciclo_id}/compras")
+def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    compra = CompraCicloParcial(
+        ciclo_id=ciclo_id,
+        fecha=get_venezuela_time(),
+        usd_comprados=req.usd_comprados,
+        usd_procesados=req.usd_procesados,
+        tasa_bcv=req.tasa_bcv,
+        comision_compra_ves=req.comision_compra_ves,
+        transferencias_ves=req.transferencias_ves,
+        usd_recibidos_binance=req.usd_recibidos_binance
+    )
+    db.add(compra)
+    
+    costo_ves = req.usd_comprados * req.tasa_bcv
+    total_ves_gastado = costo_ves + req.comision_compra_ves + req.transferencias_ves
+    
+    ciclo.bolivares_sobre_restantes = max(0.0, ciclo.bolivares_sobre_restantes - total_ves_gastado)
+    
+    ciclo.divisas_compradas += req.usd_comprados
+    ciclo.usd_procesados_binance += req.usd_procesados
+    ciclo.usd_recibidos_binance += req.usd_recibidos_binance
+    ciclo.comision_compra_ves += req.comision_compra_ves
+    ciclo.transferencias_ves += req.transferencias_ves
+    
+    bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
+    
+    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
+    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    
+    if ciclo.bolivares_sobre_restantes <= 0.01:
+        ciclo.status = "completado"
+        
+    db.commit()
+    return {"message": "Compra parcial registrada con éxito", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes, "status": ciclo.status}
+
+@app.post("/api/ciclos/{ciclo_id}/pivot")
+def pivot_ciclo_bolivares(ciclo_id: int, req: PivotVESRequest, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    total_deduccion = req.monto_ves_transferido + req.comision_transferencia_ves
+    if total_deduccion > ciclo.bolivares_sobre_restantes + 0.01:
+        raise HTTPException(status_code=400, detail="Saldo insuficiente en el sobre para realizar esta transferencia")
+        
+    ciclo.bolivares_sobre_restantes = max(0.0, ciclo.bolivares_sobre_restantes - total_deduccion)
+    ciclo.transferencias_ves += req.comision_transferencia_ves
+    ciclo.tarjeta_id = req.tarjeta_destino_id
+    
+    card = db.query(Tarjeta).filter(Tarjeta.id == req.tarjeta_destino_id).first()
+    if card:
+        ciclo.banco_venta = f"{ciclo.banco_venta} ➔ {card.banco}"
+        
+    bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
+    
+    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
+    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    
+    db.commit()
+    return {"message": "Transferencia de bolívares registrada con éxito", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
+
+@app.post("/api/ciclos/{ciclo_id}/close")
+def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    ciclo.bolivares_sobre_restantes = 0.0
+    ciclo.bolivares_restantes = 0.0
+    ciclo.status = "completado"
+    
+    bolivares_gastados_total = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
+    
+    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
+    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    
+    db.commit()
+    return {"message": "Ciclo cerrado manualmente", "status": ciclo.status}
 
 # Remittance Routes
 @app.post("/api/p2p-rate")
@@ -822,6 +985,31 @@ def on_startup():
             except Exception as e:
                 # If column already exists or any SQL error, ignore
                 print(f"Migration 'genero' check/add: {e}")
+                
+            # 4b. Migrate HistorialCiclos table to add status, bolivares_sobre_restantes, and tarjeta_id columns if missing
+            try:
+                from sqlalchemy import text
+                with engine.begin() as conn:
+                    conn.execute(text("ALTER TABLE historial_ciclos ADD COLUMN status VARCHAR DEFAULT 'completado'"))
+                print("Migration: Added 'status' column to 'historial_ciclos' table.")
+            except Exception as e:
+                print(f"Migration 'status' check/add: {e}")
+                
+            try:
+                from sqlalchemy import text
+                with engine.begin() as conn:
+                    conn.execute(text("ALTER TABLE historial_ciclos ADD COLUMN bolivares_sobre_restantes FLOAT DEFAULT 0.0"))
+                print("Migration: Added 'bolivares_sobre_restantes' column to 'historial_ciclos' table.")
+            except Exception as e:
+                print(f"Migration 'bolivares_sobre_restantes' check/add: {e}")
+
+            try:
+                from sqlalchemy import text
+                with engine.begin() as conn:
+                    conn.execute(text("ALTER TABLE historial_ciclos ADD COLUMN tarjeta_id INTEGER"))
+                print("Migration: Added 'tarjeta_id' column to 'historial_ciclos' table.")
+            except Exception as e:
+                print(f"Migration 'tarjeta_id' check/add: {e}")
                 
             # 5. Seed default Clientes if not present
             try:
