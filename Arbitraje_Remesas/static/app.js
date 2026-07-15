@@ -447,10 +447,25 @@ function updateSuggestedDivisas() {
         const binanceFeePct = 0.0025; // 0.25%
         const usdtNetos = usdt * (1 - binanceFeePct);
         const bsRecibidos = usdtNetos * tasa;
-        const suggestedUSD = Math.floor(bsRecibidos / state.bcvRate);
         
-        els.calcDivisasCompradas.value = suggestedUSD;
-        els.calcDivisasProcesadas.value = suggestedUSD;
+        // Get card properties (Tercera Edad exenta del 0.5%)
+        let isTerceraEdad = false;
+        if (els.calcTarjetaCompra && els.calcTarjetaCompra.selectedIndex >= 0) {
+            const selectedOption = els.calcTarjetaCompra.options[els.calcTarjetaCompra.selectedIndex];
+            if (selectedOption) {
+                isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
+            }
+        }
+        
+        const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+        const pmFeePct = (els.calcPagoMovilAuto && els.calcPagoMovilAuto.checked) ? 0.003 : 0.0; // 0.3%
+        
+        // Exact VES multiplier: Tasa BCV * (1 + compraComisionPct + pmFeePct)
+        const costFactor = state.bcvRate * (1 + compraComisionPct + pmFeePct);
+        const suggestedUSD = Math.floor(bsRecibidos / costFactor);
+        
+        els.calcDivisasCompradas.value = suggestedUSD > 0 ? suggestedUSD : '';
+        els.calcDivisasProcesadas.value = suggestedUSD > 0 ? suggestedUSD : '';
     }
 }
 
@@ -524,48 +539,131 @@ function handleCalcularCiclo() {
     const formatUSD = (u) => `$${u.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     
     const profitClass = gananciaUsd >= 0 ? 'text-success' : 'text-danger';
+    const brechaPct = ((tasaVenta / state.bcvRate) - 1) * 100;
     
     els.calcResultsPreview.innerHTML = `
-        <div class="results-display-list">
-            <div class="result-item" data-tooltip="Bolívares recibidos en tu banco tras vender USDT en P2P (neto de la comisión de Binance 0.25%).">
-                <span class="label">Bolívares Recibidos (Venta USDT):</span>
-                <span class="value">${formatVES(bolivaresRecibidos)}</span>
+        <div class="cycle-flow-container">
+            <!-- Gap indicator -->
+            <div class="gap-indicator-bar" style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-hover); padding: 0.6rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; border: 1px solid var(--border-color);">
+                <span style="font-weight: 500; font-size: 0.85rem; color: var(--text-secondary);">Brecha Cambiaria (P2P vs BCV):</span>
+                <span class="badge ${brechaPct >= 0 ? 'text-success' : 'text-danger'}" style="font-weight: 700; font-size: 0.9rem; padding: 4px 8px; border-radius: 6px; background: rgba(0,0,0,0.2);">
+                    ${brechaPct >= 0 ? '+' : ''}${brechaPct.toFixed(2)}%
+                </span>
             </div>
-            <div class="result-item" data-tooltip="El costo en Bolívares de las divisas oficiales compradas en el banco, calculado a la tasa oficial del BCV (Divisas Compradas * Tasa BCV).">
-                <span class="label">Costo Base Divisas (Tasa BCV ${state.bcvRate}):</span>
-                <span class="value">${formatVES(costoBaseVES)}</span>
+
+            <!-- Step 1: Venta P2P -->
+            <div class="flow-step" style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem; margin-bottom: 0.5rem;">
+                <div class="flow-step-header" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <span class="flow-step-number" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); color: #fff; font-size: 0.8rem; font-weight: 700;">1</span>
+                    <h3 style="font-size: 0.95rem; margin: 0; font-weight: 600; color: var(--text-primary);">Fase 1: Venta en Binance P2P</h3>
+                </div>
+                <div class="flow-step-body" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Monto Vendido:</span>
+                        <strong style="color: var(--text-primary);">${usdtVendidos.toFixed(2)} USDT</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Tasa de Venta:</span>
+                        <strong style="color: var(--text-primary);">${tasaVenta.toFixed(2)} Bs</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Comisión Binance (0.25%):</span>
+                        <span class="text-danger">-${(usdtVendidos * 0.0025).toFixed(2)} USDT</span>
+                    </div>
+                    <div class="flow-data-row highlight-row" style="display: flex; justify-content: space-between; font-size: 0.88rem; border-top: 1px dashed var(--border-color); padding-top: 0.4rem; margin-top: 0.2rem;">
+                        <span style="font-weight: 500; color: var(--text-primary);">Bolívares Recibidos (Neto):</span>
+                        <strong class="text-success">${formatVES(bolivaresRecibidos)}</strong>
+                    </div>
+                </div>
             </div>
-            <div class="result-item" data-tooltip="Comisión bancaria de compra (0.5% del costo base). Exenta si el titular es de la Tercera Edad.">
-                <span class="label">Comisión Compra VES (${isTerceraEdad ? 'Tercera Edad Exenta' : '0.5%'}):</span>
-                <span class="value">${formatVES(comisionCompraVES)}</span>
+
+            <div class="flow-connector" style="text-align: center; color: var(--text-secondary); font-size: 1rem; margin: 0.25rem 0;">⬇️</div>
+
+            <!-- Step 2: Compra BCV -->
+            <div class="flow-step" style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem; margin-bottom: 0.5rem;">
+                <div class="flow-step-header" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <span class="flow-step-number" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); color: #fff; font-size: 0.8rem; font-weight: 700;">2</span>
+                    <h3 style="font-size: 0.95rem; margin: 0; font-weight: 600; color: var(--text-primary);">Fase 2: Compra en Banco (Tasa BCV ${state.bcvRate.toFixed(4)})</h3>
+                </div>
+                <div class="flow-step-body" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Tarjeta / Titular:</span>
+                        <strong style="color: var(--text-primary); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 200px;" title="${selectedOption.text}">${selectedOption.text}</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Dólares Comprados:</span>
+                        <strong style="color: var(--text-primary);">${formatUSD(divisasCompradas)}</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Comisión Compra (${isTerceraEdad ? 'Exento' : '0.5%'}):</span>
+                        <span style="color: var(--text-primary);">${formatVES(comisionCompraVES)}</span>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Gastos Transferencia / PM:</span>
+                        <span style="color: var(--text-primary);">${formatVES(transferenciasVes)}</span>
+                    </div>
+                    <div class="flow-data-row highlight-row" style="display: flex; justify-content: space-between; font-size: 0.88rem; border-top: 1px dashed var(--border-color); padding-top: 0.4rem; margin-top: 0.2rem;">
+                        <span style="font-weight: 500; color: var(--text-primary);">Bolívares Gastados Totales:</span>
+                        <strong class="text-danger">${formatVES(bolivaresGastadosTotales)}</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-top: 0.2rem;">
+                        <span style="color: var(--text-secondary);">Saldo Restante en Banco:</span>
+                        <span class="${bolivaresRestantes >= 0 ? 'text-success' : 'text-danger'}" style="font-weight: 600;">
+                            ${formatVES(bolivaresRestantes)}
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="result-item" data-tooltip="Comisiones por transferencias bancarias o Pago Móvil (0.3% si está activo).">
-                <span class="label">Transferencias VES:</span>
-                <span class="value">${formatVES(transferenciasVes)}</span>
+
+            <div class="flow-connector" style="text-align: center; color: var(--text-secondary); font-size: 1rem; margin: 0.25rem 0;">⬇️</div>
+
+            <!-- Step 3: Binance fondeo -->
+            <div class="flow-step" style="background: rgba(255,255,255,0.015); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem; margin-bottom: 1.25rem;">
+                <div class="flow-step-header" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <span class="flow-step-number" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--primary-color); color: #fff; font-size: 0.8rem; font-weight: 700;">3</span>
+                    <h3 style="font-size: 0.95rem; margin: 0; font-weight: 600; color: var(--text-primary);">Fase 3: Retorno a Binance</h3>
+                </div>
+                <div class="flow-step-body" style="display: flex; flex-direction: column; gap: 0.4rem;">
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Dólares Depositados:</span>
+                        <strong style="color: var(--text-primary);">${formatUSD(divisasProcesadas)}</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Deducción Tarjeta (${(cardComisionPct * 100).toFixed(1)}%):</span>
+                        <span class="text-danger">-${formatUSD(divisasProcesadas * cardComisionPct)}</span>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Comisión Fondeo Binance (4.1%):</span>
+                        <span class="text-danger">-${formatUSD(divisasProcesadas * (1 - cardComisionPct) * 0.041)}</span>
+                    </div>
+                    <div class="flow-data-row highlight-row" style="display: flex; justify-content: space-between; font-size: 0.88rem; border-top: 1px dashed var(--border-color); padding-top: 0.4rem; margin-top: 0.2rem;">
+                        <span style="font-weight: 500; color: var(--text-primary);">USDT Netos Recibidos:</span>
+                        <strong class="text-success">${usdNetosRecibidosBinance.toFixed(2)} USDT</strong>
+                    </div>
+                </div>
             </div>
-            <div class="result-item" data-tooltip="Monto total de Bolívares que gastaste en la operación (Costo Base + Comisión de Compra + Comisiones de Transferencia).">
-                <span class="label">Bolívares Gastados Totales:</span>
-                <span class="value">${formatVES(bolivaresGastadosTotales)}</span>
-            </div>
-            <div class="result-item highlight-alt" data-tooltip="Costo equivalente en USDT de los Bolívares gastados en la operación, calculado como: Bolívares Gastados Totales / Tasa de Venta P2P.">
-                <span class="label">USDT Gastados (Costo Operación):</span>
-                <span class="value text-danger">${ustdCostOfOperation.toFixed(2)} USDT</span>
-            </div>
-            <div class="result-item" data-tooltip="Los Bolívares que te quedaron en tu cuenta bancaria tras pagar la compra de divisas (Bolívares Recibidos - Bolívares Gastados Totales).">
-                <span class="label">Bolívares Restantes en Banco:</span>
-                <span class="value ${bolivaresRestantes >= 0 ? 'text-success' : 'text-danger'}">${formatVES(bolivaresRestantes)}</span>
-            </div>
-            <div class="result-item" data-tooltip="Los dólares netos que efectivamente llegaron a tu billetera de Binance tras descontar la comisión de la tarjeta del banco y la comisión de depósito de Binance (4.1%).">
-                <span class="label">USD Netos Recibidos en Binance:</span>
-                <span class="value text-success">${formatUSD(usdNetosRecibidosBinance)}</span>
-            </div>
-            <div class="result-item highlight" data-tooltip="Tu ganancia neta del ciclo en dólares, calculada como: USD Netos Recibidos en Binance - Costo de Operación en USDT.">
-                <span class="label">Ganancia Estimada USD:</span>
-                <span class="value ${profitClass}">${formatUSD(gananciaUsd)}</span>
-            </div>
-            <div class="result-item" data-tooltip="El rendimiento porcentual de la operación con respecto al capital invertido, calculado como: (Ganancia en USD / Costo de Operación en USDT) * 100.">
-                <span class="label">Porcentaje de Rendimiento:</span>
-                <span class="value ${profitClass}">${gananciaPorcentaje.toFixed(2)}%</span>
+
+            <!-- Step 4: ROI / Profit Summary -->
+            <div class="flow-result-card" style="background: ${gananciaUsd >= 0 ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.03))' : 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.03))'}; border: 1px solid ${gananciaUsd >= 0 ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}; border-radius: 12px; padding: 1.25rem;">
+                <div class="result-title" style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-secondary); letter-spacing: 0.05em; margin-bottom: 0.75rem; text-align: center;">RESULTADO FINAL DEL CICLO</div>
+                <div class="result-values-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; text-align: center;">
+                    <div class="result-val-box" style="background: rgba(0,0,0,0.15); padding: 0.5rem; border-radius: 8px;">
+                        <span class="val-label" style="display: block; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 2px;">Costo Inversión:</span>
+                        <strong style="color: var(--text-primary); font-size: 0.95rem;">${ustdCostOfOperation.toFixed(2)} USDT</strong>
+                    </div>
+                    <div class="result-val-box" style="background: rgba(0,0,0,0.15); padding: 0.5rem; border-radius: 8px;">
+                        <span class="val-label" style="display: block; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 2px;">Retorno Final:</span>
+                        <strong style="color: var(--text-primary); font-size: 0.95rem;">${usdNetosRecibidosBinance.toFixed(2)} USDT</strong>
+                    </div>
+                    <div class="result-val-box main-box" style="background: rgba(0,0,0,0.15); padding: 0.75rem 0.5rem; border-radius: 8px; grid-column: span 1; border: 1px solid ${gananciaUsd >= 0 ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'};">
+                        <span class="val-label" style="display: block; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 2px;">Ganancia Neta:</span>
+                        <strong class="${profitClass}" style="font-size: 1.25rem; font-weight: 700; display: block; filter: drop-shadow(0 0 8px ${gananciaUsd >= 0 ? 'rgba(16,185,129,0.3)' : 'rgba(239,68,68,0.3)'});">${formatUSD(gananciaUsd)}</strong>
+                    </div>
+                    <div class="result-val-box main-box" style="background: rgba(0,0,0,0.15); padding: 0.75rem 0.5rem; border-radius: 8px; grid-column: span 1; border: 1px solid ${gananciaUsd >= 0 ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'};">
+                        <span class="val-label" style="display: block; font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 2px;">Rendimiento (ROI):</span>
+                        <strong class="${profitClass}" style="font-size: 1.25rem; font-weight: 700; display: block; filter: drop-shadow(0 0 8px ${gananciaUsd >= 0 ? 'rgba(16,185,129,0.3)' : 'rgba(239,68,68,0.3)'});">${gananciaPorcentaje.toFixed(2)}%</strong>
+                    </div>
+                </div>
             </div>
         </div>
     `;
@@ -762,6 +860,9 @@ function setupEventListeners() {
     
     els.calcUsdtVendidos.addEventListener('input', updateSuggestedDivisas);
     els.calcTasaVenta.addEventListener('input', updateSuggestedDivisas);
+    if (els.calcTarjetaCompra) {
+        els.calcTarjetaCompra.addEventListener('change', updateSuggestedDivisas);
+    }
     els.calcDivisasCompradas.addEventListener('input', () => {
         state.divisasCompradasManuallyEdited = true;
     });
