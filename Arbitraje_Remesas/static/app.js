@@ -864,7 +864,7 @@ async function loadActiveEnvelopes() {
                             <div style="display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.4rem; max-height: 110px; overflow-y: auto; padding-right: 0.25rem;">
                                 ${c.compras_parciales.map(cp => `
                                     <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-secondary); background: rgba(0,0,0,0.15); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border-color);">
-                                        <span>$${cp.usd_comprados.toFixed(2)} a ${cp.tasa_bcv.toFixed(2)} Bs</span>
+                                        <span>$${cp.usd_comprados.toFixed(2)} a ${cp.tasa_bcv.toFixed(2)} Bs (${cp.banco || 'BCV'})</span>
                                         <button onclick="deletePartialBuy(${cp.id})" style="background: none; border: none; color: var(--text-danger); cursor: pointer; padding: 2px 4px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;" title="Eliminar compra">🗑️</button>
                                     </div>
                                 `).join('')}
@@ -894,6 +894,13 @@ window.openPartialBuy = function(cicloId) {
     document.getElementById('compra-parcial-ciclo-id').value = cicloId;
     document.getElementById('compra-parcial-usd').value = '';
     document.getElementById('compra-parcial-tasa').value = state.bcvRate;
+    
+    // Populate cards/banks dropdown
+    const targetSelect = document.getElementById('compra-parcial-tarjeta');
+    if (targetSelect && els.calcTarjetaCompra) {
+        targetSelect.innerHTML = els.calcTarjetaCompra.innerHTML;
+    }
+    
     openModal(els.modalCompraParcial);
 };
 
@@ -945,21 +952,17 @@ async function handleCompraParcialSubmit(e) {
         return;
     }
     
+    const selectTarjeta = document.getElementById('compra-parcial-tarjeta');
+    const selectedOption = selectTarjeta ? selectTarjeta.options[selectTarjeta.selectedIndex] : null;
+    
     let cardComisionPct = 0.0;
     let isTerceraEdad = false;
+    let bancoText = "BCV";
     
-    try {
-        const activos = await apiCall('/ciclos/activos');
-        const c = activos.find(item => item.id === cicloId);
-        if (c && c.tarjeta_id) {
-            const option = els.calcTarjetaCompra.querySelector(`option[value="${c.tarjeta_id}"]`);
-            if (option) {
-                cardComisionPct = parseFloat(option.getAttribute('data-comision')) || 0.0;
-                isTerceraEdad = option.getAttribute('data-tercera-edad') === 'true';
-            }
-        }
-    } catch (err) {
-        console.error("Error retrieving active card details:", err);
+    if (selectedOption) {
+        cardComisionPct = parseFloat(selectedOption.getAttribute('data-comision')) || 0.0;
+        isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
+        bancoText = selectedOption.textContent.split(' - ')[0].trim();
     }
     
     const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
@@ -976,7 +979,8 @@ async function handleCompraParcialSubmit(e) {
         tasa_bcv: tasa,
         comision_compra_ves: comisionCompraVES,
         transferencias_ves: transferenciasVes,
-        usd_recibidos_binance: usdNetosRecibidosBinance
+        usd_recibidos_binance: usdNetosRecibidosBinance,
+        banco: bancoText
     };
     
     try {
@@ -1031,6 +1035,32 @@ async function loadCiclos() {
             const statusBadge = c.status === 'abierto' 
                 ? ` <span class="badge" style="font-size: 0.7rem; background: rgba(245,158,11,0.15); color: #f59e0b; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(245,158,11,0.3);">Abierto</span>`
                 : '';
+                
+            let tasaBcvCell = '';
+            if (c.compras_parciales && c.compras_parciales.length > 0) {
+                const totalUsd = c.divisas_compradas || 0.0;
+                let weightedSum = 0;
+                let lines = [];
+                
+                c.compras_parciales.forEach(cp => {
+                    weightedSum += cp.usd_comprados * cp.tasa_bcv;
+                    const pct = totalUsd > 0 ? Math.round((cp.usd_comprados / totalUsd) * 100) : 0;
+                    const bancoLabel = cp.banco ? cp.banco : 'BCV';
+                    lines.push(`<span style="white-space: nowrap; font-size: 0.72rem; color: var(--text-secondary); display: block;">${cp.tasa_bcv.toFixed(2)} (${bancoLabel}) - ${pct}%</span>`);
+                });
+                
+                const avgRate = totalUsd > 0 ? (weightedSum / totalUsd) : c.tasa_bcv;
+                tasaBcvCell = `
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                        <strong>${avgRate.toFixed(2)}</strong>
+                        <div style="display: flex; flex-direction: column; gap: 1px; line-height: 1.1;">
+                            ${lines.join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                tasaBcvCell = `<strong>${c.tasa_bcv.toFixed(2)}</strong>`;
+            }
             
             tr.innerHTML = `
                 <td>${c.fecha}</td>
@@ -1038,7 +1068,7 @@ async function loadCiclos() {
                 <td>${c.tasa_venta.toFixed(2)}</td>
                 <td>${c.banco_venta}${statusBadge}</td>
                 <td>$${c.divisas_compradas.toFixed(2)}</td>
-                <td>${c.tasa_bcv.toFixed(2)}</td>
+                <td>${tasaBcvCell}</td>
                 <td>$${c.usd_recibidos_binance.toFixed(2)}</td>
                 <td class="${profitClass}"><strong>$${c.ganancia_usd.toFixed(2)}</strong></td>
                 <td class="${profitClass}">${c.ganancia_porcentaje.toFixed(2)}%</td>
