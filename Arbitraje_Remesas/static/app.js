@@ -77,6 +77,11 @@ const els = {
     editarSnapshotForm: document.getElementById('editar-snapshot-form'),
     btnCloseModalEditarSnapshot: document.getElementById('btn-close-modal-editar-snapshot'),
     
+    
+    modalEditarCiclo: document.getElementById('modal-editar-ciclo'),
+    editarCicloForm: document.getElementById('editar-ciclo-form'),
+    btnCloseModalEditarCiclo: document.getElementById('btn-close-modal-editar-ciclo'),
+    
     // History Tab
     ciclosTableBody: document.getElementById('ciclos-table-body'),
     totalGananciaCiclos: document.getElementById('total-ganancia-ciclos'),
@@ -1024,6 +1029,7 @@ async function handlePivotVESSubmit(e) {
 async function loadCiclos() {
     try {
         const ciclos = await apiCall('/ciclos');
+        state.ciclos = ciclos;
         els.ciclosTableBody.innerHTML = '';
         let totalGain = 0.0;
         
@@ -1073,6 +1079,12 @@ async function loadCiclos() {
                 <td class="${profitClass}"><strong>$${c.ganancia_usd.toFixed(2)}</strong></td>
                 <td class="${profitClass}">${c.ganancia_porcentaje.toFixed(2)}%</td>
                 <td>${c.bolivares_restantes.toLocaleString('es-VE', {maximumFractionDigits: 2})}</td>
+                <td>
+                    <div class="flex-row-align" style="gap: 0.5rem; justify-content: center;">
+                        <button class="btn btn-secondary" onclick="openEditCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️ Editar</button>
+                        <button class="btn btn-danger" onclick="deleteCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️ Eliminar</button>
+                    </div>
+                </td>
             `;
             els.ciclosTableBody.appendChild(tr);
         });
@@ -1080,6 +1092,68 @@ async function loadCiclos() {
         els.totalGananciaCiclos.textContent = `$${totalGain.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     } catch (err) {
         console.error("Error loading ciclos:", err);
+    }
+}
+
+window.openEditCiclo = function(cicloId) {
+    const ciclo = state.ciclos.find(c => c.id === cicloId);
+    if (!ciclo) return;
+    
+    document.getElementById('edit-ciclo-id').value = ciclo.id;
+    document.getElementById('edit-ciclo-fecha').value = ciclo.fecha;
+    document.getElementById('edit-ciclo-usdt-vendidos').value = ciclo.usdt_vendidos;
+    document.getElementById('edit-ciclo-tasa-venta').value = ciclo.tasa_venta;
+    document.getElementById('edit-ciclo-usd-recibidos').value = ciclo.usd_recibidos_binance;
+    
+    const selectTarjeta = document.getElementById('edit-ciclo-tarjeta');
+    if (selectTarjeta && els.calcTarjetaCompra) {
+        selectTarjeta.innerHTML = els.calcTarjetaCompra.innerHTML;
+        if (ciclo.tarjeta_id) {
+            selectTarjeta.value = ciclo.tarjeta_id;
+        }
+    }
+    
+    openModal(els.modalEditarCiclo);
+};
+
+window.deleteCiclo = async function(cicloId) {
+    if (!confirm("¿Estás seguro de que deseas eliminar permanentemente este ciclo de arbitraje? Se borrarán también todas las compras parciales asociadas.")) return;
+    try {
+        await apiCall(`/ciclos/${cicloId}`, 'DELETE');
+        alert("Ciclo de arbitraje eliminado con éxito.");
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
+async function handleEditarCicloSubmit(e) {
+    e.preventDefault();
+    const cicloId = parseInt(document.getElementById('edit-ciclo-id').value);
+    const fecha = document.getElementById('edit-ciclo-fecha').value;
+    const usdt_vendidos = parseFloat(document.getElementById('edit-ciclo-usdt-vendidos').value);
+    const tasa_venta = parseFloat(document.getElementById('edit-ciclo-tasa-venta').value);
+    const tarjeta_id = parseInt(document.getElementById('edit-ciclo-tarjeta').value);
+    const usd_recibidos_binance = parseFloat(document.getElementById('edit-ciclo-usd-recibidos').value);
+    
+    if (isNaN(usdt_vendidos) || isNaN(tasa_venta) || isNaN(tarjeta_id) || isNaN(usd_recibidos_binance)) {
+        alert("Por favor introduce montos válidos.");
+        return;
+    }
+    
+    try {
+        await apiCall(`/ciclos/${cicloId}`, 'PUT', {
+            fecha,
+            usdt_vendidos,
+            tasa_venta,
+            tarjeta_id,
+            usd_recibidos_binance
+        });
+        alert("Ciclo de arbitraje actualizado con éxito.");
+        closeModal(els.modalEditarCiclo);
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
     }
 }
 
@@ -1654,6 +1728,16 @@ function setupEventListeners() {
     if (els.btnCloseModalEditarSnapshot) {
         els.btnCloseModalEditarSnapshot.addEventListener('click', () => {
             closeModal(els.modalEditarSnapshot);
+        });
+    }
+    
+    // Edit Ciclo Event Listeners
+    if (els.editarCicloForm) {
+        els.editarCicloForm.addEventListener('submit', handleEditarCicloSubmit);
+    }
+    if (els.btnCloseModalEditarCiclo) {
+        els.btnCloseModalEditarCiclo.addEventListener('click', () => {
+            closeModal(els.modalEditarCiclo);
         });
     }
 }
