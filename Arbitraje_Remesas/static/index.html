@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="stylesheet" href="styles.css?v=32">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -493,6 +493,7 @@
                                             <th>Fecha y Hora</th>
                                             <th>Capital Total USD Equivalente</th>
                                             <th>Detalle de Distribución</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="capital-history-table-body">
@@ -881,6 +882,32 @@
         </div>
     </div>
 
-    <script src="app.js?v=31"></script>
+    <!-- Modal: Editar Foto de Capital Histórica -->
+    <div id="modal-editar-snapshot" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 450px; width: 90%;">
+            <h3>Editar Foto de Capital Histórica</h3>
+            <form id="editar-snapshot-form">
+                <input type="hidden" id="edit-snap-id">
+                
+                <div class="input-group">
+                    <label for="edit-snap-fecha">Fecha y Hora de Registro</label>
+                    <input type="text" id="edit-snap-fecha" required placeholder="Ej. 16/07/2026 12:30 PM">
+                    <small style="color: var(--text-secondary); font-size: 0.72rem;">Formato: DD/MM/YYYY HH:MM AM/PM</small>
+                </div>
+                
+                <h4 style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 0.9rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.25rem;">Saldos por Plataforma</h4>
+                <div id="edit-snap-platforms-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 250px; overflow-y: auto; padding-right: 0.25rem; margin-bottom: 1rem;">
+                    <!-- Dynamically populated fields for Zelle, Banesco, Cash, etc. -->
+                </div>
+                
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btn-close-modal-editar-snapshot" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js?v=32"></script>
 </body>
 </html>
