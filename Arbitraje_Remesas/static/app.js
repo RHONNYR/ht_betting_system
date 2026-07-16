@@ -41,6 +41,7 @@ const els = {
     totalCapitalSimulado: document.getElementById('total-capital-simulado'),
     capitalForm: document.getElementById('capital-form'),
     btnSnapshotCapital: document.getElementById('btn-snapshot-capital'),
+    btnResetCapitalInputs: document.getElementById('btn-reset-capital-inputs'),
     
     // Cards Container
     cardsContainer: document.getElementById('cards-container'),
@@ -342,19 +343,62 @@ async function loadCapital() {
     }
 }
 
+function recalculateCapitalLive() {
+    let totalUsdEquiv = 0.0;
+    let totalUsdSimulado = 0.0;
+    
+    const rows = els.capitalTableBody.querySelectorAll('tr');
+    rows.forEach(tr => {
+        const usdInput = tr.querySelector('.input-saldo-usd');
+        if (!usdInput) return;
+        
+        const id = parseInt(usdInput.getAttribute('data-id'));
+        const item = state.capitalItems.find(c => c.id === id);
+        if (!item) return;
+        
+        const usdVal = parseFloat(usdInput.value);
+        const saldoUsd = isNaN(usdVal) ? 0.0 : usdVal;
+        
+        const vesInput = tr.querySelector('.input-saldo-ves');
+        const vesVal = vesInput ? parseFloat(vesInput.value) : 0.0;
+        const saldoVes = isNaN(vesVal) ? 0.0 : vesVal;
+        
+        let usdEquiv = saldoUsd;
+        if (item.convertir_ves && state.bcvRate > 0) {
+            usdEquiv += saldoVes / state.bcvRate;
+        }
+        
+        const usdSimulado = usdEquiv * (1 - item.comision_simulacion);
+        
+        totalUsdEquiv += usdEquiv;
+        totalUsdSimulado += usdSimulado;
+        
+        const cells = tr.querySelectorAll('td');
+        if (cells.length >= 5) {
+            cells[3].textContent = `$${usdEquiv.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            const comPct = parseFloat((item.comision_simulacion * 100).toFixed(2));
+            cells[4].innerHTML = `$${usdSimulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span class="text-muted" style="font-size:0.75rem;">(-${comPct}%)</span>`;
+        }
+    });
+    
+    els.totalCapitalUsd.textContent = `$${totalUsdEquiv.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    els.totalCapitalSimulado.textContent = `$${totalUsdSimulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+}
+
 async function handleCapitalSubmit(e) {
     e.preventDefault();
     const updates = [];
     
-    // Extract inputs
     const usdInputs = els.capitalTableBody.querySelectorAll('.input-saldo-usd');
     usdInputs.forEach(input => {
         const id = parseInt(input.getAttribute('data-id'));
-        const saldo_usd = parseFloat(input.value) || 0.0;
+        const usdVal = parseFloat(input.value);
+        const saldo_usd = isNaN(usdVal) ? 0.0 : usdVal;
         
-        // Find corresponding VES input if exists
         const vesInput = els.capitalTableBody.querySelector(`.input-saldo-ves[data-id="${id}"]`);
-        const saldo_ves = vesInput ? (parseFloat(vesInput.value) || 0.0) : 0.0;
+        const vesVal = vesInput ? parseFloat(vesInput.value) : 0.0;
+        const saldo_ves = isNaN(vesVal) ? 0.0 : vesVal;
         
         updates.push({ plataforma_id: id, saldo_usd, saldo_ves });
     });
@@ -1220,6 +1264,27 @@ function setupEventListeners() {
     // Capital
     els.capitalForm.addEventListener('submit', handleCapitalSubmit);
     els.btnSnapshotCapital.addEventListener('click', handleSnapshotCapital);
+    
+    if (els.btnResetCapitalInputs) {
+        els.btnResetCapitalInputs.addEventListener('click', () => {
+            if (!confirm("¿Estás seguro de que deseas poner en cero todos los campos de saldo en pantalla? Para guardar este estado deberás presionar 'Guardar Cambios de Capital'.")) return;
+            const usdInputs = els.capitalTableBody.querySelectorAll('.input-saldo-usd');
+            usdInputs.forEach(input => {
+                input.value = 0;
+            });
+            const vesInputs = els.capitalTableBody.querySelectorAll('.input-saldo-ves');
+            vesInputs.forEach(input => {
+                input.value = 0;
+            });
+            recalculateCapitalLive();
+        });
+    }
+    
+    els.capitalTableBody.addEventListener('input', (e) => {
+        if (e.target.classList.contains('input-saldo-usd') || e.target.classList.contains('input-saldo-ves')) {
+            recalculateCapitalLive();
+        }
+    });
     
     // Calculator
     els.btnCalcularCiclo.addEventListener('click', handleCalcularCiclo);
