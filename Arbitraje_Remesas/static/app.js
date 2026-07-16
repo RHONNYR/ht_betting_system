@@ -72,6 +72,10 @@ const els = {
     pivotVesForm: document.getElementById('pivot-ves-form'),
     btnCloseModalPivotVes: document.getElementById('btn-close-modal-pivot-ves'),
     
+    modalEditarSnapshot: document.getElementById('modal-editar-snapshot'),
+    editarSnapshotForm: document.getElementById('editar-snapshot-form'),
+    btnCloseModalEditarSnapshot: document.getElementById('btn-close-modal-editar-snapshot'),
+    
     // History Tab
     ciclosTableBody: document.getElementById('ciclos-table-body'),
     totalGananciaCiclos: document.getElementById('total-ganancia-ciclos'),
@@ -1033,23 +1037,122 @@ async function loadCompras() {
 async function loadCapitalSnapshots() {
     try {
         const snaps = await apiCall('/capital/snapshots');
+        state.snapshots = snaps;
         els.capitalHistoryTableBody.innerHTML = '';
         
         snaps.forEach(s => {
             const tr = document.createElement('tr');
             
-            // Build simple details string
             const detailStr = s.detalle.map(d => `${d.plataforma}: $${d.usd_equivalente.toFixed(0)}`).join(' | ');
             
             tr.innerHTML = `
                 <td>${s.fecha}</td>
                 <td><strong>$${s.total_usd.toLocaleString('es-VE', {minimumFractionDigits: 2})}</strong></td>
                 <td><span class="text-secondary" style="font-size:0.8rem;">${detailStr}</span></td>
+                <td>
+                    <div class="flex-row-align" style="gap: 0.5rem; justify-content: center;">
+                        <button class="btn btn-secondary" onclick="openEditSnapshot(${s.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️ Editar</button>
+                        <button class="btn btn-danger" onclick="deleteSnapshot(${s.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️ Eliminar</button>
+                    </div>
+                </td>
             `;
             els.capitalHistoryTableBody.appendChild(tr);
         });
     } catch (err) {
         console.error("Error loading snapshots:", err);
+    }
+}
+
+window.openEditSnapshot = function(snapId) {
+    const snap = state.snapshots.find(s => s.id === snapId);
+    if (!snap) return;
+    
+    document.getElementById('edit-snap-id').value = snap.id;
+    document.getElementById('edit-snap-fecha').value = snap.fecha;
+    
+    const container = document.getElementById('edit-snap-platforms-container');
+    container.innerHTML = '';
+    
+    snap.detalle.forEach((d, idx) => {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        div.style.gap = '0.25rem';
+        div.style.background = 'rgba(255,255,255,0.01)';
+        div.style.padding = '0.5rem';
+        div.style.borderRadius = '6px';
+        div.style.border = '1px solid var(--border-color)';
+        
+        div.innerHTML = `
+            <strong style="font-size: 0.85rem; color: var(--text-primary);">${d.plataforma}</strong>
+            <input type="hidden" name="plat-name-${idx}" value="${d.plataforma}">
+            <div style="display: flex; gap: 0.5rem;">
+                <div style="flex: 1;">
+                    <label style="font-size: 0.7rem; color: var(--text-secondary);">Saldo USD</label>
+                    <input type="number" step="any" name="plat-usd-${idx}" value="${d.saldo_usd}" style="padding: 0.4rem; font-size: 0.8rem; width: 100%;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="font-size: 0.7rem; color: var(--text-secondary);">Saldo VES</label>
+                    <input type="number" step="any" name="plat-ves-${idx}" value="${d.saldo_ves}" style="padding: 0.4rem; font-size: 0.8rem; width: 100%;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="font-size: 0.7rem; color: var(--text-secondary);">Equiv. USD</label>
+                    <input type="number" step="any" name="plat-equiv-${idx}" value="${d.usd_equivalente}" style="padding: 0.4rem; font-size: 0.8rem; width: 100%;">
+                </div>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+    
+    openModal(els.modalEditarSnapshot);
+};
+
+window.deleteSnapshot = async function(snapId) {
+    if (!confirm("¿Estás seguro de que deseas eliminar permanentemente esta foto de capital histórica?")) return;
+    try {
+        await apiCall(`/capital/snapshots/${snapId}`, 'DELETE');
+        alert("Snapshot eliminado con éxito.");
+        await loadCapitalSnapshots();
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
+async function handleEditarSnapshotSubmit(e) {
+    e.preventDefault();
+    const snapId = parseInt(document.getElementById('edit-snap-id').value);
+    const fecha = document.getElementById('edit-snap-fecha').value;
+    
+    const snap = state.snapshots.find(s => s.id === snapId);
+    if (!snap) return;
+    
+    const container = document.getElementById('edit-snap-platforms-container');
+    const newDetalle = [];
+    
+    snap.detalle.forEach((d, idx) => {
+        const pName = container.querySelector(`[name="plat-name-${idx}"]`).value;
+        const pUsd = parseFloat(container.querySelector(`[name="plat-usd-${idx}"]`).value) || 0.0;
+        const pVes = parseFloat(container.querySelector(`[name="plat-ves-${idx}"]`).value) || 0.0;
+        const pEquiv = parseFloat(container.querySelector(`[name="plat-equiv-${idx}"]`).value) || 0.0;
+        
+        newDetalle.push({
+            plataforma: pName,
+            saldo_usd: pUsd,
+            saldo_ves: pVes,
+            usd_equivalente: pEquiv
+        });
+    });
+    
+    try {
+        await apiCall(`/capital/snapshots/${snapId}`, 'PUT', {
+            fecha: fecha,
+            detalle: newDetalle
+        });
+        alert("Snapshot actualizado con éxito.");
+        closeModal(els.modalEditarSnapshot);
+        await loadCapitalSnapshots();
+    } catch (err) {
+        alert(err.message);
     }
 }
 
@@ -1445,6 +1548,16 @@ function setupEventListeners() {
             } catch (err) {
                 alert("Error al actualizar remesa: " + err.message);
             }
+        });
+    }
+    
+    // Edit Snapshot Event Listeners
+    if (els.editarSnapshotForm) {
+        els.editarSnapshotForm.addEventListener('submit', handleEditarSnapshotSubmit);
+    }
+    if (els.btnCloseModalEditarSnapshot) {
+        els.btnCloseModalEditarSnapshot.addEventListener('click', () => {
+            closeModal(els.modalEditarSnapshot);
         });
     }
 }
