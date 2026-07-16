@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=32">
+    <link rel="stylesheet" href="styles.css?v=33">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -95,9 +95,12 @@
                 <div class="grid-2col">
                     <!-- Capital Distribution -->
                     <div class="card glass-card">
-                        <div class="card-header">
+                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                             <h2>Distribución del Capital</h2>
-                            <button id="btn-snapshot-capital" class="btn btn-secondary btn-sm">📸 Guardar Foto Diaria</button>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button type="button" id="btn-reset-capital-inputs" class="btn btn-danger btn-sm" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger); font-size: 0.75rem;">🗑️ Reiniciar a Cero</button>
+                                <button type="button" id="btn-snapshot-capital" class="btn btn-secondary btn-sm" style="font-size: 0.75rem;">📸 Foto Diaria</button>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="capital-summary-cards">
@@ -908,6 +911,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=32"></script>
+    <script src="app.js?v=33"></script>
 </body>
 </html>
