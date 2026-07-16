@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=34">
+    <link rel="stylesheet" href="styles.css?v=35">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -848,6 +848,13 @@
                     <input type="number" step="any" id="compra-parcial-tasa" required placeholder="Tasa del día (Hoy/Mañana)">
                 </div>
                 
+                <div class="input-group">
+                    <label for="compra-parcial-tarjeta">Banco de Compra (Tarjeta)</label>
+                    <select id="compra-parcial-tarjeta" required>
+                        <!-- Dynamically populated from JS -->
+                    </select>
+                </div>
+                
                 <div class="input-group flex-row-align" style="gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
                     <input type="checkbox" id="compra-parcial-pago-movil" checked style="width: auto;">
                     <label for="compra-parcial-pago-movil" style="margin: 0;">¿Aplicar 0.3% Pago Móvil / Transferencia?</label>
@@ -917,6 +924,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=34"></script>
+    <script src="app.js?v=35"></script>
 </body>
 </html>
