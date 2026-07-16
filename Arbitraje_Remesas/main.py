@@ -111,6 +111,7 @@ class CompraCicloParcialCreate(BaseModel):
     comision_compra_ves: float
     transferencias_ves: float
     usd_recibidos_binance: float
+    banco: Optional[str] = None
 
 class PivotVESRequest(BaseModel):
     tarjeta_destino_id: int
@@ -597,7 +598,8 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
                 "tasa_bcv": cp.tasa_bcv,
                 "comision_compra_ves": cp.comision_compra_ves,
                 "transferencias_ves": cp.transferencias_ves,
-                "usd_recibidos_binance": cp.usd_recibidos_binance
+                "usd_recibidos_binance": cp.usd_recibidos_binance,
+                "banco": cp.banco
             })
         result.append({
             "id": c.id,
@@ -660,7 +662,8 @@ def get_ciclos_activos(username: str = Depends(get_current_user), db: Session = 
                 "tasa_bcv": cp.tasa_bcv,
                 "comision_compra_ves": cp.comision_compra_ves,
                 "transferencias_ves": cp.transferencias_ves,
-                "usd_recibidos_binance": cp.usd_recibidos_binance
+                "usd_recibidos_binance": cp.usd_recibidos_binance,
+                "banco": cp.banco
             })
         result.append({
             "id": c.id,
@@ -698,7 +701,8 @@ def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, us
         tasa_bcv=req.tasa_bcv,
         comision_compra_ves=req.comision_compra_ves,
         transferencias_ves=req.transferencias_ves,
-        usd_recibidos_binance=req.usd_recibidos_binance
+        usd_recibidos_binance=req.usd_recibidos_binance,
+        banco=req.banco
     )
     db.add(compra)
     
