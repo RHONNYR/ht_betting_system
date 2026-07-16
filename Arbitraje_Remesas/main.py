@@ -117,6 +117,16 @@ class PivotVESRequest(BaseModel):
     monto_ves_transferido: float
     comision_transferencia_ves: float
 
+class SnapshotItemUpdate(BaseModel):
+    plataforma: str
+    saldo_usd: float
+    saldo_ves: float
+    usd_equivalente: float
+
+class SnapshotUpdate(BaseModel):
+    fecha: str
+    detalle: List[SnapshotItemUpdate]
+
 class PasswordChange(BaseModel):
     old_password: str
     new_password: str
@@ -424,6 +434,43 @@ def get_capital_snapshots(username: str = Depends(get_current_user), db: Session
             "detalle": json.loads(snap.detalle_json)
         })
     return result
+
+@app.put("/api/capital/snapshots/{snap_id}")
+def update_capital_snapshot(snap_id: int, req: SnapshotUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    snap = db.query(HistorialCapitalDiario).filter(HistorialCapitalDiario.id == snap_id).first()
+    if not snap:
+        raise HTTPException(status_code=404, detail="Snapshot no encontrado")
+        
+    total_usd = sum(d.usd_equivalente for d in req.detalle)
+    
+    try:
+        parsed_date = datetime.datetime.strptime(req.fecha, "%d/%m/%Y %I:%M %p")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Formato de fecha inválido. Use DD/MM/YYYY HH:MM AM/PM")
+        
+    snap.fecha_registro = parsed_date
+    snap.total_usd = total_usd
+    
+    detail = []
+    for d in req.detalle:
+        detail.append({
+            "plataforma": d.plataforma,
+            "saldo_usd": d.saldo_usd,
+            "saldo_ves": d.saldo_ves,
+            "usd_equivalente": d.usd_equivalente
+        })
+    snap.detalle_json = json.dumps(detail)
+    db.commit()
+    return {"message": "Snapshot de capital actualizado con éxito"}
+
+@app.delete("/api/capital/snapshots/{snap_id}")
+def delete_capital_snapshot(snap_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    snap = db.query(HistorialCapitalDiario).filter(HistorialCapitalDiario.id == snap_id).first()
+    if not snap:
+        raise HTTPException(status_code=404, detail="Snapshot no encontrado")
+    db.delete(snap)
+    db.commit()
+    return {"message": "Snapshot de capital eliminado con éxito"}
 
 # Titulares & Cards Routes
 @app.get("/api/titulares")
