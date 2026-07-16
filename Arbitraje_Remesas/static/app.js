@@ -126,6 +126,7 @@ const els = {
     btnCopiarRemesaText: document.getElementById('btn-copiar-remesa-text'),
     btnRegistrarRemesa: document.getElementById('btn-registrar-remesa'),
     remesasTableBody: document.getElementById('remesas-table-body'),
+    totalVolumenRemesas: document.getElementById('total-volumen-remesas'),
     totalGananciaRemesas: document.getElementById('total-ganancia-remesas'),
     
     // Modals buttons and elements
@@ -1654,8 +1655,10 @@ async function loadRemesas() {
         els.remesasTableBody.innerHTML = '';
         
         let totalGain = 0;
+        let totalVolume = 0;
         remesas.forEach(r => {
             totalGain += r.ganancia_usd;
+            totalVolume += r.monto_usd;
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${r.fecha}</td>
@@ -1677,6 +1680,9 @@ async function loadRemesas() {
             els.remesasTableBody.appendChild(tr);
         });
         
+        if (els.totalVolumenRemesas) {
+            els.totalVolumenRemesas.textContent = `$${totalVolume.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        }
         els.totalGananciaRemesas.textContent = `$${totalGain.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     } catch (err) {
         console.error("Error loading remesas:", err);
