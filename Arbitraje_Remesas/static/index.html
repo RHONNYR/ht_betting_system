@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=35">
+    <link rel="stylesheet" href="styles.css?v=36">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -440,6 +440,7 @@
                                             <th>Ganancia USD</th>
                                             <th>Rentabilidad</th>
                                             <th>VES Restantes</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="ciclos-table-body">
@@ -924,6 +925,49 @@
         </div>
     </div>
 
-    <script src="app.js?v=35"></script>
+    <!-- Modal: Editar Ciclo de Arbitraje -->
+    <div id="modal-editar-ciclo" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Editar Ciclo de Arbitraje</h3>
+            <form id="editar-ciclo-form">
+                <input type="hidden" id="edit-ciclo-id">
+                
+                <div class="input-group">
+                    <label for="edit-ciclo-fecha">Fecha y Hora</label>
+                    <input type="text" id="edit-ciclo-fecha" required placeholder="Ej. 15/07/2026 08:33 AM">
+                    <small style="color: var(--text-secondary); font-size: 0.72rem;">Formato: DD/MM/YYYY HH:MM AM/PM</small>
+                </div>
+                
+                <div class="input-group">
+                    <label for="edit-ciclo-usdt-vendidos">USDT Vendidos</label>
+                    <input type="number" step="any" id="edit-ciclo-usdt-vendidos" required placeholder="Ej. 972.48">
+                </div>
+                
+                <div class="input-group">
+                    <label for="edit-ciclo-tasa-venta">Tasa Venta (VES/$)</label>
+                    <input type="number" step="any" id="edit-ciclo-tasa-venta" required placeholder="Ej. 869.50">
+                </div>
+                
+                <div class="input-group">
+                    <label for="edit-ciclo-tarjeta">Banco Venta (Tarjeta)</label>
+                    <select id="edit-ciclo-tarjeta" required>
+                        <!-- Dynamically populated from JS -->
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="edit-ciclo-usd-recibidos">Dólares Recibidos en Binance ($)</label>
+                    <input type="number" step="any" id="edit-ciclo-usd-recibidos" required placeholder="Ej. 748.02">
+                </div>
+                
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btn-close-modal-editar-ciclo" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js?v=36"></script>
 </body>
 </html>
