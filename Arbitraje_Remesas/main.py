@@ -104,6 +104,13 @@ class CicloCreate(BaseModel):
     bolivares_sobre_restantes: Optional[float] = 0.0
     tarjeta_id: Optional[int] = None
 
+class CicloUpdate(BaseModel):
+    fecha: str
+    usdt_vendidos: float
+    tasa_venta: float
+    tarjeta_id: int
+    usd_recibidos_binance: float
+
 class CompraCicloParcialCreate(BaseModel):
     usd_comprados: float
     usd_procesados: float
@@ -776,6 +783,61 @@ def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user),
     
     db.commit()
     return {"message": "Ciclo cerrado manualmente", "status": ciclo.status}
+
+@app.put("/api/ciclos/{ciclo_id}")
+def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    try:
+        parsed_date = datetime.datetime.strptime(req.fecha, "%d/%m/%Y %I:%M %p")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Formato de fecha inválido. Use DD/MM/YYYY HH:MM AM/PM")
+        
+    card = db.query(Tarjeta).filter(Tarjeta.id == req.tarjeta_id).first()
+    if not card:
+        raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
+        
+    ciclo.fecha = parsed_date
+    ciclo.usdt_vendidos = req.usdt_vendidos
+    ciclo.tasa_venta = req.tasa_venta
+    ciclo.tarjeta_id = req.tarjeta_id
+    ciclo.banco_venta = card.banco
+    ciclo.usd_recibidos_binance = req.usd_recibidos_binance
+    
+    # Recalculate remaining VES based on new parameters and existing purchases
+    initial_ves = req.usdt_vendidos * 0.9975 * req.tasa_venta
+    
+    total_ves_spent = 0.0
+    for cp in ciclo.compras_parciales:
+        total_ves_spent += (cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves
+        
+    ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - total_ves_spent)
+    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    
+    bolivares_gastados_total = initial_ves - ciclo.bolivares_sobre_restantes
+    ustd_cost_of_operation = bolivares_gastados_total / req.tasa_venta if req.tasa_venta > 0 else 0.0
+    
+    ciclo.ganancia_usd = req.usd_recibidos_binance - ustd_cost_of_operation
+    ciclo.ganancia_porcentaje = (req.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    
+    if ciclo.bolivares_sobre_restantes > 0.01:
+        ciclo.status = "abierto"
+    else:
+        ciclo.status = "completado"
+        
+    db.commit()
+    return {"message": "Ciclo de arbitraje actualizado con éxito"}
+
+@app.delete("/api/ciclos/{ciclo_id}")
+def delete_ciclo(ciclo_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+    db.delete(ciclo)
+    db.commit()
+    return {"message": "Ciclo de arbitraje eliminado con éxito"}
 
 @app.delete("/api/ciclos/compras/{compra_id}")
 def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
