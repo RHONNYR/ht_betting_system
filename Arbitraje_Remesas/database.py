@@ -93,6 +93,7 @@ class CompraCicloParcial(Base):
     comision_compra_ves = Column(Float)
     transferencias_ves = Column(Float)
     usd_recibidos_binance = Column(Float)
+    banco = Column(String, nullable=True)
     
     ciclo = relationship("HistorialCiclos", back_populates="compras_parciales")
 
@@ -137,3 +138,10 @@ class Cliente(Base):
 
 def init_db():
     Base.metadata.create_all(bind=engine)
+    from sqlalchemy import text
+    with engine.begin() as conn:
+        try:
+            conn.execute(text("ALTER TABLE compras_ciclos_parciales ADD COLUMN banco VARCHAR(255);"))
+            print("Database migration: added 'banco' column to 'compras_ciclos_parciales' table.")
+        except Exception as e:
+            pass
