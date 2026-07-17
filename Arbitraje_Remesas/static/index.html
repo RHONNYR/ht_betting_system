@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=37">
+    <link rel="stylesheet" href="styles.css?v=38">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
 <body>
@@ -86,6 +87,7 @@
             <button class="tab-link active" data-tab="tab-capital">💼 Capital & Tarjetas</button>
             <button class="tab-link" data-tab="tab-calculadora">🧮 Calculadora de Ciclos</button>
             <button class="tab-link" data-tab="tab-remesas">💸 Remesas & Cotizaciones</button>
+            <button class="tab-link" data-tab="tab-stats">📊 Análisis & Estadísticas</button>
             <button class="tab-link" data-tab="tab-historial">📜 Historial & Bitácoras</button>
         </nav>
 
@@ -404,8 +406,30 @@
                     </div>
                 </div>
             </section>
+            <!-- TAB 3: ANÁLISIS & ESTADÍSTICAS -->
+            <section id="tab-stats" class="tab-pane">
+                <div class="grid-2col" style="margin-bottom: 2rem;">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Rendimiento Semanal (Lunes a Domingo)</h2>
+                        </div>
+                        <div class="card-body" style="height: 350px; position: relative;">
+                            <canvas id="chart-semanal"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Evolución Mensual (Año Actual)</h2>
+                        </div>
+                        <div class="card-body" style="height: 350px; position: relative;">
+                            <canvas id="chart-mensual"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <!-- TAB 3: HISTORIAL & BITÁCORAS -->
+            <!-- TAB 4: HISTORIAL & BITÁCORAS -->
             <section id="tab-historial" class="tab-pane">
                 <!-- Navigation sub-tabs -->
                 <div class="sub-nav-tabs">
@@ -420,9 +444,12 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Historial de Ciclos de Arbitraje</h2>
-                            <div class="total-ganado-badge">
-                                <span>Ganancia Total:</span>
-                                <strong id="total-ganancia-ciclos">$0.00</strong>
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                <div class="total-ganado-badge">
+                                    <span>Ganancia Total:</span>
+                                    <strong id="total-ganancia-ciclos">$0.00</strong>
+                                </div>
+                                <button id="btn-export-ciclos" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 4px;">📥 Exportar</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -514,7 +541,7 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
-                            <div style="display: flex; gap: 0.75rem;">
+                            <div style="display: flex; gap: 0.75rem; align-items: center;">
                                 <div class="total-ganado-badge" style="background: rgba(0, 112, 243, 0.1); border-color: rgba(0, 112, 243, 0.2); color: var(--primary-color);">
                                     <span>Total Volumen:</span>
                                     <strong id="total-volumen-remesas">$0.00</strong>
@@ -523,6 +550,7 @@
                                     <span>Ganancia Total:</span>
                                     <strong id="total-ganancia-remesas">$0.00</strong>
                                 </div>
+                                <button id="btn-export-remesas" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 4px;">📥 Exportar</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -968,6 +996,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=37"></script>
+    <script src="app.js?v=38"></script>
 </body>
 </html>
