@@ -119,6 +119,7 @@ class CompraCicloParcialCreate(BaseModel):
     transferencias_ves: float
     usd_recibidos_binance: float
     banco: Optional[str] = None
+    tarjeta_id: Optional[int] = None
 
 class PivotVESRequest(BaseModel):
     tarjeta_destino_id: int
@@ -485,9 +486,10 @@ def delete_capital_snapshot(snap_id: int, username: str = Depends(get_current_us
 def get_titulares(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     titulares = db.query(Titular).all()
     
-    # Calculate monthly consumption per card
+    # Calculate monthly and daily consumption per card
     now = get_venezuela_time()
     start_of_month = datetime.datetime(now.year, now.month, 1)
+    start_of_day = datetime.datetime(now.year, now.month, now.day)
     
     result = []
     for tit in titulares:
@@ -498,7 +500,26 @@ def get_titulares(username: str = Depends(get_current_user), db: Session = Depen
                 CompraDivisa.tarjeta_id == card.id,
                 CompraDivisa.fecha >= start_of_month
             ).all()
-            monthly_consumed = sum(p.monto_usd for p in purchases_sum)
+            
+            cycle_purchases_sum = db.query(CompraCicloParcial).filter(
+                CompraCicloParcial.tarjeta_id == card.id,
+                CompraCicloParcial.fecha >= start_of_month
+            ).all()
+            
+            monthly_consumed = sum(p.monto_usd for p in purchases_sum) + sum(cp.usd_comprados for cp in cycle_purchases_sum)
+            
+            # Query sum of purchases today for this card
+            purchases_today = db.query(CompraDivisa).filter(
+                CompraDivisa.tarjeta_id == card.id,
+                CompraDivisa.fecha >= start_of_day
+            ).all()
+            
+            cycle_purchases_today = db.query(CompraCicloParcial).filter(
+                CompraCicloParcial.tarjeta_id == card.id,
+                CompraCicloParcial.fecha >= start_of_day
+            ).all()
+            
+            daily_consumed = sum(p.monto_usd for p in purchases_today) + sum(cp.usd_comprados for cp in cycle_purchases_today)
             
             cards_data.append({
                 "id": card.id,
@@ -507,7 +528,8 @@ def get_titulares(username: str = Depends(get_current_user), db: Session = Depen
                 "limite_diario": card.limite_diario,
                 "limite_mensual": card.limite_mensual,
                 "comision_porcentaje": card.comision_porcentaje,
-                "consumo_mensual": monthly_consumed
+                "consumo_mensual": monthly_consumed,
+                "consumo_diario": daily_consumed
             })
             
         result.append({
@@ -709,7 +731,8 @@ def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, us
         comision_compra_ves=req.comision_compra_ves,
         transferencias_ves=req.transferencias_ves,
         usd_recibidos_binance=req.usd_recibidos_binance,
-        banco=req.banco
+        banco=req.banco,
+        tarjeta_id=req.tarjeta_id
     )
     db.add(compra)
     
@@ -925,6 +948,91 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
             raise HTTPException(status_code=res.status_code, detail=f"Binance P2P error: {res.text}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to fetch P2P rates: {str(e)}")
+
+@app.get("/api/stats/dashboard")
+def get_stats_dashboard(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    now = get_venezuela_time()
+    
+    # --- WEEKLY (Monday to Sunday) ---
+    days_to_monday = now.weekday()
+    start_of_week = datetime.datetime(now.year, now.month, now.day) - datetime.timedelta(days=days_to_monday)
+    end_of_week = start_of_week + datetime.timedelta(days=7)
+    
+    weekly_remesas = db.query(HistorialRemesas).filter(
+        HistorialRemesas.fecha >= start_of_week,
+        HistorialRemesas.fecha < end_of_week
+    ).all()
+    
+    weekly_ciclos = db.query(HistorialCiclos).filter(
+        HistorialCiclos.fecha >= start_of_week,
+        HistorialCiclos.fecha < end_of_week
+    ).all()
+    
+    days_labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+    weekly_data = []
+    for idx in range(7):
+        day_date = (start_of_week + datetime.timedelta(days=idx)).date()
+        
+        # Filter remesas for this specific day
+        r_day = [r for r in weekly_remesas if r.fecha.date() == day_date]
+        vol_rem = sum(r.monto_usd for r in r_day)
+        gan_rem = sum(r.ganancia_usd for r in r_day)
+        
+        # Filter cycles for this specific day
+        c_day = [c for c in weekly_ciclos if c.fecha.date() == day_date]
+        vol_cic = sum(c.usd_procesados_binance or 0.0 for c in c_day)
+        gan_cic = sum(c.ganancia_usd or 0.0 for c in c_day)
+        
+        weekly_data.append({
+            "label": days_labels[idx],
+            "date": day_date.strftime("%d/%m"),
+            "volumen_remesas": vol_rem,
+            "ganancia_remesas": gan_rem,
+            "volumen_ciclos": vol_cic,
+            "ganancia_ciclos": gan_cic
+        })
+        
+    # --- MONTHLY (Current Year) ---
+    start_of_year = datetime.datetime(now.year, 1, 1)
+    end_of_year = datetime.datetime(now.year + 1, 1, 1)
+    
+    monthly_remesas = db.query(HistorialRemesas).filter(
+        HistorialRemesas.fecha >= start_of_year,
+        HistorialRemesas.fecha < end_of_year
+    ).all()
+    
+    monthly_ciclos = db.query(HistorialCiclos).filter(
+        HistorialCiclos.fecha >= start_of_year,
+        HistorialCiclos.fecha < end_of_year
+    ).all()
+    
+    months_labels = [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ]
+    monthly_data = []
+    for m_idx in range(1, 13):
+        # Filter for month m_idx
+        r_month = [r for r in monthly_remesas if r.fecha.month == m_idx]
+        vol_rem = sum(r.monto_usd for r in r_month)
+        gan_rem = sum(r.ganancia_usd for r in r_month)
+        
+        c_month = [c for c in monthly_ciclos if c.fecha.month == m_idx]
+        vol_cic = sum(c.usd_procesados_binance or 0.0 for c in c_month)
+        gan_cic = sum(c.ganancia_usd or 0.0 for c in c_month)
+        
+        monthly_data.append({
+            "label": months_labels[m_idx - 1],
+            "volumen_remesas": vol_rem,
+            "ganancia_remesas": gan_rem,
+            "volumen_ciclos": vol_cic,
+            "ganancia_ciclos": gan_cic
+        })
+        
+    return {
+        "weekly": weekly_data,
+        "monthly": monthly_data
+    }
 
 @app.post("/api/remesas")
 def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
