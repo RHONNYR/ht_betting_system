@@ -242,6 +242,7 @@ async function initDashboard() {
     await loadCapitalSnapshots();
     await loadRemesas();
     await loadClientes();
+    await loadAndRenderCharts();
 }
 
 // BCV Handlers
@@ -468,31 +469,68 @@ async function loadTitularesAndCards() {
                 els.calcTarjetaCompra.appendChild(opt.cloneNode(true));
                 selectCompra.appendChild(opt);
                 
-                // Render progress bar
-                const monthlyConsumed = card.consumo_mensual;
-                const limit = card.limite_mensual;
-                const percent = limit > 0 ? Math.min((monthlyConsumed / limit) * 100, 100) : 0;
+                // Render progress bars
+                const monthlyConsumed = card.consumo_mensual || 0.0;
+                const limit = card.limite_mensual || 0.0;
+                const percentMensual = limit > 0 ? Math.min((monthlyConsumed / limit) * 100, 100) : 0;
                 
-                let progressClass = 'progress-normal';
-                if (percent > 90) progressClass = 'progress-danger';
-                else if (percent > 70) progressClass = 'progress-warning';
+                const dailyConsumed = card.consumo_diario || 0.0;
+                const limitDiario = card.limite_diario || 0.0;
+                const percentDiario = limitDiario > 0 ? Math.min((dailyConsumed / limitDiario) * 100, 100) : 0;
+                
+                let progressClassMensual = 'progress-normal';
+                if (percentMensual > 90) progressClassMensual = 'progress-danger';
+                else if (percentMensual > 70) progressClassMensual = 'progress-warning';
+                
+                let progressClassDiario = 'progress-normal';
+                if (percentDiario > 90) progressClassDiario = 'progress-danger';
+                else if (percentDiario > 70) progressClassDiario = 'progress-warning';
                 
                 const cardDiv = document.createElement('div');
                 cardDiv.className = 'card-item-row';
+                cardDiv.style.background = 'rgba(255, 255, 255, 0.02)';
+                cardDiv.style.border = '1px solid var(--border-color)';
+                cardDiv.style.borderRadius = '12px';
+                cardDiv.style.padding = '1rem';
+                cardDiv.style.display = 'flex';
+                cardDiv.style.flexDirection = 'column';
+                cardDiv.style.gap = '0.75rem';
+                
+                const isNearLimit = percentDiario > 85 || percentMensual > 85;
+                const warningBadge = isNearLimit ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px; font-weight: 500;">⚠️ Límite Cercano</span>' : '';
+                
                 cardDiv.innerHTML = `
-                    <div class="card-item-header">
+                    <div class="card-item-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0;">
                         <div>
-                            <span class="card-title">${card.banco} - ${card.tipo_tarjeta}</span>
-                            <span class="card-owner">de ${tit.nombre}</span>
+                            <span class="card-title" style="font-weight: 600; color: var(--text-primary); font-size: 0.92rem; display: block;">${card.banco} - ${card.tipo_tarjeta}</span>
+                            <span class="card-owner" style="font-size: 0.75rem; color: var(--text-secondary);">de ${tit.nombre}</span>
                         </div>
-                        ${tit.tercera_edad ? '<span class="senior-badge">Tercera Edad</span>' : ''}
+                        <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                            ${tit.tercera_edad ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px; font-weight: 500;">Tercera Edad</span>' : ''}
+                            ${warningBadge}
+                        </div>
                     </div>
-                    <div class="card-progress-bar-container">
-                        <div class="card-progress-fill ${progressClass}" style="width: ${percent}%"></div>
+                    
+                    <!-- Límite Diario -->
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-secondary);">
+                            <span>Límite Diario</span>
+                            <span>$${dailyConsumed.toFixed(0)} / $${limitDiario.toFixed(0)}</span>
+                        </div>
+                        <div class="card-progress-bar-container" style="margin: 0; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; width: 100%;">
+                            <div class="card-progress-fill ${progressClassDiario}" style="width: ${percentDiario}%; height: 100%; border-radius: 3px; transition: width 0.3s ease;"></div>
+                        </div>
                     </div>
-                    <div class="card-limit-labels">
-                        <span>Consumido: $${monthlyConsumed.toFixed(0)}</span>
-                        <span>Límite: $${limit.toFixed(0)}</span>
+
+                    <!-- Límite Mensual -->
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-secondary);">
+                            <span>Límite Mensual</span>
+                            <span>$${monthlyConsumed.toFixed(0)} / $${limit.toFixed(0)}</span>
+                        </div>
+                        <div class="card-progress-bar-container" style="margin: 0; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; width: 100%;">
+                            <div class="card-progress-fill ${progressClassMensual}" style="width: ${percentMensual}%; height: 100%; border-radius: 3px; transition: width 0.3s ease;"></div>
+                        </div>
                     </div>
                 `;
                 els.cardsContainer.appendChild(cardDiv);
@@ -963,11 +1001,42 @@ async function handleCompraParcialSubmit(e) {
     let cardComisionPct = 0.0;
     let isTerceraEdad = false;
     let bancoText = "BCV";
+    let tarjetaIdVal = null;
+    let selectedTarjetaData = null;
     
     if (selectedOption) {
+        tarjetaIdVal = parseInt(selectedOption.value);
         cardComisionPct = parseFloat(selectedOption.getAttribute('data-comision')) || 0.0;
         isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
         bancoText = selectedOption.textContent.split(' - ')[0].trim();
+        
+        // Find card limits data in local state
+        if (state.titulares) {
+            for (const t of state.titulares) {
+                const foundCard = t.tarjetas.find(c => c.id === tarjetaIdVal);
+                if (foundCard) {
+                    selectedTarjetaData = foundCard;
+                    break;
+                }
+            }
+        }
+    }
+    
+    // Check card limit warnings
+    if (selectedTarjetaData) {
+        const dailyRemaining = selectedTarjetaData.limite_diario - selectedTarjetaData.consumo_diario;
+        const monthlyRemaining = selectedTarjetaData.limite_mensual - selectedTarjetaData.consumo_mensual;
+        
+        if (usd > dailyRemaining || usd > monthlyRemaining) {
+            const warningMsg = `⚠️ ADVERTENCIA DE LÍMITES:\n` +
+                               `Esta compra de $${usd.toFixed(2)} supera el límite disponible de la tarjeta.\n` +
+                               `- Cupo Diario Disponible: $${Math.max(0, dailyRemaining).toFixed(2)}\n` +
+                               `- Cupo Mensual Disponible: $${Math.max(0, monthlyRemaining).toFixed(2)}\n\n` +
+                               `¿Deseas proceder con el registro de todas formas?`;
+            if (!confirm(warningMsg)) {
+                return;
+            }
+        }
     }
     
     const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
@@ -985,7 +1054,8 @@ async function handleCompraParcialSubmit(e) {
         comision_compra_ves: comisionCompraVES,
         transferencias_ves: transferenciasVes,
         usd_recibidos_binance: usdNetosRecibidosBinance,
-        banco: bancoText
+        banco: bancoText,
+        tarjeta_id: tarjetaIdVal
     };
     
     try {
@@ -1740,6 +1810,16 @@ function setupEventListeners() {
             closeModal(els.modalEditarCiclo);
         });
     }
+    
+    // Export buttons Event Listeners
+    const btnExportRemesas = document.getElementById('btn-export-remesas');
+    if (btnExportRemesas) {
+        btnExportRemesas.addEventListener('click', exportRemesasToCSV);
+    }
+    const btnExportCiclos = document.getElementById('btn-export-ciclos');
+    if (btnExportCiclos) {
+        btnExportCiclos.addEventListener('click', exportCiclosToCSV);
+    }
 }
 
 // Theme Selector logic
@@ -2328,6 +2408,288 @@ function cerrarModalEditarRemesa() {
 window.eliminarRemesa = eliminarRemesa;
 window.iniciarEditarRemesa = iniciarEditarRemesa;
 window.cerrarModalEditarRemesa = cerrarModalEditarRemesa;
+
+let semanalChartRef = null;
+let mensualChartRef = null;
+
+async function loadAndRenderCharts() {
+    try {
+        const stats = await apiCall('/stats/dashboard');
+        
+        // Render Weekly Chart
+        const ctxSemanal = document.getElementById('chart-semanal');
+        if (ctxSemanal) {
+            const labels = stats.weekly.map(item => `${item.label} (${item.date})`);
+            const volRemesas = stats.weekly.map(item => item.volumen_remesas);
+            const volCiclos = stats.weekly.map(item => item.volumen_ciclos);
+            const ganTotal = stats.weekly.map(item => item.ganancia_remesas + item.ganancia_ciclos);
+            
+            if (semanalChartRef) {
+                semanalChartRef.destroy();
+            }
+            
+            semanalChartRef = new Chart(ctxSemanal, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Volumen Remesas ($)',
+                            data: volRemesas,
+                            backgroundColor: 'rgba(0, 112, 243, 0.4)',
+                            borderColor: '#0070F3',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Volumen Arbitraje ($)',
+                            data: volCiclos,
+                            backgroundColor: 'rgba(88, 86, 214, 0.4)',
+                            borderColor: '#5856D6',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Ganancia Total ($)',
+                            data: ganTotal,
+                            type: 'line',
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.3,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Volumen Total ($)',
+                                color: '#9CA3AF'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Ganancia ($)',
+                                color: '#9CA3AF'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#F3F4F6' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Render Monthly Chart
+        const ctxMensual = document.getElementById('chart-mensual');
+        if (ctxMensual) {
+            const labels = stats.monthly.map(item => item.label);
+            const volTotal = stats.monthly.map(item => item.volumen_remesas + item.volumen_ciclos);
+            const ganTotal = stats.monthly.map(item => item.ganancia_remesas + item.ganancia_ciclos);
+            
+            if (mensualChartRef) {
+                mensualChartRef.destroy();
+            }
+            
+            mensualChartRef = new Chart(ctxMensual, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Volumen Movilizado ($)',
+                            data: volTotal,
+                            borderColor: 'rgba(0, 112, 243, 0.8)',
+                            backgroundColor: 'rgba(0, 112, 243, 0.05)',
+                            fill: true,
+                            tension: 0.3,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Ganancia Consolidada ($)',
+                            data: ganTotal,
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.3,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Volumen ($)',
+                                color: '#9CA3AF'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Ganancia ($)',
+                                color: '#9CA3AF'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#F3F4F6' }
+                        }
+                    }
+                }
+            });
+        }
+    } catch (err) {
+        console.error("Error loading stats for charts:", err);
+    }
+}
+
+function exportRemesasToCSV() {
+    apiCall('/remesas').then(remesas => {
+        if (!remesas || remesas.length === 0) {
+            alert("No hay remesas registradas para exportar.");
+            return;
+        }
+        
+        let csvContent = "\uFEFF"; // UTF-8 BOM to support accents in Excel
+        csvContent += "ID;Fecha;Cliente;Monto USD;Tasa P2P;Tasa Cliente;Monto VES;Adq. USDT %;Comision Binance %;Ganancia USD\n";
+        
+        remesas.forEach(r => {
+            const adqPct = (r.costo_adquisicion_usdt * 100).toFixed(2) + "%";
+            const comBinPct = (r.comision_binance * 100).toFixed(2) + "%";
+            const row = [
+                r.id,
+                r.fecha,
+                `"${r.cliente_nombre.replace(/"/g, '""')}"`,
+                r.monto_usd.toFixed(2),
+                r.tasa_p2p.toFixed(2),
+                r.tasa_cliente.toFixed(2),
+                r.monto_ves.toFixed(2),
+                adqPct,
+                comBinPct,
+                r.ganancia_usd.toFixed(2)
+            ].join(";");
+            csvContent += row + "\n";
+        });
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", `Reporte_Remesas_${new Date().toISOString().slice(0,10)}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }).catch(err => {
+        alert("Error al exportar remesas: " + err.message);
+    });
+}
+
+function exportCiclosToCSV() {
+    apiCall('/ciclos').then(ciclos => {
+        if (!ciclos || ciclos.length === 0) {
+            alert("No hay ciclos registrados para exportar.");
+            return;
+        }
+        
+        let csvContent = "\uFEFF"; // UTF-8 BOM
+        csvContent += "ID;Fecha;USDT Vendidos;Tasa Venta;Banco Venta;Divisas Compradas;Tasa BCV Promedio;USD Recibidos Binance;Ganancia USD;Rentabilidad %;VES Restantes;Estatus\n";
+        
+        ciclos.forEach(c => {
+            let avgRate = c.tasa_bcv;
+            if (c.compras_parciales && c.compras_parciales.length > 0) {
+                const totalUsd = c.divisas_compradas || 0.0;
+                let weightedSum = 0;
+                c.compras_parciales.forEach(cp => {
+                    weightedSum += cp.usd_comprados * cp.tasa_bcv;
+                });
+                avgRate = totalUsd > 0 ? (weightedSum / totalUsd) : c.tasa_bcv;
+            }
+            
+            const row = [
+                c.id,
+                c.fecha,
+                c.usdt_vendidos.toFixed(2),
+                c.tasa_venta.toFixed(2),
+                `"${c.banco_venta.replace(/"/g, '""')}"`,
+                c.divisas_compradas.toFixed(2),
+                avgRate.toFixed(2),
+                c.usd_recibidos_binance.toFixed(2),
+                c.ganancia_usd.toFixed(2),
+                c.ganancia_porcentaje.toFixed(2) + "%",
+                c.bolivares_restantes.toFixed(2),
+                c.status
+            ].join(";");
+            csvContent += row + "\n";
+        });
+        
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", `Reporte_Ciclos_${new Date().toISOString().slice(0,10)}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }).catch(err => {
+        alert("Error al exportar ciclos: " + err.message);
+    });
+}
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
