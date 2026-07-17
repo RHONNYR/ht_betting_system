@@ -94,8 +94,10 @@ class CompraCicloParcial(Base):
     transferencias_ves = Column(Float)
     usd_recibidos_binance = Column(Float)
     banco = Column(String, nullable=True)
+    tarjeta_id = Column(Integer, ForeignKey("tarjetas.id", ondelete="SET NULL"), nullable=True)
     
     ciclo = relationship("HistorialCiclos", back_populates="compras_parciales")
+    tarjeta = relationship("Tarjeta")
 
 class DistribucionCapital(Base):
     __tablename__ = "distribucion_capital"
@@ -142,6 +144,9 @@ def init_db():
     with engine.begin() as conn:
         try:
             conn.execute(text("ALTER TABLE compras_ciclos_parciales ADD COLUMN banco VARCHAR(255);"))
-            print("Database migration: added 'banco' column to 'compras_ciclos_parciales' table.")
+        except Exception as e:
+            pass
+        try:
+            conn.execute(text("ALTER TABLE compras_ciclos_parciales ADD COLUMN tarjeta_id INTEGER;"))
         except Exception as e:
             pass
