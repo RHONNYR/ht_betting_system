@@ -141,12 +141,13 @@ class Cliente(Base):
 def init_db():
     Base.metadata.create_all(bind=engine)
     from sqlalchemy import text
-    with engine.begin() as conn:
-        try:
+    try:
+        with engine.begin() as conn:
             conn.execute(text("ALTER TABLE compras_ciclos_parciales ADD COLUMN banco VARCHAR(255);"))
-        except Exception as e:
-            pass
-        try:
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
             conn.execute(text("ALTER TABLE compras_ciclos_parciales ADD COLUMN tarjeta_id INTEGER;"))
-        except Exception as e:
-            pass
+    except Exception as e:
+        pass
