@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=39">
+    <link rel="stylesheet" href="styles.css?v=40">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -408,8 +408,11 @@
             </section>
             <!-- TAB 3: ANÁLISIS & ESTADÍSTICAS -->
             <section id="tab-stats" class="tab-pane">
-                <!-- Tarjetas de Resumen KPI de Remesas -->
-                <div class="capital-summary-cards" style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <!-- Resumen de Remesas -->
+                <h3 style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                    💸 Resumen de Remesas
+                </h3>
+                <div class="capital-summary-cards" style="margin-bottom: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                     <div class="mini-summary-card">
                         <span class="label">Volumen Total Remitido</span>
                         <span id="stats-total-remitido" class="value text-glow">$0.00</span>
@@ -425,6 +428,29 @@
                     <div class="mini-summary-card">
                         <span class="label">Total Operaciones Remesas</span>
                         <span id="stats-total-operaciones" class="value text-glow" style="color: #a855f7;">0</span>
+                    </div>
+                </div>
+
+                <!-- Resumen de Arbitraje -->
+                <h3 style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                    🔄 Resumen de Arbitraje (Ciclos)
+                </h3>
+                <div class="capital-summary-cards" style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="mini-summary-card">
+                        <span class="label">Volumen Total Arbitrado</span>
+                        <span id="stats-total-arbitrado" class="value text-glow">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Ganancia Total Arbitraje</span>
+                        <span id="stats-ganancia-arbitraje" class="value text-glow text-success">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Rentabilidad Promedio</span>
+                        <span id="stats-rentabilidad-promedio" class="value text-glow" style="color: var(--primary-color);">0.00%</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Total Ciclos Ejecutados</span>
+                        <span id="stats-total-ciclos" class="value text-glow" style="color: #a855f7;">0</span>
                     </div>
                 </div>
 
@@ -1059,6 +1085,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=39"></script>
+    <script src="app.js?v=40"></script>
 </body>
 </html>
