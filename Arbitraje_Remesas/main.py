@@ -1029,9 +1029,98 @@ def get_stats_dashboard(username: str = Depends(get_current_user), db: Session =
             "ganancia_ciclos": gan_cic
         })
         
+    # --- REMITTANCES DEEP ANALYTICS ---
+    all_remesas = db.query(HistorialRemesas).all()
+    
+    # 1. Traffic by Day of the Week (Lunes to Domingo)
+    traffic_days_dict = {i: {"volumen": 0.0, "count": 0} for i in range(7)}
+    for r in all_remesas:
+        w = r.fecha.weekday()
+        traffic_days_dict[w]["volumen"] += r.monto_usd
+        traffic_days_dict[w]["count"] += 1
+        
+    traffic_days = [
+        {
+            "day_num": i,
+            "label": days_labels[i],
+            "volumen": traffic_days_dict[i]["volumen"],
+            "count": traffic_days_dict[i]["count"]
+        } for i in range(7)
+    ]
+    
+    # 2. Top Clients
+    clients_dict = {}
+    for r in all_remesas:
+        name = r.cliente_nombre.strip() if r.cliente_nombre else "Desconocido"
+        if name not in clients_dict:
+            clients_dict[name] = {"volumen": 0.0, "count": 0}
+        clients_dict[name]["volumen"] += r.monto_usd
+        clients_dict[name]["count"] += 1
+        
+    sorted_clients = sorted(clients_dict.items(), key=lambda x: x[1]["volumen"], reverse=True)
+    top_clients = [
+        {
+            "name": name,
+            "volumen": data["volumen"],
+            "count": data["count"]
+        } for name, data in sorted_clients[:10]
+    ]
+    
+    # 3. Payment Methods Distribution
+    methods_dict = {}
+    for r in all_remesas:
+        m = r.metodo_pago.strip() if r.metodo_pago else "Otro"
+        if m not in methods_dict:
+            methods_dict[m] = {"volumen": 0.0, "count": 0}
+        methods_dict[m]["volumen"] += r.monto_usd
+        methods_dict[m]["count"] += 1
+        
+    payment_methods = [
+        {
+            "metodo": k,
+            "volumen": v["volumen"],
+            "count": v["count"]
+        } for k, v in methods_dict.items()
+    ]
+    
+    # 4. Destination Banks Distribution
+    banks_dict = {}
+    for r in all_remesas:
+        b = r.banco_receptor.strip() if r.banco_receptor else "Otro"
+        if b not in banks_dict:
+            banks_dict[b] = {"volumen": 0.0, "count": 0}
+        banks_dict[b]["volumen"] += r.monto_usd
+        banks_dict[b]["count"] += 1
+        
+    banks_destination = [
+        {
+            "banco": k,
+            "volumen": v["volumen"],
+            "count": v["count"]
+        } for k, v in banks_dict.items()
+    ]
+    
+    # 5. Summary KPIs
+    total_remitido = sum(r.monto_usd for r in all_remesas)
+    total_ganancia_remesas = sum(r.ganancia_usd for r in all_remesas)
+    total_operaciones = len(all_remesas)
+    margen_promedio = (total_ganancia_remesas / total_remitido * 100) if total_remitido > 0 else 0.0
+    
+    summary = {
+        "total_remitido": total_remitido,
+        "total_ganancia_remesas": total_ganancia_remesas,
+        "margen_promedio": margen_promedio,
+        "total_operaciones": total_operaciones
+    }
+        
     return {
         "weekly": weekly_data,
-        "monthly": monthly_data
+        "monthly": monthly_data,
+        "traffic_days": traffic_days,
+        "top_clients": top_clients,
+        "payment_methods": payment_methods,
+        "banks_destination": banks_destination,
+        "summary": summary
     }
 
 @app.post("/api/remesas")
