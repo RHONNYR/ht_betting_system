@@ -1100,17 +1100,27 @@ def get_stats_dashboard(username: str = Depends(get_current_user), db: Session =
         } for k, v in banks_dict.items()
     ]
     
-    # 5. Summary KPIs
+    # 5. Summary KPIs (Remesas & Arbitraje)
     total_remitido = sum(r.monto_usd for r in all_remesas)
     total_ganancia_remesas = sum(r.ganancia_usd for r in all_remesas)
     total_operaciones = len(all_remesas)
     margen_promedio = (total_ganancia_remesas / total_remitido * 100) if total_remitido > 0 else 0.0
     
+    all_ciclos = db.query(HistorialCiclos).all()
+    total_arbitrado = sum(c.usd_procesados_binance or 0.0 for c in all_ciclos)
+    total_ganancia_arbitraje = sum(c.ganancia_usd or 0.0 for c in all_ciclos)
+    total_ciclos_count = len(all_ciclos)
+    rentabilidad_promedio = (total_ganancia_arbitraje / total_arbitrado * 100) if total_arbitrado > 0 else 0.0
+    
     summary = {
         "total_remitido": total_remitido,
         "total_ganancia_remesas": total_ganancia_remesas,
         "margen_promedio": margen_promedio,
-        "total_operaciones": total_operaciones
+        "total_operaciones": total_operaciones,
+        "total_arbitrado": total_arbitrado,
+        "total_ganancia_arbitraje": total_ganancia_arbitraje,
+        "rentabilidad_promedio": rentabilidad_promedio,
+        "total_ciclos": total_ciclos_count
     }
         
     return {
@@ -1396,6 +1406,15 @@ def on_startup():
                     print(f"Migration: Imported {imported_count} historical clients from remesas history.")
             except Exception as e:
                 print(f"Error importing historical clients: {e}")
+                
+            # 7. Unify Daly Acedo to Daly Acevedo
+            try:
+                db.query(HistorialRemesas).filter(HistorialRemesas.cliente_nombre == "Daly Acedo").update({HistorialRemesas.cliente_nombre: "Daly Acevedo"})
+                db.query(Cliente).filter(Cliente.nombre == "Daly Acedo").delete()
+                db.commit()
+                print("Migration: Unified Daly Acedo to Daly Acevedo successfully.")
+            except Exception as e:
+                print(f"Error unifying Daly Acedo/Acevedo: {e}")
                 
             db.commit()
             db.close()
