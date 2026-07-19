@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=38">
+    <link rel="stylesheet" href="styles.css?v=39">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -408,7 +408,28 @@
             </section>
             <!-- TAB 3: ANÁLISIS & ESTADÍSTICAS -->
             <section id="tab-stats" class="tab-pane">
-                <div class="grid-2col" style="margin-bottom: 2rem;">
+                <!-- Tarjetas de Resumen KPI de Remesas -->
+                <div class="capital-summary-cards" style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="mini-summary-card">
+                        <span class="label">Volumen Total Remitido</span>
+                        <span id="stats-total-remitido" class="value text-glow">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Ganancia Total Remesas</span>
+                        <span id="stats-ganancia-remesas" class="value text-glow text-success">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Margen de Ganancia Promedio</span>
+                        <span id="stats-margen-promedio" class="value text-glow" style="color: var(--primary-color);">0.00%</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Total Operaciones Remesas</span>
+                        <span id="stats-total-operaciones" class="value text-glow" style="color: #a855f7;">0</span>
+                    </div>
+                </div>
+
+                <!-- Fila 1: Rendimiento Semanal & Mensual General -->
+                <div class="grid-2col" style="margin-bottom: 2rem; align-items: start;">
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Rendimiento Semanal (Lunes a Domingo)</h2>
@@ -424,6 +445,48 @@
                         </div>
                         <div class="card-body" style="height: 350px; position: relative;">
                             <canvas id="chart-mensual"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila 2: Tráfico de Remesas por Día & Ranking de Mejores Clientes -->
+                <div class="grid-2col" style="margin-bottom: 2rem; align-items: start;">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Tráfico de Remesas por Día de la Semana</h2>
+                        </div>
+                        <div class="card-body" style="height: 350px; position: relative;">
+                            <canvas id="chart-remesas-trafico-dias"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Mejores Clientes (Volumen de Envío)</h2>
+                        </div>
+                        <div class="card-body" style="height: 350px; position: relative;">
+                            <canvas id="chart-remesas-mejores-clientes"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila 3: Métodos de Pago & Bancos Receptores de Remesas -->
+                <div class="grid-2col" style="align-items: start;">
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Métodos de Pago Utilizados (Remesas)</h2>
+                        </div>
+                        <div class="card-body" style="height: 300px; position: relative;">
+                            <canvas id="chart-remesas-metodos"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Bancos Receptores Destino (Remesas)</h2>
+                        </div>
+                        <div class="card-body" style="height: 300px; position: relative;">
+                            <canvas id="chart-remesas-bancos-destino"></canvas>
                         </div>
                     </div>
                 </div>
@@ -996,6 +1059,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=38"></script>
+    <script src="app.js?v=39"></script>
 </body>
 </html>
