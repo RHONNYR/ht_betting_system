@@ -310,7 +310,6 @@ function handleSubTabSwitch(e) {
     const targetSubTab = e.target.getAttribute('data-subtab');
     els.subTabLinks.forEach(link => link.classList.remove('active'));
     els.subTabPanes.forEach(pane => pane.classList.remove('active'));
-    
     e.target.classList.add('active');
     document.getElementById(targetSubTab).classList.add('active');
 }
@@ -320,28 +319,74 @@ async function loadCapital() {
     try {
         const data = await apiCall('/capital');
         state.capitalItems = data.items;
-        
+
         els.totalCapitalUsd.textContent = `$${data.totales.total_usd_equivalente.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         els.totalCapitalSimulado.textContent = `$${data.totales.total_usd_simulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-        
+
+        // Define category groups
+        function getGroupInfo(plataforma) {
+            const name = plataforma.toLowerCase();
+            if (name.includes('(usd)') && (name.includes('venezuela') || name.includes('provincial') || name.includes('mercantil') || name.includes('bancamiga'))) {
+                return { id: 1, label: "🏦 Bancos Venezolanos en Dólares" };
+            }
+            if (name.includes('(ves)') && (name.includes('venezuela') || name.includes('provincial') || name.includes('mercantil') || name.includes('bancamiga'))) {
+                return { id: 2, label: "🇻🇪 Bancos Venezolanos en Bolívares" };
+            }
+            if (name.includes('zelle') || name.includes('zinli') || name.includes('efectivo')) {
+                return { id: 3, label: "💳 Monederos Digitales & Efectivo" };
+            }
+            if (name.includes('binance')) {
+                return { id: 4, label: "🤖 Binance (USDT)" };
+            }
+            return { id: 5, label: "📦 Otras Cuentas" };
+        }
+
+        // Sort items by category group order, then alphabetically by platform name
+        const sortedItems = [...state.capitalItems].sort((a, b) => {
+            const grpA = getGroupInfo(a.plataforma);
+            const grpB = getGroupInfo(b.plataforma);
+            if (grpA.id !== grpB.id) {
+                return grpA.id - grpB.id;
+            }
+            return a.plataforma.localeCompare(b.plataforma);
+        });
+
         // Build table rows
         els.capitalTableBody.innerHTML = '';
-        state.capitalItems.forEach(item => {
+        let currentGroupId = null;
+
+        sortedItems.forEach(item => {
+            const grp = getGroupInfo(item.plataforma);
+            if (grp.id !== currentGroupId) {
+                currentGroupId = grp.id;
+                
+                // Add category separator row
+                const headerTr = document.createElement('tr');
+                headerTr.className = 'table-group-header';
+                headerTr.innerHTML = `
+                    <td colspan="5">
+                        ${grp.label}
+                    </td>
+                `;
+                els.capitalTableBody.appendChild(headerTr);
+            }
+
             const tr = document.createElement('tr');
-            
+
             // Format simulation commission as percentage
             const comPct = parseFloat((item.comision_simulacion * 100).toFixed(2));
-            
+
+            // Columns ordered: Plataforma, Monto VES, Monto USD, Equiv. USD, Simulado USD
             tr.innerHTML = `
                 <td><strong>${item.plataforma}</strong></td>
                 <td>
-                    <input type="number" step="any" class="input-saldo-usd" data-id="${item.id}" value="${item.saldo_usd}">
+                    ${item.convertir_ves ? `<input type="number" step="any" class="input-saldo-ves" data-id="${item.id}" value="${item.saldo_ves}">` : '<span class="text-muted">-</span>'}
                 </td>
                 <td>
-                    ${item.convertir_ves ? `<input type="number" step="any" class="input-saldo-ves" data-id="${item.id}" value="${item.saldo_ves}">` : '-'}
+                    <input type="number" step="any" class="input-saldo-usd" data-id="${item.id}" value="${item.saldo_usd}">
                 </td>
-                <td>$${item.usd_equivalente.toFixed(2)}</td>
-                <td>$${item.usd_simulado.toFixed(2)} <span class="text-muted" style="font-size:0.75rem;">(-${comPct}%)</span></td>
+                <td>$${item.usd_equivalente.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                <td>$${item.usd_simulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span class="text-muted" style="font-size:0.75rem;">(-${comPct}%)</span></td>
             `;
             els.capitalTableBody.appendChild(tr);
         });
