@@ -2411,11 +2411,23 @@ window.cerrarModalEditarRemesa = cerrarModalEditarRemesa;
 
 let semanalChartRef = null;
 let mensualChartRef = null;
+let remesasTraficoDiasChartRef = null;
+let remesasMejoresClientesChartRef = null;
+let remesasMetodosChartRef = null;
+let remesasBancosDestinoChartRef = null;
 
 async function loadAndRenderCharts() {
     try {
         const stats = await apiCall('/stats/dashboard');
         
+        // 0. Update summary KPI cards
+        if (stats.summary) {
+            document.getElementById('stats-total-remitido').textContent = `$${stats.summary.total_remitido.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stats-ganancia-remesas').textContent = `$${stats.summary.total_ganancia_remesas.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stats-margen-promedio').textContent = `${stats.summary.margen_promedio.toFixed(2)}%`;
+            document.getElementById('stats-total-operaciones').textContent = stats.summary.total_operaciones;
+        }
+
         // Render Weekly Chart
         const ctxSemanal = document.getElementById('chart-semanal');
         if (ctxSemanal) {
@@ -2592,6 +2604,218 @@ async function loadAndRenderCharts() {
                 }
             });
         }
+
+        // Render Remesas Traffic by Day of the Week Chart
+        const ctxTraficoDias = document.getElementById('chart-remesas-trafico-dias');
+        if (ctxTraficoDias && stats.traffic_days) {
+            const labels = stats.traffic_days.map(item => item.label);
+            const volData = stats.traffic_days.map(item => item.volumen);
+            const countData = stats.traffic_days.map(item => item.count);
+
+            if (remesasTraficoDiasChartRef) {
+                remesasTraficoDiasChartRef.destroy();
+            }
+
+            remesasTraficoDiasChartRef = new Chart(ctxTraficoDias, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Volumen Enviado ($)',
+                            data: volData,
+                            backgroundColor: 'rgba(0, 112, 243, 0.4)',
+                            borderColor: '#0070F3',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Número de Envíos',
+                            data: countData,
+                            type: 'line',
+                            borderColor: '#A855F7',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            title: { display: true, text: 'Volumen ($)', color: '#9CA3AF' },
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            title: { display: true, text: 'Operaciones', color: '#9CA3AF' },
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: '#9CA3AF', stepSize: 1 }
+                        },
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#F3F4F6' } }
+                    }
+                }
+            });
+        }
+
+        // Render Top Clients Chart
+        const ctxMejoresClientes = document.getElementById('chart-remesas-mejores-clientes');
+        if (ctxMejoresClientes && stats.top_clients) {
+            const labels = stats.top_clients.map(item => item.name);
+            const volData = stats.top_clients.map(item => item.volumen);
+            const countData = stats.top_clients.map(item => item.count);
+
+            if (remesasMejoresClientesChartRef) {
+                remesasMejoresClientesChartRef.destroy();
+            }
+
+            remesasMejoresClientesChartRef = new Chart(ctxMejoresClientes, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Volumen Total ($)',
+                            data: volData,
+                            backgroundColor: 'rgba(16, 185, 129, 0.4)',
+                            borderColor: '#10B981',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#F3F4F6' } },
+                        tooltip: {
+                            callbacks: {
+                                footer: (tooltipItems) => {
+                                    const index = tooltipItems[0].dataIndex;
+                                    const count = countData[index];
+                                    return `Transacciones: ${count}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Render Payment Methods Chart
+        const ctxMetodos = document.getElementById('chart-remesas-metodos');
+        if (ctxMetodos && stats.payment_methods) {
+            const labels = stats.payment_methods.map(item => item.metodo);
+            const data = stats.payment_methods.map(item => item.volumen);
+
+            if (remesasMetodosChartRef) {
+                remesasMetodosChartRef.destroy();
+            }
+
+            const colors = [
+                'rgba(59, 130, 246, 0.6)',
+                'rgba(249, 115, 22, 0.6)',
+                'rgba(16, 185, 129, 0.6)',
+                'rgba(139, 92, 246, 0.6)',
+                'rgba(236, 72, 153, 0.6)',
+                'rgba(234, 179, 8, 0.6)'
+            ];
+
+            remesasMetodosChartRef = new Chart(ctxMetodos, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: data,
+                            backgroundColor: colors.slice(0, labels.length),
+                            borderColor: '#111827',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#F3F4F6', boxWidth: 15 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Render Destination Banks Chart
+        const ctxBancosDestino = document.getElementById('chart-remesas-bancos-destino');
+        if (ctxBancosDestino && stats.banks_destination) {
+            const labels = stats.banks_destination.map(item => item.banco);
+            const data = stats.banks_destination.map(item => item.volumen);
+
+            if (remesasBancosDestinoChartRef) {
+                remesasBancosDestinoChartRef.destroy();
+            }
+
+            const colors = [
+                'rgba(139, 92, 246, 0.6)',
+                'rgba(236, 72, 153, 0.6)',
+                'rgba(59, 130, 246, 0.6)',
+                'rgba(249, 115, 22, 0.6)',
+                'rgba(16, 185, 129, 0.6)',
+                'rgba(234, 179, 8, 0.6)'
+            ];
+
+            remesasBancosDestinoChartRef = new Chart(ctxBancosDestino, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            data: data,
+                            backgroundColor: colors.slice(0, labels.length),
+                            borderColor: '#111827',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#F3F4F6', boxWidth: 15 }
+                        }
+                    }
+                }
+            });
+        }
+
     } catch (err) {
         console.error("Error loading stats for charts:", err);
     }
