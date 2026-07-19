@@ -2426,6 +2426,12 @@ async function loadAndRenderCharts() {
             document.getElementById('stats-ganancia-remesas').textContent = `$${stats.summary.total_ganancia_remesas.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             document.getElementById('stats-margen-promedio').textContent = `${stats.summary.margen_promedio.toFixed(2)}%`;
             document.getElementById('stats-total-operaciones').textContent = stats.summary.total_operaciones;
+            
+            // Arbitraje KPIs
+            document.getElementById('stats-total-arbitrado').textContent = `$${stats.summary.total_arbitrado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stats-ganancia-arbitraje').textContent = `$${stats.summary.total_ganancia_arbitraje.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stats-rentabilidad-promedio').textContent = `${stats.summary.rentabilidad_promedio.toFixed(2)}%`;
+            document.getElementById('stats-total-ciclos').textContent = stats.summary.total_ciclos;
         }
 
         // Render Weekly Chart
