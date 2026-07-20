@@ -51,6 +51,24 @@ const els = {
     calcUsdtVendidos: document.getElementById('calc-usdt-vendidos'),
     calcTasaVenta: document.getElementById('calc-tasa-venta'),
     calcBancoVenta: document.getElementById('calc-banco-venta'),
+    
+    // BCV Simulator Form & Results
+    simBcvBanco: document.getElementById('sim-bcv-banco'),
+    simBcvTerceraEdad: document.getElementById('sim-bcv-tercera-edad'),
+    simBcvComision: document.getElementById('sim-bcv-comision'),
+    simBcvTasa: document.getElementById('sim-bcv-tasa'),
+    simBcvLimite: document.getElementById('sim-bcv-limite'),
+    simBcvModo: document.getElementById('sim-bcv-modo'),
+    simBcvMonto: document.getElementById('sim-bcv-monto'),
+    simBcvMontoLabel: document.getElementById('sim-bcv-monto-label'),
+    simResPrincipalLabel: document.getElementById('sim-res-principal-label'),
+    simResPrincipalValue: document.getElementById('sim-res-principal-value'),
+    simResEquivLabel: document.getElementById('sim-res-equiv-label'),
+    simResEquivMonto: document.getElementById('sim-res-equiv-monto'),
+    simResComisionVes: document.getElementById('sim-res-comision-ves'),
+    simResTotalVes: document.getElementById('sim-res-total-ves'),
+    simResCuentasValue: document.getElementById('sim-res-cuentas-value'),
+    simResCuentasDesc: document.getElementById('sim-res-cuentas-desc'),
     calcTarjetaCompra: document.getElementById('calc-tarjeta-compra'),
     calcDivisasCompradas: document.getElementById('calc-divisas-compradas'),
     calcDivisasProcesadas: document.getElementById('calc-divisas-procesadas'),
@@ -332,6 +350,12 @@ function handleSubTabSwitch(e) {
     
     if (targetSubTab === 'subtab-historial-zelle') {
         loadZelleMovimientos();
+    }
+    if (targetSubTab === 'subtab-simulador-bcv') {
+        if (state.bcvRate && els.simBcvTasa && !els.simBcvTasa.value) {
+            els.simBcvTasa.value = state.bcvRate;
+        }
+        recalculateSimulation();
     }
 }
 
@@ -1455,6 +1479,20 @@ function setupEventListeners() {
     // Auth
     els.loginForm.addEventListener('submit', handleLogin);
     els.btnLogout.addEventListener('click', logout);
+    
+    // BCV Simulator Events
+    if (els.simBcvBanco) els.simBcvBanco.addEventListener('change', updateSimulatorCommissions);
+    if (els.simBcvTerceraEdad) els.simBcvTerceraEdad.addEventListener('change', updateSimulatorCommissions);
+    if (els.simBcvComision) els.simBcvComision.addEventListener('input', recalculateSimulation);
+    if (els.simBcvTasa) els.simBcvTasa.addEventListener('input', recalculateSimulation);
+    if (els.simBcvLimite) els.simBcvLimite.addEventListener('input', recalculateSimulation);
+    if (els.simBcvModo) {
+        els.simBcvModo.addEventListener('change', () => {
+            if (els.simBcvMonto) els.simBcvMonto.value = '';
+            recalculateSimulation();
+        });
+    }
+    if (els.simBcvMonto) els.simBcvMonto.addEventListener('input', recalculateSimulation);
     
     // Zelle Modals & Actions
     if (els.btnRegistrarZelleIngreso) els.btnRegistrarZelleIngreso.addEventListener('click', () => openModalZelle('ingreso'));
@@ -2580,6 +2618,112 @@ function openModalZelle(tipo) {
 
 function closeModalZelle() {
     els.modalZelleMovimiento.classList.add('hidden');
+}
+
+// BCV Purchase Simulator Logic
+function updateSimulatorCommissions() {
+    if (!els.simBcvBanco) return;
+    const banco = els.simBcvBanco.value;
+    const isTerceraEdad = els.simBcvTerceraEdad.checked;
+    
+    if (banco === 'Venezuela' && isTerceraEdad) {
+        els.simBcvComision.value = '0';
+        els.simBcvComision.disabled = true;
+    } else {
+        els.simBcvComision.disabled = false;
+        if (banco === 'Venezuela') {
+            els.simBcvComision.value = '0.5';
+        } else if (banco === 'Personalizado') {
+            // Keep current value or let user input
+        } else {
+            els.simBcvComision.value = '0.5';
+        }
+    }
+    recalculateSimulation();
+}
+
+function recalculateSimulation() {
+    if (!els.simBcvMonto || !els.simBcvMonto.value) {
+        // Clear outputs
+        if (els.simResPrincipalValue) {
+            els.simResPrincipalValue.textContent = "$0.00";
+            els.simResEquivMonto.textContent = "$0.00";
+            els.simResComisionVes.textContent = "0.00 VES";
+            els.simResTotalVes.textContent = "0.00 VES";
+            els.simResCuentasValue.textContent = "0 cuentas";
+            els.simResCuentasDesc.textContent = "Introduce un monto para calcular.";
+        }
+        return;
+    }
+    
+    const monto = parseFloat(els.simBcvMonto.value) || 0;
+    const tasa = parseFloat(els.simBcvTasa.value) || state.bcvRate || 0;
+    const comisionPct = (parseFloat(els.simBcvComision.value) || 0) / 100;
+    const limiteCuenta = parseFloat(els.simBcvLimite.value) || 500;
+    const modo = els.simBcvModo.value;
+    
+    if (tasa <= 0) return;
+    
+    let principalUSD = 0;
+    let principalVES = 0;
+    let comisionVES = 0;
+    let totalVES = 0;
+    
+    if (modo === 'ves') {
+        els.simBcvMontoLabel.textContent = "Monto de Bolívares Disponibles (VES)";
+        els.simBcvMonto.placeholder = "Ej. 1000000";
+        els.simResPrincipalLabel.textContent = "Dólares Adquiridos (Neto)";
+        els.simResEquivLabel.textContent = "Monto Principal Equivalente:";
+        
+        principalUSD = monto / (tasa * (1 + comisionPct));
+        principalVES = principalUSD * tasa;
+        comisionVES = principalVES * comisionPct;
+        totalVES = monto;
+        
+        els.simResPrincipalValue.textContent = `$${principalUSD.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        els.simResEquivMonto.textContent = `$${principalUSD.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD (${principalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES)`;
+    } else {
+        els.simBcvMontoLabel.textContent = "Monto de Dólares a Comprar ($)";
+        els.simBcvMonto.placeholder = "Ej. 500";
+        els.simResPrincipalLabel.textContent = "Bolívares Necesarios (Total)";
+        els.simResEquivLabel.textContent = "Costo Neto Divisas (VES):";
+        
+        principalUSD = monto;
+        principalVES = principalUSD * tasa;
+        comisionVES = principalVES * comisionPct;
+        totalVES = principalVES + comisionVES;
+        
+        els.simResPrincipalValue.textContent = `${totalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
+        els.simResEquivMonto.textContent = `${principalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES ($${principalUSD.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD)`;
+    }
+    
+    els.simResComisionVes.textContent = `${comisionVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
+    els.simResTotalVes.textContent = `${totalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
+    
+    if (limiteCuenta > 0) {
+        const cuentasExactas = principalUSD / limiteCuenta;
+        const cuentasRedondeadas = Math.ceil(cuentasExactas);
+        
+        if (cuentasRedondeadas === 0) {
+            els.simResCuentasValue.textContent = "0 cuentas";
+            els.simResCuentasDesc.textContent = "Introduce un monto para calcular.";
+        } else {
+            els.simResCuentasValue.textContent = `${cuentasRedondeadas} ${cuentasRedondeadas === 1 ? 'cuenta' : 'cuentas'}`;
+            
+            let remainingUSD = principalUSD;
+            const parts = [];
+            for (let i = 0; i < cuentasRedondeadas; i++) {
+                const partAmt = Math.min(remainingUSD, limiteCuenta);
+                const partVes = partAmt * tasa * (1 + comisionPct);
+                parts.push(`Cuenta ${i+1}: $${partAmt.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${partVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES)`);
+                remainingUSD -= partAmt;
+            }
+            els.simResCuentasDesc.innerHTML = parts.join('<br>');
+        }
+    } else {
+        els.simResCuentasValue.textContent = "Límite no definido";
+        els.simResCuentasDesc.textContent = "Especifica un límite de cuenta válido.";
+    }
 }
 
 // Bind to window
