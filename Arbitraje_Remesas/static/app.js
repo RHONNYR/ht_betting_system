@@ -1052,15 +1052,28 @@ window.openPivotVES = function(cicloId, maxMonto) {
 };
 
 window.closeEnvelopeManual = async function(cicloId) {
-    if (!confirm("¿Estás seguro de que deseas cerrar este sobre manualmente? Los bolívares remanentes se registrarán en cero y se consolidará la ganancia final del ciclo.")) return;
+    if (!confirm("¿Deseas cerrar este sobre? Si quedaron bolívares remanentes gastados fuera de arbitraje, la ganancia se fijará de forma real sobre los bolívares efectivamente invertidos en divisas.")) return;
     try {
         await apiCall(`/ciclos/${cicloId}/close`, 'POST');
-        alert("Ciclo cerrado exitosamente.");
+        showToast("Sobre cerrado manteniendo la ganancia real.");
         await initDashboard();
     } catch (err) {
         alert(err.message);
     }
 };
+
+window.reabrirCiclo = async function(cicloId) {
+    if (!confirm("¿Deseas reabrir este sobre para continuar registrando compras o ajustar su saldo?")) return;
+    try {
+        await apiCall(`/ciclos/${cicloId}/reopen`, 'POST');
+        showToast("Sobre reabierto con éxito.");
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
+window.cerrarCiclo = window.closeEnvelopeManual;
 
 window.deletePartialBuy = async function(compraId) {
     if (!confirm("¿Estás seguro de que deseas eliminar esta compra parcial? Se restarán los dólares acumulados y se restaurarán los bolívares al sobre.")) return;
@@ -1228,6 +1241,10 @@ async function loadCiclos() {
                 tasaBcvCell = `<strong>${c.tasa_bcv.toFixed(2)}</strong>`;
             }
             
+            const actionToggle = c.status === 'abierto'
+                ? `<button class="btn btn-warning" onclick="cerrarCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); color: #f59e0b;" title="Cerrar sobre y fijar ganancia real sobre fondos invertidos">🔒 Cerrar</button>`
+                : `<button class="btn btn-success" onclick="reabrirCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.3); color: #10b981;" title="Reabrir sobre para continuar compras o ajustar">🔓 Reabrir</button>`;
+
             tr.innerHTML = `
                 <td>${c.fecha}</td>
                 <td>${c.usdt_vendidos.toFixed(2)}</td>
@@ -1240,7 +1257,8 @@ async function loadCiclos() {
                 <td class="${profitClass}">${c.ganancia_porcentaje.toFixed(2)}%</td>
                 <td>${c.bolivares_restantes.toLocaleString('es-VE', {maximumFractionDigits: 2})}</td>
                 <td>
-                    <div class="flex-row-align" style="gap: 0.5rem; justify-content: center;">
+                    <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
+                        ${actionToggle}
                         <button class="btn btn-secondary" onclick="openEditCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️ Editar</button>
                         <button class="btn btn-danger" onclick="deleteCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️ Eliminar</button>
                     </div>
