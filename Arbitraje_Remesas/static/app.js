@@ -332,7 +332,7 @@ async function loadCapital() {
             if (name.includes('(ves)') && (name.includes('venezuela') || name.includes('provincial') || name.includes('mercantil') || name.includes('bancamiga'))) {
                 return { id: 2, label: "🇻🇪 Bancos Venezolanos en Bolívares" };
             }
-            if (name.includes('zelle') || name.includes('zinli') || name.includes('efectivo')) {
+            if (name.includes('zelle') || name.includes('zinli') || name.includes('efectivo') || name.includes('panamá') || name.includes('panama') || name.includes('airtm') || name.includes('wally') || name.includes('paypal')) {
                 return { id: 3, label: "💳 Monederos Digitales & Efectivo" };
             }
             if (name.includes('binance')) {
