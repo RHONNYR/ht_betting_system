@@ -889,14 +889,42 @@ def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user),
     ciclo.bolivares_restantes = 0.0
     ciclo.status = "completado"
     
-    bolivares_gastados_total = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
-    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
+    total_ves_spent = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
+    
+    if total_ves_spent > 0:
+        bolivares_gastados_total = total_ves_spent
+    else:
+        bolivares_gastados_total = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
+        
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if ciclo.tasa_venta > 0 else 0.0
     
     ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
     ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
     
     db.commit()
-    return {"message": "Ciclo cerrado manualmente", "status": ciclo.status}
+    return {"message": "Ciclo cerrado manteniendo la ganancia real de las compras efectuadas", "status": ciclo.status}
+
+@app.post("/api/ciclos/{ciclo_id}/reopen")
+def reopen_ciclo(ciclo_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    initial_ves = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
+    total_ves_spent = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
+    
+    ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - total_ves_spent)
+    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    ciclo.status = "abierto"
+    
+    bolivares_gastados_total = initial_ves - ciclo.bolivares_sobre_restantes
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if ciclo.tasa_venta > 0 else 0.0
+    
+    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
+    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    
+    db.commit()
+    return {"message": "Sobre reabierto con éxito", "status": ciclo.status, "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
 
 @app.put("/api/ciclos/{ciclo_id}")
 def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
