@@ -1302,7 +1302,11 @@ def on_startup():
             new_platforms = [
                 {"plataforma": "Banco Mercantil (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.046},
                 {"plataforma": "Bancamiga (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
-                {"plataforma": "Bancamiga (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046}
+                {"plataforma": "Bancamiga (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
+                {"plataforma": "Mercantil Panamá (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.025},
+                {"plataforma": "Airtm (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.02},
+                {"plataforma": "Wally (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.02},
+                {"plataforma": "PayPal (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.035}
             ]
             
             for plat in new_platforms:
@@ -1310,6 +1314,8 @@ def on_startup():
                 if not existing:
                     db.add(DistribucionCapital(**plat))
                     print(f"Migration: Added platform '{plat['plataforma']}'")
+                else:
+                    existing.comision_simulacion = plat["comision_simulacion"]
             
             # 3. Add titular Anaisabel and card if they don't exist
             anaisabel = db.query(Titular).filter(Titular.nombre == "Anaisabel").first()
