@@ -2601,6 +2601,16 @@ async function loadAndRenderCharts() {
         
         // 0. Update summary KPI cards
         if (stats.summary) {
+            // Consolidated KPIs
+            document.getElementById('stats-ganancia-historica').textContent = `$${stats.summary.ganancia_historica_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stats-ganancia-semanal').textContent = `$${stats.summary.ganancia_semanal_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('stats-ganancia-mensual').textContent = `$${stats.summary.ganancia_mensual_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            const pctRem = stats.summary.pct_remesas.toFixed(0);
+            const pctArb = stats.summary.pct_arbitraje.toFixed(0);
+            document.getElementById('stats-mix-negocio').textContent = `💸 ${pctRem}% / 🔄 ${pctArb}%`;
+
+            // Remesas KPIs
             document.getElementById('stats-total-remitido').textContent = `$${stats.summary.total_remitido.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             document.getElementById('stats-ganancia-remesas').textContent = `$${stats.summary.total_ganancia_remesas.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             document.getElementById('stats-margen-promedio').textContent = `${stats.summary.margen_promedio.toFixed(2)}%`;
