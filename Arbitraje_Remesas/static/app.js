@@ -100,6 +100,9 @@ const els = {
     editarCicloForm: document.getElementById('editar-ciclo-form'),
     btnCloseModalEditarCiclo: document.getElementById('btn-close-modal-editar-ciclo'),
     
+    // Stats Tab
+    statsPeriodoSelect: document.getElementById('stats-periodo-select'),
+
     // History Tab
     ciclosTableBody: document.getElementById('ciclos-table-body'),
     totalGananciaCiclos: document.getElementById('total-ganancia-ciclos'),
@@ -1512,6 +1515,11 @@ function setupEventListeners() {
     }
     if (els.simBcvMonto) els.simBcvMonto.addEventListener('input', recalculateSimulation);
     
+    // Stats Period Filter
+    if (els.statsPeriodoSelect) {
+        els.statsPeriodoSelect.addEventListener('change', loadAndRenderCharts);
+    }
+    
     // Zelle Modals & Actions
     if (els.btnRegistrarZelleIngreso) els.btnRegistrarZelleIngreso.addEventListener('click', () => openModalZelle('ingreso'));
     if (els.btnRegistrarZelleEgreso) els.btnRegistrarZelleEgreso.addEventListener('click', () => openModalZelle('egreso'));
@@ -2759,7 +2767,8 @@ let remesasBancosDestinoChartRef = null;
 
 async function loadAndRenderCharts() {
     try {
-        const stats = await apiCall('/stats/dashboard');
+        const period = els.statsPeriodoSelect ? els.statsPeriodoSelect.value : 'semana';
+        const stats = await apiCall(`/stats/dashboard?period=${period}`);
         
         // 0. Update summary KPI cards
         if (stats.summary) {
