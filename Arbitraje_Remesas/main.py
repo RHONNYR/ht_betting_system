@@ -1069,7 +1069,7 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
         raise HTTPException(status_code=500, detail=f"Failed to fetch P2P rates: {str(e)}")
 
 @app.get("/api/stats/dashboard")
-def get_stats_dashboard(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     now = get_venezuela_time()
     
     # --- WEEKLY (Monday to Sunday) ---
@@ -1150,6 +1150,7 @@ def get_stats_dashboard(username: str = Depends(get_current_user), db: Session =
         
     # --- REMITTANCES DEEP ANALYTICS ---
     all_remesas = db.query(HistorialRemesas).all()
+    all_ciclos = db.query(HistorialCiclos).all()
     
     # 1. Traffic by Day of the Week (Lunes to Domingo)
     traffic_days_dict = {i: {"volumen": 0.0, "count": 0} for i in range(7)}
@@ -1219,28 +1220,43 @@ def get_stats_dashboard(username: str = Depends(get_current_user), db: Session =
         } for k, v in banks_dict.items()
     ]
     
+    # --- PERIOD FILTER FOR SUMMARY KPIS ---
+    if period == "mes":
+        start_of_month = datetime.datetime(now.year, now.month, 1)
+        next_month = now.month + 1 if now.month < 12 else 1
+        next_year = now.year if now.month < 12 else now.year + 1
+        end_of_month = datetime.datetime(next_year, next_month, 1)
+        remesas_summary = [r for r in all_remesas if r.fecha >= start_of_month and r.fecha < end_of_month]
+        ciclos_summary = [c for c in all_ciclos if c.fecha >= start_of_month and c.fecha < end_of_month]
+    elif period == "historico":
+        remesas_summary = all_remesas
+        ciclos_summary = all_ciclos
+    else:  # default "semana"
+        remesas_summary = weekly_remesas
+        ciclos_summary = weekly_ciclos
+    
     # 5. Summary KPIs (Remesas & Arbitraje)
-    total_remitido = sum(r.monto_usd for r in all_remesas)
-    total_ganancia_remesas = sum(r.ganancia_usd for r in all_remesas)
-    total_operaciones = len(all_remesas)
+    total_remitido = sum(r.monto_usd for r in remesas_summary)
+    total_ganancia_remesas = sum(r.ganancia_usd for r in remesas_summary)
+    total_operaciones = len(remesas_summary)
     margen_promedio = (total_ganancia_remesas / total_remitido * 100) if total_remitido > 0 else 0.0
     
-    all_ciclos = db.query(HistorialCiclos).all()
-    total_arbitrado = sum(c.usd_procesados_binance or 0.0 for c in all_ciclos)
-    total_ganancia_arbitraje = sum(c.ganancia_usd or 0.0 for c in all_ciclos)
-    total_ciclos_count = len(all_ciclos)
+    total_arbitrado = sum(c.usd_procesados_binance or 0.0 for c in ciclos_summary)
+    total_ganancia_arbitraje = sum(c.ganancia_usd or 0.0 for c in ciclos_summary)
+    total_ciclos_count = len(ciclos_summary)
     rentabilidad_promedio = (total_ganancia_arbitraje / total_arbitrado * 100) if total_arbitrado > 0 else 0.0
     
+    # Global Consolidated KPIs (All time & current periods)
+    all_rem_gain = sum(r.ganancia_usd for r in all_remesas)
+    all_arb_gain = sum(c.ganancia_usd or 0.0 for c in all_ciclos)
     ganancia_semanal_consolidada = sum(day["ganancia_remesas"] + day["ganancia_ciclos"] for day in weekly_data)
-    
     current_month_data = monthly_data[now.month - 1]
     ganancia_mensual_consolidada = current_month_data["ganancia_remesas"] + current_month_data["ganancia_ciclos"]
-    
-    ganancia_historica_consolidada = total_ganancia_remesas + total_ganancia_arbitraje
+    ganancia_historica_consolidada = all_rem_gain + all_arb_gain
     
     if ganancia_historica_consolidada > 0:
-        pct_remesas = (total_ganancia_remesas / ganancia_historica_consolidada) * 100
-        pct_arbitraje = (total_ganancia_arbitraje / ganancia_historica_consolidada) * 100
+        pct_remesas = (all_rem_gain / ganancia_historica_consolidada) * 100
+        pct_arbitraje = (all_arb_gain / ganancia_historica_consolidada) * 100
     else:
         pct_remesas = 0.0
         pct_arbitraje = 0.0
