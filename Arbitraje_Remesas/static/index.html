@@ -408,6 +408,29 @@
             </section>
             <!-- TAB 3: ANÁLISIS & ESTADÍSTICAS -->
             <section id="tab-stats" class="tab-pane">
+                <!-- Rendimiento General Consolidado -->
+                <h3 style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                    📈 Rendimiento General Consolidado (Remesas + Arbitraje)
+                </h3>
+                <div class="capital-summary-cards" style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="mini-summary-card" style="background: linear-gradient(135deg, rgba(0, 112, 243, 0.15) 0%, rgba(0, 112, 243, 0.05) 100%); border-color: rgba(0, 112, 243, 0.3);">
+                        <span class="label">Ganancia Combinada Total</span>
+                        <span id="stats-ganancia-historica" class="value text-glow text-primary">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%); border-color: rgba(16, 185, 129, 0.3);">
+                        <span class="label">Ganancia Semanal</span>
+                        <span id="stats-ganancia-semanal" class="value text-glow text-success">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%); border-color: rgba(245, 158, 11, 0.3);">
+                        <span class="label">Ganancia Mensual</span>
+                        <span id="stats-ganancia-mensual" class="value text-glow" style="color: #f59e0b;">$0.00</span>
+                    </div>
+                    <div class="mini-summary-card">
+                        <span class="label">Mix de Negocio (Remesa / Arbitraje)</span>
+                        <span id="stats-mix-negocio" class="value text-glow" style="color: #a855f7; font-size: 1.15rem; font-weight: 500;">0% / 0%</span>
+                    </div>
+                </div>
+
                 <!-- Resumen de Remesas -->
                 <h3 style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
                     💸 Resumen de Remesas
