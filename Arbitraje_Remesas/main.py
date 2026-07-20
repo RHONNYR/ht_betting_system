@@ -12,7 +12,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, engine
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, engine
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -164,6 +164,13 @@ class ClienteCreate(BaseModel):
     nombre: str
     telefono: Optional[str] = None
     genero: Optional[str] = "Masculino"
+
+class MovimientoZelleCreate(BaseModel):
+    tipo: str  # "ingreso" / "egreso"
+    monto: float
+    titular: Optional[str] = None
+    detalle: Optional[str] = None
+    fecha: Optional[str] = None
 
 class BCVModeRequest(BaseModel):
     mode: str
@@ -480,6 +487,90 @@ def delete_capital_snapshot(snap_id: int, username: str = Depends(get_current_us
     db.delete(snap)
     db.commit()
     return {"message": "Snapshot de capital eliminado con éxito"}
+
+# Zelle Ledger Routes
+@app.get("/api/zelle/movimientos")
+def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(150).all()
+    # Compute weekly totals (from Monday to Sunday of the current week)
+    now = get_venezuela_time()
+    days_to_monday = now.weekday()
+    start_of_week = datetime.datetime(now.year, now.month, now.day) - datetime.timedelta(days=days_to_monday)
+    end_of_week = start_of_week + datetime.timedelta(days=7)
+    
+    weekly_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
+    weekly_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
+    
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    saldo_actual = zelle_plat.saldo_usd if zelle_plat else 0.0
+    
+    result = []
+    for m in movs:
+        result.append({
+            "id": m.id,
+            "fecha": m.fecha.strftime("%d/%m/%Y %I:%M %p"),
+            "tipo": m.tipo,
+            "monto": m.monto,
+            "titular": m.titular or "-",
+            "detalle": m.detalle or "-"
+        })
+        
+    return {
+        "items": result,
+        "summary": {
+            "saldo_actual": saldo_actual,
+            "weekly_ingresos": weekly_ingresos,
+            "weekly_egresos": weekly_egresos
+        }
+    }
+
+@app.post("/api/zelle/movimientos")
+def create_zelle_movimiento(req: MovimientoZelleCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    fecha_mov = get_venezuela_time()
+    if req.fecha:
+        try:
+            fecha_mov = datetime.datetime.strptime(req.fecha, "%d/%m/%Y %I:%M %p")
+        except ValueError:
+            try:
+                fecha_mov = datetime.datetime.strptime(req.fecha, "%d/%m/%Y")
+            except ValueError:
+                pass
+                
+    mov = MovimientoZelle(
+        fecha=fecha_mov,
+        tipo=req.tipo,
+        monto=req.monto,
+        titular=req.titular,
+        detalle=req.detalle
+    )
+    db.add(mov)
+    
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    if zelle_plat:
+        if req.tipo == "ingreso":
+            zelle_plat.saldo_usd += req.monto
+        elif req.tipo == "egreso":
+            zelle_plat.saldo_usd -= req.monto
+            
+    db.commit()
+    return {"message": "Movimiento registrado con éxito", "id": mov.id}
+
+@app.delete("/api/zelle/movimientos/{mov_id}")
+def delete_zelle_movimiento(mov_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == mov_id).first()
+    if not mov:
+        raise HTTPException(status_code=404, detail="Movimiento no encontrado")
+        
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    if zelle_plat:
+        if mov.tipo == "ingreso":
+            zelle_plat.saldo_usd -= mov.monto
+        elif mov.tipo == "egreso":
+            zelle_plat.saldo_usd += mov.monto
+            
+    db.delete(mov)
+    db.commit()
+    return {"message": "Movimiento eliminado con éxito"}
 
 # Titulares & Cards Routes
 @app.get("/api/titulares")
@@ -1159,6 +1250,21 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
     )
     db.add(remesa)
     db.commit()
+    
+    if req.metodo_pago.strip().lower() == "zelle":
+        mov = MovimientoZelle(
+            fecha=remesa.fecha,
+            tipo="ingreso",
+            monto=req.monto_usd,
+            titular=req.cliente_nombre,
+            detalle=f"Remesa ID {remesa.id} de {req.cliente_nombre}"
+        )
+        db.add(mov)
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        if zelle_plat:
+            zelle_plat.saldo_usd += req.monto_usd
+        db.commit()
+        
     return {"message": "Remesa registrada con éxito", "id": remesa.id}
 
 @app.get("/api/remesas")
@@ -1197,6 +1303,10 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
             db.add(new_cliente)
             db.commit()
 
+    old_metodo = remesa.metodo_pago.strip().lower()
+    old_monto = remesa.monto_usd
+    old_cliente = remesa.cliente_nombre
+
     remesa.cliente_nombre = req.cliente_nombre
     remesa.monto_usd = req.monto_usd
     remesa.tasa_p2p = req.tasa_p2p
@@ -1209,6 +1319,54 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
     remesa.comision_binance = req.comision_binance
     
     db.commit()
+
+    # Sync Zelle ledger movements
+    new_metodo = req.metodo_pago.strip().lower()
+    new_monto = req.monto_usd
+    new_cliente = req.cliente_nombre
+    
+    if old_metodo == "zelle" or new_metodo == "zelle":
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        
+        if old_metodo == "zelle" and new_metodo != "zelle":
+            mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {old_cliente}").first()
+            if mov:
+                db.delete(mov)
+            if zelle_plat:
+                zelle_plat.saldo_usd -= old_monto
+        
+        elif old_metodo != "zelle" and new_metodo == "zelle":
+            mov = MovimientoZelle(
+                fecha=remesa.fecha,
+                tipo="ingreso",
+                monto=new_monto,
+                titular=new_cliente,
+                detalle=f"Remesa ID {remesa_id} de {new_cliente}"
+            )
+            db.add(mov)
+            if zelle_plat:
+                zelle_plat.saldo_usd += new_monto
+                
+        elif old_metodo == "zelle" and new_metodo == "zelle":
+            mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {old_cliente}").first()
+            if mov:
+                mov.monto = new_monto
+                mov.titular = new_cliente
+                mov.detalle = f"Remesa ID {remesa_id} de {new_cliente}"
+            else:
+                mov = MovimientoZelle(
+                    fecha=remesa.fecha,
+                    tipo="ingreso",
+                    monto=new_monto,
+                    titular=new_cliente,
+                    detalle=f"Remesa ID {remesa_id} de {new_cliente}"
+                )
+                db.add(mov)
+            
+            if zelle_plat:
+                zelle_plat.saldo_usd += (new_monto - old_monto)
+        db.commit()
+
     return {"message": "Remesa actualizada correctamente."}
 
 @app.delete("/api/remesas/{remesa_id}")
@@ -1216,6 +1374,16 @@ def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db:
     remesa = db.query(HistorialRemesas).filter(HistorialRemesas.id == remesa_id).first()
     if not remesa:
         raise HTTPException(status_code=404, detail="Remesa no encontrada.")
+    
+    # Revert Zelle ledger impact
+    if remesa.metodo_pago.strip().lower() == "zelle":
+        mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {remesa.cliente_nombre}").first()
+        if mov:
+            db.delete(mov)
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        if zelle_plat:
+            zelle_plat.saldo_usd -= remesa.monto_usd
+            
     db.delete(remesa)
     db.commit()
     return {"message": "Remesa eliminada correctamente."}
