@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=43">
+    <link rel="stylesheet" href="styles.css?v=45">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -157,7 +157,14 @@
 
             <!-- TAB 2: CALCULADORA DE CICLOS -->
             <section id="tab-calculadora" class="tab-pane">
-                <div class="grid-2col">
+                <!-- Navigation sub-tabs -->
+                <div class="sub-nav-tabs">
+                    <button class="sub-tab-link active" data-subtab="subtab-calculadora-ciclos">🔄 Operativa de Ciclos</button>
+                    <button class="sub-tab-link" data-subtab="subtab-simulador-bcv">💰 Simulador de Compra BCV</button>
+                </div>
+
+                <div id="subtab-calculadora-ciclos" class="sub-tab-pane active">
+                    <div class="grid-2col">
                     <!-- Calculator Inputs and Active Envelopes Stack -->
                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                         <div class="card glass-card">
@@ -250,6 +257,106 @@
                             <div class="empty-state">
                                 <span class="large-icon">📊</span>
                                 <p>Introduce los datos y presiona "Calcular Ciclo" para ver los resultados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB 2: SIMULADOR DE COMPRA BCV -->
+                <div id="subtab-simulador-bcv" class="sub-tab-pane">
+                    <div class="grid-2col">
+                        <!-- Inputs Panel -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h2>Parámetros del Simulador</h2>
+                            </div>
+                            <div class="card-body">
+                                <form id="sim-bcv-form" onsubmit="event.preventDefault();">
+                                    <div class="grid-2col-form">
+                                        <div class="input-group">
+                                            <label for="sim-bcv-banco">Banco de Compra</label>
+                                            <select id="sim-bcv-banco">
+                                                <option value="Venezuela">Banco de Venezuela (BDV)</option>
+                                                <option value="Provincial">Banco Provincial</option>
+                                                <option value="Mercantil">Banco Mercantil</option>
+                                                <option value="Bancamiga">Bancamiga</option>
+                                                <option value="Banesco">Banesco</option>
+                                                <option value="Personalizado">Otro / Personalizado</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group" style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-top: 1.5rem;">
+                                            <input type="checkbox" id="sim-bcv-tercera-edad" style="width: auto; cursor: pointer; height: 18px; margin: 0;">
+                                            <label for="sim-bcv-tercera-edad" style="margin: 0; cursor: pointer; font-size: 0.9rem;">👵 Cuenta de Tercera Edad (Exención BDV)</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-2col-form mt-3">
+                                        <div class="input-group">
+                                            <label for="sim-bcv-comision">Comisión Bancaria (%)</label>
+                                            <input type="number" step="any" id="sim-bcv-comision" value="0.5" placeholder="0.5">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="sim-bcv-tasa">Tasa de Cambio BCV (VES/$)</label>
+                                            <input type="number" step="any" id="sim-bcv-tasa" placeholder="Ej. 736.93">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-2col-form mt-3">
+                                        <div class="input-group">
+                                            <label for="sim-bcv-limite">Límite Mensual por Cuenta ($)</label>
+                                            <input type="number" step="any" id="sim-bcv-limite" value="500" placeholder="500">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="sim-bcv-modo">Modo de Simulación</label>
+                                            <select id="sim-bcv-modo">
+                                                <option value="ves">Tengo Bolívares Disponibles (VES)</option>
+                                                <option value="usd">Quiero Comprar un Monto en Dólares ($)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group mt-3">
+                                        <label for="sim-bcv-monto" id="sim-bcv-monto-label">Monto de Bolívares a Simular (VES)</label>
+                                        <input type="number" step="any" id="sim-bcv-monto" required placeholder="Ej. 1000000">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Results Panel -->
+                        <div class="card glass-card result-card">
+                            <div class="card-header">
+                                <h2>Resultado de Simulación BCV</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="results-preview-container">
+                                    <!-- Result Box: Principal Output -->
+                                    <div class="result-box mb-4">
+                                        <span class="result-title" id="sim-res-principal-label">Dólares Adquiridos (Neto)</span>
+                                        <span class="result-value text-glow text-primary" id="sim-res-principal-value">$0.00</span>
+                                    </div>
+
+                                    <!-- Breakdowns -->
+                                    <div class="breakdown-item mb-2" style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                                        <span class="text-muted" id="sim-res-equiv-label">Monto Principal Equivalente:</span>
+                                        <strong id="sim-res-equiv-monto">$0.00</strong>
+                                    </div>
+                                    <div class="breakdown-item mb-2" style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                                        <span class="text-muted">Comisión Bancaria Estimada (VES):</span>
+                                        <strong class="text-danger" id="sim-res-comision-ves">0.00 VES</strong>
+                                    </div>
+                                    <div class="breakdown-item mb-3" style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem;">
+                                        <span class="text-muted">Total Bolívares Requeridos:</span>
+                                        <strong class="text-success" id="sim-res-total-ves">0.00 VES</strong>
+                                    </div>
+
+                                    <!-- Accounts Required breakdown -->
+                                    <div class="result-box mt-3" style="background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2); padding: 12px; border-radius: 8px;">
+                                        <span class="result-title" style="color: #a855f7; font-weight: 600;">Cuentas Bancarias Requeridas</span>
+                                        <span class="result-value" id="sim-res-cuentas-value" style="font-size: 1.15rem; font-weight: 500; display: block; margin-top: 4px; color: var(--text-primary);">0 cuentas</span>
+                                        <p id="sim-res-cuentas-desc" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; line-height: 1.2;"></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1194,6 +1301,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=43"></script>
+    <script src="app.js?v=45"></script>
 </body>
 </html>
