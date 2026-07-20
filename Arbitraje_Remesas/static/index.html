@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=42">
+    <link rel="stylesheet" href="styles.css?v=43">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -526,6 +526,7 @@
                     <button class="sub-tab-link" data-subtab="subtab-historial-compras">💳 Bitácora de Compras de Divisas</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-capital">📈 Bitácora Diaria de Capital</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-remesas">💸 Remesas Enviadas</button>
+                    <button class="sub-tab-link" data-subtab="subtab-historial-zelle">💳 Control de Cuenta Zelle</button>
                 </div>
 
                 <!-- SUB-TAB 1: HISTORIAL DE CICLOS -->
@@ -667,6 +668,56 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- SUB-TAB 5: CONTROL DE CUENTA ZELLE -->
+                <div id="subtab-historial-zelle" class="sub-tab-pane">
+                    <div class="stats-grid mb-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div class="stat-card glass-card">
+                            <div class="stat-label">Saldo Zelle Calculado</div>
+                            <div class="stat-value text-primary" id="zelle-saldo-calculado">$0.00</div>
+                            <div class="stat-desc">Sincronizado con Capital</div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-label">Ingresos Semanales</div>
+                            <div class="stat-value text-success" id="zelle-ingresos-semanales">$0.00</div>
+                            <div class="stat-desc">Recibidos esta semana</div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-label">Egresos Semanales</div>
+                            <div class="stat-value text-danger" id="zelle-egresos-semanales">$0.00</div>
+                            <div class="stat-desc">Convertidos/Gastados</div>
+                        </div>
+                    </div>
+
+                    <div class="card glass-card">
+                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                            <h2>Bitácora de Cuenta Zelle</h2>
+                            <div style="display: flex; gap: 8px;">
+                                <button id="btn-registrar-zelle-ingreso" class="btn btn-primary btn-sm">➕ Registrar Ingreso</button>
+                                <button id="btn-registrar-zelle-egreso" class="btn btn-danger btn-sm">➖ Registrar Egreso (Compra USDT)</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha y Hora</th>
+                                            <th>Tipo</th>
+                                            <th>Titular/Cliente</th>
+                                            <th>Detalle/Concepto</th>
+                                            <th>Monto USD</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="zelle-table-body">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
     </div>
@@ -684,6 +735,41 @@
                 <button id="btn-save-modal-bcv" class="btn btn-primary">Fijar Tasa</button>
                 <button id="btn-close-modal-bcv" class="btn btn-secondary">Cancelar</button>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL: REGISTRAR MOVIMIENTO ZELLE MANUAL -->
+    <div id="modal-zelle-movimiento" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 450px;">
+            <h3 id="modal-zelle-title">Registrar Movimiento Zelle</h3>
+            <form id="form-zelle-movimiento">
+                <input type="hidden" id="modal-zelle-tipo" value="ingreso">
+                
+                <div class="input-group mt-2">
+                    <label for="modal-zelle-monto">Monto en USD ($)</label>
+                    <input type="number" step="any" id="modal-zelle-monto" required placeholder="0.00">
+                </div>
+                
+                <div class="input-group mt-2">
+                    <label for="modal-zelle-titular">Titular / Cliente</label>
+                    <input type="text" id="modal-zelle-titular" placeholder="Nombre de quien envía/recibe">
+                </div>
+                
+                <div class="input-group mt-2">
+                    <label for="modal-zelle-detalle">Detalle / Concepto</label>
+                    <input type="text" id="modal-zelle-detalle" placeholder="Ej. Depósito, Compra USDT, etc.">
+                </div>
+
+                <div class="input-group mt-2">
+                    <label for="modal-zelle-fecha">Fecha (Opcional)</label>
+                    <input type="text" id="modal-zelle-fecha" placeholder="Ej: 20/07/2026 o dejar vacío para ahora">
+                </div>
+                
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="button" id="btn-close-modal-zelle" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1085,6 +1171,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=42"></script>
+    <script src="app.js?v=43"></script>
 </body>
 </html>
