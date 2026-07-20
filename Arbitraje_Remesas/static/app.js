@@ -88,6 +88,23 @@ const els = {
     comprasTableBody: document.getElementById('compras-table-body'),
     capitalHistoryTableBody: document.getElementById('capital-history-table-body'),
     
+    // Zelle elements
+    zelleTableBody: document.getElementById('zelle-table-body'),
+    zelleSaldoCalculado: document.getElementById('zelle-saldo-calculado'),
+    zelleIngresosSemanales: document.getElementById('zelle-ingresos-semanales'),
+    zelleEgresosSemanales: document.getElementById('zelle-egresos-semanales'),
+    btnRegistrarZelleIngreso: document.getElementById('btn-registrar-zelle-ingreso'),
+    btnRegistrarZelleEgreso: document.getElementById('btn-registrar-zelle-egreso'),
+    modalZelleMovimiento: document.getElementById('modal-zelle-movimiento'),
+    modalZelleTitle: document.getElementById('modal-zelle-title'),
+    formZelleMovimiento: document.getElementById('form-zelle-movimiento'),
+    modalZelleTipo: document.getElementById('modal-zelle-tipo'),
+    modalZelleMonto: document.getElementById('modal-zelle-monto'),
+    modalZelleTitular: document.getElementById('modal-zelle-titular'),
+    modalZelleDetalle: document.getElementById('modal-zelle-detalle'),
+    modalZelleFecha: document.getElementById('modal-zelle-fecha'),
+    btnCloseModalZelle: document.getElementById('btn-close-modal-zelle'),
+    
     // Remesas Elements
     remesaForm: document.getElementById('remesa-form'),
     remesaCliente: document.getElementById('remesa-cliente'),
@@ -312,6 +329,10 @@ function handleSubTabSwitch(e) {
     els.subTabPanes.forEach(pane => pane.classList.remove('active'));
     e.target.classList.add('active');
     document.getElementById(targetSubTab).classList.add('active');
+    
+    if (targetSubTab === 'subtab-historial-zelle') {
+        loadZelleMovimientos();
+    }
 }
 
 // Load Capital Distribution
@@ -1435,6 +1456,22 @@ function setupEventListeners() {
     els.loginForm.addEventListener('submit', handleLogin);
     els.btnLogout.addEventListener('click', logout);
     
+    // Zelle Modals & Actions
+    if (els.btnRegistrarZelleIngreso) els.btnRegistrarZelleIngreso.addEventListener('click', () => openModalZelle('ingreso'));
+    if (els.btnRegistrarZelleEgreso) els.btnRegistrarZelleEgreso.addEventListener('click', () => openModalZelle('egreso'));
+    if (els.btnCloseModalZelle) els.btnCloseModalZelle.addEventListener('click', closeModalZelle);
+    if (els.formZelleMovimiento) {
+        els.formZelleMovimiento.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const tipo = els.modalZelleTipo.value;
+            const monto = els.modalZelleMonto.value;
+            const titular = els.modalZelleTitular.value;
+            const detalle = els.modalZelleDetalle.value;
+            const fecha = els.modalZelleFecha.value;
+            await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha);
+        });
+    }
+    
     // BCV Modals
     els.btnEditBcv.addEventListener('click', () => {
         els.modalBcvInput.value = state.bcvSource === 'Manual' ? state.bcvRate : '';
@@ -2449,10 +2486,107 @@ function cerrarModalEditarRemesa() {
     document.getElementById('modal-editar-remesa').classList.add('hidden');
 }
 
+// Zelle Movements Logic
+async function loadZelleMovimientos() {
+    try {
+        const data = await apiCall('/zelle/movimientos');
+        
+        // Update summary cards
+        els.zelleSaldoCalculado.textContent = `$${data.summary.saldo_actual.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        els.zelleIngresosSemanales.textContent = `$${data.summary.weekly_ingresos.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        els.zelleEgresosSemanales.textContent = `$${data.summary.weekly_egresos.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        
+        // Populate table body
+        els.zelleTableBody.innerHTML = '';
+        if (data.items.length === 0) {
+            els.zelleTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
+            return;
+        }
+        
+        data.items.forEach(item => {
+            const tr = document.createElement('tr');
+            const isIngreso = item.tipo === 'ingreso';
+            
+            tr.innerHTML = `
+                <td>${item.fecha}</td>
+                <td>
+                    <span class="badge ${isIngreso ? 'badge-success' : 'badge-danger'}">
+                        ${isIngreso ? '🟢 Ingreso' : '🔴 Egreso'}
+                    </span>
+                </td>
+                <td><strong>${item.titular}</strong></td>
+                <td>${item.detalle}</td>
+                <td>
+                    <strong class="${isIngreso ? 'text-success' : 'text-danger'}">
+                        ${isIngreso ? '+' : '-'}$${item.monto.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    </strong>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="eliminarMovimientoZelle(${item.id})">Eliminar</button>
+                </td>
+            `;
+            els.zelleTableBody.appendChild(tr);
+        });
+    } catch (err) {
+        console.error("Error loading Zelle movements:", err);
+    }
+}
+
+async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha) {
+    try {
+        const payload = {
+            tipo,
+            monto: parseFloat(monto),
+            titular: titular || null,
+            detalle: detalle || null,
+            fecha: fecha || null
+        };
+        
+        await apiCall('/zelle/movimientos', 'POST', payload);
+        showToast(`Movimiento de Zelle registrado con éxito.`);
+        closeModalZelle();
+        loadZelleMovimientos();
+        loadCapital();
+    } catch (err) {
+        console.error("Error creating Zelle movement:", err);
+        showToast("Error al registrar el movimiento de Zelle.", "error");
+    }
+}
+
+async function eliminarMovimientoZelle(id) {
+    if (!confirm("¿Estás seguro de que deseas eliminar este movimiento de Zelle? Se revertirá su impacto en el saldo de capital.")) {
+        return;
+    }
+    try {
+        await apiCall(`/zelle/movimientos/${id}`, 'DELETE');
+        showToast("Movimiento de Zelle eliminado con éxito.");
+        loadZelleMovimientos();
+        loadCapital();
+    } catch (err) {
+        console.error("Error deleting Zelle movement:", err);
+        showToast("Error al eliminar el movimiento de Zelle.", "error");
+    }
+}
+
+function openModalZelle(tipo) {
+    els.modalZelleTipo.value = tipo;
+    els.modalZelleTitle.textContent = tipo === 'ingreso' ? '➕ Registrar Ingreso Zelle' : '➖ Registrar Egreso Zelle';
+    els.modalZelleMonto.value = '';
+    els.modalZelleTitular.value = '';
+    els.modalZelleDetalle.value = '';
+    els.modalZelleFecha.value = '';
+    els.modalZelleMovimiento.classList.remove('hidden');
+}
+
+function closeModalZelle() {
+    els.modalZelleMovimiento.classList.add('hidden');
+}
+
 // Bind to window
 window.eliminarRemesa = eliminarRemesa;
 window.iniciarEditarRemesa = iniciarEditarRemesa;
 window.cerrarModalEditarRemesa = cerrarModalEditarRemesa;
+window.eliminarMovimientoZelle = eliminarMovimientoZelle;
 
 let semanalChartRef = null;
 let mensualChartRef = null;
