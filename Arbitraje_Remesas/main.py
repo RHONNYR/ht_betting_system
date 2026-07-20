@@ -1203,6 +1203,20 @@ def get_stats_dashboard(username: str = Depends(get_current_user), db: Session =
     total_ciclos_count = len(all_ciclos)
     rentabilidad_promedio = (total_ganancia_arbitraje / total_arbitrado * 100) if total_arbitrado > 0 else 0.0
     
+    ganancia_semanal_consolidada = sum(day["ganancia_remesas"] + day["ganancia_ciclos"] for day in weekly_data)
+    
+    current_month_data = monthly_data[now.month - 1]
+    ganancia_mensual_consolidada = current_month_data["ganancia_remesas"] + current_month_data["ganancia_ciclos"]
+    
+    ganancia_historica_consolidada = total_ganancia_remesas + total_ganancia_arbitraje
+    
+    if ganancia_historica_consolidada > 0:
+        pct_remesas = (total_ganancia_remesas / ganancia_historica_consolidada) * 100
+        pct_arbitraje = (total_ganancia_arbitraje / ganancia_historica_consolidada) * 100
+    else:
+        pct_remesas = 0.0
+        pct_arbitraje = 0.0
+
     summary = {
         "total_remitido": total_remitido,
         "total_ganancia_remesas": total_ganancia_remesas,
@@ -1211,7 +1225,12 @@ def get_stats_dashboard(username: str = Depends(get_current_user), db: Session =
         "total_arbitrado": total_arbitrado,
         "total_ganancia_arbitraje": total_ganancia_arbitraje,
         "rentabilidad_promedio": rentabilidad_promedio,
-        "total_ciclos": total_ciclos_count
+        "total_ciclos": total_ciclos_count,
+        "ganancia_semanal_consolidada": ganancia_semanal_consolidada,
+        "ganancia_mensual_consolidada": ganancia_mensual_consolidada,
+        "ganancia_historica_consolidada": ganancia_historica_consolidada,
+        "pct_remesas": pct_remesas,
+        "pct_arbitraje": pct_arbitraje
     }
         
     return {
