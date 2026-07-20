@@ -138,6 +138,15 @@ class Cliente(Base):
     telefono = Column(String, nullable=True)
     genero = Column(String, default="Masculino")
 
+class MovimientoZelle(Base):
+    __tablename__ = "movimientos_zelle"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    tipo = Column(String)  # "ingreso" / "egreso"
+    monto = Column(Float)
+    titular = Column(String, nullable=True)
+    detalle = Column(String, nullable=True)
+
 def init_db():
     Base.metadata.create_all(bind=engine)
     from sqlalchemy import text
