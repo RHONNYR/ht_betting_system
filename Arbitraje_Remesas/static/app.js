@@ -74,6 +74,7 @@ const els = {
     calcDivisasProcesadas: document.getElementById('calc-divisas-procesadas'),
     calcTransferenciasVes: document.getElementById('calc-transferencias-ves'),
     calcPagoMovilAuto: document.getElementById('calc-pago-movil-auto'),
+    calcTerceraEdad: document.getElementById('calc-tercera-edad'),
     calcRolP2p: document.getElementById('calc-rol-p2p'),
     btnCalcConsultarP2p: document.getElementById('btn-calc-consultar-p2p'),
     btnCalcularCiclo: document.getElementById('btn-calcular-ciclo'),
@@ -86,6 +87,7 @@ const els = {
     // Envelopes Modals
     modalCompraParcial: document.getElementById('modal-compra-parcial'),
     compraParcialForm: document.getElementById('compra-parcial-form'),
+    compraParcialTerceraEdad: document.getElementById('compra-parcial-tercera-edad'),
     btnCloseModalCompraParcial: document.getElementById('btn-close-modal-compra-parcial'),
     modalPivotVes: document.getElementById('modal-pivot-ves'),
     pivotVesForm: document.getElementById('pivot-ves-form'),
@@ -687,7 +689,7 @@ function handleCalcularCiclo() {
     }
     
     const cardComisionPct = parseFloat(selectedOption.getAttribute('data-comision'));
-    const isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
+    const isTerceraEdad = (els.calcTerceraEdad && els.calcTerceraEdad.checked) || (selectedOption.getAttribute('data-tercera-edad') === 'true');
     
     // 1. USDT Ventas
     const binanceFeePct = 0.0025; // 0.25%
@@ -708,7 +710,17 @@ function handleCalcularCiclo() {
     
     // 3. Binance recarga
     const binanceDepositFeePct = 0.041; // 4.1%
-    const usdNetosDespuesTarjeta = divisasProcesadas * (1 - cardComisionPct);
+    
+    let montoDeduccionTarjeta = 0.0;
+    let usdNetosDespuesTarjeta = divisasProcesadas;
+    if (divisasProcesadas >= divisasCompradas && cardComisionPct > 0) {
+        montoDeduccionTarjeta = divisasCompradas * cardComisionPct;
+        usdNetosDespuesTarjeta = divisasCompradas - montoDeduccionTarjeta;
+    } else if (divisasCompradas > divisasProcesadas) {
+        montoDeduccionTarjeta = divisasCompradas - divisasProcesadas;
+        usdNetosDespuesTarjeta = divisasProcesadas;
+    }
+    
     const comisionBinanceUsd = usdNetosDespuesTarjeta * binanceDepositFeePct;
     const usdNetosRecibidosBinance = usdNetosDespuesTarjeta - comisionBinanceUsd;
     
@@ -1041,6 +1053,12 @@ window.openPartialBuy = function(cicloId) {
     const targetSelect = document.getElementById('compra-parcial-tarjeta');
     if (targetSelect && els.calcTarjetaCompra) {
         targetSelect.innerHTML = els.calcTarjetaCompra.innerHTML;
+        if (targetSelect.selectedIndex >= 0) {
+            const opt = targetSelect.options[targetSelect.selectedIndex];
+            if (els.compraParcialTerceraEdad && opt) {
+                els.compraParcialTerceraEdad.checked = (opt.getAttribute('data-tercera-edad') === 'true');
+            }
+        }
     }
     
     openModal(els.modalCompraParcial);
@@ -1151,7 +1169,8 @@ async function handleCompraParcialSubmit(e) {
         }
     }
     
-    const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+    const applyTerceraEdad = (els.compraParcialTerceraEdad && els.compraParcialTerceraEdad.checked) || isTerceraEdad;
+    const compraComisionPct = applyTerceraEdad ? 0.0 : 0.005; // 0.5%
     const costoBaseVES = usd * tasa;
     const comisionCompraVES = costoBaseVES * compraComisionPct;
     const transferenciasVes = applyPm ? (costoBaseVES * 0.003) : 0.0;
@@ -1630,14 +1649,29 @@ function setupEventListeners() {
             if (!els.calcPagoMovilAuto.checked) {
                 els.calcTransferenciasVes.value = "0";
             }
-            handleCalcularCiclo();
+            if (!els.btnGuardarCiclo.classList.contains('hidden')) handleCalcularCiclo();
+        });
+    }
+    if (els.calcTerceraEdad) {
+        els.calcTerceraEdad.addEventListener('change', () => {
+            updateSuggestedDivisas();
+            if (!els.btnGuardarCiclo.classList.contains('hidden')) handleCalcularCiclo();
         });
     }
     
     els.calcUsdtVendidos.addEventListener('input', updateSuggestedDivisas);
     els.calcTasaVenta.addEventListener('input', updateSuggestedDivisas);
     if (els.calcTarjetaCompra) {
-        els.calcTarjetaCompra.addEventListener('change', updateSuggestedDivisas);
+        els.calcTarjetaCompra.addEventListener('change', () => {
+            if (els.calcTarjetaCompra.selectedIndex >= 0) {
+                const selectedOption = els.calcTarjetaCompra.options[els.calcTarjetaCompra.selectedIndex];
+                if (els.calcTerceraEdad && selectedOption) {
+                    els.calcTerceraEdad.checked = (selectedOption.getAttribute('data-tercera-edad') === 'true');
+                }
+            }
+            updateSuggestedDivisas();
+            if (!els.btnGuardarCiclo.classList.contains('hidden')) handleCalcularCiclo();
+        });
     }
     els.calcDivisasCompradas.addEventListener('input', () => {
         state.divisasCompradasManuallyEdited = true;
