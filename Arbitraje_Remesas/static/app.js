@@ -986,6 +986,20 @@ async function loadActiveEnvelopes() {
                 const initialVES = c.usdt_vendidos * 0.9975 * c.tasa_venta;
                 const progressPct = initialVES > 0 ? ((initialVES - c.bolivares_sobre_restantes) / initialVES) * 100 : 0;
                 
+                let bankBadgesHtml = '';
+                if (c.compras_parciales && c.compras_parciales.length > 0) {
+                    const bankSummary = {};
+                    c.compras_parciales.forEach(cp => {
+                        const b = cp.banco ? cp.banco : 'BCV';
+                        if (!bankSummary[b]) bankSummary[b] = 0;
+                        bankSummary[b] += cp.usd_comprados;
+                    });
+                    const badges = Object.entries(bankSummary).map(([bName, usdVal]) => {
+                        return `<span style="background: rgba(0, 112, 243, 0.12); color: #60a5fa; border: 1px solid rgba(0, 112, 243, 0.25); padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; font-weight: 500;">🏦 ${bName}: $${usdVal.toFixed(2)}</span>`;
+                    });
+                    bankBadgesHtml = `<div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;">${badges.join('')}</div>`;
+                }
+                
                 div.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">📁 Sobre #${c.id} (${c.banco_venta})</span>
@@ -1001,6 +1015,7 @@ async function loadActiveEnvelopes() {
                             <span>Dólares acumulados:</span>
                             <strong style="color: var(--text-success);">$${c.divisas_compradas.toFixed(2)} USD</strong>
                         </div>
+                        ${bankBadgesHtml}
                     </div>
                     
                     <!-- Progress Bar -->
@@ -1011,15 +1026,15 @@ async function loadActiveEnvelopes() {
                     <!-- Collapsible Purchases List -->
                     ${c.compras_parciales && c.compras_parciales.length > 0 ? `
                     <div style="border-top: 1px solid var(--border-color); padding-top: 0.5rem; margin-top: 0.25rem; width: 100%;">
-                        <details style="width: 100%;">
+                        <details style="width: 100%;" open>
                             <summary style="font-size: 0.78rem; color: var(--primary-color); cursor: pointer; user-select: none; font-weight: 500; outline: none;">
-                                📋 Compras registradas (${c.compras_parciales.length})
+                                📋 Compras registradas por Banco (${c.compras_parciales.length})
                             </summary>
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.4rem; max-height: 110px; overflow-y: auto; padding-right: 0.25rem;">
+                            <div style="display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.4rem; max-height: 140px; overflow-y: auto; padding-right: 0.25rem;">
                                 ${c.compras_parciales.map(cp => `
                                     <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-secondary); background: rgba(0,0,0,0.15); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border-color);">
-                                        <span>$${cp.usd_comprados.toFixed(2)} a ${cp.tasa_bcv.toFixed(2)} Bs (${cp.banco || 'BCV'})</span>
-                                        <button onclick="deletePartialBuy(${cp.id})" style="background: none; border: none; color: var(--text-danger); cursor: pointer; padding: 2px 4px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;" title="Eliminar compra">🗑️</button>
+                                        <span>🏦 <strong>${cp.banco || 'BCV'}</strong>: $${cp.usd_comprados.toFixed(2)} @ ${cp.tasa_bcv.toFixed(2)} Bs</span>
+                                        <button onclick="deletePartialBuy(${cp.id})" style="background: none; border: none; color: var(--text-danger); cursor: pointer; padding: 2px 4px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;" title="Eliminar compra de ${cp.banco || 'banco'}">🗑️</button>
                                     </div>
                                 `).join('')}
                             </div>
@@ -1044,6 +1059,44 @@ async function loadActiveEnvelopes() {
     }
 }
 
+function updatePartialBuyPreview() {
+    const previewContainer = document.getElementById('compra-parcial-preview');
+    if (!previewContainer) return;
+    
+    const usd = parseFloat(document.getElementById('compra-parcial-usd').value) || 0;
+    const tasa = parseFloat(document.getElementById('compra-parcial-tasa').value) || 0;
+    const targetSelect = document.getElementById('compra-parcial-tarjeta');
+    const applyPm = document.getElementById('compra-parcial-pago-movil') ? document.getElementById('compra-parcial-pago-movil').checked : false;
+    const applyTercera = els.compraParcialTerceraEdad ? els.compraParcialTerceraEdad.checked : false;
+    
+    if (usd > 0 && tasa > 0 && targetSelect && targetSelect.selectedIndex >= 0) {
+        const selectedOption = targetSelect.options[targetSelect.selectedIndex];
+        const bancoText = selectedOption ? selectedOption.textContent.split(' - ')[0].trim() : 'Banco';
+        
+        const costoBase = usd * tasa;
+        const comisionCompra = applyTercera ? 0.0 : (costoBase * 0.005);
+        const comisionPm = applyPm ? (costoBase * 0.003) : 0.0;
+        const totalVes = costoBase + comisionCompra + comisionPm;
+        
+        previewContainer.style.display = 'block';
+        previewContainer.innerHTML = `
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+                <span>🏦 Banco a registrar:</span>
+                <strong style="color: var(--primary-color);">${bancoText}</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 2px;">
+                <span>Deducción estimada del sobre:</span>
+                <strong style="color: var(--text-danger);">${totalVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES</strong>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">
+                Costo Base: ${costoBase.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES | Comision BDV: ${comisionCompra.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES | PM: ${comisionPm.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES
+            </div>
+        `;
+    } else {
+        previewContainer.style.display = 'none';
+    }
+}
+
 window.openPartialBuy = function(cicloId) {
     document.getElementById('compra-parcial-ciclo-id').value = cicloId;
     document.getElementById('compra-parcial-usd').value = '';
@@ -1061,6 +1114,7 @@ window.openPartialBuy = function(cicloId) {
         }
     }
     
+    updatePartialBuyPreview();
     openModal(els.modalCompraParcial);
 };
 
@@ -1689,6 +1743,27 @@ function setupEventListeners() {
     if (els.btnCloseModalCompraParcial) {
         els.btnCloseModalCompraParcial.addEventListener('click', () => closeModal(els.modalCompraParcial));
     }
+    
+    const cpUsd = document.getElementById('compra-parcial-usd');
+    const cpTasa = document.getElementById('compra-parcial-tasa');
+    const cpTarjeta = document.getElementById('compra-parcial-tarjeta');
+    const cpPm = document.getElementById('compra-parcial-pago-movil');
+    
+    if (cpUsd) cpUsd.addEventListener('input', updatePartialBuyPreview);
+    if (cpTasa) cpTasa.addEventListener('input', updatePartialBuyPreview);
+    if (cpTarjeta) {
+        cpTarjeta.addEventListener('change', () => {
+            if (cpTarjeta.selectedIndex >= 0) {
+                const opt = cpTarjeta.options[cpTarjeta.selectedIndex];
+                if (els.compraParcialTerceraEdad && opt) {
+                    els.compraParcialTerceraEdad.checked = (opt.getAttribute('data-tercera-edad') === 'true');
+                }
+            }
+            updatePartialBuyPreview();
+        });
+    }
+    if (cpPm) cpPm.addEventListener('change', updatePartialBuyPreview);
+    if (els.compraParcialTerceraEdad) els.compraParcialTerceraEdad.addEventListener('change', updatePartialBuyPreview);
     if (els.pivotVesForm) {
         els.pivotVesForm.addEventListener('submit', handlePivotVESSubmit);
     }
