@@ -1290,6 +1290,7 @@ window.openEditCiclo = function(cicloId) {
     document.getElementById('edit-ciclo-fecha').value = ciclo.fecha;
     document.getElementById('edit-ciclo-usdt-vendidos').value = ciclo.usdt_vendidos;
     document.getElementById('edit-ciclo-tasa-venta').value = ciclo.tasa_venta;
+    document.getElementById('edit-ciclo-tasa-bcv').value = ciclo.tasa_bcv || state.bcvRate;
     document.getElementById('edit-ciclo-usd-recibidos').value = ciclo.usd_recibidos_binance;
     
     const selectTarjeta = document.getElementById('edit-ciclo-tarjeta');
@@ -1320,10 +1321,11 @@ async function handleEditarCicloSubmit(e) {
     const fecha = document.getElementById('edit-ciclo-fecha').value;
     const usdt_vendidos = parseFloat(document.getElementById('edit-ciclo-usdt-vendidos').value);
     const tasa_venta = parseFloat(document.getElementById('edit-ciclo-tasa-venta').value);
+    const tasa_bcv = parseFloat(document.getElementById('edit-ciclo-tasa-bcv').value);
     const tarjeta_id = parseInt(document.getElementById('edit-ciclo-tarjeta').value);
     const usd_recibidos_binance = parseFloat(document.getElementById('edit-ciclo-usd-recibidos').value);
     
-    if (isNaN(usdt_vendidos) || isNaN(tasa_venta) || isNaN(tarjeta_id) || isNaN(usd_recibidos_binance)) {
+    if (isNaN(usdt_vendidos) || isNaN(tasa_venta) || isNaN(tasa_bcv) || isNaN(tarjeta_id) || isNaN(usd_recibidos_binance)) {
         alert("Por favor introduce montos válidos.");
         return;
     }
@@ -1333,10 +1335,11 @@ async function handleEditarCicloSubmit(e) {
             fecha,
             usdt_vendidos,
             tasa_venta,
+            tasa_bcv,
             tarjeta_id,
             usd_recibidos_binance
         });
-        alert("Ciclo de arbitraje actualizado con éxito.");
+        showToast("Ciclo de arbitraje actualizado con éxito.");
         closeModal(els.modalEditarCiclo);
         await initDashboard();
     } catch (err) {
