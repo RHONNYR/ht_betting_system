@@ -110,6 +110,7 @@ class CicloUpdate(BaseModel):
     tasa_venta: float
     tarjeta_id: int
     usd_recibidos_binance: float
+    tasa_bcv: Optional[float] = None
 
 class CompraCicloParcialCreate(BaseModel):
     usd_comprados: float
@@ -947,6 +948,8 @@ def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_cu
     ciclo.tarjeta_id = req.tarjeta_id
     ciclo.banco_venta = card.banco
     ciclo.usd_recibidos_binance = req.usd_recibidos_binance
+    if req.tasa_bcv and req.tasa_bcv > 0:
+        ciclo.tasa_bcv = req.tasa_bcv
     
     # Recalculate remaining VES based on new parameters and existing purchases
     initial_ves = req.usdt_vendidos * 0.9975 * req.tasa_venta
@@ -958,7 +961,14 @@ def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_cu
     ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - total_ves_spent)
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
     
-    bolivares_gastados_total = initial_ves - ciclo.bolivares_sobre_restantes
+    if total_ves_spent > 0:
+        bolivares_gastados_total = total_ves_spent
+    else:
+        if ciclo.divisas_compradas > 0 and ciclo.tasa_bcv > 0:
+            bolivares_gastados_total = (ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
+        else:
+            bolivares_gastados_total = initial_ves - ciclo.bolivares_sobre_restantes
+
     ustd_cost_of_operation = bolivares_gastados_total / req.tasa_venta if req.tasa_venta > 0 else 0.0
     
     ciclo.ganancia_usd = req.usd_recibidos_binance - ustd_cost_of_operation
