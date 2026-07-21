@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=49">
+    <link rel="stylesheet" href="styles.css?v=50">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -1293,6 +1293,11 @@
                 </div>
                 
                 <div class="input-group">
+                    <label for="edit-ciclo-tasa-bcv">Tasa BCV (VES/$)</label>
+                    <input type="number" step="any" id="edit-ciclo-tasa-bcv" required placeholder="Ej. 736.93">
+                </div>
+                
+                <div class="input-group">
                     <label for="edit-ciclo-tarjeta">Banco Venta (Tarjeta)</label>
                     <select id="edit-ciclo-tarjeta" required>
                         <!-- Dynamically populated from JS -->
@@ -1312,6 +1317,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=49"></script>
+    <script src="app.js?v=50"></script>
 </body>
 </html>
