@@ -1432,3 +1432,20 @@ select option {
     pointer-events: none;
     text-align: left !important;
 }
+
+/* Sub-rows for partial purchases in cycles history table */
+tr.sub-row-compra {
+    background: rgba(255, 255, 255, 0.015);
+    transition: background 0.2s ease;
+}
+
+tr.sub-row-compra:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+tr.sub-row-compra td {
+    border-top: 1px dashed rgba(255, 255, 255, 0.06) !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 0.82rem;
+}
