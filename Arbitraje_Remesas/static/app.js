@@ -708,7 +708,9 @@ function handleCalcularCiclo() {
     
     // 3. Binance recarga
     const binanceDepositFeePct = 0.041; // 4.1%
-    const usdNetosRecibidosBinance = divisasProcesadas * (1 - cardComisionPct) * (1 - binanceDepositFeePct);
+    const usdNetosDespuesTarjeta = divisasProcesadas * (1 - cardComisionPct);
+    const comisionBinanceUsd = usdNetosDespuesTarjeta * binanceDepositFeePct;
+    const usdNetosRecibidosBinance = usdNetosDespuesTarjeta - comisionBinanceUsd;
     
     // 4. Ciclo Resumen
     const ustdCostOfOperation = bolivaresGastadosTotales / tasaVenta;
@@ -822,16 +824,20 @@ function handleCalcularCiclo() {
                 </div>
                 <div class="flow-step-body" style="display: flex; flex-direction: column; gap: 0.4rem;">
                     <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                        <span style="color: var(--text-secondary);">Dólares Depositados:</span>
+                        <span style="color: var(--text-secondary);">Dólares Procesados en Tarjeta:</span>
                         <strong style="color: var(--text-primary);">${formatUSD(divisasProcesadas)}</strong>
                     </div>
                     <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                        <span style="color: var(--text-secondary);">Deducción Tarjeta (${(cardComisionPct * 100).toFixed(1)}%):</span>
+                        <span style="color: var(--text-secondary);">Deducción Tarjeta Banco (${(cardComisionPct * 100).toFixed(1)}%):</span>
                         <span class="text-danger">-${formatUSD(divisasProcesadas * cardComisionPct)}</span>
                     </div>
                     <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                        <span style="color: var(--text-secondary);">Comisión Fondeo Binance (4.1%):</span>
-                        <span class="text-danger">-${formatUSD(divisasProcesadas * (1 - cardComisionPct) * 0.041)}</span>
+                        <span style="color: var(--text-secondary);">Neto Fondeado a Binance:</span>
+                        <strong style="color: var(--text-primary);">${formatUSD(usdNetosDespuesTarjeta)}</strong>
+                    </div>
+                    <div class="flow-data-row" style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                        <span style="color: var(--text-secondary);">Comisión Fondeo Binance (4.1% sobre $${usdNetosDespuesTarjeta.toFixed(2)}):</span>
+                        <span class="text-danger">-${formatUSD(comisionBinanceUsd)}</span>
                     </div>
                     <div class="flow-data-row highlight-row" style="display: flex; justify-content: space-between; font-size: 0.88rem; border-top: 1px dashed var(--border-color); padding-top: 0.4rem; margin-top: 0.2rem;">
                         <span style="font-weight: 500; color: var(--text-primary);">USDT Netos Recibidos:</span>
