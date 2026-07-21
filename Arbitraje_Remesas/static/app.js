@@ -2024,6 +2024,9 @@ function setupEventListeners() {
             // Gender default for clients auto-save
             const guessedGender = getGenderEmoji(cliente) === '👩' ? 'Femenino' : 'Masculino';
             
+            const editFechaInput = document.getElementById('edit-remesa-fecha');
+            const editFechaVal = editFechaInput ? editFechaInput.value : null;
+            
             try {
                 await apiCall(`/remesas/${id}`, 'PUT', {
                     cliente_nombre: cliente,
@@ -2036,7 +2039,8 @@ function setupEventListeners() {
                     banco_receptor: bancoReceptor,
                     costo_adquisicion_usdt: costoAdqPct,
                     comision_binance: comisionBinPct,
-                    cliente_genero: guessedGender
+                    cliente_genero: guessedGender,
+                    fecha: editFechaVal || null
                 });
                 document.getElementById('modal-editar-remesa').classList.add('hidden');
                 alert("Remesa actualizada correctamente.");
@@ -2520,6 +2524,8 @@ function calculateRemesa(source = 'margin') {
     // Net profit in USD
     const gananciaUsd = montoUsd - costoRealUsdt;
     
+    const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
+    
     state.currentCalculatedRemesa = {
         cliente_nombre: els.remesaCliente.value || "Cliente",
         monto_usd: montoUsd,
@@ -2531,7 +2537,8 @@ function calculateRemesa(source = 'margin') {
         banco_receptor: els.remesaBancoReceptor.value,
         costo_adquisicion_usdt: costoAdqPct,
         comision_binance: comisionBinPct,
-        cliente_genero: els.remesaClienteGenero ? els.remesaClienteGenero.value : "Masculino"
+        cliente_genero: els.remesaClienteGenero ? els.remesaClienteGenero.value : "Masculino",
+        fecha: remesaFechaVal || null
     };
     
     // Render results
@@ -2605,6 +2612,10 @@ function copyRemesaText() {
 async function registrarRemesa() {
     if (!state.currentCalculatedRemesa) return;
     try {
+        const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
+        if (remesaFechaVal) {
+            state.currentCalculatedRemesa.fecha = remesaFechaVal;
+        }
         await apiCall('/remesas', 'POST', state.currentCalculatedRemesa);
         alert("Remesa registrada en el historial con éxito.");
         
@@ -2639,12 +2650,45 @@ async function eliminarRemesa(id) {
     }
 }
 
+function formatFechaForDatetimeLocal(fechaStr) {
+    if (!fechaStr) return '';
+    try {
+        const parts = fechaStr.trim().split(' ');
+        if (parts.length >= 2 && parts[0].includes('/')) {
+            const [d, m, y] = parts[0].split('/');
+            let timeStr = parts[1];
+            let [hh, mm] = timeStr.split(':');
+            let hours = parseInt(hh, 10);
+            if (parts.length >= 3) {
+                const ampm = parts[2].toUpperCase();
+                if (ampm === 'PM' && hours < 12) hours += 12;
+                if (ampm === 'AM' && hours === 12) hours = 0;
+            }
+            const paddedH = String(hours).padStart(2, '0');
+            const paddedM = String(mm).padStart(2, '0');
+            const paddedD = String(d).padStart(2, '0');
+            const paddedMonth = String(m).padStart(2, '0');
+            return `${y}-${paddedMonth}-${paddedD}T${paddedH}:${paddedM}`;
+        }
+        if (fechaStr.includes('-')) {
+            return fechaStr.replace(' ', 'T').substring(0, 16);
+        }
+    } catch (e) {
+        console.error("Error formatting date for input:", e);
+    }
+    return '';
+}
+
 function iniciarEditarRemesa(id) {
     const r = (state.rawRemesas || []).find(rem => rem.id === id);
     if (!r) return;
     
     document.getElementById('edit-remesa-id').value = r.id;
     document.getElementById('edit-remesa-cliente').value = r.cliente_nombre;
+    const inputFecha = document.getElementById('edit-remesa-fecha');
+    if (inputFecha && r.fecha) {
+        inputFecha.value = formatFechaForDatetimeLocal(r.fecha);
+    }
     document.getElementById('edit-remesa-monto-usd').value = r.monto_usd;
     document.getElementById('edit-remesa-tasa-p2p').value = r.tasa_p2p;
     document.getElementById('edit-remesa-tasa-cliente').value = r.tasa_cliente;
