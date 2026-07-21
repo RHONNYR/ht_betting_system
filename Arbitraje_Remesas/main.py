@@ -160,6 +160,7 @@ class RemesaCreate(BaseModel):
     costo_adquisicion_usdt: float
     comision_binance: float
     cliente_genero: Optional[str] = "Masculino"
+    fecha: Optional[str] = None
 
 class ClienteCreate(BaseModel):
     nombre: str
@@ -1322,14 +1323,29 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     }
         
     return {
-        "weekly": weekly_data,
-        "monthly": monthly_data,
-        "traffic_days": traffic_days,
-        "top_clients": top_clients,
-        "payment_methods": payment_methods,
-        "banks_destination": banks_destination,
         "summary": summary
     }
+
+def parse_date_string(date_str: Optional[str]) -> datetime.datetime:
+    if not date_str or not str(date_str).strip():
+        return get_venezuela_time()
+    s = str(date_str).strip()
+    formats = [
+        "%Y-%m-%dT%H:%M",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%d %H:%M:%S",
+        "%d/%m/%Y %I:%M %p",
+        "%d/%m/%Y %H:%M:%S",
+        "%d/%m/%Y %H:%M",
+        "%Y-%m-%d",
+        "%d/%m/%Y"
+    ]
+    for fmt in formats:
+        try:
+            return datetime.datetime.strptime(s, fmt)
+        except ValueError:
+            pass
+    return get_venezuela_time()
 
 @app.post("/api/remesas")
 def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -1342,8 +1358,9 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
             db.add(new_cliente)
             db.commit()
 
+    remesa_date = parse_date_string(req.fecha)
     remesa = HistorialRemesas(
-        fecha=get_venezuela_time(),
+        fecha=remesa_date,
         cliente_nombre=req.cliente_nombre,
         monto_usd=req.monto_usd,
         tasa_p2p=req.tasa_p2p,
@@ -1414,6 +1431,8 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
     old_monto = remesa.monto_usd
     old_cliente = remesa.cliente_nombre
 
+    if req.fecha:
+        remesa.fecha = parse_date_string(req.fecha)
     remesa.cliente_nombre = req.cliente_nombre
     remesa.monto_usd = req.monto_usd
     remesa.tasa_p2p = req.tasa_p2p
@@ -1457,6 +1476,7 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
         elif old_metodo == "zelle" and new_metodo == "zelle":
             mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {old_cliente}").first()
             if mov:
+                mov.fecha = remesa.fecha
                 mov.monto = new_monto
                 mov.titular = new_cliente
                 mov.detalle = f"Remesa ID {remesa_id} de {new_cliente}"
