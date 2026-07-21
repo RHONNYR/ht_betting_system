@@ -746,6 +746,12 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
 
 @app.post("/api/ciclos")
 def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    card_banco = None
+    if req.tarjeta_id:
+        card = db.query(Tarjeta).filter(Tarjeta.id == req.tarjeta_id).first()
+        if card:
+            card_banco = card.banco
+            
     ciclo = HistorialCiclos(
         fecha=get_venezuela_time(),
         usdt_vendidos=req.usdt_vendidos,
@@ -765,6 +771,23 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
         tarjeta_id=req.tarjeta_id
     )
     db.add(ciclo)
+    db.flush()
+    
+    if req.status == "abierto" and req.divisas_compradas > 0:
+        compra_inicial = CompraCicloParcial(
+            ciclo_id=ciclo.id,
+            fecha=get_venezuela_time(),
+            usd_comprados=req.divisas_compradas,
+            usd_procesados=req.usd_procesados_binance,
+            tasa_bcv=req.tasa_bcv,
+            comision_compra_ves=req.comision_compra_ves,
+            transferencias_ves=req.transferencias_ves,
+            usd_recibidos_binance=req.usd_recibidos_binance,
+            banco=card_banco or req.banco_venta or "Banco",
+            tarjeta_id=req.tarjeta_id
+        )
+        db.add(compra_inicial)
+        
     db.commit()
     return {"message": "Ciclo de arbitraje registrado exitosamente", "id": ciclo.id}
 
