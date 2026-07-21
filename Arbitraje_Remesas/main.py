@@ -890,20 +890,22 @@ def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user),
     ciclo.bolivares_restantes = 0.0
     ciclo.status = "completado"
     
-    total_ves_spent = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
+    total_ves_spent_cp = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
     
-    if total_ves_spent > 0:
-        bolivares_gastados_total = total_ves_spent
+    if total_ves_spent_cp > 0:
+        bolivares_gastados_total = total_ves_spent_cp
+    elif (ciclo.divisas_compradas or 0.0) > 0 and (ciclo.tasa_bcv or 0.0) > 0:
+        bolivares_gastados_total = (ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
     else:
         bolivares_gastados_total = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
         
     ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if ciclo.tasa_venta > 0 else 0.0
     
     ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.ganancia_porcentaje = ((ciclo.usd_recibidos_binance / ustd_cost_of_operation) - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
     
     db.commit()
-    return {"message": "Ciclo cerrado manteniendo la ganancia real de las compras efectuadas", "status": ciclo.status}
+    return {"message": "Ciclo cerrado manteniendo la ganancia real de las compras efectuadas", "status": ciclo.status, "ganancia_usd": ciclo.ganancia_usd}
 
 @app.post("/api/ciclos/{ciclo_id}/reopen")
 def reopen_ciclo(ciclo_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -912,20 +914,29 @@ def reopen_ciclo(ciclo_id: int, username: str = Depends(get_current_user), db: S
         raise HTTPException(status_code=404, detail="Ciclo no encontrado")
         
     initial_ves = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
-    total_ves_spent = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
+    total_ves_spent_cp = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
     
-    ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - total_ves_spent)
+    if total_ves_spent_cp > 0:
+        ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - total_ves_spent_cp)
+        bolivares_gastados_total = total_ves_spent_cp
+    elif (ciclo.divisas_compradas or 0.0) > 0 and (ciclo.tasa_bcv or 0.0) > 0:
+        costo_directo = (ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
+        ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - costo_directo)
+        bolivares_gastados_total = costo_directo
+    else:
+        ciclo.bolivares_sobre_restantes = initial_ves
+        bolivares_gastados_total = 0.0
+
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
     ciclo.status = "abierto"
     
-    bolivares_gastados_total = initial_ves - ciclo.bolivares_sobre_restantes
     ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if ciclo.tasa_venta > 0 else 0.0
     
     ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.ganancia_porcentaje = ((ciclo.usd_recibidos_binance / ustd_cost_of_operation) - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
     
     db.commit()
-    return {"message": "Sobre reabierto con éxito", "status": ciclo.status, "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
+    return {"message": "Sobre reabierto con éxito", "status": ciclo.status, "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes, "ganancia_usd": ciclo.ganancia_usd}
 
 @app.put("/api/ciclos/{ciclo_id}")
 def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
