@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=50">
+    <link rel="stylesheet" href="styles.css?v=51">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -223,6 +223,10 @@
                                         <div class="input-group flex-row-align">
                                             <label for="calc-pago-movil-auto">¿Aplicar 0.3% Pago Móvil auto?</label>
                                             <input type="checkbox" id="calc-pago-movil-auto">
+                                        </div>
+                                        <div class="input-group flex-row-align">
+                                            <label for="calc-tercera-edad">👵 Cuenta Tercera Edad (Exento 0.5% BDV)</label>
+                                            <input type="checkbox" id="calc-tercera-edad">
                                         </div>
                                     </div>
                                     <div class="calc-actions mt-4" style="display: flex; flex-direction: column; gap: 0.5rem;">
@@ -1205,6 +1209,11 @@
                     <label for="compra-parcial-pago-movil" style="margin: 0;">¿Aplicar 0.3% Pago Móvil / Transferencia?</label>
                 </div>
                 
+                <div class="input-group flex-row-align" style="gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
+                    <input type="checkbox" id="compra-parcial-tercera-edad" style="width: auto;">
+                    <label for="compra-parcial-tercera-edad" style="margin: 0;">👵 Cuenta Tercera Edad (Exento 0.5% BDV)</label>
+                </div>
+                
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Registrar Compra</button>
                     <button type="button" id="btn-close-modal-compra-parcial" class="btn btn-secondary">Cancelar</button>
@@ -1317,6 +1326,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=50"></script>
+    <script src="app.js?v=51"></script>
 </body>
 </html>
