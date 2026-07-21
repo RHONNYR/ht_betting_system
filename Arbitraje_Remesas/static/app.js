@@ -1290,27 +1290,15 @@ async function loadCiclos() {
                 : '';
                 
             let tasaBcvCell = '';
+            let avgRate = c.tasa_bcv;
             if (c.compras_parciales && c.compras_parciales.length > 0) {
                 const totalUsd = c.divisas_compradas || 0.0;
                 let weightedSum = 0;
-                let lines = [];
-                
                 c.compras_parciales.forEach(cp => {
                     weightedSum += cp.usd_comprados * cp.tasa_bcv;
-                    const pct = totalUsd > 0 ? Math.round((cp.usd_comprados / totalUsd) * 100) : 0;
-                    const bancoLabel = cp.banco ? cp.banco : 'BCV';
-                    lines.push(`<span style="white-space: nowrap; font-size: 0.72rem; color: var(--text-secondary); display: block;">${cp.tasa_bcv.toFixed(2)} (${bancoLabel}) - ${pct}%</span>`);
                 });
-                
-                const avgRate = totalUsd > 0 ? (weightedSum / totalUsd) : c.tasa_bcv;
-                tasaBcvCell = `
-                    <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
-                        <strong>${avgRate.toFixed(2)}</strong>
-                        <div style="display: flex; flex-direction: column; gap: 1px; line-height: 1.1;">
-                            ${lines.join('')}
-                        </div>
-                    </div>
-                `;
+                avgRate = totalUsd > 0 ? (weightedSum / totalUsd) : c.tasa_bcv;
+                tasaBcvCell = `<strong>${avgRate.toFixed(2)}</strong>`;
             } else {
                 tasaBcvCell = `<strong>${c.tasa_bcv.toFixed(2)}</strong>`;
             }
@@ -1320,15 +1308,15 @@ async function loadCiclos() {
                 : `<button class="btn btn-success" onclick="reabrirCiclo(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.3); color: #10b981;" title="Reabrir sobre para continuar compras o ajustar">🔓 Reabrir</button>`;
 
             tr.innerHTML = `
-                <td>${c.fecha}</td>
+                <td><strong>${c.fecha}</strong></td>
                 <td>${c.usdt_vendidos.toFixed(2)}</td>
                 <td>${c.tasa_venta.toFixed(2)}</td>
-                <td>${c.banco_venta}${statusBadge}</td>
-                <td>$${c.divisas_compradas.toFixed(2)}</td>
+                <td><span style="font-weight:600; color: var(--primary-color);">🏦 Venta: ${c.banco_venta}</span>${statusBadge}</td>
+                <td><strong style="color: var(--text-primary); font-size: 0.9rem;">$${c.divisas_compradas.toFixed(2)}</strong></td>
                 <td>${tasaBcvCell}</td>
-                <td>$${c.usd_recibidos_binance.toFixed(2)}</td>
+                <td><strong style="color: var(--text-primary); font-size: 0.9rem;">$${c.usd_recibidos_binance.toFixed(2)}</strong></td>
                 <td class="${profitClass}"><strong>$${c.ganancia_usd.toFixed(2)}</strong></td>
-                <td class="${profitClass}">${c.ganancia_porcentaje.toFixed(2)}%</td>
+                <td class="${profitClass}"><strong>${c.ganancia_porcentaje.toFixed(2)}%</strong></td>
                 <td>${c.bolivares_restantes.toLocaleString('es-VE', {maximumFractionDigits: 2})}</td>
                 <td>
                     <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
@@ -1338,7 +1326,55 @@ async function loadCiclos() {
                     </div>
                 </td>
             `;
+            
+            if (c.compras_parciales && c.compras_parciales.length > 0) {
+                tr.style.background = "rgba(255, 255, 255, 0.03)";
+                tr.style.borderBottom = "1px solid rgba(255, 255, 255, 0.08)";
+            }
+            
             els.ciclosTableBody.appendChild(tr);
+            
+            // Sub-rows for partial purchases
+            if (c.compras_parciales && c.compras_parciales.length > 0) {
+                c.compras_parciales.forEach(cp => {
+                    const subTr = document.createElement('tr');
+                    subTr.className = 'sub-row-compra';
+                    
+                    const costoVesCp = (cp.usd_comprados * cp.tasa_bcv) + (cp.comision_compra_ves || 0) + (cp.transferencias_ves || 0);
+                    const costoUsdtCp = c.tasa_venta > 0 ? (costoVesCp / c.tasa_venta) : 0;
+                    const gananciaCpUsd = cp.usd_recibidos_binance - costoUsdtCp;
+                    const marginCp = costoUsdtCp > 0 ? ((cp.usd_recibidos_binance / costoUsdtCp) - 1) * 100 : 0;
+                    
+                    const subProfitClass = gananciaCpUsd >= 0 ? 'text-success' : 'text-danger';
+                    
+                    subTr.innerHTML = `
+                        <td style="padding-left: 20px; font-size: 0.76rem; color: var(--text-secondary);">
+                            <span style="opacity: 0.6; margin-right: 4px;">↳</span> ${cp.fecha}
+                        </td>
+                        <td style="color: var(--text-muted); opacity: 0.5;">—</td>
+                        <td style="color: var(--text-muted); opacity: 0.5;">—</td>
+                        <td>
+                            <span class="badge-banco-compra" style="font-size: 0.74rem; background: rgba(59,130,246,0.1); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); padding: 1px 4px; border-radius: 4px; font-weight: 500;">
+                                🏦 ${cp.banco || 'Banco'}
+                            </span>
+                        </td>
+                        <td style="font-weight: 500; font-size: 0.82rem; color: var(--text-primary);">$${cp.usd_comprados.toFixed(2)}</td>
+                        <td style="font-size: 0.82rem; color: var(--text-secondary);">${cp.tasa_bcv.toFixed(2)}</td>
+                        <td style="font-size: 0.82rem; color: var(--text-secondary);">$${cp.usd_recibidos_binance.toFixed(2)}</td>
+                        <td class="${subProfitClass}" style="font-size: 0.82rem; font-weight: 600;">
+                            ${gananciaCpUsd >= 0 ? '+' : ''}$${gananciaCpUsd.toFixed(2)}
+                        </td>
+                        <td class="${subProfitClass}" style="font-size: 0.78rem;">
+                            ${marginCp.toFixed(2)}%
+                        </td>
+                        <td style="color: var(--text-muted); opacity: 0.5;">—</td>
+                        <td>
+                            <button class="btn btn-sm" onclick="deleteCompraParcialDirect(${cp.id}, ${c.id})" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(239,68,68,0.1); color: var(--text-danger); border: 1px solid rgba(239,68,68,0.15);" title="Eliminar esta compra parcial de este sobre">🗑️ Compra</button>
+                        </td>
+                    `;
+                    els.ciclosTableBody.appendChild(subTr);
+                });
+            }
         });
         
         els.totalGananciaCiclos.textContent = `$${totalGain.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -3382,6 +3418,17 @@ function exportRemesasToCSV() {
         alert("Error al exportar remesas: " + err.message);
     });
 }
+
+window.deleteCompraParcialDirect = async function(compraId, cicloId) {
+    if (!confirm("¿Deseas eliminar esta compra parcial de este sobre? Se devolverán los bolívares al sobre y se recalculará la ganancia.")) return;
+    try {
+        await apiCall(`/ciclos/compras/${compraId}`, 'DELETE');
+        showToast("Compra parcial eliminada.");
+        await initDashboard();
+    } catch (err) {
+        alert(err.message);
+    }
+};
 
 function exportCiclosToCSV() {
     apiCall('/ciclos').then(ciclos => {
