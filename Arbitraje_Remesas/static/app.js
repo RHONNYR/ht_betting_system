@@ -918,19 +918,11 @@ async function handleGuardarCiclo() {
 async function handleAbrirSobreCiclo() {
     if (!state.currentCalculatedCiclo) return;
     
-    // Set status to "abierto"
+    // Set status to "abierto" while preserving calculated initial purchase and remaining bolivars
     const openCicloData = {
         ...state.currentCalculatedCiclo,
         status: "abierto",
-        bolivares_sobre_restantes: state.currentCalculatedCiclo.usdt_vendidos * 0.9975 * state.currentCalculatedCiclo.tasa_venta,
-        divisas_compradas: 0.0,
-        usd_procesados_binance: 0.0,
-        usd_recibidos_binance: 0.0,
-        comision_compra_ves: 0.0,
-        transferencias_ves: 0.0,
-        ganancia_usd: 0.0,
-        ganancia_porcentaje: 0.0,
-        bolivares_restantes: state.currentCalculatedCiclo.usdt_vendidos * 0.9975 * state.currentCalculatedCiclo.tasa_venta
+        bolivares_sobre_restantes: state.currentCalculatedCiclo.bolivares_restantes
     };
     
     // Link selected card
