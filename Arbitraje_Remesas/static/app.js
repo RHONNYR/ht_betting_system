@@ -1283,6 +1283,12 @@ async function loadCiclos() {
         ciclos.forEach(c => {
             totalGain += c.ganancia_usd;
             const tr = document.createElement('tr');
+            tr.className = 'main-row-ciclo';
+            if (c.status === 'abierto') {
+                tr.classList.add('ciclo-abierto');
+            } else {
+                tr.classList.add('ciclo-completado');
+            }
             const profitClass = c.ganancia_usd >= 0 ? 'text-success' : 'text-danger';
             
             const statusBadge = c.status === 'abierto' 
@@ -1326,11 +1332,6 @@ async function loadCiclos() {
                     </div>
                 </td>
             `;
-            
-            if (c.compras_parciales && c.compras_parciales.length > 0) {
-                tr.style.background = "rgba(255, 255, 255, 0.03)";
-                tr.style.borderBottom = "1px solid rgba(255, 255, 255, 0.08)";
-            }
             
             els.ciclosTableBody.appendChild(tr);
             
