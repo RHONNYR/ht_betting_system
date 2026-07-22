@@ -1433,19 +1433,54 @@ select option {
     text-align: left !important;
 }
 
-/* Sub-rows for partial purchases in cycles history table */
+/* Highlight styling for main cycle rows in history table */
+tr.main-row-ciclo {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-left: 4px solid var(--primary-color) !important;
+    transition: background 0.2s ease, border-left 0.2s ease;
+}
+
+tr.main-row-ciclo:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Distinct color border for active/open cycle envelopes */
+tr.main-row-ciclo.ciclo-abierto {
+    border-left: 4px solid #f59e0b !important; /* Orange left border */
+    background: rgba(245, 158, 11, 0.02) !important;
+}
+
+tr.main-row-ciclo.ciclo-abierto:hover {
+    background: rgba(245, 158, 11, 0.04) !important;
+}
+
+/* Group separator - thicker border at the bottom of completed main cycles if they have no sub-rows */
+tr.main-row-ciclo.ciclo-completado {
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Nesting style for partial purchase sub-rows */
 tr.sub-row-compra {
-    background: rgba(255, 255, 255, 0.015);
+    background: rgba(0, 0, 0, 0.16) !important;
     transition: background 0.2s ease;
 }
 
 tr.sub-row-compra:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.02) !important;
 }
 
 tr.sub-row-compra td {
-    border-top: 1px dashed rgba(255, 255, 255, 0.06) !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    font-size: 0.82rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.03) !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Style for first cell in sub-row to act as a clear hierarchy indicator */
+tr.sub-row-compra td:first-child {
+    padding-left: 24px !important;
+    font-weight: 500;
+    color: #60a5fa !important; /* Visual blue indicator */
 }
