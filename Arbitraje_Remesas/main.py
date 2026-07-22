@@ -1356,6 +1356,12 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     }
         
     return {
+        "weekly": weekly_data,
+        "monthly": monthly_data,
+        "traffic_days": traffic_days,
+        "top_clients": top_clients,
+        "payment_methods": payment_methods,
+        "banks_destination": banks_destination,
         "summary": summary
     }
 
