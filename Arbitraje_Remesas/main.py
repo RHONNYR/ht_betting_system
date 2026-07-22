@@ -27,6 +27,39 @@ def get_venezuela_time():
 
 app = FastAPI(title="Sistema de Arbitraje y Remesas")
 
+# Startup migration to fix legacy purchase bank names in database
+@app.on_event("startup")
+def fix_legacy_purchase_bank_names():
+    db = SessionLocal()
+    try:
+        # 1. Update purchases that have a valid tarjeta_id
+        purchases_with_card = db.query(CompraCicloParcial).filter(CompraCicloParcial.tarjeta_id.isnot(None)).all()
+        for p in purchases_with_card:
+            card = db.query(Tarjeta).filter(Tarjeta.id == p.tarjeta_id).first()
+            if card and p.banco != card.banco:
+                p.banco = card.banco
+        
+        # 2. Update legacy purchases that have no card or are named "Rhonny", "None" or similar
+        all_purchases = db.query(CompraCicloParcial).all()
+        for p in all_purchases:
+            if not p.banco or p.banco.strip().lower() in ("rhonny", "none", "banco", ""):
+                if p.tarjeta_id:
+                    card = db.query(Tarjeta).filter(Tarjeta.id == p.tarjeta_id).first()
+                    if card:
+                        p.banco = card.banco
+                        continue
+                ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == p.ciclo_id).first()
+                if ciclo:
+                    p.banco = ciclo.banco_venta or "Venezuela"
+                else:
+                    p.banco = "Venezuela"
+                    
+        db.commit()
+    except Exception as e:
+        print(f"Error during legacy purchase migration: {e}")
+    finally:
+        db.close()
+
 # CORS middleware for local testing/cross-origin access
 app.add_middleware(
     CORSMiddleware,
