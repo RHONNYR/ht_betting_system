@@ -1063,7 +1063,7 @@ function updatePartialBuyPreview() {
     
     if (usd > 0 && tasa > 0 && targetSelect && targetSelect.selectedIndex >= 0) {
         const selectedOption = targetSelect.options[targetSelect.selectedIndex];
-        const bancoText = selectedOption ? selectedOption.textContent.split(' - ')[0].trim() : 'Banco';
+        const bancoText = selectedOption ? (selectedOption.getAttribute('data-banco') || 'Banco') : 'Banco';
         
         const costoBase = usd * tasa;
         const comisionCompra = applyTercera ? 0.0 : (costoBase * 0.005);
@@ -1184,7 +1184,7 @@ async function handleCompraParcialSubmit(e) {
         tarjetaIdVal = parseInt(selectedOption.value);
         cardComisionPct = parseFloat(selectedOption.getAttribute('data-comision')) || 0.0;
         isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
-        bancoText = selectedOption.textContent.split(' - ')[0].trim();
+        bancoText = selectedOption.getAttribute('data-banco') || "Banco";
         
         // Find card limits data in local state
         if (state.titulares) {
