@@ -231,6 +231,56 @@ async function apiCall(endpoint, method = 'GET', data = null) {
     }
 }
 
+window.showToast = function(message, type = 'success') {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.style.position = 'fixed';
+        container.style.bottom = '24px';
+        container.style.right = '24px';
+        container.style.zIndex = '9999';
+        container.style.display = 'flex';
+        container.style.flexDirection = 'column';
+        container.style.gap = '8px';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.style.background = type === 'error' ? 'rgba(239, 68, 68, 0.95)' : 'rgba(16, 185, 129, 0.95)';
+    toast.style.color = '#ffffff';
+    toast.style.padding = '12px 20px';
+    toast.style.borderRadius = '8px';
+    toast.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1)';
+    toast.style.fontSize = '0.9rem';
+    toast.style.fontWeight = '500';
+    toast.style.minWidth = '250px';
+    toast.style.transition = 'all 0.3s ease';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(20px)';
+    toast.style.backdropFilter = 'blur(8px)';
+    toast.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+    
+    const icon = type === 'error' ? '❌' : '✅';
+    toast.innerHTML = `<span style="margin-right: 8px;">${icon}</span> ${message}`;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateY(0)';
+    }, 10);
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3500);
+};
+
 // Authentication handlers
 function checkAuth() {
     if (state.token) {
@@ -273,16 +323,22 @@ function logout() {
 
 // Initialization
 async function initDashboard() {
-    await fetchBCV();
-    await loadCapital();
-    await loadTitularesAndCards();
-    await loadCiclos();
-    await loadActiveEnvelopes();
-    await loadCompras();
-    await loadCapitalSnapshots();
-    await loadRemesas();
-    await loadClientes();
-    await loadAndRenderCharts();
+    try {
+        await Promise.all([
+            fetchBCV(),
+            loadCapital(),
+            loadTitularesAndCards(),
+            loadCiclos(),
+            loadActiveEnvelopes(),
+            loadCompras(),
+            loadCapitalSnapshots(),
+            loadRemesas(),
+            loadClientes(),
+            loadAndRenderCharts()
+        ]);
+    } catch (err) {
+        console.error("Error loading dashboard concurrently:", err);
+    }
 }
 
 // BCV Handlers
