@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=59">
+    <link rel="stylesheet" href="styles.css?v=60">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -731,6 +731,11 @@
                             <button id="btn-registrar-compra-manual" class="btn btn-primary btn-sm">➕ Registrar Compra a BCV</button>
                         </div>
                         <div class="card-body">
+                            <!-- Live Limits and Consumption Monitor -->
+                            <div id="compras-limits-container" class="mb-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                                <!-- Dynamically populated limits -->
+                            </div>
+                            
                             <div class="table-container">
                                 <table class="data-table">
                                     <thead>
@@ -743,6 +748,7 @@
                                             <th>Tasa BCV</th>
                                             <th>Monto en VES</th>
                                             <th>Comisión VES</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="compras-table-body">
@@ -932,12 +938,17 @@
         </div>
     </div>
 
-    <!-- MODAL: REGISTRAR COMPRA DE DIVISAS -->
+    <!-- MODAL: REGISTRAR/EDITAR COMPRA DE DIVISAS -->
     <div id="modal-compra" class="modal hidden">
         <div class="modal-content glass-card">
-            <h3>Registrar Compra de Divisas (BCV)</h3>
+            <h3 id="compra-modal-title">Registrar Compra de Divisas (BCV)</h3>
             <p>Esto sumará el monto al consumo de la tarjeta y calculará las comisiones según el titular.</p>
             <form id="compra-divisa-form">
+                <input type="hidden" id="compra-id">
+                <div class="input-group">
+                    <label for="compra-fecha-manual">Fecha y Hora de la Compra</label>
+                    <input type="datetime-local" id="compra-fecha-manual">
+                </div>
                 <div class="input-group">
                     <label for="compra-tarjeta-select">Tarjeta / Cuenta Utilizada</label>
                     <select id="compra-tarjeta-select" required>
@@ -953,7 +964,7 @@
                     <input type="number" step="any" id="compra-tasa-bcv" required placeholder="Ej. 633.36">
                 </div>
                 <div class="modal-actions mt-4">
-                    <button type="submit" class="btn btn-primary">Registrar Compra</button>
+                    <button type="submit" id="btn-submit-compra" class="btn btn-primary">Registrar Compra</button>
                     <button type="button" id="btn-close-modal-compra" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
@@ -1348,6 +1359,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=59"></script>
+    <script src="app.js?v=60"></script>
 </body>
 </html>
