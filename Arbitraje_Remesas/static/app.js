@@ -1520,6 +1520,7 @@ async function handleEditarCicloSubmit(e) {
 async function loadCompras() {
     try {
         const compras = await apiCall('/compras');
+        state.compras = compras || [];
         els.comprasTableBody.innerHTML = '';
         
         compras.forEach(c => {
@@ -1535,13 +1536,189 @@ async function loadCompras() {
                 <td>${c.tasa_bcv.toFixed(2)}</td>
                 <td>${montoVes.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
                 <td>${c.comision_ves.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
+                <td>
+                    <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
+                        <button class="btn btn-secondary btn-sm" onclick="openEditCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️</button>
+                    </div>
+                </td>
             `;
             els.comprasTableBody.appendChild(tr);
         });
+        
+        renderComprasLimits();
     } catch (err) {
         console.error("Error loading compras:", err);
     }
 }
+
+function renderComprasLimits() {
+    const container = document.getElementById('compras-limits-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (!state.titulares) return;
+
+    state.titulares.forEach(tit => {
+        // Render Bank Accounts Limits for this titular
+        if (tit.bancos_limites && tit.bancos_limites.length > 0) {
+            tit.bancos_limites.forEach(bl => {
+                const pctAnual = bl.limite_anual > 0 ? Math.min((bl.consumo_anual / bl.limite_anual) * 100, 100) : 0;
+                let classAnual = 'progress-normal';
+                if (pctAnual > 90) classAnual = 'progress-danger';
+                else if (pctAnual > 70) classAnual = 'progress-warning';
+
+                let monthlyHtml = '';
+                if (bl.limite_mensual < 900000) {
+                    const pctMensual = Math.min((bl.consumo_mensual / bl.limite_mensual) * 100, 100);
+                    let classMensual = 'progress-normal';
+                    if (pctMensual > 90) classMensual = 'progress-danger';
+                    else if (pctMensual > 70) classMensual = 'progress-warning';
+
+                    monthlyHtml = `
+                        <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 8px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-secondary);">
+                                <span>Mensual (Límite: $${bl.limite_mensual.toFixed(0)})</span>
+                                <span>$${bl.consumo_mensual.toFixed(2)} (${pctMensual.toFixed(0)}%)</span>
+                            </div>
+                            <div class="card-progress-bar-container" style="margin: 0; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; width: 100%;">
+                                <div class="card-progress-fill ${classMensual}" style="width: ${pctMensual}%; height: 100%; border-radius: 3px;"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                const cardEl = document.createElement('div');
+                cardEl.className = 'card-item-row';
+                cardEl.style.background = 'rgba(255, 255, 255, 0.02)';
+                cardEl.style.border = '1px solid var(--border-color)';
+                cardEl.style.borderRadius = '12px';
+                cardEl.style.padding = '1rem';
+                cardEl.style.display = 'flex';
+                cardEl.style.flexDirection = 'column';
+                cardEl.style.gap = '0.75rem';
+
+                cardEl.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 0.92rem; display: block;">🏦 Límite Banco: ${bl.banco}</span>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary);">de ${tit.nombre}</span>
+                        </div>
+                        ${pctAnual >= 100 ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">⚠️ Límite Anual Superado</span>' : ''}
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-secondary);">
+                            <span>Cupo Anual (Límite: $${bl.limite_anual.toFixed(0)})</span>
+                            <span>$${bl.consumo_anual.toFixed(2)} (${pctAnual.toFixed(0)}%)</span>
+                        </div>
+                        <div class="card-progress-bar-container" style="margin: 0; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; width: 100%;">
+                            <div class="card-progress-fill ${classAnual}" style="width: ${pctAnual}%; height: 100%; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                    ${monthlyHtml}
+                `;
+                container.appendChild(cardEl);
+            });
+        }
+
+        // Render Card Limits for this titular
+        if (tit.tarjetas && tit.tarjetas.length > 0) {
+            tit.tarjetas.forEach(card => {
+                const pctDiario = card.limite_diario > 0 ? Math.min((card.consumo_diario / card.limite_diario) * 100, 100) : 0;
+                let classDiario = 'progress-normal';
+                if (pctDiario > 90) classDiario = 'progress-danger';
+                else if (pctDiario > 70) classDiario = 'progress-warning';
+
+                const pctMensual = card.limite_mensual > 0 ? Math.min((card.consumo_mensual / card.limite_mensual) * 100, 100) : 0;
+                let classMensual = 'progress-normal';
+                if (pctMensual > 90) classMensual = 'progress-danger';
+                else if (pctMensual > 70) classMensual = 'progress-warning';
+
+                const cardEl = document.createElement('div');
+                cardEl.className = 'card-item-row';
+                cardEl.style.background = 'rgba(255, 255, 255, 0.02)';
+                cardEl.style.border = '1px solid var(--border-color)';
+                cardEl.style.borderRadius = '12px';
+                cardEl.style.padding = '1rem';
+                cardEl.style.display = 'flex';
+                cardEl.style.flexDirection = 'column';
+                cardEl.style.gap = '0.75rem';
+
+                cardEl.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <span style="font-weight: 600; color: var(--text-primary); font-size: 0.92rem; display: block;">💳 Tarjeta: ${card.banco} (${card.tipo_tarjeta})</span>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary);">de ${tit.nombre}</span>
+                        </div>
+                        ${(pctDiario >= 100 || pctMensual >= 100) ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">⚠️ Límite Excedido</span>' : ''}
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-secondary);">
+                            <span>Diario (Límite: $${card.limite_diario.toFixed(0)})</span>
+                            <span>$${card.consumo_diario.toFixed(2)} (${pctDiario.toFixed(0)}%)</span>
+                        </div>
+                        <div class="card-progress-bar-container" style="margin: 0; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; width: 100%;">
+                            <div class="card-progress-fill ${classDiario}" style="width: ${pctDiario}%; height: 100%; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-secondary);">
+                            <span>Mensual (Límite: $${card.limite_mensual.toFixed(0)})</span>
+                            <span>$${card.consumo_mensual.toFixed(2)} (${pctMensual.toFixed(0)}%)</span>
+                        </div>
+                        <div class="card-progress-bar-container" style="margin: 0; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; width: 100%;">
+                            <div class="card-progress-fill ${classMensual}" style="width: ${pctMensual}%; height: 100%; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(cardEl);
+            });
+        }
+    });
+}
+
+function formatDateToLocalInput(date) {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    const hh = String(date.getHours()).padStart(2, '0');
+    const min = String(date.getMinutes()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
+}
+
+window.openEditCompra = function(compraId) {
+    const compra = state.compras.find(c => c.id === compraId);
+    if (!compra) return;
+
+    document.getElementById('compra-id').value = compra.id;
+    document.getElementById('compra-modal-title').textContent = "Editar Compra de Divisas";
+    document.getElementById('btn-submit-compra').textContent = "Guardar Cambios";
+
+    // Parse purchase custom date
+    const d = parseSpanishDate(compra.fecha);
+    document.getElementById('compra-fecha-manual').value = formatDateToLocalInput(d);
+
+    document.getElementById('compra-tarjeta-select').value = compra.tarjeta_id;
+    document.getElementById('compra-monto-usd').value = compra.monto_usd;
+    document.getElementById('compra-tasa-bcv').value = compra.tasa_bcv;
+
+    openModal(els.modalCompra);
+};
+
+window.deleteCompra = async function(compraId) {
+    if (!confirm("¿Estás seguro de que deseas eliminar esta compra de divisas de la bitácora? Esto recalculará los límites de consumo.")) return;
+    try {
+        await apiCall(`/compras/${compraId}`, 'DELETE');
+        showToast("Compra eliminada con éxito.");
+        await initDashboard();
+        await loadCompras();
+    } catch (err) {
+        showToast("Error al eliminar compra: " + err.message, "danger");
+    }
+};
 
 async function loadCapitalSnapshots() {
     try {
@@ -1921,24 +2098,56 @@ function setupEventListeners() {
     
     // Register divisa purchase modal
     els.btnRegistrarCompraManual.addEventListener('click', () => {
+        document.getElementById('compra-id').value = '';
+        document.getElementById('compra-modal-title').textContent = "Registrar Compra de Divisas (BCV)";
+        document.getElementById('btn-submit-compra').textContent = "Registrar Compra";
+        
+        const now = new Date();
+        const offset = now.getTimezoneOffset() * 60000;
+        const localISOTime = (new Date(now - offset)).toISOString().slice(0, 16);
+        document.getElementById('compra-fecha-manual').value = localISOTime;
+
+        document.getElementById('compra-monto-usd').value = '';
         document.getElementById('compra-tasa-bcv').value = state.bcvRate;
         openModal(els.modalCompra);
     });
     els.btnCloseModalCompra.addEventListener('click', () => closeModal(els.modalCompra));
     els.compraDivisaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const id = document.getElementById('compra-id').value;
         const tarjeta_id = parseInt(document.getElementById('compra-tarjeta-select').value);
         const monto_usd = parseFloat(document.getElementById('compra-monto-usd').value);
         const tasa_bcv = parseFloat(document.getElementById('compra-tasa-bcv').value);
+        const fechaManual = document.getElementById('compra-fecha-manual').value;
         
+        let fechaStr = null;
+        if (fechaManual) {
+            const dt = new Date(fechaManual);
+            if (!isNaN(dt.getTime())) {
+                const day = String(dt.getDate()).padStart(2, '0');
+                const month = String(dt.getMonth() + 1).padStart(2, '0');
+                const year = dt.getFullYear();
+                const hours = String(dt.getHours()).padStart(2, '0');
+                const minutes = String(dt.getMinutes()).padStart(2, '0');
+                fechaStr = `${day}/${month}/${year} ${hours}:${minutes}`;
+            }
+        }
+
         try {
-            await apiCall('/compras', 'POST', { tarjeta_id, monto_usd, tasa_bcv });
-            alert("Compra registrada.");
+            const payload = { tarjeta_id, monto_usd, tasa_bcv, fecha: fechaStr };
+            if (id) {
+                await apiCall(`/compras/${id}`, 'PUT', payload);
+                showToast("Compra actualizada con éxito.");
+            } else {
+                await apiCall('/compras', 'POST', payload);
+                showToast("Compra registrada con éxito.");
+            }
             els.compraDivisaForm.reset();
             closeModal(els.modalCompra);
             await initDashboard();
+            await loadCompras();
         } catch (err) {
-            alert(err.message);
+            showToast(err.message, "danger");
         }
     });
     
