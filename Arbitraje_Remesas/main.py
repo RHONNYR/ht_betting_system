@@ -119,6 +119,7 @@ class CompraDivisaCreate(BaseModel):
     tarjeta_id: int
     monto_usd: float
     tasa_bcv: float
+    fecha: Optional[str] = None
 
 class CicloCreate(BaseModel):
     usdt_vendidos: float
@@ -658,11 +659,57 @@ def get_titulares(username: str = Depends(get_current_user), db: Session = Depen
                 "consumo_diario": daily_consumed
             })
             
+        # Calculate bank-level annual and monthly consumption for this titular
+        start_of_year = datetime.datetime(now.year, 1, 1)
+        # Find unique bank names that this titular has cards in
+        card_ids_by_bank = {}
+        for card in tit.tarjetas:
+            if card.banco not in card_ids_by_bank:
+                card_ids_by_bank[card.banco] = []
+            card_ids_by_bank[card.banco].append(card.id)
+            
+        bancos_limites = []
+        for b_name, c_ids in card_ids_by_bank.items():
+            annual_consumed = 0.0
+            monthly_consumed_bank = 0.0
+            
+            if c_ids:
+                # Annual sum
+                cd_year = db.query(CompraDivisa).filter(
+                    CompraDivisa.tarjeta_id.in_(c_ids),
+                    CompraDivisa.fecha >= start_of_year
+                ).all()
+                ccp_year = db.query(CompraCicloParcial).filter(
+                    CompraCicloParcial.tarjeta_id.in_(c_ids),
+                    CompraCicloParcial.fecha >= start_of_year
+                ).all()
+                annual_consumed = sum(p.monto_usd for p in cd_year) + sum(cp.usd_comprados for cp in ccp_year)
+                
+                # Monthly sum
+                cd_month = db.query(CompraDivisa).filter(
+                    CompraDivisa.tarjeta_id.in_(c_ids),
+                    CompraDivisa.fecha >= start_of_month
+                ).all()
+                ccp_month = db.query(CompraCicloParcial).filter(
+                    CompraCicloParcial.tarjeta_id.in_(c_ids),
+                    CompraCicloParcial.fecha >= start_of_month
+                ).all()
+                monthly_consumed_bank = sum(p.monto_usd for p in cd_month) + sum(cp.usd_comprados for cp in ccp_month)
+                
+            bancos_limites.append({
+                "banco": b_name,
+                "consumo_anual": annual_consumed,
+                "limite_anual": 12000.0,
+                "consumo_mensual": monthly_consumed_bank,
+                "limite_mensual": 1000.0 if b_name.lower() == "mercantil" else 999999.0
+            })
+            
         result.append({
             "id": tit.id,
             "nombre": tit.nombre,
             "tercera_edad": tit.tercera_edad,
-            "tarjetas": cards_data
+            "tarjetas": cards_data,
+            "bancos_limites": bancos_limites
         })
     return result
 
@@ -726,9 +773,13 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
     monto_ves = req.monto_usd * req.tasa_bcv
     comision_ves = monto_ves * commission_pct
     
+    compra_fecha = get_venezuela_time()
+    if req.fecha:
+        compra_fecha = parse_date_string(req.fecha)
+        
     compra = CompraDivisa(
         tarjeta_id=req.tarjeta_id,
-        fecha=get_venezuela_time(),
+        fecha=compra_fecha,
         monto_usd=req.monto_usd,
         tasa_bcv=req.tasa_bcv,
         comision_ves=comision_ves
@@ -736,6 +787,43 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
     db.add(compra)
     db.commit()
     return {"message": "Compra de divisas registrada en la bitácora", "id": compra.id, "comision_ves": comision_ves}
+
+@app.put("/api/compras/{compra_id}")
+def update_compra(compra_id: int, req: CompraDivisaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    compra = db.query(CompraDivisa).filter(CompraDivisa.id == compra_id).first()
+    if not compra:
+        raise HTTPException(status_code=404, detail="Compra no encontrada")
+        
+    card = db.query(Tarjeta).filter(Tarjeta.id == req.tarjeta_id).first()
+    if not card:
+        raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
+        
+    tit = card.titular
+    commission_pct = 0.005  # 0.5%
+    if tit and tit.tercera_edad:
+        commission_pct = 0.0
+        
+    monto_ves = req.monto_usd * req.tasa_bcv
+    comision_ves = monto_ves * commission_pct
+    
+    compra.tarjeta_id = req.tarjeta_id
+    compra.monto_usd = req.monto_usd
+    compra.tasa_bcv = req.tasa_bcv
+    compra.comision_ves = comision_ves
+    if req.fecha:
+        compra.fecha = parse_date_string(req.fecha)
+        
+    db.commit()
+    return {"message": "Compra de divisas actualizada con éxito"}
+
+@app.delete("/api/compras/{compra_id}")
+def delete_compra(compra_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    compra = db.query(CompraDivisa).filter(CompraDivisa.id == compra_id).first()
+    if not compra:
+        raise HTTPException(status_code=404, detail="Compra no encontrada")
+    db.delete(compra)
+    db.commit()
+    return {"message": "Compra de divisas eliminada con éxito"}
 
 # Cycles Routes
 @app.get("/api/ciclos")
