@@ -633,7 +633,11 @@ def get_titulares(username: str = Depends(get_current_user), db: Session = Depen
                 CompraCicloParcial.fecha >= start_of_month
             ).all()
             
-            monthly_consumed = sum(p.monto_usd for p in purchases_sum) + sum(cp.usd_comprados for cp in cycle_purchases_sum)
+            card_comm = card.comision_porcentaje or 0.0
+            monthly_consumed = (
+                sum(p.monto_usd * (1.0 - card_comm) for p in purchases_sum) +
+                sum(cp.usd_procesados if (cp.usd_procesados and cp.usd_procesados > 0) else (cp.usd_comprados * (1.0 - card_comm)) for cp in cycle_purchases_sum)
+            )
             
             # Query sum of purchases today for this card
             purchases_today = db.query(CompraDivisa).filter(
@@ -646,7 +650,10 @@ def get_titulares(username: str = Depends(get_current_user), db: Session = Depen
                 CompraCicloParcial.fecha >= start_of_day
             ).all()
             
-            daily_consumed = sum(p.monto_usd for p in purchases_today) + sum(cp.usd_comprados for cp in cycle_purchases_today)
+            daily_consumed = (
+                sum(p.monto_usd * (1.0 - card_comm) for p in purchases_today) +
+                sum(cp.usd_procesados if (cp.usd_procesados and cp.usd_procesados > 0) else (cp.usd_comprados * (1.0 - card_comm)) for cp in cycle_purchases_today)
+            )
             
             cards_data.append({
                 "id": card.id,
