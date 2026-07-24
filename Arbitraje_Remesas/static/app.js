@@ -1254,14 +1254,17 @@ async function handleCompraParcialSubmit(e) {
         }
     }
     
+    const usdProcesadosCard = usd * (1 - cardComisionPct);
+
     // Check card limit warnings
     if (selectedTarjetaData) {
         const dailyRemaining = selectedTarjetaData.limite_diario - selectedTarjetaData.consumo_diario;
         const monthlyRemaining = selectedTarjetaData.limite_mensual - selectedTarjetaData.consumo_mensual;
         
-        if (usd > dailyRemaining || usd > monthlyRemaining) {
-            const warningMsg = `⚠️ ADVERTENCIA DE LÍMITES:\n` +
-                               `Esta compra de $${usd.toFixed(2)} supera el límite disponible de la tarjeta.\n` +
+        if (usdProcesadosCard > dailyRemaining || usdProcesadosCard > monthlyRemaining) {
+            const warningMsg = `⚠️ ADVERTENCIA DE LÍMITES DE TARJETA:\n` +
+                               `Esta compra procesará $${usdProcesadosCard.toFixed(2)} en la tarjeta (comprado al banco: $${usd.toFixed(2)}).\n` +
+                               `Supera el cupo disponible de la tarjeta:\n` +
                                `- Cupo Diario Disponible: $${Math.max(0, dailyRemaining).toFixed(2)}\n` +
                                `- Cupo Mensual Disponible: $${Math.max(0, monthlyRemaining).toFixed(2)}\n\n` +
                                `¿Deseas proceder con el registro de todas formas?`;
@@ -1278,11 +1281,11 @@ async function handleCompraParcialSubmit(e) {
     const transferenciasVes = applyPm ? (costoBaseVES * 0.003) : 0.0;
     
     const binanceDepositFeePct = 0.041; // 4.1%
-    const usdNetosRecibidosBinance = usd * (1 - cardComisionPct) * (1 - binanceDepositFeePct);
+    const usdNetosRecibidosBinance = usdProcesadosCard * (1 - binanceDepositFeePct);
     
     const payload = {
         usd_comprados: usd,
-        usd_procesados: usd,
+        usd_procesados: usdProcesadosCard,
         tasa_bcv: tasa,
         comision_compra_ves: comisionCompraVES,
         transferencias_ves: transferenciasVes,
@@ -1293,11 +1296,11 @@ async function handleCompraParcialSubmit(e) {
     
     try {
         const res = await apiCall(`/ciclos/${cicloId}/compras`, 'POST', payload);
-        alert(res.message);
+        showToast(res.message);
         closeModal(els.modalCompraParcial);
         await initDashboard();
     } catch (err) {
-        alert(err.message);
+        showToast(err.message, "danger");
     }
 }
 
