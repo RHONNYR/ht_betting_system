@@ -718,6 +718,7 @@ async function loadTitularesAndCards() {
                         <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
                             ${tit.tercera_edad ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px; font-weight: 500;">3ra Edad</span>' : ''}
                             ${warningBadge}
+                            <button class="btn btn-sm" onclick="resetTitularLimitesDirect(${tit.id}, '${tit.nombre}')" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25);" title="Resetear consumos y límites de este titular a $0">🧹</button>
                             <button class="btn btn-sm" onclick="deleteCardDirect(${card.id})" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(239,68,68,0.1); color: var(--text-danger); border: 1px solid rgba(239,68,68,0.15);" title="Eliminar esta tarjeta">🗑️</button>
                         </div>
                     </div>
@@ -758,6 +759,28 @@ async function loadTitularesAndCards() {
         console.error("Error loading cards:", err);
     }
 }
+
+window.deleteCardDirect = async function(cardId) {
+    if (!confirm("¿Estás seguro de que deseas eliminar esta tarjeta de tu lista?")) return;
+    try {
+        await apiCall(`/tarjetas/${cardId}`, 'DELETE');
+        alert("Tarjeta eliminada con éxito.");
+        await initDashboard();
+    } catch (err) {
+        alert(err.message || "Error al eliminar la tarjeta");
+    }
+};
+
+window.resetTitularLimitesDirect = async function(titularId, titularNombre) {
+    if (!confirm(`¿Estás seguro de que deseas resetear a $0.00 los consumos de tarjeta y límites de banco del titular ${titularNombre}? Podrás volver a vaciar tu data limpia.`)) return;
+    try {
+        const res = await apiCall(`/titulares/${titularId}/reset-limites`, 'POST');
+        alert(res.message);
+        await initDashboard();
+    } catch (err) {
+        alert(err.message || "Error al resetear límites del titular");
+    }
+};
 
 function updateSuggestedDivisas() {
     if (state.divisasCompradasManuallyEdited) return;
