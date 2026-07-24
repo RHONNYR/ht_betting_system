@@ -1425,7 +1425,7 @@ function renderCiclosTable() {
                     <td style="color: var(--text-muted); opacity: 0.5;">—</td>
                     <td>
                         <span class="badge-banco-compra" style="font-size: 0.74rem; background: rgba(59,130,246,0.1); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); padding: 1px 4px; border-radius: 4px; font-weight: 500;">
-                            🏦 ${cp.banco || 'Banco'}
+                            🏦 ${cp.banco || 'Banco'}${cp.titular ? ' (' + cp.titular + ')' : ''}
                         </span>
                     </td>
                     <td style="font-weight: 500; font-size: 0.82rem; color: var(--text-primary);">$${cp.usd_comprados.toFixed(2)}</td>
