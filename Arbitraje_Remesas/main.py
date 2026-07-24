@@ -319,8 +319,10 @@ def scrape_bcv_rate():
 # Auth Routes
 @app.post("/api/login", response_model=TokenResponse)
 def login(req: LoginRequest, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.username == req.username).first()
-    if not user or not bcrypt.checkpw(req.password.encode('utf-8'), user.password_hash.encode('utf-8')):
+    username_clean = req.username.strip().lower()
+    password_clean = req.password.strip()
+    user = db.query(User).filter(func.lower(User.username) == username_clean).first()
+    if not user or not bcrypt.checkpw(password_clean.encode('utf-8'), user.password_hash.encode('utf-8')):
         raise HTTPException(status_code=401, detail="Usuario o contraseña incorrectos")
     
     token = create_access_token({"sub": user.username})
