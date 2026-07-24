@@ -755,6 +755,7 @@ async function loadTitularesAndCards() {
             bankGroupDiv.appendChild(cardsGridDiv);
             els.cardsContainer.appendChild(bankGroupDiv);
         });
+        renderComprasLimits();
     } catch (err) {
         console.error("Error loading cards:", err);
     }
@@ -1611,11 +1612,15 @@ async function handleEditarCicloSubmit(e) {
 
 async function loadCompras() {
     try {
-        const compras = await apiCall('/compras');
+        const [compras, titulares] = await Promise.all([
+            apiCall('/compras'),
+            apiCall('/titulares')
+        ]);
         state.compras = compras || [];
+        if (titulares) state.titulares = titulares;
         els.comprasTableBody.innerHTML = '';
         
-        compras.forEach(c => {
+        state.compras.forEach(c => {
             const tr = document.createElement('tr');
             const montoVes = c.monto_usd * c.tasa_bcv;
             
