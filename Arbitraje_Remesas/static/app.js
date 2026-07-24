@@ -2016,7 +2016,9 @@ function setupEventListeners() {
             const titular = els.modalZelleTitular.value;
             const detalle = els.modalZelleDetalle.value;
             const fecha = els.modalZelleFecha.value;
-            await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha);
+            const estadoEl = document.getElementById('modal-zelle-estado');
+            const estado = estadoEl ? estadoEl.value : 'completado';
+            await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado);
         });
     }
     
@@ -3186,16 +3188,34 @@ async function loadZelleMovimientos() {
         els.zelleIngresosSemanales.textContent = `$${data.summary.weekly_ingresos.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         els.zelleEgresosSemanales.textContent = `$${data.summary.weekly_egresos.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         
+        // Update pending header indicator if element exists
+        const zellePendientesEl = document.getElementById('zelle-pendientes-remesar');
+        if (zellePendientesEl) {
+            zellePendientesEl.textContent = `$${(data.summary.pendientes_remesar_usd || 0.0).toFixed(2)}`;
+        }
+
         // Populate table body
         els.zelleTableBody.innerHTML = '';
         if (data.items.length === 0) {
-            els.zelleTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
+            els.zelleTableBody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
             return;
         }
         
         data.items.forEach(item => {
             const tr = document.createElement('tr');
             const isIngreso = item.tipo === 'ingreso';
+            const estadoStr = item.estado || 'completado';
+            
+            let estadoBadge = '<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); font-size: 0.72rem;">✅ Completado</span>';
+            if (estadoStr === 'pendiente') {
+                estadoBadge = '<span class="badge" style="background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); font-size: 0.72rem;">⏳ Pendiente de Remesar</span>';
+            } else if (estadoStr === 'remesado') {
+                estadoBadge = '<span class="badge" style="background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); font-size: 0.72rem;">✅ Remesado</span>';
+            }
+            
+            const btnToggleEstado = estadoStr === 'pendiente' 
+                ? `<button class="btn btn-sm" onclick="toggleEstadoZelle(${item.id}, 'pendiente')" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(59,130,246,0.1); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2);" title="Marcar como remesado">🚀 Remesado</button>`
+                : `<button class="btn btn-sm" onclick="toggleEstadoZelle(${item.id}, '${estadoStr}')" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2);" title="Marcar como pendiente">⏳ Pendiente</button>`;
             
             tr.innerHTML = `
                 <td>${item.fecha}</td>
@@ -3206,13 +3226,17 @@ async function loadZelleMovimientos() {
                 </td>
                 <td><strong>${item.titular}</strong></td>
                 <td>${item.detalle}</td>
+                <td>${estadoBadge}</td>
                 <td>
                     <strong class="${isIngreso ? 'text-success' : 'text-danger'}">
                         ${isIngreso ? '+' : '-'}$${item.monto.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
                     </strong>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="eliminarMovimientoZelle(${item.id})">Eliminar</button>
+                    <div class="flex-row-align" style="gap: 4px;">
+                        ${isIngreso ? btnToggleEstado : ''}
+                        <button class="btn btn-danger btn-sm" onclick="eliminarMovimientoZelle(${item.id})" style="padding: 2px 6px; font-size: 0.7rem;">Eliminar</button>
+                    </div>
                 </td>
             `;
             els.zelleTableBody.appendChild(tr);
@@ -3222,14 +3246,26 @@ async function loadZelleMovimientos() {
     }
 }
 
-async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha) {
+window.toggleEstadoZelle = async function(id, currentEstado) {
+    const nuevoEstado = currentEstado === 'pendiente' ? 'remesado' : 'pendiente';
+    try {
+        await apiCall(`/zelle/movimientos/${id}/estado`, 'PUT', { estado: nuevoEstado });
+        showToast(`Estado Zelle actualizado a '${nuevoEstado === 'pendiente' ? '⏳ Pendiente' : '✅ Remesado'}'.`);
+        loadZelleMovimientos();
+    } catch (err) {
+        showToast("Error al actualizar estado: " + err.message, "danger");
+    }
+};
+
+async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado) {
     try {
         const payload = {
             tipo,
             monto: parseFloat(monto),
             titular: titular || null,
             detalle: detalle || null,
-            fecha: fecha || null
+            fecha: fecha || null,
+            estado: estado || "completado"
         };
         
         await apiCall('/zelle/movimientos', 'POST', payload);
