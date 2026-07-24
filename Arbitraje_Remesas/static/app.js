@@ -1925,13 +1925,13 @@ function updateCardPresetDefaults() {
     
     if (banco === 'BDV') {
         if (tipo === 'Internacional $') {
-            diario = 1000;
+            diario = 2000;
             mensual = 10000;
             comision = 2.5; // 2.5%
         } else if (tipo === 'Master Debit') {
             diario = 1000;
             mensual = 5000;
-            comision = 0.5; // 0.5%
+            comision = 1.5; // 1.5%
         } else {
             diario = 1000;
             mensual = 5000;
