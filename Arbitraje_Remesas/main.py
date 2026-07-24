@@ -809,6 +809,7 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
     if not card:
         raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
         
+    tit = card.titular
     commission_pct = card.comision_porcentaje if card and card.comision_porcentaje is not None else 0.015
     if tit and tit.tercera_edad:
         commission_pct = 0.0
