@@ -794,7 +794,7 @@ def reset_titular_limites(titular_id: int, username: str = Depends(get_current_u
         db.query(CompraDivisa).filter(CompraDivisa.tarjeta_id.in_(card_ids)).delete(synchronize_session=False)
         
         # Unlink partial purchases in cycles associated with these cards so card & bank limits reset to $0
-        subcompras = db.query(CompraParcialCiclo).filter(CompraParcialCiclo.tarjeta_id.in_(card_ids)).all()
+        subcompras = db.query(CompraCicloParcial).filter(CompraCicloParcial.tarjeta_id.in_(card_ids)).all()
         for sub in subcompras:
             sub.tarjeta_id = None
             
