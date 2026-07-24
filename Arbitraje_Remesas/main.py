@@ -744,6 +744,24 @@ def create_tarjeta(req: TarjetaCreate, username: str = Depends(get_current_user)
     db.commit()
     return {"message": "Tarjeta agregada exitosamente", "id": card.id}
 
+@app.delete("/api/tarjetas/{tarjeta_id}")
+def delete_tarjeta(tarjeta_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    card = db.query(Tarjeta).filter(Tarjeta.id == tarjeta_id).first()
+    if not card:
+        raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
+    db.delete(card)
+    db.commit()
+    return {"message": "Tarjeta eliminada exitosamente"}
+
+@app.delete("/api/titulares/{titular_id}")
+def delete_titular(titular_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    tit = db.query(Titular).filter(Titular.id == titular_id).first()
+    if not tit:
+        raise HTTPException(status_code=404, detail="Titular no encontrado")
+    db.delete(tit)
+    db.commit()
+    return {"message": "Titular eliminado exitosamente"}
+
 # Divisas Purchases (Bitácora de Compras)
 @app.get("/api/compras")
 def get_compras(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
