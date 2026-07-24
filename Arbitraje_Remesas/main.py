@@ -810,6 +810,8 @@ def get_compras(username: str = Depends(get_current_user), db: Session = Depends
     for c in compras:
         card = c.tarjeta
         tit = card.titular if card else None
+        compra_comm_pct = 0.0 if (tit and tit.tercera_edad) else 0.005
+        calc_comision_ves = (c.monto_usd * c.tasa_bcv) * compra_comm_pct
         result.append({
             "id": c.id,
             "fecha": c.fecha.strftime("%d/%m/%Y %I:%M %p"),
@@ -819,7 +821,7 @@ def get_compras(username: str = Depends(get_current_user), db: Session = Depends
             "titular": tit.nombre if tit else "N/A",
             "monto_usd": c.monto_usd,
             "tasa_bcv": c.tasa_bcv,
-            "comision_ves": c.comision_ves
+            "comision_ves": calc_comision_ves
         })
     return result
 
@@ -830,10 +832,7 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
         raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
         
     tit = card.titular
-    commission_pct = card.comision_porcentaje if card and card.comision_porcentaje is not None else 0.015
-    if tit and tit.tercera_edad:
-        commission_pct = 0.0
-        
+    commission_pct = 0.0 if (tit and tit.tercera_edad) else 0.005
     monto_ves = req.monto_usd * req.tasa_bcv
     comision_ves = monto_ves * commission_pct
     
@@ -863,10 +862,7 @@ def update_compra(compra_id: int, req: CompraDivisaCreate, username: str = Depen
         raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
         
     tit = card.titular
-    commission_pct = card.comision_porcentaje if card and card.comision_porcentaje is not None else 0.015
-    if tit and tit.tercera_edad:
-        commission_pct = 0.0
-        
+    commission_pct = 0.0 if (tit and tit.tercera_edad) else 0.005
     monto_ves = req.monto_usd * req.tasa_bcv
     comision_ves = monto_ves * commission_pct
     
