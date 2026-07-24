@@ -833,6 +833,8 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
     for c in ciclos:
         compras = []
         for cp in c.compras_parciales:
+            card = cp.tarjeta
+            tit = card.titular if card else None
             compras.append({
                 "id": cp.id,
                 "fecha": cp.fecha.strftime("%d/%m/%Y %I:%M %p"),
@@ -842,7 +844,10 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
                 "comision_compra_ves": cp.comision_compra_ves,
                 "transferencias_ves": cp.transferencias_ves,
                 "usd_recibidos_binance": cp.usd_recibidos_binance,
-                "banco": cp.banco
+                "banco": cp.banco,
+                "tarjeta_id": cp.tarjeta_id,
+                "titular": tit.nombre if tit else None,
+                "tipo_tarjeta": card.tipo_tarjeta if card else None
             })
         result.append({
             "id": c.id,
@@ -920,6 +925,8 @@ def get_ciclos_activos(username: str = Depends(get_current_user), db: Session = 
     for c in ciclos:
         compras = []
         for cp in c.compras_parciales:
+            card = cp.tarjeta
+            tit = card.titular if card else None
             compras.append({
                 "id": cp.id,
                 "fecha": cp.fecha.strftime("%d/%m/%Y %I:%M %p"),
@@ -929,7 +936,10 @@ def get_ciclos_activos(username: str = Depends(get_current_user), db: Session = 
                 "comision_compra_ves": cp.comision_compra_ves,
                 "transferencias_ves": cp.transferencias_ves,
                 "usd_recibidos_binance": cp.usd_recibidos_binance,
-                "banco": cp.banco
+                "banco": cp.banco,
+                "tarjeta_id": cp.tarjeta_id,
+                "titular": tit.nombre if tit else None,
+                "tipo_tarjeta": card.tipo_tarjeta if card else None
             })
         result.append({
             "id": c.id,
