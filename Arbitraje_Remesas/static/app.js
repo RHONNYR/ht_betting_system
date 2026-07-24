@@ -2426,6 +2426,11 @@ function setupEventListeners() {
     if (filterBancoEl) filterBancoEl.addEventListener('change', renderComprasTable);
     if (btnExportComprasEl) btnExportComprasEl.addEventListener('click', exportComprasToCSV);
 
+    const btnFiltrarCustomStats = document.getElementById('btn-filtrar-custom-stats');
+    const btnExportStatsPdf = document.getElementById('btn-export-stats-pdf');
+    if (btnFiltrarCustomStats) btnFiltrarCustomStats.addEventListener('click', loadAndRenderCharts);
+    if (btnExportStatsPdf) btnExportStatsPdf.addEventListener('click', exportStatsReportPDF);
+
     els.btnCloseModalCompra.addEventListener('click', () => closeModal(els.modalCompra));
     els.compraDivisaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -3580,36 +3585,29 @@ function recalculateSimulation() {
             let remainingUSD = principalUSD;
             const parts = [];
             for (let i = 0; i < cuentasRedondeadas; i++) {
-                const partAmt = Math.min(remainingUSD, limiteCuenta);
-                const partVes = partAmt * tasa * (1 + comisionPct);
-                parts.push(`Cuenta ${i+1}: $${partAmt.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} (${partVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES)`);
-                remainingUSD -= partAmt;
-            }
-            els.simResCuentasDesc.innerHTML = parts.join('<br>');
-        }
-    } else {
-        els.simResCuentasValue.textContent = "Límite no definido";
-        els.simResCuentasDesc.textContent = "Especifica un límite de cuenta válido.";
-    }
-}
-
-// Bind to window
-window.eliminarRemesa = eliminarRemesa;
-window.iniciarEditarRemesa = iniciarEditarRemesa;
-window.cerrarModalEditarRemesa = cerrarModalEditarRemesa;
-window.eliminarMovimientoZelle = eliminarMovimientoZelle;
-
 let semanalChartRef = null;
 let mensualChartRef = null;
 let remesasTraficoDiasChartRef = null;
 let remesasMejoresClientesChartRef = null;
 let remesasMetodosChartRef = null;
 let remesasBancosDestinoChartRef = null;
+let comprasTitularesChartRef = null;
+let tendenciaTasasChartRef = null;
 
 async function loadAndRenderCharts() {
     try {
-        const period = els.statsPeriodoSelect ? els.statsPeriodoSelect.value : 'semana';
-        const stats = await apiCall(`/stats/dashboard?period=${period}`);
+        const periodSelect = els.statsPeriodoSelect ? els.statsPeriodoSelect.value : 'semana';
+        const customRangeContainer = document.getElementById('stats-custom-range-container');
+        
+        let apiPeriod = periodSelect;
+        if (periodSelect === 'personalizado') {
+            if (customRangeContainer) customRangeContainer.classList.remove('hidden');
+            apiPeriod = 'historico'; // fetch full data to filter client side by custom date range
+        } else {
+            if (customRangeContainer) customRangeContainer.classList.add('hidden');
+        }
+
+        const stats = await apiCall(`/stats/dashboard?period=${apiPeriod}`);
         
         // 0. Update summary KPI cards
         if (stats.summary) {
@@ -3635,6 +3633,42 @@ async function loadAndRenderCharts() {
             document.getElementById('stats-total-ciclos').textContent = stats.summary.total_ciclos;
         }
 
+        // Render BCV Purchases Summary KPIs & Charts
+        const [compras, titulares, ciclos] = await Promise.all([
+            apiCall('/compras'),
+            apiCall('/titulares'),
+            apiCall('/ciclos')
+        ]);
+
+        if (compras) {
+            let filteredCompras = compras;
+            const fechaDesdeVal = document.getElementById('stats-fecha-desde') ? document.getElementById('stats-fecha-desde').value : '';
+            const fechaHastaVal = document.getElementById('stats-fecha-hasta') ? document.getElementById('stats-fecha-hasta').value : '';
+
+            if (periodSelect === 'personalizado' && fechaDesdeVal && fechaHastaVal) {
+                const dDesde = new Date(fechaDesdeVal);
+                const dHasta = new Date(fechaHastaVal);
+                dHasta.setHours(23, 59, 59);
+
+                filteredCompras = compras.filter(c => {
+                    const dComp = parseSpanishDate(c.fecha);
+                    return dComp >= dDesde && dComp <= dHasta;
+                });
+            }
+
+            const totalUsdBought = filteredCompras.reduce((sum, c) => sum + (c.monto_usd || 0), 0);
+            const totalVesSpent = filteredCompras.reduce((sum, c) => sum + ((c.monto_usd || 0) * (c.tasa_bcv || 0)), 0);
+            const avgBcvRate = totalUsdBought > 0 ? (totalVesSpent / totalUsdBought) : (state.bcvRate || 0);
+            const totalCommVes = filteredCompras.reduce((sum, c) => sum + (c.comision_ves || 0), 0);
+
+            if (document.getElementById('stats-compras-total-usd')) {
+                document.getElementById('stats-compras-total-usd').textContent = `$${totalUsdBought.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                document.getElementById('stats-compras-total-ves').textContent = `${totalVesSpent.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
+                document.getElementById('stats-compras-tasa-promedio').textContent = `${avgBcvRate.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs`;
+                document.getElementById('stats-compras-comision-ves').textContent = `${totalCommVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
+            }
+        }
+
         // Render Weekly Chart
         const ctxSemanal = document.getElementById('chart-semanal');
         if (ctxSemanal) {
@@ -3643,9 +3677,7 @@ async function loadAndRenderCharts() {
             const volCiclos = stats.weekly.map(item => item.volumen_ciclos);
             const ganTotal = stats.weekly.map(item => item.ganancia_remesas + item.ganancia_ciclos);
             
-            if (semanalChartRef) {
-                semanalChartRef.destroy();
-            }
+            if (semanalChartRef) semanalChartRef.destroy();
             
             semanalChartRef = new Chart(ctxSemanal, {
                 type: 'bar',
@@ -3653,11 +3685,19 @@ async function loadAndRenderCharts() {
                     labels: labels,
                     datasets: [
                         {
+                            label: 'Ganancia Combinada ($)',
+                            data: ganTotal,
+                            type: 'line',
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3,
+                            yAxisID: 'y1'
+                        },
+                        {
                             label: 'Volumen Remesas ($)',
                             data: volRemesas,
-                            backgroundColor: 'rgba(0, 112, 243, 0.4)',
-                            borderColor: '#0070F3',
-                            borderWidth: 1,
                             yAxisID: 'y'
                         },
                         {
