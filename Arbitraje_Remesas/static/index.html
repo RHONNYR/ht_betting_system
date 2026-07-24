@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=72">
+    <link rel="stylesheet" href="styles.css?v=73">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -728,7 +728,20 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Registro de Compras de Divisas Oficiales</h2>
-                            <button id="btn-registrar-compra-manual" class="btn btn-primary btn-sm">➕ Registrar Compra a BCV</button>
+                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                                <select id="filter-compra-titular" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
+                                    <option value="todos">👥 Todos los Titulares</option>
+                                </select>
+                                <select id="filter-compra-banco" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
+                                    <option value="todos">🏦 Todos los Bancos</option>
+                                    <option value="BDV">BDV</option>
+                                    <option value="Provincial">Provincial</option>
+                                    <option value="Mercantil">Mercantil</option>
+                                    <option value="Zinli">Zinli</option>
+                                </select>
+                                <button id="btn-export-compras" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 4px;">📥 Exportar CSV</button>
+                                <button id="btn-registrar-compra-manual" class="btn btn-primary btn-sm">➕ Registrar Compra a BCV</button>
+                            </div>
                         </div>
                         <div class="card-body">
                             <!-- Live Limits and Consumption Monitor -->
@@ -971,6 +984,27 @@
                     <label for="compra-tasa-bcv">Tasa BCV de Compra</label>
                     <input type="number" step="any" id="compra-tasa-bcv" required placeholder="Ej. 633.36">
                 </div>
+
+                <!-- Live Breakdown Component -->
+                <div id="compra-live-breakdown" class="mt-3 mb-3" style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 10px; padding: 0.85rem; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.45rem;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-secondary);">🏛️ Comisión BCV en VES:</span>
+                        <strong id="live-compra-comision-bcv" style="color: #93c5fd;">0.00 VES (0.5%)</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-secondary);">💳 Comisión Plástico Binance:</span>
+                        <span id="live-compra-comision-card" style="color: var(--text-primary); font-weight: 500;">$0.00 USD</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: var(--text-secondary);">📥 USD Netos a Binance:</span>
+                        <strong id="live-compra-neto-binance" class="text-success">$0.00 USDT</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.35rem; margin-top: 0.2rem;">
+                        <span style="color: var(--text-secondary);">📊 Cupo Anual Restante en Banco:</span>
+                        <strong id="live-compra-cupo-restante" style="color: #f59e0b;">$12,000.00 USD</strong>
+                    </div>
+                </div>
+
                 <div class="modal-actions mt-4">
                     <button type="submit" id="btn-submit-compra" class="btn btn-primary">Registrar Compra</button>
                     <button type="button" id="btn-close-modal-compra" class="btn btn-secondary">Cancelar</button>
@@ -1367,6 +1401,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=72"></script>
+    <script src="app.js?v=73"></script>
 </body>
 </html>
