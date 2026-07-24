@@ -782,6 +782,26 @@ def delete_titular(titular_id: int, username: str = Depends(get_current_user), d
     db.commit()
     return {"message": "Titular eliminado exitosamente"}
 
+@app.post("/api/titulares/{titular_id}/reset-limites")
+def reset_titular_limites(titular_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    titular = db.query(Titular).filter(Titular.id == titular_id).first()
+    if not titular:
+        raise HTTPException(status_code=404, detail="Titular no encontrado")
+        
+    card_ids = [card.id for card in titular.tarjetas]
+    if card_ids:
+        # Delete standalone compras from Bitácora de Compras for these cards
+        db.query(CompraDivisa).filter(CompraDivisa.tarjeta_id.in_(card_ids)).delete(synchronize_session=False)
+        
+        # Unlink partial purchases in cycles associated with these cards so card & bank limits reset to $0
+        subcompras = db.query(CompraParcialCiclo).filter(CompraParcialCiclo.tarjeta_id.in_(card_ids)).all()
+        for sub in subcompras:
+            sub.tarjeta_id = None
+            
+        db.commit()
+        
+    return {"message": f"Límites de tarjetas y cuentas del titular '{titular.nombre}' reseteados a $0.00 exitosamente."}
+
 # Divisas Purchases (Bitácora de Compras)
 @app.get("/api/compras")
 def get_compras(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
