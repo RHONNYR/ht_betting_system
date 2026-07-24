@@ -146,6 +146,8 @@ class MovimientoZelle(Base):
     monto = Column(Float)
     titular = Column(String, nullable=True)
     detalle = Column(String, nullable=True)
+    estado = Column(String, default="completado")  # "completado", "pendiente", "remesado"
+    remesa_id = Column(Integer, nullable=True)
 
 def init_db():
     Base.metadata.create_all(bind=engine)
@@ -158,5 +160,15 @@ def init_db():
     try:
         with engine.begin() as conn:
             conn.execute(text("ALTER TABLE compras_ciclos_parciales ADD COLUMN tarjeta_id INTEGER;"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN estado VARCHAR(50) DEFAULT 'completado';"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN remesa_id INTEGER;"))
     except Exception as e:
         pass
