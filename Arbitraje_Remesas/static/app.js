@@ -3587,6 +3587,17 @@ function recalculateSimulation() {
             let remainingUSD = principalUSD;
             const parts = [];
             for (let i = 0; i < cuentasRedondeadas; i++) {
+                const amount = Math.min(remainingUSD, limiteCuenta);
+                parts.push(`$${amount.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+                remainingUSD -= amount;
+            }
+            els.simResCuentasDesc.textContent = `Se requiere distribuir en: ${parts.join(' + ')}`;
+        }
+    } else {
+        els.simResCuentasValue.textContent = "-";
+        els.simResCuentasDesc.textContent = "Sin límite definido";
+    }
+}
 let semanalChartRef = null;
 let mensualChartRef = null;
 let remesasTraficoDiasChartRef = null;
