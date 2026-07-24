@@ -604,61 +604,121 @@ async function loadTitularesAndCards() {
             tarjetaFormSelect.appendChild(opt);
         });
         
-        // Render cards
+        // Render cards grouped by Bank
         els.cardsContainer.innerHTML = '';
+        const cardsByBank = {};
+
         titulares.forEach(tit => {
-            tit.tarjetas.forEach(card => {
-                // Populate options
-                const cardName = `${tit.nombre} - ${card.banco} (${card.tipo_tarjeta})`;
-                const opt = document.createElement('option');
-                opt.value = card.id;
-                opt.textContent = cardName;
-                opt.setAttribute('data-comision', card.comision_porcentaje);
-                opt.setAttribute('data-banco', card.banco);
-                opt.setAttribute('data-tercera-edad', tit.tercera_edad);
-                
-                els.calcTarjetaCompra.appendChild(opt.cloneNode(true));
-                selectCompra.appendChild(opt);
-                
-                // Render progress bars
+            if (tit.tarjetas && tit.tarjetas.length > 0) {
+                tit.tarjetas.forEach(card => {
+                    const bName = card.banco || 'Otros Bancos';
+                    if (!cardsByBank[bName]) {
+                        cardsByBank[bName] = [];
+                    }
+                    cardsByBank[bName].push({ card, titular: tit });
+
+                    // Populate options in selects
+                    const cardName = `${tit.nombre} - ${card.banco} (${card.tipo_tarjeta})`;
+                    const opt = document.createElement('option');
+                    opt.value = card.id;
+                    opt.textContent = cardName;
+                    opt.setAttribute('data-comision', card.comision_porcentaje);
+                    opt.setAttribute('data-banco', card.banco);
+                    opt.setAttribute('data-tercera-edad', tit.tercera_edad);
+
+                    els.calcTarjetaCompra.appendChild(opt.cloneNode(true));
+                    selectCompra.appendChild(opt);
+                });
+            }
+        });
+
+        const bankOrder = ['BDV', 'Provincial', 'Mercantil', 'Zinli'];
+        const sortedBankKeys = Object.keys(cardsByBank).sort((a, b) => {
+            let ia = bankOrder.indexOf(a);
+            let ib = bankOrder.indexOf(b);
+            if (ia === -1) ia = 99;
+            if (ib === -1) ib = 99;
+            return ia - ib;
+        });
+
+        if (sortedBankKeys.length === 0) {
+            els.cardsContainer.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">No hay tarjetas registradas aún. Haz clic en "➕ Agregar Tarjeta" para registrar tus cuentas.</div>';
+        }
+
+        sortedBankKeys.forEach(bankName => {
+            const items = cardsByBank[bankName];
+            if (!items || items.length === 0) return;
+
+            const bankGroupDiv = document.createElement('div');
+            bankGroupDiv.className = 'bank-group-container mb-4';
+            bankGroupDiv.style.background = 'rgba(15, 23, 42, 0.25)';
+            bankGroupDiv.style.border = '1px solid var(--border-color)';
+            bankGroupDiv.style.borderRadius = '14px';
+            bankGroupDiv.style.padding = '1.25rem';
+            bankGroupDiv.style.display = 'flex';
+            bankGroupDiv.style.flexDirection = 'column';
+            bankGroupDiv.style.gap = '1rem';
+
+            const bankHeaderHtml = `
+                <div class="flex-row-align" style="justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.6rem;">
+                    <div class="flex-row-align" style="gap: 0.5rem;">
+                        <span style="font-size: 1.1rem;">🏦</span>
+                        <h3 style="margin: 0; font-size: 1rem; font-weight: 600; color: var(--primary-color);">${bankName}</h3>
+                        <span class="badge" style="font-size: 0.72rem; background: rgba(59,130,246,0.12); color: #93c5fd; border: 1px solid rgba(59,130,246,0.25); padding: 2px 8px; border-radius: 12px;">
+                            ${items.length} ${items.length === 1 ? 'cuenta' : 'cuentas'}
+                        </span>
+                    </div>
+                </div>
+            `;
+
+            const cardsGridDiv = document.createElement('div');
+            cardsGridDiv.style.display = 'grid';
+            cardsGridDiv.style.gridTemplateColumns = 'repeat(auto-fill, minmax(260px, 1fr))';
+            cardsGridDiv.style.gap = '1rem';
+
+            items.forEach(({ card, titular: tit }) => {
                 const monthlyConsumed = card.consumo_mensual || 0.0;
                 const limit = card.limite_mensual || 0.0;
                 const percentMensual = limit > 0 ? Math.min((monthlyConsumed / limit) * 100, 100) : 0;
-                
+
                 const dailyConsumed = card.consumo_diario || 0.0;
                 const limitDiario = card.limite_diario || 0.0;
                 const percentDiario = limitDiario > 0 ? Math.min((dailyConsumed / limitDiario) * 100, 100) : 0;
-                
+
                 let progressClassMensual = 'progress-normal';
                 if (percentMensual > 90) progressClassMensual = 'progress-danger';
                 else if (percentMensual > 70) progressClassMensual = 'progress-warning';
-                
+
                 let progressClassDiario = 'progress-normal';
                 if (percentDiario > 90) progressClassDiario = 'progress-danger';
                 else if (percentDiario > 70) progressClassDiario = 'progress-warning';
-                
+
                 const cardDiv = document.createElement('div');
                 cardDiv.className = 'card-item-row';
-                cardDiv.style.background = 'rgba(255, 255, 255, 0.02)';
-                cardDiv.style.border = '1px solid var(--border-color)';
+                cardDiv.style.background = 'rgba(255, 255, 255, 0.03)';
+                cardDiv.style.border = '1px solid rgba(255, 255, 255, 0.08)';
                 cardDiv.style.borderRadius = '12px';
                 cardDiv.style.padding = '1rem';
                 cardDiv.style.display = 'flex';
                 cardDiv.style.flexDirection = 'column';
                 cardDiv.style.gap = '0.75rem';
-                
+
                 const isNearLimit = percentDiario > 85 || percentMensual > 85;
                 const warningBadge = isNearLimit ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px; font-weight: 500;">⚠️ Límite Cercano</span>' : '';
-                
+
+                const commPctText = (card.comision_porcentaje * 100).toFixed(1);
+                const commBadge = `<span style="font-size: 0.68rem; color: var(--text-muted); opacity: 0.8;">Comisión: ${commPctText}%</span>`;
+
                 cardDiv.innerHTML = `
                     <div class="card-item-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0;">
                         <div>
-                            <span class="card-title" style="font-weight: 600; color: var(--text-primary); font-size: 0.92rem; display: block;">${card.banco} - ${card.tipo_tarjeta}</span>
-                            <span class="card-owner" style="font-size: 0.75rem; color: var(--text-secondary);">de ${tit.nombre}</span>
+                            <span class="card-title" style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem; display: block;">👤 ${tit.nombre}</span>
+                            <span class="card-owner" style="font-size: 0.76rem; color: var(--primary-color); font-weight: 500;">${card.tipo_tarjeta}</span>
                         </div>
-                        <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-                            ${tit.tercera_edad ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px; font-weight: 500;">Tercera Edad</span>' : ''}
+                        <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
+                            ${tit.tercera_edad ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px; font-weight: 500;">3ra Edad</span>' : ''}
                             ${warningBadge}
+                            <button class="btn btn-sm" onclick="deleteCardDirect(${card.id})" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(239,68,68,0.1); color: var(--text-danger); border: 1px solid rgba(239,68,68,0.15);" title="Eliminar esta tarjeta">🗑️</button>
                         </div>
                     </div>
                     
@@ -683,11 +743,17 @@ async function loadTitularesAndCards() {
                             <div class="card-progress-fill ${progressClassMensual}" style="width: ${percentMensual}%; height: 100%; border-radius: 3px; transition: width 0.3s ease;"></div>
                         </div>
                     </div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: -2px;">
+                        ${commBadge}
+                    </div>
                 `;
-                els.cardsContainer.appendChild(cardDiv);
+                cardsGridDiv.appendChild(cardDiv);
             });
+
+            bankGroupDiv.innerHTML = bankHeaderHtml;
+            bankGroupDiv.appendChild(cardsGridDiv);
+            els.cardsContainer.appendChild(bankGroupDiv);
         });
-        
     } catch (err) {
         console.error("Error loading cards:", err);
     }
@@ -1845,6 +1911,55 @@ async function handleEditarSnapshotSubmit(e) {
     }
 }
 
+function updateCardPresetDefaults() {
+    const bancoEl = document.getElementById('tarjeta-banco');
+    const tipoEl = document.getElementById('tarjeta-tipo');
+    if (!bancoEl || !tipoEl) return;
+    
+    const banco = bancoEl.value;
+    const tipo = tipoEl.value;
+    
+    let diario = 1000;
+    let mensual = 5000;
+    let comision = 0.0;
+    
+    if (banco === 'BDV') {
+        if (tipo === 'Internacional $') {
+            diario = 1000;
+            mensual = 10000;
+            comision = 2.5; // 2.5%
+        } else if (tipo === 'Master Debit') {
+            diario = 1000;
+            mensual = 5000;
+            comision = 0.5; // 0.5%
+        } else {
+            diario = 1000;
+            mensual = 5000;
+            comision = 0.0;
+        }
+    } else if (banco === 'Provincial') {
+        diario = 2000;
+        mensual = 20000;
+        comision = 0.0;
+    } else if (banco === 'Mercantil' || banco === 'Zinli') {
+        diario = 1000;
+        mensual = 1000;
+        comision = 0.0;
+    } else {
+        diario = 1000;
+        mensual = 5000;
+        comision = 0.0;
+    }
+    
+    const diarioEl = document.getElementById('tarjeta-limite-diario');
+    const mensualEl = document.getElementById('tarjeta-limite-mensual');
+    const comisionEl = document.getElementById('tarjeta-comision');
+    
+    if (diarioEl) diarioEl.value = diario;
+    if (mensualEl) mensualEl.value = mensual;
+    if (comisionEl) comisionEl.value = comision;
+}
+
 // Modal handlers
 function openModal(modal) {
     modal.classList.remove('hidden');
@@ -2077,11 +2192,27 @@ function setupEventListeners() {
         }
     });
     
-    els.btnAddCard.addEventListener('click', () => openModal(els.modalTarjeta));
+    const tarjetaBancoEl = document.getElementById('tarjeta-banco');
+    const tarjetaTipoEl = document.getElementById('tarjeta-tipo');
+    if (tarjetaBancoEl) tarjetaBancoEl.addEventListener('change', updateCardPresetDefaults);
+    if (tarjetaTipoEl) tarjetaTipoEl.addEventListener('change', updateCardPresetDefaults);
+
+    els.btnAddCard.addEventListener('click', () => {
+        els.tarjetaForm.reset();
+        const titSel = document.getElementById('tarjeta-titular-select');
+        if (titSel) titSel.value = '';
+        updateCardPresetDefaults();
+        openModal(els.modalTarjeta);
+    });
     els.btnCloseModalTarjeta.addEventListener('click', () => closeModal(els.modalTarjeta));
     els.tarjetaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const titular_id = parseInt(document.getElementById('tarjeta-titular-select').value);
+        const titVal = document.getElementById('tarjeta-titular-select').value;
+        if (!titVal) {
+            showToast("Por favor selecciona un titular para la tarjeta.", "warning");
+            return;
+        }
+        const titular_id = parseInt(titVal);
         const banco = document.getElementById('tarjeta-banco').value;
         const tipo_tarjeta = document.getElementById('tarjeta-tipo').value;
         const limite_diario = parseFloat(document.getElementById('tarjeta-limite-diario').value) || 0.0;
@@ -2090,12 +2221,12 @@ function setupEventListeners() {
         
         try {
             await apiCall('/tarjetas', 'POST', { titular_id, banco, tipo_tarjeta, limite_diario, limite_mensual, comision_porcentaje });
-            alert("Tarjeta guardada.");
+            showToast("Tarjeta guardada con éxito.");
             els.tarjetaForm.reset();
             closeModal(els.modalTarjeta);
-            await loadTitularesAndCards();
+            await initDashboard();
         } catch (err) {
-            alert(err.message);
+            showToast(err.message, "danger");
         }
     });
     
