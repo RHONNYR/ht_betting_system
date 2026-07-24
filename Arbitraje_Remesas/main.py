@@ -789,9 +789,7 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
     if not card:
         raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
         
-    # Check senior citizen exception for the 0.5% bank purchase commission
-    tit = card.titular
-    commission_pct = 0.005  # 0.5%
+    commission_pct = card.comision_porcentaje if card and card.comision_porcentaje is not None else 0.015
     if tit and tit.tercera_edad:
         commission_pct = 0.0
         
@@ -824,7 +822,7 @@ def update_compra(compra_id: int, req: CompraDivisaCreate, username: str = Depen
         raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
         
     tit = card.titular
-    commission_pct = 0.005  # 0.5%
+    commission_pct = card.comision_porcentaje if card and card.comision_porcentaje is not None else 0.015
     if tit and tit.tercera_edad:
         commission_pct = 0.0
         
