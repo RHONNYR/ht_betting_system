@@ -203,7 +203,7 @@ async function apiCall(endpoint, method = 'GET', data = null) {
     const headers = {
         'Content-Type': 'application/json'
     };
-    if (state.token) {
+    if (state.token && endpoint !== '/login') {
         headers['Authorization'] = `Bearer ${state.token}`;
     }
     
@@ -214,7 +214,7 @@ async function apiCall(endpoint, method = 'GET', data = null) {
     
     try {
         const response = await fetch(`/api${endpoint}`, config);
-        if (response.status === 401) {
+        if (response.status === 401 && endpoint !== '/login') {
             // Unauthenticated
             logout();
             throw new Error("Sesión expirada");
@@ -295,8 +295,10 @@ function checkAuth() {
 
 async function handleLogin(e) {
     e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const username = usernameInput ? usernameInput.value.trim() : '';
+    const password = passwordInput ? passwordInput.value.trim() : '';
     
     els.loginError.classList.add('hidden');
     
@@ -308,7 +310,7 @@ async function handleLogin(e) {
         localStorage.setItem('username', data.username);
         checkAuth();
     } catch (err) {
-        els.loginError.textContent = err.message || "Usuario o contraseña inválidos";
+        els.loginError.textContent = err.message || "Usuario o contraseña incorrectos";
         els.loginError.classList.remove('hidden');
     }
 }
