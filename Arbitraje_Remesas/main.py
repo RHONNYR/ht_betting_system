@@ -526,9 +526,20 @@ def delete_capital_snapshot(snap_id: int, username: str = Depends(get_current_us
     db.commit()
     return {"message": "Snapshot de capital eliminado con éxito"}
 
+def sync_zelle_capital_balance(db: Session):
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    if zelle_plat:
+        all_movs = db.query(MovimientoZelle).all()
+        calculated_saldo = sum(m.monto if m.tipo == "ingreso" else -m.monto for m in all_movs)
+        zelle_plat.saldo_usd = calculated_saldo
+        db.commit()
+        return calculated_saldo
+    return 0.0
+
 # Zelle Ledger Routes
 @app.get("/api/zelle/movimientos")
 def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    saldo_actual = sync_zelle_capital_balance(db)
     movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(150).all()
     # Compute weekly totals (from Monday to Sunday of the current week)
     now = get_venezuela_time()
@@ -539,9 +550,6 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
     weekly_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
     weekly_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
     pendientes_remesar_usd = sum(m.monto for m in movs if m.tipo == "ingreso" and getattr(m, "estado", "completado") == "pendiente")
-    
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    saldo_actual = zelle_plat.saldo_usd if zelle_plat else 0.0
     
     result = []
     for m in movs:
@@ -589,15 +597,9 @@ def create_zelle_movimiento(req: MovimientoZelleCreate, username: str = Depends(
         estado=estado_mov
     )
     db.add(mov)
-    
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    if zelle_plat:
-        if req.tipo == "ingreso":
-            zelle_plat.saldo_usd += req.monto
-        elif req.tipo == "egreso":
-            zelle_plat.saldo_usd -= req.monto
-            
     db.commit()
+    
+    sync_zelle_capital_balance(db)
     return {"message": "Movimiento registrado con éxito", "id": mov.id}
 
 @app.put("/api/zelle/movimientos/{mov_id}/estado")
@@ -1702,15 +1704,25 @@ def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db:
     
     # Revert Zelle ledger impact
     if remesa.metodo_pago.strip().lower() == "zelle":
-        mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {remesa.cliente_nombre}").first()
+        mov = db.query(MovimientoZelle).filter(
+            (MovimientoZelle.remesa_id == remesa_id) | 
+            (MovimientoZelle.detalle.contains(f"Remesa ID #{remesa_id}")) |
+            (MovimientoZelle.detalle.contains(f"Remesa ID {remesa_id}"))
+        ).first()
         if mov:
-            db.delete(mov)
-        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-        if zelle_plat:
-            zelle_plat.saldo_usd -= remesa.monto_usd
+            if mov.estado == "remesado" or mov.remesa_id == remesa_id:
+                # Pre-existing Zelle deposit! Revert status back to pendiente and unlink it
+                mov.estado = "pendiente"
+                mov.remesa_id = None
+                if mov.detalle:
+                    mov.detalle = mov.detalle.replace(f" [Remesado - Remesa ID #{remesa_id}]", "").replace(f" [Remesado - Remesa ID {remesa_id}]", "")
+            else:
+                db.delete(mov)
             
     db.delete(remesa)
     db.commit()
+    
+    sync_zelle_capital_balance(db)
     return {"message": "Remesa eliminada correctamente."}
 
 @app.get("/api/clientes")
