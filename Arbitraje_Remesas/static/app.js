@@ -1618,35 +1618,160 @@ async function loadCompras() {
         ]);
         state.compras = compras || [];
         if (titulares) state.titulares = titulares;
-        els.comprasTableBody.innerHTML = '';
+
+        // Populate Titular Filter Dropdown
+        const filterTitularSelect = document.getElementById('filter-compra-titular');
+        if (filterTitularSelect && state.titulares) {
+            const currentVal = filterTitularSelect.value;
+            filterTitularSelect.innerHTML = '<option value="todos">👥 Todos los Titulares</option>';
+            state.titulares.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.nombre;
+                opt.textContent = t.nombre;
+                filterTitularSelect.appendChild(opt);
+            });
+            if (currentVal) filterTitularSelect.value = currentVal;
+        }
         
-        state.compras.forEach(c => {
-            const tr = document.createElement('tr');
-            const montoVes = c.monto_usd * c.tasa_bcv;
-            
-            tr.innerHTML = `
-                <td>${c.fecha}</td>
-                <td><strong>${c.titular}</strong></td>
-                <td>${c.banco}</td>
-                <td>${c.tipo_tarjeta}</td>
-                <td>$${c.monto_usd.toFixed(2)}</td>
-                <td>${c.tasa_bcv.toFixed(2)}</td>
-                <td>${montoVes.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
-                <td>${c.comision_ves.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
-                <td>
-                    <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
-                        <button class="btn btn-secondary btn-sm" onclick="openEditCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️</button>
-                    </div>
-                </td>
-            `;
-            els.comprasTableBody.appendChild(tr);
-        });
-        
+        renderComprasTable();
         renderComprasLimits();
     } catch (err) {
         console.error("Error loading compras:", err);
     }
+}
+
+function renderComprasTable() {
+    if (!els.comprasTableBody) return;
+    els.comprasTableBody.innerHTML = '';
+    
+    const filterTitularEl = document.getElementById('filter-compra-titular');
+    const filterBancoEl = document.getElementById('filter-compra-banco');
+    
+    const filterTitular = filterTitularEl ? filterTitularEl.value : 'todos';
+    const filterBanco = filterBancoEl ? filterBancoEl.value : 'todos';
+    
+    let filtered = state.compras || [];
+    if (filterTitular !== 'todos') {
+        filtered = filtered.filter(c => c.titular && c.titular.toLowerCase() === filterTitular.toLowerCase());
+    }
+    if (filterBanco !== 'todos') {
+        filtered = filtered.filter(c => c.banco && c.banco.toLowerCase().includes(filterBanco.toLowerCase()));
+    }
+    
+    if (filtered.length === 0) {
+        els.comprasTableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No hay registros de compras que coincidan con los filtros seleccionados.</td></tr>';
+        return;
+    }
+    
+    filtered.forEach(c => {
+        const tr = document.createElement('tr');
+        const montoVes = c.monto_usd * c.tasa_bcv;
+        
+        tr.innerHTML = `
+            <td>${c.fecha}</td>
+            <td><strong>${c.titular}</strong></td>
+            <td>${c.banco}</td>
+            <td>${c.tipo_tarjeta}</td>
+            <td>$${c.monto_usd.toFixed(2)}</td>
+            <td>${c.tasa_bcv.toFixed(2)}</td>
+            <td>${montoVes.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
+            <td>${c.comision_ves.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
+            <td>
+                <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️</button>
+                </div>
+            </td>
+        `;
+        els.comprasTableBody.appendChild(tr);
+    });
+}
+
+function exportComprasToCSV() {
+    if (!state.compras || state.compras.length === 0) {
+        showToast("No hay registros de compras para exportar.", "warning");
+        return;
+    }
+    
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "ID,Fecha,Titular,Banco,Tipo Tarjeta,Monto USD,Tasa BCV,Monto VES,Comision VES\n";
+    
+    state.compras.forEach(c => {
+        const montoVes = c.monto_usd * c.tasa_bcv;
+        const row = [
+            c.id,
+            `"${c.fecha}"`,
+            `"${c.titular}"`,
+            `"${c.banco}"`,
+            `"${c.tipo_tarjeta}"`,
+            c.monto_usd,
+            c.tasa_bcv,
+            montoVes.toFixed(2),
+            c.comision_ves.toFixed(2)
+        ].join(",");
+        csvContent += row + "\n";
+    });
+    
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `bitacora_compras_divisas_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+function updateCompraLiveBreakdown() {
+    const montoInput = document.getElementById('compra-monto-usd');
+    const tasaInput = document.getElementById('compra-tasa-bcv');
+    const tarjetaSelect = document.getElementById('compra-tarjeta-select');
+    
+    const comisionBcvEl = document.getElementById('live-compra-comision-bcv');
+    const comisionCardEl = document.getElementById('live-compra-comision-card');
+    const netoBinanceEl = document.getElementById('live-compra-neto-binance');
+    const cupoRestanteEl = document.getElementById('live-compra-cupo-restante');
+    
+    if (!montoInput || !tasaInput || !tarjetaSelect || !comisionBcvEl) return;
+    
+    const montoUsd = parseFloat(montoInput.value) || 0.0;
+    const tasaBcv = parseFloat(tasaInput.value) || (state.bcvRate || 0.0);
+    
+    const selectedOpt = tarjetaSelect.options[tarjetaSelect.selectedIndex];
+    let isTerceraEdad = false;
+    let cardCommPct = 0.015;
+    
+    if (selectedOpt) {
+        isTerceraEdad = selectedOpt.getAttribute('data-tercera-edad') === 'true';
+        cardCommPct = parseFloat(selectedOpt.getAttribute('data-comision')) || 0.015;
+    }
+    
+    const bcvCommPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+    const montoVes = montoUsd * tasaBcv;
+    const comisionVes = montoVes * bcvCommPct;
+    
+    const cardFeeUsd = montoUsd * cardCommPct;
+    const netoBinanceUsd = montoUsd * (1 - cardCommPct);
+    
+    comisionBcvEl.textContent = `${comisionVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES (${isTerceraEdad ? '0% Exento 3ra Edad' : '0.5%'})`;
+    comisionCardEl.textContent = `$${cardFeeUsd.toFixed(2)} USD (${(cardCommPct * 100).toFixed(1)}%)`;
+    netoBinanceEl.textContent = `$${netoBinanceUsd.toFixed(2)} USDT`;
+    
+    // Find bank annual limit remaining for selected holder
+    let remainingBankAnnual = 12000.0;
+    if (selectedOpt && state.titulares) {
+        const cardId = parseInt(selectedOpt.value);
+        for (const tit of state.titulares) {
+            const cardObj = tit.tarjetas ? tit.tarjetas.find(c => c.id === cardId) : null;
+            if (cardObj) {
+                const bl = tit.bancos_limites ? tit.bancos_limites.find(b => b.banco === cardObj.banco) : null;
+                if (bl) {
+                    remainingBankAnnual = Math.max(0, bl.limite_anual - bl.consumo_anual - montoUsd);
+                }
+                break;
+            }
+        }
+    }
+    cupoRestanteEl.textContent = `$${remainingBankAnnual.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD`;
 }
 
 function renderComprasLimits() {
@@ -1662,8 +1787,15 @@ function renderComprasLimits() {
             tit.bancos_limites.forEach(bl => {
                 const pctAnual = bl.limite_anual > 0 ? Math.min((bl.consumo_anual / bl.limite_anual) * 100, 100) : 0;
                 let classAnual = 'progress-normal';
-                if (pctAnual > 90) classAnual = 'progress-danger';
-                else if (pctAnual > 70) classAnual = 'progress-warning';
+                let badgeSemáforo = '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px;">🟢 Cupo Amplio</span>';
+                
+                if (pctAnual > 90) {
+                    classAnual = 'progress-danger';
+                    badgeSemáforo = '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">🔴 Alerta Límite Anual (>90%)</span>';
+                } else if (pctAnual > 70) {
+                    classAnual = 'progress-warning';
+                    badgeSemáforo = '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); padding: 2px 6px; border-radius: 4px;">🟡 Cupo Medio</span>';
+                }
 
                 let monthlyHtml = '';
                 if (bl.limite_mensual < 900000) {
@@ -1701,7 +1833,7 @@ function renderComprasLimits() {
                             <span style="font-weight: 600; color: var(--text-primary); font-size: 0.92rem; display: block;">🏦 Límite Banco: ${bl.banco}</span>
                             <span style="font-size: 0.75rem; color: var(--text-secondary);">de ${tit.nombre}</span>
                         </div>
-                        ${pctAnual >= 100 ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">⚠️ Límite Anual Superado</span>' : ''}
+                        ${badgeSemáforo}
                     </div>
                     
                     <div style="display: flex; flex-direction: column; gap: 4px;">
@@ -1748,7 +1880,7 @@ function renderComprasLimits() {
                             <span style="font-weight: 600; color: var(--text-primary); font-size: 0.92rem; display: block;">💳 Tarjeta: ${card.banco} (${card.tipo_tarjeta})</span>
                             <span style="font-size: 0.75rem; color: var(--text-secondary);">de ${tit.nombre}</span>
                         </div>
-                        ${(pctDiario >= 100 || pctMensual >= 100) ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">⚠️ Límite Excedido</span>' : ''}
+                        ${(pctDiario >= 100 || pctMensual >= 100) ? '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 4px;">⚠️ Límite Excedido</span>' : '<span class="senior-badge" style="font-size: 0.65rem; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 4px;">🟢 Activa</span>'}
                     </div>
                     
                     <div style="display: flex; flex-direction: column; gap: 4px;">
@@ -1802,6 +1934,7 @@ window.openEditCompra = function(compraId) {
     document.getElementById('compra-monto-usd').value = compra.monto_usd;
     document.getElementById('compra-tasa-bcv').value = compra.tasa_bcv;
 
+    updateCompraLiveBreakdown();
     openModal(els.modalCompra);
 };
 
@@ -2273,8 +2406,25 @@ function setupEventListeners() {
 
         document.getElementById('compra-monto-usd').value = '';
         document.getElementById('compra-tasa-bcv').value = state.bcvRate;
+        updateCompraLiveBreakdown();
         openModal(els.modalCompra);
     });
+
+    const inputMontoUsd = document.getElementById('compra-monto-usd');
+    const inputTasaBcv = document.getElementById('compra-tasa-bcv');
+    const selectTarjetaCompra = document.getElementById('compra-tarjeta-select');
+    const filterTitularEl = document.getElementById('filter-compra-titular');
+    const filterBancoEl = document.getElementById('filter-compra-banco');
+    const btnExportComprasEl = document.getElementById('btn-export-compras');
+
+    if (inputMontoUsd) inputMontoUsd.addEventListener('input', updateCompraLiveBreakdown);
+    if (inputTasaBcv) inputTasaBcv.addEventListener('input', updateCompraLiveBreakdown);
+    if (selectTarjetaCompra) selectTarjetaCompra.addEventListener('change', updateCompraLiveBreakdown);
+
+    if (filterTitularEl) filterTitularEl.addEventListener('change', renderComprasTable);
+    if (filterBancoEl) filterBancoEl.addEventListener('change', renderComprasTable);
+    if (btnExportComprasEl) btnExportComprasEl.addEventListener('click', exportComprasToCSV);
+
     els.btnCloseModalCompra.addEventListener('click', () => closeModal(els.modalCompra));
     els.compraDivisaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
