@@ -1742,7 +1742,8 @@ function updateCompraLiveBreakdown() {
     
     if (selectedOpt) {
         isTerceraEdad = selectedOpt.getAttribute('data-tercera-edad') === 'true';
-        cardCommPct = parseFloat(selectedOpt.getAttribute('data-comision')) || 0.015;
+        const rawComm = selectedOpt.getAttribute('data-comision');
+        cardCommPct = (rawComm !== null && rawComm !== undefined && !isNaN(parseFloat(rawComm))) ? parseFloat(rawComm) : 0.0;
     }
     
     const bcvCommPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
