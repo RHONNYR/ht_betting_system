@@ -428,6 +428,7 @@ select option {
 .tab-pane {
     display: none;
     animation: fadeIn 0.3s ease-out;
+    padding-bottom: 5rem;
 }
 
 .tab-pane.active {
