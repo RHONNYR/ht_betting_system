@@ -3144,16 +3144,10 @@ function calculateRemesa(source = 'margin') {
     // Pago Móvil percentage
     const pmFeePct = pagoMovilAuto ? 0.003 : 0.0;
     
-    // Auto-fallback if p2p rate is not specified but we have bcv rate
-    if (p2pRate <= 0 && state.bcvRate > 0) {
-        // If we can solve it from tasa and margin, do it; else fallback to BCV
-        if (source === 'tasa' && tasaCliente > 0 && margenPct > 0) {
-            p2pRate = (tasaCliente * fCosto) / ((1 - margenPct) * (1 - pmFeePct));
-            els.remesaP2pRef.value = p2pRate.toFixed(2);
-        } else {
-            p2pRate = state.bcvRate;
-            els.remesaP2pRef.value = p2pRate.toFixed(2);
-        }
+    // Solve P2P rate mathematically if it's missing but Tasa Cliente and Margen are both present
+    if (p2pRate <= 0 && tasaCliente > 0 && margenPct > 0) {
+        p2pRate = (tasaCliente * fCosto) / ((1 - margenPct) * (1 - pmFeePct));
+        els.remesaP2pRef.value = p2pRate.toFixed(2);
     }
     
     if (source === 'tasa') {
