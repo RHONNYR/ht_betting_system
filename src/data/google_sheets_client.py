@@ -31,16 +31,28 @@ class GoogleSheetsClient:
 
     def authenticate(self):
         """
-        Autentica usando el archivo credentials.json de la cuenta de servicio.
+        Autentica usando el archivo credentials.json de la cuenta de servicio o la variable de entorno GOOGLE_CREDENTIALS.
         """
+        import json
+        google_creds_json = os.environ.get("GOOGLE_CREDENTIALS")
+        if google_creds_json:
+            try:
+                creds_info = json.loads(google_creds_json)
+                creds = Credentials.from_service_account_info(creds_info, scopes=self.scope)
+                self.client = gspread.authorize(creds)
+                print("Autenticación con Google Sheets completada usando variable de entorno exitosamente.")
+                return
+            except Exception as e:
+                print(f"Error al autenticar usando GOOGLE_CREDENTIALS env var: {e}. Intentando archivo físico...")
+
         if not os.path.exists(self.credentials_path):
             raise FileNotFoundError(
-                f"No se encontró el archivo de credenciales de Google en: {self.credentials_path}\n"
-                "Por favor, guárdalo en esa ruta antes de ejecutar el pipeline."
+                f"No se encontró el archivo de credenciales de Google en: {self.credentials_path} ni la variable de entorno GOOGLE_CREDENTIALS.\n"
+                "Por favor, configúrala antes de ejecutar el pipeline."
             )
         creds = Credentials.from_service_account_file(self.credentials_path, scopes=self.scope)
         self.client = gspread.authorize(creds)
-        print("Autenticación con Google Sheets completada exitosamente.")
+        print("Autenticación con Google Sheets completada desde archivo exitosamente.")
 
     def open_or_create_spreadsheet(self, title):
         """
