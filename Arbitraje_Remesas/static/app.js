@@ -335,9 +335,10 @@ async function initDashboard() {
             loadCompras(),
             loadCapitalSnapshots(),
             loadRemesas(),
-            loadClientes(),
-            loadAndRenderCharts()
+            loadClientes()
         ]);
+        
+        await loadAndRenderCharts();
     } catch (err) {
         console.error("Error loading dashboard concurrently:", err);
     }
@@ -3640,6 +3641,8 @@ async function loadAndRenderCharts() {
     try {
         const periodSelect = els.statsPeriodoSelect ? els.statsPeriodoSelect.value : 'semana';
         const customRangeContainer = document.getElementById('stats-custom-range-container');
+        const fechaDesdeVal = document.getElementById('stats-fecha-desde') ? document.getElementById('stats-fecha-desde').value : '';
+        const fechaHastaVal = document.getElementById('stats-fecha-hasta') ? document.getElementById('stats-fecha-hasta').value : '';
         
         let apiPeriod = periodSelect;
         if (periodSelect === 'personalizado') {
@@ -3675,17 +3678,13 @@ async function loadAndRenderCharts() {
             document.getElementById('stats-total-ciclos').textContent = stats.summary.total_ciclos;
         }
 
-        // Render BCV Purchases Summary KPIs & Charts
-        const [compras, titulares, ciclos] = await Promise.all([
-            apiCall('/compras'),
-            apiCall('/titulares'),
-            apiCall('/ciclos')
-        ]);
+        // Reuse state data to avoid redundant slow API queries
+        const compras = state.compras || [];
+        const titulares = state.titulares || [];
+        const ciclos = state.ciclos || [];
 
-        if (compras) {
+        if (compras.length > 0) {
             let filteredCompras = compras;
-            const fechaDesdeVal = document.getElementById('stats-fecha-desde') ? document.getElementById('stats-fecha-desde').value : '';
-            const fechaHastaVal = document.getElementById('stats-fecha-hasta') ? document.getElementById('stats-fecha-hasta').value : '';
 
             if (periodSelect === 'personalizado' && fechaDesdeVal && fechaHastaVal) {
                 const dDesde = new Date(fechaDesdeVal);
@@ -3696,6 +3695,8 @@ async function loadAndRenderCharts() {
                     const dComp = parseSpanishDate(c.fecha);
                     return dComp >= dDesde && dComp <= dHasta;
                 });
+            } else {
+                filteredCompras = compras.filter(c => isDateInPeriod(c.fecha, periodSelect));
             }
 
             const totalUsdBought = filteredCompras.reduce((sum, c) => sum + (c.monto_usd || 0), 0);
@@ -4100,6 +4101,148 @@ async function loadAndRenderCharts() {
                             position: 'right',
                             labels: { color: '#F3F4F6', boxWidth: 15 }
                         }
+                    }
+                }
+            });
+        }
+
+        // Render Purchases by Titular Chart
+        const ctxComprasTitulares = document.getElementById('chart-compras-titulares');
+        if (ctxComprasTitulares) {
+            const cardToTitularMap = {};
+            titulares.forEach(tit => {
+                if (tit.tarjetas) {
+                    tit.tarjetas.forEach(card => {
+                        cardToTitularMap[card.id] = tit.nombre;
+                    });
+                }
+            });
+            
+            const comprasPorTitular = {};
+            filteredCompras.forEach(c => {
+                const titName = cardToTitularMap[c.tarjeta_id] || "Titular Desconocido";
+                comprasPorTitular[titName] = (comprasPorTitular[titName] || 0) + (c.monto_usd || 0);
+            });
+            
+            const labels = Object.keys(comprasPorTitular);
+            const dataValues = Object.values(comprasPorTitular);
+            
+            if (comprasTitularesChartRef) {
+                comprasTitularesChartRef.destroy();
+            }
+            
+            comprasTitularesChartRef = new Chart(ctxComprasTitulares, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Dólares Comprados ($)',
+                        data: dataValues,
+                        backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                        borderColor: '#3B82F6',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#F3F4F6' } }
+                    }
+                }
+            });
+        }
+        
+        // Render Trend of P2P vs BCV Rates Chart
+        const ctxTendenciaTasas = document.getElementById('chart-tendencia-tasas');
+        if (ctxTendenciaTasas) {
+            const sortedCiclos = [...ciclos].filter(c => c.tasa_bcv > 0 && c.tasa_venta > 0);
+            let periodCiclos = sortedCiclos;
+            if (periodSelect === 'personalizado' && fechaDesdeVal && fechaHastaVal) {
+                const dDesde = new Date(fechaDesdeVal);
+                const dHasta = new Date(fechaHastaVal);
+                dHasta.setHours(23, 59, 59);
+                periodCiclos = sortedCiclos.filter(c => {
+                    const dComp = parseSpanishDate(c.fecha);
+                    return dComp >= dDesde && dComp <= dHasta;
+                });
+            } else {
+                periodCiclos = sortedCiclos.filter(c => isDateInPeriod(c.fecha, periodSelect));
+            }
+            
+            // Sort chronologically
+            periodCiclos.sort((a, b) => parseSpanishDate(a.fecha) - parseSpanishDate(b.fecha));
+            
+            const labels = periodCiclos.map(c => {
+                const d = parseSpanishDate(c.fecha);
+                return d.toLocaleDateString('es-VE', { day: '2-digit', month: '2-digit' });
+            });
+            const dataVenta = periodCiclos.map(c => c.tasa_venta);
+            const dataBcv = periodCiclos.map(c => {
+                let avgRate = c.tasa_bcv;
+                if (c.compras_parciales && c.compras_parciales.length > 0) {
+                    const totalUsd = c.divisas_compradas || 0.0;
+                    let weightedSum = 0;
+                    c.compras_parciales.forEach(cp => {
+                        weightedSum += cp.usd_comprados * cp.tasa_bcv;
+                    });
+                    avgRate = totalUsd > 0 ? (weightedSum / totalUsd) : c.tasa_bcv;
+                }
+                return avgRate;
+            });
+            
+            if (tendenciaTasasChartRef) {
+                tendenciaTasasChartRef.destroy();
+            }
+            
+            tendenciaTasasChartRef = new Chart(ctxTendenciaTasas, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Tasa Venta P2P (VES/$)',
+                            data: dataVenta,
+                            borderColor: '#F59E0B',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            fill: false,
+                            tension: 0.2
+                        },
+                        {
+                            label: 'Tasa Compra BCV (VES/$)',
+                            data: dataBcv,
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: false,
+                            tension: 0.2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9CA3AF' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#F3F4F6' } }
                     }
                 }
             });
