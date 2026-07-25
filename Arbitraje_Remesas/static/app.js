@@ -2442,7 +2442,9 @@ function setupEventListeners() {
     const btnFiltrarCustomStats = document.getElementById('btn-filtrar-custom-stats');
     const btnExportStatsPdf = document.getElementById('btn-export-stats-pdf');
     if (btnFiltrarCustomStats) btnFiltrarCustomStats.addEventListener('click', loadAndRenderCharts);
-    if (btnExportStatsPdf) btnExportStatsPdf.addEventListener('click', exportStatsReportPDF);
+    if (btnExportStatsPdf) btnExportStatsPdf.addEventListener('click', () => {
+        alert('Exportación PDF no disponible. Usa la opción CSV del historial.');
+    });
 
     els.btnCloseModalCompra.addEventListener('click', () => closeModal(els.modalCompra));
     els.compraDivisaForm.addEventListener('submit', async (e) => {
@@ -3084,10 +3086,10 @@ async function handleConsultarP2P(isSilent = false) {
         }
     } catch (err) {
         console.error("Error in handleConsultarP2P:", err);
-        alert("ERROR EN CONSULTA P2P:\n" + err.name + ": " + err.message + "\n" + err.stack);
         if (!isSilent) {
             els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
             els.btnConsultarP2p.disabled = false;
+            alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
         }
     }
 }
@@ -3353,7 +3355,6 @@ function calculateRemesa(source = 'margin') {
         els.whatsappBoxContainer.classList.remove('hidden');
     } catch (err) {
         console.error("Error in calculateRemesa:", err);
-        alert("ERROR EN CÁLCULO DE REMESAS:\n" + err.name + ": " + err.message + "\n" + err.stack);
     }
 }
 
@@ -4516,14 +4517,7 @@ function exportCiclosToCSV() {
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("App v88 DOMContentLoaded starting...");
-    try {
-        initTheme();
-        setupEventListeners();
-        checkAuth();
-        console.log("App v88 DOMContentLoaded completed successfully.");
-    } catch (err) {
-        console.error("CRITICAL ERROR DURING INITIALIZATION:", err);
-        alert("CRITICAL ERROR DURING INITIALIZATION:\n" + err.name + ": " + err.message + "\n" + err.stack);
-    }
+    initTheme();
+    setupEventListeners();
+    checkAuth();
 });
