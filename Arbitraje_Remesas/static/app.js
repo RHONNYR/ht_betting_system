@@ -3270,12 +3270,36 @@ function copyRemesaText() {
 }
 
 async function registrarRemesa() {
-    if (!state.currentCalculatedRemesa) return;
+    // Force calculation to capture latest values
+    calculateRemesa();
+    
+    if (!state.currentCalculatedRemesa) {
+        alert("Por favor, ingresa el Monto USD, la Tasa P2P y la Tasa/Margen para calcular la remesa antes de registrarla.");
+        return;
+    }
+    
+    const clientName = els.remesaCliente.value.trim();
+    if (!clientName) {
+        alert("Por favor, ingresa el nombre del cliente.");
+        return;
+    }
+    
+    // Ensure the payload has the latest client name and gender
+    state.currentCalculatedRemesa.cliente_nombre = clientName;
+    if (els.remesaClienteGenero) {
+        state.currentCalculatedRemesa.cliente_genero = els.remesaClienteGenero.value;
+    }
+    
     try {
         const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
         if (remesaFechaVal) {
             state.currentCalculatedRemesa.fecha = remesaFechaVal;
         }
+        
+        // Prevent double click on mobile/desktop
+        els.btnRegistrarRemesa.disabled = true;
+        els.btnRegistrarRemesa.textContent = "⏳ Registrando...";
+        
         await apiCall('/remesas', 'POST', state.currentCalculatedRemesa);
         alert("Remesa registrada en el historial con éxito.");
         
@@ -3295,6 +3319,11 @@ async function registrarRemesa() {
         await initDashboard();
     } catch (err) {
         alert("Error al registrar remesa: " + err.message);
+    } finally {
+        if (els.btnRegistrarRemesa) {
+            els.btnRegistrarRemesa.disabled = false;
+            els.btnRegistrarRemesa.textContent = "💾 Registrar Remesa en Historial";
+        }
     }
 }
 
