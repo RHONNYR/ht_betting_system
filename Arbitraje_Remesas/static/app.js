@@ -3130,7 +3130,10 @@ async function handleCalcConsultarP2P() {
 
 function calculateRemesa(source = 'margin') {
     const montoUsd = parseFloat(els.remesaMontoUsd.value) || 0;
-    const p2pRate = parseFloat(els.remesaP2pRef.value) || 0;
+    let p2pRate = parseFloat(els.remesaP2pRef.value) || 0;
+    let margenPct = (parseFloat(els.remesaMargen.value) || 0) / 100;
+    let tasaCliente = parseFloat(els.remesaTasaCliente.value) || 0;
+    
     const costoAdqPct = (parseFloat(els.remesaCostoAdq.value) || 0) / 100;
     const comisionBinPct = (parseFloat(els.remesaComisionBin.value) || 0) / 100;
     const pagoMovilAuto = els.remesaPagoMovilAuto.checked;
@@ -3141,8 +3144,17 @@ function calculateRemesa(source = 'margin') {
     // Pago Móvil percentage
     const pmFeePct = pagoMovilAuto ? 0.003 : 0.0;
     
-    let margenPct = 0;
-    let tasaCliente = 0;
+    // Auto-fallback if p2p rate is not specified but we have bcv rate
+    if (p2pRate <= 0 && state.bcvRate > 0) {
+        // If we can solve it from tasa and margin, do it; else fallback to BCV
+        if (source === 'tasa' && tasaCliente > 0 && margenPct > 0) {
+            p2pRate = (tasaCliente * fCosto) / ((1 - margenPct) * (1 - pmFeePct));
+            els.remesaP2pRef.value = p2pRate.toFixed(2);
+        } else {
+            p2pRate = state.bcvRate;
+            els.remesaP2pRef.value = p2pRate.toFixed(2);
+        }
+    }
     
     if (source === 'tasa') {
         tasaCliente = parseFloat(els.remesaTasaCliente.value) || 0;
@@ -3150,7 +3162,19 @@ function calculateRemesa(source = 'margin') {
             margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
             els.remesaMargen.value = (margenPct * 100).toFixed(2);
         }
+    } else if (source === 'p2p') {
+        p2pRate = parseFloat(els.remesaP2pRef.value) || 0;
+        if (p2pRate > 0) {
+            if (tasaCliente > 0) {
+                margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
+                els.remesaMargen.value = (margenPct * 100).toFixed(2);
+            } else {
+                tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+                els.remesaTasaCliente.value = tasaCliente.toFixed(2);
+            }
+        }
     } else {
+        // Source is margin or change in parameters
         margenPct = (parseFloat(els.remesaMargen.value) || 0) / 100;
         if (p2pRate > 0) {
             tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
