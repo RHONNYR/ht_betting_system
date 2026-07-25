@@ -339,6 +339,10 @@ async function initDashboard() {
         ]);
         
         await loadAndRenderCharts();
+        
+        if (els.remesaP2pRef && (!els.remesaP2pRef.value || parseFloat(els.remesaP2pRef.value) <= 0)) {
+            handleConsultarP2P();
+        }
     } catch (err) {
         console.error("Error loading dashboard concurrently:", err);
     }
@@ -403,6 +407,12 @@ function handleTabSwitch(e) {
     
     e.target.classList.add('active');
     document.getElementById(targetTab).classList.add('active');
+    
+    if (targetTab === 'tab-remesas') {
+        if (els.remesaP2pRef && (!els.remesaP2pRef.value || parseFloat(els.remesaP2pRef.value) <= 0)) {
+            handleConsultarP2P();
+        }
+    }
 }
 
 function handleSubTabSwitch(e) {
