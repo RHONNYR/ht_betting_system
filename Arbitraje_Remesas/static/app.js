@@ -3083,10 +3083,11 @@ async function handleConsultarP2P(isSilent = false) {
             }
         }
     } catch (err) {
+        console.error("Error in handleConsultarP2P:", err);
+        alert("ERROR EN CONSULTA P2P:\n" + err.name + ": " + err.message + "\n" + err.stack);
         if (!isSilent) {
             els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
             els.btnConsultarP2p.disabled = false;
-            alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
         }
     }
 }
@@ -3352,6 +3353,7 @@ function calculateRemesa(source = 'margin') {
         els.whatsappBoxContainer.classList.remove('hidden');
     } catch (err) {
         console.error("Error in calculateRemesa:", err);
+        alert("ERROR EN CÁLCULO DE REMESAS:\n" + err.name + ": " + err.message + "\n" + err.stack);
     }
 }
 
