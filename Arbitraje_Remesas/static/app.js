@@ -3122,7 +3122,13 @@ async function handleCalcConsultarP2P() {
                     countTop3++;
                 }
             });
-                    alert("No se encontraron tasas en Binance P2P.");
+            
+            const avgRate = sumTop3 / countTop3;
+            if (els.calcTasaVenta) els.calcTasaVenta.value = avgRate.toFixed(2);
+            updateSuggestedDivisas();
+            handleCalcularCiclo();
+        } else {
+            alert("No se encontraron tasas activas en Binance P2P.");
         }
     } catch (err) {
         els.btnCalcConsultarP2p.textContent = "⚡ P2P";
@@ -3133,22 +3139,20 @@ async function handleCalcConsultarP2P() {
 
 function calculateRemesa(source = 'margin') {
     try {
-        console.log(`calculateRemesa called with source: ${source}`);
-        
         const parseLocaleFloat = (val) => {
             if (!val) return 0;
             const clean = val.toString().replace(/,/g, '.').trim();
             return parseFloat(clean) || 0;
         };
 
-        const montoUsd = parseLocaleFloat(els.remesaMontoUsd.value);
-        let p2pRate = parseLocaleFloat(els.remesaP2pRef.value);
-        let margenPct = parseLocaleFloat(els.remesaMargen.value) / 100;
-        let tasaCliente = parseLocaleFloat(els.remesaTasaCliente.value);
+        let montoUsd = parseLocaleFloat(els.remesaMontoUsd ? els.remesaMontoUsd.value : 0);
+        let p2pRate = parseLocaleFloat(els.remesaP2pRef ? els.remesaP2pRef.value : 0);
+        let margenPct = parseLocaleFloat(els.remesaMargen ? els.remesaMargen.value : 0) / 100;
+        let tasaCliente = parseLocaleFloat(els.remesaTasaCliente ? els.remesaTasaCliente.value : 0);
         
-        const costoAdqPct = parseLocaleFloat(els.remesaCostoAdq.value) / 100;
-        const comisionBinPct = parseLocaleFloat(els.remesaComisionBin.value) / 100;
-        const pagoMovilAuto = els.remesaPagoMovilAuto.checked;
+        const costoAdqPct = parseLocaleFloat(els.remesaCostoAdq ? els.remesaCostoAdq.value : 0) / 100;
+        const comisionBinPct = parseLocaleFloat(els.remesaComisionBin ? els.remesaComisionBin.value : 0) / 100;
+        const pagoMovilAuto = els.remesaPagoMovilAuto ? els.remesaPagoMovilAuto.checked : true;
         
         // Factor de costo real del USDT
         const fCosto = 1 + costoAdqPct + comisionBinPct;
@@ -3156,50 +3160,79 @@ function calculateRemesa(source = 'margin') {
         // Pago Móvil percentage
         const pmFeePct = pagoMovilAuto ? 0.003 : 0.0;
         
-        console.log({ montoUsd, p2pRate, margenPct, tasaCliente, fCosto, pmFeePct });
-        
-        // Solve P2P rate mathematically if it's missing but Tasa Cliente and Margen are both present
-        if (p2pRate <= 0 && tasaCliente > 0 && margenPct > 0) {
-            p2pRate = (tasaCliente * fCosto) / ((1 - margenPct) * (1 - pmFeePct));
-            els.remesaP2pRef.value = p2pRate.toFixed(2);
-        }
-        
+        // Handle source specific updates first
         if (source === 'tasa') {
             tasaCliente = parseLocaleFloat(els.remesaTasaCliente.value);
             if (p2pRate > 0 && tasaCliente > 0) {
                 margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
-                els.remesaMargen.value = (margenPct * 100).toFixed(2);
+                if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
             }
         } else if (source === 'p2p') {
             p2pRate = parseLocaleFloat(els.remesaP2pRef.value);
             if (p2pRate > 0) {
                 if (tasaCliente > 0) {
                     margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
-                    els.remesaMargen.value = (margenPct * 100).toFixed(2);
-                } else {
+                    if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
+                } else if (margenPct > 0) {
                     tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
-                    els.remesaTasaCliente.value = tasaCliente.toFixed(2);
+                    if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
                 }
             }
-        } else {
-            // Source is margin or change in parameters
+        } else if (source === 'margin') {
             margenPct = parseLocaleFloat(els.remesaMargen.value) / 100;
-            if (p2pRate > 0) {
+            if (p2pRate > 0 && margenPct > 0) {
                 tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
-                els.remesaTasaCliente.value = tasaCliente.toFixed(2);
+                if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
             }
         }
-        
-        if (montoUsd <= 0 || p2pRate <= 0 || tasaCliente <= 0) {
-            console.log("Early return in calculateRemesa: missing required >0 inputs.");
+
+        // --- BULLETPROOF FALLBACK RESOLVERS ---
+        // If P2P Rate is missing, solve it or fallback to temp P2P rate / BCV rate
+        if (p2pRate <= 0) {
+            if (tasaCliente > 0 && margenPct > 0) {
+                p2pRate = (tasaCliente * fCosto) / ((1 - margenPct) * (1 - pmFeePct));
+            } else if (state.tempAvgP2pRate > 0) {
+                p2pRate = state.tempAvgP2pRate;
+            } else if (state.bcvRate > 0) {
+                p2pRate = state.bcvRate;
+            }
+            if (p2pRate > 0 && els.remesaP2pRef) {
+                els.remesaP2pRef.value = p2pRate.toFixed(2);
+            }
+        }
+
+        // If Tasa Cliente is missing, solve it from P2P & Margen
+        if (tasaCliente <= 0) {
+            if (p2pRate > 0) {
+                if (margenPct <= 0) {
+                    margenPct = 0.03; // Default 3% margin if 0
+                    if (els.remesaMargen) els.remesaMargen.value = "3.00";
+                }
+                tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+                if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
+            }
+        }
+
+        // If Margen is missing, solve it from P2P & Tasa Cliente
+        if (margenPct <= 0 && p2pRate > 0 && tasaCliente > 0) {
+            margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
+            if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
+        }
+
+        // Only show empty state if Monto USD <= 0
+        if (montoUsd <= 0) {
             els.remesaResultsDisplay.innerHTML = `
                 <div class="empty-state">
                     <span class="large-icon">💸</span>
-                    <p>Completa el formulario y presiona "Consultar Binance P2P" o ingresa una tasa para calcular la cotización.</p>
+                    <p>Ingresa el Monto en USD a enviar para ver la cotización calculada en tiempo real.</p>
                 </div>
             `;
             els.whatsappBoxContainer.classList.add('hidden');
             state.currentCalculatedRemesa = null;
+            return;
+        }
+
+        if (p2pRate <= 0 || tasaCliente <= 0) {
             return;
         }
         
@@ -3221,14 +3254,14 @@ function calculateRemesa(source = 'margin') {
         const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
         
         state.currentCalculatedRemesa = {
-            cliente_nombre: els.remesaCliente.value || "Cliente",
+            cliente_nombre: els.remesaCliente ? (els.remesaCliente.value || "Cliente") : "Cliente",
             monto_usd: montoUsd,
             tasa_p2p: p2pRate,
             tasa_cliente: tasaCliente,
             monto_ves: vesARecibir,
             ganancia_usd: gananciaUsd,
-            metodo_pago: els.remesaMetodoPago.value,
-            banco_receptor: els.remesaBancoReceptor.value,
+            metodo_pago: els.remesaMetodoPago ? els.remesaMetodoPago.value : "Zelle",
+            banco_receptor: els.remesaBancoReceptor ? els.remesaBancoReceptor.value : "Provincial",
             costo_adquisicion_usdt: costoAdqPct,
             comision_binance: comisionBinPct,
             cliente_genero: els.remesaClienteGenero ? els.remesaClienteGenero.value : "Masculino",
@@ -3281,9 +3314,8 @@ function calculateRemesa(source = 'margin') {
         `;
         
         // Generate WhatsApp Text
-        const clientName = els.remesaCliente.value || "Cliente";
-        const paymentMethod = els.remesaMetodoPago.value;
-        const recvBank = els.remesaBancoReceptor.value;
+        const clientName = els.remesaCliente ? (els.remesaCliente.value || "Cliente") : "Cliente";
+        const paymentMethod = els.remesaMetodoPago ? els.remesaMetodoPago.value : "Zelle";
         
         const waMessage = `*Cotización de Remesa* 💸\n\n` +
                           `👤 *Cliente:* ${clientName}\n` +
@@ -3296,7 +3328,6 @@ function calculateRemesa(source = 'margin') {
         els.whatsappBoxContainer.classList.remove('hidden');
     } catch (err) {
         console.error("Error in calculateRemesa:", err);
-        alert("Error de cálculo de remesa: " + err.message + "\n" + err.stack);
     }
 }
 
