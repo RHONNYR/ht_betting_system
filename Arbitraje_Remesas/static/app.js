@@ -4516,7 +4516,14 @@ function exportCiclosToCSV() {
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    setupEventListeners();
-    checkAuth();
+    console.log("App v88 DOMContentLoaded starting...");
+    try {
+        initTheme();
+        setupEventListeners();
+        checkAuth();
+        console.log("App v88 DOMContentLoaded completed successfully.");
+    } catch (err) {
+        console.error("CRITICAL ERROR DURING INITIALIZATION:", err);
+        alert("CRITICAL ERROR DURING INITIALIZATION:\n" + err.name + ": " + err.message + "\n" + err.stack);
+    }
 });
