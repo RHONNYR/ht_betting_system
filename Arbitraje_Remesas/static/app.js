@@ -2633,6 +2633,21 @@ function setupEventListeners() {
         }
     });
 
+    let p2pQueryTimeout = null;
+    function triggerAutoP2PQuery() {
+        if (p2pQueryTimeout) clearTimeout(p2pQueryTimeout);
+        p2pQueryTimeout = setTimeout(() => {
+            const remesasTab = document.getElementById('tab-remesas');
+            if (remesasTab && remesasTab.classList.contains('active')) {
+                handleConsultarP2P(true); // silent auto-query
+            }
+        }, 500);
+    }
+
+    if (els.remesaBancoReceptor) els.remesaBancoReceptor.addEventListener('change', triggerAutoP2PQuery);
+    if (els.remesaRolP2p) els.remesaRolP2p.addEventListener('change', triggerAutoP2PQuery);
+    if (els.remesaMontoUsd) els.remesaMontoUsd.addEventListener('input', triggerAutoP2PQuery);
+
     if (els.remesaTasaCliente) {
         els.remesaTasaCliente.addEventListener('input', () => calculateRemesa('tasa'));
         els.remesaTasaCliente.addEventListener('change', () => calculateRemesa('tasa'));
@@ -2979,7 +2994,7 @@ function showAutocompleteDropdown(filterText) {
     els.autocompleteClientesList.classList.remove('hidden');
 }
 
-async function handleConsultarP2P() {
+async function handleConsultarP2P(isSilent = false) {
     const amount = parseFloat(els.remesaMontoUsd.value) || 0;
     const banco = els.remesaBancoReceptor.value;
     const p2pRol = els.remesaRolP2p ? els.remesaRolP2p.value : 'maker';
@@ -3012,8 +3027,10 @@ async function handleConsultarP2P() {
     const estimatedVes = queryUsd * (state.bcvRate || 700.0);
     
     try {
-        els.btnConsultarP2p.textContent = "⏳ Buscando...";
-        els.btnConsultarP2p.disabled = true;
+        if (!isSilent) {
+            els.btnConsultarP2p.textContent = "⏳ Buscando...";
+            els.btnConsultarP2p.disabled = true;
+        }
         
         const reqData = {
             fiat: "VES",
@@ -3024,8 +3041,11 @@ async function handleConsultarP2P() {
         };
         
         const res = await apiCall('/p2p-rate', 'POST', reqData);
-        els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
-        els.btnConsultarP2p.disabled = false;
+        
+        if (!isSilent) {
+            els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
+            els.btnConsultarP2p.disabled = false;
+        }
         
         if (res.success && res.rates && res.rates.length > 0) {
             els.p2pRatesPanel.classList.remove('hidden');
@@ -3058,12 +3078,16 @@ async function handleConsultarP2P() {
             els.remesaP2pRef.value = avgRate.toFixed(2);
             calculateRemesa();
         } else {
-            alert("No se encontraron tasas activas para este método en Binance P2P.");
+            if (!isSilent) {
+                alert("No se encontraron tasas activas para este método en Binance P2P.");
+            }
         }
     } catch (err) {
-        els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
-        els.btnConsultarP2p.disabled = false;
-        alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
+        if (!isSilent) {
+            els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
+            els.btnConsultarP2p.disabled = false;
+            alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
+        }
     }
 }
 
