@@ -1299,12 +1299,14 @@ select option {
     }
 
     /* ── Cards ──────────────────────────────────────── */
-    .card {
+    .card, .glass-card {
         padding: 0.8rem;
         border-radius: 12px;
         margin-bottom: 0.75rem;
-        width: 100%;
-        box-sizing: border-box;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important; /* Evita que tablas/inputs empujen la tarjeta hacia afuera */
     }
 
     .card-header {
@@ -1312,6 +1314,8 @@ select option {
         align-items: stretch;
         gap: 0.5rem;
         margin-bottom: 0.85rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .card-header h2 {
@@ -1332,6 +1336,32 @@ select option {
         text-align: center;
         font-size: 0.72rem;
         padding: 0.4rem 0.3rem;
+    }
+
+    /* Force input + button rows to stack vertical on mobile */
+    .flex-row-align {
+        display: flex;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .flex-row-align input {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .flex-row-align button {
+        width: 100% !important;
+        flex: none !important;
+        padding: 0.65rem 1rem !important;
+    }
+
+    /* Exception: small inline widgets like BCV toggles remain row */
+    #bcv-toggles, .bcv-widget > span {
+        flex-direction: row !important;
     }
 
     /* ── Grid Layouts ───────────────────────────────── */
@@ -1362,17 +1392,7 @@ select option {
         box-sizing: border-box;
     }
 
-    .flex-row-align {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-        width: 100%;
-    }
 
-    .flex-row-align input {
-        flex: 1;
-        min-width: 0;
-    }
 
     /* ── Buttons ────────────────────────────────────── */
     .btn {
