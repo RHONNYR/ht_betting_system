@@ -1106,141 +1106,212 @@ select option {
 }
 
 /* =====================================================
-   MOBILE RESPONSIVE — Comprehensive Overhaul
-   Breakpoints: 768px (tablet), 480px (phone)
+   MOBILE RESPONSIVE — Complete Overhaul v2
+   Breakpoints: 768px (tablet/phone), 480px (small phone)
    ===================================================== */
 
 @media (max-width: 768px) {
 
-    /* ---- Main Container ---- */
+    /* ── Root & Body ───────────────────────────────── */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* ── App Container: edge-to-edge, no side gaps ── */
     #app-container {
         width: 100%;
-        padding: 0 8px;
-        margin: 8px auto;
+        max-width: 100%;
+        padding: 0 6px;
+        margin: 6px auto;
+        box-sizing: border-box;
     }
 
-    /* ---- Header ---- */
+    /* ── HEADER: Stack vertically, full width ──────── */
     .main-header {
-        padding: 0.85rem 1rem;
+        padding: 0.75rem 0.85rem;
         border-radius: 12px;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.75rem;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 0.6rem;
         align-items: stretch;
+        width: 100%;
+        box-sizing: border-box;
     }
 
+    /* Logo row: centered, compact */
     .header-logo {
         flex-direction: row;
         align-items: center;
         justify-content: center;
         text-align: center;
-        gap: 0.65rem;
+        gap: 0.6rem;
     }
 
     .header-logo h1 {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         line-height: 1.2;
+        white-space: nowrap;
     }
 
-    .header-logo .subtitle {
-        display: none;
-    }
+    .header-logo .subtitle { display: none; }
 
-    .logo-svg {
-        width: 26px;
-        height: 26px;
-    }
+    .logo-svg { width: 24px; height: 24px; }
+    .logo-icon-svg { margin-right: 0; }
 
-    .logo-icon-svg {
-        margin-right: 0;
-    }
-
-    /* ---- Header Actions Row ---- */
+    /* ── BCV Widget: Full row, all elements in one line ── */
     .header-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 0.5rem;
         width: 100%;
-        align-items: center;
     }
 
     .bcv-widget {
-        grid-column: 1 / -1;
-        justify-content: space-between;
-        padding: 0.5rem 0.85rem;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
+        width: 100% !important;
+        padding: 0.55rem 0.8rem !important;
         border-radius: 10px;
-        width: 100%;
-        flex-wrap: nowrap;
-        gap: 0.35rem;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
-    .bcv-label { font-size: 0.75rem; white-space: nowrap; }
-    .bcv-value { font-size: 0.95rem; font-weight: 800; white-space: nowrap; }
-    #bcv-source { font-size: 0.6rem; }
-    #btn-edit-bcv { font-size: 0.85rem; padding: 0.15rem 0.3rem; }
+    .bcv-label {
+        font-size: 0.72rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
 
+    .bcv-value {
+        font-size: 0.95rem;
+        font-weight: 800;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    #bcv-source {
+        font-size: 0.58rem;
+        padding: 2px 5px;
+        flex-shrink: 0;
+    }
+
+    /* Hoy / Mañana toggles — compact, no wrapping */
     #bcv-toggles {
         display: flex !important;
-        gap: 2px;
+        gap: 2px !important;
+        flex-shrink: 0 !important;
+        margin-left: 2px !important;
     }
 
-    .header-actions button:not(.theme-btn) {
-        width: 100%;
-        padding: 0.6rem 0.5rem;
-        font-size: 0.8rem;
+    #bcv-toggles button {
+        font-size: 0.65rem !important;
+        padding: 2px 5px !important;
+        border-radius: 4px !important;
+        white-space: nowrap;
+    }
+
+    /* Push pencil to far right */
+    #btn-edit-bcv {
+        font-size: 0.9rem !important;
+        padding: 0.15rem 0.3rem !important;
+        margin-left: auto !important;
+        flex-shrink: 0;
+    }
+
+    /* Contraseña + Cerrar Sesión: side by side */
+    .header-actions > button:not(.theme-btn) {
+        flex: 1;
+        padding: 0.6rem 0.4rem;
+        font-size: 0.78rem;
         border-radius: 8px;
+        box-sizing: border-box;
     }
 
-    /* ---- Navigation Tabs ---- */
+    /* Wrap the two action buttons in a row */
+    .header-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .header-actions > .bcv-widget ~ button,
+    #btn-change-password-modal,
+    #btn-logout {
+        width: calc(50% - 3px);
+    }
+
+    /* Force buttons row to flex-row */
+    .header-actions::after {
+        content: none;
+    }
+
+    /* Override: put the two buttons side-by-side using a wrapper trick in CSS */
+    .main-header .header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .main-header .header-actions .bcv-widget {
+        grid-column: 1 / -1;
+    }
+
+    /* ── Navigation Tabs ────────────────────────────── */
     .nav-tabs {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.35rem;
+        gap: 0.3rem;
         padding: 0.3rem;
         border-radius: 12px;
-        margin-bottom: 1rem;
+        margin-bottom: 0.85rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .tab-link {
         flex: none;
         width: 100%;
-        padding: 0.55rem 0.4rem;
-        font-size: 0.75rem;
+        padding: 0.5rem 0.35rem;
+        font-size: 0.72rem;
         text-align: center;
         border-radius: 8px;
         white-space: normal;
-        line-height: 1.25;
+        line-height: 1.2;
     }
 
-    /* 5th tab alone → spans full width, centered */
+    /* 5th tab alone → centered */
     .tab-link:last-child:nth-child(odd) {
         grid-column: 1 / -1;
-        max-width: 60%;
+        max-width: 55%;
         margin: 0 auto;
     }
 
-    /* ---- Sub Tabs ---- */
+    /* ── Sub Tabs ───────────────────────────────────── */
     .sub-nav-tabs {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.35rem;
+        gap: 0.3rem;
         border-bottom: none;
-        padding-bottom: 0.35rem;
-        margin-bottom: 1rem;
+        padding-bottom: 0.3rem;
+        margin-bottom: 0.85rem;
     }
 
     .sub-tab-link {
         flex: none;
         width: 100%;
-        padding: 0.5rem 0.35rem;
-        font-size: 0.72rem;
+        padding: 0.45rem 0.35rem;
+        font-size: 0.7rem;
         text-align: center;
         border: 1px solid var(--border-color);
         background: rgba(255,255,255,0.03);
         border-radius: 8px;
-        border-bottom: 2px solid transparent;
         white-space: normal;
-        line-height: 1.25;
+        line-height: 1.2;
     }
 
     .sub-tab-link.active {
@@ -1249,28 +1320,30 @@ select option {
         color: var(--primary);
     }
 
-    /* ---- Cards ---- */
+    /* ── Cards ──────────────────────────────────────── */
     .card {
-        padding: 0.9rem;
+        padding: 0.8rem;
         border-radius: 12px;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.75rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .card-header {
         flex-direction: column;
         align-items: stretch;
-        gap: 0.6rem;
-        margin-bottom: 1rem;
+        gap: 0.5rem;
+        margin-bottom: 0.85rem;
     }
 
     .card-header h2 {
-        font-size: 1rem;
+        font-size: 0.95rem;
         text-align: center;
     }
 
-    .card-header div {
-        display: flex;
-        flex-direction: column;
+    .card-header > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.4rem;
         width: 100%;
     }
@@ -1278,41 +1351,44 @@ select option {
     .card-header button,
     .card-header .btn-sm {
         width: 100%;
-        margin-bottom: 0.2rem;
         text-align: center;
+        font-size: 0.72rem;
+        padding: 0.4rem 0.3rem;
     }
 
-    /* ---- Grid Layouts ---- */
+    /* ── Grid Layouts ───────────────────────────────── */
     .grid-2col {
         grid-template-columns: 1fr;
-        gap: 0.85rem;
+        gap: 0.75rem;
     }
 
     .grid-2col-form {
         grid-template-columns: 1fr;
-        gap: 0.65rem;
+        gap: 0.6rem;
     }
 
-    /* ---- Forms ---- */
-    .input-group {
-        margin-bottom: 0.9rem;
-    }
+    /* ── Forms ──────────────────────────────────────── */
+    .input-group { margin-bottom: 0.75rem; }
 
     .input-group label {
-        font-size: 0.78rem;
-        margin-bottom: 0.2rem;
+        font-size: 0.76rem;
+        margin-bottom: 0.15rem;
     }
 
     .input-group input,
     .input-group select {
-        padding: 0.65rem 0.85rem;
-        font-size: 0.88rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
         border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .flex-row-align {
-        width: 100%;
+        display: flex;
         flex-wrap: wrap;
+        gap: 0.45rem;
+        width: 100%;
     }
 
     .flex-row-align input {
@@ -1320,37 +1396,36 @@ select option {
         min-width: 0;
     }
 
-    /* ---- Buttons (general) ---- */
+    /* ── Buttons ────────────────────────────────────── */
     .btn {
-        padding: 0.65rem 1.1rem;
-        font-size: 0.88rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 
     .btn-sm {
-        padding: 0.4rem 0.65rem;
-        font-size: 0.75rem;
+        padding: 0.38rem 0.6rem;
+        font-size: 0.72rem;
     }
 
-    /* ---- Capital Tab ---- */
+    /* ── CAPITAL & TARJETAS — Card layout (no overflow) ── */
     .capital-summary-cards {
         grid-template-columns: 1fr 1fr;
-        gap: 0.65rem;
-        margin-bottom: 1rem;
+        gap: 0.6rem;
+        margin-bottom: 0.85rem;
     }
 
     .mini-summary-card {
-        padding: 0.75rem 0.5rem;
+        padding: 0.7rem 0.45rem;
     }
 
-    .mini-summary-card .value {
-        font-size: 1.1rem;
-    }
+    .mini-summary-card .value { font-size: 1.05rem; }
 
-    /* Capital table → stacked card layout */
+    /* Capital table: convert to card-per-row on mobile */
     #tab-capital .table-container {
         border: none;
         background: transparent;
         overflow-x: visible;
+        border-radius: 0;
     }
 
     #tab-capital .data-table,
@@ -1360,18 +1435,23 @@ select option {
     #tab-capital .data-table td,
     #tab-capital .data-table tr {
         display: block;
+        width: 100%;
     }
 
     #tab-capital .data-table thead { display: none; }
 
     #tab-capital .data-table tr {
         border: 1px solid var(--border-color);
-        background: rgba(255,255,255,0.02);
+        background: rgba(255,255,255,0.025);
         border-radius: 12px;
-        margin-bottom: 0.85rem;
-        padding: 0.65rem 0.85rem;
+        margin-bottom: 0.75rem;
+        padding: 0.6rem 0.8rem;
         box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        box-sizing: border-box;
     }
+
+    /* Suppress group-header rows on mobile since there's no table */
+    #tab-capital .table-group-header { display: none !important; }
 
     #tab-capital .data-table td {
         border: none;
@@ -1379,8 +1459,9 @@ select option {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.55rem 0;
+        padding: 0.45rem 0;
         text-align: right;
+        font-size: 0.82rem;
     }
 
     #tab-capital .data-table td:last-child { border-bottom: none; }
@@ -1388,203 +1469,181 @@ select option {
     #tab-capital .data-table td::before {
         font-weight: 600;
         color: var(--text-secondary);
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         text-transform: uppercase;
+        letter-spacing: 0.04em;
         text-align: left;
+        flex-shrink: 0;
+        margin-right: 0.5rem;
     }
 
     #tab-capital .data-table td:nth-of-type(1)::before { content: "Plataforma"; }
-    #tab-capital .data-table td:nth-of-type(2)::before { content: "Monto USD"; }
-    #tab-capital .data-table td:nth-of-type(3)::before { content: "Monto VES"; }
+    #tab-capital .data-table td:nth-of-type(2)::before { content: "Monto VES"; }
+    #tab-capital .data-table td:nth-of-type(3)::before { content: "Monto USD"; }
     #tab-capital .data-table td:nth-of-type(4)::before { content: "Equiv. USD"; }
     #tab-capital .data-table td:nth-of-type(5)::before { content: "Simulado"; }
 
     #tab-capital .data-table input[type="number"] {
-        width: 120px;
-        padding: 0.4rem 0.55rem;
-        font-size: 0.88rem;
+        width: 110px;
+        padding: 0.35rem 0.5rem;
+        font-size: 0.85rem;
         text-align: right;
     }
 
     #tab-capital button[type="submit"] {
         width: 100%;
         float: none;
-        margin-top: 1rem;
+        margin-top: 0.75rem;
         padding: 0.8rem;
     }
 
-    /* ---- Data Tables (general) — horizontal scroll ---- */
+    /* ── General Data Tables (horizontal scroll) ───── */
     .table-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         border-radius: 10px;
+        width: 100%;
     }
 
     .data-table {
-        min-width: 560px;
-        font-size: 0.8rem;
+        min-width: 520px;
+        font-size: 0.78rem;
     }
 
     .data-table th {
-        padding: 0.7rem 0.75rem;
-        font-size: 0.72rem;
+        padding: 0.65rem 0.65rem;
+        font-size: 0.7rem;
     }
 
     .data-table td {
-        padding: 0.7rem 0.75rem;
+        padding: 0.65rem 0.65rem;
     }
 
-    /* ---- Results Display (Remesas & Ciclos) ---- */
-    .results-display-list { gap: 0.45rem; }
+    /* ── Results Display ────────────────────────────── */
+    .results-display-list { gap: 0.4rem; }
 
     .result-item {
         padding-bottom: 0.4rem;
         flex-wrap: nowrap;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
 
-    .result-item .label {
-        font-size: 0.78rem;
-        flex: 1;
-    }
+    .result-item .label { font-size: 0.76rem; flex: 1; }
+    .result-item .value { font-size: 0.88rem; text-align: right; white-space: nowrap; }
+    .result-item.highlight .value { font-size: 1rem; }
 
-    .result-item .value {
-        font-size: 0.9rem;
-        text-align: right;
-        white-space: nowrap;
-    }
+    .result-item.highlight-margin { padding: 8px 10px; border-radius: 10px; }
+    .result-item.highlight-margin .value-badge { font-size: 1rem; padding: 3px 8px; }
 
-    .result-item.highlight .value { font-size: 1.05rem; }
+    /* ── P2P Panel ──────────────────────────────────── */
+    .p2p-summary-box { flex-wrap: wrap; gap: 0.45rem; }
+    .p2p-summary-box span { font-size: 0.76rem; }
+    .p2p-summary-box strong { font-size: 0.95rem; }
 
-    .result-item.highlight-margin {
-        padding: 9px 12px;
-        border-radius: 10px;
-    }
-
-    .result-item.highlight-margin .value-badge {
-        font-size: 1.05rem;
-        padding: 4px 10px;
-    }
-
-    /* ---- P2P Panel ---- */
-    .p2p-summary-box {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .p2p-summary-box span { font-size: 0.78rem; }
-    .p2p-summary-box strong { font-size: 1rem; }
-
-    /* P2P rates table in the live panel */
     #p2p-rates-table-body tr td {
-        padding: 0.5rem 0.6rem;
-        font-size: 0.78rem;
+        padding: 0.45rem 0.55rem;
+        font-size: 0.75rem;
     }
 
-    /* ---- WhatsApp Box ---- */
+    /* ── WhatsApp Textarea ──────────────────────────── */
     .whatsapp-textarea {
-        font-size: 0.8rem;
-        min-height: 110px;
+        font-size: 0.78rem;
+        min-height: 100px;
     }
 
-    /* ---- Modals ---- */
+    /* ── Modals ─────────────────────────────────────── */
     .modal-content {
         width: 96%;
-        padding: 1.35rem;
+        padding: 1.2rem;
         border-radius: 14px;
         max-height: 92vh;
         overflow-y: auto;
     }
 
-    .modal-content h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-    .modal-content p { font-size: 0.8rem; margin-bottom: 1rem; }
+    .modal-content h3 { font-size: 1rem; margin-bottom: 0.35rem; }
+    .modal-content p  { font-size: 0.78rem; margin-bottom: 0.85rem; }
 
-    .modal-actions {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
+    .modal-actions { flex-direction: column; gap: 0.45rem; }
     .modal-actions button { width: 100%; }
 
-    /* ---- Empty State ---- */
-    .empty-state {
-        padding: 2.5rem 0.75rem;
-    }
+    /* ── Empty State ────────────────────────────────── */
+    .empty-state { padding: 2rem 0.65rem; }
+    .large-icon  { font-size: 2rem; }
 
-    .large-icon { font-size: 2.25rem; }
-
-    /* ---- Theme Switcher → bottom-right on mobile ---- */
+    /* ── Theme Switcher → bottom-right on mobile ───── */
     .theme-switcher {
         top: auto;
-        bottom: 18px;
-        right: 12px;
-        padding: 7px 11px;
+        bottom: 16px;
+        right: 10px;
+        padding: 6px 10px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
-    .theme-btn { width: 14px; height: 14px; }
+    .theme-btn { width: 13px; height: 13px; }
 
-    /* ---- Total Ganado Badge ---- */
-    .total-ganado-badge {
-        font-size: 0.78rem;
-        padding: 0.3rem 0.65rem;
-    }
-
-    /* ---- Stats KPI Cards ---- */
+    /* ── Stats KPI Cards ────────────────────────────── */
     .stats-kpi-grid {
         grid-template-columns: 1fr 1fr !important;
-        gap: 0.65rem;
+        gap: 0.6rem;
     }
 
-    .stats-kpi-card {
-        padding: 0.85rem 0.65rem;
-    }
+    .stats-kpi-card { padding: 0.8rem 0.6rem; }
+
+    .total-ganado-badge { font-size: 0.75rem; padding: 0.25rem 0.6rem; }
 }
 
-/* ---- Extra small phones (< 480px) ---- */
+/* ── Extra small phones (≤ 480px) ──────────────────── */
 @media (max-width: 480px) {
 
-    .nav-tabs {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.3rem;
+    #app-container {
+        padding: 0 4px;
+        margin: 4px auto;
     }
 
-    .tab-link {
-        font-size: 0.7rem;
-        padding: 0.5rem 0.3rem;
+    .main-header {
+        padding: 0.65rem 0.7rem;
     }
 
-    .header-logo h1 { font-size: 0.98rem; }
+    .header-logo h1 { font-size: 0.95rem; }
 
-    .capital-summary-cards {
-        grid-template-columns: 1fr;
-    }
+    /* BCV widget: shrink text even more on tiny screens */
+    .bcv-label { font-size: 0.65rem; }
+    .bcv-value { font-size: 0.85rem; }
+    #bcv-source { font-size: 0.52rem; }
 
-    .card-header div {
-        gap: 0.35rem;
-    }
+    /* On very small screens: 5th tab fills its own row */
+    .nav-tabs { gap: 0.25rem; }
+    .tab-link  { font-size: 0.68rem; padding: 0.45rem 0.25rem; }
 
-    .result-item .label { font-size: 0.72rem; }
-    .result-item .value { font-size: 0.85rem; }
+    /* Cards: tighter */
+    .card { padding: 0.65rem; }
+    .card-header h2 { font-size: 0.88rem; }
 
+    /* Summary cards: single column */
+    .capital-summary-cards { grid-template-columns: 1fr; gap: 0.5rem; }
+
+    /* Inputs */
     .input-group input,
     .input-group select {
-        font-size: 0.82rem;
-        padding: 0.6rem 0.75rem;
+        font-size: 0.8rem;
+        padding: 0.55rem 0.7rem;
     }
 
+    /* Modals slide up from bottom */
     .modal-content {
         width: 100%;
-        border-radius: 12px 12px 0 0;
+        border-radius: 14px 14px 0 0;
         position: fixed;
         bottom: 0;
         left: 0;
-        max-height: 88vh;
+        max-height: 90vh;
+        padding: 1rem;
     }
 
-    .data-table {
-        min-width: 460px;
-    }
+    .data-table { min-width: 440px; }
+
+    .result-item .label { font-size: 0.7rem; }
+    .result-item .value { font-size: 0.82rem; }
 }
 
 /* =====================================================
