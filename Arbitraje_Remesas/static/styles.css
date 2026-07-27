@@ -317,14 +317,6 @@ select option {
     margin-bottom: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-}
-
 .header-logo {
     display: flex;
     align-items: center;
@@ -350,13 +342,6 @@ select option {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
-
-@media (max-width: 640px) {
-    .header-actions {
-        flex-direction: column;
-        width: 100%;
-    }
 }
 
 /* BCV Widget */
@@ -1159,106 +1144,99 @@ select option {
     .logo-svg { width: 24px; height: 24px; }
     .logo-icon-svg { margin-right: 0; }
 
-    /* ── BCV Widget: Full row, all elements in one line ── */
-    .header-actions {
-        display: flex;
-        flex-direction: column;
+    /* ── BCV Widget: Stacked wrapping layout on mobile ── */
+    .main-header .header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.5rem;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .bcv-widget {
+        grid-column: 1 / -1;
         display: flex !important;
-        flex-direction: row !important;
+        flex-wrap: wrap !important;
         align-items: center !important;
-        justify-content: flex-start !important;
-        flex-wrap: nowrap !important;
-        gap: 6px !important;
+        justify-content: space-between !important;
+        gap: 0.5rem !important;
         width: 100% !important;
-        padding: 0.55rem 0.8rem !important;
+        padding: 0.65rem 0.85rem !important;
         border-radius: 10px;
         box-sizing: border-box;
-        overflow: hidden;
+        background: rgba(245, 158, 11, 0.08) !important;
+        border: 1px solid rgba(245, 158, 11, 0.2) !important;
+    }
+
+    /* Left info block inside widget */
+    .bcv-widget > span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
     }
 
     .bcv-label {
-        font-size: 0.72rem;
+        font-size: 0.75rem;
         white-space: nowrap;
-        flex-shrink: 0;
+        color: var(--text-secondary);
     }
 
     .bcv-value {
         font-size: 0.95rem;
         font-weight: 800;
+        color: var(--accent);
         white-space: nowrap;
-        flex-shrink: 0;
     }
 
     #bcv-source {
-        font-size: 0.58rem;
-        padding: 2px 5px;
-        flex-shrink: 0;
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        border-radius: 4px;
     }
 
-    /* Hoy / Mañana toggles — compact, no wrapping */
+    /* Hoy / Mañana toggles - span full width below info row if wrapped */
     #bcv-toggles {
         display: flex !important;
-        gap: 2px !important;
-        flex-shrink: 0 !important;
-        margin-left: 2px !important;
+        width: 100% !important;
+        margin: 0.25rem 0 0 0 !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+        padding: 3px !important;
+        border-radius: 8px !important;
+        box-sizing: border-box !important;
+        order: 10; /* Force below label/value */
     }
 
     #bcv-toggles button {
-        font-size: 0.65rem !important;
-        padding: 2px 5px !important;
-        border-radius: 4px !important;
-        white-space: nowrap;
+        flex: 1 !important;
+        text-align: center !important;
+        padding: 5px !important;
+        font-size: 0.72rem !important;
+        border: none !important;
     }
 
-    /* Push pencil to far right */
+    /* Push pencil to the right next to source */
     #btn-edit-bcv {
         font-size: 0.9rem !important;
-        padding: 0.15rem 0.3rem !important;
+        padding: 0.2rem 0.4rem !important;
         margin-left: auto !important;
-        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 6px !important;
+        order: 2;
     }
 
-    /* Contraseña + Cerrar Sesión: side by side */
-    .header-actions > button:not(.theme-btn) {
-        flex: 1;
+    /* Contraseña + Cerrar Sesión buttons grid side-by-side */
+    #btn-change-password-modal {
+        grid-column: 1 / 2;
+        width: 100% !important;
         padding: 0.6rem 0.4rem;
         font-size: 0.78rem;
-        border-radius: 8px;
-        box-sizing: border-box;
     }
 
-    /* Wrap the two action buttons in a row */
-    .header-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .header-actions > .bcv-widget ~ button,
-    #btn-change-password-modal,
     #btn-logout {
-        width: calc(50% - 3px);
-    }
-
-    /* Force buttons row to flex-row */
-    .header-actions::after {
-        content: none;
-    }
-
-    /* Override: put the two buttons side-by-side using a wrapper trick in CSS */
-    .main-header .header-actions {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-    }
-
-    .main-header .header-actions .bcv-widget {
-        grid-column: 1 / -1;
+        grid-column: 2 / 3;
+        width: 100% !important;
+        padding: 0.6rem 0.4rem;
+        font-size: 0.78rem;
     }
 
     /* ── Navigation Tabs ────────────────────────────── */
@@ -1598,18 +1576,22 @@ select option {
     #app-container {
         padding: 0 4px;
         margin: 4px auto;
+        width: 100%;
+        max-width: 100%;
     }
 
     .main-header {
-        padding: 0.65rem 0.7rem;
+        padding: 0.6rem 0.65rem;
+        margin-bottom: 0.6rem;
     }
 
     .header-logo h1 { font-size: 0.95rem; }
 
-    /* BCV widget: shrink text even more on tiny screens */
-    .bcv-label { font-size: 0.65rem; }
-    .bcv-value { font-size: 0.85rem; }
-    #bcv-source { font-size: 0.52rem; }
+    /* BCV widget: shrink text and layout even more on tiny screens */
+    .bcv-label { font-size: 0.68rem; }
+    .bcv-value { font-size: 0.82rem; }
+    #bcv-source { font-size: 0.5rem; padding: 1px 4px; }
+    #bcv-toggles button { font-size: 0.65rem !important; padding: 3px !important; }
 
     /* On very small screens: 5th tab fills its own row */
     .nav-tabs { gap: 0.25rem; }
@@ -1646,154 +1628,14 @@ select option {
     .result-item .value { font-size: 0.82rem; }
 }
 
-/* =====================================================
-   MOBILE OVERRIDE — Inline style & overflow fixes
-   Forces all grids to single column on mobile
-   ===================================================== */
-@media (max-width: 768px) {
-
-    /* Force all overflow to stay within viewport */
-    * {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* ---- Override inline grid styles in Stats/HTML ---- */
-    /* auto-fit minmax(200px) breaks on small screens */
-    [style*="grid-template-columns"],
-    [style*="grid-template-columns: repeat"] {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    /* Stats header row: period selector + buttons wrap cleanly */
-    [style*="display: flex; justify-content: space-between"] {
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0.65rem !important;
-    }
-
-    /* Stats period selector goes full width */
-    #stats-periodo-select {
-        width: 100% !important;
-        font-size: 0.82rem !important;
-        padding: 0.6rem 0.85rem !important;
-    }
-
-    /* Stats custom date range stacks vertically */
-    #stats-custom-range-container {
-        flex-wrap: wrap !important;
-        gap: 0.5rem !important;
-    }
-
-    #stats-fecha-desde,
-    #stats-fecha-hasta {
-        flex: 1 !important;
-        min-width: 120px !important;
-    }
-
-    /* Export PDF button full width */
-    #btn-export-stats-pdf {
-        width: 100% !important;
-        justify-content: center !important;
-    }
-
-    /* ---- Charts ---- */
-    canvas {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* ---- Historial table: ensure horizontal scroll, no overflow ---- */
-    #tab-historial .table-container,
-    #tab-remesas .table-container,
-    #tab-calculadora .table-container,
-    #tab-stats .table-container {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-
-    /* ---- Inline flex rows that cause overflow → wrap ---- */
-    [style*="display: flex"][style*="align-items: center"] {
-        flex-wrap: wrap;
-    }
-
-    /* ---- P2P rates table always scrolls ---- */
-    #p2p-rates-panel .table-container {
-        overflow-x: auto !important;
-    }
-
-    /* ---- Calc actions buttons in remesas: stack vertically ---- */
-    .calc-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .calc-actions .btn-block {
-        width: 100%;
-    }
-
-    /* ---- Cards body padding ---- */
-    .card-body {
-        padding: 0;
-    }
-
-    /* ---- Mini summary cards 2-col on tablet, 1-col on small ---- */
-    .capital-summary-cards {
-        grid-template-columns: 1fr 1fr !important;
-    }
-
-    /* ---- Remesas P2P inline button row ---- */
-    .flex-row-align {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .flex-row-align input {
-        flex: 1 1 60%;
-        min-width: 0;
-    }
-
-    .flex-row-align .btn {
-        flex: 1 1 35%;
-        white-space: nowrap;
-        font-size: 0.78rem;
-        padding: 0.6rem 0.5rem;
-    }
-
-    /* ---- Inline section headers in stats tab ---- */
-    #tab-stats h3 {
-        font-size: 0.82rem !important;
-        flex-wrap: wrap;
-    }
+/* Trailing responsive utility class overrides */
+.mobile-only {
+    display: none;
 }
 
-/* Extra small phones */
-@media (max-width: 480px) {
-
-    /* On very small screens, all auto-fit grids → 1 column */
-    [style*="grid-template-columns"] {
-        grid-template-columns: 1fr !important;
-    }
-
-    .capital-summary-cards {
-        grid-template-columns: 1fr !important;
-    }
-
-    .mini-summary-card .value {
-        font-size: 1.05rem !important;
-    }
-
-    /* P2P ref + Consultar button: stack vertically */
-    .flex-row-align {
-        flex-direction: column;
-    }
-
-    .flex-row-align input,
-    .flex-row-align .btn {
-        width: 100%;
-        flex: unset;
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
     }
 }
 
