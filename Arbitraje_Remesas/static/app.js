@@ -426,10 +426,7 @@ function handleSubTabSwitch(e) {
         loadZelleMovimientos();
     }
     if (targetSubTab === 'subtab-simulador-bcv') {
-        if (state.bcvRate && els.simBcvTasa && !els.simBcvTasa.value) {
-            els.simBcvTasa.value = state.bcvRate;
-        }
-        recalculateSimulation();
+        initBCVSimulator();
     }
 }
 
@@ -3624,104 +3621,173 @@ function updateSimulatorCommissions() {
     if (!els.simBcvBanco) return;
     const banco = els.simBcvBanco.value;
     const isTerceraEdad = els.simBcvTerceraEdad.checked;
-    
+
+    // Tercera Edad exención only applies to BDV (Banco de Venezuela)
     if (banco === 'Venezuela' && isTerceraEdad) {
         els.simBcvComision.value = '0';
         els.simBcvComision.disabled = true;
     } else {
         els.simBcvComision.disabled = false;
-        if (banco === 'Venezuela') {
-            els.simBcvComision.value = '0.5';
-        } else if (banco === 'Personalizado') {
-            // Keep current value or let user input
-        } else {
+        // Only auto-set commission if the user hasn't chosen Personalizado
+        if (banco !== 'Personalizado') {
+            // Comisión estándar BCV: 0.5% para todos los bancos excepto exención
             els.simBcvComision.value = '0.5';
         }
+        // For Personalizado, leave current value so user can set their own
     }
+
+    // Hide Tercera Edad checkbox visually if bank is not BDV
+    const terceraEdadContainer = els.simBcvTerceraEdad ? els.simBcvTerceraEdad.closest('.input-group') : null;
+    if (terceraEdadContainer) {
+        terceraEdadContainer.style.opacity = banco === 'Venezuela' ? '1' : '0.4';
+        terceraEdadContainer.style.pointerEvents = banco === 'Venezuela' ? 'auto' : 'none';
+        if (banco !== 'Venezuela') els.simBcvTerceraEdad.checked = false;
+    }
+
     recalculateSimulation();
 }
 
+// Initialize BCV Simulator with current BCV rate
+function initBCVSimulator() {
+    if (!els.simBcvTasa) return;
+    // Pre-fill BCV rate from live state
+    if (state.bcvRate && state.bcvRate > 0) {
+        els.simBcvTasa.value = state.bcvRate.toFixed(4);
+    }
+    updateSimulatorCommissions();
+}
+
 function recalculateSimulation() {
-    if (!els.simBcvMonto || !els.simBcvMonto.value) {
-        // Clear outputs
-        if (els.simResPrincipalValue) {
-            els.simResPrincipalValue.textContent = "$0.00";
-            els.simResEquivMonto.textContent = "$0.00";
-            els.simResComisionVes.textContent = "0.00 VES";
-            els.simResTotalVes.textContent = "0.00 VES";
-            els.simResCuentasValue.textContent = "0 cuentas";
-            els.simResCuentasDesc.textContent = "Introduce un monto para calcular.";
-        }
+    // Helper: format number with Venezuelan locale (period=thousands, comma=decimal)
+    const fmt = (n, dec = 2) => n.toLocaleString('es-VE', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+
+    const clearOutputs = () => {
+        if (els.simResPrincipalValue)  els.simResPrincipalValue.textContent  = '—';
+        if (els.simResEquivMonto)      els.simResEquivMonto.textContent      = '—';
+        if (els.simResComisionVes)     els.simResComisionVes.textContent     = '0,00 VES';
+        if (els.simResTotalVes)        els.simResTotalVes.textContent        = '0,00 VES';
+        if (els.simResCuentasValue)    els.simResCuentasValue.textContent    = '0 cuentas';
+        if (els.simResCuentasDesc)     els.simResCuentasDesc.innerHTML       = '<span style="color:var(--text-muted);">Introduce un monto para calcular.</span>';
+    };
+
+    if (!els.simBcvMonto || !els.simBcvMonto.value || parseFloat(els.simBcvMonto.value) <= 0) {
+        clearOutputs();
         return;
     }
-    
-    const monto = parseFloat(els.simBcvMonto.value) || 0;
-    const tasa = parseFloat(els.simBcvTasa.value) || state.bcvRate || 0;
-    const comisionPct = (parseFloat(els.simBcvComision.value) || 0) / 100;
+
+    const monto        = parseFloat(els.simBcvMonto.value) || 0;
+    const tasa         = parseFloat(els.simBcvTasa.value) || state.bcvRate || 0;
+    const comisionPct  = (parseFloat(els.simBcvComision.value) || 0) / 100;
     const limiteCuenta = parseFloat(els.simBcvLimite.value) || 500;
-    const modo = els.simBcvModo.value;
-    
-    if (tasa <= 0) return;
-    
+    const modo         = els.simBcvModo.value;
+
+    if (tasa <= 0) {
+        clearOutputs();
+        return;
+    }
+
+    // VES cost per USD (tasa + commission)
+    const vesPerUsdTotal = tasa * (1 + comisionPct);
+
     let principalUSD = 0;
     let principalVES = 0;
-    let comisionVES = 0;
-    let totalVES = 0;
-    
+    let comisionVES  = 0;
+    let totalVES     = 0;
+
     if (modo === 'ves') {
-        els.simBcvMontoLabel.textContent = "Monto de Bolívares Disponibles (VES)";
-        els.simBcvMonto.placeholder = "Ej. 1000000";
-        els.simResPrincipalLabel.textContent = "Dólares Adquiridos (Neto)";
-        els.simResEquivLabel.textContent = "Monto Principal Equivalente:";
-        
-        principalUSD = monto / (tasa * (1 + comisionPct));
+        // ── Modo: Tengo VES, ¿cuántos USD compro? ──────────────────────────
+        els.simBcvMontoLabel.textContent    = 'Monto de Bolívares Disponibles (VES)';
+        els.simBcvMonto.placeholder         = 'Ej. 371.000';
+        els.simResPrincipalLabel.textContent = 'Dólares Adquiridos (Neto)';
+        els.simResEquivLabel.textContent    = 'Equivalente sin comisión:';
+
+        // total_VES = principalUSD * tasa * (1 + comision)
+        principalUSD = monto / vesPerUsdTotal;
         principalVES = principalUSD * tasa;
-        comisionVES = principalVES * comisionPct;
-        totalVES = monto;
-        
-        els.simResPrincipalValue.textContent = `$${principalUSD.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-        els.simResEquivMonto.textContent = `$${principalUSD.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD (${principalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES)`;
+        comisionVES  = principalVES * comisionPct;
+        totalVES     = monto;   // = principalVES + comisionVES
+
+        els.simResPrincipalValue.textContent = `$${fmt(principalUSD)} USD`;
+        els.simResEquivMonto.textContent     = `${fmt(principalVES)} VES neto`;
+
     } else {
-        els.simBcvMontoLabel.textContent = "Monto de Dólares a Comprar ($)";
-        els.simBcvMonto.placeholder = "Ej. 500";
-        els.simResPrincipalLabel.textContent = "Bolívares Necesarios (Total)";
-        els.simResEquivLabel.textContent = "Costo Neto Divisas (VES):";
-        
+        // ── Modo: Quiero comprar X USD ──────────────────────────────────────
+        els.simBcvMontoLabel.textContent    = 'Monto de Dólares a Comprar ($)';
+        els.simBcvMonto.placeholder         = 'Ej. 500';
+        els.simResPrincipalLabel.textContent = 'Total VES Requeridos';
+        els.simResEquivLabel.textContent    = 'VES solo divisas (sin comisión):';
+
         principalUSD = monto;
         principalVES = principalUSD * tasa;
-        comisionVES = principalVES * comisionPct;
-        totalVES = principalVES + comisionVES;
-        
-        els.simResPrincipalValue.textContent = `${totalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
-        els.simResEquivMonto.textContent = `${principalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES ($${principalUSD.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD)`;
+        comisionVES  = principalVES * comisionPct;
+        totalVES     = principalVES + comisionVES;
+
+        els.simResPrincipalValue.textContent = `${fmt(totalVES)} VES`;
+        els.simResEquivMonto.textContent     = `${fmt(principalVES)} VES`;
     }
-    
-    els.simResComisionVes.textContent = `${comisionVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
-    els.simResTotalVes.textContent = `${totalVES.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
-    
-    if (limiteCuenta > 0) {
-        const cuentasExactas = principalUSD / limiteCuenta;
-        const cuentasRedondeadas = Math.ceil(cuentasExactas);
-        
-        if (cuentasRedondeadas === 0) {
-            els.simResCuentasValue.textContent = "0 cuentas";
-            els.simResCuentasDesc.textContent = "Introduce un monto para calcular.";
-        } else {
-            els.simResCuentasValue.textContent = `${cuentasRedondeadas} ${cuentasRedondeadas === 1 ? 'cuenta' : 'cuentas'}`;
-            
-            let remainingUSD = principalUSD;
-            const parts = [];
-            for (let i = 0; i < cuentasRedondeadas; i++) {
-                const amount = Math.min(remainingUSD, limiteCuenta);
-                parts.push(`$${amount.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
-                remainingUSD -= amount;
-            }
-            els.simResCuentasDesc.textContent = `Se requiere distribuir en: ${parts.join(' + ')}`;
-        }
+
+    els.simResComisionVes.textContent = comisionPct > 0
+        ? `${fmt(comisionVES)} VES (${fmt(comisionPct * 100, 2)}%)`
+        : '0,00 VES (Exento)';
+    els.simResTotalVes.textContent    = `${fmt(totalVES)} VES`;
+
+    // ── Distribución por cuenta ─────────────────────────────────────────────
+    if (limiteCuenta <= 0 || principalUSD <= 0) {
+        els.simResCuentasValue.textContent = '—';
+        els.simResCuentasDesc.innerHTML    = '<span style="color:var(--text-muted);">Define un límite por cuenta.</span>';
+        return;
+    }
+
+    const cuentasNecesarias = Math.ceil(principalUSD / limiteCuenta);
+    els.simResCuentasValue.textContent = `${cuentasNecesarias} ${cuentasNecesarias === 1 ? 'cuenta' : 'cuentas'}`;
+
+    // Build detailed per-account table
+    let remainingUSD = principalUSD;
+    let rowsHtml = `
+        <div style="margin-top:8px; border:1px solid rgba(168,85,247,0.2); border-radius:8px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:auto 1fr 1fr; gap:0; font-size:0.72rem; font-weight:700; color:var(--text-secondary); padding:5px 10px; background:rgba(168,85,247,0.08); text-transform:uppercase; letter-spacing:0.04em;">
+                <span style="padding-right:10px;">#</span>
+                <span>USD</span>
+                <span style="text-align:right;">VES a depositar</span>
+            </div>`;
+
+    for (let i = 0; i < cuentasNecesarias; i++) {
+        const usdCuenta  = Math.min(remainingUSD, limiteCuenta);
+        const vesCuenta  = usdCuenta * vesPerUsdTotal;
+        const isLast     = i === cuentasNecesarias - 1;
+        const rowBg      = isLast && cuentasNecesarias > 1
+            ? 'background:rgba(245,158,11,0.06);'
+            : (i % 2 === 0 ? 'background:rgba(255,255,255,0.02);' : '');
+
+        rowsHtml += `
+            <div style="display:grid; grid-template-columns:auto 1fr 1fr; gap:0; font-size:0.82rem; padding:6px 10px; border-top:1px solid rgba(255,255,255,0.05); align-items:center; ${rowBg}">
+                <span style="color:var(--text-muted); padding-right:10px; font-size:0.72rem;">${i + 1}</span>
+                <span style="font-weight:600; color:var(--secondary);">$${fmt(usdCuenta)} USD</span>
+                <span style="text-align:right; color:var(--text-primary); font-weight:500;">${fmt(vesCuenta)} Bs</span>
+            </div>`;
+        remainingUSD -= usdCuenta;
+    }
+
+    // Totals footer
+    rowsHtml += `
+            <div style="display:grid; grid-template-columns:auto 1fr 1fr; gap:0; font-size:0.82rem; padding:6px 10px; border-top:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); align-items:center;">
+                <span style="padding-right:10px; font-size:0.72rem; color:var(--text-muted);">∑</span>
+                <span style="font-weight:700; color:var(--primary);">$${fmt(principalUSD)} USD</span>
+                <span style="text-align:right; font-weight:700; color:var(--accent);">${fmt(totalVES)} Bs</span>
+            </div>
+        </div>`;
+
+    if (comisionPct > 0) {
+        rowsHtml += `<p style="font-size:0.7rem; color:var(--text-muted); margin-top:5px; line-height:1.3;">
+            * Cada cuenta incluye ${fmt(comisionPct * 100, 2)}% de comisión bancaria en los VES.
+        </p>`;
     } else {
-        els.simResCuentasValue.textContent = "-";
-        els.simResCuentasDesc.textContent = "Sin límite definido";
+        rowsHtml += `<p style="font-size:0.7rem; color:#10b981; margin-top:5px; line-height:1.3;">
+            ✓ Sin comisión bancaria aplicada (Tercera Edad / Exento).
+        </p>`;
     }
+
+    els.simResCuentasDesc.innerHTML = rowsHtml;
 }
 let semanalChartRef = null;
 let mensualChartRef = null;
