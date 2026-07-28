@@ -4282,7 +4282,8 @@ async function loadAndRenderCharts() {
 
         // Render Purchases by Titular Chart
         const ctxComprasTitulares = document.getElementById('chart-compras-titulares');
-        if (ctxComprasTitulares) {
+        const allCompras = state.compras || [];
+        if (ctxComprasTitulares && allCompras.length > 0) {
             const cardToTitularMap = {};
             titulares.forEach(tit => {
                 if (tit.tarjetas) {
@@ -4293,7 +4294,7 @@ async function loadAndRenderCharts() {
             });
             
             const comprasPorTitular = {};
-            filteredCompras.forEach(c => {
+            allCompras.forEach(c => {
                 const titName = cardToTitularMap[c.tarjeta_id] || "Titular Desconocido";
                 comprasPorTitular[titName] = (comprasPorTitular[titName] || 0) + (c.monto_usd || 0);
             });
