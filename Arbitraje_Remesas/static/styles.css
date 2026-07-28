@@ -1090,6 +1090,14 @@ select option {
     background: rgba(239, 68, 68, 0.1);
 }
 
+/* Card Header Controls Group */
+.card-header-controls {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 /* =====================================================
    MOBILE RESPONSIVE — Complete Overhaul v2
    Breakpoints: 768px (tablet/phone), 480px (small phone)
@@ -1592,6 +1600,28 @@ select option {
         float: none;
         margin-top: 0.75rem;
         padding: 0.8rem;
+    }
+
+    /* Header controls wrapping */
+    .card-header-controls {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        gap: 0.5rem !important;
+        margin-top: 0.5rem;
+    }
+    
+    .card-header-controls > * {
+        flex: 1 1 auto !important;
+        min-width: 110px !important;
+        box-sizing: border-box;
+    }
+    
+    .card-header-controls .total-ganado-badge {
+        justify-content: center;
+        text-align: center;
+        padding: 6px 10px !important;
+        font-size: 0.72rem !important;
+        white-space: nowrap;
     }
 
     /* ── General Data Tables (horizontal scroll) ───── */
