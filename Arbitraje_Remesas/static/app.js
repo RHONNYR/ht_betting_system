@@ -1669,7 +1669,7 @@ function renderComprasTable() {
     }
     
     if (filtered.length === 0) {
-        els.comprasTableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No hay registros de compras que coincidan con los filtros seleccionados.</td></tr>';
+        els.comprasTableBody.innerHTML = '<tr><td colspan="10" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">No hay registros de compras que coincidan con los filtros seleccionados.</td></tr>';
         return;
     }
     
@@ -1677,8 +1677,25 @@ function renderComprasTable() {
         const tr = document.createElement('tr');
         const montoVes = c.monto_usd * c.tasa_bcv;
         
+        // Define badge style based on origin tipo
+        const isDirecta = c.tipo === "Directa";
+        const tipoBadge = isDirecta
+            ? `<span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.72rem;">🟢 Directa</span>`
+            : `<span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); font-size: 0.72rem;">🔄 ${c.tipo}</span>`;
+
+        // Only allow editing/deleting direct purchases from this tab to prevent unlinking cycle sub-purchases
+        const actionButtons = isDirecta
+            ? `
+                <div class="flex-row-align" style="gap: 0.4rem; justify-content: center; flex-direction: row !important;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditCompra('${c.id}')" style="padding: 4px 8px; font-size: 0.75rem;" title="Editar compra directa">✏️</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteCompra('${c.id}')" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);" title="Eliminar compra directa">🗑️</button>
+                </div>
+              `
+            : `<span style="font-size: 0.72rem; color: var(--text-muted); font-style: italic;">Editar en sobre de Ciclo</span>`;
+
         tr.innerHTML = `
             <td>${c.fecha}</td>
+            <td>${tipoBadge}</td>
             <td><strong>${c.titular}</strong></td>
             <td>${c.banco}</td>
             <td>${c.tipo_tarjeta}</td>
@@ -1686,12 +1703,7 @@ function renderComprasTable() {
             <td>${c.tasa_bcv.toFixed(2)}</td>
             <td>${montoVes.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
             <td>${c.comision_ves.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES</td>
-            <td>
-                <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
-                    <button class="btn btn-secondary btn-sm" onclick="openEditCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem;">✏️</button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteCompra(${c.id})" style="padding: 4px 8px; font-size: 0.75rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🗑️</button>
-                </div>
-            </td>
+            <td>${actionButtons}</td>
         `;
         els.comprasTableBody.appendChild(tr);
     });
@@ -1704,12 +1716,13 @@ function exportComprasToCSV() {
     }
     
     let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "ID,Fecha,Titular,Banco,Tipo Tarjeta,Monto USD,Tasa BCV,Monto VES,Comision VES\n";
+    csvContent += "ID,Origen,Fecha,Titular,Banco,Tipo Tarjeta,Monto USD,Tasa BCV,Monto VES,Comision VES\n";
     
     state.compras.forEach(c => {
         const montoVes = c.monto_usd * c.tasa_bcv;
         const row = [
             c.id,
+            `"${c.tipo || 'Directa'}"`,
             `"${c.fecha}"`,
             `"${c.titular}"`,
             `"${c.banco}"`,
