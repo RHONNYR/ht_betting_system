@@ -1504,6 +1504,45 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_week, end_of_week)
     
+    # --- TRAFFIC DAYS (all-time remesas by weekday) ---
+    traffic_map = {}
+    for r in all_remesas:
+        if r.fecha:
+            day_name = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"][r.fecha.weekday()]
+            if day_name not in traffic_map:
+                traffic_map[day_name] = {"label": day_name, "volumen": 0.0, "count": 0}
+            traffic_map[day_name]["volumen"] += (r.monto_usd or 0.0)
+            traffic_map[day_name]["count"] += 1
+    traffic_days = list(traffic_map.values())
+
+    # --- TOP CLIENTS ---
+    clients_map = {}
+    for r in all_remesas:
+        name = (r.cliente or "Desconocido").strip()
+        if name not in clients_map:
+            clients_map[name] = {"name": name, "volumen": 0.0, "count": 0}
+        clients_map[name]["volumen"] += (r.monto_usd or 0.0)
+        clients_map[name]["count"] += 1
+    top_clients = sorted(clients_map.values(), key=lambda x: x["volumen"], reverse=True)[:10]
+
+    # --- PAYMENT METHODS ---
+    methods_map = {}
+    for r in all_remesas:
+        metodo = (r.metodo_pago or "Otro").strip()
+        if metodo not in methods_map:
+            methods_map[metodo] = {"metodo": metodo, "volumen": 0.0}
+        methods_map[metodo]["volumen"] += (r.monto_usd or 0.0)
+    payment_methods = sorted(methods_map.values(), key=lambda x: x["volumen"], reverse=True)
+
+    # --- BANKS DESTINATION ---
+    banks_map = {}
+    for r in all_remesas:
+        banco = (r.banco_receptor or "Otro").strip()
+        if banco not in banks_map:
+            banks_map[banco] = {"banco": banco, "volumen": 0.0}
+        banks_map[banco]["volumen"] += (r.monto_usd or 0.0)
+    banks_destination = sorted(banks_map.values(), key=lambda x: x["volumen"], reverse=True)
+
     # 5. Summary KPIs (Remesas & Arbitraje)
     total_remitido = sum(r.monto_usd for r in remesas_summary)
     total_ganancia_remesas = sum(r.ganancia_usd for r in remesas_summary)
