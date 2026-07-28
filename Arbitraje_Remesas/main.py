@@ -1489,7 +1489,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         next_month = now.month + 1 if now.month < 12 else 1
         next_year = now.year if now.month < 12 else now.year + 1
         end_of_month = datetime.datetime(next_year, next_month, 1)
-        remesas_summary = [r for r in all_remesas if r.fecha >= start_of_month and r.fecha < end_of_month]
+        remesas_summary = [r for r in all_remesas if r.fecha and r.fecha >= start_of_month and r.fecha < end_of_month]
         
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_month, end_of_month)
     elif period == "historico":
@@ -1544,15 +1544,15 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     banks_destination = sorted(banks_map.values(), key=lambda x: x["volumen"], reverse=True)
 
     # 5. Summary KPIs (Remesas & Arbitraje)
-    total_remitido = sum(r.monto_usd for r in remesas_summary)
-    total_ganancia_remesas = sum(r.ganancia_usd for r in remesas_summary)
+    total_remitido = sum((r.monto_usd or 0.0) for r in remesas_summary)
+    total_ganancia_remesas = sum((r.ganancia_usd or 0.0) for r in remesas_summary)
     total_operaciones = len(remesas_summary)
     margen_promedio = (total_ganancia_remesas / total_remitido * 100) if total_remitido > 0 else 0.0
     
     rentabilidad_promedio = (total_ganancia_arbitraje / total_arbitrado * 100) if total_arbitrado > 0 else 0.0
     
     # Global Consolidated KPIs (All time & current periods)
-    all_rem_gain = sum(r.ganancia_usd for r in all_remesas)
+    all_rem_gain = sum((r.ganancia_usd or 0.0) for r in all_remesas)
     
     # Historical total arbitraje stats
     _, all_arb_gain, _ = get_arbitraje_stats_for_range(datetime.datetime(2020, 1, 1), datetime.datetime(now.year + 10, 1, 1))
