@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=105">
+    <link rel="stylesheet" href="styles.css?v=106">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -737,7 +737,7 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Historial de Ciclos de Arbitraje</h2>
-                            <div style="display: flex; gap: 8px; align-items: center;">
+                            <div class="card-header-controls">
                                 <select id="filter-periodo-ciclos" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
                                     <option value="semana">Esta Semana (Lun-Dom)</option>
                                     <option value="mes">Este Mes</option>
@@ -782,7 +782,7 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Registro de Compras de Divisas Oficiales</h2>
-                            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                            <div class="card-header-controls">
                                 <select id="filter-compra-titular" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
                                     <option value="todos">👥 Todos los Titulares</option>
                                 </select>
@@ -859,7 +859,7 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
-                            <div style="display: flex; gap: 0.75rem; align-items: center;">
+                            <div class="card-header-controls">
                                 <select id="filter-periodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
                                     <option value="semana">Esta Semana (Lun-Dom)</option>
                                     <option value="mes">Este Mes</option>
@@ -1456,6 +1456,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=105"></script>
+    <script src="app.js?v=106"></script>
 </body>
 </html>
