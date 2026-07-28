@@ -1457,7 +1457,7 @@ select option {
 
     .mini-summary-card .value { font-size: 1.05rem; }
 
-    /* Capital table: convert to card-per-row on mobile */
+    /* Capital table: convert to card-per-row on mobile using Grid layout */
     #tab-capital .table-container {
         border: none;
         background: transparent;
@@ -1478,42 +1478,50 @@ select option {
     #tab-capital .data-table thead { display: none; }
 
     #tab-capital .data-table tr {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 0.8rem;
         border: 1px solid var(--border-color);
-        background: rgba(255,255,255,0.025);
+        background: rgba(255,255,255,0.02);
         border-radius: 12px;
-        margin-bottom: 0.75rem;
-        padding: 0.6rem 0.8rem;
+        margin-bottom: 0.85rem;
+        padding: 0.85rem;
         box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         box-sizing: border-box;
+        width: 100%;
     }
 
     /* Suppress group-header rows on mobile since there's no table */
     #tab-capital .table-group-header { display: none !important; }
 
     #tab-capital .data-table td {
-        border: none;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 0;
-        font-size: 0.85rem;
-        box-sizing: border-box;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0.25rem;
+        border: none;
+        padding: 0;
         width: 100%;
+        box-sizing: border-box;
     }
 
-    #tab-capital .data-table td:last-child { border-bottom: none; }
+    /* Platform name spans full width of the card */
+    #tab-capital .data-table td:nth-child(1) {
+        grid-column: span 2;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
+    }
 
-    /* Label pseudo-element */
+    /* Label pseudo-elements at the top of each block */
     #tab-capital .data-table td::before {
         font-weight: 600;
         color: var(--text-secondary);
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        text-align: left;
-        flex: 0 0 auto;
-        margin-right: 0.5rem;
+        margin-bottom: 0.1rem;
     }
 
     #tab-capital .data-table td:nth-of-type(1)::before { content: "Plataforma"; }
@@ -1524,8 +1532,7 @@ select option {
 
     /* Values styling */
     #tab-capital .data-table td > .val-plat {
-        max-width: 60%;
-        text-align: right;
+        font-size: 0.95rem;
         font-weight: 700;
         color: var(--text-primary);
         white-space: normal;
@@ -1534,17 +1541,16 @@ select option {
 
     #tab-capital .data-table td > .val-equiv,
     #tab-capital .data-table td > .val-sim {
-        max-width: 60%;
-        text-align: right;
+        font-size: 0.88rem;
         font-weight: 600;
         color: var(--text-primary);
     }
 
-    /* Inputs: fixed-width on mobile to prevent collapsing */
+    /* Inputs: fill the column space nicely */
     #tab-capital .data-table input[type="number"] {
-        width: 130px !important;
-        flex: 0 0 auto !important;
-        padding: 0.35rem 0.5rem;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0.4rem 0.6rem;
         font-size: 0.85rem;
         text-align: right;
         background: rgba(255,255,255,0.06);
