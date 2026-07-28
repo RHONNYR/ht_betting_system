@@ -494,15 +494,15 @@ async function loadCapital() {
 
             // Columns ordered: Plataforma, Monto VES, Monto USD, Equiv. USD, Simulado USD
             tr.innerHTML = `
-                <td><strong>${item.plataforma}</strong></td>
+                <td><strong class="val-plat">${item.plataforma}</strong></td>
                 <td>
                     ${item.convertir_ves ? `<input type="number" step="any" class="input-saldo-ves" data-id="${item.id}" value="${item.saldo_ves}">` : '<span class="text-muted">-</span>'}
                 </td>
                 <td>
                     <input type="number" step="any" class="input-saldo-usd" data-id="${item.id}" value="${item.saldo_usd}">
                 </td>
-                <td>$${item.usd_equivalente.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                <td>$${item.usd_simulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span class="text-muted" style="font-size:0.75rem;">(-${comPct}%)</span></td>
+                <td><span class="val-equiv">$${item.usd_equivalente.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span></td>
+                <td><span class="val-sim">$${item.usd_simulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span class="text-muted" style="font-size:0.75rem;">(-${comPct}%)</span></span></td>
             `;
             els.capitalTableBody.appendChild(tr);
         });
