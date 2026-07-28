@@ -1477,7 +1477,7 @@ select option {
 
     #tab-capital .data-table thead { display: none; }
 
-    #tab-capital .data-table tr {
+    #tab-capital .data-table tr:not(.table-group-header) {
         display: grid !important;
         grid-template-columns: 1fr 1fr; /* Two equal columns */
         gap: 0.8rem;
@@ -1491,8 +1491,33 @@ select option {
         width: 100%;
     }
 
-    /* Suppress group-header rows on mobile since there's no table */
-    #tab-capital .table-group-header { display: none !important; }
+    /* Style group-header rows on mobile as clean section dividers */
+    #tab-capital .data-table tr.table-group-header {
+        display: block !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 1.2rem 0.5rem 0.4rem 0.2rem !important;
+        margin-top: 0.5rem;
+        margin-bottom: 0.2rem;
+        width: 100% !important;
+    }
+
+    #tab-capital .table-group-header td {
+        display: block !important;
+        border: none !important;
+        padding: 0 !important;
+        color: #38bdf8 !important; /* Beautiful sky blue highlight for groups */
+        font-weight: 700 !important;
+        font-size: 0.88rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: left !important;
+    }
+
+    #tab-capital .table-group-header td::before {
+        display: none !important; /* Hide "Plataforma" label */
+    }
 
     #tab-capital .data-table td {
         display: flex;
@@ -1507,7 +1532,7 @@ select option {
     }
 
     /* Platform name spans full width of the card */
-    #tab-capital .data-table td:nth-child(1) {
+    #tab-capital .data-table tr:not(.table-group-header) td:nth-child(1) {
         grid-column: span 2;
         border-bottom: 1px solid rgba(255,255,255,0.05);
         padding-bottom: 0.5rem;
