@@ -1518,7 +1518,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     # --- TOP CLIENTS ---
     clients_map = {}
     for r in all_remesas:
-        name = (r.cliente or "Desconocido").strip()
+        name = (r.cliente_nombre or "Desconocido").strip()
         if name not in clients_map:
             clients_map[name] = {"name": name, "volumen": 0.0, "count": 0}
         clients_map[name]["volumen"] += (r.monto_usd or 0.0)
