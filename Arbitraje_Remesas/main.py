@@ -1380,7 +1380,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         
         # Check all partial purchases executed in this range
         for cp in all_compras_parciales:
-            if cp.fecha >= start_date and cp.fecha < end_date:
+            if cp.fecha and cp.fecha >= start_date and cp.fecha < end_date:
                 ciclo = ciclo_map.get(cp.ciclo_id)
                 vol, gan = get_cp_stats(cp, ciclo)
                 total_vol += vol
@@ -1390,7 +1390,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
                     
         # Also check cycles created in this range that HAVE NO partial purchases (legacy or single-step)
         for c in all_ciclos:
-            if c.fecha >= start_date and c.fecha < end_date:
+            if c.fecha and c.fecha >= start_date and c.fecha < end_date:
                 if not c.compras_parciales: # no partial purchases
                     total_vol += (c.usd_procesados_binance or 0.0)
                     total_gan += (c.ganancia_usd or 0.0)
@@ -1403,13 +1403,13 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         total_vol = 0.0
         total_gan = 0.0
         for cp in all_compras_parciales:
-            if cp.fecha.date() == day_date:
+            if cp.fecha and cp.fecha.date() == day_date:
                 ciclo = ciclo_map.get(cp.ciclo_id)
                 vol, gan = get_cp_stats(cp, ciclo)
                 total_vol += vol
                 total_gan += gan
         for c in all_ciclos:
-            if c.fecha.date() == day_date:
+            if c.fecha and c.fecha.date() == day_date:
                 if not c.compras_parciales:
                     total_vol += (c.usd_procesados_binance or 0.0)
                     total_gan += (c.ganancia_usd or 0.0)
@@ -1420,13 +1420,13 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         total_vol = 0.0
         total_gan = 0.0
         for cp in all_compras_parciales:
-            if cp.fecha.year == year and cp.fecha.month == month:
+            if cp.fecha and cp.fecha.year == year and cp.fecha.month == month:
                 ciclo = ciclo_map.get(cp.ciclo_id)
                 vol, gan = get_cp_stats(cp, ciclo)
                 total_vol += vol
                 total_gan += gan
         for c in all_ciclos:
-            if c.fecha.year == year and c.fecha.month == month:
+            if c.fecha and c.fecha.year == year and c.fecha.month == month:
                 if not c.compras_parciales:
                     total_vol += (c.usd_procesados_binance or 0.0)
                     total_gan += (c.ganancia_usd or 0.0)
@@ -1437,7 +1437,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     start_of_week = datetime.datetime(now.year, now.month, now.day) - datetime.timedelta(days=days_to_monday)
     end_of_week = start_of_week + datetime.timedelta(days=7)
     
-    weekly_remesas = [r for r in all_remesas if r.fecha >= start_of_week and r.fecha < end_of_week]
+    weekly_remesas = [r for r in all_remesas if r.fecha and r.fecha >= start_of_week and r.fecha < end_of_week]
     
     days_labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
     weekly_data = []
@@ -1445,7 +1445,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         day_date = (start_of_week + datetime.timedelta(days=idx)).date()
         
         # Filter remesas for this specific day
-        r_day = [r for r in weekly_remesas if r.fecha.date() == day_date]
+        r_day = [r for r in weekly_remesas if r.fecha and r.fecha.date() == day_date]
         vol_rem = sum(r.monto_usd for r in r_day)
         gan_rem = sum(r.ganancia_usd for r in r_day)
         
@@ -1469,7 +1469,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     monthly_data = []
     for m_idx in range(1, 13):
         # Filter for month m_idx
-        r_month = [r for r in all_remesas if r.fecha.year == now.year and r.fecha.month == m_idx]
+        r_month = [r for r in all_remesas if r.fecha and r.fecha.year == now.year and r.fecha.month == m_idx]
         vol_rem = sum(r.monto_usd for r in r_month)
         gan_rem = sum(r.ganancia_usd for r in r_month)
         
