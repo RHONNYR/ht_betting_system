@@ -1472,7 +1472,9 @@ select option {
     #tab-capital .data-table td,
     #tab-capital .data-table tr {
         display: block;
-        width: 100%;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
     }
 
     #tab-capital .data-table thead { display: none; }
