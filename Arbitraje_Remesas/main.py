@@ -1356,20 +1356,88 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
 def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     now = get_venezuela_time()
     
+    # Helpers to calculate stats for a single CompraCicloParcial
+    def get_cp_stats(cp, ciclo):
+        costo_ves = (cp.usd_comprados * cp.tasa_bcv) + (cp.comision_compra_ves or 0.0) + (cp.transferencias_ves or 0.0)
+        costo_usdt = costo_ves / ciclo.tasa_venta if (ciclo and ciclo.tasa_venta > 0) else 0.0
+        gan_usd = cp.usd_recibidos_binance - costo_usdt
+        vol_usd = cp.usd_procesados if (cp.usd_procesados and cp.usd_procesados > 0) else cp.usd_comprados
+        return vol_usd, gan_usd
+
+    # 1. Fetch all relevant records
+    all_remesas = db.query(HistorialRemesas).all()
+    all_ciclos = db.query(HistorialCiclos).all()
+    all_compras_parciales = db.query(CompraCicloParcial).all()
+    
+    # Map ciclo_id to the ciclo object for fast lookup
+    ciclo_map = {c.id: c for c in all_ciclos}
+    
+    # Helper to calculate consolidated stats of arbitraje for any given list of dates/ranges
+    def get_arbitraje_stats_for_range(start_date, end_date):
+        total_vol = 0.0
+        total_gan = 0.0
+        cycles_counted = set()
+        
+        # Check all partial purchases executed in this range
+        for cp in all_compras_parciales:
+            if cp.fecha >= start_date and cp.fecha < end_date:
+                ciclo = ciclo_map.get(cp.ciclo_id)
+                vol, gan = get_cp_stats(cp, ciclo)
+                total_vol += vol
+                total_gan += gan
+                if cp.ciclo_id:
+                    cycles_counted.add(cp.ciclo_id)
+                    
+        # Also check cycles created in this range that HAVE NO partial purchases (legacy or single-step)
+        for c in all_ciclos:
+            if c.fecha >= start_date and c.fecha < end_date:
+                if not c.compras_parciales: # no partial purchases
+                    total_vol += (c.usd_procesados_binance or 0.0)
+                    total_gan += (c.ganancia_usd or 0.0)
+                    cycles_counted.add(c.id)
+                    
+        return total_vol, total_gan, len(cycles_counted)
+
+    # Helper to calculate consolidated stats of arbitraje for a specific day
+    def get_arbitraje_stats_for_day(day_date):
+        total_vol = 0.0
+        total_gan = 0.0
+        for cp in all_compras_parciales:
+            if cp.fecha.date() == day_date:
+                ciclo = ciclo_map.get(cp.ciclo_id)
+                vol, gan = get_cp_stats(cp, ciclo)
+                total_vol += vol
+                total_gan += gan
+        for c in all_ciclos:
+            if c.fecha.date() == day_date:
+                if not c.compras_parciales:
+                    total_vol += (c.usd_procesados_binance or 0.0)
+                    total_gan += (c.ganancia_usd or 0.0)
+        return total_vol, total_gan
+
+    # Helper to calculate consolidated stats of arbitraje for a specific month
+    def get_arbitraje_stats_for_month(year, month):
+        total_vol = 0.0
+        total_gan = 0.0
+        for cp in all_compras_parciales:
+            if cp.fecha.year == year and cp.fecha.month == month:
+                ciclo = ciclo_map.get(cp.ciclo_id)
+                vol, gan = get_cp_stats(cp, ciclo)
+                total_vol += vol
+                total_gan += gan
+        for c in all_ciclos:
+            if c.fecha.year == year and c.fecha.month == month:
+                if not c.compras_parciales:
+                    total_vol += (c.usd_procesados_binance or 0.0)
+                    total_gan += (c.ganancia_usd or 0.0)
+        return total_vol, total_gan
+
     # --- WEEKLY (Monday to Sunday) ---
     days_to_monday = now.weekday()
     start_of_week = datetime.datetime(now.year, now.month, now.day) - datetime.timedelta(days=days_to_monday)
     end_of_week = start_of_week + datetime.timedelta(days=7)
     
-    weekly_remesas = db.query(HistorialRemesas).filter(
-        HistorialRemesas.fecha >= start_of_week,
-        HistorialRemesas.fecha < end_of_week
-    ).all()
-    
-    weekly_ciclos = db.query(HistorialCiclos).filter(
-        HistorialCiclos.fecha >= start_of_week,
-        HistorialCiclos.fecha < end_of_week
-    ).all()
+    weekly_remesas = [r for r in all_remesas if r.fecha >= start_of_week and r.fecha < end_of_week]
     
     days_labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
     weekly_data = []
@@ -1381,10 +1449,8 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         vol_rem = sum(r.monto_usd for r in r_day)
         gan_rem = sum(r.ganancia_usd for r in r_day)
         
-        # Filter cycles for this specific day
-        c_day = [c for c in weekly_ciclos if c.fecha.date() == day_date]
-        vol_cic = sum(c.usd_procesados_binance or 0.0 for c in c_day)
-        gan_cic = sum(c.ganancia_usd or 0.0 for c in c_day)
+        # Filter cycle purchases for this specific day
+        vol_cic, gan_cic = get_arbitraje_stats_for_day(day_date)
         
         weekly_data.append({
             "label": days_labels[idx],
@@ -1396,19 +1462,6 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         })
         
     # --- MONTHLY (Current Year) ---
-    start_of_year = datetime.datetime(now.year, 1, 1)
-    end_of_year = datetime.datetime(now.year + 1, 1, 1)
-    
-    monthly_remesas = db.query(HistorialRemesas).filter(
-        HistorialRemesas.fecha >= start_of_year,
-        HistorialRemesas.fecha < end_of_year
-    ).all()
-    
-    monthly_ciclos = db.query(HistorialCiclos).filter(
-        HistorialCiclos.fecha >= start_of_year,
-        HistorialCiclos.fecha < end_of_year
-    ).all()
-    
     months_labels = [
         "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
@@ -1416,13 +1469,11 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     monthly_data = []
     for m_idx in range(1, 13):
         # Filter for month m_idx
-        r_month = [r for r in monthly_remesas if r.fecha.month == m_idx]
+        r_month = [r for r in all_remesas if r.fecha.year == now.year and r.fecha.month == m_idx]
         vol_rem = sum(r.monto_usd for r in r_month)
         gan_rem = sum(r.ganancia_usd for r in r_month)
         
-        c_month = [c for c in monthly_ciclos if c.fecha.month == m_idx]
-        vol_cic = sum(c.usd_procesados_binance or 0.0 for c in c_month)
-        gan_cic = sum(c.ganancia_usd or 0.0 for c in c_month)
+        vol_cic, gan_cic = get_arbitraje_stats_for_month(now.year, m_idx)
         
         monthly_data.append({
             "label": months_labels[m_idx - 1],
@@ -1432,78 +1483,6 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
             "ganancia_ciclos": gan_cic
         })
         
-    # --- REMITTANCES DEEP ANALYTICS ---
-    all_remesas = db.query(HistorialRemesas).all()
-    all_ciclos = db.query(HistorialCiclos).all()
-    
-    # 1. Traffic by Day of the Week (Lunes to Domingo)
-    traffic_days_dict = {i: {"volumen": 0.0, "count": 0} for i in range(7)}
-    for r in all_remesas:
-        w = r.fecha.weekday()
-        traffic_days_dict[w]["volumen"] += r.monto_usd
-        traffic_days_dict[w]["count"] += 1
-        
-    traffic_days = [
-        {
-            "day_num": i,
-            "label": days_labels[i],
-            "volumen": traffic_days_dict[i]["volumen"],
-            "count": traffic_days_dict[i]["count"]
-        } for i in range(7)
-    ]
-    
-    # 2. Top Clients
-    clients_dict = {}
-    for r in all_remesas:
-        name = r.cliente_nombre.strip() if r.cliente_nombre else "Desconocido"
-        if name not in clients_dict:
-            clients_dict[name] = {"volumen": 0.0, "count": 0}
-        clients_dict[name]["volumen"] += r.monto_usd
-        clients_dict[name]["count"] += 1
-        
-    sorted_clients = sorted(clients_dict.items(), key=lambda x: x[1]["volumen"], reverse=True)
-    top_clients = [
-        {
-            "name": name,
-            "volumen": data["volumen"],
-            "count": data["count"]
-        } for name, data in sorted_clients[:10]
-    ]
-    
-    # 3. Payment Methods Distribution
-    methods_dict = {}
-    for r in all_remesas:
-        m = r.metodo_pago.strip() if r.metodo_pago else "Otro"
-        if m not in methods_dict:
-            methods_dict[m] = {"volumen": 0.0, "count": 0}
-        methods_dict[m]["volumen"] += r.monto_usd
-        methods_dict[m]["count"] += 1
-        
-    payment_methods = [
-        {
-            "metodo": k,
-            "volumen": v["volumen"],
-            "count": v["count"]
-        } for k, v in methods_dict.items()
-    ]
-    
-    # 4. Destination Banks Distribution
-    banks_dict = {}
-    for r in all_remesas:
-        b = r.banco_receptor.strip() if r.banco_receptor else "Otro"
-        if b not in banks_dict:
-            banks_dict[b] = {"volumen": 0.0, "count": 0}
-        banks_dict[b]["volumen"] += r.monto_usd
-        banks_dict[b]["count"] += 1
-        
-    banks_destination = [
-        {
-            "banco": k,
-            "volumen": v["volumen"],
-            "count": v["count"]
-        } for k, v in banks_dict.items()
-    ]
-    
     # --- PERIOD FILTER FOR SUMMARY KPIS ---
     if period == "mes":
         start_of_month = datetime.datetime(now.year, now.month, 1)
@@ -1511,13 +1490,19 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         next_year = now.year if now.month < 12 else now.year + 1
         end_of_month = datetime.datetime(next_year, next_month, 1)
         remesas_summary = [r for r in all_remesas if r.fecha >= start_of_month and r.fecha < end_of_month]
-        ciclos_summary = [c for c in all_ciclos if c.fecha >= start_of_month and c.fecha < end_of_month]
+        
+        total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_month, end_of_month)
     elif period == "historico":
         remesas_summary = all_remesas
-        ciclos_summary = all_ciclos
+        
+        # Historical range spans from start of records to future
+        start_of_time = datetime.datetime(2020, 1, 1)
+        end_of_time = datetime.datetime(now.year + 10, 1, 1)
+        total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_time, end_of_time)
     else:  # default "semana"
         remesas_summary = weekly_remesas
-        ciclos_summary = weekly_ciclos
+        
+        total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_week, end_of_week)
     
     # 5. Summary KPIs (Remesas & Arbitraje)
     total_remitido = sum(r.monto_usd for r in remesas_summary)
@@ -1525,14 +1510,14 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     total_operaciones = len(remesas_summary)
     margen_promedio = (total_ganancia_remesas / total_remitido * 100) if total_remitido > 0 else 0.0
     
-    total_arbitrado = sum(c.usd_procesados_binance or 0.0 for c in ciclos_summary)
-    total_ganancia_arbitraje = sum(c.ganancia_usd or 0.0 for c in ciclos_summary)
-    total_ciclos_count = len(ciclos_summary)
     rentabilidad_promedio = (total_ganancia_arbitraje / total_arbitrado * 100) if total_arbitrado > 0 else 0.0
     
     # Global Consolidated KPIs (All time & current periods)
     all_rem_gain = sum(r.ganancia_usd for r in all_remesas)
-    all_arb_gain = sum(c.ganancia_usd or 0.0 for c in all_ciclos)
+    
+    # Historical total arbitraje stats
+    _, all_arb_gain, _ = get_arbitraje_stats_for_range(datetime.datetime(2020, 1, 1), datetime.datetime(now.year + 10, 1, 1))
+    
     ganancia_semanal_consolidada = sum(day["ganancia_remesas"] + day["ganancia_ciclos"] for day in weekly_data)
     current_month_data = monthly_data[now.month - 1]
     ganancia_mensual_consolidada = current_month_data["ganancia_remesas"] + current_month_data["ganancia_ciclos"]
@@ -1544,7 +1529,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     else:
         pct_remesas = 0.0
         pct_arbitraje = 0.0
-
+        
     summary = {
         "total_remitido": total_remitido,
         "total_ganancia_remesas": total_ganancia_remesas,
