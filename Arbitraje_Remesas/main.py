@@ -817,15 +817,25 @@ def reset_titular_limites(titular_id: int, username: str = Depends(get_current_u
 # Divisas Purchases (Bitácora de Compras)
 @app.get("/api/compras")
 def get_compras(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
-    compras = db.query(CompraDivisa).order_by(CompraDivisa.fecha.desc()).limit(100).all()
+    # 1. Fetch standalone purchases
+    compras_directas = db.query(CompraDivisa).all()
+    
+    # 2. Fetch partial purchases from cycles
+    compras_ciclos = db.query(CompraCicloParcial).all()
+    
     result = []
-    for c in compras:
+    
+    # Process standalone purchases
+    for c in compras_directas:
         card = c.tarjeta
         tit = card.titular if card else None
         compra_comm_pct = 0.0 if (tit and tit.tercera_edad) else 0.005
         calc_comision_ves = (c.monto_usd * c.tasa_bcv) * compra_comm_pct
         result.append({
-            "id": c.id,
+            "id": f"dir-{c.id}", # unique ID string prefix
+            "raw_id": c.id,
+            "tipo": "Directa",
+            "fecha_obj": c.fecha,
             "fecha": c.fecha.strftime("%d/%m/%Y %I:%M %p"),
             "tarjeta_id": c.tarjeta_id,
             "banco": card.banco if card else "N/A",
@@ -835,7 +845,33 @@ def get_compras(username: str = Depends(get_current_user), db: Session = Depends
             "tasa_bcv": c.tasa_bcv,
             "comision_ves": calc_comision_ves
         })
-    return result
+        
+    # Process cycle partial purchases
+    for cp in compras_ciclos:
+        card = cp.tarjeta
+        tit = card.titular if card else None
+        # Use commission from cycle purchase directly, or calculate if not present
+        calc_comision_ves = cp.comision_compra_ves if cp.comision_compra_ves is not None else 0.0
+        result.append({
+            "id": f"cic-{cp.id}", # unique ID string prefix
+            "raw_id": cp.id,
+            "tipo": f"Ciclo #{cp.ciclo_id}",
+            "fecha_obj": cp.fecha,
+            "fecha": cp.fecha.strftime("%d/%m/%Y %I:%M %p"),
+            "tarjeta_id": cp.tarjeta_id,
+            "banco": card.banco if card else (cp.banco or "N/A"),
+            "tipo_tarjeta": card.tipo_tarjeta if card else "N/A",
+            "titular": tit.nombre if tit else "N/A",
+            "monto_usd": cp.usd_comprados,
+            "tasa_bcv": cp.tasa_bcv,
+            "comision_ves": calc_comision_ves
+        })
+        
+    # Sort all combined purchases by date descending
+    result.sort(key=lambda x: x["fecha_obj"], reverse=True)
+    
+    # Return the latest 150 items
+    return result[:150]
 
 @app.post("/api/compras")
 def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
