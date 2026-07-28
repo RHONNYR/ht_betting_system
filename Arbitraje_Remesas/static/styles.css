@@ -1406,6 +1406,45 @@ select option {
     }
 
     /* ── CAPITAL & TARJETAS — Card layout (no overflow) ── */
+
+    /* Glass-card: ensure it never overflows screen */
+    #tab-capital .glass-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    /* Card header: stack title and buttons vertically on mobile */
+    #tab-capital .card-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.6rem !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    #tab-capital .card-header h2 {
+        font-size: 0.95rem;
+    }
+
+    /* Button group: wrap and full-width */
+    #tab-capital .card-header > div {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.4rem !important;
+        width: 100% !important;
+    }
+
+    #tab-capital .card-header > div button,
+    #tab-capital .card-header > div .btn {
+        flex: 1 1 auto;
+        font-size: 0.72rem !important;
+        padding: 0.4rem 0.5rem !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
     .capital-summary-cards {
         grid-template-columns: 1fr 1fr;
         gap: 0.6rem;
