@@ -803,16 +803,19 @@ function updateSuggestedDivisas() {
         const usdtNetos = usdt * (1 - binanceFeePct);
         const bsRecibidos = usdtNetos * tasa;
         
-        // Get card properties (Tercera Edad exenta del 0.5%)
+        // Get card properties (Tercera Edad exenta del 0.5% solo en Banco de Venezuela)
         let isTerceraEdad = false;
+        let isBdv = false;
         if (els.calcTarjetaCompra && els.calcTarjetaCompra.selectedIndex >= 0) {
             const selectedOption = els.calcTarjetaCompra.options[els.calcTarjetaCompra.selectedIndex];
             if (selectedOption) {
                 isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
+                const bank = (selectedOption.getAttribute('data-banco') || '').toLowerCase();
+                isBdv = bank.includes('venezuela') || bank.includes('bdv');
             }
         }
         
-        const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+        const compraComisionPct = (isTerceraEdad && isBdv) ? 0.0 : 0.005; // 0.5%
         const pmFeePct = (els.calcPagoMovilAuto && els.calcPagoMovilAuto.checked) ? 0.003 : 0.0; // 0.3%
         
         // Exact VES multiplier: Tasa BCV * (1 + compraComisionPct + pmFeePct)
@@ -846,6 +849,8 @@ function handleCalcularCiclo() {
     
     const cardComisionPct = parseFloat(selectedOption.getAttribute('data-comision'));
     const isTerceraEdad = (els.calcTerceraEdad && els.calcTerceraEdad.checked) || (selectedOption.getAttribute('data-tercera-edad') === 'true');
+    const bank = (selectedOption.getAttribute('data-banco') || '').toLowerCase();
+    const isBdv = bank.includes('venezuela') || bank.includes('bdv');
     
     // 1. USDT Ventas
     const binanceFeePct = 0.0025; // 0.25%
@@ -853,7 +858,7 @@ function handleCalcularCiclo() {
     const bolivaresRecibidos = usdtNetosRecibidos * tasaVenta;
     
     // 2. Compra Divisas Oficiales
-    const compraComisionPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+    const compraComisionPct = (isTerceraEdad && isBdv) ? 0.0 : 0.005; // 0.5%
     const costoBaseVES = divisasCompradas * state.bcvRate;
     const comisionCompraVES = costoBaseVES * compraComisionPct;
     
@@ -1220,9 +1225,10 @@ function updatePartialBuyPreview() {
     if (usd > 0 && tasa > 0 && targetSelect && targetSelect.selectedIndex >= 0) {
         const selectedOption = targetSelect.options[targetSelect.selectedIndex];
         const bancoText = selectedOption ? (selectedOption.getAttribute('data-banco') || 'Banco') : 'Banco';
+        const isBdv = bancoText.toLowerCase().includes('venezuela') || bancoText.toLowerCase().includes('bdv');
         
         const costoBase = usd * tasa;
-        const comisionCompra = applyTercera ? 0.0 : (costoBase * 0.005);
+        const comisionCompra = (applyTercera && isBdv) ? 0.0 : (costoBase * 0.005);
         const comisionPm = applyPm ? (costoBase * 0.003) : 0.0;
         const totalVes = costoBase + comisionCompra + comisionPm;
         
@@ -1375,7 +1381,8 @@ async function handleCompraParcialSubmit(e) {
     }
     
     const applyTerceraEdad = (els.compraParcialTerceraEdad && els.compraParcialTerceraEdad.checked) || isTerceraEdad;
-    const compraComisionPct = applyTerceraEdad ? 0.0 : 0.005; // 0.5%
+    const isBdv = (bancoText || '').toLowerCase().includes('venezuela') || (bancoText || '').toLowerCase().includes('bdv');
+    const compraComisionPct = (applyTerceraEdad && isBdv) ? 0.0 : 0.005; // 0.5%
     const costoBaseVES = usd * tasa;
     const comisionCompraVES = costoBaseVES * compraComisionPct;
     const transferenciasVes = applyPm ? (costoBaseVES * 0.003) : 0.0;
@@ -1762,21 +1769,24 @@ function updateCompraLiveBreakdown() {
     const selectedOpt = tarjetaSelect.options[tarjetaSelect.selectedIndex];
     let isTerceraEdad = false;
     let cardCommPct = 0.015;
+    let isBdv = false;
     
     if (selectedOpt) {
         isTerceraEdad = selectedOpt.getAttribute('data-tercera-edad') === 'true';
         const rawComm = selectedOpt.getAttribute('data-comision');
         cardCommPct = (rawComm !== null && rawComm !== undefined && !isNaN(parseFloat(rawComm))) ? parseFloat(rawComm) : 0.0;
+        const bankName = (selectedOpt.getAttribute('data-banco') || '').toLowerCase();
+        isBdv = bankName.includes('venezuela') || bankName.includes('bdv');
     }
     
-    const bcvCommPct = isTerceraEdad ? 0.0 : 0.005; // 0.5%
+    const bcvCommPct = (isTerceraEdad && isBdv) ? 0.0 : 0.005; // 0.5%
     const montoVes = montoUsd * tasaBcv;
     const comisionVes = montoVes * bcvCommPct;
     
     const cardFeeUsd = montoUsd * cardCommPct;
     const netoBinanceUsd = montoUsd * (1 - cardCommPct);
     
-    comisionBcvEl.textContent = `${comisionVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES (${isTerceraEdad ? '0% Exento 3ra Edad' : '0.5%'})`;
+    comisionBcvEl.textContent = `${comisionVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES (${(isTerceraEdad && isBdv) ? '0% Exento 3ra Edad' : '0.5%'})`;
     comisionCardEl.textContent = `$${cardFeeUsd.toFixed(2)} USD (${(cardCommPct * 100).toFixed(1)}%)`;
     netoBinanceEl.textContent = `$${netoBinanceUsd.toFixed(2)} USDT`;
     
