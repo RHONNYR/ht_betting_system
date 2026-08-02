@@ -149,6 +149,68 @@ class MovimientoZelle(Base):
     estado = Column(String, default="completado")  # "completado", "pendiente", "remesado"
     remesa_id = Column(Integer, nullable=True)
 
+class CategoriaPersonal(Base):
+    __tablename__ = "personal_categorias"
+    id = Column(Integer, primary_key=True, index=True)
+    nombre = Column(String, unique=True, index=True, nullable=False)
+    tipo = Column(String, nullable=False)  # "gasto" o "ingreso"
+    icono = Column(String, default="⚙️")
+    editable = Column(Boolean, default=True)
+
+    gastos = relationship("GastoPersonal", back_populates="categoria")
+    ingresos = relationship("IngresoPersonal", back_populates="categoria")
+
+class GastoPersonal(Base):
+    __tablename__ = "personal_gastos"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    monto = Column(Float, nullable=False)
+    moneda = Column(String, default="USD")  # "USD" o "VES"
+    tasa_bcv = Column(Float, default=0.0)
+    monto_usd = Column(Float, nullable=False)  # Unificado
+    categoria_id = Column(Integer, ForeignKey("personal_categorias.id"))
+    subcategoria = Column(String, nullable=True)  # Ej: "Movistar - Rhonny", "Google Drive"
+    detalles = Column(String, nullable=True)
+    plataforma_pago = Column(String, default="Mercantil")  # Bancamiga, Zelle, Provincial, etc.
+    deuda_id = Column(Integer, ForeignKey("personal_deudas.id", ondelete="SET NULL"), nullable=True)
+
+    categoria = relationship("CategoriaPersonal", back_populates="gastos")
+    deuda = relationship("DeudaPersonal", back_populates="pagos")
+
+class DeudaPersonal(Base):
+    __tablename__ = "personal_deudas"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha_creacion = Column(DateTime, default=datetime.datetime.utcnow)
+    acreedor = Column(String, nullable=False)  # Cashea, Banco, Persona
+    monto_original_usd = Column(Float, nullable=False)
+    saldo_pendiente_usd = Column(Float, nullable=False)
+    categoria_compra = Column(String, nullable=True)  # Ej: "Insumos Deportivos"
+    detalles = Column(String, nullable=True)
+    estado = Column(String, default="activa")  # "activa" o "pagada"
+
+    pagos = relationship("GastoPersonal", back_populates="deuda")
+
+class IngresoPersonal(Base):
+    __tablename__ = "personal_ingresos"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    monto = Column(Float, nullable=False)
+    moneda = Column(String, default="USD")  # "USD" o "VES"
+    tasa_bcv = Column(Float, default=0.0)
+    monto_usd = Column(Float, nullable=False)
+    categoria_id = Column(Integer, ForeignKey("personal_categorias.id"))
+    detalles = Column(String, nullable=True)
+
+    categoria = relationship("CategoriaPersonal", back_populates="ingresos")
+
+class PresupuestoPersonal(Base):
+    __tablename__ = "personal_presupuestos"
+    id = Column(Integer, primary_key=True, index=True)
+    categoria_id = Column(Integer, ForeignKey("personal_categorias.id"), unique=True)
+    limite_semanal_usd = Column(Float, default=0.0)
+    limite_mensual_usd = Column(Float, default=0.0)
+
+
 def init_db():
     Base.metadata.create_all(bind=engine)
     from sqlalchemy import text
@@ -172,3 +234,44 @@ def init_db():
             conn.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN remesa_id INTEGER;"))
     except Exception as e:
         pass
+
+    # Populate default personal categories if empty
+    db = SessionLocal()
+    try:
+        if db.query(CategoriaPersonal).count() == 0:
+            default_categories = [
+                # Gastos
+                {"nombre": "Mercado", "tipo": "gasto", "icono": "🛒", "editable": False},
+                {"nombre": "Restaurantes", "tipo": "gasto", "icono": "🍔", "editable": False},
+                {"nombre": "Esparcimiento Social", "tipo": "gasto", "icono": "🍺", "editable": False},
+                {"nombre": "Compartir Deportivo", "tipo": "gasto", "icono": "🤝", "editable": False},
+                {"nombre": "Mesada Familiar", "tipo": "gasto", "icono": "👵", "editable": False},
+                {"nombre": "Gasolina", "tipo": "gasto", "icono": "⛽", "editable": False},
+                {"nombre": "Cobretag (Peajes)", "tipo": "gasto", "icono": "🎫", "editable": False},
+                {"nombre": "Mantenimiento Carro", "tipo": "gasto", "icono": "🔧", "editable": False},
+                {"nombre": "Internet", "tipo": "gasto", "icono": "🌐", "editable": False},
+                {"nombre": "Recargas Celular", "tipo": "gasto", "icono": "📱", "editable": False},
+                {"nombre": "Servicios & Suscripciones", "tipo": "gasto", "icono": "🚀", "editable": False},
+                {"nombre": "Embellecimiento", "tipo": "gasto", "icono": "✂️", "editable": False},
+                {"nombre": "Escuela Béisbol", "tipo": "gasto", "icono": "⚾", "editable": False},
+                {"nombre": "Entrenamiento Personalizado", "tipo": "gasto", "icono": "🏃", "editable": False},
+                {"nombre": "Arbitrajes", "tipo": "gasto", "icono": "🏁", "editable": False},
+                {"nombre": "Insumos Deportivos", "tipo": "gasto", "icono": "👟", "editable": False},
+                {"nombre": "Cuidado Diario & Salud", "tipo": "gasto", "icono": "💊", "editable": False},
+                {"nombre": "Pago de Deuda", "tipo": "gasto", "icono": "💸", "editable": False},
+                # Ingresos
+                {"nombre": "Salario PDVSA", "tipo": "ingreso", "icono": "💼", "editable": False},
+                {"nombre": "Sueldo Auto-asignado", "tipo": "ingreso", "icono": "💵", "editable": False},
+                # Otros / Comodín
+                {"nombre": "Otros Gastos / Ingresos", "tipo": "gasto", "icono": "⚙️", "editable": False}
+            ]
+            for cat_data in default_categories:
+                cat = CategoriaPersonal(**cat_data)
+                db.add(cat)
+            db.commit()
+    except Exception as e:
+        print(f"Error seeding categories: {e}")
+        db.rollback()
+    finally:
+        db.close()
+
