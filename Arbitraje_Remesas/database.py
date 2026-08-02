@@ -28,6 +28,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, index=True)
     password_hash = Column(String)
+    personal_pin = Column(String, default="0000")
 
 class Titular(Base):
     __tablename__ = "titulares"
@@ -232,6 +233,11 @@ def init_db():
     try:
         with engine.begin() as conn:
             conn.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN remesa_id INTEGER;"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE users ADD COLUMN personal_pin VARCHAR DEFAULT '0000';"))
     except Exception as e:
         pass
 
