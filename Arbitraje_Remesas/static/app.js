@@ -4672,7 +4672,7 @@ function updatePinDisplay() {
 window.submitPin = async function() {
     if (state.personalUnlocked) return;
     try {
-        const res = await apiCall('/api/personal/verify-pin', 'POST', { pin: state.currentPinEntered });
+        const res = await apiCall('/personal/verify-pin', 'POST', { pin: state.currentPinEntered });
         if (res.success) {
             state.personalUnlocked = true;
             document.getElementById('personal-lock-screen').style.display = 'none';
@@ -4821,19 +4821,19 @@ async function loadPersonalFinanceData() {
     
     try {
         // Cargar Categorías
-        const cats = await apiCall('/api/personal/categorias');
+        const cats = await apiCall('/personal/categorias');
         populatePersonalCategories(cats);
         
         // Cargar Dashboard / Asesor
-        const dash = await apiCall('/api/personal/dashboard');
+        const dash = await apiCall('/personal/dashboard');
         renderPersonalDashboard(dash);
         
         // Cargar Deudas
-        const deudas = await apiCall('/api/personal/deudas');
+        const deudas = await apiCall('/personal/deudas');
         renderPersonalDeudasTable(deudas);
         
         // Cargar Historial
-        const gastos = await apiCall('/api/personal/gastos');
+        const gastos = await apiCall('/personal/gastos');
         renderPersonalHistoryTable(gastos);
         
     } catch (err) {
@@ -5100,7 +5100,7 @@ async function handleGastoSubmit(e) {
     };
     
     try {
-        await apiCall('/api/personal/gastos', 'POST', payload);
+        await apiCall('/personal/gastos', 'POST', payload);
         showToast("✅ Gasto registrado");
         
         // Reset form
@@ -5128,7 +5128,7 @@ async function handleIngresoSubmit(e) {
     };
     
     try {
-        await apiCall('/api/personal/ingresos', 'POST', payload);
+        await apiCall('/personal/ingresos', 'POST', payload);
         showToast("✅ Ingreso registrado");
         
         document.getElementById('p-ingreso-monto').value = '';
@@ -5153,7 +5153,7 @@ async function handleDeudaSubmit(e) {
     };
     
     try {
-        await apiCall('/api/personal/deudas', 'POST', payload);
+        await apiCall('/personal/deudas', 'POST', payload);
         showToast("💳 Deuda creada con éxito");
         
         document.getElementById('p-deuda-acreedor').value = '';
@@ -5177,7 +5177,7 @@ async function handleCategoryModalSubmit(e) {
     };
     
     try {
-        await apiCall('/api/personal/categorias', 'POST', payload);
+        await apiCall('/personal/categorias', 'POST', payload);
         showToast("✅ Nueva categoría creada");
         closeModal(document.getElementById('modal-personal-categoria'));
         document.getElementById('modal-cat-nombre').value = '';
@@ -5201,7 +5201,7 @@ async function handlePagoDeudaModalSubmit(e) {
     };
     
     try {
-        await apiCall(`/api/personal/deudas/${deudaId}/pagar`, 'POST', payload);
+        await apiCall(`/personal/deudas/${deudaId}/pagar`, 'POST', payload);
         showToast("💸 Abono registrado con éxito");
         closeModal(document.getElementById('modal-pago-deuda'));
         
@@ -5216,7 +5216,7 @@ window.handleDeleteGasto = async function(gastoId) {
     if (!confirm("¿Deseas eliminar este gasto? El capital debitado del banco se restaurará de forma automática.")) return;
     
     try {
-        await apiCall(`/api/personal/gastos/${gastoId}`, 'DELETE');
+        await apiCall(`/personal/gastos/${gastoId}`, 'DELETE');
         showToast("🗑️ Gasto eliminado y capital restaurado");
         await loadPersonalFinanceData();
         await loadCapital();
@@ -5237,7 +5237,7 @@ async function handlePinModalSubmit(e) {
     }
     
     try {
-        await apiCall('/api/personal/change-pin', 'POST', {
+        await apiCall('/personal/change-pin', 'POST', {
             old_pin: oldPin,
             new_pin: newPin
         });
