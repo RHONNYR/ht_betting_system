@@ -1853,3 +1853,122 @@ tr.sub-row-compra td:first-child {
     font-weight: 500;
     color: #60a5fa !important; /* Visual blue indicator */
 }
+
+/* =====================================================
+   ESTILOS DE BLOQUEO POR PIN (FINANZAS PERSONALES)
+   ===================================================== */
+.personal-lock-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.lock-card {
+    width: 100%;
+    max-width: 320px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-radius: 16px;
+    background: rgba(30, 41, 59, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.lock-header .lock-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 8px var(--primary-color));
+}
+
+.lock-header h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    color: var(--text-primary);
+}
+
+.lock-header p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.pin-display {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 1.8rem;
+}
+
+.pin-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pin-dot.filled {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+    transform: scale(1.15);
+}
+
+.pin-keyboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    justify-items: center;
+}
+
+.pin-btn {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    font-size: 1.35rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pin-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pin-btn:active {
+    transform: scale(0.9);
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 0 12px var(--primary-color);
+}
+
+.pin-btn.pin-action-btn {
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    width: 68px;
+    height: 50px;
+    margin-top: 4px;
+}
+
+.pin-btn.pin-action-btn:active {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    box-shadow: none;
+    transform: scale(0.95);
+}
+
