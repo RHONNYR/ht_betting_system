@@ -3840,21 +3840,40 @@ async function loadAndRenderCharts() {
         const fechaHastaVal = document.getElementById('stats-fecha-hasta') ? document.getElementById('stats-fecha-hasta').value : '';
         
         let apiPeriod = periodSelect;
+        let url = `/stats/dashboard?period=${apiPeriod}`;
         if (periodSelect === 'personalizado') {
             if (customRangeContainer) customRangeContainer.classList.remove('hidden');
-            apiPeriod = 'historico'; // fetch full data to filter client side by custom date range
+            apiPeriod = 'historico';
+            url = `/stats/dashboard?period=historico&start_date=${fechaDesdeVal}&end_date=${fechaHastaVal}`;
         } else {
             if (customRangeContainer) customRangeContainer.classList.add('hidden');
         }
 
-        const stats = await apiCall(`/stats/dashboard?period=${apiPeriod}`);
+        const stats = await apiCall(url);
         
         // 0. Update summary KPI cards
         if (stats.summary) {
-            // Consolidated KPIs
-            document.getElementById('stats-ganancia-historica').textContent = `$${stats.summary.ganancia_historica_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            document.getElementById('stats-ganancia-semanal').textContent = `$${stats.summary.ganancia_semanal_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            document.getElementById('stats-ganancia-mensual').textContent = `$${stats.summary.ganancia_mensual_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            const labelHist = document.getElementById('stats-label-historica');
+            const labelSem = document.getElementById('stats-label-semanal');
+            const labelMen = document.getElementById('stats-label-mensual');
+            
+            if (periodSelect === 'personalizado') {
+                if (labelHist) labelHist.textContent = "Ganancia Período Filtrado";
+                if (labelSem) labelSem.textContent = "Ganancia Remesas (Período)";
+                if (labelMen) labelMen.textContent = "Ganancia Arbitraje (Período)";
+                
+                document.getElementById('stats-ganancia-historica').textContent = `$${stats.summary.ganancia_rango_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                document.getElementById('stats-ganancia-semanal').textContent = `$${stats.summary.total_ganancia_remesas.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                document.getElementById('stats-ganancia-mensual').textContent = `$${stats.summary.total_ganancia_arbitraje.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            } else {
+                if (labelHist) labelHist.textContent = "Ganancia Combinada Total";
+                if (labelSem) labelSem.textContent = "Ganancia Semanal";
+                if (labelMen) labelMen.textContent = "Ganancia Mensual";
+                
+                document.getElementById('stats-ganancia-historica').textContent = `$${stats.summary.ganancia_historica_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                document.getElementById('stats-ganancia-semanal').textContent = `$${stats.summary.ganancia_semanal_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+                document.getElementById('stats-ganancia-mensual').textContent = `$${stats.summary.ganancia_mensual_consolidada.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            }
             
             const pctRem = stats.summary.pct_remesas.toFixed(0);
             const pctArb = stats.summary.pct_arbitraje.toFixed(0);
