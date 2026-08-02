@@ -267,6 +267,14 @@ class PresupuestoPersonalUpdate(BaseModel):
     limite_semanal_usd: float
     limite_mensual_usd: float
 
+class PinChangeRequest(BaseModel):
+    old_pin: str
+    new_pin: str
+
+class PinVerifyRequest(BaseModel):
+    pin: str
+
+
 
 # Helpers
 def get_default_gender(nombre: str) -> str:
@@ -2483,6 +2491,37 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
         "gastos_por_categoria": gastos_por_categoria,
         "alertas": alertas
     }
+
+# 6. VERIFICAR Y CAMBIAR PIN PERSONAL
+@app.post("/api/personal/verify-pin")
+def verify_personal_pin(req: PinVerifyRequest, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.username == username).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado.")
+    
+    # Retrieve user personal pin (defaulting to "0000" if null or empty)
+    stored_pin = user.personal_pin or "0000"
+    if req.pin != stored_pin:
+        raise HTTPException(status_code=400, detail="PIN incorrecto")
+        
+    return {"message": "PIN verificado correctamente", "success": True}
+
+@app.post("/api/personal/change-pin")
+def change_personal_pin(req: PinChangeRequest, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.username == username).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado.")
+        
+    stored_pin = user.personal_pin or "0000"
+    if req.old_pin != stored_pin:
+        raise HTTPException(status_code=400, detail="PIN anterior incorrecto")
+        
+    if not req.new_pin or len(req.new_pin) != 4 or not req.new_pin.isdigit():
+        raise HTTPException(status_code=400, detail="El nuevo PIN debe ser de exactamente 4 dígitos numéricos.")
+        
+    user.personal_pin = req.new_pin
+    db.commit()
+    return {"message": "PIN actualizado exitosamente"}
 
 # Serve static frontend files
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
