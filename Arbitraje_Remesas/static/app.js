@@ -4833,8 +4833,8 @@ async function loadPersonalFinanceData() {
         renderPersonalDeudasTable(deudas);
         
         // Cargar Historial
-        const gastos = await apiCall('/personal/gastos');
-        renderPersonalHistoryTable(gastos);
+        const movimientos = await apiCall('/personal/movimientos');
+        renderPersonalHistoryTable(movimientos);
         
     } catch (err) {
         console.error("Error al cargar finanzas personales:", err);
@@ -5033,28 +5033,32 @@ window.openAbonoDeudaModal = function(deudaId, acreedor) {
 };
 
 // Renderizar tabla de historial
-function renderPersonalHistoryTable(gastos) {
+function renderPersonalHistoryTable(movimientos) {
     const tbody = document.getElementById('personal-history-table-body');
     tbody.innerHTML = '';
     
-    if (gastos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-secondary">No hay gastos personales registrados aún.</td></tr>';
+    if (movimientos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-secondary">No hay movimientos registrados aún.</td></tr>';
         return;
     }
     
-    gastos.forEach(g => {
+    movimientos.forEach(g => {
         const tr = document.createElement('tr');
         const displayMonto = g.moneda === 'VES' 
             ? `${g.monto.toLocaleString('es-VE')} Bs` 
             : `$${g.monto.toFixed(2)}`;
             
+        const esIngreso = g.tipo === 'ingreso';
+        const color = esIngreso ? '#10b981' : '#ef4444';
+        const signo = esIngreso ? '+' : '-';
+        
         tr.innerHTML = `
             <td class="text-secondary">${g.fecha.split(' ')[0]}</td>
             <td><strong>${g.icono} ${g.categoria}</strong>${g.subcategoria ? `<br><small class="text-secondary" style="font-size: 0.7rem;">${g.subcategoria}</small>` : ''}</td>
-            <td style="color: #ef4444; font-weight: 500;">-${displayMonto}</td>
+            <td style="color: ${color}; font-weight: 500;">${signo}${displayMonto}</td>
             <td class="text-secondary">${g.plataforma_pago}</td>
             <td class="text-center">
-                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteGasto(${g.id})" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
+                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteMovimiento(${g.id}, '${g.tipo}')" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
             </td>
         `;
         tbody.appendChild(tr);
@@ -5212,12 +5216,14 @@ async function handlePagoDeudaModalSubmit(e) {
     }
 }
 
-window.handleDeleteGasto = async function(gastoId) {
-    if (!confirm("¿Deseas eliminar este gasto? El capital debitado del banco se restaurará de forma automática.")) return;
+window.handleDeleteMovimiento = async function(id, tipo) {
+    const act = tipo === 'ingreso' ? 'ingreso' : 'gasto';
+    if (!confirm(`¿Deseas eliminar este ${act}? El capital se recalculará de forma automática.`)) return;
     
     try {
-        await apiCall(`/personal/gastos/${gastoId}`, 'DELETE');
-        showToast("🗑️ Gasto eliminado y capital restaurado");
+        const url = tipo === 'ingreso' ? `/personal/ingresos/${id}` : `/personal/gastos/${id}`;
+        await apiCall(url, 'DELETE');
+        showToast(`🗑️ ${act.charAt(0).toUpperCase() + act.slice(1)} eliminado`);
         await loadPersonalFinanceData();
         await loadCapital();
     } catch (err) {
