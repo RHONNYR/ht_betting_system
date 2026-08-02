@@ -1280,6 +1280,17 @@
                                 </div>
                             </div>
                             
+                            <!-- Configuración de Finanzas Personales -->
+                            <div class="card glass-card">
+                                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <h2>⚙️ Configuración Personal</h2>
+                                </div>
+                                <div class="card-body" style="display: flex; gap: 0.5rem; padding-top: 0.75rem;">
+                                    <button id="btn-open-category-config" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; flex: 1;">➕ Nueva Categoría</button>
+                                    <button id="btn-open-pin-config" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; flex: 1;">🔑 Cambiar PIN de Acceso</button>
+                                </div>
+                            </div>
+                            
                             <!-- Historial Reciente de Movimientos Personales -->
                             <div class="card glass-card">
                                 <div class="card-header">
@@ -1922,6 +1933,28 @@
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Registrar Pago</button>
                     <button type="button" id="btn-close-modal-pago-deuda" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: CAMBIAR PIN PERSONAL -->
+    <div id="modal-personal-pin" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 400px; width: 90%;">
+            <h3>🔑 Cambiar PIN de Acceso</h3>
+            <p>Introduce tu PIN actual y el nuevo PIN de 4 dígitos.</p>
+            <form id="form-modal-personal-pin">
+                <div class="form-group">
+                    <label for="modal-pin-old">PIN Actual</label>
+                    <input type="password" id="modal-pin-old" required maxlength="4" pattern="[0-9]{4}" inputmode="numeric" placeholder="Ej. 0000">
+                </div>
+                <div class="form-group">
+                    <label for="modal-pin-new">Nuevo PIN (4 dígitos)</label>
+                    <input type="password" id="modal-pin-new" required maxlength="4" pattern="[0-9]{4}" inputmode="numeric" placeholder="Ej. 1234">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Actualizar PIN</button>
+                    <button type="button" id="btn-close-modal-personal-pin" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
         </div>
