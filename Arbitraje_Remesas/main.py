@@ -13,7 +13,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, engine
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, engine
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -222,6 +222,51 @@ class MovimientoZelleCreate(BaseModel):
 
 class BCVModeRequest(BaseModel):
     mode: str
+
+class CategoriaPersonalCreate(BaseModel):
+    nombre: str
+    tipo: str  # "gasto" o "ingreso"
+    icono: Optional[str] = "⚙️"
+
+class GastoPersonalCreate(BaseModel):
+    monto: float
+    moneda: str  # "USD" o "VES"
+    tasa_bcv: float
+    categoria_id: int
+    subcategoria: Optional[str] = None
+    detalles: Optional[str] = None
+    plataforma_pago: str  # Mercantil, Zelle, Provincial, BDV, Efectivo, etc.
+    deuda_id: Optional[int] = None
+    fecha: Optional[str] = None  # Opcional, para registrar con fechas del pasado
+
+class DeudaPersonalCreate(BaseModel):
+    acreedor: str
+    monto_original_usd: float
+    categoria_compra: Optional[str] = None
+    detalles: Optional[str] = None
+    fecha_creacion: Optional[str] = None
+
+class PagoDeudaRequest(BaseModel):
+    monto: float
+    moneda: str  # "USD" o "VES"
+    tasa_bcv: float
+    plataforma_pago: str  # De dónde sale el dinero (Mercantil, Provincial, etc.)
+    detalles: Optional[str] = None
+    fecha: Optional[str] = None
+
+class IngresoPersonalCreate(BaseModel):
+    monto: float
+    moneda: str  # "USD" o "VES"
+    tasa_bcv: float
+    categoria_id: int
+    detalles: Optional[str] = None
+    fecha: Optional[str] = None
+
+class PresupuestoPersonalUpdate(BaseModel):
+    categoria_id: int
+    limite_semanal_usd: float
+    limite_mensual_usd: float
+
 
 # Helpers
 def get_default_gender(nombre: str) -> str:
@@ -2017,6 +2062,427 @@ def on_startup():
             print("Database updates completed successfully.")
     except Exception as e:
         print(f"Error during database initialization: {e}")
+
+# =====================================================
+# PERSONAL FINANCE & FINANCIAL ADVISOR API ENDPOINTS
+# =====================================================
+
+def parse_personal_date(date_str: Optional[str]) -> datetime.datetime:
+    if date_str:
+        try:
+            # Handle YYYY-MM-DD or full ISO strings
+            if "T" in date_str:
+                return datetime.datetime.fromisoformat(date_str)
+            return datetime.datetime.strptime(date_str.split()[0], "%Y-%m-%d")
+        except Exception:
+            pass
+    return get_venezuela_time()
+
+# 1. CATEGORÍAS
+@app.get("/api/personal/categorias")
+def get_personal_categorias(tipo: Optional[str] = None, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    query = db.query(CategoriaPersonal)
+    if tipo:
+        query = query.filter(CategoriaPersonal.tipo == tipo)
+    return query.order_by(CategoriaPersonal.nombre.asc()).all()
+
+@app.post("/api/personal/categorias")
+def create_personal_categoria(req: CategoriaPersonalCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    # Check uniqueness
+    existing = db.query(CategoriaPersonal).filter(CategoriaPersonal.nombre.ilike(req.nombre.strip())).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Esta categoría ya existe.")
+    
+    cat = CategoriaPersonal(
+        nombre=req.nombre.strip(),
+        tipo=req.tipo,
+        icono=req.icono,
+        editable=True
+    )
+    db.add(cat)
+    db.commit()
+    return {"message": "Categoría creada con éxito", "id": cat.id}
+
+@app.delete("/api/personal/categorias/{cat_id}")
+def delete_personal_categoria(cat_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    cat = db.query(CategoriaPersonal).filter(CategoriaPersonal.id == cat_id).first()
+    if not cat:
+        raise HTTPException(status_code=404, detail="Categoría no encontrada.")
+    if not cat.editable:
+        raise HTTPException(status_code=400, detail="Esta categoría es del sistema y no puede eliminarse.")
+    
+    # Check if category is used
+    has_gastos = db.query(GastoPersonal).filter(GastoPersonal.categoria_id == cat_id).first()
+    has_ingresos = db.query(IngresoPersonal).filter(IngresoPersonal.categoria_id == cat_id).first()
+    if has_gastos or has_ingresos:
+        raise HTTPException(status_code=400, detail="No se puede eliminar la categoría porque tiene movimientos asociados.")
+        
+    db.delete(cat)
+    db.commit()
+    return {"message": "Categoría eliminada con éxito"}
+
+# 2. GASTOS PERSONALES (EGRESOS)
+@app.get("/api/personal/gastos")
+def get_personal_gastos(limit: int = 100, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    gastos = db.query(GastoPersonal).order_by(GastoPersonal.fecha.desc()).limit(limit).all()
+    result = []
+    for g in gastos:
+        result.append({
+            "id": g.id,
+            "fecha": g.fecha.strftime("%d/%m/%Y %I:%M %p"),
+            "monto": g.monto,
+            "moneda": g.moneda,
+            "tasa_bcv": g.tasa_bcv,
+            "monto_usd": g.monto_usd,
+            "categoria": g.categoria.nombre if g.categoria else "Otros",
+            "icono": g.categoria.icono if g.categoria else "⚙️",
+            "subcategoria": g.subcategoria,
+            "detalles": g.detalles,
+            "plataforma_pago": g.plataforma_pago,
+            "deuda_id": g.deuda_id
+        })
+    return result
+
+@app.post("/api/personal/gastos")
+def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    # Validate category
+    cat = db.query(CategoriaPersonal).filter(CategoriaPersonal.id == req.categoria_id).first()
+    if not cat:
+        raise HTTPException(status_code=400, detail="Categoría no encontrada.")
+    
+    # Calculate USD equivalent
+    monto_usd = req.monto
+    if req.moneda == "VES":
+        if req.tasa_bcv <= 0:
+            raise HTTPException(status_code=400, detail="Para registrar en VES, debes incluir una tasa BCV válida.")
+        monto_usd = req.monto / req.tasa_bcv
+
+    # Verify and deduct working capital (unless paid with Cash/Efectivo or similar not registered in Capital)
+    plat_pago = req.plataforma_pago.strip()
+    capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(plat_pago)).first()
+    
+    if capital_target:
+        if req.moneda == "VES":
+            capital_target.saldo_ves -= req.monto
+            # Update conversion logic if the platform auto-calculates USD
+            if capital_target.convertir_ves and req.tasa_bcv > 0:
+                capital_target.saldo_usd = capital_target.saldo_ves / req.tasa_bcv
+        else:
+            capital_target.saldo_usd -= monto_usd
+            
+    # Save Gasto
+    gasto = GastoPersonal(
+        fecha=parse_personal_date(req.fecha),
+        monto=req.monto,
+        moneda=req.moneda,
+        tasa_bcv=req.tasa_bcv,
+        monto_usd=monto_usd,
+        categoria_id=req.categoria_id,
+        subcategoria=req.subcategoria,
+        detalles=req.detalles,
+        plataforma_pago=req.plataforma_pago,
+        deuda_id=req.deuda_id
+    )
+    db.add(gasto)
+    db.commit()
+    return {"message": "Gasto personal registrado con éxito", "id": gasto.id}
+
+@app.delete("/api/personal/gastos/{gasto_id}")
+def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    gasto = db.query(GastoPersonal).filter(GastoPersonal.id == gasto_id).first()
+    if not gasto:
+        raise HTTPException(status_code=404, detail="Gasto no encontrado.")
+        
+    # Revert capital deduction
+    plat_pago = gasto.plataforma_pago.strip()
+    capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(plat_pago)).first()
+    
+    if capital_target:
+        if gasto.moneda == "VES":
+            capital_target.saldo_ves += gasto.monto
+            if capital_target.convertir_ves and gasto.tasa_bcv > 0:
+                capital_target.saldo_usd = capital_target.saldo_ves / gasto.tasa_bcv
+        else:
+            capital_target.saldo_usd += gasto.monto_usd
+            
+    # If it was a debt payment, restore debt balance
+    if gasto.deuda_id:
+        deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == gasto.deuda_id).first()
+        if deuda:
+            deuda.saldo_pendiente_usd += gasto.monto_usd
+            deuda.estado = "activa"
+
+    db.delete(gasto)
+    db.commit()
+    return {"message": "Gasto eliminado y capital restaurado."}
+
+# 3. INGRESOS PERSONALES
+@app.get("/api/personal/ingresos")
+def get_personal_ingresos(limit: int = 100, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ingresos = db.query(IngresoPersonal).order_by(IngresoPersonal.fecha.desc()).limit(limit).all()
+    result = []
+    for i in ingresos:
+        result.append({
+            "id": i.id,
+            "fecha": i.fecha.strftime("%d/%m/%Y %I:%M %p"),
+            "monto": i.monto,
+            "moneda": i.moneda,
+            "tasa_bcv": i.tasa_bcv,
+            "monto_usd": i.monto_usd,
+            "categoria": i.categoria.nombre if i.categoria else "Otros",
+            "icono": i.categoria.icono if i.categoria else "⚙️",
+            "detalles": i.detalles
+        })
+    return result
+
+@app.post("/api/personal/ingresos")
+def create_personal_ingreso(req: IngresoPersonalCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    cat = db.query(CategoriaPersonal).filter(CategoriaPersonal.id == req.categoria_id).first()
+    if not cat:
+        raise HTTPException(status_code=400, detail="Categoría no encontrada.")
+        
+    monto_usd = req.monto
+    if req.moneda == "VES":
+        if req.tasa_bcv <= 0:
+            raise HTTPException(status_code=400, detail="Para registrar en VES, debes incluir una tasa BCV válida.")
+        monto_usd = req.monto / req.tasa_bcv
+
+    # Lógica de Sueldo Auto-asignado: Debe debitarse de alguna cuenta de trabajo (ej. Provincial/BDV)
+    if cat.nombre == "Sueldo Auto-asignado":
+        # Se asume de los detalles o de la petición de dónde debitar, usaremos Provincial por defecto
+        # o buscaremos si se especifica en los detalles de forma implícita. Para simplificar,
+        # asumiremos que sale de Provincial VES (ya que el sueldo sale en VES por Provincial o BDV)
+        # o Zelle si fue de Zelle. Por defecto debitamos de la cuenta donde el usuario tenga fondos de trabajo.
+        plat_origen = "Provincial VES"
+        if "zelle" in (req.detalles or "").lower():
+            plat_origen = "Zelle"
+        elif "bdv" in (req.detalles or "").lower():
+            plat_origen = "BDV (VES)"
+            
+        capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(plat_origen)).first()
+        if capital_target:
+            if req.moneda == "VES":
+                capital_target.saldo_ves -= req.monto
+                if capital_target.convertir_ves and req.tasa_bcv > 0:
+                    capital_target.saldo_usd = capital_target.saldo_ves / req.tasa_bcv
+            else:
+                capital_target.saldo_usd -= monto_usd
+
+    ingreso = IngresoPersonal(
+        fecha=parse_personal_date(req.fecha),
+        monto=req.monto,
+        moneda=req.moneda,
+        tasa_bcv=req.tasa_bcv,
+        monto_usd=monto_usd,
+        categoria_id=req.categoria_id,
+        detalles=req.detalles
+    )
+    db.add(ingreso)
+    db.commit()
+    return {"message": "Ingreso personal registrado con éxito", "id": ingreso.id}
+
+@app.delete("/api/personal/ingresos/{ingreso_id}")
+def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ingreso = db.query(IngresoPersonal).filter(IngresoPersonal.id == ingreso_id).first()
+    if not ingreso:
+        raise HTTPException(status_code=404, detail="Ingreso no encontrado.")
+        
+    # Revert auto-sueldo deduction
+    if ingreso.categoria and ingreso.categoria.nombre == "Sueldo Auto-asignado":
+        plat_origen = "Provincial VES"
+        if "zelle" in (ingreso.detalles or "").lower():
+            plat_origen = "Zelle"
+        elif "bdv" in (ingreso.detalles or "").lower():
+            plat_origen = "BDV (VES)"
+            
+        capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(plat_origen)).first()
+        if capital_target:
+            if ingreso.moneda == "VES":
+                capital_target.saldo_ves += ingreso.monto
+                if capital_target.convertir_ves and ingreso.tasa_bcv > 0:
+                    capital_target.saldo_usd = capital_target.saldo_ves / ingreso.tasa_bcv
+            else:
+                capital_target.saldo_usd += ingreso.monto_usd
+
+    db.delete(ingreso)
+    db.commit()
+    return {"message": "Ingreso eliminado."}
+
+# 4. DEUDAS
+@app.get("/api/personal/deudas")
+def get_personal_deudas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    return db.query(DeudaPersonal).order_by(DeudaPersonal.estado.asc(), DeudaPersonal.fecha_creacion.desc()).all()
+
+@app.post("/api/personal/deudas")
+def create_personal_deuda(req: DeudaPersonalCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    deuda = DeudaPersonal(
+        fecha_creacion=parse_personal_date(req.fecha_creacion),
+        acreedor=req.acreedor.strip(),
+        monto_original_usd=req.monto_original_usd,
+        saldo_pendiente_usd=req.monto_original_usd,
+        categoria_compra=req.categoria_compra,
+        detalles=req.detalles,
+        estado="activa"
+    )
+    db.add(deuda)
+    db.commit()
+    return {"message": "Deuda registrada con éxito", "id": deuda.id}
+
+@app.post("/api/personal/deudas/{deuda_id}/pagar")
+def pay_personal_deuda(deuda_id: int, req: PagoDeudaRequest, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == deuda_id).first()
+    if not deuda:
+        raise HTTPException(status_code=404, detail="Deuda no encontrada.")
+    if deuda.estado == "pagada":
+        raise HTTPException(status_code=400, detail="Esta deuda ya está totalmente pagada.")
+        
+    monto_usd = req.monto
+    if req.moneda == "VES":
+        if req.tasa_bcv <= 0:
+            raise HTTPException(status_code=400, detail="Para registrar en VES, debes incluir una tasa BCV válida.")
+        monto_usd = req.monto / req.tasa_bcv
+
+    # Find the "Pago de Deuda" category
+    cat = db.query(CategoriaPersonal).filter(CategoriaPersonal.nombre == "Pago de Deuda").first()
+    if not cat:
+        # Fallback to create it if seed failed
+        cat = CategoriaPersonal(nombre="Pago de Deuda", tipo="gasto", icono="💸", editable=False)
+        db.add(cat)
+        db.commit()
+
+    # Deduct capital from origin account
+    plat_pago = req.plataforma_pago.strip()
+    capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(plat_pago)).first()
+    if capital_target:
+        if req.moneda == "VES":
+            capital_target.saldo_ves -= req.monto
+            if capital_target.convertir_ves and req.tasa_bcv > 0:
+                capital_target.saldo_usd = capital_target.saldo_ves / req.tasa_bcv
+        else:
+            capital_target.saldo_usd -= monto_usd
+
+    # Create Gasto
+    gasto = GastoPersonal(
+        fecha=parse_personal_date(req.fecha),
+        monto=req.monto,
+        moneda=req.moneda,
+        tasa_bcv=req.tasa_bcv,
+        monto_usd=monto_usd,
+        categoria_id=cat.id,
+        subcategoria=f"Pago a {deuda.acreedor}",
+        detalles=req.detalles or f"Abono a deuda con {deuda.acreedor}",
+        plataforma_pago=req.plataforma_pago,
+        deuda_id=deuda.id
+    )
+    db.add(gasto)
+    
+    # Update Debt balance
+    deuda.saldo_pendiente_usd = max(0.0, deuda.saldo_pendiente_usd - monto_usd)
+    if deuda.saldo_pendiente_usd <= 0.05: # allow tiny rounding error
+        deuda.saldo_pendiente_usd = 0.0
+        deuda.estado = "pagada"
+        
+    db.commit()
+    return {"message": "Abono a deuda registrado con éxito", "saldo_restante": deuda.saldo_pendiente_usd}
+
+# 5. ASESOR FINANCIERO Y DASHBOARD PERSONAL
+@app.get("/api/personal/dashboard")
+def get_personal_dashboard(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    venezuela_now = get_venezuela_time()
+    inicio_mes = datetime.datetime(venezuela_now.year, venezuela_now.month, 1)
+    
+    # 1. Total debts pending
+    total_deudas = db.query(func.sum(DeudaPersonal.saldo_pendiente_usd)).filter(DeudaPersonal.estado == "activa").scalar() or 0.0
+    
+    # 2. Total expenses in current month
+    gastos_mes = db.query(GastoPersonal).filter(GastoPersonal.fecha >= inicio_mes).all()
+    total_gastos_mes = sum(g.monto_usd for g in gastos_mes)
+    
+    # Gastos por categoría para el gráfico circular
+    gastos_por_categoria = {}
+    for g in gastos_mes:
+        cat_name = g.categoria.nombre if g.categoria else "Otros"
+        icono = g.categoria.icono if g.categoria else "⚙️"
+        key = f"{icono} {cat_name}"
+        gastos_por_categoria[key] = gastos_por_categoria.get(key, 0.0) + g.monto_usd
+
+    # 3. Total incomes in current month
+    ingresos_mes = db.query(IngresoPersonal).filter(IngresoPersonal.fecha >= inicio_mes).all()
+    total_ingresos_mes = sum(i.monto_usd for i in ingresos_mes)
+    
+    # 4. Cálculo de Ganancia del Negocio en el mes actual (Ciclos + Remesas)
+    # Ciclos de este mes
+    ciclos_mes = db.query(HistorialCiclos).filter(HistorialCiclos.fecha >= inicio_mes, HistorialCiclos.status == "completado").all()
+    ganancia_ciclos = sum(c.ganancia_usd for c in ciclos_mes if c.ganancia_usd is not None)
+    
+    # Remesas de este mes
+    remesas_mes = db.query(HistorialRemesas).filter(HistorialRemesas.fecha >= inicio_mes).all()
+    ganancia_remesas = sum(r.ganancia_usd for r in remesas_mes if r.ganancia_usd is not None)
+    
+    ganancia_negocio = ganancia_ciclos + ganancia_remesas
+    
+    # 5. Sueldo Óptimo Recomendado (40% de la ganancia del negocio)
+    sueldo_sugerido = ganancia_negocio * 0.40
+    
+    # 6. Crecimiento Neto
+    crecimiento_neto = total_ingresos_mes - total_gastos_mes
+    
+    # 7. Asesor Financiero Pro - Alertas Semáforo
+    alertas = []
+    
+    # Alerta Roja: Déficit personal
+    if total_gastos_mes > total_ingresos_mes:
+        diff = total_gastos_mes - total_ingresos_mes
+        # Find category with maximum expense this month to offer actionable tip
+        max_cat = "Otros"
+        max_val = 0.0
+        for k, v in gastos_por_categoria.items():
+            if v > max_val:
+                max_val = v
+                max_cat = k
+        alertas.append({
+            "tipo": "rojo",
+            "mensaje": f"⚠️ ALERTA DE DÉFICIT: Tus gastos de este mes superan tus ingresos por ${diff.toFixed(2) if hasattr(diff, 'toFixed') else round(diff, 2)} USD. Estás drenando tu capital de trabajo. Se recomienda recortar gastos en {max_cat} inmediatamente."
+        })
+    elif total_gastos_mes > 0 and total_ingresos_mes > 0:
+        # Alerta Amarilla: Gasto alto (más del 85% del ingreso)
+        ratio = total_gastos_mes / total_ingresos_mes
+        if ratio > 0.85:
+            alertas.append({
+                "tipo": "amarillo",
+                "mensaje": f"⚠️ ALERTA DE AHORRO: Has consumido el {round(ratio * 100)}% de tus ingresos personales. Tu margen de seguridad es mínimo."
+            })
+            
+    # Alerta de inversión / reinversión (Verde)
+    if ganancia_negocio > 0:
+        alertas.append({
+            "tipo": "verde",
+            "mensaje": f"📈 ASESOR PRO: Has generado ${round(ganancia_negocio, 2)} USD en ganancias de negocio este mes. Tu sueldo asignado saludable recomendado es de hasta ${round(sueldo_sugerido, 2)} USD, permitiéndote reinvertir ${round(ganancia_negocio - sueldo_sugerido, 2)} USD para hacer crecer tu capital de trabajo."
+        })
+    else:
+        alertas.append({
+            "tipo": "verde",
+            "mensaje": "💡 CONSEJO ADVISOR: Registra tus ciclos de arbitraje y remesas para que el asesor pueda sugerir el sueldo de reinversión óptimo."
+        })
+
+    # Alerta de Deudas
+    deudas_activas = db.query(DeudaPersonal).filter(DeudaPersonal.estado == "activa").all()
+    if len(deudas_activas) > 0:
+        alertas.append({
+            "tipo": "amarillo",
+            "mensaje": f"💳 CONTROL DE DEUDAS: Tienes {len(deudas_activas)} cuentas por pagar activas que suman ${round(total_deudas, 2)} USD. Trata de destinar un 10% de tu sueldo a amortizarlas de forma prioritaria."
+        })
+        
+    return {
+        "total_deudas": total_deudas,
+        "total_gastos_mes": total_gastos_mes,
+        "total_ingresos_mes": total_ingresos_mes,
+        "crecimiento_neto": crecimiento_neto,
+        "sueldo_sugerido": sueldo_sugerido,
+        "ganancia_negocio": ganancia_negocio,
+        "gastos_por_categoria": gastos_por_categoria,
+        "alertas": alertas
+    }
 
 # Serve static frontend files
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
