@@ -1406,7 +1406,13 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
         raise HTTPException(status_code=500, detail=f"Failed to fetch P2P rates: {str(e)}")
 
 @app.get("/api/stats/dashboard")
-def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+def get_stats_dashboard(
+    period: Optional[str] = "semana",
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+    username: str = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
     now = get_venezuela_time()
     
     # Helpers to calculate stats for a single CompraCicloParcial
@@ -1537,18 +1543,24 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         })
         
     # --- PERIOD FILTER FOR SUMMARY KPIS ---
-    if period == "mes":
+    if start_date and end_date:
+        try:
+            sd = datetime.datetime.strptime(start_date.split(" ")[0], "%Y-%m-%d")
+            ed = datetime.datetime.strptime(end_date.split(" ")[0], "%Y-%m-%d").replace(hour=23, minute=59, second=59, microsecond=999999)
+            remesas_summary = [r for r in all_remesas if r.fecha and r.fecha >= sd and r.fecha <= ed]
+            total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(sd, ed)
+        except Exception as e:
+            remesas_summary = weekly_remesas
+            total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_week, end_of_week)
+    elif period == "mes":
         start_of_month = datetime.datetime(now.year, now.month, 1)
         next_month = now.month + 1 if now.month < 12 else 1
         next_year = now.year if now.month < 12 else now.year + 1
         end_of_month = datetime.datetime(next_year, next_month, 1)
         remesas_summary = [r for r in all_remesas if r.fecha and r.fecha >= start_of_month and r.fecha < end_of_month]
-        
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_month, end_of_month)
     elif period == "historico":
         remesas_summary = all_remesas
-        
-        # Historical range spans from start of records to future
         start_of_time = datetime.datetime(2020, 1, 1)
         end_of_time = datetime.datetime(now.year + 10, 1, 1)
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_time, end_of_time)
@@ -1614,6 +1626,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
     current_month_data = monthly_data[now.month - 1]
     ganancia_mensual_consolidada = current_month_data["ganancia_remesas"] + current_month_data["ganancia_ciclos"]
     ganancia_historica_consolidada = all_rem_gain + all_arb_gain
+    ganancia_rango_consolidada = total_ganancia_remesas + total_ganancia_arbitraje
     
     if ganancia_historica_consolidada > 0:
         pct_remesas = (all_rem_gain / ganancia_historica_consolidada) * 100
@@ -1634,6 +1647,7 @@ def get_stats_dashboard(period: Optional[str] = "semana", username: str = Depend
         "ganancia_semanal_consolidada": ganancia_semanal_consolidada,
         "ganancia_mensual_consolidada": ganancia_mensual_consolidada,
         "ganancia_historica_consolidada": ganancia_historica_consolidada,
+        "ganancia_rango_consolidada": ganancia_rango_consolidada,
         "pct_remesas": pct_remesas,
         "pct_arbitraje": pct_arbitraje
     }
