@@ -4650,16 +4650,18 @@ function updatePinDisplay() {
     });
 }
 
-window.submitPin = function() {
+window.submitPin = async function() {
     if (state.personalUnlocked) return;
-    // PIN de acceso por defecto: "0000"
-    if (state.currentPinEntered === "0000") {
-        state.personalUnlocked = true;
-        document.getElementById('personal-lock-screen').style.display = 'none';
-        document.getElementById('personal-main-panel').style.display = 'block';
-        showToast("🔓 Acceso personal autorizado");
-        loadPersonalFinanceData();
-    } else {
+    try {
+        const res = await apiCall('/api/personal/verify-pin', 'POST', { pin: state.currentPinEntered });
+        if (res.success) {
+            state.personalUnlocked = true;
+            document.getElementById('personal-lock-screen').style.display = 'none';
+            document.getElementById('personal-main-panel').style.display = 'block';
+            showToast("🔓 Acceso personal autorizado");
+            loadPersonalFinanceData();
+        }
+    } catch (err) {
         clearPin();
         document.getElementById('pin-error-msg').style.display = 'block';
     }
@@ -4761,6 +4763,14 @@ function setupPersonalFinanceListeners() {
     const btnClosePago = document.getElementById('btn-close-modal-pago-deuda');
     btnClosePago.addEventListener('click', () => closeModal(modalPago));
     
+    // Modal PIN
+    const btnOpenPin = document.getElementById('btn-open-pin-config');
+    const modalPin = document.getElementById('modal-personal-pin');
+    const btnClosePin = document.getElementById('btn-close-modal-personal-pin');
+    
+    btnOpenPin.addEventListener('click', () => openModal(modalPin));
+    btnClosePin.addEventListener('click', () => closeModal(modalPin));
+    
     const pagoMoneda = document.getElementById('modal-pago-moneda');
     const pagoTasaCont = document.getElementById('modal-pago-tasa-container');
     const pagoTasa = document.getElementById('modal-pago-tasa');
@@ -4783,6 +4793,7 @@ function setupPersonalFinanceListeners() {
     document.getElementById('form-personal-deuda').addEventListener('submit', handleDeudaSubmit);
     document.getElementById('form-modal-personal-categoria').addEventListener('submit', handleCategoryModalSubmit);
     document.getElementById('form-modal-pago-deuda').addEventListener('submit', handlePagoDeudaModalSubmit);
+    document.getElementById('form-modal-personal-pin').addEventListener('submit', handlePinModalSubmit);
 }
 
 // Carga principal de datos
@@ -5194,6 +5205,34 @@ window.handleDeleteGasto = async function(gastoId) {
         alert(err.message);
     }
 };
+
+async function handlePinModalSubmit(e) {
+    e.preventDefault();
+    
+    const oldPin = document.getElementById('modal-pin-old').value;
+    const newPin = document.getElementById('modal-pin-new').value;
+    
+    if (newPin.length !== 4 || isNaN(newPin)) {
+        alert("El nuevo PIN debe ser de 4 dígitos numéricos.");
+        return;
+    }
+    
+    try {
+        await apiCall('/api/personal/change-pin', 'POST', {
+            old_pin: oldPin,
+            new_pin: newPin
+        });
+        showToast("🔑 PIN cambiado exitosamente");
+        closeModal(document.getElementById('modal-personal-pin'));
+        
+        // Reset inputs
+        document.getElementById('modal-pin-old').value = '';
+        document.getElementById('modal-pin-new').value = '';
+    } catch (err) {
+        alert("Error: " + err.message);
+    }
+}
+
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
