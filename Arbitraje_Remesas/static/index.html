@@ -991,10 +991,346 @@
                 </div>
 
                 <!-- Panel Principal de Finanzas Personales (Oculto hasta que se valide el PIN) -->
-                <div id="personal-main-panel" style="display: none;">
-                    <div class="card glass-card" style="padding: 2.5rem; text-align: center;">
-                        <h2 style="color: var(--primary-color); margin-bottom: 0.5rem;">🔐 Contabilidad Personal Protegida</h2>
-                        <p class="text-secondary" style="font-size: 0.9rem;">Acceso validado con éxito. Fase 2 lista.</p>
+                <div id="personal-main-panel" style="display: none; padding: 0.5rem 0;">
+                    <div class="grid-2col" style="align-items: start; gap: 1rem;">
+                        
+                        <!-- COLUMNA IZQUIERDA: EL ASESOR & ESTADÍSTICAS -->
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            
+                            <!-- Tarjeta del Asesor Financiero Pro -->
+                            <div class="card glass-card">
+                                <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                                    <h2>🧠 Asesor Financiero Pro</h2>
+                                </div>
+                                <div class="card-body" style="padding-top: 0.75rem;">
+                                    <div id="advisor-alerts-container" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                                        <!-- Alertas dinámicas se inyectarán aquí -->
+                                    </div>
+                                    <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                        <div class="mini-summary-card" style="background: rgba(0,0,0,0.15); margin: 0; padding: 0.6rem;">
+                                            <span class="label" style="font-size: 0.7rem; color: var(--text-secondary);">Sueldo Sugerido (40%)</span>
+                                            <span id="advisor-sueldo-sugerido" class="value" style="font-size: 1.1rem; font-weight: 700; color: #3b82f6;">$0.00 USD</span>
+                                        </div>
+                                        <div class="mini-summary-card" style="background: rgba(0,0,0,0.15); margin: 0; padding: 0.6rem;">
+                                            <span class="label" style="font-size: 0.7rem; color: var(--text-secondary);">Ganancia Operativa</span>
+                                            <span id="advisor-ganancia-negocio" class="value" style="font-size: 1.1rem; font-weight: 700; color: #10b981;">$0.00 USD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Resumen Financiero Personal -->
+                            <div class="card glass-card">
+                                <div class="card-body" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; padding: 1rem;">
+                                    <div class="mini-summary-card" style="margin: 0; padding: 0.65rem;">
+                                        <span class="label" style="font-size: 0.7rem;">Ingresos del Mes</span>
+                                        <span id="personal-ingresos-mes" class="value" style="font-size: 1.15rem; color: #10b981;">$0.00</span>
+                                    </div>
+                                    <div class="mini-summary-card" style="margin: 0; padding: 0.65rem;">
+                                        <span class="label" style="font-size: 0.7rem;">Gastos del Mes</span>
+                                        <span id="personal-gastos-mes" class="value" style="font-size: 1.15rem; color: #ef4444;">$0.00</span>
+                                    </div>
+                                    <div class="mini-summary-card" style="margin: 0; padding: 0.65rem;">
+                                        <span class="label" style="font-size: 0.7rem;">Flujo Neto (Ahorro)</span>
+                                        <span id="personal-flujo-neto" class="value" style="font-size: 1.15rem; color: #3b82f6;">$0.00</span>
+                                    </div>
+                                    <div class="mini-summary-card" style="margin: 0; padding: 0.65rem;">
+                                        <span class="label" style="font-size: 0.7rem;">Deudas Pendientes</span>
+                                        <span id="personal-deudas-pendientes" class="value" style="font-size: 1.15rem; color: #f59e0b;">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Gráfico de Gastos por Categoría -->
+                            <div class="card glass-card">
+                                <div class="card-header">
+                                    <h2>Distribución de Gastos</h2>
+                                </div>
+                                <div class="card-body" style="display: flex; justify-content: center; align-items: center; min-height: 200px; padding: 0.5rem;">
+                                    <canvas id="chart-personal-categorias" style="max-height: 220px; max-width: 220px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COLUMNA DERECHA: REGISTROS Y FORMULARIOS -->
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            
+                            <!-- Acordeón / Sub-pestañas de Registros -->
+                            <div class="card glass-card">
+                                <div class="sub-nav-tabs" style="background: rgba(0,0,0,0.15); border-radius: 8px 8px 0 0; padding: 0.25rem; display: flex; gap: 0.25rem;">
+                                    <button class="sub-tab-link active" data-subtab="subtab-reg-gasto" style="font-size: 0.75rem; padding: 0.4rem 0.6rem;">🛒 Registrar Gasto</button>
+                                    <button class="sub-tab-link" data-subtab="subtab-reg-ingreso" style="font-size: 0.75rem; padding: 0.4rem 0.6rem;">💵 Registrar Ingreso</button>
+                                    <button class="sub-tab-link" data-subtab="subtab-reg-deuda" style="font-size: 0.75rem; padding: 0.4rem 0.6rem;">💳 Nueva Deuda</button>
+                                </div>
+                                
+                                <div class="card-body" style="padding: 1rem;">
+                                    
+                                    <!-- SUBTAB: REGISTRAR GASTO -->
+                                    <div id="subtab-reg-gasto" class="sub-tab-pane active">
+                                        <form id="form-personal-gasto" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-gasto-monto" style="font-size: 0.75rem; margin-bottom: 2px;">Monto</label>
+                                                    <input type="number" step="any" id="p-gasto-monto" required placeholder="0.00" style="padding: 0.45rem;">
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-gasto-moneda" style="font-size: 0.75rem; margin-bottom: 2px;">Moneda</label>
+                                                    <select id="p-gasto-moneda" style="padding: 0.45rem;">
+                                                        <option value="USD">USD ($)</option>
+                                                        <option value="VES">VES (Bs)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div id="p-gasto-tasa-container" class="form-group" style="margin: 0; display: none;">
+                                                <label for="p-gasto-tasa" style="font-size: 0.75rem; margin-bottom: 2px;">Tasa BCV del Gasto (Bs/$)</label>
+                                                <input type="number" step="any" id="p-gasto-tasa" style="padding: 0.45rem;">
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-gasto-categoria" style="font-size: 0.75rem; margin-bottom: 2px;">Categoría</label>
+                                                    <select id="p-gasto-categoria" required style="padding: 0.45rem;">
+                                                        <!-- Dynamic -->
+                                                    </select>
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-gasto-plataforma" style="font-size: 0.75rem; margin-bottom: 2px;">Cuenta de Pago</label>
+                                                    <select id="p-gasto-plataforma" required style="padding: 0.45rem;">
+                                                        <option value="Mercantil">🏦 Mercantil (Personal)</option>
+                                                        <option value="Bancamiga">🏦 Bancamiga</option>
+                                                        <option value="Provincial VES">🏦 Provincial (Trabajo)</option>
+                                                        <option value="BDV (VES)">🏦 BDV (Trabajo)</option>
+                                                        <option value="Zelle">🇺🇸 Zelle</option>
+                                                        <option value="Efectivo USD">💵 Efectivo USD</option>
+                                                        <option value="Efectivo VES">💵 Efectivo VES</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- CAMPOS CONDICIONALES INTELIGENTES (OCULTOS POR DEFECTO) -->
+                                            <!-- Condicional 1: Recarga Celular -->
+                                            <div id="p-gasto-cond-recarga" style="display: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.5rem; border-radius: 6px; flex-direction: column; gap: 0.5rem;">
+                                                <span style="font-size: 0.7rem; font-weight: bold; color: var(--primary-color);">📱 DETALLES DE RECARGA</span>
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                                    <div class="form-group" style="margin: 0;">
+                                                        <label for="p-recarga-operadora" style="font-size: 0.7rem; margin-bottom: 2px;">Operadora</label>
+                                                        <select id="p-recarga-operadora" style="padding: 0.35rem; font-size: 0.8rem;">
+                                                            <option value="Movistar">Movistar</option>
+                                                            <option value="Digitel">Digitel</option>
+                                                            <option value="Movilnet">Movilnet</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group" style="margin: 0;">
+                                                        <label for="p-recarga-titular" style="font-size: 0.7rem; margin-bottom: 2px;">Titular / Línea</label>
+                                                        <select id="p-recarga-titular" style="padding: 0.35rem; font-size: 0.8rem;">
+                                                            <option value="Rhonny">Rhonny</option>
+                                                            <option value="Anaisabel">Anaisabel</option>
+                                                            <option value="Mamá">Mamá</option>
+                                                            <option value="Papá">Papá</option>
+                                                            <option value="Otro">Otro...</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div id="p-recarga-titular-otro-container" class="form-group" style="margin: 0; display: none;">
+                                                    <label for="p-recarga-titular-otro" style="font-size: 0.7rem; margin-bottom: 2px;">Nombre del titular personalizado</label>
+                                                    <input type="text" id="p-recarga-titular-otro" placeholder="Ej. Tía María" style="padding: 0.35rem; font-size: 0.8rem;">
+                                                </div>
+                                            </div>
+
+                                            <!-- Condicional 2: Servicios & Suscripciones -->
+                                            <div id="p-gasto-cond-servicio" style="display: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.5rem; border-radius: 6px; flex-direction: column; gap: 0.5rem;">
+                                                <span style="font-size: 0.7rem; font-weight: bold; color: var(--primary-color);">🚀 DETALLES DE SUSCRIPCIÓN</span>
+                                                <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
+                                                    <div class="form-group" style="margin: 0;">
+                                                        <label for="p-servicio-nombre" style="font-size: 0.7rem; margin-bottom: 2px;">Servicio</label>
+                                                        <select id="p-servicio-nombre" style="padding: 0.35rem; font-size: 0.8rem;">
+                                                            <option value="Google">Google One / Drive</option>
+                                                            <option value="Zinli">Zinli Tarjeta</option>
+                                                            <option value="API Fútbol">API Fútbol Data</option>
+                                                            <option value="Netflix">Netflix</option>
+                                                            <option value="Spotify">Spotify</option>
+                                                            <option value="Canva">Canva Pro</option>
+                                                            <option value="Otro">Otro...</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div id="p-servicio-nombre-otro-container" class="form-group" style="margin: 0; display: none;">
+                                                    <label for="p-servicio-nombre-otro" style="font-size: 0.7rem; margin-bottom: 2px;">Nombre de la suscripción</label>
+                                                    <input type="text" id="p-servicio-nombre-otro" placeholder="Ej. Amazon Prime" style="padding: 0.35rem; font-size: 0.8rem;">
+                                                </div>
+                                            </div>
+
+                                            <!-- Condicional 3: Internet -->
+                                            <div id="p-gasto-cond-internet" style="display: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.5rem; border-radius: 6px; flex-direction: column; gap: 0.5rem;">
+                                                <span style="font-size: 0.7rem; font-weight: bold; color: var(--primary-color);">🌐 DETALLES DE INTERNET</span>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-internet-proveedor" style="font-size: 0.7rem; margin-bottom: 2px;">Proveedor</label>
+                                                    <select id="p-internet-proveedor" style="padding: 0.35rem; font-size: 0.8rem;">
+                                                        <option value="Inter">Inter (Fibra)</option>
+                                                        <option value="Netuno">Netuno</option>
+                                                        <option value="CANTV">CANTV Aba</option>
+                                                        <option value="Otro">Otro...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Condicional 4: Vincular a Deuda Activa -->
+                                            <div id="p-gasto-vincular-deuda" class="form-group" style="margin: 0; display: none;">
+                                                <label for="p-gasto-deuda-id" style="font-size: 0.75rem; margin-bottom: 2px;">Abonar a Deuda Pendiente</label>
+                                                <select id="p-gasto-deuda-id" style="padding: 0.45rem;">
+                                                    <option value="">-- No vincular a deuda --</option>
+                                                    <!-- Dynamic -->
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group" style="margin: 0;">
+                                                <label for="p-gasto-detalles" style="font-size: 0.75rem; margin-bottom: 2px;">Detalles / Concepto</label>
+                                                <input type="text" id="p-gasto-detalles" placeholder="Ej. Champú y gel dental en Farmatodo" style="padding: 0.45rem;">
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem; align-items: end;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-gasto-fecha" style="font-size: 0.75rem; margin-bottom: 2px;">Fecha del Gasto</label>
+                                                    <input type="date" id="p-gasto-fecha" style="padding: 0.45rem;">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" style="padding: 0.55rem; font-size: 0.85rem;">💾 Registrar Gasto</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    <!-- SUBTAB: REGISTRAR INGRESO -->
+                                    <div id="subtab-reg-ingreso" class="sub-tab-pane">
+                                        <form id="form-personal-ingreso" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-ingreso-monto" style="font-size: 0.75rem; margin-bottom: 2px;">Monto</label>
+                                                    <input type="number" step="any" id="p-ingreso-monto" required placeholder="0.00" style="padding: 0.45rem;">
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-ingreso-moneda" style="font-size: 0.75rem; margin-bottom: 2px;">Moneda</label>
+                                                    <select id="p-ingreso-moneda" style="padding: 0.45rem;">
+                                                        <option value="USD">USD ($)</option>
+                                                        <option value="VES">VES (Bs)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div id="p-ingreso-tasa-container" class="form-group" style="margin: 0; display: none;">
+                                                <label for="p-ingreso-tasa" style="font-size: 0.75rem; margin-bottom: 2px;">Tasa BCV del Ingreso (Bs/$)</label>
+                                                <input type="number" step="any" id="p-ingreso-tasa" style="padding: 0.45rem;">
+                                            </div>
+
+                                            <div class="form-group" style="margin: 0;">
+                                                <label for="p-ingreso-categoria" style="font-size: 0.75rem; margin-bottom: 2px;">Categoría del Ingreso</label>
+                                                <select id="p-ingreso-categoria" required style="padding: 0.45rem;">
+                                                    <!-- Dynamic -->
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group" style="margin: 0;">
+                                                <label for="p-ingreso-detalles" style="font-size: 0.75rem; margin-bottom: 2px;">Detalles / Origen</label>
+                                                <input type="text" id="p-ingreso-detalles" placeholder="Ej. Quincena PDVSA o Transferencia de Provincial" style="padding: 0.45rem;">
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem; align-items: end;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-ingreso-fecha" style="font-size: 0.75rem; margin-bottom: 2px;">Fecha de Recepción</label>
+                                                    <input type="date" id="p-ingreso-fecha" style="padding: 0.45rem;">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" style="padding: 0.55rem; font-size: 0.85rem;">💾 Guardar Ingreso</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <!-- SUBTAB: REGISTRAR DEUDA -->
+                                    <div id="subtab-reg-deuda" class="sub-tab-pane">
+                                        <form id="form-personal-deuda" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                            <div class="form-group" style="margin: 0;">
+                                                <label for="p-deuda-acreedor" style="font-size: 0.75rem; margin-bottom: 2px;">Acreedor (A quién debes)</label>
+                                                <input type="text" id="p-deuda-acreedor" required placeholder="Ej. Cashea, Banco de Venezuela, Juan" style="padding: 0.45rem;">
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-deuda-monto-usd" style="font-size: 0.75rem; margin-bottom: 2px;">Monto de la Deuda ($ USD)</label>
+                                                    <input type="number" step="any" id="p-deuda-monto-usd" required placeholder="0.00" style="padding: 0.45rem;">
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-deuda-concepto" style="font-size: 0.75rem; margin-bottom: 2px;">Concepto / Categoría</label>
+                                                    <input type="text" id="p-deuda-concepto" placeholder="Ej. Compra Daka" style="padding: 0.45rem;">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" style="margin: 0;">
+                                                <label for="p-deuda-detalles" style="font-size: 0.75rem; margin-bottom: 2px;">Detalles adicionales</label>
+                                                <input type="text" id="p-deuda-detalles" placeholder="Ej. Crédito en 3 cuotas" style="padding: 0.45rem;">
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem; align-items: end;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-deuda-fecha" style="font-size: 0.75rem; margin-bottom: 2px;">Fecha de Adquisición</label>
+                                                    <input type="date" id="p-deuda-fecha" style="padding: 0.45rem;">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" style="padding: 0.55rem; font-size: 0.85rem;">💳 Crear Deuda</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- Historial Reciente de Movimientos Personales -->
+                            <div class="card glass-card">
+                                <div class="card-header">
+                                    <h2>📝 Historial Reciente</h2>
+                                </div>
+                                <div class="card-body" style="padding: 0;">
+                                    <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                                        <table class="data-table" style="font-size: 0.78rem;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Categoría</th>
+                                                    <th>Monto</th>
+                                                    <th>Pago</th>
+                                                    <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="personal-history-table-body">
+                                                <!-- Dynamic -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tabla de Deudas e Historial de Deudas -->
+                            <div class="card glass-card">
+                                <div class="card-header">
+                                    <h2>💳 Control de Cuentas por Pagar</h2>
+                                </div>
+                                <div class="card-body" style="padding: 0;">
+                                    <div class="table-responsive" style="max-height: 220px; overflow-y: auto;">
+                                        <table class="data-table" style="font-size: 0.78rem;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Acreedor</th>
+                                                    <th>Concepto</th>
+                                                    <th>Monto Original</th>
+                                                    <th>Saldo Pendiente</th>
+                                                    <th>Abono</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="personal-deudas-table-body">
+                                                <!-- Dynamic -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1497,6 +1833,95 @@
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     <button type="button" id="btn-close-modal-editar-ciclo" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: AGREGAR CATEGORÍA PERSONALIZADA -->
+    <div id="modal-personal-categoria" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 400px; width: 90%;">
+            <h3>Añadir Categoría Personalizada</h3>
+            <p>Define una nueva categoría para organizar tus ingresos o gastos.</p>
+            <form id="form-modal-personal-categoria">
+                <div class="form-group">
+                    <label for="modal-cat-nombre">Nombre de la Categoría</label>
+                    <input type="text" id="modal-cat-nombre" required placeholder="Ej. Netflix, Gimnasio">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                    <div class="form-group">
+                        <label for="modal-cat-tipo">Tipo</label>
+                        <select id="modal-cat-tipo" required>
+                            <option value="gasto">Gasto (Egreso)</option>
+                            <option value="ingreso">Ingreso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-cat-icono">Emoji / Icono</label>
+                        <select id="modal-cat-icono">
+                            <option value="⚙️">⚙️ General</option>
+                            <option value="📺">📺 Suscripción</option>
+                            <option value="💪">💪 Salud/Deporte</option>
+                            <option value="🏠">🏠 Hogar</option>
+                            <option value="🎓">🎓 Educación</option>
+                            <option value="👗">👗 Ropa/Gasto Personal</option>
+                            <option value="🎁">🎁 Regalo</option>
+                            <option value="🐾">🐾 Mascota</option>
+                            <option value="✈️">✈️ Viaje</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                    <button type="button" id="btn-close-modal-personal-categoria" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: REGISTRAR PAGO DE DEUDA -->
+    <div id="modal-pago-deuda" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 400px; width: 90%;">
+            <h3>Registrar Abono a Deuda</h3>
+            <p>Registra un pago para reducir tu saldo pendiente con <strong id="modal-pago-deuda-acreedor" style="color: var(--primary-color);"></strong>.</p>
+            <form id="form-modal-pago-deuda">
+                <input type="hidden" id="modal-pago-deuda-id">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem;">
+                    <div class="form-group">
+                        <label for="modal-pago-monto">Monto a Pagar</label>
+                        <input type="number" step="any" id="modal-pago-monto" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-pago-moneda">Moneda</label>
+                        <select id="modal-pago-moneda">
+                            <option value="USD">USD ($)</option>
+                            <option value="VES">VES (Bs)</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="modal-pago-tasa-container" class="form-group" style="display: none;">
+                    <label for="modal-pago-tasa">Tasa BCV del Pago (Bs/$)</label>
+                    <input type="number" step="any" id="modal-pago-tasa">
+                </div>
+                <div class="form-group">
+                    <label for="modal-pago-plataforma">Cuenta de Pago</label>
+                    <select id="modal-pago-plataforma" required>
+                        <option value="Mercantil">🏦 Mercantil (Personal)</option>
+                        <option value="Bancamiga">🏦 Bancamiga</option>
+                        <option value="Provincial VES">🏦 Provincial (Trabajo)</option>
+                        <option value="BDV (VES)">🏦 BDV (Trabajo)</option>
+                        <option value="Zelle">🇺🇸 Zelle</option>
+                        <option value="Efectivo USD">💵 Efectivo USD</option>
+                        <option value="Efectivo VES">💵 Efectivo VES</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-pago-detalles">Notas del Pago</label>
+                    <input type="text" id="modal-pago-detalles" placeholder="Ej. Pago cuota 1 de Cashea">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Registrar Pago</button>
+                    <button type="button" id="btn-close-modal-pago-deuda" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
         </div>
