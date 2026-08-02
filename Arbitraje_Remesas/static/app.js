@@ -9,7 +9,9 @@ const state = {
     currentCalculatedCiclo: null,
     currentCalculatedRemesa: null,
     divisasCompradasManuallyEdited: false,
-    clientes: []
+    clientes: [],
+    personalUnlocked: false,
+    currentPinEntered: ""
 };
 
 // DOM Elements
@@ -318,6 +320,8 @@ async function handleLogin(e) {
 function logout() {
     state.token = null;
     state.username = null;
+    state.personalUnlocked = false;
+    state.currentPinEntered = "";
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     checkAuth();
@@ -411,6 +415,13 @@ function handleTabSwitch(e) {
     if (targetTab === 'tab-remesas') {
         if (els.remesaP2pRef && (!els.remesaP2pRef.value || parseFloat(els.remesaP2pRef.value) <= 0)) {
             handleConsultarP2P();
+        }
+    }
+    if (targetTab === 'tab-personal') {
+        if (!state.personalUnlocked) {
+            clearPin();
+        } else {
+            loadPersonalFinanceData();
         }
     }
 }
@@ -4603,6 +4614,60 @@ function exportCiclosToCSV() {
     }).catch(err => {
         alert("Error al exportar ciclos: " + err.message);
     });
+}
+
+// =====================================================
+// FUNCIONES DE CONTROL DE PIN (FINANZAS PERSONALES)
+// =====================================================
+window.pressPinNum = function(num) {
+    if (state.personalUnlocked) return;
+    if (state.currentPinEntered.length < 4) {
+        state.currentPinEntered += num;
+        updatePinDisplay();
+        document.getElementById('pin-error-msg').style.display = 'none';
+        
+        // Auto submit if 4 digits are reached
+        if (state.currentPinEntered.length === 4) {
+            setTimeout(submitPin, 200);
+        }
+    }
+};
+
+window.clearPin = function() {
+    state.currentPinEntered = "";
+    updatePinDisplay();
+    document.getElementById('pin-error-msg').style.display = 'none';
+};
+
+function updatePinDisplay() {
+    const dots = document.querySelectorAll('.pin-dot');
+    dots.forEach((dot, index) => {
+        if (index < state.currentPinEntered.length) {
+            dot.classList.add('filled');
+        } else {
+            dot.classList.remove('filled');
+        }
+    });
+}
+
+window.submitPin = function() {
+    if (state.personalUnlocked) return;
+    // PIN de acceso por defecto: "0000"
+    if (state.currentPinEntered === "0000") {
+        state.personalUnlocked = true;
+        document.getElementById('personal-lock-screen').style.display = 'none';
+        document.getElementById('personal-main-panel').style.display = 'block';
+        showToast("🔓 Acceso personal autorizado");
+        loadPersonalFinanceData();
+    } else {
+        clearPin();
+        document.getElementById('pin-error-msg').style.display = 'block';
+    }
+};
+
+// Función comodín para carga de datos (Se expandirá en Fase 3/4)
+async function loadPersonalFinanceData() {
+    console.log("Cargando panel de finanzas personales...");
 }
 
 // DOM Content Loaded entry point
