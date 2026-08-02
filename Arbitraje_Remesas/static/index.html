@@ -89,6 +89,7 @@
             <button class="tab-link" data-tab="tab-remesas">💸 Remesas & Cotizaciones</button>
             <button class="tab-link" data-tab="tab-stats">📊 Análisis & Estadísticas</button>
             <button class="tab-link" data-tab="tab-historial">📜 Historial & Bitácoras</button>
+            <button class="tab-link" data-tab="tab-personal">🔒 Finanzas Personales</button>
         </nav>
 
         <main class="tab-content-container">
@@ -952,6 +953,51 @@
                     </div>
                 </div>
             </section>
+
+            <!-- TAB 6: FINANZAS PERSONALES -->
+            <section id="tab-personal" class="tab-pane">
+                <!-- Pantalla de Bloqueo por PIN -->
+                <div id="personal-lock-screen" class="personal-lock-container">
+                    <div class="lock-card glass-card">
+                        <div class="lock-header">
+                            <span class="lock-icon">🔒</span>
+                            <h3>Finanzas Personales Protegidas</h3>
+                            <p>Introduce tu código PIN de 4 dígitos para acceder</p>
+                        </div>
+                        <div class="pin-display">
+                            <div class="pin-dot"></div>
+                            <div class="pin-dot"></div>
+                            <div class="pin-dot"></div>
+                            <div class="pin-dot"></div>
+                        </div>
+                        <div class="pin-keyboard">
+                            <button class="pin-btn" onclick="pressPinNum(1)">1</button>
+                            <button class="pin-btn" onclick="pressPinNum(2)">2</button>
+                            <button class="pin-btn" onclick="pressPinNum(3)">3</button>
+                            <button class="pin-btn" onclick="pressPinNum(4)">4</button>
+                            <button class="pin-btn" onclick="pressPinNum(5)">5</button>
+                            <button class="pin-btn" onclick="pressPinNum(6)">6</button>
+                            <button class="pin-btn" onclick="pressPinNum(7)">7</button>
+                            <button class="pin-btn" onclick="pressPinNum(8)">8</button>
+                            <button class="pin-btn" onclick="pressPinNum(9)">9</button>
+                            <button class="pin-btn pin-action-btn" onclick="clearPin()">Borrar</button>
+                            <button class="pin-btn" onclick="pressPinNum(0)">0</button>
+                            <button class="pin-btn pin-action-btn" onclick="submitPin()">OK</button>
+                        </div>
+                        <div id="pin-error-msg" style="color: #ef4444; font-size: 0.8rem; margin-top: 0.85rem; display: none;">
+                            ❌ Código PIN incorrecto
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel Principal de Finanzas Personales (Oculto hasta que se valide el PIN) -->
+                <div id="personal-main-panel" style="display: none;">
+                    <div class="card glass-card" style="padding: 2.5rem; text-align: center;">
+                        <h2 style="color: var(--primary-color); margin-bottom: 0.5rem;">🔐 Contabilidad Personal Protegida</h2>
+                        <p class="text-secondary" style="font-size: 0.9rem;">Acceso validado con éxito. Fase 2 lista.</p>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -1456,6 +1502,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=107"></script>
+    <script src="app.js?v=108"></script>
 </body>
 </html>
