@@ -2330,6 +2330,55 @@ def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current
     db.commit()
     return {"message": "Ingreso eliminado."}
 
+# 3.5. MOVIMIENTOS PERSONALES CONSOLIDADOS (HISTORIAL GENERAL)
+@app.get("/api/personal/movimientos")
+def get_personal_movimientos(limit: int = 50, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    gastos = db.query(GastoPersonal).order_by(GastoPersonal.fecha.desc()).limit(limit).all()
+    ingresos = db.query(IngresoPersonal).order_by(IngresoPersonal.fecha.desc()).limit(limit).all()
+    
+    movimientos = []
+    for g in gastos:
+        movimientos.append({
+            "id": g.id,
+            "tipo": "gasto",
+            "fecha": g.fecha,
+            "monto": g.monto,
+            "moneda": g.moneda,
+            "tasa_bcv": g.tasa_bcv,
+            "monto_usd": g.monto_usd,
+            "categoria": g.categoria.nombre if g.categoria else "Otros",
+            "icono": g.categoria.icono if g.categoria else "⚙️",
+            "subcategoria": g.subcategoria,
+            "detalles": g.detalles,
+            "plataforma_pago": g.plataforma_pago
+        })
+        
+    for i in ingresos:
+        movimientos.append({
+            "id": i.id,
+            "tipo": "ingreso",
+            "fecha": i.fecha,
+            "monto": i.monto,
+            "moneda": i.moneda,
+            "tasa_bcv": i.tasa_bcv,
+            "monto_usd": i.monto_usd,
+            "categoria": i.categoria.nombre if i.categoria else "Otros",
+            "icono": i.categoria.icono if i.categoria else "⚙️",
+            "subcategoria": None,
+            "detalles": i.detalles,
+            "plataforma_pago": "Ingreso"
+        })
+        
+    # Sort by date descending
+    movimientos.sort(key=lambda x: x["fecha"], reverse=True)
+    
+    result = []
+    for m in movimientos[:limit]:
+        m["fecha"] = m["fecha"].strftime("%d/%m/%Y %I:%M %p")
+        result.append(m)
+        
+    return result
+
 # 4. DEUDAS
 @app.get("/api/personal/deudas")
 def get_personal_deudas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
