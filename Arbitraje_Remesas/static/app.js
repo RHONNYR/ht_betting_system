@@ -4665,14 +4665,540 @@ window.submitPin = function() {
     }
 };
 
-// Función comodín para carga de datos (Se expandirá en Fase 3/4)
-async function loadPersonalFinanceData() {
-    console.log("Cargando panel de finanzas personales...");
+let personalCategoryChart = null;
+
+// Inicialización de Listeners y Formularios de Finanzas Personales
+function setupPersonalFinanceListeners() {
+    // 1. Alternancia de Sub-pestañas en Finanzas Personales
+    const subTabLinks = document.querySelectorAll('#tab-personal .sub-tab-link');
+    const subTabPanes = document.querySelectorAll('#tab-personal .sub-tab-pane');
+    
+    subTabLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            subTabLinks.forEach(l => l.classList.remove('active'));
+            subTabPanes.forEach(p => p.classList.remove('active'));
+            
+            link.classList.add('active');
+            const target = link.getAttribute('data-subtab');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
+    // 2. Visibilidad condicional por Moneda (Gasto)
+    const gastoMoneda = document.getElementById('p-gasto-moneda');
+    const gastoTasaCont = document.getElementById('p-gasto-tasa-container');
+    const gastoTasa = document.getElementById('p-gasto-tasa');
+    
+    gastoMoneda.addEventListener('change', () => {
+        if (gastoMoneda.value === 'VES') {
+            gastoTasaCont.style.display = 'block';
+            gastoTasa.value = state.bcvRate || '';
+            gastoTasa.required = true;
+        } else {
+            gastoTasaCont.style.display = 'none';
+            gastoTasa.value = '';
+            gastoTasa.required = false;
+        }
+    });
+
+    // 3. Visibilidad condicional por Moneda (Ingreso)
+    const ingresoMoneda = document.getElementById('p-ingreso-moneda');
+    const ingresoTasaCont = document.getElementById('p-ingreso-tasa-container');
+    const ingresoTasa = document.getElementById('p-ingreso-tasa');
+    
+    ingresoMoneda.addEventListener('change', () => {
+        if (ingresoMoneda.value === 'VES') {
+            ingresoTasaCont.style.display = 'block';
+            ingresoTasa.value = state.bcvRate || '';
+            ingresoTasa.required = true;
+        } else {
+            ingresoTasaCont.style.display = 'none';
+            ingresoTasa.value = '';
+            ingresoTasa.required = false;
+        }
+    });
+
+    // 4. Campos condicionales inteligentes según Categoría seleccionada (Gasto)
+    const gastoCategoria = document.getElementById('p-gasto-categoria');
+    const condRecarga = document.getElementById('p-gasto-cond-recarga');
+    const condServicio = document.getElementById('p-gasto-cond-servicio');
+    const condInternet = document.getElementById('p-gasto-cond-internet');
+    const condDeuda = document.getElementById('p-gasto-vincular-deuda');
+    
+    gastoCategoria.addEventListener('change', () => {
+        const selectedOpt = gastoCategoria.options[gastoCategoria.selectedIndex];
+        const catName = selectedOpt ? selectedOpt.textContent.replace(/^[^\s]+\s+/, '') : ''; // Quita el emoji
+        
+        condRecarga.style.display = (catName === 'Recargas Celular') ? 'flex' : 'none';
+        condServicio.style.display = (catName === 'Servicios & Suscripciones') ? 'flex' : 'none';
+        condInternet.style.display = (catName === 'Internet') ? 'flex' : 'none';
+        condDeuda.style.display = (catName === 'Pago de Deuda') ? 'block' : 'none';
+    });
+
+    // 5. Mostrar campo "Otro" en Recarga Celular
+    const recargaTitular = document.getElementById('p-recarga-titular');
+    const recargaTitularOtroCont = document.getElementById('p-recarga-titular-otro-container');
+    recargaTitular.addEventListener('change', () => {
+        recargaTitularOtroCont.style.display = (recargaTitular.value === 'Otro') ? 'block' : 'none';
+    });
+
+    // 6. Mostrar campo "Otro" en Servicios
+    const servicioNombre = document.getElementById('p-servicio-nombre');
+    const servicioNombreOtroCont = document.getElementById('p-servicio-nombre-otro-container');
+    servicioNombre.addEventListener('change', () => {
+        servicioNombreOtroCont.style.display = (servicioNombre.value === 'Otro') ? 'block' : 'none';
+    });
+
+    // 7. Modales
+    const btnOpenCat = document.getElementById('btn-open-category-config');
+    const modalCat = document.getElementById('modal-personal-categoria');
+    const btnCloseCat = document.getElementById('btn-close-modal-personal-categoria');
+    
+    btnOpenCat.addEventListener('click', () => openModal(modalCat));
+    btnCloseCat.addEventListener('click', () => closeModal(modalCat));
+    
+    const modalPago = document.getElementById('modal-pago-deuda');
+    const btnClosePago = document.getElementById('btn-close-modal-pago-deuda');
+    btnClosePago.addEventListener('click', () => closeModal(modalPago));
+    
+    const pagoMoneda = document.getElementById('modal-pago-moneda');
+    const pagoTasaCont = document.getElementById('modal-pago-tasa-container');
+    const pagoTasa = document.getElementById('modal-pago-tasa');
+    
+    pagoMoneda.addEventListener('change', () => {
+        if (pagoMoneda.value === 'VES') {
+            pagoTasaCont.style.display = 'block';
+            pagoTasa.value = state.bcvRate || '';
+            pagoTasa.required = true;
+        } else {
+            pagoTasaCont.style.display = 'none';
+            pagoTasa.value = '';
+            pagoTasa.required = false;
+        }
+    });
+
+    // 8. Formularios Submit
+    document.getElementById('form-personal-gasto').addEventListener('submit', handleGastoSubmit);
+    document.getElementById('form-personal-ingreso').addEventListener('submit', handleIngresoSubmit);
+    document.getElementById('form-personal-deuda').addEventListener('submit', handleDeudaSubmit);
+    document.getElementById('form-modal-personal-categoria').addEventListener('submit', handleCategoryModalSubmit);
+    document.getElementById('form-modal-pago-deuda').addEventListener('submit', handlePagoDeudaModalSubmit);
 }
+
+// Carga principal de datos
+async function loadPersonalFinanceData() {
+    if (!state.personalUnlocked) return;
+    
+    try {
+        // Cargar Categorías
+        const cats = await apiCall('/api/personal/categorias');
+        populatePersonalCategories(cats);
+        
+        // Cargar Dashboard / Asesor
+        const dash = await apiCall('/api/personal/dashboard');
+        renderPersonalDashboard(dash);
+        
+        // Cargar Deudas
+        const deudas = await apiCall('/api/personal/deudas');
+        renderPersonalDeudasTable(deudas);
+        
+        // Cargar Historial
+        const gastos = await apiCall('/api/personal/gastos');
+        renderPersonalHistoryTable(gastos);
+        
+    } catch (err) {
+        console.error("Error al cargar finanzas personales:", err);
+    }
+}
+
+// Poblar dropdowns de categorías
+function populatePersonalCategories(cats) {
+    const selectGasto = document.getElementById('p-gasto-categoria');
+    const selectIngreso = document.getElementById('p-ingreso-categoria');
+    
+    const defaultGasto = selectGasto.value;
+    const defaultIngreso = selectIngreso.value;
+    
+    selectGasto.innerHTML = '';
+    selectIngreso.innerHTML = '';
+    
+    cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = `${c.icono} ${c.nombre}`;
+        
+        if (c.tipo === 'gasto') {
+            selectGasto.appendChild(opt);
+        } else if (c.tipo === 'ingreso') {
+            selectIngreso.appendChild(opt);
+        }
+    });
+    
+    if (defaultGasto) selectGasto.value = defaultGasto;
+    if (defaultIngreso) selectIngreso.value = defaultIngreso;
+    
+    // Disparar evento para ajustar campos condicionales inicialmente
+    const event = new Event('change');
+    selectGasto.dispatchEvent(event);
+}
+
+// Renderizar Dashboard del Asesor Financiero Pro
+function renderPersonalDashboard(dash) {
+    // Cajetines
+    document.getElementById('personal-ingresos-mes').textContent = `$${dash.total_ingresos_mes.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+    document.getElementById('personal-gastos-mes').textContent = `$${dash.total_gastos_mes.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+    document.getElementById('personal-flujo-neto').textContent = `$${dash.crecimiento_neto.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+    document.getElementById('personal-deudas-pendientes').textContent = `$${dash.total_deudas.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+    
+    // Asesor
+    document.getElementById('advisor-sueldo-sugerido').textContent = `$${dash.sueldo_sugerido.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`;
+    document.getElementById('advisor-ganancia-negocio').textContent = `$${dash.ganancia_negocio.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`;
+    
+    const alertContainer = document.getElementById('advisor-alerts-container');
+    alertContainer.innerHTML = '';
+    
+    dash.alertas.forEach(a => {
+        const badge = document.createElement('div');
+        badge.className = 'advisor-badge';
+        
+        let borderCol = 'rgba(255,255,255,0.06)';
+        let bgCol = 'rgba(255,255,255,0.02)';
+        let textCol = 'var(--text-primary)';
+        
+        if (a.tipo === 'rojo') {
+            borderCol = 'rgba(239, 68, 68, 0.25)';
+            bgCol = 'rgba(239, 68, 68, 0.05)';
+            textCol = '#fca5a5';
+        } else if (a.tipo === 'amarillo') {
+            borderCol = 'rgba(245, 158, 11, 0.25)';
+            bgCol = 'rgba(245, 158, 11, 0.05)';
+            textCol = '#fde047';
+        } else if (a.tipo === 'verde') {
+            borderCol = 'rgba(16, 185, 129, 0.25)';
+            bgCol = 'rgba(16, 185, 129, 0.05)';
+            textCol = '#a7f3d0';
+        }
+        
+        badge.style.border = `1px solid ${borderCol}`;
+        badge.style.background = bgCol;
+        badge.style.color = textCol;
+        badge.style.padding = '0.55rem 0.75rem';
+        badge.style.borderRadius = '8px';
+        badge.style.fontSize = '0.78rem';
+        badge.style.lineHeight = '1.35';
+        badge.textContent = a.mensaje;
+        
+        alertContainer.appendChild(badge);
+    });
+    
+    // Gráfico de Categorías
+    renderCategoryChart(dash.gastos_por_categoria);
+}
+
+// Renderizar gráfico de torta de Chart.js
+function renderCategoryChart(data) {
+    const ctx = document.getElementById('chart-personal-categorias');
+    if (!ctx) return;
+    
+    if (personalCategoryChart) {
+        personalCategoryChart.destroy();
+    }
+    
+    const labels = Object.keys(data);
+    const values = Object.values(data);
+    
+    if (labels.length === 0) {
+        labels.push("Sin gastos");
+        values.push(0.1); // dummy value for display
+    }
+    
+    personalCategoryChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: values,
+                backgroundColor: [
+                    '#3b82f6', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', 
+                    '#ec4899', '#14b8a6', '#f43f5e', '#a855f7', '#06b6d4'
+                ],
+                borderWidth: 1,
+                borderColor: 'rgba(255,255,255,0.08)'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false // hide legend inside canvas to preserve space on mobile
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label === 'Sin gastos') return label;
+                            let val = context.raw || 0;
+                            return `${label}: $${val.toFixed(2)} USD`;
+                        }
+                    }
+                }
+            },
+            cutout: '65%'
+        }
+    });
+}
+
+// Renderizar tabla de deudas
+function renderPersonalDeudasTable(deudas) {
+    const tbody = document.getElementById('personal-deudas-table-body');
+    const selectGastoDeudas = document.getElementById('p-gasto-deuda-id');
+    
+    tbody.innerHTML = '';
+    selectGastoDeudas.innerHTML = '<option value="">-- No vincular a deuda --</option>';
+    
+    if (deudas.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-secondary">No tienes deudas registradas.</td></tr>';
+        return;
+    }
+    
+    deudas.forEach(d => {
+        const tr = document.createElement('tr');
+        
+        let abonoBtn = '';
+        if (d.estado === 'activa') {
+            abonoBtn = `<button class="btn btn-secondary btn-sm" type="button" onclick="openAbonoDeudaModal(${d.id}, '${d.acreedor}')" style="padding: 0.2rem 0.5rem; font-size: 0.72rem;">💸 Abonar</button>`;
+            
+            // Populate gasto dropdown
+            const opt = document.createElement('option');
+            opt.value = d.id;
+            opt.textContent = `Abono a ${d.acreedor} (Saldo: $${d.saldo_pendiente_usd.toFixed(2)})`;
+            selectGastoDeudas.appendChild(opt);
+        } else {
+            abonoBtn = `<span class="badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); font-size: 0.7rem; padding: 0.25rem 0.4rem;">Pagada</span>`;
+        }
+        
+        tr.innerHTML = `
+            <td><strong>${d.acreedor}</strong></td>
+            <td class="text-secondary">${d.categoria_compra || 'General'}</td>
+            <td>$${d.monto_original_usd.toFixed(2)}</td>
+            <td style="color: ${d.estado === 'activa' ? '#f59e0b' : '#10b981'}; font-weight: 600;">$${d.saldo_pendiente_usd.toFixed(2)}</td>
+            <td class="text-center">${abonoBtn}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Abrir modal de abono
+window.openAbonoDeudaModal = function(deudaId, acreedor) {
+    document.getElementById('modal-pago-deuda-id').value = deudaId;
+    document.getElementById('modal-pago-deuda-acreedor').textContent = acreedor;
+    document.getElementById('modal-pago-monto').value = '';
+    document.getElementById('modal-pago-moneda').value = 'USD';
+    
+    const event = new Event('change');
+    document.getElementById('modal-pago-moneda').dispatchEvent(event);
+    
+    openModal(document.getElementById('modal-pago-deuda'));
+};
+
+// Renderizar tabla de historial
+function renderPersonalHistoryTable(gastos) {
+    const tbody = document.getElementById('personal-history-table-body');
+    tbody.innerHTML = '';
+    
+    if (gastos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-secondary">No hay gastos personales registrados aún.</td></tr>';
+        return;
+    }
+    
+    gastos.forEach(g => {
+        const tr = document.createElement('tr');
+        const displayMonto = g.moneda === 'VES' 
+            ? `${g.monto.toLocaleString('es-VE')} Bs` 
+            : `$${g.monto.toFixed(2)}`;
+            
+        tr.innerHTML = `
+            <td class="text-secondary">${g.fecha.split(' ')[0]}</td>
+            <td><strong>${g.icono} ${g.categoria}</strong>${g.subcategoria ? `<br><small class="text-secondary" style="font-size: 0.7rem;">${g.subcategoria}</small>` : ''}</td>
+            <td style="color: #ef4444; font-weight: 500;">-${displayMonto}</td>
+            <td class="text-secondary">${g.plataforma_pago}</td>
+            <td class="text-center">
+                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteGasto(${g.id})" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Manejo de registros submit
+async function handleGastoSubmit(e) {
+    e.preventDefault();
+    
+    const catSelect = document.getElementById('p-gasto-categoria');
+    const selectedOpt = catSelect.options[catSelect.selectedIndex];
+    const catName = selectedOpt ? selectedOpt.textContent.replace(/^[^\s]+\s+/, '') : '';
+    
+    let subcategory = null;
+    if (catName === 'Recargas Celular') {
+        const operadora = document.getElementById('p-recarga-operadora').value;
+        let titular = document.getElementById('p-recarga-titular').value;
+        if (titular === 'Otro') {
+            titular = document.getElementById('p-recarga-titular-otro').value.trim();
+        }
+        subcategory = `${operadora} - ${titular}`;
+    } else if (catName === 'Servicios & Suscripciones') {
+        let servicio = document.getElementById('p-servicio-nombre').value;
+        if (servicio === 'Otro') {
+            servicio = document.getElementById('p-servicio-nombre-otro').value.trim();
+        }
+        subcategory = servicio;
+    } else if (catName === 'Internet') {
+        subcategory = document.getElementById('p-internet-proveedor').value;
+    }
+
+    const payload = {
+        monto: parseFloat(document.getElementById('p-gasto-monto').value),
+        moneda: document.getElementById('p-gasto-moneda').value,
+        tasa_bcv: parseFloat(document.getElementById('p-gasto-tasa').value) || 0.0,
+        categoria_id: parseInt(document.getElementById('p-gasto-categoria').value),
+        subcategoria: subcategory,
+        detalles: document.getElementById('p-gasto-detalles').value.trim() || null,
+        plataforma_pago: document.getElementById('p-gasto-plataforma').value,
+        deuda_id: document.getElementById('p-gasto-deuda-id').value ? parseInt(document.getElementById('p-gasto-deuda-id').value) : null,
+        fecha: document.getElementById('p-gasto-fecha').value || null
+    };
+    
+    try {
+        await apiCall('/api/personal/gastos', 'POST', payload);
+        showToast("✅ Gasto registrado");
+        
+        // Reset form
+        document.getElementById('p-gasto-monto').value = '';
+        document.getElementById('p-gasto-detalles').value = '';
+        document.getElementById('p-gasto-deuda-id').value = '';
+        
+        await loadPersonalFinanceData();
+        await loadCapital(); // reload business capital
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+async function handleIngresoSubmit(e) {
+    e.preventDefault();
+    
+    const payload = {
+        monto: parseFloat(document.getElementById('p-ingreso-monto').value),
+        moneda: document.getElementById('p-ingreso-moneda').value,
+        tasa_bcv: parseFloat(document.getElementById('p-ingreso-tasa').value) || 0.0,
+        categoria_id: parseInt(document.getElementById('p-ingreso-categoria').value),
+        detalles: document.getElementById('p-ingreso-detalles').value.trim() || null,
+        fecha: document.getElementById('p-ingreso-fecha').value || null
+    };
+    
+    try {
+        await apiCall('/api/personal/ingresos', 'POST', payload);
+        showToast("✅ Ingreso registrado");
+        
+        document.getElementById('p-ingreso-monto').value = '';
+        document.getElementById('p-ingreso-detalles').value = '';
+        
+        await loadPersonalFinanceData();
+        await loadCapital();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+async function handleDeudaSubmit(e) {
+    e.preventDefault();
+    
+    const payload = {
+        acreedor: document.getElementById('p-deuda-acreedor').value.trim(),
+        monto_original_usd: parseFloat(document.getElementById('p-deuda-monto-usd').value),
+        categoria_compra: document.getElementById('p-deuda-concepto').value.trim() || null,
+        detalles: document.getElementById('p-deuda-detalles').value.trim() || null,
+        fecha_creacion: document.getElementById('p-deuda-fecha').value || null
+    };
+    
+    try {
+        await apiCall('/api/personal/deudas', 'POST', payload);
+        showToast("💳 Deuda creada con éxito");
+        
+        document.getElementById('p-deuda-acreedor').value = '';
+        document.getElementById('p-deuda-monto-usd').value = '';
+        document.getElementById('p-deuda-concepto').value = '';
+        document.getElementById('p-deuda-detalles').value = '';
+        
+        await loadPersonalFinanceData();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+async function handleCategoryModalSubmit(e) {
+    e.preventDefault();
+    
+    const payload = {
+        nombre: document.getElementById('modal-cat-nombre').value.trim(),
+        tipo: document.getElementById('modal-cat-tipo').value,
+        icono: document.getElementById('modal-cat-icono').value
+    };
+    
+    try {
+        await apiCall('/api/personal/categorias', 'POST', payload);
+        showToast("✅ Nueva categoría creada");
+        closeModal(document.getElementById('modal-personal-categoria'));
+        document.getElementById('modal-cat-nombre').value = '';
+        await loadPersonalFinanceData();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+async function handlePagoDeudaModalSubmit(e) {
+    e.preventDefault();
+    
+    const deudaId = parseInt(document.getElementById('modal-pago-deuda-id').value);
+    const payload = {
+        monto: parseFloat(document.getElementById('modal-pago-monto').value),
+        moneda: document.getElementById('modal-pago-moneda').value,
+        tasa_bcv: parseFloat(document.getElementById('modal-pago-tasa').value) || 0.0,
+        plataforma_pago: document.getElementById('modal-pago-plataforma').value,
+        detalles: document.getElementById('modal-pago-detalles').value.trim() || null,
+        fecha: document.getElementById('p-gasto-fecha').value || null // uses date picker or default
+    };
+    
+    try {
+        await apiCall(`/api/personal/deudas/${deudaId}/pagar`, 'POST', payload);
+        showToast("💸 Abono registrado con éxito");
+        closeModal(document.getElementById('modal-pago-deuda'));
+        
+        await loadPersonalFinanceData();
+        await loadCapital();
+    } catch (err) {
+        alert(err.message);
+    }
+}
+
+window.handleDeleteGasto = async function(gastoId) {
+    if (!confirm("¿Deseas eliminar este gasto? El capital debitado del banco se restaurará de forma automática.")) return;
+    
+    try {
+        await apiCall(`/api/personal/gastos/${gastoId}`, 'DELETE');
+        showToast("🗑️ Gasto eliminado y capital restaurado");
+        await loadPersonalFinanceData();
+        await loadCapital();
+    } catch (err) {
+        alert(err.message);
+    }
+};
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     setupEventListeners();
+    setupPersonalFinanceListeners();
     checkAuth();
 });
