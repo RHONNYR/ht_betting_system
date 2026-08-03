@@ -4557,14 +4557,21 @@ function isDateInPeriod(dateStr, period) {
     }
     
     if (period === 'semana') {
+        // Calculate start of current week (Monday)
+        // getDay(): 0=Sunday, 1=Monday, ..., 6=Saturday
+        // We want Monday as first day:
+        //   - If today is Sunday (0): go back 6 days to Monday
+        //   - Otherwise: go back (getDay() - 1) days
         const startOfWeek = new Date(now);
-        const day = startOfWeek.getDay();
-        const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
-        startOfWeek.setDate(diff);
+        const dayOfWeek = startOfWeek.getDay(); // 0=Sun
+        const daysFromMonday = (dayOfWeek === 0) ? 6 : dayOfWeek - 1;
+        startOfWeek.setDate(startOfWeek.getDate() - daysFromMonday);
         startOfWeek.setHours(0, 0, 0, 0);
         
+        // End of week = Sunday 23:59:59
         const endOfWeek = new Date(startOfWeek);
         endOfWeek.setDate(startOfWeek.getDate() + 7);
+        endOfWeek.setHours(0, 0, 0, 0);
         
         return d >= startOfWeek && d < endOfWeek;
     }
