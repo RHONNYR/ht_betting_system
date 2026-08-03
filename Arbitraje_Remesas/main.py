@@ -944,13 +944,17 @@ def create_compra(req: CompraDivisaCreate, username: str = Depends(get_current_u
     compra = CompraDivisa(
         tarjeta_id=req.tarjeta_id,
         fecha=compra_fecha,
-        monto_usd=req.monto_usd,
-        tasa_bcv=req.tasa_bcv,
-        comision_ves=comision_ves
+        monto_usd=round(req.monto_usd, 2),
+        tasa_bcv=round(req.tasa_bcv, 2),
+        comision_ves=round(comision_ves, 2)
     )
     db.add(compra)
     db.commit()
-    return {"message": "Compra de divisas registrada en la bitácora", "id": compra.id, "comision_ves": comision_ves}
+    return {"message": "Compra de divisas registrada en la bitácora", "id": compra.id, "comision_ves": round(comision_ves, 2)}
+
+@app.post("/api/compras")
+def create_compra_api(req: CompraDivisaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    return create_compra(req, username, db)
 
 @app.put("/api/compras/{compra_id}")
 def update_compra(compra_id: int, req: CompraDivisaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -968,9 +972,9 @@ def update_compra(compra_id: int, req: CompraDivisaCreate, username: str = Depen
     comision_ves = monto_ves * commission_pct
     
     compra.tarjeta_id = req.tarjeta_id
-    compra.monto_usd = req.monto_usd
-    compra.tasa_bcv = req.tasa_bcv
-    compra.comision_ves = comision_ves
+    compra.monto_usd = round(req.monto_usd, 2)
+    compra.tasa_bcv = round(req.tasa_bcv, 2)
+    compra.comision_ves = round(comision_ves, 2)
     if req.fecha:
         compra.fecha = parse_date_string(req.fecha)
         
@@ -1042,20 +1046,20 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
             
     ciclo = HistorialCiclos(
         fecha=get_venezuela_time(),
-        usdt_vendidos=req.usdt_vendidos,
-        tasa_venta=req.tasa_venta,
+        usdt_vendidos=round(req.usdt_vendidos, 2),
+        tasa_venta=round(req.tasa_venta, 2),
         banco_venta=req.banco_venta,
-        divisas_compradas=req.divisas_compradas,
-        tasa_bcv=req.tasa_bcv,
-        comision_compra_ves=req.comision_compra_ves,
-        transferencias_ves=req.transferencias_ves,
-        usd_procesados_binance=req.usd_procesados_binance,
-        usd_recibidos_binance=req.usd_recibidos_binance,
-        ganancia_usd=req.ganancia_usd,
-        ganancia_porcentaje=req.ganancia_porcentaje,
-        bolivares_restantes=req.bolivares_restantes,
+        divisas_compradas=round(req.divisas_compradas, 2),
+        tasa_bcv=round(req.tasa_bcv, 2),
+        comision_compra_ves=round(req.comision_compra_ves, 2),
+        transferencias_ves=round(req.transferencias_ves, 2),
+        usd_procesados_binance=round(req.usd_procesados_binance, 2),
+        usd_recibidos_binance=round(req.usd_recibidos_binance, 2),
+        ganancia_usd=round(req.ganancia_usd, 2),
+        ganancia_porcentaje=round(req.ganancia_porcentaje, 2),
+        bolivares_restantes=round(req.bolivares_restantes, 2),
         status=req.status or "completado",
-        bolivares_sobre_restantes=req.bolivares_sobre_restantes or 0.0,
+        bolivares_sobre_restantes=round(req.bolivares_sobre_restantes or 0.0, 2),
         tarjeta_id=req.tarjeta_id
     )
     db.add(ciclo)
@@ -1065,12 +1069,12 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
         compra_inicial = CompraCicloParcial(
             ciclo_id=ciclo.id,
             fecha=get_venezuela_time(),
-            usd_comprados=req.divisas_compradas,
-            usd_procesados=req.usd_procesados_binance,
-            tasa_bcv=req.tasa_bcv,
-            comision_compra_ves=req.comision_compra_ves,
-            transferencias_ves=req.transferencias_ves,
-            usd_recibidos_binance=req.usd_recibidos_binance,
+            usd_comprados=round(req.divisas_compradas, 2),
+            usd_procesados=round(req.usd_procesados_binance, 2),
+            tasa_bcv=round(req.tasa_bcv, 2),
+            comision_compra_ves=round(req.comision_compra_ves, 2),
+            transferencias_ves=round(req.transferencias_ves, 2),
+            usd_recibidos_binance=round(req.usd_recibidos_binance, 2),
             banco=card_banco or req.banco_venta or "Banco",
             tarjeta_id=req.tarjeta_id
         )
@@ -1133,33 +1137,33 @@ def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, us
     compra = CompraCicloParcial(
         ciclo_id=ciclo_id,
         fecha=get_venezuela_time(),
-        usd_comprados=req.usd_comprados,
-        usd_procesados=req.usd_procesados,
-        tasa_bcv=req.tasa_bcv,
-        comision_compra_ves=req.comision_compra_ves,
-        transferencias_ves=req.transferencias_ves,
-        usd_recibidos_binance=req.usd_recibidos_binance,
+        usd_comprados=round(req.usd_comprados, 2),
+        usd_procesados=round(req.usd_procesados, 2),
+        tasa_bcv=round(req.tasa_bcv, 2),
+        comision_compra_ves=round(req.comision_compra_ves, 2),
+        transferencias_ves=round(req.transferencias_ves, 2),
+        usd_recibidos_binance=round(req.usd_recibidos_binance, 2),
         banco=req.banco,
         tarjeta_id=req.tarjeta_id
     )
     db.add(compra)
     
-    costo_ves = req.usd_comprados * req.tasa_bcv
-    total_ves_gastado = costo_ves + req.comision_compra_ves + req.transferencias_ves
+    costo_ves = round(req.usd_comprados * req.tasa_bcv, 2)
+    total_ves_gastado = round(costo_ves + req.comision_compra_ves + req.transferencias_ves, 2)
     
-    ciclo.bolivares_sobre_restantes = max(0.0, ciclo.bolivares_sobre_restantes - total_ves_gastado)
+    ciclo.bolivares_sobre_restantes = round(max(0.0, (ciclo.bolivares_sobre_restantes or 0.0) - total_ves_gastado), 2)
     
-    ciclo.divisas_compradas += req.usd_comprados
-    ciclo.usd_procesados_binance += req.usd_procesados
-    ciclo.usd_recibidos_binance += req.usd_recibidos_binance
-    ciclo.comision_compra_ves += req.comision_compra_ves
-    ciclo.transferencias_ves += req.transferencias_ves
+    ciclo.divisas_compradas = round((ciclo.divisas_compradas or 0.0) + req.usd_comprados, 2)
+    ciclo.usd_procesados_binance = round((ciclo.usd_procesados_binance or 0.0) + req.usd_procesados, 2)
+    ciclo.usd_recibidos_binance = round((ciclo.usd_recibidos_binance or 0.0) + req.usd_recibidos_binance, 2)
+    ciclo.comision_compra_ves = round((ciclo.comision_compra_ves or 0.0) + req.comision_compra_ves, 2)
+    ciclo.transferencias_ves = round((ciclo.transferencias_ves or 0.0) + req.transferencias_ves, 2)
     
-    bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes
-    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
+    bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
+    ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
     
-    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+    ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
     
     if ciclo.bolivares_sobre_restantes <= 0.01:
@@ -1270,36 +1274,37 @@ def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_cu
         raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
         
     ciclo.fecha = parsed_date
-    ciclo.usdt_vendidos = req.usdt_vendidos
-    ciclo.tasa_venta = req.tasa_venta
+    ciclo.usdt_vendidos = round(req.usdt_vendidos, 2)
+    ciclo.tasa_venta = round(req.tasa_venta, 2)
     ciclo.tarjeta_id = req.tarjeta_id
     ciclo.banco_venta = card.banco
-    ciclo.usd_recibidos_binance = req.usd_recibidos_binance
+    ciclo.usd_recibidos_binance = round(req.usd_recibidos_binance, 2)
     if req.tasa_bcv and req.tasa_bcv > 0:
-        ciclo.tasa_bcv = req.tasa_bcv
+        ciclo.tasa_bcv = round(req.tasa_bcv, 2)
     
     # Recalculate remaining VES based on new parameters and existing purchases
-    initial_ves = req.usdt_vendidos * 0.9975 * req.tasa_venta
+    initial_ves = round(req.usdt_vendidos * 0.9975 * req.tasa_venta, 2)
     
     total_ves_spent = 0.0
     for cp in ciclo.compras_parciales:
         total_ves_spent += (cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves
+    total_ves_spent = round(total_ves_spent, 2)
         
-    ciclo.bolivares_sobre_restantes = max(0.0, initial_ves - total_ves_spent)
+    ciclo.bolivares_sobre_restantes = round(max(0.0, initial_ves - total_ves_spent), 2)
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
     
     if total_ves_spent > 0:
         bolivares_gastados_total = total_ves_spent
     else:
         if ciclo.divisas_compradas > 0 and ciclo.tasa_bcv > 0:
-            bolivares_gastados_total = (ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
+            bolivares_gastados_total = round((ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0), 2)
         else:
-            bolivares_gastados_total = initial_ves - ciclo.bolivares_sobre_restantes
+            bolivares_gastados_total = round(initial_ves - ciclo.bolivares_sobre_restantes, 2)
 
-    ustd_cost_of_operation = bolivares_gastados_total / req.tasa_venta if req.tasa_venta > 0 else 0.0
+    ustd_cost_of_operation = round(bolivares_gastados_total / req.tasa_venta, 2) if req.tasa_venta > 0 else 0.0
     
-    ciclo.ganancia_usd = req.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = (req.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+    ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
     
     if ciclo.bolivares_sobre_restantes > 0.01:
         ciclo.status = "abierto"
@@ -1698,15 +1703,15 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
     remesa = HistorialRemesas(
         fecha=remesa_date,
         cliente_nombre=req.cliente_nombre,
-        monto_usd=req.monto_usd,
-        tasa_p2p=req.tasa_p2p,
-        tasa_cliente=req.tasa_cliente,
-        monto_ves=req.monto_ves,
-        ganancia_usd=req.ganancia_usd,
+        monto_usd=round(req.monto_usd, 2),
+        tasa_p2p=round(req.tasa_p2p, 2),
+        tasa_cliente=round(req.tasa_cliente, 2),
+        monto_ves=round(req.monto_ves, 2),
+        ganancia_usd=round(req.ganancia_usd, 2),
         metodo_pago=req.metodo_pago,
         banco_receptor=req.banco_receptor,
-        costo_adquisicion_usdt=req.costo_adquisicion_usdt,
-        comision_binance=req.comision_binance
+        costo_adquisicion_usdt=round(req.costo_adquisicion_usdt, 4),
+        comision_binance=round(req.comision_binance, 4)
     )
     db.add(remesa)
     db.commit()
@@ -1731,7 +1736,7 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
             mov = MovimientoZelle(
                 fecha=remesa.fecha,
                 tipo="ingreso",
-                monto=req.monto_usd,
+                monto=round(req.monto_usd, 2),
                 titular=req.cliente_nombre,
                 detalle=f"Remesa ID #{remesa.id} de {req.cliente_nombre}",
                 estado="remesado",
@@ -1740,7 +1745,7 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
             db.add(mov)
             zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
             if zelle_plat:
-                zelle_plat.saldo_usd += req.monto_usd
+                zelle_plat.saldo_usd = round(zelle_plat.saldo_usd + req.monto_usd, 2)
         db.commit()
         
     return {"message": "Remesa registrada con éxito", "id": remesa.id}
@@ -1788,15 +1793,15 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
     if req.fecha:
         remesa.fecha = parse_date_string(req.fecha)
     remesa.cliente_nombre = req.cliente_nombre
-    remesa.monto_usd = req.monto_usd
-    remesa.tasa_p2p = req.tasa_p2p
-    remesa.tasa_cliente = req.tasa_cliente
-    remesa.monto_ves = req.monto_ves
-    remesa.ganancia_usd = req.ganancia_usd
+    remesa.monto_usd = round(req.monto_usd, 2)
+    remesa.tasa_p2p = round(req.tasa_p2p, 2)
+    remesa.tasa_cliente = round(req.tasa_cliente, 2)
+    remesa.monto_ves = round(req.monto_ves, 2)
+    remesa.ganancia_usd = round(req.ganancia_usd, 2)
     remesa.metodo_pago = req.metodo_pago
     remesa.banco_receptor = req.banco_receptor
-    remesa.costo_adquisicion_usdt = req.costo_adquisicion_usdt
-    remesa.comision_binance = req.comision_binance
+    remesa.costo_adquisicion_usdt = round(req.costo_adquisicion_usdt, 4)
+    remesa.comision_binance = round(req.comision_binance, 4)
     
     db.commit()
 
