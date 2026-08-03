@@ -1041,13 +1041,22 @@
                                 </div>
                             </div>
 
-                            <!-- Gráfico de Gastos por Categoría -->
+                            <!-- Gráficos de Finanzas Personales -->
                             <div class="card glass-card">
-                                <div class="card-header">
-                                    <h2>Distribución de Gastos</h2>
+                                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <h2 id="personal-chart-title">Distribución de Gastos</h2>
+                                    <div class="flex-row-align" style="gap: 4px; background: rgba(0,0,0,0.25); padding: 2px; border-radius: 6px;">
+                                        <button id="btn-chart-gastos" class="btn btn-primary btn-sm" style="padding: 2px 8px; font-size: 0.72rem; border-radius: 4px; border: none; cursor: pointer;">🛒 Gastos</button>
+                                        <button id="btn-chart-ingresos" class="btn btn-secondary btn-sm" style="padding: 2px 8px; font-size: 0.72rem; border-radius: 4px; border: none; cursor: pointer; background: transparent; color: var(--text-secondary);">💵 Ingresos</button>
+                                    </div>
                                 </div>
-                                <div class="card-body" style="display: flex; justify-content: center; align-items: center; min-height: 200px; padding: 0.5rem;">
-                                    <canvas id="chart-personal-categorias" style="max-height: 220px; max-width: 220px;"></canvas>
+                                <div class="card-body" style="display: flex; justify-content: center; align-items: center; min-height: 220px; padding: 0.75rem;">
+                                    <div id="chart-gastos-container" style="width: 100%; display: flex; justify-content: center;">
+                                        <canvas id="chart-personal-categorias" style="max-height: 200px; max-width: 200px;"></canvas>
+                                    </div>
+                                    <div id="chart-ingresos-container" class="hidden" style="width: 100%; display: flex; justify-content: center;">
+                                        <canvas id="chart-personal-ingresos" style="max-height: 200px; max-width: 200px;"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
