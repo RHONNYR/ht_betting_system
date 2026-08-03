@@ -4687,6 +4687,7 @@ window.submitPin = async function() {
 };
 
 let personalCategoryChart = null;
+let personalIncomeChart = null;
 
 // Inicialización de Listeners y Formularios de Finanzas Personales
 function setupPersonalFinanceListeners() {
@@ -4704,6 +4705,42 @@ function setupPersonalFinanceListeners() {
             document.getElementById(target).classList.add('active');
         });
     });
+
+    // 1.5 Alternancia de gráficos (Gastos / Ingresos)
+    const btnChartGastos = document.getElementById('btn-chart-gastos');
+    const btnChartIngresos = document.getElementById('btn-chart-ingresos');
+    
+    if (btnChartGastos && btnChartIngresos) {
+        btnChartGastos.addEventListener('click', () => {
+            btnChartGastos.className = "btn btn-primary btn-sm";
+            btnChartGastos.style.background = "";
+            btnChartGastos.style.color = "";
+            
+            btnChartIngresos.className = "btn btn-secondary btn-sm";
+            btnChartIngresos.style.background = "transparent";
+            btnChartIngresos.style.borderColor = "transparent";
+            btnChartIngresos.style.color = "var(--text-secondary)";
+            
+            document.getElementById('personal-chart-title').textContent = "Distribución de Gastos";
+            document.getElementById('chart-gastos-container').classList.remove('hidden');
+            document.getElementById('chart-ingresos-container').classList.add('hidden');
+        });
+        
+        btnChartIngresos.addEventListener('click', () => {
+            btnChartIngresos.className = "btn btn-primary btn-sm";
+            btnChartIngresos.style.background = "";
+            btnChartIngresos.style.color = "";
+            
+            btnChartGastos.className = "btn btn-secondary btn-sm";
+            btnChartGastos.style.background = "transparent";
+            btnChartGastos.style.borderColor = "transparent";
+            btnChartGastos.style.color = "var(--text-secondary)";
+            
+            document.getElementById('personal-chart-title').textContent = "Distribución de Ingresos";
+            document.getElementById('chart-gastos-container').classList.add('hidden');
+            document.getElementById('chart-ingresos-container').classList.remove('hidden');
+        });
+    }
 
     // 2. Visibilidad condicional por Moneda (Gasto)
     const gastoMoneda = document.getElementById('p-gasto-moneda');
@@ -4921,11 +4958,12 @@ function renderPersonalDashboard(dash) {
         alertContainer.appendChild(badge);
     });
     
-    // Gráfico de Categorías
+    // Gráficos de Categorías
     renderCategoryChart(dash.gastos_por_categoria);
+    renderIncomeChart(dash.ingresos_por_categoria || {});
 }
 
-// Renderizar gráfico de torta de Chart.js
+// Renderizar gráfico de torta de Chart.js para gastos
 function renderCategoryChart(data) {
     const ctx = document.getElementById('chart-personal-categorias');
     if (!ctx) return;
@@ -4939,7 +4977,7 @@ function renderCategoryChart(data) {
     
     if (labels.length === 0) {
         labels.push("Sin gastos");
-        values.push(0.1); // dummy value for display
+        values.push(0.1);
     }
     
     personalCategoryChart = new Chart(ctx, {
@@ -4961,13 +4999,67 @@ function renderCategoryChart(data) {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    display: false // hide legend inside canvas to preserve space on mobile
+                    display: false
                 },
                 tooltip: {
                     callbacks: {
                         label: function(context) {
                             let label = context.label || '';
                             if (label === 'Sin gastos') return label;
+                            let val = context.raw || 0;
+                            return `${label}: $${val.toFixed(2)} USD`;
+                        }
+                    }
+                }
+            },
+            cutout: '65%'
+        }
+    });
+}
+
+// Renderizar gráfico de torta de Chart.js para ingresos
+function renderIncomeChart(data) {
+    const ctx = document.getElementById('chart-personal-ingresos');
+    if (!ctx) return;
+    
+    if (personalIncomeChart) {
+        personalIncomeChart.destroy();
+    }
+    
+    const labels = Object.keys(data);
+    const values = Object.values(data);
+    
+    if (labels.length === 0) {
+        labels.push("Sin ingresos");
+        values.push(0.1);
+    }
+    
+    personalIncomeChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: values,
+                backgroundColor: [
+                    '#10b981', '#14b8a6', '#3b82f6', '#06b6d4', '#8b5cf6', 
+                    '#22c55e', '#059669', '#2563eb', '#0d9488', '#4f46e5'
+                ],
+                borderWidth: 1,
+                borderColor: 'rgba(255,255,255,0.08)'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label === 'Sin ingresos') return label;
                             let val = context.raw || 0;
                             return `${label}: $${val.toFixed(2)} USD`;
                         }
@@ -5044,9 +5136,17 @@ function renderPersonalHistoryTable(movimientos) {
     
     movimientos.forEach(g => {
         const tr = document.createElement('tr');
-        const displayMonto = g.moneda === 'VES' 
-            ? `${g.monto.toLocaleString('es-VE')} Bs` 
-            : `$${g.monto.toFixed(2)}`;
+        
+        let displayMonto = "";
+        let displayEquiv = "";
+        if (g.moneda === 'VES') {
+            displayMonto = `${g.monto.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} Bs`;
+            const usdVal = g.monto_usd || (g.tasa_bcv > 0 ? g.monto / g.tasa_bcv : 0);
+            const rateVal = g.tasa_bcv || 0;
+            displayEquiv = `<br><small class="text-secondary" style="font-size: 0.72rem; display: block; margin-top: 2px;">(≈ $${usdVal.toFixed(2)} USD @ ${rateVal.toFixed(2)} Bs)</small>`;
+        } else {
+            displayMonto = `$${g.monto.toFixed(2)} USD`;
+        }
             
         const esIngreso = g.tipo === 'ingreso';
         const color = esIngreso ? '#10b981' : '#ef4444';
@@ -5054,8 +5154,12 @@ function renderPersonalHistoryTable(movimientos) {
         
         tr.innerHTML = `
             <td class="text-secondary">${g.fecha.split(' ')[0]}</td>
-            <td><strong>${g.icono} ${g.categoria}</strong>${g.subcategoria ? `<br><small class="text-secondary" style="font-size: 0.7rem;">${g.subcategoria}</small>` : ''}</td>
-            <td style="color: ${color}; font-weight: 500;">${signo}${displayMonto}</td>
+            <td>
+                <strong>${g.icono} ${g.categoria}</strong>
+                ${g.subcategoria ? `<br><small class="text-secondary" style="font-size: 0.7rem;">${g.subcategoria}</small>` : ''}
+                ${g.detalles ? `<br><small style="color: #60a5fa; font-size: 0.72rem; font-style: italic; display: block; margin-top: 2px;">📝 ${g.detalles}</small>` : ''}
+            </td>
+            <td style="color: ${color}; font-weight: 500; line-height: 1.25;">${signo}${displayMonto}${displayEquiv}</td>
             <td class="text-secondary">${g.plataforma_pago}</td>
             <td class="text-center">
                 <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteMovimiento(${g.id}, '${g.tipo}')" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
