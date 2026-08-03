@@ -8,6 +8,7 @@ const state = {
     titulares: [],
     currentCalculatedCiclo: null,
     currentCalculatedRemesa: null,
+    lastRemesaSource: 'margin',
     divisasCompradasManuallyEdited: false,
     clientes: [],
     personalUnlocked: false,
@@ -2661,8 +2662,14 @@ function setupEventListeners() {
     
     remesaInputs.forEach(input => {
         if (input) {
-            input.addEventListener('input', () => calculateRemesa('margin'));
-            input.addEventListener('change', () => calculateRemesa('margin'));
+            input.addEventListener('input', (e) => {
+                const src = e.target.id === 'remesa-margen' ? 'margin' : null;
+                calculateRemesa(src);
+            });
+            input.addEventListener('change', (e) => {
+                const src = e.target.id === 'remesa-margen' ? 'margin' : null;
+                calculateRemesa(src);
+            });
         }
     });
 
@@ -2715,16 +2722,18 @@ function setupEventListeners() {
             const comisionBinPct = parseFloat(document.getElementById('edit-remesa-comision-binance').value) / 100;
             
             // Recalculate Ves and Profit
-            const montoVes = montoUsd * tasaCliente;
+            const roundedTasaCliente = Math.round(tasaCliente * 100) / 100;
+            const roundedTasaP2p = Math.round(tasaP2p * 100) / 100;
+            const montoVes = Math.round((montoUsd * roundedTasaCliente) * 100) / 100;
             let pmFeePct = 0;
             if (bancoReceptor === 'Pago Móvil') {
                 pmFeePct = 0.003;
             }
-            const vesGastadosTotales = montoVes * (1 + pmFeePct);
-            const usdtGastados = vesGastadosTotales / tasaP2p;
-            const fCosto = (1 + costoAdqPct) / (1 - comisionBinPct);
-            const costoRealUsdt = usdtGastados * fCosto;
-            const gananciaUsd = montoUsd - costoRealUsdt;
+            const vesGastadosTotales = Math.round((montoVes * (1 + pmFeePct)) * 100) / 100;
+            const usdtGastados = Math.round((vesGastadosTotales / roundedTasaP2p) * 100) / 100;
+            const fCosto = 1 + costoAdqPct + comisionBinPct;
+            const costoRealUsdt = Math.round((usdtGastados * fCosto) * 100) / 100;
+            const gananciaUsd = Math.round((montoUsd - costoRealUsdt) * 100) / 100;
             
             // Gender default for clients auto-save
             const guessedGender = getGenderEmoji(cliente) === '👩' ? 'Femenino' : 'Masculino';
@@ -3195,8 +3204,14 @@ async function handleCalcConsultarP2P() {
     }
 }
 
-function calculateRemesa(source = 'margin') {
+function calculateRemesa(source = null) {
     try {
+        if (!source) {
+            source = state.lastRemesaSource || 'margin';
+        } else {
+            state.lastRemesaSource = source;
+        }
+
         const parseLocaleFloat = (val) => {
             if (!val) return 0;
             const clean = val.toString().replace(/,/g, '.').trim();
@@ -3221,6 +3236,7 @@ function calculateRemesa(source = 'margin') {
         // Handle source specific updates first
         if (source === 'tasa') {
             tasaCliente = parseLocaleFloat(els.remesaTasaCliente.value);
+            tasaCliente = Math.round(tasaCliente * 100) / 100;
             if (p2pRate > 0 && tasaCliente > 0) {
                 margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
                 if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
@@ -3229,10 +3245,17 @@ function calculateRemesa(source = 'margin') {
             p2pRate = parseLocaleFloat(els.remesaP2pRef.value);
             if (p2pRate > 0) {
                 if (tasaCliente > 0) {
-                    margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
-                    if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
+                    if (state.lastRemesaSource === 'tasa') {
+                        margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
+                        if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
+                    } else {
+                        tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+                        tasaCliente = Math.round(tasaCliente * 100) / 100;
+                        if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
+                    }
                 } else if (margenPct > 0) {
                     tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+                    tasaCliente = Math.round(tasaCliente * 100) / 100;
                     if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
                 }
             }
@@ -3240,15 +3263,16 @@ function calculateRemesa(source = 'margin') {
             margenPct = parseLocaleFloat(els.remesaMargen.value) / 100;
             if (p2pRate > 0 && margenPct > 0) {
                 tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+                tasaCliente = Math.round(tasaCliente * 100) / 100;
                 if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
             }
         }
 
         // --- BULLETPROOF FALLBACK RESOLVERS ---
-        // If P2P Rate is missing, solve it or fallback to temp P2P rate / BCV rate
         if (p2pRate <= 0) {
             if (tasaCliente > 0 && margenPct > 0) {
                 p2pRate = (tasaCliente * fCosto) / ((1 - margenPct) * (1 - pmFeePct));
+                p2pRate = Math.round(p2pRate * 100) / 100;
             } else if (state.tempAvgP2pRate > 0) {
                 p2pRate = state.tempAvgP2pRate;
             } else if (state.bcvRate > 0) {
@@ -3259,25 +3283,23 @@ function calculateRemesa(source = 'margin') {
             }
         }
 
-        // If Tasa Cliente is missing, solve it from P2P & Margen
         if (tasaCliente <= 0) {
             if (p2pRate > 0) {
                 if (margenPct <= 0) {
-                    margenPct = 0.03; // Default 3% margin if 0
+                    margenPct = 0.03;
                     if (els.remesaMargen) els.remesaMargen.value = "3.00";
                 }
                 tasaCliente = p2pRate * ((1 - margenPct) / fCosto) * (1 - pmFeePct);
+                tasaCliente = Math.round(tasaCliente * 100) / 100;
                 if (els.remesaTasaCliente) els.remesaTasaCliente.value = tasaCliente.toFixed(2);
             }
         }
 
-        // If Margen is missing, solve it from P2P & Tasa Cliente
         if (margenPct <= 0 && p2pRate > 0 && tasaCliente > 0) {
             margenPct = 1 - (tasaCliente * fCosto) / (p2pRate * (1 - pmFeePct));
             if (els.remesaMargen) els.remesaMargen.value = (margenPct * 100).toFixed(2);
         }
 
-        // Only show empty state if Monto USD <= 0
         if (montoUsd <= 0) {
             els.remesaResultsDisplay.innerHTML = `
                 <div class="empty-state">
@@ -3294,20 +3316,23 @@ function calculateRemesa(source = 'margin') {
             return;
         }
         
+        tasaCliente = Math.round(tasaCliente * 100) / 100;
+        p2pRate = Math.round(p2pRate * 100) / 100;
+        
         // Total VES beneficiary receives
-        const vesARecibir = montoUsd * tasaCliente;
+        const vesARecibir = Math.round((montoUsd * tasaCliente) * 100) / 100;
         
         // Total VES spent by operator (including transaction fee)
-        const vesGastadosTotales = vesARecibir * (1 + pmFeePct);
+        const vesGastadosTotales = Math.round((vesARecibir * (1 + pmFeePct)) * 100) / 100;
         
         // USDT needed to sell on P2P to fund the vesGastadosTotales
-        const usdtGastados = vesGastadosTotales / p2pRate;
+        const usdtGastados = Math.round((vesGastadosTotales / p2pRate) * 100) / 100;
         
         // Real acquisition cost of that USDT in USD
-        const costoRealUsdt = usdtGastados * fCosto;
+        const costoRealUsdt = Math.round((usdtGastados * fCosto) * 100) / 100;
         
         // Net profit in USD
-        const gananciaUsd = montoUsd - costoRealUsdt;
+        const gananciaUsd = Math.round((montoUsd - costoRealUsdt) * 100) / 100;
         
         const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
         
