@@ -4827,6 +4827,11 @@ function setupPersonalFinanceListeners() {
     btnOpenPin.addEventListener('click', () => openModal(modalPin));
     btnClosePin.addEventListener('click', () => closeModal(modalPin));
     
+    // Modal Edit Deuda
+    const modalDeudaEdit = document.getElementById('modal-personal-deuda-edit');
+    const btnCloseDeudaEdit = document.getElementById('btn-close-modal-deuda-edit');
+    btnCloseDeudaEdit.addEventListener('click', () => closeModal(modalDeudaEdit));
+    
     const pagoMoneda = document.getElementById('modal-pago-moneda');
     const pagoTasaCont = document.getElementById('modal-pago-tasa-container');
     const pagoTasa = document.getElementById('modal-pago-tasa');
@@ -4850,6 +4855,7 @@ function setupPersonalFinanceListeners() {
     document.getElementById('form-modal-personal-categoria').addEventListener('submit', handleCategoryModalSubmit);
     document.getElementById('form-modal-pago-deuda').addEventListener('submit', handlePagoDeudaModalSubmit);
     document.getElementById('form-modal-personal-pin').addEventListener('submit', handlePinModalSubmit);
+    document.getElementById('form-modal-deuda-edit').addEventListener('submit', handleEditDeudaSubmit);
 }
 
 // Carga principal de datos
@@ -5080,7 +5086,7 @@ function renderPersonalDeudasTable(deudas) {
     selectGastoDeudas.innerHTML = '<option value="">-- No vincular a deuda --</option>';
     
     if (deudas.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-secondary">No tienes deudas registradas.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center text-secondary">No tienes deudas registradas.</td></tr>';
         return;
     }
     
@@ -5100,12 +5106,20 @@ function renderPersonalDeudasTable(deudas) {
             abonoBtn = `<span class="badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); font-size: 0.7rem; padding: 0.25rem 0.4rem;">Pagada</span>`;
         }
         
+        const acreedorEscaped = d.acreedor.replace(/'/g, "\\'");
+        const conceptoEscaped = (d.categoria_compra || '').replace(/'/g, "\\'");
+        const detallesEscaped = (d.detalles || '').replace(/'/g, "\\'");
+        
         tr.innerHTML = `
             <td><strong>${d.acreedor}</strong></td>
             <td class="text-secondary">${d.categoria_compra || 'General'}</td>
             <td>$${d.monto_original_usd.toFixed(2)}</td>
             <td style="color: ${d.estado === 'activa' ? '#f59e0b' : '#10b981'}; font-weight: 600;">$${d.saldo_pendiente_usd.toFixed(2)}</td>
             <td class="text-center">${abonoBtn}</td>
+            <td class="text-center" style="white-space: nowrap;">
+                <button class="btn btn-primary btn-sm" type="button" onclick="openEditDeudaModal(${d.id}, '${acreedorEscaped}', ${d.monto_original_usd}, '${conceptoEscaped}', '${detallesEscaped}')" style="padding: 0.2rem 0.4rem; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.15); color: #60a5fa; margin-right: 4px;">✏️</button>
+                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteDeuda(${d.id})" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
+            </td>
         `;
         tbody.appendChild(tr);
     });
@@ -5334,6 +5348,49 @@ window.handleDeleteMovimiento = async function(id, tipo) {
         alert(err.message);
     }
 };
+
+window.openEditDeudaModal = function(id, acreedor, monto, concepto, detalles) {
+    document.getElementById('modal-edit-deuda-id').value = id;
+    document.getElementById('modal-edit-deuda-acreedor').value = acreedor;
+    document.getElementById('modal-edit-deuda-monto').value = monto;
+    document.getElementById('modal-edit-deuda-concepto').value = concepto;
+    document.getElementById('modal-edit-deuda-detalles').value = detalles;
+    
+    openModal(document.getElementById('modal-personal-deuda-edit'));
+};
+
+window.handleDeleteDeuda = async function(id) {
+    if (!confirm("¿Deseas eliminar esta cuenta por pagar? Los abonos ya realizados se mantendrán como gastos independientes.")) return;
+    
+    try {
+        await apiCall(`/personal/deudas/${id}`, 'DELETE');
+        showToast("🗑️ Cuenta por pagar eliminada");
+        await loadPersonalFinanceData();
+    } catch (err) {
+        alert(err.message);
+    }
+};
+
+async function handleEditDeudaSubmit(e) {
+    e.preventDefault();
+    
+    const id = parseInt(document.getElementById('modal-edit-deuda-id').value);
+    const payload = {
+        acreedor: document.getElementById('modal-edit-deuda-acreedor').value.trim(),
+        monto_original_usd: parseFloat(document.getElementById('modal-edit-deuda-monto').value),
+        categoria_compra: document.getElementById('modal-edit-deuda-concepto').value.trim() || null,
+        detalles: document.getElementById('modal-edit-deuda-detalles').value.trim() || null
+    };
+    
+    try {
+        await apiCall(`/personal/deudas/${id}`, 'PUT', payload);
+        showToast("✏️ Cuenta por pagar modificada");
+        closeModal(document.getElementById('modal-personal-deuda-edit'));
+        await loadPersonalFinanceData();
+    } catch (err) {
+        alert(err.message);
+    }
+}
 
 async function handlePinModalSubmit(e) {
     e.preventDefault();
