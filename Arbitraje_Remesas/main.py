@@ -2546,16 +2546,21 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
         key = f"{icono} {nombre_ingreso}"
         ingresos_por_categoria[key] = ingresos_por_categoria.get(key, 0.0) + i.monto_usd
         
-    # 4. Cálculo de Ganancia del Negocio en el mes actual (Ciclos + Remesas)
-    # Ciclos de este mes
-    ciclos_mes = db.query(HistorialCiclos).filter(HistorialCiclos.fecha >= inicio_mes, HistorialCiclos.status == "completado").all()
+    # 4. Cálculo de Ganancia Operativa del Negocio en el mes actual (Ciclos + Remesas)
+    # Se suman TODOS los ciclos del mes (abiertos y cerrados) porque ganancia_usd
+    # se actualiza en tiempo real con cada compra registrada. El cierre del ciclo
+    # es solo una marca administrativa de que se agotaron los bolívares del sobre,
+    # no el momento en que nace la ganancia.
+    ciclos_mes = db.query(HistorialCiclos).filter(
+        HistorialCiclos.fecha >= inicio_mes
+    ).all()
     ganancia_ciclos = sum(c.ganancia_usd for c in ciclos_mes if c.ganancia_usd is not None)
     
-    # Remesas de este mes
+    # Remesas del mes: cada remesa ya tiene su ganancia registrada al momento de crearse
     remesas_mes = db.query(HistorialRemesas).filter(HistorialRemesas.fecha >= inicio_mes).all()
     ganancia_remesas = sum(r.ganancia_usd for r in remesas_mes if r.ganancia_usd is not None)
     
-    ganancia_negocio = ganancia_ciclos + ganancia_remesas
+    ganancia_negocio = round(ganancia_ciclos + ganancia_remesas, 2)
     
     # 5. Sueldo Óptimo Recomendado (40% de la ganancia del negocio)
     sueldo_sugerido = ganancia_negocio * 0.40
