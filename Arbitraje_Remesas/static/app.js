@@ -4706,41 +4706,7 @@ function setupPersonalFinanceListeners() {
         });
     });
 
-    // 1.5 Alternancia de gráficos (Gastos / Ingresos)
-    const btnChartGastos = document.getElementById('btn-chart-gastos');
-    const btnChartIngresos = document.getElementById('btn-chart-ingresos');
-    
-    if (btnChartGastos && btnChartIngresos) {
-        btnChartGastos.addEventListener('click', () => {
-            btnChartGastos.className = "btn btn-primary btn-sm";
-            btnChartGastos.style.background = "";
-            btnChartGastos.style.color = "";
-            
-            btnChartIngresos.className = "btn btn-secondary btn-sm";
-            btnChartIngresos.style.background = "transparent";
-            btnChartIngresos.style.borderColor = "transparent";
-            btnChartIngresos.style.color = "var(--text-secondary)";
-            
-            document.getElementById('personal-chart-title').textContent = "Distribución de Gastos";
-            document.getElementById('chart-gastos-container').classList.remove('hidden');
-            document.getElementById('chart-ingresos-container').classList.add('hidden');
-        });
-        
-        btnChartIngresos.addEventListener('click', () => {
-            btnChartIngresos.className = "btn btn-primary btn-sm";
-            btnChartIngresos.style.background = "";
-            btnChartIngresos.style.color = "";
-            
-            btnChartGastos.className = "btn btn-secondary btn-sm";
-            btnChartGastos.style.background = "transparent";
-            btnChartGastos.style.borderColor = "transparent";
-            btnChartGastos.style.color = "var(--text-secondary)";
-            
-            document.getElementById('personal-chart-title').textContent = "Distribución de Ingresos";
-            document.getElementById('chart-gastos-container').classList.add('hidden');
-            document.getElementById('chart-ingresos-container').classList.remove('hidden');
-        });
-    }
+
 
     // 2. Visibilidad condicional por Moneda (Gasto)
     const gastoMoneda = document.getElementById('p-gasto-moneda');
