@@ -2523,12 +2523,22 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
     ingresos_mes = db.query(IngresoPersonal).filter(IngresoPersonal.fecha >= inicio_mes).all()
     total_ingresos_mes = sum(i.monto_usd for i in ingresos_mes)
     
-    # Ingresos por categoría para el gráfico circular
+    # Ingresos por categoría/detalle discretizados para el gráfico circular
     ingresos_por_categoria = {}
     for i in ingresos_mes:
-        cat_name = i.categoria.nombre if i.categoria else "Otros"
-        icono = i.categoria.icono if i.categoria else "⚙️"
-        key = f"{icono} {cat_name}"
+        # Usar detalles para discretizar si existe, sino el nombre de la categoría
+        nombre_ingreso = i.detalles.strip() if i.detalles else (i.categoria.nombre if i.categoria else "Otros")
+        if nombre_ingreso:
+            # Capitalizar primera letra para estética
+            nombre_ingreso = nombre_ingreso[0].upper() + nombre_ingreso[1:]
+        else:
+            nombre_ingreso = "Otros"
+            
+        if len(nombre_ingreso) > 20:
+            nombre_ingreso = nombre_ingreso[:18] + "..."
+            
+        icono = i.categoria.icono if (i.categoria and i.categoria.icono) else "💵"
+        key = f"{icono} {nombre_ingreso}"
         ingresos_por_categoria[key] = ingresos_por_categoria.get(key, 0.0) + i.monto_usd
         
     # 4. Cálculo de Ganancia del Negocio en el mes actual (Ciclos + Remesas)
