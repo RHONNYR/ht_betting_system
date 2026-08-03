@@ -2399,6 +2399,44 @@ def create_personal_deuda(req: DeudaPersonalCreate, username: str = Depends(get_
     db.commit()
     return {"message": "Deuda registrada con éxito", "id": deuda.id}
 
+@app.put("/api/personal/deudas/{deuda_id}")
+def edit_personal_deuda(deuda_id: int, req: DeudaPersonalCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == deuda_id).first()
+    if not deuda:
+        raise HTTPException(status_code=404, detail="Deuda no encontrada.")
+    
+    deuda.acreedor = req.acreedor.strip()
+    deuda.categoria_compra = req.categoria_compra
+    deuda.detalles = req.detalles
+    
+    # Recalculate pending balance
+    suma_pagos = sum(p.monto_usd for p in deuda.pagos)
+    deuda.monto_original_usd = req.monto_original_usd
+    deuda.saldo_pendiente_usd = max(0.0, req.monto_original_usd - suma_pagos)
+    
+    if deuda.saldo_pendiente_usd <= 0.05:
+        deuda.saldo_pendiente_usd = 0.0
+        deuda.estado = "pagada"
+    else:
+        deuda.estado = "activa"
+        
+    db.commit()
+    return {"message": "Deuda editada con éxito", "id": deuda.id, "saldo_pendiente": deuda.saldo_pendiente_usd}
+
+@app.delete("/api/personal/deudas/{deuda_id}")
+def delete_personal_deuda(deuda_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == deuda_id).first()
+    if not deuda:
+        raise HTTPException(status_code=404, detail="Deuda no encontrada.")
+    
+    # Desassociate any payment expenses
+    for p in deuda.pagos:
+        p.deuda_id = None
+        
+    db.delete(deuda)
+    db.commit()
+    return {"message": "Deuda eliminada con éxito"}
+
 @app.post("/api/personal/deudas/{deuda_id}/pagar")
 def pay_personal_deuda(deuda_id: int, req: PagoDeudaRequest, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == deuda_id).first()
@@ -2474,7 +2512,11 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
     for g in gastos_mes:
         cat_name = g.categoria.nombre if g.categoria else "Otros"
         icono = g.categoria.icono if g.categoria else "⚙️"
-        key = f"{icono} {cat_name}"
+        if cat_name == "Pago de Deuda" and g.subcategoria:
+            acreedor = g.subcategoria.replace("Pago a ", "")
+            key = f"💸 Deuda: {acreedor}"
+        else:
+            key = f"{icono} {cat_name}"
         gastos_por_categoria[key] = gastos_por_categoria.get(key, 0.0) + g.monto_usd
 
     # 3. Total incomes in current month
