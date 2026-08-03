@@ -1340,6 +1340,7 @@
                                                     <th>Monto Original</th>
                                                     <th>Saldo Pendiente</th>
                                                     <th>Abono</th>
+                                                    <th class="text-center">Acción</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="personal-deudas-table-body">
@@ -1964,6 +1965,36 @@
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Actualizar PIN</button>
                     <button type="button" id="btn-close-modal-personal-pin" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: EDITAR DEUDA -->
+    <div id="modal-personal-deuda-edit" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 400px; width: 90%;">
+            <h3>✏️ Editar Cuenta por Pagar</h3>
+            <form id="form-modal-deuda-edit">
+                <input type="hidden" id="modal-edit-deuda-id">
+                <div class="form-group">
+                    <label for="modal-edit-deuda-acreedor">Acreedor / Destino</label>
+                    <input type="text" id="modal-edit-deuda-acreedor" required placeholder="Ej. Cashea, Daka, Banco de Venezuela">
+                </div>
+                <div class="form-group">
+                    <label for="modal-edit-deuda-monto">Monto Original ($ USD)</label>
+                    <input type="number" step="any" id="modal-edit-deuda-monto" required placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="modal-edit-deuda-concepto">Concepto / Compra</label>
+                    <input type="text" id="modal-edit-deuda-concepto" placeholder="Ej. Teléfono, Zapatos, etc.">
+                </div>
+                <div class="form-group">
+                    <label for="modal-edit-deuda-detalles">Detalles Adicionales</label>
+                    <input type="text" id="modal-edit-deuda-detalles" placeholder="Ej. 6 cuotas de $15">
+                </div>
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btn-close-modal-deuda-edit" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
         </div>
