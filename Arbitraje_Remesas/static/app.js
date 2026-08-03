@@ -4512,15 +4512,25 @@ function exportRemesasToCSV() {
 
 function parseSpanishDate(dateStr) {
     if (!dateStr) return new Date();
-    let d = new Date(dateStr);
-    if (!isNaN(d.getTime())) return d;
+    
+    // IMPORTANT: Never use new Date() directly on DD/MM/YYYY strings.
+    // JavaScript parses them as MM/DD/YYYY (American format), so
+    // "01/08/2026" becomes January 8 instead of August 1 — a silent wrong parse.
+    // We detect the DD/MM/YYYY pattern and always use the manual parser.
+    const isDDMMYYYY = /^\d{1,2}\/\d{1,2}\/\d{4}/.test(dateStr.trim());
+    
+    if (!isDDMMYYYY) {
+        // For ISO or other unambiguous formats, let the browser parse
+        let d = new Date(dateStr);
+        if (!isNaN(d.getTime())) return d;
+    }
     
     try {
         const parts = dateStr.trim().split(/\s+/);
         const dateParts = parts[0].split('/');
         if (dateParts.length === 3) {
             const day = parseInt(dateParts[0]);
-            const month = parseInt(dateParts[1]) - 1;
+            const month = parseInt(dateParts[1]) - 1; // JS months are 0-indexed
             const year = parseInt(dateParts[2]);
             
             let hours = 0;
