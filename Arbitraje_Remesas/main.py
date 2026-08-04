@@ -2387,6 +2387,85 @@ def get_personal_movimientos(limit: int = 50, username: str = Depends(get_curren
         
     return result
 
+@app.get("/api/personal/movimientos/detalle")
+def get_personal_movimientos_detalle(
+    tipo: Optional[str] = None,          # "gasto", "ingreso", None=todos
+    categoria_id: Optional[int] = None,
+    fecha_inicio: Optional[str] = None,
+    fecha_fin: Optional[str] = None,
+    limit: int = 300,
+    username: str = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Endpoint de movimientos con filtros + totales por categoría."""
+    fi = parse_personal_date(fecha_inicio) if fecha_inicio else None
+    ff = parse_personal_date(fecha_fin) if fecha_fin else None
+    if ff:
+        ff = ff.replace(hour=23, minute=59, second=59)
+
+    movimientos = []
+
+    if tipo != "ingreso":
+        q = db.query(GastoPersonal)
+        if fi: q = q.filter(GastoPersonal.fecha >= fi)
+        if ff: q = q.filter(GastoPersonal.fecha <= ff)
+        if categoria_id: q = q.filter(GastoPersonal.categoria_id == categoria_id)
+        for g in q.order_by(GastoPersonal.fecha.desc()).limit(limit).all():
+            movimientos.append({
+                "id": g.id, "tipo": "gasto",
+                "fecha": g.fecha.strftime("%d/%m/%Y %H:%M"),
+                "monto": g.monto, "moneda": g.moneda,
+                "tasa_bcv": g.tasa_bcv, "monto_usd": g.monto_usd,
+                "categoria": g.categoria.nombre if g.categoria else "Otros",
+                "categoria_id": g.categoria_id,
+                "icono": g.categoria.icono if g.categoria else "⚙️",
+                "subcategoria": g.subcategoria, "detalles": g.detalles,
+                "plataforma_pago": g.plataforma_pago
+            })
+
+    if tipo != "gasto":
+        q2 = db.query(IngresoPersonal)
+        if fi: q2 = q2.filter(IngresoPersonal.fecha >= fi)
+        if ff: q2 = q2.filter(IngresoPersonal.fecha <= ff)
+        if categoria_id: q2 = q2.filter(IngresoPersonal.categoria_id == categoria_id)
+        for i in q2.order_by(IngresoPersonal.fecha.desc()).limit(limit).all():
+            movimientos.append({
+                "id": i.id, "tipo": "ingreso",
+                "fecha": i.fecha.strftime("%d/%m/%Y %H:%M"),
+                "monto": i.monto, "moneda": i.moneda,
+                "tasa_bcv": i.tasa_bcv, "monto_usd": i.monto_usd,
+                "categoria": i.categoria.nombre if i.categoria else "Otros",
+                "categoria_id": i.categoria_id,
+                "icono": i.categoria.icono if i.categoria else "⚙️",
+                "subcategoria": None, "detalles": i.detalles,
+                "plataforma_pago": "Ingreso"
+            })
+
+    movimientos.sort(key=lambda x: x["fecha"], reverse=True)
+
+    # Totales por categoría
+    totales_cat: dict = {}
+    for m in movimientos:
+        key = f"{m['icono']} {m['categoria']}"
+        if key not in totales_cat:
+            totales_cat[key] = {"count": 0, "total_usd": 0.0, "tipo": m["tipo"]}
+        totales_cat[key]["count"] += 1
+        totales_cat[key]["total_usd"] = round(totales_cat[key]["total_usd"] + (m["monto_usd"] or 0.0), 2)
+
+    total_general = round(sum(t["total_usd"] for t in totales_cat.values()), 2)
+
+    return {
+        "movimientos": movimientos[:limit],
+        "totales_por_categoria": [
+            {"categoria": k, "count": v["count"], "total_usd": v["total_usd"],
+             "porcentaje": round(v["total_usd"] / total_general * 100, 1) if total_general > 0 else 0,
+             "tipo": v["tipo"]}
+            for k, v in sorted(totales_cat.items(), key=lambda x: x[1]["total_usd"], reverse=True)
+        ],
+        "total_general_usd": total_general,
+        "total_registros": len(movimientos)
+    }
+
 # 4. DEUDAS
 @app.get("/api/personal/deudas")
 def get_personal_deudas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -2542,6 +2621,51 @@ def pay_personal_deuda(deuda_id: int, req: PagoDeudaRequest, username: str = Dep
     db.commit()
     return {"message": "Abono a deuda registrado con éxito", "saldo_restante": deuda.saldo_pendiente_usd}
 
+@app.get("/api/personal/deudas/{deuda_id}/abonos")
+def get_deuda_abonos(deuda_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Devuelve todos los pagos/abonos registrados para una deuda específica."""
+    deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == deuda_id).first()
+    if not deuda:
+        raise HTTPException(status_code=404, detail="Deuda no encontrada.")
+
+    pagos = db.query(GastoPersonal).filter(
+        GastoPersonal.deuda_id == deuda_id
+    ).order_by(GastoPersonal.fecha.desc()).all()
+
+    total_pagado = round(sum(p.monto_usd for p in pagos), 2)
+    porcentaje_pagado = round(total_pagado / deuda.monto_original_usd * 100, 1) if deuda.monto_original_usd > 0 else 0
+
+    return {
+        "deuda": {
+            "id": deuda.id,
+            "acreedor": deuda.acreedor,
+            "monto_original_usd": deuda.monto_original_usd,
+            "monto_bs_registro": deuda.monto_bs_registro,
+            "tasa_bcv_registro": deuda.tasa_bcv_registro,
+            "saldo_pendiente_usd": deuda.saldo_pendiente_usd,
+            "categoria_compra": deuda.categoria_compra,
+            "detalles": deuda.detalles,
+            "estado": deuda.estado,
+            "fecha_creacion": deuda.fecha_creacion.strftime("%d/%m/%Y") if deuda.fecha_creacion else None,
+        },
+        "total_pagado_usd": total_pagado,
+        "porcentaje_pagado": porcentaje_pagado,
+        "total_abonos": len(pagos),
+        "abonos": [
+            {
+                "id": p.id,
+                "fecha": p.fecha.strftime("%d/%m/%Y %H:%M") if p.fecha else None,
+                "monto": p.monto,
+                "moneda": p.moneda,
+                "tasa_bcv": p.tasa_bcv,
+                "monto_usd": p.monto_usd,
+                "plataforma_pago": p.plataforma_pago,
+                "detalles": p.detalles,
+            }
+            for p in pagos
+        ]
+    }
+
 # 5. ASESOR FINANCIERO Y DASHBOARD PERSONAL
 @app.get("/api/personal/dashboard")
 def get_personal_dashboard(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -2582,8 +2706,9 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
         else:
             nombre_ingreso = "Otros"
             
-        if len(nombre_ingreso) > 20:
-            nombre_ingreso = nombre_ingreso[:18] + "..."
+        # No truncar: el tooltip del gráfico muestra el nombre completo
+        if len(nombre_ingreso) > 40:
+            nombre_ingreso = nombre_ingreso[:38] + "..."
             
         icono = i.categoria.icono if (i.categoria and i.categoria.icono) else "💵"
         key = f"{icono} {nombre_ingreso}"
