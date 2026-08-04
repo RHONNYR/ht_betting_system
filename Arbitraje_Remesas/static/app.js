@@ -4924,6 +4924,11 @@ function setupPersonalFinanceListeners() {
     document.getElementById('form-modal-pago-deuda').addEventListener('submit', handlePagoDeudaModalSubmit);
     document.getElementById('form-modal-personal-pin').addEventListener('submit', handlePinModalSubmit);
     document.getElementById('form-modal-deuda-edit').addEventListener('submit', handleEditDeudaSubmit);
+
+    // Cerrar modal de detalle de deuda
+    document.getElementById('btn-close-modal-deuda-detalle').addEventListener('click', () => {
+        closeModal(document.getElementById('modal-deuda-detalle'));
+    });
 }
 
 // Carga principal de datos
@@ -4934,19 +4939,20 @@ async function loadPersonalFinanceData() {
         // Cargar Categorías
         const cats = await apiCall('/personal/categorias');
         populatePersonalCategories(cats);
-        
+        initAnalisisDetalle(cats);  // Inicializar filtros con las categorías disponibles
+
         // Cargar Dashboard / Asesor
         const dash = await apiCall('/personal/dashboard');
         renderPersonalDashboard(dash);
-        
+
         // Cargar Deudas
         const deudas = await apiCall('/personal/deudas');
         renderPersonalDeudasTable(deudas);
-        
+
         // Cargar Historial
         const movimientos = await apiCall('/personal/movimientos');
         renderPersonalHistoryTable(movimientos);
-        
+
     } catch (err) {
         console.error("Error al cargar finanzas personales:", err);
     }
@@ -5041,19 +5047,15 @@ function renderPersonalDashboard(dash) {
 function renderCategoryChart(data) {
     const ctx = document.getElementById('chart-personal-categorias');
     if (!ctx) return;
-    
-    if (personalCategoryChart) {
-        personalCategoryChart.destroy();
-    }
-    
+
+    if (personalCategoryChart) personalCategoryChart.destroy();
+
     const labels = Object.keys(data);
     const values = Object.values(data);
-    
-    if (labels.length === 0) {
-        labels.push("Sin gastos");
-        values.push(0.1);
-    }
-    
+    const total = values.reduce((a, b) => a + b, 0);
+
+    if (labels.length === 0) { labels.push("Sin gastos"); values.push(0.1); }
+
     personalCategoryChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -5061,8 +5063,8 @@ function renderCategoryChart(data) {
             datasets: [{
                 data: values,
                 backgroundColor: [
-                    '#3b82f6', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', 
-                    '#ec4899', '#14b8a6', '#f43f5e', '#a855f7', '#06b6d4'
+                    '#3b82f6','#10b981','#ef4444','#f59e0b','#8b5cf6',
+                    '#ec4899','#14b8a6','#f43f5e','#a855f7','#06b6d4'
                 ],
                 borderWidth: 1,
                 borderColor: 'rgba(255,255,255,0.08)'
@@ -5072,16 +5074,22 @@ function renderCategoryChart(data) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 tooltip: {
+                    padding: 12,
+                    boxPadding: 6,
+                    titleFont: { size: 12, weight: 'bold' },
+                    bodyFont: { size: 12 },
                     callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            if (label === 'Sin gastos') return label;
-                            let val = context.raw || 0;
-                            return `${label}: $${val.toFixed(2)} USD`;
+                        title: (items) => items[0].label,
+                        label: (context) => {
+                            if (context.label === 'Sin gastos') return ' Sin gastos este mes';
+                            const val = context.raw || 0;
+                            const pct = total > 0 ? (val / total * 100).toFixed(1) : 0;
+                            return [
+                                ` Monto: $${val.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`,
+                                ` Del total: ${pct}%`
+                            ];
                         }
                     }
                 }
@@ -5091,23 +5099,20 @@ function renderCategoryChart(data) {
     });
 }
 
+
 // Renderizar gráfico de torta de Chart.js para ingresos
 function renderIncomeChart(data) {
     const ctx = document.getElementById('chart-personal-ingresos');
     if (!ctx) return;
-    
-    if (personalIncomeChart) {
-        personalIncomeChart.destroy();
-    }
-    
+
+    if (personalIncomeChart) personalIncomeChart.destroy();
+
     const labels = Object.keys(data);
     const values = Object.values(data);
-    
-    if (labels.length === 0) {
-        labels.push("Sin ingresos");
-        values.push(0.1);
-    }
-    
+    const total = values.reduce((a, b) => a + b, 0);
+
+    if (labels.length === 0) { labels.push("Sin ingresos"); values.push(0.1); }
+
     personalIncomeChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -5115,8 +5120,8 @@ function renderIncomeChart(data) {
             datasets: [{
                 data: values,
                 backgroundColor: [
-                    '#10b981', '#14b8a6', '#3b82f6', '#06b6d4', '#8b5cf6', 
-                    '#22c55e', '#059669', '#2563eb', '#0d9488', '#4f46e5'
+                    '#10b981','#14b8a6','#3b82f6','#06b6d4','#8b5cf6',
+                    '#22c55e','#059669','#2563eb','#0d9488','#4f46e5'
                 ],
                 borderWidth: 1,
                 borderColor: 'rgba(255,255,255,0.08)'
@@ -5126,16 +5131,22 @@ function renderIncomeChart(data) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 tooltip: {
+                    padding: 12,
+                    boxPadding: 6,
+                    titleFont: { size: 12, weight: 'bold' },
+                    bodyFont: { size: 12 },
                     callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            if (label === 'Sin ingresos') return label;
-                            let val = context.raw || 0;
-                            return `${label}: $${val.toFixed(2)} USD`;
+                        title: (items) => items[0].label,
+                        label: (context) => {
+                            if (context.label === 'Sin ingresos') return ' Sin ingresos este mes';
+                            const val = context.raw || 0;
+                            const pct = total > 0 ? (val / total * 100).toFixed(1) : 0;
+                            return [
+                                ` Monto: $${val.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`,
+                                ` Del total: ${pct}%`
+                            ];
                         }
                     }
                 }
@@ -5144,6 +5155,190 @@ function renderIncomeChart(data) {
         }
     });
 }
+
+
+
+// ============================================================
+// BLOQUE 2: ANÁLISIS DETALLADO DE MOVIMIENTOS CON FILTROS
+// ============================================================
+function initAnalisisDetalle(cats) {
+    // Poblar dropdown de categorías con las del sistema
+    const selCat = document.getElementById('filtro-categoria');
+    selCat.innerHTML = '<option value="">Todas</option>';
+    if (cats) {
+        cats.forEach(c => {
+            const opt = document.createElement('option');
+            opt.value = c.id;
+            opt.textContent = `${c.icono} ${c.nombre}`;
+            selCat.appendChild(opt);
+        });
+    }
+
+    // Toggle panel
+    const toggleBtn = document.getElementById('btn-toggle-analisis');
+    const panel = document.getElementById('analisis-detalle-panel');
+    toggleBtn.addEventListener('click', () => {
+        const open = panel.style.display !== 'none';
+        panel.style.display = open ? 'none' : 'block';
+        toggleBtn.textContent = open ? 'Mostrar ▼' : 'Ocultar ▲';
+        if (!open) loadAnalisisDetalle();
+    });
+
+    document.getElementById('btn-aplicar-filtro').addEventListener('click', loadAnalisisDetalle);
+}
+
+async function loadAnalisisDetalle() {
+    const tipo = document.getElementById('filtro-tipo').value;
+    const catId = document.getElementById('filtro-categoria').value;
+    const fi = document.getElementById('filtro-fecha-inicio').value;
+    const ff = document.getElementById('filtro-fecha-fin').value;
+
+    let url = '/personal/movimientos/detalle?limit=300';
+    if (tipo) url += `&tipo=${tipo}`;
+    if (catId) url += `&categoria_id=${catId}`;
+    if (fi) url += `&fecha_inicio=${fi}`;
+    if (ff) url += `&fecha_fin=${ff}`;
+
+    try {
+        const data = await apiCall(url);
+        renderAnalisisDetalle(data);
+    } catch(err) {
+        console.error('Error cargando análisis detalle:', err);
+    }
+}
+
+function renderAnalisisDetalle(data) {
+    // Resumen por categoría (badges)
+    const summaryDiv = document.getElementById('analisis-categorias-summary');
+    summaryDiv.innerHTML = '';
+    const colores = { gasto: 'rgba(239,68,68,0.15)', ingreso: 'rgba(16,185,129,0.15)' };
+    const textColores = { gasto: '#f87171', ingreso: '#10b981' };
+
+    data.totales_por_categoria.forEach(cat => {
+        const badge = document.createElement('div');
+        badge.style.cssText = `
+            background:${colores[cat.tipo] || 'rgba(255,255,255,0.05)'};
+            border:1px solid ${textColores[cat.tipo] || 'rgba(255,255,255,0.1)'}33;
+            border-radius:8px; padding:0.4rem 0.6rem;
+            display:flex; flex-direction:column; min-width:130px;
+        `;
+        badge.innerHTML = `
+            <span style="font-size:0.7rem; color:var(--text-secondary); white-space:nowrap;">${cat.categoria}</span>
+            <span style="font-size:0.88rem; font-weight:700; color:${textColores[cat.tipo] || 'var(--text-primary)'}">
+                $${cat.total_usd.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})}
+            </span>
+            <span style="font-size:0.65rem; color:var(--text-secondary);">${cat.porcentaje}% &bull; ${cat.count} op.</span>
+        `;
+        summaryDiv.appendChild(badge);
+    });
+
+    if (data.totales_por_categoria.length === 0) {
+        summaryDiv.innerHTML = '<span style="font-size:0.75rem; color:var(--text-secondary);">No hay registros para los filtros aplicados.</span>';
+    }
+
+    // Contador total
+    document.getElementById('analisis-total-label').textContent =
+        `Total: $${data.total_general_usd.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})} USD — ${data.total_registros} registros`;
+
+    // Tabla detalle
+    const tbody = document.getElementById('analisis-movimientos-tbody');
+    tbody.innerHTML = '';
+
+    if (data.movimientos.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="text-center text-secondary">Sin registros para los filtros aplicados.</td></tr>';
+        return;
+    }
+
+    data.movimientos.forEach(m => {
+        const tr = document.createElement('tr');
+        const esGasto = m.tipo === 'gasto';
+        const color = esGasto ? '#f87171' : '#10b981';
+        const signo = esGasto ? '-' : '+';
+
+        let montoStr = '';
+        if (m.moneda === 'VES') {
+            montoStr = `${m.monto.toLocaleString('es-VE',{minimumFractionDigits:2})} Bs<br><small style="color:var(--text-secondary);">(≈ $${(m.monto_usd||0).toFixed(2)} USD)</small>`;
+        } else {
+            montoStr = `$${(m.monto_usd||0).toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})} USD`;
+        }
+
+        tr.innerHTML = `
+            <td style="white-space:nowrap;">${m.fecha}</td>
+            <td><span style="font-size:0.65rem; padding:2px 6px; border-radius:6px; background:${color}22; color:${color}; font-weight:600;">
+                ${esGasto ? 'EGRESO' : 'INGRESO'}
+            </span></td>
+            <td>${m.icono} ${m.categoria}${m.subcategoria ? `<br><small class="text-secondary">${m.subcategoria}</small>` : ''}</td>
+            <td style="color:${color}; font-weight:600;">${signo}${montoStr}</td>
+            <td style="color:var(--text-secondary);">${m.tasa_bcv > 0 ? m.tasa_bcv.toFixed(2) + ' Bs' : '—'}</td>
+            <td>${m.plataforma_pago || '—'}</td>
+            <td style="color:var(--text-secondary); font-size:0.72rem;">${m.detalles || '—'}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// ============================================================
+// BLOQUE 3: MODAL DETALLE Y ABONOS POR DEUDA
+// ============================================================
+window.openDeudaDetalleModal = async function(deudaId) {
+    try {
+        const data = await apiCall(`/personal/deudas/${deudaId}/abonos`);
+        const d = data.deuda;
+
+        document.getElementById('modal-deuda-det-titulo').textContent = `📋 ${d.acreedor} — ${d.categoria_compra || 'Deuda Personal'}`;
+        document.getElementById('modal-deuda-det-original').textContent = `$${d.monto_original_usd.toFixed(2)} USD`;
+        document.getElementById('modal-deuda-det-pagado').textContent = `$${data.total_pagado_usd.toFixed(2)} USD`;
+        document.getElementById('modal-deuda-det-pendiente').textContent = `$${d.saldo_pendiente_usd.toFixed(2)} USD`;
+        document.getElementById('modal-deuda-det-pct').textContent = `${data.porcentaje_pagado}%`;
+        document.getElementById('modal-deuda-det-progress').style.width = `${Math.min(data.porcentaje_pagado, 100)}%`;
+        document.getElementById('modal-deuda-det-count').textContent = data.total_abonos;
+        document.getElementById('modal-deuda-det-total-pagado').textContent = `$${data.total_pagado_usd.toFixed(2)} USD`;
+
+        // Fila BCV
+        const bcvRow = document.getElementById('modal-deuda-det-bcv-row');
+        if (d.tasa_bcv_registro || d.monto_bs_registro) {
+            bcvRow.style.display = 'block';
+            document.getElementById('modal-deuda-det-fecha').textContent = d.fecha_creacion || '—';
+            document.getElementById('modal-deuda-det-tasa').textContent = d.tasa_bcv_registro ? d.tasa_bcv_registro.toFixed(2) : '—';
+            document.getElementById('modal-deuda-det-bs').textContent = d.monto_bs_registro
+                ? d.monto_bs_registro.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})
+                : '—';
+        } else {
+            bcvRow.style.display = 'none';
+        }
+
+        // Tabla de abonos
+        const tbody = document.getElementById('modal-deuda-det-abonos-tbody');
+        tbody.innerHTML = '';
+
+        if (data.abonos.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-secondary">Aún no hay abonos registrados para esta deuda.</td></tr>';
+        } else {
+            data.abonos.forEach(a => {
+                const tr = document.createElement('tr');
+                let montoStr = '';
+                if (a.moneda === 'VES') {
+                    montoStr = `${(a.monto||0).toLocaleString('es-VE',{minimumFractionDigits:2})} Bs<br><small style="color:var(--text-secondary);">(≈ $${(a.monto_usd||0).toFixed(2)} USD)</small>`;
+                } else {
+                    montoStr = `$${(a.monto_usd||0).toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})} USD`;
+                }
+                tr.innerHTML = `
+                    <td style="white-space:nowrap;">${a.fecha || '—'}</td>
+                    <td style="color:#10b981; font-weight:600;">${montoStr}</td>
+                    <td>${a.moneda}</td>
+                    <td style="color:var(--text-secondary);">${a.tasa_bcv > 0 ? a.tasa_bcv.toFixed(2) + ' Bs' : '—'}</td>
+                    <td>${a.plataforma_pago || '—'}</td>
+                    <td style="font-size:0.72rem; color:var(--text-secondary);">${a.detalles || '—'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        openModal(document.getElementById('modal-deuda-detalle'));
+    } catch(err) {
+        alert('Error al cargar el detalle de la deuda: ' + err.message);
+    }
+};
 
 // Renderizar tabla de deudas
 function renderPersonalDeudasTable(deudas) {
@@ -5164,7 +5359,7 @@ function renderPersonalDeudasTable(deudas) {
         let abonoBtn = '';
         if (d.estado === 'activa') {
             abonoBtn = `<button class="btn btn-secondary btn-sm" type="button" onclick="openAbonoDeudaModal(${d.id}, '${d.acreedor}')" style="padding: 0.2rem 0.5rem; font-size: 0.72rem;">💸 Abonar</button>`;
-            
+
             // Populate gasto dropdown
             const opt = document.createElement('option');
             opt.value = d.id;
@@ -5191,6 +5386,7 @@ function renderPersonalDeudasTable(deudas) {
             <td style="color: ${d.estado === 'activa' ? '#f59e0b' : '#10b981'}; font-weight: 600;">$${d.saldo_pendiente_usd.toFixed(2)}</td>
             <td class="text-center">${abonoBtn}</td>
             <td class="text-center" style="white-space: nowrap;">
+                <button class="btn btn-sm" type="button" onclick="openDeudaDetalleModal(${d.id})" style="padding: 0.2rem 0.4rem; background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.2); color: #a78bfa; margin-right:2px;" title="Ver historial de abonos">🔍</button>
                 <button class="btn btn-primary btn-sm" type="button" onclick="openEditDeudaModal(${d.id}, '${acreedorEscaped}', ${d.monto_original_usd}, '${conceptoEscaped}', '${detallesEscaped}')" style="padding: 0.2rem 0.4rem; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.15); color: #60a5fa; margin-right: 4px;">✏️</button>
                 <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteDeuda(${d.id})" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
             </td>
