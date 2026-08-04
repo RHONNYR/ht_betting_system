@@ -4841,20 +4841,80 @@ function setupPersonalFinanceListeners() {
     btnCloseDeudaEdit.addEventListener('click', () => closeModal(modalDeudaEdit));
     
     const pagoMoneda = document.getElementById('modal-pago-moneda');
-    const pagoTasaCont = document.getElementById('modal-pago-tasa-container');
-    const pagoTasa = document.getElementById('modal-pago-tasa');
-    
-    pagoMoneda.addEventListener('change', () => {
-        if (pagoMoneda.value === 'VES') {
-            pagoTasaCont.style.display = 'block';
-            pagoTasa.value = state.bcvRate || '';
-            pagoTasa.required = true;
+    const pagoTasa  = document.getElementById('modal-pago-tasa');
+    const pagoEquiv = document.getElementById('modal-pago-equiv');
+    const pagoEquivLabel = document.getElementById('modal-pago-equiv-label');
+    const pagoMontoLabel = document.getElementById('modal-pago-monto-label');
+
+    function recalcPagoEquiv() {
+        const moneda = pagoMoneda.value;
+        const monto  = parseFloat(document.getElementById('modal-pago-monto').value) || 0;
+        const tasa   = parseFloat(pagoTasa.value) || 0;
+
+        if (moneda === 'VES') {
+            pagoMontoLabel.textContent = 'Monto a Pagar (Bs)';
+            pagoEquivLabel.textContent = 'Equivalente en USD';
+            if (tasa > 0 && monto > 0) {
+                pagoEquiv.value = '$' + (monto / tasa).toFixed(2) + ' USD';
+            } else {
+                pagoEquiv.value = '';
+            }
         } else {
-            pagoTasaCont.style.display = 'none';
-            pagoTasa.value = '';
-            pagoTasa.required = false;
+            pagoMontoLabel.textContent = 'Monto a Pagar (USD)';
+            pagoEquivLabel.textContent = 'Equivalente en Bs';
+            if (tasa > 0 && monto > 0) {
+                pagoEquiv.value = 'Bs ' + (monto * tasa).toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2});
+            } else {
+                pagoEquiv.value = '';
+            }
         }
+    }
+
+    pagoMoneda.addEventListener('change', () => {
+        // Pre-fill BCV rate from state when available
+        if (!pagoTasa.value && state.bcvRate) pagoTasa.value = state.bcvRate;
+        recalcPagoEquiv();
     });
+    pagoTasa.addEventListener('input', recalcPagoEquiv);
+    document.getElementById('modal-pago-monto').addEventListener('input', recalcPagoEquiv);
+
+    // --- Nueva Deuda: auto-calc equivalent ---
+    const deudaMoneda = document.getElementById('p-deuda-moneda');
+    const deudaMontoPrincipal = document.getElementById('p-deuda-monto-principal');
+    const deudaTasaBcv = document.getElementById('p-deuda-tasa-bcv');
+    const deudaEquiv = document.getElementById('p-deuda-equiv');
+    const deudaMontoLabel = document.getElementById('p-deuda-monto-label');
+    const deudaEquivLabel = document.getElementById('p-deuda-equiv-label');
+
+    function recalcDeudaEquiv() {
+        const moneda = deudaMoneda.value;
+        const monto  = parseFloat(deudaMontoPrincipal.value) || 0;
+        const tasa   = parseFloat(deudaTasaBcv.value) || 0;
+
+        if (moneda === 'VES') {
+            deudaMontoLabel.textContent = 'Monto de la Deuda (Bs)';
+            deudaEquivLabel.textContent = 'Equivalente en USD (calculado)';
+            deudaMontoPrincipal.placeholder = '0.00 Bs';
+            if (tasa > 0 && monto > 0) {
+                deudaEquiv.value = (monto / tasa).toFixed(2);
+            } else {
+                deudaEquiv.value = '';
+            }
+        } else {
+            deudaMontoLabel.textContent = 'Monto de la Deuda ($ USD)';
+            deudaEquivLabel.textContent = 'Equivalente en Bs (calculado)';
+            deudaMontoPrincipal.placeholder = '0.00';
+            if (tasa > 0 && monto > 0) {
+                deudaEquiv.value = (monto * tasa).toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2});
+            } else {
+                deudaEquiv.value = '';
+            }
+        }
+    }
+
+    deudaMoneda.addEventListener('change', recalcDeudaEquiv);
+    deudaMontoPrincipal.addEventListener('input', recalcDeudaEquiv);
+    deudaTasaBcv.addEventListener('input', recalcDeudaEquiv);
 
     // 8. Formularios Submit
     document.getElementById('form-personal-gasto').addEventListener('submit', handleGastoSubmit);
@@ -5119,9 +5179,15 @@ function renderPersonalDeudasTable(deudas) {
         const detallesEscaped = (d.detalles || '').replace(/'/g, "\\'");
         
         tr.innerHTML = `
-            <td><strong>${d.acreedor}</strong></td>
+            <td>
+                <strong>${d.acreedor}</strong>
+                ${d.tasa_bcv_registro ? `<br><small class="text-secondary" style="font-size: 0.7rem;">Tasa BCV: ${d.tasa_bcv_registro.toFixed(2)} Bs/$</small>` : ''}
+            </td>
             <td class="text-secondary">${d.categoria_compra || 'General'}</td>
-            <td>$${d.monto_original_usd.toFixed(2)}</td>
+            <td>
+                $${d.monto_original_usd.toFixed(2)}
+                ${d.monto_bs_registro ? `<br><small class="text-secondary" style="font-size: 0.7rem;">Bs ${d.monto_bs_registro.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}</small>` : ''}
+            </td>
             <td style="color: ${d.estado === 'activa' ? '#f59e0b' : '#10b981'}; font-weight: 600;">$${d.saldo_pendiente_usd.toFixed(2)}</td>
             <td class="text-center">${abonoBtn}</td>
             <td class="text-center" style="white-space: nowrap;">
@@ -5139,10 +5205,11 @@ window.openAbonoDeudaModal = function(deudaId, acreedor) {
     document.getElementById('modal-pago-deuda-acreedor').textContent = acreedor;
     document.getElementById('modal-pago-monto').value = '';
     document.getElementById('modal-pago-moneda').value = 'USD';
-    
-    const event = new Event('change');
-    document.getElementById('modal-pago-moneda').dispatchEvent(event);
-    
+    document.getElementById('modal-pago-tasa').value = state.bcvRate || '';
+    document.getElementById('modal-pago-equiv').value = '';
+    document.getElementById('modal-pago-detalles').value = '';
+    document.getElementById('modal-pago-fecha').value = '';
+
     openModal(document.getElementById('modal-pago-deuda'));
 };
 
@@ -5273,24 +5340,41 @@ async function handleIngresoSubmit(e) {
 
 async function handleDeudaSubmit(e) {
     e.preventDefault();
-    
+
+    const moneda = document.getElementById('p-deuda-moneda').value;
+    const montoPrincipal = parseFloat(document.getElementById('p-deuda-monto-principal').value);
+    const tasaBcv = parseFloat(document.getElementById('p-deuda-tasa-bcv').value) || null;
+
+    // monto_original_usd: si el usuario ingresó en VES, mandamos el monto en Bs
+    // y el backend calculará el USD. Si ingresó en USD, mandamos el USD directo.
     const payload = {
         acreedor: document.getElementById('p-deuda-acreedor').value.trim(),
-        monto_original_usd: parseFloat(document.getElementById('p-deuda-monto-usd').value),
+        moneda: moneda,
+        monto_original_usd: montoPrincipal,   // El backend sabe si es VES o USD por el campo 'moneda'
+        tasa_bcv_registro: tasaBcv,
+        monto_bs_registro: (() => {
+            if (moneda === 'USD' && tasaBcv) return Math.round(montoPrincipal * tasaBcv * 100) / 100;
+            if (moneda === 'VES') return montoPrincipal;  // El monto ya ES en Bs
+            return null;
+        })(),
         categoria_compra: document.getElementById('p-deuda-concepto').value.trim() || null,
         detalles: document.getElementById('p-deuda-detalles').value.trim() || null,
         fecha_creacion: document.getElementById('p-deuda-fecha').value || null
     };
-    
+
     try {
         await apiCall('/personal/deudas', 'POST', payload);
         showToast("💳 Deuda creada con éxito");
-        
+
+        // Reset form
         document.getElementById('p-deuda-acreedor').value = '';
-        document.getElementById('p-deuda-monto-usd').value = '';
+        document.getElementById('p-deuda-monto-principal').value = '';
+        document.getElementById('p-deuda-tasa-bcv').value = '';
+        document.getElementById('p-deuda-equiv').value = '';
         document.getElementById('p-deuda-concepto').value = '';
         document.getElementById('p-deuda-detalles').value = '';
-        
+        document.getElementById('p-deuda-fecha').value = '';
+
         await loadPersonalFinanceData();
     } catch (err) {
         alert(err.message);
@@ -5319,7 +5403,7 @@ async function handleCategoryModalSubmit(e) {
 
 async function handlePagoDeudaModalSubmit(e) {
     e.preventDefault();
-    
+
     const deudaId = parseInt(document.getElementById('modal-pago-deuda-id').value);
     const payload = {
         monto: parseFloat(document.getElementById('modal-pago-monto').value),
@@ -5327,14 +5411,14 @@ async function handlePagoDeudaModalSubmit(e) {
         tasa_bcv: parseFloat(document.getElementById('modal-pago-tasa').value) || 0.0,
         plataforma_pago: document.getElementById('modal-pago-plataforma').value,
         detalles: document.getElementById('modal-pago-detalles').value.trim() || null,
-        fecha: document.getElementById('p-gasto-fecha').value || null // uses date picker or default
+        fecha: document.getElementById('modal-pago-fecha').value || null
     };
-    
+
     try {
         await apiCall(`/personal/deudas/${deudaId}/pagar`, 'POST', payload);
         showToast("💸 Abono registrado con éxito");
         closeModal(document.getElementById('modal-pago-deuda'));
-        
+
         await loadPersonalFinanceData();
         await loadCapital();
     } catch (err) {
