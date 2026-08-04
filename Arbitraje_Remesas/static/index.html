@@ -1258,20 +1258,42 @@
                                                 <input type="text" id="p-deuda-acreedor" required placeholder="Ej. Cashea, Banco de Venezuela, Juan" style="padding: 0.45rem;">
                                             </div>
 
-                                            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem;">
+                                            <!-- Moneda + Monto -->
+                                            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 0.5rem;">
                                                 <div class="form-group" style="margin: 0;">
-                                                    <label for="p-deuda-monto-usd" style="font-size: 0.75rem; margin-bottom: 2px;">Monto de la Deuda ($ USD)</label>
-                                                    <input type="number" step="any" id="p-deuda-monto-usd" required placeholder="0.00" style="padding: 0.45rem;">
+                                                    <label for="p-deuda-moneda" style="font-size: 0.75rem; margin-bottom: 2px;">Moneda del Monto</label>
+                                                    <select id="p-deuda-moneda" style="padding: 0.45rem;">
+                                                        <option value="USD">💵 USD (Dólares)</option>
+                                                        <option value="VES">🇻🇪 VES (Bolívares)</option>
+                                                    </select>
                                                 </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-deuda-monto-principal" style="font-size: 0.75rem; margin-bottom: 2px;" id="p-deuda-monto-label">Monto de la Deuda ($ USD)</label>
+                                                    <input type="number" step="any" id="p-deuda-monto-principal" required placeholder="0.00" style="padding: 0.45rem;">
+                                                </div>
+                                            </div>
+
+                                            <!-- Tasa BCV + Equivalente (se muestra siempre para bitácora) -->
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-deuda-tasa-bcv" style="font-size: 0.75rem; margin-bottom: 2px;">Tasa BCV Referencial (Bs/$)</label>
+                                                    <input type="number" step="any" id="p-deuda-tasa-bcv" placeholder="Ej. 93.50" style="padding: 0.45rem;">
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label style="font-size: 0.75rem; margin-bottom: 2px;" id="p-deuda-equiv-label">Equivalente en Bs (calculado)</label>
+                                                    <input type="number" step="any" id="p-deuda-equiv" placeholder="—" style="padding: 0.45rem; background: rgba(255,255,255,0.04); color: var(--accent-green);" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem;">
                                                 <div class="form-group" style="margin: 0;">
                                                     <label for="p-deuda-concepto" style="font-size: 0.75rem; margin-bottom: 2px;">Concepto / Categoría</label>
                                                     <input type="text" id="p-deuda-concepto" placeholder="Ej. Compra Daka" style="padding: 0.45rem;">
                                                 </div>
-                                            </div>
-
-                                            <div class="form-group" style="margin: 0;">
-                                                <label for="p-deuda-detalles" style="font-size: 0.75rem; margin-bottom: 2px;">Detalles adicionales</label>
-                                                <input type="text" id="p-deuda-detalles" placeholder="Ej. Crédito en 3 cuotas" style="padding: 0.45rem;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label for="p-deuda-detalles" style="font-size: 0.75rem; margin-bottom: 2px;">Detalles adicionales</label>
+                                                    <input type="text" id="p-deuda-detalles" placeholder="Ej. Crédito en 3 cuotas" style="padding: 0.45rem;">
+                                                </div>
                                             </div>
 
                                             <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.5rem; align-items: end;">
@@ -1283,6 +1305,7 @@
                                             </div>
                                         </form>
                                     </div>
+
                                     
                                 </div>
                             </div>
@@ -1900,14 +1923,16 @@
 
     <!-- MODAL: REGISTRAR PAGO DE DEUDA -->
     <div id="modal-pago-deuda" class="modal hidden">
-        <div class="modal-content glass-card" style="max-width: 400px; width: 90%;">
+        <div class="modal-content glass-card" style="max-width: 440px; width: 90%;">
             <h3>Registrar Abono a Deuda</h3>
             <p>Registra un pago para reducir tu saldo pendiente con <strong id="modal-pago-deuda-acreedor" style="color: var(--primary-color);"></strong>.</p>
             <form id="form-modal-pago-deuda">
                 <input type="hidden" id="modal-pago-deuda-id">
+
+                <!-- Monto + Moneda -->
                 <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem;">
                     <div class="form-group">
-                        <label for="modal-pago-monto">Monto a Pagar</label>
+                        <label for="modal-pago-monto" id="modal-pago-monto-label">Monto a Pagar</label>
                         <input type="number" step="any" id="modal-pago-monto" required placeholder="0.00">
                     </div>
                     <div class="form-group">
@@ -1918,10 +1943,20 @@
                         </select>
                     </div>
                 </div>
-                <div id="modal-pago-tasa-container" class="form-group" style="display: none;">
-                    <label for="modal-pago-tasa">Tasa BCV del Pago (Bs/$)</label>
-                    <input type="number" step="any" id="modal-pago-tasa">
+
+                <!-- Tasa BCV + Equivalente calculado (siempre visible para bitácora) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                    <div class="form-group">
+                        <label for="modal-pago-tasa">Tasa BCV del Pago (Bs/$)</label>
+                        <input type="number" step="any" id="modal-pago-tasa" placeholder="Ej. 93.50">
+                    </div>
+                    <div class="form-group">
+                        <label id="modal-pago-equiv-label" style="font-size: 0.8rem;">Equivalente Calculado</label>
+                        <input type="text" id="modal-pago-equiv" placeholder="—" readonly
+                               style="background: rgba(255,255,255,0.04); color: var(--accent-green); cursor: default;">
+                    </div>
                 </div>
+
                 <div class="form-group">
                     <label for="modal-pago-plataforma">Cuenta de Pago</label>
                     <select id="modal-pago-plataforma" required>
@@ -1938,6 +1973,10 @@
                     <label for="modal-pago-detalles">Notas del Pago</label>
                     <input type="text" id="modal-pago-detalles" placeholder="Ej. Pago cuota 1 de Cashea">
                 </div>
+                <div class="form-group">
+                    <label for="modal-pago-fecha">Fecha del Pago</label>
+                    <input type="date" id="modal-pago-fecha">
+                </div>
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Registrar Pago</button>
                     <button type="button" id="btn-close-modal-pago-deuda" class="btn btn-secondary">Cancelar</button>
@@ -1945,6 +1984,7 @@
             </form>
         </div>
     </div>
+
 
     <!-- MODAL: CAMBIAR PIN PERSONAL -->
     <div id="modal-personal-pin" class="modal hidden">
@@ -1998,6 +2038,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=112"></script>
+    <script src="app.js?v=113"></script>
 </body>
 </html>
