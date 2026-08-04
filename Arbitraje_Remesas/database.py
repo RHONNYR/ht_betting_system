@@ -184,12 +184,15 @@ class DeudaPersonal(Base):
     fecha_creacion = Column(DateTime, default=datetime.datetime.utcnow)
     acreedor = Column(String, nullable=False)  # Cashea, Banco, Persona
     monto_original_usd = Column(Float, nullable=False)
+    monto_bs_registro = Column(Float, nullable=True)       # Monto en Bs al momento del registro
+    tasa_bcv_registro = Column(Float, nullable=True)       # Tasa BCV usada al momento del registro
     saldo_pendiente_usd = Column(Float, nullable=False)
     categoria_compra = Column(String, nullable=True)  # Ej: "Insumos Deportivos"
     detalles = Column(String, nullable=True)
     estado = Column(String, default="activa")  # "activa" o "pagada"
 
     pagos = relationship("GastoPersonal", back_populates="deuda")
+
 
 class IngresoPersonal(Base):
     __tablename__ = "personal_ingresos"
@@ -238,6 +241,16 @@ def init_db():
     try:
         with engine.begin() as conn:
             conn.execute(text("ALTER TABLE users ADD COLUMN personal_pin VARCHAR DEFAULT '0000';"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE personal_deudas ADD COLUMN tasa_bcv_registro FLOAT;"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE personal_deudas ADD COLUMN monto_bs_registro FLOAT;"))
     except Exception as e:
         pass
 
