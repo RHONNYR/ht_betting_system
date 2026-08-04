@@ -242,6 +242,9 @@ class GastoPersonalCreate(BaseModel):
 class DeudaPersonalCreate(BaseModel):
     acreedor: str
     monto_original_usd: float
+    moneda: Optional[str] = "USD"               # "USD" o "VES" (para saber cómo se origina la deuda)
+    tasa_bcv_registro: Optional[float] = None   # Tasa BCV al momento del registro
+    monto_bs_registro: Optional[float] = None   # Equivalente en Bs al momento del registro
     categoria_compra: Optional[str] = None
     detalles: Optional[str] = None
     fecha_creacion: Optional[str] = None
@@ -2387,15 +2390,48 @@ def get_personal_movimientos(limit: int = 50, username: str = Depends(get_curren
 # 4. DEUDAS
 @app.get("/api/personal/deudas")
 def get_personal_deudas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
-    return db.query(DeudaPersonal).order_by(DeudaPersonal.estado.asc(), DeudaPersonal.fecha_creacion.desc()).all()
+    deudas = db.query(DeudaPersonal).order_by(DeudaPersonal.estado.asc(), DeudaPersonal.fecha_creacion.desc()).all()
+    result = []
+    for d in deudas:
+        result.append({
+            "id": d.id,
+            "fecha_creacion": d.fecha_creacion.strftime("%d/%m/%Y") if d.fecha_creacion else None,
+            "acreedor": d.acreedor,
+            "monto_original_usd": d.monto_original_usd,
+            "monto_bs_registro": d.monto_bs_registro,
+            "tasa_bcv_registro": d.tasa_bcv_registro,
+            "saldo_pendiente_usd": d.saldo_pendiente_usd,
+            "categoria_compra": d.categoria_compra,
+            "detalles": d.detalles,
+            "estado": d.estado,
+        })
+    return result
 
 @app.post("/api/personal/deudas")
 def create_personal_deuda(req: DeudaPersonalCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    # Si llega en VES, calcular el equivalente USD
+    monto_usd = req.monto_original_usd
+    monto_bs = req.monto_bs_registro
+    tasa_bcv = req.tasa_bcv_registro
+
+    if req.moneda == "VES" and tasa_bcv and tasa_bcv > 0:
+        monto_usd = round(req.monto_original_usd / tasa_bcv, 2)  # monto_original_usd aquí es el monto en Bs
+        monto_bs = round(req.monto_original_usd, 2)
+        tasa_bcv = round(tasa_bcv, 2)
+    elif req.moneda == "USD" and tasa_bcv and tasa_bcv > 0:
+        monto_bs = round(monto_usd * tasa_bcv, 2)
+        monto_usd = round(monto_usd, 2)
+        tasa_bcv = round(tasa_bcv, 2)
+    else:
+        monto_usd = round(monto_usd, 2)
+
     deuda = DeudaPersonal(
         fecha_creacion=parse_personal_date(req.fecha_creacion),
         acreedor=req.acreedor.strip(),
-        monto_original_usd=req.monto_original_usd,
-        saldo_pendiente_usd=req.monto_original_usd,
+        monto_original_usd=monto_usd,
+        saldo_pendiente_usd=monto_usd,
+        monto_bs_registro=monto_bs,
+        tasa_bcv_registro=tasa_bcv,
         categoria_compra=req.categoria_compra,
         detalles=req.detalles,
         estado="activa"
@@ -2413,11 +2449,18 @@ def edit_personal_deuda(deuda_id: int, req: DeudaPersonalCreate, username: str =
     deuda.acreedor = req.acreedor.strip()
     deuda.categoria_compra = req.categoria_compra
     deuda.detalles = req.detalles
-    
+    if req.tasa_bcv_registro:
+        deuda.tasa_bcv_registro = round(req.tasa_bcv_registro, 2)
+    if req.monto_bs_registro:
+        deuda.monto_bs_registro = round(req.monto_bs_registro, 2)
+
     # Recalculate pending balance
     suma_pagos = sum(p.monto_usd for p in deuda.pagos)
-    deuda.monto_original_usd = req.monto_original_usd
-    deuda.saldo_pendiente_usd = max(0.0, req.monto_original_usd - suma_pagos)
+    nuevo_monto_usd = req.monto_original_usd
+    if req.moneda == "VES" and req.tasa_bcv_registro and req.tasa_bcv_registro > 0:
+        nuevo_monto_usd = round(req.monto_original_usd / req.tasa_bcv_registro, 2)
+    deuda.monto_original_usd = nuevo_monto_usd
+    deuda.saldo_pendiente_usd = max(0.0, nuevo_monto_usd - suma_pagos)
     
     if deuda.saldo_pendiente_usd <= 0.05:
         deuda.saldo_pendiente_usd = 0.0
