@@ -2226,13 +2226,20 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
     capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_pago)).first()
     
     if capital_target:
-        if req.moneda == "VES":
-            capital_target.saldo_ves -= req.monto
-            # Solo resta el delta en USD, NO recalcula desde cero (evita error si la tasa cambió)
-            if capital_target.convertir_ves and req.tasa_bcv > 0:
-                capital_target.saldo_usd -= round(req.monto / req.tasa_bcv, 4)
+        if capital_target.convertir_ves:
+            # Cuenta en Bolívares (VES): Sólo alteramos saldo_ves. El saldo en USD se calcula dinámicamente.
+            if req.moneda == "VES":
+                capital_target.saldo_ves -= req.monto
+            else:
+                # Si el gasto viene en USD, restamos el equivalente en VES
+                capital_target.saldo_ves -= (req.monto * req.tasa_bcv)
         else:
-            capital_target.saldo_usd -= monto_usd
+            # Cuenta en Dólares (USD): Sólo alteramos saldo_usd.
+            if req.moneda == "USD":
+                capital_target.saldo_usd -= req.monto
+            else:
+                # Si el gasto viene en VES, restamos el equivalente en USD
+                capital_target.saldo_usd -= monto_usd
             
     # Save Gasto
     gasto = GastoPersonal(
@@ -2263,13 +2270,18 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
     capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_pago)).first()
     
     if capital_target:
-        if gasto.moneda == "VES":
-            capital_target.saldo_ves += gasto.monto
-            # Solo suma el delta en USD (reversión exacta de lo que se restó)
-            if capital_target.convertir_ves and gasto.tasa_bcv > 0:
-                capital_target.saldo_usd += round(gasto.monto / gasto.tasa_bcv, 4)
+        if capital_target.convertir_ves:
+            # Cuenta en Bolívares (VES): Sólo revertimos saldo_ves.
+            if gasto.moneda == "VES":
+                capital_target.saldo_ves += gasto.monto
+            else:
+                capital_target.saldo_ves += (gasto.monto * gasto.tasa_bcv)
         else:
-            capital_target.saldo_usd += gasto.monto_usd
+            # Cuenta en Dólares (USD): Sólo revertimos saldo_usd.
+            if gasto.moneda == "USD":
+                capital_target.saldo_usd += gasto.monto
+            else:
+                capital_target.saldo_usd += gasto.monto_usd
             
     # If it was a debt payment, restore debt balance
     if gasto.deuda_id:
@@ -2325,12 +2337,18 @@ def create_personal_ingreso(req: IngresoPersonalCreate, username: str = Depends(
         db_plat_origen = map_plataforma_nombre(plat_origen, req.moneda)
         capital_origen = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_origen)).first()
         if capital_origen:
-            if req.moneda == "VES":
-                capital_origen.saldo_ves -= req.monto
-                if capital_origen.convertir_ves and req.tasa_bcv > 0:
-                    capital_origen.saldo_usd -= round(req.monto / req.tasa_bcv, 4)
+            if capital_origen.convertir_ves:
+                # Cuenta en bolívares: sólo afecta saldo_ves
+                if req.moneda == "VES":
+                    capital_origen.saldo_ves -= req.monto
+                else:
+                    capital_origen.saldo_ves -= (req.monto * req.tasa_bcv)
             else:
-                capital_origen.saldo_usd -= monto_usd
+                # Cuenta en dólares: sólo afecta saldo_usd
+                if req.moneda == "USD":
+                    capital_origen.saldo_usd -= req.monto
+                else:
+                    capital_origen.saldo_usd -= monto_usd
 
     # B: Lógica de Cuenta de Destino del Ingreso: Debe sumarse a la cuenta donde ingresa el dinero
     if req.plataforma_pago:
@@ -2338,12 +2356,18 @@ def create_personal_ingreso(req: IngresoPersonalCreate, username: str = Depends(
         db_plat_destino = map_plataforma_nombre(plat_destino, req.moneda)
         capital_destino = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_destino)).first()
         if capital_destino:
-            if req.moneda == "VES":
-                capital_destino.saldo_ves += req.monto
-                if capital_destino.convertir_ves and req.tasa_bcv > 0:
-                    capital_destino.saldo_usd += round(req.monto / req.tasa_bcv, 4)
+            if capital_destino.convertir_ves:
+                # Cuenta en bolívares: sólo afecta saldo_ves
+                if req.moneda == "VES":
+                    capital_destino.saldo_ves += req.monto
+                else:
+                    capital_destino.saldo_ves += (req.monto * req.tasa_bcv)
             else:
-                capital_destino.saldo_usd += monto_usd
+                # Cuenta en dólares: sólo afecta saldo_usd
+                if req.moneda == "USD":
+                    capital_destino.saldo_usd += req.monto
+                else:
+                    capital_destino.saldo_usd += monto_usd
 
     ingreso = IngresoPersonal(
         fecha=parse_personal_date(req.fecha),
@@ -2376,12 +2400,16 @@ def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current
         db_plat_origen = map_plataforma_nombre(plat_origen, ingreso.moneda)
         capital_origen = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_origen)).first()
         if capital_origen:
-            if ingreso.moneda == "VES":
-                capital_origen.saldo_ves += ingreso.monto
-                if capital_origen.convertir_ves and ingreso.tasa_bcv > 0:
-                    capital_origen.saldo_usd += round(ingreso.monto / ingreso.tasa_bcv, 4)
+            if capital_origen.convertir_ves:
+                if ingreso.moneda == "VES":
+                    capital_origen.saldo_ves += ingreso.monto
+                else:
+                    capital_origen.saldo_ves += (ingreso.monto * ingreso.tasa_bcv)
             else:
-                capital_origen.saldo_usd += ingreso.monto_usd
+                if ingreso.moneda == "USD":
+                    capital_origen.saldo_usd += ingreso.monto
+                else:
+                    capital_origen.saldo_usd += ingreso.monto_usd
 
     # Revert B: Suma al capital de destino (restando el dinero ingresado)
     if ingreso.plataforma_pago:
@@ -2389,12 +2417,16 @@ def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current
         db_plat_destino = map_plataforma_nombre(plat_destino, ingreso.moneda)
         capital_destino = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_destino)).first()
         if capital_destino:
-            if ingreso.moneda == "VES":
-                capital_destino.saldo_ves -= ingreso.monto
-                if capital_destino.convertir_ves and ingreso.tasa_bcv > 0:
-                    capital_destino.saldo_usd -= round(ingreso.monto / ingreso.tasa_bcv, 4)
+            if capital_destino.convertir_ves:
+                if ingreso.moneda == "VES":
+                    capital_destino.saldo_ves -= ingreso.monto
+                else:
+                    capital_destino.saldo_ves -= (ingreso.monto * ingreso.tasa_bcv)
             else:
-                capital_destino.saldo_usd -= ingreso.monto_usd
+                if ingreso.moneda == "USD":
+                    capital_destino.saldo_usd -= ingreso.monto
+                else:
+                    capital_destino.saldo_usd -= ingreso.monto_usd
 
     db.delete(ingreso)
     db.commit()
