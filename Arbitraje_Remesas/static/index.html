@@ -1236,6 +1236,19 @@
                                             </div>
 
                                             <div class="form-group" style="margin: 0;">
+                                                <label for="p-ingreso-plataforma" style="font-size: 0.75rem; margin-bottom: 2px;">Cuenta de Destino (Capital)</label>
+                                                <select id="p-ingreso-plataforma" style="padding: 0.45rem;">
+                                                    <option value="">-- No afectar capital (Externo) --</option>
+                                                    <option value="Mercantil">🏦 Mercantil (Personal)</option>
+                                                    <option value="Bancamiga">🏦 Bancamiga</option>
+                                                    <option value="Provincial VES">🏦 Provincial (Trabajo)</option>
+                                                    <option value="BDV (VES)">🏦 BDV (Trabajo)</option>
+                                                    <option value="Zelle">🇺🇸 Zelle</option>
+                                                    <option value="Efectivo USD">💵 Efectivo USD</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group" style="margin: 0;">
                                                 <label for="p-ingreso-detalles" style="font-size: 0.75rem; margin-bottom: 2px;">Detalles / Origen</label>
                                                 <input type="text" id="p-ingreso-detalles" placeholder="Ej. Quincena PDVSA o Transferencia de Provincial" style="padding: 0.45rem;">
                                             </div>
@@ -2177,6 +2190,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=114"></script>
+    <script src="app.js?v=115"></script>
 </body>
 </html>
