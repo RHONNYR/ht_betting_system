@@ -470,7 +470,28 @@ def debug_database_capital(db: Session = Depends(get_db)):
             "saldo_ves": p.saldo_ves,
             "convertir_ves": p.convertir_ves
         })
-    return {"platforms": result}
+    
+    # Obtener últimos 10 gastos
+    gastos_list = []
+    try:
+        from database import GastoPersonal
+        gastos = db.query(GastoPersonal).order_by(GastoPersonal.id.desc()).limit(10).all()
+        for g in gastos:
+            gastos_list.append({
+                "id": g.id,
+                "fecha": str(g.fecha),
+                "monto": g.monto,
+                "moneda": g.moneda,
+                "tasa_bcv": g.tasa_bcv,
+                "monto_usd": g.monto_usd,
+                "plataforma_pago": g.plataforma_pago,
+                "categoria_id": g.categoria_id,
+                "deuda_id": g.deuda_id
+            })
+    except Exception as ex:
+        gastos_list.append({"error": str(ex)})
+
+    return {"platforms": result, "last_gastos": gastos_list}
 
 # Capital Routes
 @app.get("/api/capital")
