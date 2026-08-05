@@ -261,7 +261,7 @@ def init_db():
     except Exception as e:
         pass
 
-    # Populate default personal categories if empty
+    # Seeding defaults and cleaning balances
     db = SessionLocal()
     try:
         if db.query(CategoriaPersonal).count() == 0:
@@ -295,8 +295,20 @@ def init_db():
                 cat = CategoriaPersonal(**cat_data)
                 db.add(cat)
             db.commit()
+
+        # Limpiar cualquier inconsistencia en los saldos
+        platforms = db.query(DistribucionCapital).all()
+        for p in platforms:
+            if p.convertir_ves:
+                if p.saldo_usd != 0.0:
+                    p.saldo_usd = 0.0
+            else:
+                if p.saldo_ves != 0.0:
+                    p.saldo_ves = 0.0
+        db.commit()
+
     except Exception as e:
-        print(f"Error seeding categories: {e}")
+        print(f"Error seeding or cleaning database: {e}")
         db.rollback()
     finally:
         db.close()
