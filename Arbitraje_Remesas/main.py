@@ -458,6 +458,20 @@ def set_bcv_mode(req: BCVModeRequest, username: str = Depends(get_current_user))
         "active_mode": bcv_state.active_mode
     }
 
+@app.get("/api/personal/debug-db")
+def debug_database_capital(db: Session = Depends(get_db)):
+    platforms = db.query(DistribucionCapital).all()
+    result = []
+    for p in platforms:
+        result.append({
+            "id": p.id,
+            "plataforma": p.plataforma,
+            "saldo_usd": p.saldo_usd,
+            "saldo_ves": p.saldo_ves,
+            "convertir_ves": p.convertir_ves
+        })
+    return {"platforms": result}
+
 # Capital Routes
 @app.get("/api/capital")
 def get_capital(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
