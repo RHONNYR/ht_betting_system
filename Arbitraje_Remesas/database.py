@@ -203,9 +203,11 @@ class IngresoPersonal(Base):
     tasa_bcv = Column(Float, default=0.0)
     monto_usd = Column(Float, nullable=False)
     categoria_id = Column(Integer, ForeignKey("personal_categorias.id"))
+    plataforma_pago = Column(String, nullable=True) # Cuenta de entrada del dinero (Provincial, Zelle, etc.)
     detalles = Column(String, nullable=True)
 
     categoria = relationship("CategoriaPersonal", back_populates="ingresos")
+
 
 class PresupuestoPersonal(Base):
     __tablename__ = "personal_presupuestos"
@@ -251,6 +253,11 @@ def init_db():
     try:
         with engine.begin() as conn:
             conn.execute(text("ALTER TABLE personal_deudas ADD COLUMN monto_bs_registro FLOAT;"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE personal_ingresos ADD COLUMN plataforma_pago VARCHAR(255);"))
     except Exception as e:
         pass
 
