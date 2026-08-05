@@ -2228,9 +2228,9 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
     if capital_target:
         if req.moneda == "VES":
             capital_target.saldo_ves -= req.monto
-            # Update conversion logic if the platform auto-calculates USD
+            # Solo resta el delta en USD, NO recalcula desde cero (evita error si la tasa cambió)
             if capital_target.convertir_ves and req.tasa_bcv > 0:
-                capital_target.saldo_usd = capital_target.saldo_ves / req.tasa_bcv
+                capital_target.saldo_usd -= round(req.monto / req.tasa_bcv, 4)
         else:
             capital_target.saldo_usd -= monto_usd
             
@@ -2265,8 +2265,9 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
     if capital_target:
         if gasto.moneda == "VES":
             capital_target.saldo_ves += gasto.monto
+            # Solo suma el delta en USD (reversión exacta de lo que se restó)
             if capital_target.convertir_ves and gasto.tasa_bcv > 0:
-                capital_target.saldo_usd = capital_target.saldo_ves / gasto.tasa_bcv
+                capital_target.saldo_usd += round(gasto.monto / gasto.tasa_bcv, 4)
         else:
             capital_target.saldo_usd += gasto.monto_usd
             
@@ -2327,7 +2328,7 @@ def create_personal_ingreso(req: IngresoPersonalCreate, username: str = Depends(
             if req.moneda == "VES":
                 capital_origen.saldo_ves -= req.monto
                 if capital_origen.convertir_ves and req.tasa_bcv > 0:
-                    capital_origen.saldo_usd = capital_origen.saldo_ves / req.tasa_bcv
+                    capital_origen.saldo_usd -= round(req.monto / req.tasa_bcv, 4)
             else:
                 capital_origen.saldo_usd -= monto_usd
 
@@ -2340,7 +2341,7 @@ def create_personal_ingreso(req: IngresoPersonalCreate, username: str = Depends(
             if req.moneda == "VES":
                 capital_destino.saldo_ves += req.monto
                 if capital_destino.convertir_ves and req.tasa_bcv > 0:
-                    capital_destino.saldo_usd = capital_destino.saldo_ves / req.tasa_bcv
+                    capital_destino.saldo_usd += round(req.monto / req.tasa_bcv, 4)
             else:
                 capital_destino.saldo_usd += monto_usd
 
@@ -2378,7 +2379,7 @@ def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current
             if ingreso.moneda == "VES":
                 capital_origen.saldo_ves += ingreso.monto
                 if capital_origen.convertir_ves and ingreso.tasa_bcv > 0:
-                    capital_origen.saldo_usd = capital_origen.saldo_ves / ingreso.tasa_bcv
+                    capital_origen.saldo_usd += round(ingreso.monto / ingreso.tasa_bcv, 4)
             else:
                 capital_origen.saldo_usd += ingreso.monto_usd
 
@@ -2391,7 +2392,7 @@ def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current
             if ingreso.moneda == "VES":
                 capital_destino.saldo_ves -= ingreso.monto
                 if capital_destino.convertir_ves and ingreso.tasa_bcv > 0:
-                    capital_destino.saldo_usd = capital_destino.saldo_ves / ingreso.tasa_bcv
+                    capital_destino.saldo_usd -= round(ingreso.monto / ingreso.tasa_bcv, 4)
             else:
                 capital_destino.saldo_usd -= ingreso.monto_usd
 
