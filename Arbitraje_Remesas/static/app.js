@@ -5516,6 +5516,7 @@ async function handleIngresoSubmit(e) {
         moneda: document.getElementById('p-ingreso-moneda').value,
         tasa_bcv: parseFloat(document.getElementById('p-ingreso-tasa').value) || 0.0,
         categoria_id: parseInt(document.getElementById('p-ingreso-categoria').value),
+        plataforma_pago: document.getElementById('p-ingreso-plataforma').value || null,
         detalles: document.getElementById('p-ingreso-detalles').value.trim() || null,
         fecha: document.getElementById('p-ingreso-fecha').value || null
     };
@@ -5526,6 +5527,7 @@ async function handleIngresoSubmit(e) {
         
         document.getElementById('p-ingreso-monto').value = '';
         document.getElementById('p-ingreso-detalles').value = '';
+        document.getElementById('p-ingreso-plataforma').value = '';
         
         await loadPersonalFinanceData();
         await loadCapital();
