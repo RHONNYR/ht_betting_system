@@ -264,37 +264,44 @@ def init_db():
     # Seeding defaults and cleaning balances
     db = SessionLocal()
     try:
-        if db.query(CategoriaPersonal).count() == 0:
-            default_categories = [
-                # Gastos
-                {"nombre": "Mercado", "tipo": "gasto", "icono": "🛒", "editable": False},
-                {"nombre": "Restaurantes", "tipo": "gasto", "icono": "🍔", "editable": False},
-                {"nombre": "Esparcimiento Social", "tipo": "gasto", "icono": "🍺", "editable": False},
-                {"nombre": "Compartir Deportivo", "tipo": "gasto", "icono": "🤝", "editable": False},
-                {"nombre": "Mesada Familiar", "tipo": "gasto", "icono": "👵", "editable": False},
-                {"nombre": "Gasolina", "tipo": "gasto", "icono": "⛽", "editable": False},
-                {"nombre": "Cobretag (Peajes)", "tipo": "gasto", "icono": "🎫", "editable": False},
-                {"nombre": "Mantenimiento Carro", "tipo": "gasto", "icono": "🔧", "editable": False},
-                {"nombre": "Internet", "tipo": "gasto", "icono": "🌐", "editable": False},
-                {"nombre": "Recargas Celular", "tipo": "gasto", "icono": "📱", "editable": False},
-                {"nombre": "Servicios & Suscripciones", "tipo": "gasto", "icono": "🚀", "editable": False},
-                {"nombre": "Embellecimiento", "tipo": "gasto", "icono": "✂️", "editable": False},
-                {"nombre": "Escuela Béisbol", "tipo": "gasto", "icono": "⚾", "editable": False},
-                {"nombre": "Entrenamiento Personalizado", "tipo": "gasto", "icono": "🏃", "editable": False},
-                {"nombre": "Arbitrajes", "tipo": "gasto", "icono": "🏁", "editable": False},
-                {"nombre": "Insumos Deportivos", "tipo": "gasto", "icono": "👟", "editable": False},
-                {"nombre": "Cuidado Diario & Salud", "tipo": "gasto", "icono": "💊", "editable": False},
-                {"nombre": "Pago de Deuda", "tipo": "gasto", "icono": "💸", "editable": False},
-                # Ingresos
-                {"nombre": "Salario PDVSA", "tipo": "ingreso", "icono": "💼", "editable": False},
-                {"nombre": "Sueldo Auto-asignado", "tipo": "ingreso", "icono": "💵", "editable": False},
-                # Otros / Comodín
-                {"nombre": "Otros Gastos / Ingresos", "tipo": "gasto", "icono": "⚙️", "editable": False}
-            ]
-            for cat_data in default_categories:
+        default_categories = [
+            # Gastos
+            {"nombre": "Mercado", "tipo": "gasto", "icono": "🛒", "editable": False},
+            {"nombre": "Restaurantes", "tipo": "gasto", "icono": "🍔", "editable": False},
+            {"nombre": "Esparcimiento Social", "tipo": "gasto", "icono": "🍺", "editable": False},
+            {"nombre": "Compartir Deportivo", "tipo": "gasto", "icono": "🤝", "editable": False},
+            {"nombre": "Mesada Familiar", "tipo": "gasto", "icono": "👵", "editable": False},
+            {"nombre": "Gasolina", "tipo": "gasto", "icono": "⛽", "editable": False},
+            {"nombre": "Cobretag (Peajes)", "tipo": "gasto", "icono": "🎫", "editable": False},
+            {"nombre": "Mantenimiento Carro", "tipo": "gasto", "icono": "🔧", "editable": False},
+            {"nombre": "Internet", "tipo": "gasto", "icono": "🌐", "editable": False},
+            {"nombre": "Recargas Celular", "tipo": "gasto", "icono": "📱", "editable": False},
+            {"nombre": "Servicios & Suscripciones", "tipo": "gasto", "icono": "🚀", "editable": False},
+            {"nombre": "Embellecimiento", "tipo": "gasto", "icono": "✂️", "editable": False},
+            {"nombre": "Escuela Béisbol", "tipo": "gasto", "icono": "⚾", "editable": False},
+            {"nombre": "Entrenamiento Personalizado", "tipo": "gasto", "icono": "🏃", "editable": False},
+            {"nombre": "Arbitrajes", "tipo": "gasto", "icono": "🏁", "editable": False},
+            {"nombre": "Insumos Deportivos", "tipo": "gasto", "icono": "👟", "editable": False},
+            {"nombre": "Cuidado Diario & Salud", "tipo": "gasto", "icono": "💊", "editable": False},
+            {"nombre": "Pago de Deuda", "tipo": "gasto", "icono": "💸", "editable": False},
+            {"nombre": "Cashea (Crédito)", "tipo": "gasto", "icono": "🛍️", "editable": False},
+            {"nombre": "Tecnología", "tipo": "gasto", "icono": "💻", "editable": False},
+            {"nombre": "Dulces", "tipo": "gasto", "icono": "🍫", "editable": False},
+            {"nombre": "Daka (Crédito)", "tipo": "gasto", "icono": "📺", "editable": False},
+            # Ingresos
+            {"nombre": "Salario PDVSA", "tipo": "ingreso", "icono": "💼", "editable": False},
+            {"nombre": "Sueldo Auto-asignado", "tipo": "ingreso", "icono": "💵", "editable": False},
+            # Otros / Comodín
+            {"nombre": "Otros Gastos / Ingresos", "tipo": "gasto", "icono": "⚙️", "editable": False}
+        ]
+        
+        # Verificar e insertar de manera incremental
+        for cat_data in default_categories:
+            existing = db.query(CategoriaPersonal).filter(CategoriaPersonal.nombre == cat_data["nombre"]).first()
+            if not existing:
                 cat = CategoriaPersonal(**cat_data)
                 db.add(cat)
-            db.commit()
+        db.commit()
 
         # Limpiar cualquier inconsistencia en los saldos
         platforms = db.query(DistribucionCapital).all()
