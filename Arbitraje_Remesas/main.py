@@ -526,15 +526,14 @@ def debug_txs(db: Session = Depends(get_db)):
             })
             
         # Ciclos abiertos
-        ciclos = db.query(HistorialCiclos).filter(HistorialCiclos.fecha_apertura >= start_date).all()
+        ciclos = db.query(HistorialCiclos).filter(HistorialCiclos.fecha >= start_date).all()
         ciclos_list = []
         for c in ciclos:
             ciclos_list.append({
                 "tipo": "CICLO",
                 "id": c.id,
-                "fecha_apertura": str(c.fecha_apertura),
-                "fecha_cierre": str(c.fecha_cierre) if c.fecha_cierre else None,
-                "monto_usd": c.monto_usd,
+                "fecha_apertura": str(c.fecha),
+                "usdt_vendidos": c.usdt_vendidos,
                 "status": c.status
             })
             
