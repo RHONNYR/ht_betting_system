@@ -458,6 +458,92 @@ def set_bcv_mode(req: BCVModeRequest, username: str = Depends(get_current_user))
         "active_mode": bcv_state.active_mode
     }
 
+@app.get("/api/personal/debug-txs")
+def debug_txs(db: Session = Depends(get_db)):
+    import datetime
+    from database import GastoPersonal, IngresoPersonal, HistorialRemesas, CompraCicloParcial, HistorialCiclos
+    
+    start_date = datetime.datetime(2026, 8, 4, 0, 0, 0)
+    end_date = datetime.datetime(2026, 8, 7, 0, 0, 0)
+    
+    # Gastos
+    gastos = db.query(GastoPersonal).filter(GastoPersonal.fecha >= start_date, GastoPersonal.fecha <= end_date).all()
+    gastos_list = []
+    for g in gastos:
+        gastos_list.append({
+            "tipo": "GASTO",
+            "id": g.id,
+            "fecha": str(g.fecha),
+            "monto": g.monto,
+            "moneda": g.moneda,
+            "monto_usd": g.monto_usd,
+            "plataforma_pago": g.plataforma_pago,
+            "detalles": g.detalles
+        })
+        
+    # Ingresos
+    ingresos = db.query(IngresoPersonal).filter(IngresoPersonal.fecha >= start_date, IngresoPersonal.fecha <= end_date).all()
+    ingresos_list = []
+    for i in ingresos:
+        ingresos_list.append({
+            "tipo": "INGRESO",
+            "id": i.id,
+            "fecha": str(i.fecha),
+            "monto": i.monto,
+            "moneda": i.moneda,
+            "monto_usd": i.monto_usd,
+            "plataforma_pago": i.plataforma_pago,
+            "detalles": i.detalles
+        })
+        
+    # Remesas
+    remesas = db.query(HistorialRemesas).filter(HistorialRemesas.fecha >= start_date, HistorialRemesas.fecha <= end_date).all()
+    remesas_list = []
+    for r in remesas:
+        remesas_list.append({
+            "tipo": "REMESA",
+            "id": r.id,
+            "fecha": str(r.fecha),
+            "monto_usd": r.monto_usd,
+            "monto_ves": r.monto_ves,
+            "metodo_pago": r.metodo_pago,
+            "banco_receptor": r.banco_receptor
+        })
+        
+    # Compras de divisas
+    compras = db.query(CompraCicloParcial).filter(CompraCicloParcial.fecha >= start_date, CompraCicloParcial.fecha <= end_date).all()
+    compras_list = []
+    for c in compras:
+        compras_list.append({
+            "tipo": "COMPRA_CICLO",
+            "id": c.id,
+            "fecha": str(c.fecha),
+            "usd_comprados": c.usd_comprados,
+            "transferencias_ves": c.transferencias_ves,
+            "banco": c.banco
+        })
+        
+    # Ciclos abiertos
+    ciclos = db.query(HistorialCiclos).filter(HistorialCiclos.fecha_apertura >= start_date).all()
+    ciclos_list = []
+    for c in ciclos:
+        ciclos_list.append({
+            "tipo": "CICLO",
+            "id": c.id,
+            "fecha_apertura": str(c.fecha_apertura),
+            "fecha_cierre": str(c.fecha_cierre) if c.fecha_cierre else None,
+            "monto_usd": c.monto_usd,
+            "status": c.status
+        })
+        
+    return {
+        "gastos": gastos_list,
+        "ingresos": ingresos_list,
+        "remesas": remesas_list,
+        "compras": compras_list,
+        "ciclos": ciclos_list
+    }
+
 # Capital Routes
 @app.get("/api/capital")
 def get_capital(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
