@@ -2964,22 +2964,28 @@ class GuardarEstrategiaRequest(CalcularEstrategiaRequest):
 def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends(get_current_user)):
     cap = req.capital
     
+    # Determinar comision de pago movil (0.3%)
+    pm_fee = 0.003 if req.pago_movil_auto else 0.0
+
     # 1. R1: Ciclo Remesas Tradicional
     roi_r1 = 0.0
     ganancia_r1 = 0.0
-    if req.tasa_remesa_cliente > 0:
+    if req.tasa_remesa_cliente > 0 and req.tasa_usdt_p2p > 0 and cap > 0:
         try:
-            usdt_r1 = cap * 0.98  # 2% fee de entrada en Binance
-            bs_r1 = usdt_r1 * req.tasa_usdt_p2p
-            zelle_r1 = bs_r1 / req.tasa_remesa_cliente
-            usdt_final_r1 = zelle_r1 * (1 - (req.spread_zelle_usdt / 100))
-            roi_r1 = ((usdt_final_r1 - cap) / cap) * 100
-            ganancia_r1 = usdt_final_r1 - cap
+            costo_adq_pct = req.spread_zelle_usdt
+            comision_bin_pct = req.comision_maker_p2p
+            f_costo = 1.0 + (costo_adq_pct / 100.0) + (comision_bin_pct / 100.0)
+            
+            # Réplica exacta del simulador frontend
+            ves_recibir = round(cap * req.tasa_remesa_cliente, 2)
+            ves_gastados_totales = round(ves_recibir * (1.0 + pm_fee), 2)
+            usdt_gastados = round(ves_gastados_totales / req.tasa_usdt_p2p, 2)
+            costo_real_usd = round(usdt_gastados * f_costo, 2)
+            
+            ganancia_r1 = round(cap - costo_real_usd, 2)
+            roi_r1 = round((ganancia_r1 / cap) * 100.0, 2)
         except Exception:
             pass
-
-    # Determinar comision de pago movil (0.3%)
-    pm_fee = 0.003 if req.pago_movil_auto else 0.0
 
     # 2. R2: Provincial (Arbitraje BCV)
     roi_r2_prov = 0.0
