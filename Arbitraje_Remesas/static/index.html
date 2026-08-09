@@ -443,6 +443,12 @@
                                         </select>
                                     </div>
                                     <div class="input-group">
+                                        <label for="remesa-ciclo-financiador">Restar de Sobre Activo (Opcional)</label>
+                                        <select id="remesa-ciclo-financiador" style="padding: 0.45rem;">
+                                            <option value="">-- Ninguno (No restar de sobre) --</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
                                         <label for="remesa-costo-adq">Adquisición USDT (Zelle Premium %)</label>
                                         <input type="number" step="any" id="remesa-costo-adq" value="2.0" placeholder="Ej. 2">
                                     </div>
@@ -1144,6 +1150,13 @@
                                                         <option value="Efectivo VES">💵 Efectivo VES</option>
                                                     </select>
                                                 </div>
+                                            </div>
+
+                                            <div class="form-group" style="margin: 0;">
+                                                <label for="p-gasto-ciclo-id" style="font-size: 0.75rem; margin-bottom: 2px;">Restar de Sobre Activo (Opcional)</label>
+                                                <select id="p-gasto-ciclo-id" style="padding: 0.45rem;">
+                                                    <option value="">-- No restar de sobre (Gasto normal) --</option>
+                                                </select>
                                             </div>
 
                                             <!-- CAMPOS CONDICIONALES INTELIGENTES (OCULTOS POR DEFECTO) -->
@@ -2473,6 +2486,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=132"></script>
+    <script src="app.js?v=133"></script>
 </body>
 </html>
