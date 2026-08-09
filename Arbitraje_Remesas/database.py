@@ -217,6 +217,23 @@ class PresupuestoPersonal(Base):
     limite_mensual_usd = Column(Float, default=0.0)
 
 
+class SimulacionRutas(Base):
+    __tablename__ = "simulaciones_rutas"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    capital = Column(Float, default=2300.0)
+    tasa_usdt_p2p = Column(Float, nullable=False)
+    tasa_compra_efectivo = Column(Float, nullable=False)
+    comision_cash_zelle = Column(Float, default=6.0)
+    tasa_bcv = Column(Float, nullable=False)
+    spread_zelle_usdt = Column(Float, default=2.0)
+    tasa_remesa_cliente = Column(Float, nullable=False)
+    comision_maker_p2p = Column(Float, default=0.15)
+    comision_bpay_bdv = Column(Float, default=7.1)
+    comision_bpay_provincial = Column(Float, default=4.1)
+    comision_bpay_mercantil = Column(Float, default=4.1)
+
+
 def init_db():
     Base.metadata.create_all(bind=engine)
     from sqlalchemy import text
