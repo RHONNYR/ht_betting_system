@@ -5068,12 +5068,18 @@ function renderCategoryChart(data) {
 
     if (labels.length === 0) { labels.push("Sin gastos"); values.push(0); }
 
+    // Ajustar altura del contenedor dinámicamente según el número de barras para evitar solapamientos
+    const container = canvas.parentNode;
+    if (container) {
+        const calculatedHeight = Math.max(160, (labels.length * 36) + 40);
+        container.style.height = `${calculatedHeight}px`;
+    }
+
     const ctx = canvas.getContext('2d');
     
     // Crear degradados dinámicos para los gastos (rojos/naranjas/violetas de alta gama)
     const bgGradients = values.map((val, idx) => {
         const grad = ctx.createLinearGradient(0, 0, 300, 0);
-        // Colores que alternan entre tonos cálidos elegantes
         if (idx % 3 === 0) {
             grad.addColorStop(0, 'rgba(239, 68, 68, 0.2)'); // Rojo
             grad.addColorStop(1, 'rgba(239, 68, 68, 0.95)');
@@ -5102,9 +5108,10 @@ function renderCategoryChart(data) {
                 backgroundColor: bgGradients,
                 borderColor: borderColors,
                 borderWidth: 1,
-                borderRadius: 6,
+                borderRadius: 5,
                 borderSkipped: false,
-                barThickness: 16
+                barPercentage: 0.75,
+                categoryPercentage: 0.85
             }]
         },
         options: {
@@ -5139,7 +5146,8 @@ function renderCategoryChart(data) {
                     grid: { display: false },
                     ticks: {
                         color: 'rgba(255,255,255,0.85)',
-                        font: { size: 10, weight: '500' }
+                        font: { size: 10, weight: '500' },
+                        autoSkip: false // Mostrar todos los nombres siempre
                     }
                 }
             }
@@ -5162,6 +5170,13 @@ function renderIncomeChart(data) {
     const total = values.reduce((a, b) => a + b, 0);
 
     if (labels.length === 0) { labels.push("Sin ingresos"); values.push(0); }
+
+    // Ajustar altura del contenedor dinámicamente según el número de barras para evitar solapamientos
+    const container = canvas.parentNode;
+    if (container) {
+        const calculatedHeight = Math.max(160, (labels.length * 36) + 40);
+        container.style.height = `${calculatedHeight}px`;
+    }
 
     const ctx = canvas.getContext('2d');
     
@@ -5196,9 +5211,10 @@ function renderIncomeChart(data) {
                 backgroundColor: bgGradients,
                 borderColor: borderColors,
                 borderWidth: 1,
-                borderRadius: 6,
+                borderRadius: 5,
                 borderSkipped: false,
-                barThickness: 16
+                barPercentage: 0.75,
+                categoryPercentage: 0.85
             }]
         },
         options: {
@@ -5233,7 +5249,8 @@ function renderIncomeChart(data) {
                     grid: { display: false },
                     ticks: {
                         color: 'rgba(255,255,255,0.85)',
-                        font: { size: 10, weight: '500' }
+                        font: { size: 10, weight: '500' },
+                        autoSkip: false // Mostrar todos los nombres siempre
                     }
                 }
             }
