@@ -207,6 +207,7 @@ class RemesaCreate(BaseModel):
     cliente_genero: Optional[str] = "Masculino"
     fecha: Optional[str] = None
     zelle_movimiento_id: Optional[int] = None
+    ciclo_id: Optional[int] = None
 
 class ClienteCreate(BaseModel):
     nombre: str
@@ -239,6 +240,7 @@ class GastoPersonalCreate(BaseModel):
     plataforma_pago: str  # Mercantil, Zelle, Provincial, BDV, Efectivo, etc.
     deuda_id: Optional[int] = None
     fecha: Optional[str] = None  # Opcional, para registrar con fechas del pasado
+    ciclo_id: Optional[int] = None
 
 class DeudaPersonalCreate(BaseModel):
     acreedor: str
@@ -1187,6 +1189,23 @@ def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, us
     if ciclo.bolivares_sobre_restantes <= 0.01:
         ciclo.status = "completado"
         
+    # Sincronización automática de saldo en DistribucionCapital para el banco emisor
+    bank_clean = (req.banco or ciclo.banco_venta or "").lower()
+    target_platform = None
+    if "provincial" in bank_clean:
+        target_platform = "Banco Provincial (VES)"
+    elif "venezuela" in bank_clean or "bdv" in bank_clean:
+        target_platform = "Banco de Venezuela (VES)"
+    elif "mercantil" in bank_clean:
+        target_platform = "Banco Mercantil (VES)"
+    elif "bancamiga" in bank_clean:
+        target_platform = "Bancamiga (VES)"
+        
+    if target_platform:
+        plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
+        if plat:
+            plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - total_ves_gastado), 2)
+
     db.commit()
     return {"message": "Compra parcial registrada con éxito", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes, "status": ciclo.status}
 
@@ -1373,6 +1392,23 @@ def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_us
     if ciclo.bolivares_sobre_restantes > 0.01:
         ciclo.status = "abierto"
         
+    # Revertir saldo en la cuenta bancaria de DistribucionCapital para el banco emisor
+    bank_clean = (compra.banco or ciclo.banco_venta or "").lower()
+    target_platform = None
+    if "provincial" in bank_clean:
+        target_platform = "Banco Provincial (VES)"
+    elif "venezuela" in bank_clean or "bdv" in bank_clean:
+        target_platform = "Banco de Venezuela (VES)"
+    elif "mercantil" in bank_clean:
+        target_platform = "Banco Mercantil (VES)"
+    elif "bancamiga" in bank_clean:
+        target_platform = "Bancamiga (VES)"
+        
+    if target_platform:
+        plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
+        if plat:
+            plat.saldo_ves = round((plat.saldo_ves or 0.0) + total_ves_gastado, 2)
+
     db.delete(compra)
     db.commit()
     
@@ -1729,10 +1765,74 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
         metodo_pago=req.metodo_pago,
         banco_receptor=req.banco_receptor,
         costo_adquisicion_usdt=round(req.costo_adquisicion_usdt, 4),
-        comision_binance=round(req.comision_binance, 4)
+        comision_binance=round(req.comision_binance, 4),
+        ciclo_id=req.ciclo_id
     )
     db.add(remesa)
     db.commit()
+
+    # Deducción y vinculación a sobre de ciclo activo
+    if req.ciclo_id:
+        ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == req.ciclo_id).first()
+        if ciclo:
+            pm_fee_pct = 0.003 if (req.banco_receptor.strip().lower() == "pago móvil") else 0.0
+            total_ves_gastados = round(req.monto_ves * (1.0 + pm_fee_pct), 2)
+            
+            # Restar del sobre de bolívares restantes
+            ciclo.bolivares_sobre_restantes = round(max(0.0, (ciclo.bolivares_sobre_restantes or 0.0) - total_ves_gastados), 2)
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+            
+            # Registrar como CompraCicloParcial (repatriación indirecta)
+            compra_parcial = CompraCicloParcial(
+                ciclo_id=ciclo.id,
+                fecha=remesa_date,
+                usd_comprados=round(req.monto_usd, 2),
+                usd_procesados=round(req.monto_usd, 2),
+                tasa_bcv=round(req.tasa_cliente, 2),
+                comision_compra_ves=round(req.monto_ves * pm_fee_pct, 2),
+                transferencias_ves=0.0,
+                usd_recibidos_binance=round(req.monto_usd, 2),
+                banco=f"Remesa #{remesa.id} ({req.cliente_nombre})"
+            )
+            db.add(compra_parcial)
+            
+            # Sincronización automática de saldo en DistribucionCapital
+            bank_clean = req.banco_receptor.strip().lower()
+            if bank_clean == "pago móvil":
+                bank_clean = (ciclo.banco_venta or "").lower()
+            
+            target_platform = None
+            if "provincial" in bank_clean:
+                target_platform = "Banco Provincial (VES)"
+            elif "venezuela" in bank_clean or "bdv" in bank_clean:
+                target_platform = "Banco de Venezuela (VES)"
+            elif "mercantil" in bank_clean:
+                target_platform = "Banco Mercantil (VES)"
+            elif "bancamiga" in bank_clean:
+                target_platform = "Bancamiga (VES)"
+                
+            if target_platform:
+                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
+                if plat:
+                    plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - total_ves_gastados), 2)
+            
+            # Forzar actualización de estadísticas del ciclo
+            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
+            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
+            
+            # Recalcular usd acumulado de compras parciales
+            total_usd_recibidos = sum(cp.usd_recibidos_binance for cp in ciclo.compras_parciales) + round(req.monto_usd, 2)
+            ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
+            ciclo.usd_procesados_binance = round(total_usd_recibidos, 2)
+            ciclo.divisas_compradas = round(total_usd_recibidos, 2)
+            
+            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            
+            if ciclo.bolivares_sobre_restantes <= 0.01:
+                ciclo.status = "completado"
+            
+            db.commit()
     
     if req.metodo_pago.strip().lower() == "zelle":
         linked_mov = None
@@ -1879,6 +1979,62 @@ def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db:
     if not remesa:
         raise HTTPException(status_code=404, detail="Remesa no encontrada.")
     
+    # Revertir impacto en ciclo (sobre activo) y banco si estaba vinculada
+    if getattr(remesa, "ciclo_id", None):
+        ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == remesa.ciclo_id).first()
+        if ciclo:
+            pm_fee_pct = 0.003 if (remesa.banco_receptor.strip().lower() == "pago móvil") else 0.0
+            total_ves_gastados = round(remesa.monto_ves * (1.0 + pm_fee_pct), 2)
+            
+            # Devolver bolívares al sobre
+            ciclo.bolivares_sobre_restantes = round((ciclo.bolivares_sobre_restantes or 0.0) + total_ves_gastados, 2)
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+            
+            # Revertir saldo en la cuenta bancaria de DistribucionCapital
+            bank_clean = remesa.banco_receptor.strip().lower()
+            if bank_clean == "pago móvil":
+                bank_clean = (ciclo.banco_venta or "").lower()
+                
+            target_platform = None
+            if "provincial" in bank_clean:
+                target_platform = "Banco Provincial (VES)"
+            elif "venezuela" in bank_clean or "bdv" in bank_clean:
+                target_platform = "Banco de Venezuela (VES)"
+            elif "mercantil" in bank_clean:
+                target_platform = "Banco Mercantil (VES)"
+            elif "bancamiga" in bank_clean:
+                target_platform = "Bancamiga (VES)"
+                
+            if target_platform:
+                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
+                if plat:
+                    plat.saldo_ves = round((plat.saldo_ves or 0.0) + total_ves_gastados, 2)
+            
+            # Buscar y eliminar CompraCicloParcial correspondiente
+            cp = db.query(CompraCicloParcial).filter(
+                CompraCicloParcial.ciclo_id == ciclo.id,
+                CompraCicloParcial.banco.like(f"%Remesa #{remesa_id}%")
+            ).first()
+            if cp:
+                db.delete(cp)
+                
+            # Forzar actualización de estadísticas del ciclo excluyendo esta compra parcial
+            cp_id_to_exclude = cp.id if cp else None
+            total_usd_recibidos = sum(c_part.usd_recibidos_binance for c_part in ciclo.compras_parciales if c_part.id != cp_id_to_exclude)
+            
+            ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
+            ciclo.usd_procesados_binance = round(total_usd_recibidos, 2)
+            ciclo.divisas_compradas = round(total_usd_recibidos, 2)
+            
+            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
+            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
+            
+            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            
+            if ciclo.bolivares_sobre_restantes > 0.01:
+                ciclo.status = "abierto"
+                
     # Revert Zelle ledger impact
     if remesa.metodo_pago.strip().lower() == "zelle":
         mov = db.query(MovimientoZelle).filter(
@@ -2266,10 +2422,48 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
         subcategoria=req.subcategoria,
         detalles=req.detalles,
         plataforma_pago=req.plataforma_pago,
-        deuda_id=req.deuda_id
+        deuda_id=req.deuda_id,
+        ciclo_id=req.ciclo_id
     )
     db.add(gasto)
     db.commit()
+
+    # Si el gasto proviene de un sobre (ciclo activo)
+    if req.ciclo_id:
+        ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == req.ciclo_id).first()
+        if ciclo:
+            monto_ves_gasto = req.monto if req.moneda == "VES" else (req.monto * req.tasa_bcv)
+            
+            # Restar del sobre de bolívares restantes
+            ciclo.bolivares_sobre_restantes = round(max(0.0, (ciclo.bolivares_sobre_restantes or 0.0) - monto_ves_gasto), 2)
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+            
+            # Registrar como gasto interno del ciclo (CompraCicloParcial sin retorno USD)
+            compra_parcial = CompraCicloParcial(
+                ciclo_id=ciclo.id,
+                fecha=gasto.fecha,
+                usd_comprados=0.0,
+                usd_procesados=0.0,
+                tasa_bcv=req.tasa_bcv,
+                comision_compra_ves=0.0,
+                transferencias_ves=round(monto_ves_gasto, 2),
+                usd_recibidos_binance=0.0,
+                banco=f"Gasto: {cat.nombre} - {req.detalles or ''}"
+            )
+            db.add(compra_parcial)
+            
+            # Forzar actualización de estadísticas del ciclo
+            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
+            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
+            
+            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            
+            if ciclo.bolivares_sobre_restantes <= 0.01:
+                ciclo.status = "completado"
+                
+            db.commit()
+            
     return {"message": "Gasto personal registrado con éxito", "id": gasto.id}
 
 @app.delete("/api/personal/gastos/{gasto_id}")
@@ -2297,6 +2491,34 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
             else:
                 capital_target.saldo_usd += gasto.monto_usd
             
+    # Si estaba vinculado a un ciclo (sobre activo), revertimos impacto en el sobre
+    if getattr(gasto, "ciclo_id", None):
+        ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == gasto.ciclo_id).first()
+        if ciclo:
+            monto_ves_gasto = gasto.monto if gasto.moneda == "VES" else (gasto.monto * gasto.tasa_bcv)
+            
+            # Devolver los bolívares al sobre
+            ciclo.bolivares_sobre_restantes = round((ciclo.bolivares_sobre_restantes or 0.0) + monto_ves_gasto, 2)
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+            
+            # Buscar y eliminar la compra parcial registrada del sobre
+            cp = db.query(CompraCicloParcial).filter(
+                CompraCicloParcial.ciclo_id == ciclo.id,
+                CompraCicloParcial.banco.like(f"%Gasto: {gasto.categoria.nombre}%")
+            ).first()
+            if cp:
+                db.delete(cp)
+                
+            # Forzar actualización de estadísticas del ciclo
+            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
+            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
+            
+            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            
+            if ciclo.bolivares_sobre_restantes > 0.01:
+                ciclo.status = "abierto"
+
     # If it was a debt payment, restore debt balance
     if gasto.deuda_id:
         deuda = db.query(DeudaPersonal).filter(DeudaPersonal.id == gasto.deuda_id).first()
@@ -2306,7 +2528,7 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
 
     db.delete(gasto)
     db.commit()
-    return {"message": "Gasto eliminado y capital restaurado."}
+    return {"message": "Gasto eliminado, capital y sobre restaurados."}
 
 # 3. INGRESOS PERSONALES
 @app.get("/api/personal/ingresos")
