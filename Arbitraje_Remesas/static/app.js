@@ -5900,70 +5900,70 @@ async function initOrquestadorTab() {
         // Cargar historial de tasas
         await cargarSimsHistorial();
 
-        // Rellenar dinámicamente el formulario con datos reales de la sesión del usuario
+        // Rellenar dinámicamente el formulario con datos de la sesión o fallbacks sensatos
         
         // 1. Capital real actual de la caja
         const capInput = document.getElementById('est-capital');
         if (capInput) {
-            capInput.value = state.totalUsdEquivalente ? Math.round(state.totalUsdEquivalente) : "";
+            capInput.value = capInput.value || (state.totalUsdEquivalente ? Math.round(state.totalUsdEquivalente) : "2379");
         }
 
         // 2. Tasa BCV Oficial
         const bcvInput = document.getElementById('est-tasa-bcv');
         if (bcvInput) {
-            bcvInput.value = state.bcvRate > 0 ? state.bcvRate.toFixed(2) : "";
+            bcvInput.value = bcvInput.value || (state.bcvRate > 0 ? state.bcvRate.toFixed(2) : "757.54");
         }
 
         // 3. Tasa de venta USDT P2P (tomada de la calculadora de ciclos si ya se ingresó)
         const p2pInput = document.getElementById('est-tasa-usdt-p2p');
         if (p2pInput) {
             const calcTasaVenta = document.getElementById('calc-tasa-venta');
-            p2pInput.value = (calcTasaVenta && calcTasaVenta.value) ? calcTasaVenta.value : "";
+            p2pInput.value = p2pInput.value || ((calcTasaVenta && calcTasaVenta.value) ? calcTasaVenta.value : "847.80");
         }
 
-        // 4. Tasa de compra de efectivo (dejar vacío para ingreso manual)
+        // 4. Tasa de compra de efectivo
         const compraEfectivoInput = document.getElementById('est-tasa-compra-efectivo');
         if (compraEfectivoInput) {
-            compraEfectivoInput.value = "";
+            compraEfectivoInput.value = compraEfectivoInput.value || "845.00";
         }
 
-        // 5. Tasa de remesa al cliente (tomada del módulo de remesas si ya se ingresó)
+        // 5. Tasa de remesa al cliente
         const remesaInput = document.getElementById('est-tasa-remesa-cliente');
         if (remesaInput) {
             const rsc = document.getElementById('remesa-tasa-cambio');
-            remesaInput.value = (rsc && rsc.value) ? rsc.value : "";
+            remesaInput.value = remesaInput.value || ((rsc && rsc.value) ? rsc.value : "795.00");
         }
 
-        // 6. Comisiones por defecto (dejar vacías para que el usuario las digite)
+        // 6. Comisiones por defecto
         const comisionCashZelle = document.getElementById('est-comision-cash-zelle');
         if (comisionCashZelle) {
-            comisionCashZelle.value = "";
+            comisionCashZelle.value = comisionCashZelle.value || "6.0";
         }
 
         const spreadZelleUsdt = document.getElementById('est-spread-zelle-usdt');
         if (spreadZelleUsdt) {
-            spreadZelleUsdt.value = "";
+            spreadZelleUsdt.value = spreadZelleUsdt.value || "2.0";
         }
 
-        // 7. Parámetros de Tarjeta reales (BDV 2.5%, Provincial 0.0%, Mercantil 0.0%)
+        // 7. Parámetros de Recompra Binance (Maker P2P FIJO en 0.25%)
         const makerBinance = document.getElementById('est-comision-maker-p2p');
         if (makerBinance) {
-            makerBinance.value = "0.15";
+            makerBinance.value = "0.25";
         }
 
         const bdvCard = document.getElementById('est-comision-bpay-bdv');
         if (bdvCard) {
-            bdvCard.value = "2.5";
+            bdvCard.value = bdvCard.value || "2.5";
         }
 
         const provCard = document.getElementById('est-comision-bpay-provincial');
         if (provCard) {
-            provCard.value = "0.0";
+            provCard.value = provCard.value || "0.0";
         }
 
         const mercCard = document.getElementById('est-comision-bpay-mercantil');
         if (mercCard) {
-            mercCard.value = "0.0";
+            mercCard.value = mercCard.value || "0.0";
         }
 
         // 8. Sincronizar checkbox de Pago Móvil Auto
@@ -6102,18 +6102,25 @@ function abrirModalConfigRutas() {
 }
 
 async function ejecutarCalculoEstrategia() {
+    const parseNum = (id, fallback) => {
+        const el = document.getElementById(id);
+        if (!el || el.value === null || el.value === undefined || el.value.toString().trim() === '') return fallback;
+        const val = parseFloat(el.value.toString().replace(',', '.'));
+        return isNaN(val) ? fallback : val;
+    };
+
     const payload = {
-        capital: parseFloat(document.getElementById('est-capital').value) || 0,
-        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 0,
-        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 0,
-        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 0,
-        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 0,
-        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 0,
-        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 0,
-        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0,
-        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 0,
-        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 0,
-        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 0,
+        capital: parseNum('est-capital', 2379),
+        tasa_usdt_p2p: parseNum('est-tasa-usdt-p2p', 847.80),
+        tasa_compra_efectivo: parseNum('est-tasa-compra-efectivo', 845.00),
+        comision_cash_zelle: parseNum('est-comision-cash-zelle', 6.0),
+        tasa_bcv: parseNum('est-tasa-bcv', 757.54),
+        spread_zelle_usdt: parseNum('est-spread-zelle-usdt', 2.0),
+        tasa_remesa_cliente: parseNum('est-tasa-remesa-cliente', 795.00),
+        comision_maker_p2p: parseNum('est-comision-maker-p2p', 0.25),
+        comision_bpay_bdv: parseNum('est-comision-bpay-bdv', 2.5),
+        comision_bpay_provincial: parseNum('est-comision-bpay-provincial', 0.0),
+        comision_bpay_mercantil: parseNum('est-comision-bpay-mercantil', 0.0),
         pago_movil_auto: document.getElementById('est-pago-movil-auto') ? document.getElementById('est-pago-movil-auto').checked : false
     };
 
@@ -6211,18 +6218,25 @@ async function ejecutarCalculoEstrategia() {
 }
 
 async function guardarEstrategiaActiva() {
+    const parseNum = (id, fallback) => {
+        const el = document.getElementById(id);
+        if (!el || el.value === null || el.value === undefined || el.value.toString().trim() === '') return fallback;
+        const val = parseFloat(el.value.toString().replace(',', '.'));
+        return isNaN(val) ? fallback : val;
+    };
+
     const payload = {
-        capital: parseFloat(document.getElementById('est-capital').value) || 0,
-        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 0,
-        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 0,
-        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 0,
-        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 0,
-        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 0,
-        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 0,
-        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0,
-        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 0,
-        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 0,
-        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 0,
+        capital: parseNum('est-capital', 2379),
+        tasa_usdt_p2p: parseNum('est-tasa-usdt-p2p', 847.80),
+        tasa_compra_efectivo: parseNum('est-tasa-compra-efectivo', 845.00),
+        comision_cash_zelle: parseNum('est-comision-cash-zelle', 6.0),
+        tasa_bcv: parseNum('est-tasa-bcv', 757.54),
+        spread_zelle_usdt: parseNum('est-spread-zelle-usdt', 2.0),
+        tasa_remesa_cliente: parseNum('est-tasa-remesa-cliente', 795.00),
+        comision_maker_p2p: parseNum('est-comision-maker-p2p', 0.25),
+        comision_bpay_bdv: parseNum('est-comision-bpay-bdv', 2.5),
+        comision_bpay_provincial: parseNum('est-comision-bpay-provincial', 0.0),
+        comision_bpay_mercantil: parseNum('est-comision-bpay-mercantil', 0.0),
         pago_movil_auto: document.getElementById('est-pago-movil-auto') ? document.getElementById('est-pago-movil-auto').checked : false
     };
 
