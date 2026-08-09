@@ -5966,6 +5966,13 @@ async function initOrquestadorTab() {
             mercCard.value = "0.0";
         }
 
+        // 8. Sincronizar checkbox de Pago Móvil Auto
+        const estPmCheckbox = document.getElementById('est-pago-movil-auto');
+        if (estPmCheckbox) {
+            const calcPmCheckbox = document.getElementById('calc-pago-movil-auto');
+            estPmCheckbox.checked = calcPmCheckbox ? calcPmCheckbox.checked : false;
+        }
+
         // Auto calcular con los valores cargados
         await ejecutarCalculoEstrategia();
     } catch (err) {
@@ -6096,17 +6103,18 @@ function abrirModalConfigRutas() {
 
 async function ejecutarCalculoEstrategia() {
     const payload = {
-        capital: parseFloat(document.getElementById('est-capital').value) || 2300,
-        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 864,
-        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 845,
-        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 6.0,
-        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 757.54,
-        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 2.0,
-        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 795,
-        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0.15,
-        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 7.1,
-        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 4.1,
-        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 4.1
+        capital: parseFloat(document.getElementById('est-capital').value) || 0,
+        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 0,
+        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 0,
+        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 0,
+        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 0,
+        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 0,
+        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 0,
+        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0,
+        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 0,
+        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 0,
+        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 0,
+        pago_movil_auto: document.getElementById('est-pago-movil-auto') ? document.getElementById('est-pago-movil-auto').checked : false
     };
 
     try {
@@ -6204,17 +6212,18 @@ async function ejecutarCalculoEstrategia() {
 
 async function guardarEstrategiaActiva() {
     const payload = {
-        capital: parseFloat(document.getElementById('est-capital').value) || 2300,
-        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 864,
-        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 845,
-        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 6.0,
-        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 757.54,
-        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 2.0,
-        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 795,
-        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0.15,
-        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 7.1,
-        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 4.1,
-        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 4.1
+        capital: parseFloat(document.getElementById('est-capital').value) || 0,
+        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 0,
+        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 0,
+        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 0,
+        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 0,
+        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 0,
+        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 0,
+        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0,
+        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 0,
+        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 0,
+        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 0,
+        pago_movil_auto: document.getElementById('est-pago-movil-auto') ? document.getElementById('est-pago-movil-auto').checked : false
     };
 
     try {
