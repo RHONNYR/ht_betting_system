@@ -609,9 +609,11 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
     start_of_day = datetime.datetime(now.year, now.month, now.day)
     start_of_month = datetime.datetime(now.year, now.month, 1)
     
-    # Calcular consumos diario y mensual de ingresos Zelle
+    # Calcular consumos diario y mensual de ingresos y egresos Zelle
     daily_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_day)
     monthly_ingresos = sum(m.monto for m in db.query(MovimientoZelle).filter(MovimientoZelle.tipo == "ingreso", MovimientoZelle.fecha >= start_of_month).all())
+    daily_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_day)
+    monthly_egresos = sum(m.monto for m in db.query(MovimientoZelle).filter(MovimientoZelle.tipo == "egreso", MovimientoZelle.fecha >= start_of_month).all())
     
     weekly_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
     weekly_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
@@ -641,7 +643,9 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
             "weekly_egresos": weekly_egresos,
             "pendientes_remesar_usd": pendientes_remesar_usd,
             "daily_ingresos": daily_ingresos,
-            "monthly_ingresos": monthly_ingresos
+            "monthly_ingresos": monthly_ingresos,
+            "daily_egresos": daily_egresos,
+            "monthly_egresos": monthly_egresos
         }
     }
 
