@@ -2824,6 +2824,12 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
     
     ganancia_negocio = round(ganancia_ciclos + ganancia_remesas, 2)
     
+    # Inyectar las ganancias del negocio en la distribución de ingresos para el gráfico
+    if ganancia_ciclos > 0:
+        ingresos_por_categoria["💼 Arbitraje (Ciclos)"] = round(ganancia_ciclos, 2)
+    if ganancia_remesas > 0:
+        ingresos_por_categoria["✈️ Remesas"] = round(ganancia_remesas, 2)
+    
     # 5. Sueldo Óptimo Recomendado (40% de la ganancia del negocio)
     sueldo_sugerido = ganancia_negocio * 0.40
     
