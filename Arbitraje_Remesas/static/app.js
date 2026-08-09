@@ -5900,80 +5900,37 @@ async function initOrquestadorTab() {
         // Cargar historial de tasas
         await cargarSimsHistorial();
 
-        // Rellenar dinámicamente el formulario con datos de la sesión o fallbacks sensatos
-        
-        // 1. Capital real actual de la caja
-        const capInput = document.getElementById('est-capital');
-        if (capInput) {
-            capInput.value = capInput.value || (state.totalUsdEquivalente ? Math.round(state.totalUsdEquivalente) : "2379");
-        }
-
-        // 2. Tasa BCV Oficial
+        // Solo llenar automáticamente la Tasa BCV Oficial del día
         const bcvInput = document.getElementById('est-tasa-bcv');
         if (bcvInput) {
-            bcvInput.value = bcvInput.value || (state.bcvRate > 0 ? state.bcvRate.toFixed(2) : "757.54");
+            bcvInput.value = state.bcvRate > 0 ? state.bcvRate.toFixed(2) : "";
         }
 
-        // 3. Tasa de venta USDT P2P (tomada de la calculadora de ciclos si ya se ingresó)
+        // Tasa P2P Venta (si ya fue ingresada en la calculadora de ciclos)
         const p2pInput = document.getElementById('est-tasa-usdt-p2p');
-        if (p2pInput) {
+        if (p2pInput && !p2pInput.value) {
             const calcTasaVenta = document.getElementById('calc-tasa-venta');
-            p2pInput.value = p2pInput.value || ((calcTasaVenta && calcTasaVenta.value) ? calcTasaVenta.value : "847.80");
+            if (calcTasaVenta && calcTasaVenta.value) {
+                p2pInput.value = calcTasaVenta.value;
+            }
         }
 
-        // 4. Tasa de compra de efectivo
-        const compraEfectivoInput = document.getElementById('est-tasa-compra-efectivo');
-        if (compraEfectivoInput) {
-            compraEfectivoInput.value = compraEfectivoInput.value || "845.00";
-        }
+        // Todos los demás campos quedan 100% vacíos por defecto para permitir ingreso manual libre
+        ['est-capital', 'est-tasa-compra-efectivo', 'est-tasa-remesa-cliente', 'est-comision-cash-zelle', 'est-spread-zelle-usdt', 'est-comision-maker-p2p', 'est-comision-bpay-bdv', 'est-comision-bpay-provincial', 'est-comision-bpay-mercantil'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && !el.value) {
+                el.value = "";
+            }
+        });
 
-        // 5. Tasa de remesa al cliente
-        const remesaInput = document.getElementById('est-tasa-remesa-cliente');
-        if (remesaInput) {
-            const rsc = document.getElementById('remesa-tasa-cambio');
-            remesaInput.value = remesaInput.value || ((rsc && rsc.value) ? rsc.value : "795.00");
-        }
-
-        // 6. Comisiones por defecto
-        const comisionCashZelle = document.getElementById('est-comision-cash-zelle');
-        if (comisionCashZelle) {
-            comisionCashZelle.value = comisionCashZelle.value || "6.0";
-        }
-
-        const spreadZelleUsdt = document.getElementById('est-spread-zelle-usdt');
-        if (spreadZelleUsdt) {
-            spreadZelleUsdt.value = spreadZelleUsdt.value || "2.0";
-        }
-
-        // 7. Parámetros de Recompra Binance (Maker P2P FIJO en 0.25%)
-        const makerBinance = document.getElementById('est-comision-maker-p2p');
-        if (makerBinance) {
-            makerBinance.value = "0.25";
-        }
-
-        const bdvCard = document.getElementById('est-comision-bpay-bdv');
-        if (bdvCard) {
-            bdvCard.value = bdvCard.value || "2.5";
-        }
-
-        const provCard = document.getElementById('est-comision-bpay-provincial');
-        if (provCard) {
-            provCard.value = provCard.value || "0.0";
-        }
-
-        const mercCard = document.getElementById('est-comision-bpay-mercantil');
-        if (mercCard) {
-            mercCard.value = mercCard.value || "0.0";
-        }
-
-        // 8. Sincronizar checkbox de Pago Móvil Auto
+        // Sincronizar checkbox de Pago Móvil Auto
         const estPmCheckbox = document.getElementById('est-pago-movil-auto');
         if (estPmCheckbox) {
             const calcPmCheckbox = document.getElementById('calc-pago-movil-auto');
             estPmCheckbox.checked = calcPmCheckbox ? calcPmCheckbox.checked : false;
         }
 
-        // Auto calcular con los valores cargados
+        // Ejecutar simulación si ya hay tasas suficientes cargadas
         await ejecutarCalculoEstrategia();
     } catch (err) {
         console.error("Error al inicializar pestaña orquestador:", err);
@@ -6102,21 +6059,38 @@ function abrirModalConfigRutas() {
 }
 
 async function ejecutarCalculoEstrategia() {
-    const parseNum = (id, fallback) => {
+    const parseNum = (id, fallback = 0) => {
         const el = document.getElementById(id);
         if (!el || el.value === null || el.value === undefined || el.value.toString().trim() === '') return fallback;
         const val = parseFloat(el.value.toString().replace(',', '.'));
         return isNaN(val) ? fallback : val;
     };
 
+    const capital = parseNum('est-capital', 0);
+    const tasa_usdt_p2p = parseNum('est-tasa-usdt-p2p', 0);
+    const tasa_bcv = parseNum('est-tasa-bcv', 0);
+
+    const tbody = document.getElementById('tabla-estrategias-cuerpo');
+
+    if (capital <= 0 || tasa_usdt_p2p <= 0 || tasa_bcv <= 0) {
+        if (tbody) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 2rem;">💡 Ingresa el Capital, la Tasa USDT P2P Venta y la Tasa BCV para simular las rutas.</td></tr>';
+        }
+        const consejoEl = document.getElementById('orquestador-consejo');
+        if (consejoEl) {
+            consejoEl.innerHTML = '<li>Ingresa los datos del mercado actual y ejecuta la simulación para recibir un diagnóstico del orquestador.</li>';
+        }
+        return;
+    }
+
     const payload = {
-        capital: parseNum('est-capital', 2379),
-        tasa_usdt_p2p: parseNum('est-tasa-usdt-p2p', 847.80),
-        tasa_compra_efectivo: parseNum('est-tasa-compra-efectivo', 845.00),
-        comision_cash_zelle: parseNum('est-comision-cash-zelle', 6.0),
-        tasa_bcv: parseNum('est-tasa-bcv', 757.54),
-        spread_zelle_usdt: parseNum('est-spread-zelle-usdt', 2.0),
-        tasa_remesa_cliente: parseNum('est-tasa-remesa-cliente', 795.00),
+        capital: capital,
+        tasa_usdt_p2p: tasa_usdt_p2p,
+        tasa_bcv: tasa_bcv,
+        tasa_compra_efectivo: parseNum('est-tasa-compra-efectivo', 0),
+        comision_cash_zelle: parseNum('est-comision-cash-zelle', 0),
+        spread_zelle_usdt: parseNum('est-spread-zelle-usdt', 0),
+        tasa_remesa_cliente: parseNum('est-tasa-remesa-cliente', 0),
         comision_maker_p2p: parseNum('est-comision-maker-p2p', 0.25),
         comision_bpay_bdv: parseNum('est-comision-bpay-bdv', 2.5),
         comision_bpay_provincial: parseNum('est-comision-bpay-provincial', 0.0),
@@ -6176,41 +6150,42 @@ async function ejecutarCalculoEstrategia() {
         }
 
         // Renderizar tabla de rutas
-        const tbody = document.getElementById('tabla-estrategias-cuerpo');
-        tbody.innerHTML = '';
-        
-        if (rutasFiltradas.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No hay canales activos hoy. Habilita canales en el botón ⚙️ Canales.</td></tr>';
-            return;
-        }
-
-        rutasFiltradas.forEach((ruta, idx) => {
-            const tr = document.createElement('tr');
+        if (tbody) {
+            tbody.innerHTML = '';
             
-            // Colores por prioridad
-            let badge = '';
-            if (idx === 0) badge = `<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-weight:700;">🏆 ${ruta.nombre}</span>`;
-            else if (idx === 1) badge = `<span class="badge" style="background: rgba(16,185,129,0.1); color: #34d399; font-weight:600;">🥈 ${ruta.nombre}</span>`;
-            else if (idx === 2) badge = `<span class="badge" style="background: rgba(96,165,250,0.1); color: #60a5fa;">🥉 ${ruta.nombre}</span>`;
-            else badge = `<span style="padding-left:0.5rem; color:var(--text-secondary);">${ruta.nombre}</span>`;
+            if (rutasFiltradas.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No hay canales activos hoy. Habilita canales en el botón ⚙️ Canales.</td></tr>';
+                return;
+            }
 
-            // Color del ROI
-            const roiColor = ruta.roi > 4.0 ? '#10b981' : (ruta.roi > 1.5 ? '#60a5fa' : '#a7f3d0');
-            const zelleBadgeColor = ruta.zelle.includes("SÍ") ? 'rgba(239, 68, 68, 0.15)' : 'rgba(255,255,255,0.06)';
-            const zelleTextColor = ruta.zelle.includes("SÍ") ? '#ef4444' : 'var(--text-secondary)';
+            rutasFiltradas.forEach((ruta, idx) => {
+                const tr = document.createElement('tr');
+                
+                // Colores por prioridad
+                let badge = '';
+                if (idx === 0) badge = `<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-weight:700;">🏆 ${ruta.nombre}</span>`;
+                else if (idx === 1) badge = `<span class="badge" style="background: rgba(16,185,129,0.1); color: #34d399; font-weight:600;">🥈 ${ruta.nombre}</span>`;
+                else if (idx === 2) badge = `<span class="badge" style="background: rgba(96,165,250,0.1); color: #60a5fa;">🥉 ${ruta.nombre}</span>`;
+                else badge = `<span style="padding-left:0.5rem; color:var(--text-secondary);">${ruta.nombre}</span>`;
 
-            tr.innerHTML = `
-                <td style="padding: 0.6rem; vertical-align:middle;">${badge}</td>
-                <td style="padding: 0.6rem; text-align: center; font-weight: 700; color: ${roiColor}; vertical-align:middle;">${ruta.roi}%</td>
-                <td style="padding: 0.6rem; text-align: center; font-weight: 600; color: #fff; vertical-align:middle;">$${ruta.ganancia.toFixed(2)}</td>
-                <td style="padding: 0.6rem; text-align: center; color: var(--text-secondary); vertical-align:middle;">${ruta.velocidad}</td>
-                <td style="padding: 0.6rem; text-align: center; vertical-align:middle;">
-                    <span class="badge" style="background: ${zelleBadgeColor}; color: ${zelleTextColor}; font-size:0.7rem;">${ruta.zelle}</span>
-                </td>
-                <td style="padding: 0.6rem; color: #f59e0b; font-size:0.75rem; vertical-align:middle;">⚠️ ${ruta.riesgo}</td>
-            `;
-            tbody.appendChild(tr);
-        });
+                // Color del ROI
+                const roiColor = ruta.roi > 4.0 ? '#10b981' : (ruta.roi > 1.5 ? '#60a5fa' : '#a7f3d0');
+                const zelleBadgeColor = ruta.zelle.includes("SÍ") ? 'rgba(239, 68, 68, 0.15)' : 'rgba(255,255,255,0.06)';
+                const zelleTextColor = ruta.zelle.includes("SÍ") ? '#ef4444' : 'var(--text-secondary)';
+
+                tr.innerHTML = `
+                    <td style="padding: 0.6rem; vertical-align:middle;">${badge}</td>
+                    <td style="padding: 0.6rem; text-align: center; font-weight: 700; color: ${roiColor}; vertical-align:middle;">${ruta.roi}%</td>
+                    <td style="padding: 0.6rem; text-align: center; font-weight: 600; color: #fff; vertical-align:middle;">$${ruta.ganancia.toFixed(2)}</td>
+                    <td style="padding: 0.6rem; text-align: center; color: var(--text-secondary); vertical-align:middle;">${ruta.velocidad}</td>
+                    <td style="padding: 0.6rem; text-align: center; vertical-align:middle;">
+                        <span class="badge" style="background: ${zelleBadgeColor}; color: ${zelleTextColor}; font-size:0.7rem;">${ruta.zelle}</span>
+                    </td>
+                    <td style="padding: 0.6rem; color: #f59e0b; font-size:0.75rem; vertical-align:middle;">⚠️ ${ruta.riesgo}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
 
     } catch (err) {
         showToast("❌ Error al simular las rutas: " + err.message);
@@ -6218,21 +6193,30 @@ async function ejecutarCalculoEstrategia() {
 }
 
 async function guardarEstrategiaActiva() {
-    const parseNum = (id, fallback) => {
+    const parseNum = (id, fallback = 0) => {
         const el = document.getElementById(id);
         if (!el || el.value === null || el.value === undefined || el.value.toString().trim() === '') return fallback;
         const val = parseFloat(el.value.toString().replace(',', '.'));
         return isNaN(val) ? fallback : val;
     };
 
+    const capital = parseNum('est-capital', 0);
+    const tasa_usdt_p2p = parseNum('est-tasa-usdt-p2p', 0);
+    const tasa_bcv = parseNum('est-tasa-bcv', 0);
+
+    if (capital <= 0 || tasa_usdt_p2p <= 0 || tasa_bcv <= 0) {
+        showToast("⚠️ Ingresa el Capital, Tasa P2P Venta y Tasa BCV antes de guardar");
+        return;
+    }
+
     const payload = {
-        capital: parseNum('est-capital', 2379),
-        tasa_usdt_p2p: parseNum('est-tasa-usdt-p2p', 847.80),
-        tasa_compra_efectivo: parseNum('est-tasa-compra-efectivo', 845.00),
-        comision_cash_zelle: parseNum('est-comision-cash-zelle', 6.0),
-        tasa_bcv: parseNum('est-tasa-bcv', 757.54),
-        spread_zelle_usdt: parseNum('est-spread-zelle-usdt', 2.0),
-        tasa_remesa_cliente: parseNum('est-tasa-remesa-cliente', 795.00),
+        capital: capital,
+        tasa_usdt_p2p: tasa_usdt_p2p,
+        tasa_bcv: tasa_bcv,
+        tasa_compra_efectivo: parseNum('est-tasa-compra-efectivo', 0),
+        comision_cash_zelle: parseNum('est-comision-cash-zelle', 0),
+        spread_zelle_usdt: parseNum('est-spread-zelle-usdt', 0),
+        tasa_remesa_cliente: parseNum('est-tasa-remesa-cliente', 0),
         comision_maker_p2p: parseNum('est-comision-maker-p2p', 0.25),
         comision_bpay_bdv: parseNum('est-comision-bpay-bdv', 2.5),
         comision_bpay_provincial: parseNum('est-comision-bpay-provincial', 0.0),
