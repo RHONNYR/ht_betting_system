@@ -5053,115 +5053,190 @@ function renderPersonalDashboard(dash) {
     renderIncomeChart(dash.ingresos_por_categoria || {});
 }
 
-// Renderizar gráfico de torta de Chart.js para gastos
+// Renderizar gráfico de barras horizontales de Chart.js para gastos
 function renderCategoryChart(data) {
-    const ctx = document.getElementById('chart-personal-categorias');
-    if (!ctx) return;
+    const canvas = document.getElementById('chart-personal-categorias');
+    if (!canvas) return;
 
     if (personalCategoryChart) personalCategoryChart.destroy();
 
-    const labels = Object.keys(data);
-    const values = Object.values(data);
+    // Ordenar de mayor a menor
+    const sortedEntries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+    const labels = sortedEntries.map(e => e[0]);
+    const values = sortedEntries.map(e => e[1]);
     const total = values.reduce((a, b) => a + b, 0);
 
-    if (labels.length === 0) { labels.push("Sin gastos"); values.push(0.1); }
+    if (labels.length === 0) { labels.push("Sin gastos"); values.push(0); }
 
-    personalCategoryChart = new Chart(ctx, {
-        type: 'doughnut',
+    const ctx = canvas.getContext('2d');
+    
+    // Crear degradados dinámicos para los gastos (rojos/naranjas/violetas de alta gama)
+    const bgGradients = values.map((val, idx) => {
+        const grad = ctx.createLinearGradient(0, 0, 300, 0);
+        // Colores que alternan entre tonos cálidos elegantes
+        if (idx % 3 === 0) {
+            grad.addColorStop(0, 'rgba(239, 68, 68, 0.2)'); // Rojo
+            grad.addColorStop(1, 'rgba(239, 68, 68, 0.95)');
+        } else if (idx % 3 === 1) {
+            grad.addColorStop(0, 'rgba(245, 158, 11, 0.2)'); // Naranja
+            grad.addColorStop(1, 'rgba(245, 158, 11, 0.95)');
+        } else {
+            grad.addColorStop(0, 'rgba(139, 92, 246, 0.2)'); // Violeta
+            grad.addColorStop(1, 'rgba(139, 92, 246, 0.95)');
+        }
+        return grad;
+    });
+
+    const borderColors = values.map((val, idx) => {
+        if (idx % 3 === 0) return '#ef4444';
+        if (idx % 3 === 1) return '#f59e0b';
+        return '#8b5cf6';
+    });
+
+    personalCategoryChart = new Chart(canvas, {
+        type: 'bar',
         data: {
             labels: labels,
             datasets: [{
                 data: values,
-                backgroundColor: [
-                    '#3b82f6','#10b981','#ef4444','#f59e0b','#8b5cf6',
-                    '#ec4899','#14b8a6','#f43f5e','#a855f7','#06b6d4'
-                ],
+                backgroundColor: bgGradients,
+                borderColor: borderColors,
                 borderWidth: 1,
-                borderColor: 'rgba(255,255,255,0.08)'
+                borderRadius: 6,
+                borderSkipped: false,
+                barThickness: 16
             }]
         },
         options: {
+            indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
                 tooltip: {
-                    padding: 12,
-                    boxPadding: 6,
-                    titleFont: { size: 12, weight: 'bold' },
-                    bodyFont: { size: 12 },
+                    padding: 10,
+                    boxPadding: 4,
                     callbacks: {
-                        title: (items) => items[0].label,
                         label: (context) => {
-                            if (context.label === 'Sin gastos') return ' Sin gastos este mes';
+                            if (context.label === 'Sin gastos') return ' Sin egresos este mes';
                             const val = context.raw || 0;
                             const pct = total > 0 ? (val / total * 100).toFixed(1) : 0;
-                            return [
-                                ` Monto: $${val.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`,
-                                ` Del total: ${pct}%`
-                            ];
+                            return ` Monto: $${val.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD (${pct}%)`;
                         }
                     }
                 }
             },
-            cutout: '65%'
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.05)', drawTicks: false },
+                    ticks: {
+                        color: 'rgba(255,255,255,0.6)',
+                        font: { size: 9 },
+                        callback: (val) => `$${val}`
+                    }
+                },
+                y: {
+                    grid: { display: false },
+                    ticks: {
+                        color: 'rgba(255,255,255,0.85)',
+                        font: { size: 10, weight: '500' }
+                    }
+                }
+            }
         }
     });
 }
 
 
-// Renderizar gráfico de torta de Chart.js para ingresos
+// Renderizar gráfico de barras horizontales de Chart.js para ingresos
 function renderIncomeChart(data) {
-    const ctx = document.getElementById('chart-personal-ingresos');
-    if (!ctx) return;
+    const canvas = document.getElementById('chart-personal-ingresos');
+    if (!canvas) return;
 
     if (personalIncomeChart) personalIncomeChart.destroy();
 
-    const labels = Object.keys(data);
-    const values = Object.values(data);
+    // Ordenar de mayor a menor
+    const sortedEntries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+    const labels = sortedEntries.map(e => e[0]);
+    const values = sortedEntries.map(e => e[1]);
     const total = values.reduce((a, b) => a + b, 0);
 
-    if (labels.length === 0) { labels.push("Sin ingresos"); values.push(0.1); }
+    if (labels.length === 0) { labels.push("Sin ingresos"); values.push(0); }
 
-    personalIncomeChart = new Chart(ctx, {
-        type: 'doughnut',
+    const ctx = canvas.getContext('2d');
+    
+    // Crear degradados dinámicos para ingresos (verdes/azules/turquesas premium)
+    const bgGradients = values.map((val, idx) => {
+        const grad = ctx.createLinearGradient(0, 0, 300, 0);
+        if (idx % 3 === 0) {
+            grad.addColorStop(0, 'rgba(16, 185, 129, 0.2)'); // Verde
+            grad.addColorStop(1, 'rgba(16, 185, 129, 0.95)');
+        } else if (idx % 3 === 1) {
+            grad.addColorStop(0, 'rgba(6, 182, 212, 0.2)'); // Turquesa
+            grad.addColorStop(1, 'rgba(6, 182, 212, 0.95)');
+        } else {
+            grad.addColorStop(0, 'rgba(59, 130, 246, 0.2)'); // Azul
+            grad.addColorStop(1, 'rgba(59, 130, 246, 0.95)');
+        }
+        return grad;
+    });
+
+    const borderColors = values.map((val, idx) => {
+        if (idx % 3 === 0) return '#10b981';
+        if (idx % 3 === 1) return '#06b6d4';
+        return '#3b82f6';
+    });
+
+    personalIncomeChart = new Chart(canvas, {
+        type: 'bar',
         data: {
             labels: labels,
             datasets: [{
                 data: values,
-                backgroundColor: [
-                    '#10b981','#14b8a6','#3b82f6','#06b6d4','#8b5cf6',
-                    '#22c55e','#059669','#2563eb','#0d9488','#4f46e5'
-                ],
+                backgroundColor: bgGradients,
+                borderColor: borderColors,
                 borderWidth: 1,
-                borderColor: 'rgba(255,255,255,0.08)'
+                borderRadius: 6,
+                borderSkipped: false,
+                barThickness: 16
             }]
         },
         options: {
+            indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
                 tooltip: {
-                    padding: 12,
-                    boxPadding: 6,
-                    titleFont: { size: 12, weight: 'bold' },
-                    bodyFont: { size: 12 },
+                    padding: 10,
+                    boxPadding: 4,
                     callbacks: {
-                        title: (items) => items[0].label,
                         label: (context) => {
                             if (context.label === 'Sin ingresos') return ' Sin ingresos este mes';
                             const val = context.raw || 0;
                             const pct = total > 0 ? (val / total * 100).toFixed(1) : 0;
-                            return [
-                                ` Monto: $${val.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`,
-                                ` Del total: ${pct}%`
-                            ];
+                            return ` Monto: $${val.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD (${pct}%)`;
                         }
                     }
                 }
             },
-            cutout: '65%'
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.05)', drawTicks: false },
+                    ticks: {
+                        color: 'rgba(255,255,255,0.6)',
+                        font: { size: 9 },
+                        callback: (val) => `$${val}`
+                    }
+                },
+                y: {
+                    grid: { display: false },
+                    ticks: {
+                        color: 'rgba(255,255,255,0.85)',
+                        font: { size: 10, weight: '500' }
+                    }
+                }
+            }
         }
     });
 }
