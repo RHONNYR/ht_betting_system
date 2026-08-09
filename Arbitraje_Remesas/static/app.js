@@ -4739,6 +4739,23 @@ let personalIncomeChart = null;
 
 // Inicialización de Listeners y Formularios de Finanzas Personales
 function setupPersonalFinanceListeners() {
+    // Soporte para ingresar el PIN usando el teclado físico
+    document.addEventListener('keydown', (e) => {
+        const lockScreen = document.getElementById('personal-lock-screen');
+        // Solo interceptar si el lock screen está visible y no se ha desbloqueado
+        if (lockScreen && window.getComputedStyle(lockScreen).display !== 'none' && !state.personalUnlocked) {
+            if (e.key >= '0' && e.key <= '9') {
+                pressPinNum(e.key);
+            } else if (e.key === 'Backspace' || e.key === 'Delete') {
+                clearPin();
+            } else if (e.key === 'Enter') {
+                if (state.currentPinEntered.length === 4) {
+                    submitPin();
+                }
+            }
+        }
+    });
+
     // 1. Alternancia de Sub-pestañas en Finanzas Personales
     const subTabLinks = document.querySelectorAll('#tab-personal .sub-tab-link');
     const subTabPanes = document.querySelectorAll('#tab-personal .sub-tab-pane');
