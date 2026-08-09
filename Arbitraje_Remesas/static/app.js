@@ -4991,15 +4991,25 @@ function populatePersonalCategories(cats) {
 
 // Renderizar Dashboard del Asesor Financiero Pro
 function renderPersonalDashboard(dash) {
-    // Cajetines
-    document.getElementById('personal-ingresos-mes').textContent = `$${dash.total_ingresos_mes.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-    document.getElementById('personal-gastos-mes').textContent = `$${dash.total_gastos_mes.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-    document.getElementById('personal-flujo-neto').textContent = `$${dash.crecimiento_neto.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-    document.getElementById('personal-deudas-pendientes').textContent = `$${dash.total_deudas.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-    
+    const fmt = (v) => `$${(v||0).toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+
+    // Cajetines clásicos
+    document.getElementById('personal-gastos-mes').textContent = fmt(dash.total_gastos_mes);
+    document.getElementById('personal-deudas-pendientes').textContent = fmt(dash.total_deudas);
+
+    // Desglose de ingresos consolidados
+    document.getElementById('personal-ganancia-negocio-desglose').textContent = fmt(dash.ganancia_negocio);
+    document.getElementById('personal-ingresos-mes').textContent = fmt(dash.total_ingresos_mes);
+    document.getElementById('personal-ingresos-consolidado').textContent = fmt(dash.total_ingresos_consolidado);
+
+    // Flujo neto con color dinámico (verde = positivo, rojo = negativo)
+    const flujoEl = document.getElementById('personal-flujo-neto');
+    flujoEl.textContent = fmt(dash.crecimiento_neto);
+    flujoEl.style.color = dash.crecimiento_neto >= 0 ? '#3b82f6' : '#ef4444';
+
     // Asesor
-    document.getElementById('advisor-sueldo-sugerido').textContent = `$${dash.sueldo_sugerido.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`;
-    document.getElementById('advisor-ganancia-negocio').textContent = `$${dash.ganancia_negocio.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`;
+    document.getElementById('advisor-sueldo-sugerido').textContent = `$${(dash.sueldo_sugerido||0).toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`;
+    document.getElementById('advisor-ganancia-negocio').textContent = `$${(dash.ganancia_negocio||0).toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})} USD`;
     
     const alertContainer = document.getElementById('advisor-alerts-container');
     alertContainer.innerHTML = '';
