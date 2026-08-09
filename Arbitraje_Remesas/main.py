@@ -2954,6 +2954,7 @@ class CalcularEstrategiaRequest(BaseModel):
     comision_bpay_bdv: float
     comision_bpay_provincial: float
     comision_bpay_mercantil: float
+    pago_movil_auto: bool = False
 
 class GuardarEstrategiaRequest(CalcularEstrategiaRequest):
     pass
@@ -2970,10 +2971,13 @@ def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends
     roi_r1 = ((usdt_final_r1 - cap) / cap) * 100
     ganancia_r1 = usdt_final_r1 - cap
 
+    # Determinar comision de pago movil (0.3%)
+    pm_fee = 0.003 if req.pago_movil_auto else 0.0
+
     # 2. R2: Provincial (Arbitraje BCV)
     # comision_maker_p2p fee venta USDT, 0.5% comision VES banco, suggested_usd flooreado
     bs_inicial_r2_prov = cap * (1 - (req.comision_maker_p2p / 100)) * req.tasa_usdt_p2p
-    cost_factor_prov = req.tasa_bcv * (1 + 0.005)
+    cost_factor_prov = req.tasa_bcv * (1 + 0.005 + pm_fee)
     suggested_usd_prov = math.floor(bs_inicial_r2_prov / cost_factor_prov)
     bolivares_gastados_prov = suggested_usd_prov * cost_factor_prov
     usd_neto_prov = suggested_usd_prov * (1 - (req.comision_bpay_provincial / 100))
@@ -2985,7 +2989,7 @@ def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends
     # 3. R2: Mercantil (Arbitraje BCV)
     # comision_maker_p2p fee venta USDT, 0.5% comision VES banco, suggested_usd flooreado
     bs_inicial_r2_merc = cap * (1 - (req.comision_maker_p2p / 100)) * req.tasa_usdt_p2p
-    cost_factor_merc = req.tasa_bcv * (1 + 0.005)
+    cost_factor_merc = req.tasa_bcv * (1 + 0.005 + pm_fee)
     suggested_usd_merc = math.floor(bs_inicial_r2_merc / cost_factor_merc)
     bolivares_gastados_merc = suggested_usd_merc * cost_factor_merc
     usd_neto_merc = suggested_usd_merc * (1 - (req.comision_bpay_mercantil / 100))
@@ -2997,7 +3001,7 @@ def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends
     # 4. R2: BDV Tercera Edad (Arbitraje BCV)
     # comision_maker_p2p fee venta USDT, 0% comision VES banco (Tercera Edad), suggested_usd flooreado
     bs_inicial_r2_bdv = cap * (1 - (req.comision_maker_p2p / 100)) * req.tasa_usdt_p2p
-    cost_factor_bdv = req.tasa_bcv * (1 + 0.0)
+    cost_factor_bdv = req.tasa_bcv * (1 + 0.0 + pm_fee)
     suggested_usd_bdv = math.floor(bs_inicial_r2_bdv / cost_factor_bdv)
     bolivares_gastados_bdv = suggested_usd_bdv * cost_factor_bdv
     usd_neto_bdv = suggested_usd_bdv * (1 - (req.comision_bpay_bdv / 100))
