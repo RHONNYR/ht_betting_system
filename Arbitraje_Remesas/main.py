@@ -13,7 +13,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, engine
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, SimulacionRutas, engine
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -605,6 +605,13 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
     start_of_week = datetime.datetime(now.year, now.month, now.day) - datetime.timedelta(days=days_to_monday)
     end_of_week = start_of_week + datetime.timedelta(days=7)
     
+    start_of_day = datetime.datetime(now.year, now.month, now.day)
+    start_of_month = datetime.datetime(now.year, now.month, 1)
+    
+    # Calcular consumos diario y mensual de ingresos Zelle
+    daily_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_day)
+    monthly_ingresos = sum(m.monto for m in db.query(MovimientoZelle).filter(MovimientoZelle.tipo == "ingreso", MovimientoZelle.fecha >= start_of_month).all())
+    
     weekly_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
     weekly_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
     pendientes_remesar_usd = sum(m.monto for m in movs if m.tipo == "ingreso" and getattr(m, "estado", "completado") == "pendiente")
@@ -631,7 +638,9 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
             "saldo_actual": saldo_actual,
             "weekly_ingresos": weekly_ingresos,
             "weekly_egresos": weekly_egresos,
-            "pendientes_remesar_usd": pendientes_remesar_usd
+            "pendientes_remesar_usd": pendientes_remesar_usd,
+            "daily_ingresos": daily_ingresos,
+            "monthly_ingresos": monthly_ingresos
         }
     }
 
@@ -2928,6 +2937,176 @@ def change_personal_pin(req: PinChangeRequest, username: str = Depends(get_curre
     user.personal_pin = req.new_pin
     db.commit()
     return {"message": "PIN actualizado exitosamente"}
+
+
+# ============================================================
+# BLOQUE 7: ORQUESTADOR DE ESTRATEGIAS (PILAR A)
+# ============================================================
+class CalcularEstrategiaRequest(BaseModel):
+    capital: float
+    tasa_usdt_p2p: float
+    tasa_compra_efectivo: float
+    comision_cash_zelle: float
+    tasa_bcv: float
+    spread_zelle_usdt: float
+    tasa_remesa_cliente: float
+    comision_maker_p2p: float
+    comision_bpay_bdv: float
+    comision_bpay_provincial: float
+    comision_bpay_mercantil: float
+
+class GuardarEstrategiaRequest(CalcularEstrategiaRequest):
+    pass
+
+@app.post("/api/estrategias/calcular")
+def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends(get_current_user)):
+    cap = req.capital
+    
+    # 1. R1: Ciclo Remesas Tradicional
+    usdt_r1 = cap * 0.98  # 2% fee de entrada en Binance
+    bs_r1 = usdt_r1 * req.tasa_usdt_p2p
+    zelle_r1 = bs_r1 / req.tasa_remesa_cliente
+    usdt_final_r1 = zelle_r1 * (1 - (req.spread_zelle_usdt / 100))
+    roi_r1 = ((usdt_final_r1 - cap) / cap) * 100
+    ganancia_r1 = usdt_final_r1 - cap
+
+    # 2. R2: Provincial (Arbitraje BCV)
+    bs_inicial_r2_prov = cap * req.tasa_usdt_p2p
+    bs_neto_r2_prov = bs_inicial_r2_prov * (1 - 0.005)  # 0.5% comision VES
+    usd_r2_prov = bs_neto_r2_prov / req.tasa_bcv
+    usdt_final_r2_prov = usd_r2_prov * (1 - (req.comision_bpay_provincial / 100))
+    roi_r2_prov = ((usdt_final_r2_prov - cap) / cap) * 100
+    ganancia_r2_prov = usdt_final_r2_prov - cap
+
+    # 3. R2: Mercantil (Arbitraje BCV)
+    bs_inicial_r2_merc = cap * req.tasa_usdt_p2p
+    bs_neto_r2_merc = bs_inicial_r2_merc * (1 - 0.005)
+    usd_r2_merc = bs_neto_r2_merc / req.tasa_bcv
+    usdt_final_r2_merc = usd_r2_merc * (1 - (req.comision_bpay_mercantil / 100))
+    roi_r2_merc = ((usdt_final_r2_merc - cap) / cap) * 100
+    ganancia_r2_merc = usdt_final_r2_merc - cap
+
+    # 4. R2: BDV Tercera Edad (Arbitraje BCV)
+    bs_inicial_r2_bdv = cap * req.tasa_usdt_p2p
+    usd_r2_bdv = bs_inicial_r2_bdv / req.tasa_bcv  # 0% comision VES por 3ra edad
+    usdt_final_r2_bdv = usd_r2_bdv * (1 - (req.comision_bpay_bdv / 100))
+    roi_r2_bdv = ((usdt_final_r2_bdv - cap) / cap) * 100
+    ganancia_r2_bdv = usdt_final_r2_bdv - cap
+
+    # 5. R5: AirTM Backup
+    # Ofrece remesas pero pagando por AirTM (spread ~0.5% menor que Zelle)
+    roi_r5 = max(0.0, roi_r1 - 1.0)
+    ganancia_r5 = cap * (roi_r5 / 100)
+
+    # 6. R6: Zinli Premium
+    # Clientes premium con tasa de cambio favorable (Zinli limit)
+    roi_r6 = roi_r1 + 1.2
+    ganancia_r6 = cap * (roi_r6 / 100)
+
+    # 7. R4: Flujo Inverso Bs -> USDT
+    # Venta de USDT directamente a tasa algo menor (compras P2P maker y vendes)
+    roi_r4 = 1.6  # ROI estático promedio de spread local sin Zelle
+    ganancia_r4 = cap * (roi_r4 / 100)
+
+    # 8. R8: Arbitraje P2P Maker
+    # Spread compra/venta rápido en Binance VES (comision maker Binance)
+    roi_r8 = 0.22  # ROI unitario por vuelta
+    ganancia_r8 = cap * (roi_r8 / 100)
+
+    # 9. R9: Ciclo Cash-to-Zelle
+    bs_r9 = cap * req.tasa_usdt_p2p
+    usd_cash_r9 = bs_r9 / req.tasa_compra_efectivo
+    usd_zelle_r9 = usd_cash_r9 * (1 + (req.comision_cash_zelle / 100))
+    usdt_final_r9 = usd_zelle_r9 * (1 - (req.spread_zelle_usdt / 100))
+    roi_r9 = ((usdt_final_r9 - cap) / cap) * 100
+    ganancia_r9 = usdt_final_r9 - cap
+
+    # 10. R7: Binance Earn (Pasivo)
+    roi_r7 = 0.5  # 0.5% mensual estimado
+    ganancia_r7 = cap * (roi_r7 / 100)
+
+    # Armar lista de resultados
+    rutas = [
+        {"id": "R2_PROV", "nombre": "Arbitraje Provincial (BCV)", "roi": round(roi_r2_prov, 2), "ganancia": round(ganancia_r2_prov, 2), "velocidad": "Mismo día (Tarde)", "zelle": "NO consume", "riesgo": "Aprobación de cupo"},
+        {"id": "R9_CASH", "nombre": "Ciclo Cash-to-Zelle", "roi": round(roi_r9, 2), "ganancia": round(ganancia_r9, 2), "velocidad": "1-2 días", "zelle": "SÍ (Entrada)", "riesgo": "Filtros de Zelle / Efectivo físico"},
+        {"id": "R2_MERC", "nombre": "Arbitraje Mercantil (BCV)", "roi": round(roi_r2_merc, 2), "ganancia": round(ganancia_r2_merc, 2), "velocidad": "Siguiente día", "zelle": "NO consume", "riesgo": "Aprobación de cupo"},
+        {"id": "R1_REMESAS", "nombre": "Ciclo Remesas Tradicional", "roi": round(roi_r1, 2), "ganancia": round(ganancia_r1, 2), "velocidad": "1-3 horas", "zelle": "SÍ (Salida)", "riesgo": "Límites Zelle / Volumen de clientes"},
+        {"id": "R2_BDV", "nombre": "Arbitraje BDV (Tercera Edad)", "roi": round(roi_r2_bdv, 2), "ganancia": round(ganancia_r2_bdv, 2), "velocidad": "Inmediato", "zelle": "NO consume", "riesgo": "Aprobación de cupo"},
+        {"id": "R5_AIRTM", "nombre": "AirTM Backup Remesas", "roi": round(roi_r5, 2), "ganancia": round(ganancia_r5, 2), "velocidad": "1-3 horas", "zelle": "NO consume (AirTM)", "riesgo": "Menos volumen de clientes"},
+        {"id": "R6_ZINLI", "nombre": "Zinli Premium (Cupo Limit)", "roi": round(roi_r6, 2), "ganancia": round(ganancia_r6, 2), "velocidad": "1-3 horas", "zelle": "NO consume (Zinli)", "riesgo": "Cupo de $1000/mes máximo"},
+        {"id": "R4_INVERSO", "nombre": "Flujo Inverso Bs ➔ USDT", "roi": round(roi_r4, 2), "ganancia": round(ganancia_r4, 2), "velocidad": "Mismo día", "zelle": "NO consume", "riesgo": "Spread cambiario volátil"},
+        {"id": "R8_MAKER", "nombre": "Arbitraje P2P Maker (VES)", "roi": round(roi_r8, 2), "ganancia": round(ganancia_r8, 2), "velocidad": "Rápido (Múltiples vueltas)", "zelle": "NO consume", "riesgo": "Riesgo de bloqueo de cuentas VES"},
+        {"id": "R7_EARN", "nombre": "Binance Earn (Dinero en espera)", "roi": round(roi_r7, 2), "ganancia": round(ganancia_r7, 2), "velocidad": "Pasivo", "zelle": "NO consume", "riesgo": "Ninguno (Retiro inmediato)"}
+    ]
+
+    # Ordenar rutas por ROI de mayor a menor
+    rutas_ordenadas = sorted(rutas, key=lambda x: x["roi"], reverse=True)
+
+    # Generar sugerencia inteligente del Orquestador
+    sug_detalles = []
+    
+    # 1. Identificar mejor ruta libre de Zelle
+    mejor_no_zelle = next((r for r in rutas_ordenadas if "NO consume" in r["zelle"]), None)
+    # 2. Identificar mejor ruta con Zelle
+    mejor_con_zelle = next((r for r in rutas_ordenadas if "SÍ" in r["zelle"]), None)
+
+    if mejor_no_zelle and mejor_no_zelle["roi"] > 4.0:
+        sug_detalles.append(f"Prioriza la ruta bancaria **{mejor_no_zelle['nombre']}** con ROI de **{mejor_no_zelle['roi']}%** para no desgastar límites de Zelle.")
+    
+    if mejor_con_zelle:
+        if mejor_con_zelle["id"] == "R9_CASH":
+            sug_detalles.append(f"El **Ciclo Cash-to-Zelle** está ofreciendo un excelente ROI de **{mejor_con_zelle['roi']}%**. Tu capital de ${cap} cabe perfecto en el límite diario ($2,500). Puedes ejecutarlo sin exceder el cupo.")
+        else:
+            sug_detalles.append(f"El **Ciclo Remesas Tradicional** ofrece **{mejor_con_zelle['roi']}%** de ROI. Cuida no rebasar tu límite mensual de $20,000.")
+
+    # Alerta de bancos pesados
+    sug_detalles.append("Si los bancos están rebotando compras de divisas hoy, coloca los bolívares en remesas express o mantén el USDT en Binance Earn temporalmente para que no quede inactivo.")
+
+    recomendacion = " | ".join(sug_detalles)
+
+    return {
+        "capital": cap,
+        "rutas": rutas_ordenadas,
+        "recomendacion": recomendacion
+    }
+
+@app.post("/api/estrategias/guardar")
+def guardar_simulacion(req: GuardarEstrategiaRequest, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    sim = SimulacionRutas(
+        tasa_usdt_p2p=req.tasa_usdt_p2p,
+        tasa_compra_efectivo=req.tasa_compra_efectivo,
+        comision_cash_zelle=req.comision_cash_zelle,
+        tasa_bcv=req.tasa_bcv,
+        spread_zelle_usdt=req.spread_zelle_usdt,
+        tasa_remesa_cliente=req.tasa_remesa_cliente,
+        comision_maker_p2p=req.comision_maker_p2p,
+        comision_bpay_bdv=req.comision_bpay_bdv,
+        comision_bpay_provincial=req.comision_bpay_provincial,
+        comision_bpay_mercantil=req.comision_bpay_mercantil,
+        capital=req.capital
+    )
+    db.add(sim)
+    db.commit()
+    return {"message": "Simulación guardada en el historial", "id": sim.id}
+
+@app.get("/api/estrategias/historial")
+def get_historial_simulaciones(limit: int = 15, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    sims = db.query(SimulacionRutas).order_by(SimulacionRutas.fecha.desc()).limit(limit).all()
+    res = []
+    for s in sims:
+        res.append({
+            "id": s.id,
+            "fecha": s.fecha.strftime("%d/%m/%Y %H:%M"),
+            "capital": s.capital,
+            "tasa_usdt_p2p": s.tasa_usdt_p2p,
+            "tasa_compra_efectivo": s.tasa_compra_efectivo,
+            "comision_cash_zelle": s.comision_cash_zelle,
+            "tasa_bcv": s.tasa_bcv,
+            "spread_zelle_usdt": s.spread_zelle_usdt,
+            "tasa_remesa_cliente": s.tasa_remesa_cliente
+        })
+    return res
+
 
 # Serve static frontend files
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
