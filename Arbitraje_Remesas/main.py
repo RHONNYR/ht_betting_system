@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 import datetime
+import math
 import requests
 from bs4 import BeautifulSoup
 import json
