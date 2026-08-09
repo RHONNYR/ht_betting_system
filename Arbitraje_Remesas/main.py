@@ -2971,24 +2971,28 @@ def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends
     ganancia_r1 = usdt_final_r1 - cap
 
     # 2. R2: Provincial (Arbitraje BCV)
-    bs_inicial_r2_prov = cap * req.tasa_usdt_p2p
-    bs_neto_r2_prov = bs_inicial_r2_prov * (1 - 0.005)  # 0.5% comision VES
-    usd_r2_prov = bs_neto_r2_prov / req.tasa_bcv
+    # 0.25% fee venta USDT, 0.5% comision VES banco, 0.3% transferencia/pago movil
+    bs_inicial_r2_prov = cap * (1 - 0.0025) * req.tasa_usdt_p2p
+    cost_factor_prov = req.tasa_bcv * (1 + 0.005 + 0.003)
+    usd_r2_prov = bs_inicial_r2_prov / cost_factor_prov
     usdt_final_r2_prov = usd_r2_prov * (1 - (req.comision_bpay_provincial / 100))
     roi_r2_prov = ((usdt_final_r2_prov - cap) / cap) * 100
     ganancia_r2_prov = usdt_final_r2_prov - cap
 
     # 3. R2: Mercantil (Arbitraje BCV)
-    bs_inicial_r2_merc = cap * req.tasa_usdt_p2p
-    bs_neto_r2_merc = bs_inicial_r2_merc * (1 - 0.005)
-    usd_r2_merc = bs_neto_r2_merc / req.tasa_bcv
+    # 0.25% fee venta USDT, 0.5% comision VES banco, 0.3% transferencia/pago movil
+    bs_inicial_r2_merc = cap * (1 - 0.0025) * req.tasa_usdt_p2p
+    cost_factor_merc = req.tasa_bcv * (1 + 0.005 + 0.003)
+    usd_r2_merc = bs_inicial_r2_merc / cost_factor_merc
     usdt_final_r2_merc = usd_r2_merc * (1 - (req.comision_bpay_mercantil / 100))
     roi_r2_merc = ((usdt_final_r2_merc - cap) / cap) * 100
     ganancia_r2_merc = usdt_final_r2_merc - cap
 
     # 4. R2: BDV Tercera Edad (Arbitraje BCV)
-    bs_inicial_r2_bdv = cap * req.tasa_usdt_p2p
-    usd_r2_bdv = bs_inicial_r2_bdv / req.tasa_bcv  # 0% comision VES por 3ra edad
+    # 0.25% fee venta USDT, 0% comision VES banco por 3ra edad, 0.3% transferencia/pago movil
+    bs_inicial_r2_bdv = cap * (1 - 0.0025) * req.tasa_usdt_p2p
+    cost_factor_bdv = req.tasa_bcv * (1 + 0.0 + 0.003)
+    usd_r2_bdv = bs_inicial_r2_bdv / cost_factor_bdv
     usdt_final_r2_bdv = usd_r2_bdv * (1 - (req.comision_bpay_bdv / 100))
     roi_r2_bdv = ((usdt_final_r2_bdv - cap) / cap) * 100
     ganancia_r2_bdv = usdt_final_r2_bdv - cap
