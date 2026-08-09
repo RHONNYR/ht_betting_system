@@ -2893,6 +2893,8 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
         "crecimiento_neto": crecimiento_neto,
         "sueldo_sugerido": sueldo_sugerido,
         "ganancia_negocio": ganancia_negocio,
+        "ganancia_ciclos_debug": ganancia_ciclos,
+        "ganancia_remesas_debug": ganancia_remesas,
         "gastos_por_categoria": gastos_por_categoria,
         "ingresos_por_categoria": ingresos_por_categoria,
         "alertas": alertas
