@@ -5875,11 +5875,11 @@ function saveRutasConfig(config) {
 
 async function initOrquestadorTab() {
     try {
-        // Cargar medidores de uso Zelle
+        // Cargar medidores de uso Zelle (basados en egresos/salidas)
         const zelleData = await apiCall('/zelle/movimientos');
         if (zelleData && zelleData.summary) {
-            const daily = zelleData.summary.daily_ingresos || 0;
-            const monthly = zelleData.summary.monthly_ingresos || 0;
+            const daily = zelleData.summary.daily_egresos || 0;
+            const monthly = zelleData.summary.monthly_egresos || 0;
             
             // Renderizar textos
             document.getElementById('zelle-uso-diario-txt').textContent = `$${daily.toLocaleString('es-VE')} / $2,500`;
@@ -5915,8 +5915,20 @@ async function initOrquestadorTab() {
             }
         }
 
-        // Todos los demás campos quedan 100% vacíos por defecto para permitir ingreso manual libre
-        ['est-capital', 'est-tasa-compra-efectivo', 'est-tasa-remesa-cliente', 'est-comision-cash-zelle', 'est-spread-zelle-usdt', 'est-comision-maker-p2p', 'est-comision-bpay-bdv', 'est-comision-bpay-provincial', 'est-comision-bpay-mercantil'].forEach(id => {
+        // Pre-llenar valores fijos solicitados por el usuario
+        const setVal = (id, val) => {
+            const el = document.getElementById(id);
+            if (el) el.value = val;
+        };
+        setVal('est-comision-maker-p2p', '0.25');
+        setVal('est-comision-bpay-bdv', '2.5');
+        setVal('est-comision-bpay-provincial', '0');
+        setVal('est-comision-bpay-mercantil', '0');
+        setVal('est-spread-zelle-usdt', '2');
+        setVal('est-comision-cash-zelle', '6');
+
+        // Los campos de tasas dinámicas e importes quedan vacíos
+        ['est-capital', 'est-tasa-compra-efectivo', 'est-tasa-remesa-cliente'].forEach(id => {
             const el = document.getElementById(id);
             if (el && !el.value) {
                 el.value = "";
