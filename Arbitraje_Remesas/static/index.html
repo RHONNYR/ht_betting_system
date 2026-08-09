@@ -1499,7 +1499,10 @@
                         <div class="card glass-card">
                             <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                                 <h2>🧭 Tasas del Día & Variables</h2>
-                                <button type="button" id="btn-calcular-estrategia" class="btn btn-primary btn-sm">⚡ Calcular</button>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button type="button" id="btn-configurar-rutas" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: var(--text-secondary);">⚙️ Canales</button>
+                                    <button type="button" id="btn-calcular-estrategia" class="btn btn-primary btn-sm">⚡ Calcular</button>
+                                </div>
                             </div>
                             <div class="card-body" style="padding: 1.25rem;">
                                 <form id="form-estrategia-tasas" style="display: flex; flex-direction: column; gap: 0.85rem;">
@@ -2439,6 +2442,31 @@
         </div>
     </div>
 
-    <script src="app.js?v=121"></script>
+    <!-- MODAL: CONFIGURAR RUTAS / CANALES (PILAR A) -->
+    <div id="modal-config-rutas" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 750px; width: 95%; max-height: 90vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">⚙️ Personalizar Canales y Rutas</h3>
+                <button type="button" id="btn-cerrar-config-rutas" class="btn btn-secondary btn-sm">✕ Cerrar</button>
+            </div>
+            
+            <p style="font-size: 0.76rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                Activa o desactiva las rutas según tu disponibilidad de cuentas y modifica sus etiquetas de velocidad y riesgo para que el orquestador se adapte exactamente a tu situación operativa diaria.
+            </p>
+
+            <form id="form-config-rutas">
+                <div style="display: flex; flex-direction: column; gap: 0.85rem;" id="lista-config-rutas-container">
+                    <!-- Dynamic from JS based on the 10 routes settings -->
+                </div>
+                
+                <div class="modal-actions mt-4" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; justify-content: flex-end; gap: 0.5rem;">
+                    <button type="button" id="btn-reset-config-rutas" class="btn btn-secondary" style="font-size: 0.75rem;">Restaurar Predeterminados</button>
+                    <button type="submit" class="btn btn-primary" style="font-size: 0.75rem;">💾 Guardar Preferencias</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js?v=122"></script>
 </body>
 </html>
