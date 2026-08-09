@@ -1137,6 +1137,39 @@ async function handleAbrirSobreCiclo() {
 async function loadActiveEnvelopes() {
     try {
         const activos = await apiCall('/ciclos/activos');
+        
+        // Llenar el selector de sobre en la pestaña de Remesas
+        const selectFinanciador = document.getElementById('remesa-ciclo-financiador');
+        if (selectFinanciador) {
+            const valPrevio = selectFinanciador.value;
+            selectFinanciador.innerHTML = '<option value="">-- Ninguno (No restar de sobre) --</option>';
+            activos.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.id;
+                opt.textContent = `Sobre #${c.id} (${c.banco_venta}) - Disp: ${c.bolivares_sobre_restantes.toLocaleString('es-VE', {maximumFractionDigits: 0})} VES @ ${c.tasa_venta.toFixed(2)}`;
+                selectFinanciador.appendChild(opt);
+            });
+            if (valPrevio && selectFinanciador.querySelector(`option[value="${valPrevio}"]`)) {
+                selectFinanciador.value = valPrevio;
+            }
+        }
+
+        // Llenar el selector de sobre en la pestaña de Finanzas Personales
+        const selectPersonalGastoCiclo = document.getElementById('p-gasto-ciclo-id');
+        if (selectPersonalGastoCiclo) {
+            const valPrevioPersonal = selectPersonalGastoCiclo.value;
+            selectPersonalGastoCiclo.innerHTML = '<option value="">-- No restar de sobre (Gasto normal) --</option>';
+            activos.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.id;
+                opt.textContent = `Sobre #${c.id} (${c.banco_venta}) - Disp: ${c.bolivares_sobre_restantes.toLocaleString('es-VE', {maximumFractionDigits: 0})} VES @ ${c.tasa_venta.toFixed(2)}`;
+                selectPersonalGastoCiclo.appendChild(opt);
+            });
+            if (valPrevioPersonal && selectPersonalGastoCiclo.querySelector(`option[value="${valPrevioPersonal}"]`)) {
+                selectPersonalGastoCiclo.value = valPrevioPersonal;
+            }
+        }
+
         if (activos.length > 0) {
             els.activeEnvelopesCard.classList.remove('hidden');
             els.activeEnvelopesList.innerHTML = '';
@@ -1215,6 +1248,7 @@ async function loadActiveEnvelopes() {
                     <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.25rem; width: 100%;">
                         <button class="btn btn-secondary" onclick="openPartialBuy(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500;">➕ Compra</button>
                         <button class="btn btn-secondary" onclick="openPivotVES(${c.id}, ${c.bolivares_sobre_restantes})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500;">🔄 Pivotar</button>
+                        <button class="btn btn-secondary" onclick="openRegisterGasto(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500; background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.25); color: #f59e0b;">💸 Gasto</button>
                         <button class="btn btn-danger" onclick="closeEnvelopeManual(${c.id})" style="padding: 4px 10px; font-size: 0.75rem; font-weight: 500; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger);">🔒 Cerrar</button>
                     </div>
                 `;
@@ -1300,6 +1334,22 @@ window.openPivotVES = function(cicloId, maxMonto) {
     }
     
     openModal(els.modalPivotVes);
+};
+
+window.openRegisterGasto = function(cicloId) {
+    // Cambiar a la pestaña de Finanzas Personales
+    const tabBtn = document.querySelector('[data-tab="finanzas-personales"]');
+    if (tabBtn) tabBtn.click();
+    
+    // Seleccionar sub-pestaña de Registrar Gasto
+    const subTabBtn = document.querySelector('[data-subtab="subtab-reg-gasto"]');
+    if (subTabBtn) subTabBtn.click();
+    
+    // Pre-seleccionar el sobre en el selector
+    const selectCycle = document.getElementById('p-gasto-ciclo-id');
+    if (selectCycle) {
+        selectCycle.value = cicloId;
+    }
 };
 
 window.closeEnvelopeManual = async function(cicloId) {
@@ -3450,6 +3500,13 @@ async function registrarRemesa() {
     }
     
     try {
+        const selectFinanciador = document.getElementById('remesa-ciclo-financiador');
+        if (selectFinanciador && selectFinanciador.value) {
+            state.currentCalculatedRemesa.ciclo_id = parseInt(selectFinanciador.value, 10);
+        } else {
+            state.currentCalculatedRemesa.ciclo_id = null;
+        }
+
         const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
         if (remesaFechaVal) {
             state.currentCalculatedRemesa.fecha = remesaFechaVal;
@@ -3464,6 +3521,7 @@ async function registrarRemesa() {
         
         // Reset form
         els.remesaForm.reset();
+        if (selectFinanciador) selectFinanciador.value = "";
         els.p2pRatesPanel.classList.add('hidden');
         els.whatsappBoxContainer.classList.add('hidden');
         els.remesaResultsDisplay.innerHTML = `
@@ -5615,7 +5673,8 @@ async function handleGastoSubmit(e) {
         detalles: document.getElementById('p-gasto-detalles').value.trim() || null,
         plataforma_pago: document.getElementById('p-gasto-plataforma').value,
         deuda_id: document.getElementById('p-gasto-deuda-id').value ? parseInt(document.getElementById('p-gasto-deuda-id').value) : null,
-        fecha: document.getElementById('p-gasto-fecha').value || null
+        fecha: document.getElementById('p-gasto-fecha').value || null,
+        ciclo_id: document.getElementById('p-gasto-ciclo-id').value ? parseInt(document.getElementById('p-gasto-ciclo-id').value, 10) : null
     };
     
     try {
@@ -5626,9 +5685,12 @@ async function handleGastoSubmit(e) {
         document.getElementById('p-gasto-monto').value = '';
         document.getElementById('p-gasto-detalles').value = '';
         document.getElementById('p-gasto-deuda-id').value = '';
+        const selectCycle = document.getElementById('p-gasto-ciclo-id');
+        if (selectCycle) selectCycle.value = '';
         
         await loadPersonalFinanceData();
         await loadCapital(); // reload business capital
+        await loadActiveEnvelopes(); // reload cycle envelopes
     } catch (err) {
         alert(err.message);
     }
@@ -5760,6 +5822,7 @@ window.handleDeleteMovimiento = async function(id, tipo) {
         showToast(`🗑️ ${act.charAt(0).toUpperCase() + act.slice(1)} eliminado`);
         await loadPersonalFinanceData();
         await loadCapital();
+        await loadActiveEnvelopes(); // Recargar sobres de ciclos activos
     } catch (err) {
         alert(err.message);
     }
