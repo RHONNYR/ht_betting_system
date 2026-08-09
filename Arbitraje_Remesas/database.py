@@ -131,6 +131,7 @@ class HistorialRemesas(Base):
     banco_receptor = Column(String)  # Banesco, Pago Móvil, etc.
     costo_adquisicion_usdt = Column(Float)  # e.g., 0.02 (2.0%)
     comision_binance = Column(Float)  # e.g., 0.0035 (0.35%)
+    ciclo_id = Column(Integer, ForeignKey("historial_ciclos.id", ondelete="SET NULL"), nullable=True)
 
 class Cliente(Base):
     __tablename__ = "clientes"
@@ -174,6 +175,7 @@ class GastoPersonal(Base):
     detalles = Column(String, nullable=True)
     plataforma_pago = Column(String, default="Mercantil")  # Bancamiga, Zelle, Provincial, etc.
     deuda_id = Column(Integer, ForeignKey("personal_deudas.id", ondelete="SET NULL"), nullable=True)
+    ciclo_id = Column(Integer, ForeignKey("historial_ciclos.id", ondelete="SET NULL"), nullable=True)
 
     categoria = relationship("CategoriaPersonal", back_populates="gastos")
     deuda = relationship("DeudaPersonal", back_populates="pagos")
@@ -275,6 +277,16 @@ def init_db():
     try:
         with engine.begin() as conn:
             conn.execute(text("ALTER TABLE personal_ingresos ADD COLUMN plataforma_pago VARCHAR(255);"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE personal_gastos ADD COLUMN ciclo_id INTEGER;"))
+    except Exception as e:
+        pass
+    try:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE historial_remesas ADD COLUMN ciclo_id INTEGER;"))
     except Exception as e:
         pass
 
