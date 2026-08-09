@@ -1061,17 +1061,29 @@
 
                             <!-- Gráficos de Finanzas Personales -->
                             <div class="card glass-card">
-                                <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                                <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
                                     <h2>📊 Distribución de Gastos e Ingresos</h2>
                                 </div>
-                                <div class="card-body" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; align-items: center; justify-items: center; padding: 1rem;">
-                                    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                        <span style="font-size: 0.72rem; font-weight: 700; color: #f87171; letter-spacing: 0.5px;">🛒 EGRESOS (GASTOS)</span>
-                                        <canvas id="chart-personal-categorias" style="max-height: 180px; max-width: 180px;"></canvas>
+                                <div class="card-body" style="display: flex; flex-direction: column; gap: 1.8rem; padding: 1.25rem 1rem;">
+                                    <!-- Sección de Gastos -->
+                                    <div style="width: 100%; display: flex; flex-direction: column; gap: 0.6rem;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; border-left: 3px solid #ef4444; padding-left: 0.5rem;">
+                                            <span style="font-size: 0.78rem; font-weight: 800; color: #f87171; letter-spacing: 0.5px; text-transform: uppercase;">🛒 Egresos por Categoría</span>
+                                            <span style="font-size: 0.7rem; color: var(--text-secondary);">Ordenado de mayor a menor</span>
+                                        </div>
+                                        <div style="position: relative; height: 200px; width: 100%;">
+                                            <canvas id="chart-personal-categorias"></canvas>
+                                        </div>
                                     </div>
-                                    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                        <span style="font-size: 0.72rem; font-weight: 700; color: #34d399; letter-spacing: 0.5px;">💵 INGRESOS</span>
-                                        <canvas id="chart-personal-ingresos" style="max-height: 180px; max-width: 180px;"></canvas>
+                                    <!-- Sección de Ingresos -->
+                                    <div style="width: 100%; display: flex; flex-direction: column; gap: 0.6rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.2rem;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; border-left: 3px solid #10b981; padding-left: 0.5rem;">
+                                            <span style="font-size: 0.78rem; font-weight: 800; color: #34d399; letter-spacing: 0.5px; text-transform: uppercase;">💵 Ingresos por Origen</span>
+                                            <span style="font-size: 0.7rem; color: var(--text-secondary);">Ordenado de mayor a menor</span>
+                                        </div>
+                                        <div style="position: relative; height: 200px; width: 100%;">
+                                            <canvas id="chart-personal-ingresos"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2230,6 +2242,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=118"></script>
+    <script src="app.js?v=119"></script>
 </body>
 </html>
