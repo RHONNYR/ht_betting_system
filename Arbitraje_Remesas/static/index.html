@@ -90,6 +90,7 @@
             <button class="tab-link" data-tab="tab-stats">📊 Análisis & Estadísticas</button>
             <button class="tab-link" data-tab="tab-historial">📜 Historial & Bitácoras</button>
             <button class="tab-link" data-tab="tab-personal">🔒 Finanzas Personales</button>
+            <button class="tab-link" data-tab="tab-estrategia">🧭 Estrategias de Capital</button>
         </nav>
 
         <main class="tab-content-container">
@@ -1488,6 +1489,202 @@
                     </div>
                 </div>
             </section>
+
+            <!-- TAB 7: ORQUESTADOR DE ESTRATEGIAS (PILAR A) -->
+            <section id="tab-estrategia" class="tab-pane">
+                <div class="grid-2col" style="align-items: start; gap: 1.25rem;">
+                    
+                    <!-- Columna Izquierda: Configuración de Tasas y Variables -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="card glass-card">
+                            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                <h2>🧭 Tasas del Día & Variables</h2>
+                                <button type="button" id="btn-calcular-estrategia" class="btn btn-primary btn-sm">⚡ Calcular</button>
+                            </div>
+                            <div class="card-body" style="padding: 1.25rem;">
+                                <form id="form-estrategia-tasas" style="display: flex; flex-direction: column; gap: 0.85rem;">
+                                    
+                                    <!-- Capital Base -->
+                                    <div class="form-group" style="background: rgba(59,130,246,0.06); padding: 0.6rem; border-radius: 8px; border: 1px dashed rgba(59,130,246,0.25);">
+                                        <label for="est-capital" style="font-weight: 700; color: #fff;">Capital a Simular (USD)</label>
+                                        <input type="number" step="any" id="est-capital" value="2300" required>
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                        <!-- Tasa de Venta USDT P2P -->
+                                        <div class="form-group">
+                                            <label for="est-tasa-usdt-p2p" style="font-size: 0.75rem;">USDT P2P Venta (Bs/$)</label>
+                                            <input type="number" step="any" id="est-tasa-usdt-p2p" value="864.00" required>
+                                        </div>
+                                        <!-- Tasa Compra Divisa en Calle -->
+                                        <div class="form-group">
+                                            <label for="est-tasa-compra-efectivo" style="font-size: 0.75rem;">Compra Efectivo (Bs/$)</label>
+                                            <input type="number" step="any" id="est-tasa-compra-efectivo" value="845.00" required>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                        <!-- Tasa BCV Oficial -->
+                                        <div class="form-group">
+                                            <label for="est-tasa-bcv" style="font-size: 0.75rem;">Tasa BCV Oficial (Bs/$)</label>
+                                            <input type="number" step="any" id="est-tasa-bcv" value="757.54" required>
+                                        </div>
+                                        <!-- Tasa que le ofreces al cliente de Remesa -->
+                                        <div class="form-group">
+                                            <label for="est-tasa-remesa-cliente" style="font-size: 0.75rem;">Remesa al Cliente (Bs/$)</label>
+                                            <input type="number" step="any" id="est-tasa-remesa-cliente" value="795.00" required>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                        <!-- Comisión por dar cash y recibir Zelle -->
+                                        <div class="form-group">
+                                            <label for="est-comision-cash-zelle" style="font-size: 0.75rem;">Comisión Cash-to-Zelle (%)</label>
+                                            <input type="number" step="any" id="est-comision-cash-zelle" value="6.0" required>
+                                        </div>
+                                        <!-- Spread de compra USDT con Zelle -->
+                                        <div class="form-group">
+                                            <label for="est-spread-zelle-usdt" style="font-size: 0.75rem;">Spread Zelle ➔ USDT (%)</label>
+                                            <input type="number" step="any" id="est-spread-zelle-usdt" value="2.0" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Toggles de Comisiones Fijas en Binance/BPAY -->
+                                    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; margin-top: 0.3rem;">
+                                        <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">⚙️ Parámetros de Recompra Binance</span>
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.5rem;">
+                                            <div class="form-group">
+                                                <label style="font-size: 0.68rem;">Maker Binance (%)</label>
+                                                <input type="number" step="any" id="est-comision-maker-p2p" value="0.15">
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="font-size: 0.68rem;">Tarjeta BDV (%)</label>
+                                                <input type="number" step="any" id="est-comision-bpay-bdv" value="7.1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="font-size: 0.68rem;">Tarjeta Provincial (%)</label>
+                                                <input type="number" step="any" id="est-comision-bpay-provincial" value="4.1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="font-size: 0.68rem;">Tarjeta Mercantil (%)</label>
+                                                <input type="number" step="any" id="est-comision-bpay-mercantil" value="4.1">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; gap: 0.5rem; margin-top: 0.4rem;">
+                                        <button type="submit" class="btn btn-primary" style="flex: 1;">⚡ Ejecutar Simulación</button>
+                                        <button type="button" id="btn-guardar-estrategia" class="btn btn-secondary" style="font-size:0.75rem;">💾 Guardar Historial</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Card de Control del Zelle Alquilado -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h2>🛡️ Control de Cuenta Zelle Alquilada</h2>
+                            </div>
+                            <div class="card-body" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 0.72rem; color: var(--text-secondary);">Costo Fijo Mensual:</span>
+                                    <span style="font-size: 0.8rem; font-weight: 700; color: #fff;">$80.00 USD</span>
+                                </div>
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                        <span style="font-size: 0.72rem; color: var(--text-secondary);">Uso Diario Sugerido:</span>
+                                        <span style="font-size: 0.75rem; font-weight: 700; color: #60a5fa;" id="zelle-uso-diario-txt">$0 / $2,500</span>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                        <div id="bar-zelle-uso-diario" style="background: #3b82f6; height: 100%; width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                        <span style="font-size: 0.72rem; color: var(--text-secondary);">Uso Mensual Acumulado:</span>
+                                        <span style="font-size: 0.75rem; font-weight: 700; color: #34d399;" id="zelle-uso-mensual-txt">$0 / $20,000</span>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden;">
+                                        <div id="bar-zelle-uso-mensual" style="background: #10b981; height: 100%; width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Comparativa de ROI y Recomendaciones -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+                        
+                        <!-- Card Recomendación -->
+                        <div class="card glass-card" style="background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.18);">
+                            <div class="card-header" style="border-bottom: 1px solid rgba(16,185,129,0.1); padding-bottom: 0.5rem;">
+                                <h2 style="color: #34d399; font-size: 0.85rem; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;">💡 RECOMENDACIÓN DEL ORQUESTADOR</h2>
+                            </div>
+                            <div class="card-body" style="padding: 1rem;">
+                                <p id="orquestador-consejo" style="font-size: 0.85rem; line-height: 1.45; color: #e2e8f0; margin: 0;">
+                                    Ingresa los datos del mercado actual y ejecuta la simulación para recibir un diagnóstico del orquestador.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Tabla Comparativa de Rutas -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h2>📊 Comparativa de Rentabilidad (ROI)</h2>
+                            </div>
+                            <div class="card-body" style="padding: 0;">
+                                <div class="table-responsive">
+                                    <table class="data-table" style="font-size: 0.8rem;">
+                                        <thead>
+                                            <tr>
+                                                <th style="padding: 0.75rem 0.6rem;">Prioridad / Ruta</th>
+                                                <th style="padding: 0.75rem 0.6rem; text-align: center;">ROI %</th>
+                                                <th style="padding: 0.75rem 0.6rem; text-align: center;">Ganancia</th>
+                                                <th style="padding: 0.75rem 0.6rem; text-align: center;">Velocidad</th>
+                                                <th style="padding: 0.75rem 0.6rem; text-align: center;">Uso Zelle</th>
+                                                <th style="padding: 0.75rem 0.6rem;">Riesgo / Advertencia</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-estrategias-cuerpo">
+                                            <tr>
+                                                <td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 2rem;">Ingresa tasas del día para simular las rutas.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Historial de Simulaciones de Tasas -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h2>📜 Historial de Tasas Guardadas</h2>
+                            </div>
+                            <div class="card-body" style="padding: 0;">
+                                <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                                    <table class="data-table" style="font-size: 0.76rem;">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Capital</th>
+                                                <th>USDT P2P</th>
+                                                <th>Compra Cash</th>
+                                                <th>Cash-to-Zelle %</th>
+                                                <th>Tasa BCV</th>
+                                                <th>Remesa Cliente</th>
+                                                <th>Usar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-historial-estrategia-cuerpo">
+                                            <!-- Dynamic -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -2242,6 +2439,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=120"></script>
+    <script src="app.js?v=121"></script>
 </body>
 </html>
