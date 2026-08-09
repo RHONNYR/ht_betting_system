@@ -5824,9 +5824,41 @@ async function handlePinModalSubmit(e) {
 
 
 // ============================================================
-# BLOQUE 8: ESTRATEGIAS & ORQUESTADOR (PILAR A)
+// BLOQUE 8: ESTRATEGIAS & ORQUESTADOR (PILAR A)
 // ============================================================
 let simulacionesHistorial = [];
+
+// Configuración por defecto de las 10 rutas
+const defaultRutasSettings = {
+    "R2_PROV": { active: true, nombre: "Arbitraje Provincial (BCV)", velocidad: "Mismo día (Tarde)", riesgo: "Aprobación de cupo" },
+    "R9_CASH": { active: true, nombre: "Ciclo Cash-to-Zelle", velocidad: "1-2 días", riesgo: "Filtros de Zelle / Efectivo físico" },
+    "R2_MERC": { active: true, nombre: "Arbitraje Mercantil (BCV)", velocidad: "Siguiente día", riesgo: "Aprobación de cupo" },
+    "R1_REMESAS": { active: true, nombre: "Ciclo Remesas Tradicional", velocidad: "1-3 horas", riesgo: "Límites Zelle / Volumen de clientes" },
+    "R2_BDV": { active: true, nombre: "Arbitraje BDV (Tercera Edad)", velocidad: "Inmediato", riesgo: "Aprobación de cupo" },
+    "R5_AIRTM": { active: true, nombre: "AirTM Backup Remesas", velocidad: "1-3 horas", riesgo: "Menos volumen de clientes" },
+    "R6_ZINLI": { active: true, nombre: "Zinli Premium (Cupo Limit)", velocidad: "1-3 horas", riesgo: "Cupo de $1000/mes máximo" },
+    "R4_INVERSO": { active: true, nombre: "Flujo Inverso Bs ➔ USDT", velocidad: "Mismo día", riesgo: "Spread cambiario volátil" },
+    "R8_MAKER": { active: true, nombre: "Arbitraje P2P Maker (VES)", velocidad: "Rápido (Múltiples vueltas)", riesgo: "Riesgo de bloqueo de cuentas VES" },
+    "R7_EARN": { active: true, nombre: "Binance Earn (Dinero en espera)", velocidad: "Pasivo", riesgo: "Ninguno (Retiro inmediato)" }
+};
+
+// Cargar configuraciones guardadas en localStorage
+function loadRutasConfig() {
+    const saved = localStorage.getItem('rutas_personalizadas_config');
+    if (saved) {
+        try {
+            return JSON.parse(saved);
+        } catch (e) {
+            console.error("Error parsing saved routes config, using default", e);
+        }
+    }
+    return JSON.parse(JSON.stringify(defaultRutasSettings)); // Copia profunda
+}
+
+// Guardar configuraciones en localStorage
+function saveRutasConfig(config) {
+    localStorage.setItem('rutas_personalizadas_config', JSON.stringify(config));
+}
 
 async function initOrquestadorTab() {
     try {
@@ -5885,6 +5917,107 @@ function setupEstrategiaListeners() {
     if (btnGuardar) {
         btnGuardar.addEventListener('click', guardarEstrategiaActiva);
     }
+
+    // Modal de Configuración de Rutas
+    const btnConfig = document.getElementById('btn-configurar-rutas');
+    const modalConfig = document.getElementById('modal-config-rutas');
+    const btnCerrarConfig = document.getElementById('btn-cerrar-config-rutas');
+    const btnResetConfig = document.getElementById('btn-reset-config-rutas');
+    const formConfig = document.getElementById('form-config-rutas');
+
+    if (btnConfig && modalConfig) {
+        btnConfig.addEventListener('click', () => {
+            abrirModalConfigRutas();
+        });
+    }
+
+    if (btnCerrarConfig) {
+        btnCerrarConfig.addEventListener('click', () => {
+            modalConfig.classList.add('hidden');
+        });
+    }
+
+    if (btnResetConfig) {
+        btnResetConfig.addEventListener('click', () => {
+            if (confirm("¿Estás seguro de restablecer todos los canales a sus valores predeterminados?")) {
+                saveRutasConfig(defaultRutasSettings);
+                abrirModalConfigRutas(); // Refrescar modal
+                showToast("⚙️ Configuraciones restablecidas");
+            }
+        });
+    }
+
+    if (formConfig) {
+        formConfig.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const config = loadRutasConfig();
+            
+            // Recolectar datos del formulario del modal
+            Object.keys(config).forEach(key => {
+                const activeChecked = document.getElementById(`cfg-active-${key}`).checked;
+                const nombreVal = document.getElementById(`cfg-nombre-${key}`).value.trim();
+                const velVal = document.getElementById(`cfg-vel-${key}`).value.trim();
+                const riesgoVal = document.getElementById(`cfg-riesgo-${key}`).value.trim();
+
+                config[key] = {
+                    active: activeChecked,
+                    nombre: nombreVal || defaultRutasSettings[key].nombre,
+                    velocidad: velVal || defaultRutasSettings[key].velocidad,
+                    riesgo: riesgoVal || defaultRutasSettings[key].riesgo
+                };
+            });
+
+            saveRutasConfig(config);
+            modalConfig.classList.add('hidden');
+            showToast("⚙️ Preferencias de rutas guardadas");
+            ejecutarCalculoEstrategia(); // Re-calcular reactivamente
+        });
+    }
+}
+
+function abrirModalConfigRutas() {
+    const config = loadRutasConfig();
+    const container = document.getElementById('lista-config-rutas-container');
+    container.innerHTML = '';
+
+    Object.keys(config).forEach(key => {
+        const item = config[key];
+        
+        const row = document.createElement('div');
+        row.style.background = 'rgba(255,255,255,0.03)';
+        row.style.border = '1px solid rgba(255,255,255,0.05)';
+        row.style.borderRadius = '8px';
+        row.style.padding = '0.75rem';
+        row.style.display = 'flex';
+        row.style.flexDirection = 'column';
+        row.style.gap = '0.5rem';
+
+        row.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.04); padding-bottom:0.4rem; margin-bottom:0.25rem;">
+                <span style="font-weight:700; color:#3b82f6; font-size:0.78rem;">Código Canal: ${key}</span>
+                <label style="display:flex; align-items:center; gap:0.3rem; font-size:0.75rem; cursor:pointer;">
+                    <input type="checkbox" id="cfg-active-${key}" ${item.active ? 'checked' : ''}> Activo hoy
+                </label>
+            </div>
+            <div style="display:grid; grid-template-columns: 2fr 1fr 2fr; gap:0.5rem;">
+                <div class="form-group" style="margin-bottom:0;">
+                    <label style="font-size:0.65rem;">Nombre del Canal</label>
+                    <input type="text" id="cfg-nombre-${key}" value="${item.nombre}" style="font-size:0.75rem; padding:0.35rem;" required>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label style="font-size:0.65rem;">Velocidad</label>
+                    <input type="text" id="cfg-vel-${key}" value="${item.velocidad}" style="font-size:0.75rem; padding:0.35rem;" required>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label style="font-size:0.65rem;">Riesgo / Advertencia</label>
+                    <input type="text" id="cfg-riesgo-${key}" value="${item.riesgo}" style="font-size:0.75rem; padding:0.35rem;" required>
+                </div>
+            </div>
+        `;
+        container.appendChild(row);
+    });
+
+    document.getElementById('modal-config-rutas').classList.remove('hidden');
 }
 
 async function ejecutarCalculoEstrategia() {
@@ -5904,11 +6037,52 @@ async function ejecutarCalculoEstrategia() {
 
     try {
         const data = await apiCall('/estrategias/calcular', 'POST', payload);
+        const config = loadRutasConfig();
         
+        // Filtrar y personalizar rutas basado en la configuración del usuario
+        const rutasFiltradas = data.rutas
+            .filter(ruta => {
+                const itemCfg = config[ruta.id];
+                return itemCfg ? itemCfg.active : true; // Si está desactivado, se descarta de la visualización
+            })
+            .map(ruta => {
+                const itemCfg = config[ruta.id];
+                if (itemCfg) {
+                    // Sobrescribir campos editados por el usuario
+                    return {
+                        ...ruta,
+                        nombre: itemCfg.nombre,
+                        velocidad: itemCfg.velocidad,
+                        riesgo: itemCfg.riesgo
+                    };
+                }
+                return ruta;
+            });
+
+        // Re-calcular la recomendación inteligente excluyendo rutas apagadas
+        let recomText = "";
+        const mejorNoZelle = rutasFiltradas.find(r => r.zelle.includes("NO consume"));
+        const mejorConZelle = rutasFiltradas.find(r => r.zelle.includes("SÍ"));
+
+        let sug_detalles = [];
+        if (mejorNoZelle && mejorNoZelle.roi > 3.0) {
+            sug_detalles.push(`Prioriza la ruta bancaria **${mejorNoZelle.nombre}** con ROI de **${mejorNoZelle.roi}%** para no desgastar límites de Zelle.`);
+        }
+        if (mejorConZelle) {
+            if (mejorConZelle.id === "R9_CASH") {
+                sug_detalles.push(`El **${mejorConZelle.nombre}** está ofreciendo un ROI de **${mejorConZelle.roi}%**. Tu capital de simulado cabe en el límite diario ($2,500).`);
+            } else {
+                sug_detalles.push(`El **${mejorConZelle.nombre}** ofrece **${mejorConZelle.roi}%** de ROI. Cuida no rebasar tu límite mensual de la cuenta alquilada.`);
+            }
+        }
+        sug_detalles.push("Si los bancos están rebotando compras hoy, coloca los bolívares en remesas express o mantén el USDT en Binance Earn temporalmente para que no quede inactivo.");
+        
+        recomText = sug_detalles.map(c => `<li>${c}</li>`).join("");
+
         // Renderizar recomendación
         const consejoEl = document.getElementById('orquestador-consejo');
         if (consejoEl) {
-            consejoEl.innerHTML = data.recomendacion.split(" | ").map(c => `<li>${c}</li>`).join("");
+            consejoEl.innerHTML = recomText;
             consejoEl.style.paddingLeft = "1.2rem";
         }
 
@@ -5916,12 +6090,17 @@ async function ejecutarCalculoEstrategia() {
         const tbody = document.getElementById('tabla-estrategias-cuerpo');
         tbody.innerHTML = '';
         
-        data.rutas.forEach((ruta, idx) => {
+        if (rutasFiltradas.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 2rem;">No hay canales activos hoy. Habilita canales en el botón ⚙️ Canales.</td></tr>';
+            return;
+        }
+
+        rutasFiltradas.forEach((ruta, idx) => {
             const tr = document.createElement('tr');
             
             // Colores por prioridad
             let badge = '';
-            if (idx === 0) badge = `<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-weight:700;">🥇 ${ruta.nombre}</span>`;
+            if (idx === 0) badge = `<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-weight:700;">🏆 ${ruta.nombre}</span>`;
             else if (idx === 1) badge = `<span class="badge" style="background: rgba(16,185,129,0.1); color: #34d399; font-weight:600;">🥈 ${ruta.nombre}</span>`;
             else if (idx === 2) badge = `<span class="badge" style="background: rgba(96,165,250,0.1); color: #60a5fa;">🥉 ${ruta.nombre}</span>`;
             else badge = `<span style="padding-left:0.5rem; color:var(--text-secondary);">${ruta.nombre}</span>`;
