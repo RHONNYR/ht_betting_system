@@ -425,6 +425,9 @@ function handleTabSwitch(e) {
             loadPersonalFinanceData();
         }
     }
+    if (targetTab === 'tab-estrategia') {
+        initOrquestadorTab();
+    }
 }
 
 function handleSubTabSwitch(e) {
@@ -2274,6 +2277,9 @@ function setupEventListeners() {
     // Navigation Tabs
     els.tabLinks.forEach(link => link.addEventListener('click', handleTabSwitch));
     els.subTabLinks.forEach(link => link.addEventListener('click', handleSubTabSwitch));
+    
+    // Estrategias
+    setupEstrategiaListeners();
     
     // Capital
     els.capitalForm.addEventListener('submit', handleCapitalSubmit);
@@ -5810,6 +5816,213 @@ async function handlePinModalSubmit(e) {
         alert("Error: " + err.message);
     }
 }
+
+
+        alert("Error: " + err.message);
+    }
+}
+
+
+// ============================================================
+# BLOQUE 8: ESTRATEGIAS & ORQUESTADOR (PILAR A)
+// ============================================================
+let simulacionesHistorial = [];
+
+async function initOrquestadorTab() {
+    try {
+        // Cargar medidores de uso Zelle
+        const zelleData = await apiCall('/zelle/movimientos');
+        if (zelleData && zelleData.summary) {
+            const daily = zelleData.summary.daily_ingresos || 0;
+            const monthly = zelleData.summary.monthly_ingresos || 0;
+            
+            // Renderizar textos
+            document.getElementById('zelle-uso-diario-txt').textContent = `$${daily.toLocaleString('es-VE')} / $2,500`;
+            document.getElementById('zelle-uso-mensual-txt').textContent = `$${monthly.toLocaleString('es-VE')} / $20,000`;
+            
+            // Renderizar barras de progreso (max 100%)
+            const dailyPct = Math.min(100, (daily / 2500) * 100);
+            const monthlyPct = Math.min(100, (monthly / 20000) * 100);
+            
+            document.getElementById('bar-zelle-uso-diario').style.width = `${dailyPct}%`;
+            document.getElementById('bar-zelle-uso-mensual').style.width = `${monthlyPct}%`;
+            
+            // Colores de advertencia
+            document.getElementById('bar-zelle-uso-diario').style.backgroundColor = dailyPct > 85 ? '#ef4444' : (dailyPct > 60 ? '#f59e0b' : '#3b82f6');
+            document.getElementById('bar-zelle-uso-mensual').style.backgroundColor = monthlyPct > 85 ? '#ef4444' : (monthlyPct > 60 ? '#f59e0b' : '#10b981');
+        }
+
+        // Cargar historial de tasas
+        await cargarSimsHistorial();
+
+        // Si hay una tasa BCV activa en la app, usarla en el formulario
+        if (state.bcvRate > 0) {
+            document.getElementById('est-tasa-bcv').value = state.bcvRate.toFixed(2);
+        }
+
+        // Auto calcular con valores por defecto
+        await ejecutarCalculoEstrategia();
+    } catch (err) {
+        console.error("Error al inicializar pestaña orquestador:", err);
+    }
+}
+
+function setupEstrategiaListeners() {
+    const form = document.getElementById('form-estrategia-tasas');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            ejecutarCalculoEstrategia();
+        });
+    }
+
+    const btnCalc = document.getElementById('btn-calcular-estrategia');
+    if (btnCalc) {
+        btnCalc.addEventListener('click', ejecutarCalculoEstrategia);
+    }
+
+    const btnGuardar = document.getElementById('btn-guardar-estrategia');
+    if (btnGuardar) {
+        btnGuardar.addEventListener('click', guardarEstrategiaActiva);
+    }
+}
+
+async function ejecutarCalculoEstrategia() {
+    const payload = {
+        capital: parseFloat(document.getElementById('est-capital').value) || 2300,
+        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 864,
+        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 845,
+        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 6.0,
+        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 757.54,
+        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 2.0,
+        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 795,
+        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0.15,
+        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 7.1,
+        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 4.1,
+        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 4.1
+    };
+
+    try {
+        const data = await apiCall('/estrategias/calcular', 'POST', payload);
+        
+        // Renderizar recomendación
+        const consejoEl = document.getElementById('orquestador-consejo');
+        if (consejoEl) {
+            consejoEl.innerHTML = data.recomendacion.split(" | ").map(c => `<li>${c}</li>`).join("");
+            consejoEl.style.paddingLeft = "1.2rem";
+        }
+
+        // Renderizar tabla de rutas
+        const tbody = document.getElementById('tabla-estrategias-cuerpo');
+        tbody.innerHTML = '';
+        
+        data.rutas.forEach((ruta, idx) => {
+            const tr = document.createElement('tr');
+            
+            // Colores por prioridad
+            let badge = '';
+            if (idx === 0) badge = `<span class="badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-weight:700;">🥇 ${ruta.nombre}</span>`;
+            else if (idx === 1) badge = `<span class="badge" style="background: rgba(16,185,129,0.1); color: #34d399; font-weight:600;">🥈 ${ruta.nombre}</span>`;
+            else if (idx === 2) badge = `<span class="badge" style="background: rgba(96,165,250,0.1); color: #60a5fa;">🥉 ${ruta.nombre}</span>`;
+            else badge = `<span style="padding-left:0.5rem; color:var(--text-secondary);">${ruta.nombre}</span>`;
+
+            // Color del ROI
+            const roiColor = ruta.roi > 4.0 ? '#10b981' : (ruta.roi > 1.5 ? '#60a5fa' : '#a7f3d0');
+            const zelleBadgeColor = ruta.zelle.includes("SÍ") ? 'rgba(239, 68, 68, 0.15)' : 'rgba(255,255,255,0.06)';
+            const zelleTextColor = ruta.zelle.includes("SÍ") ? '#ef4444' : 'var(--text-secondary)';
+
+            tr.innerHTML = `
+                <td style="padding: 0.6rem; vertical-align:middle;">${badge}</td>
+                <td style="padding: 0.6rem; text-align: center; font-weight: 700; color: ${roiColor}; vertical-align:middle;">${ruta.roi}%</td>
+                <td style="padding: 0.6rem; text-align: center; font-weight: 600; color: #fff; vertical-align:middle;">$${ruta.ganancia.toFixed(2)}</td>
+                <td style="padding: 0.6rem; text-align: center; color: var(--text-secondary); vertical-align:middle;">${ruta.velocidad}</td>
+                <td style="padding: 0.6rem; text-align: center; vertical-align:middle;">
+                    <span class="badge" style="background: ${zelleBadgeColor}; color: ${zelleTextColor}; font-size:0.7rem;">${ruta.zelle}</span>
+                </td>
+                <td style="padding: 0.6rem; color: #f59e0b; font-size:0.75rem; vertical-align:middle;">⚠️ ${ruta.riesgo}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+    } catch (err) {
+        showToast("❌ Error al simular las rutas: " + err.message);
+    }
+}
+
+async function guardarEstrategiaActiva() {
+    const payload = {
+        capital: parseFloat(document.getElementById('est-capital').value) || 2300,
+        tasa_usdt_p2p: parseFloat(document.getElementById('est-tasa-usdt-p2p').value) || 864,
+        tasa_compra_efectivo: parseFloat(document.getElementById('est-tasa-compra-efectivo').value) || 845,
+        comision_cash_zelle: parseFloat(document.getElementById('est-comision-cash-zelle').value) || 6.0,
+        tasa_bcv: parseFloat(document.getElementById('est-tasa-bcv').value) || 757.54,
+        spread_zelle_usdt: parseFloat(document.getElementById('est-spread-zelle-usdt').value) || 2.0,
+        tasa_remesa_cliente: parseFloat(document.getElementById('est-tasa-remesa-cliente').value) || 795,
+        comision_maker_p2p: parseFloat(document.getElementById('est-comision-maker-p2p').value) || 0.15,
+        comision_bpay_bdv: parseFloat(document.getElementById('est-comision-bpay-bdv').value) || 7.1,
+        comision_bpay_provincial: parseFloat(document.getElementById('est-comision-bpay-provincial').value) || 4.1,
+        comision_bpay_mercantil: parseFloat(document.getElementById('est-comision-bpay-mercantil').value) || 4.1
+    };
+
+    try {
+        await apiCall('/estrategias/guardar', 'POST', payload);
+        showToast("💾 Tasas guardadas en el historial");
+        await cargarSimsHistorial();
+    } catch (err) {
+        alert("Error al guardar: " + err.message);
+    }
+}
+
+async function cargarSimsHistorial() {
+    try {
+        const sims = await apiCall('/estrategias/historial');
+        simulacionesHistorial = sims;
+        
+        const tbody = document.getElementById('tabla-historial-estrategia-cuerpo');
+        tbody.innerHTML = '';
+        
+        if (sims.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted">No hay simulaciones guardadas</td></tr>';
+            return;
+        }
+
+        sims.forEach(sim => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${sim.fecha}</td>
+                <td style="font-weight:600;">$${sim.capital}</td>
+                <td>${sim.tasa_usdt_p2p}</td>
+                <td>${sim.tasa_compra_efectivo}</td>
+                <td style="text-align:center;">${sim.comision_cash_zelle}%</td>
+                <td>${sim.tasa_bcv}</td>
+                <td>${sim.tasa_remesa_cliente}</td>
+                <td>
+                    <button class="btn btn-secondary btn-sm" onclick="cargarSimulacionEnForm(${sim.id})" style="padding: 0.2rem 0.4rem; font-size:0.7rem;">Cargar</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch (err) {
+        console.error("Error al cargar historial de estrategias:", err);
+    }
+}
+
+// Expuesta a nivel global para que funcione el onclick de los botones del historial
+window.cargarSimulacionEnForm = function(simId) {
+    const sim = simulacionesHistorial.find(s => s.id === simId);
+    if (!sim) return;
+    
+    document.getElementById('est-capital').value = sim.capital;
+    document.getElementById('est-tasa-usdt-p2p').value = sim.tasa_usdt_p2p;
+    document.getElementById('est-tasa-compra-efectivo').value = sim.tasa_compra_efectivo;
+    document.getElementById('est-comision-cash-zelle').value = sim.comision_cash_zelle;
+    document.getElementById('est-tasa-bcv').value = sim.tasa_bcv;
+    document.getElementById('est-tasa-remesa-cliente').value = sim.tasa_remesa_cliente;
+    
+    // Auto calcular tras cargar
+    ejecutarCalculoEstrategia();
+    showToast("📋 Tasas del historial cargadas en el formulario");
+};
 
 
 // DOM Content Loaded entry point
