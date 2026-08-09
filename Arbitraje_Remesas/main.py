@@ -2971,34 +2971,40 @@ def calcular_estrategias(req: CalcularEstrategiaRequest, username: str = Depends
     ganancia_r1 = usdt_final_r1 - cap
 
     # 2. R2: Provincial (Arbitraje BCV)
-    # 0.25% fee venta USDT, 0.5% comision VES banco. Multiplicativo: (1 - tarjeta_fee) * (1 - 0.041 Binance fee)
-    bs_inicial_r2_prov = cap * (1 - 0.0025) * req.tasa_usdt_p2p
-    cost_factor_prov = req.tasa_bcv * (1 + 0.005 + 0.003)
-    usd_r2_prov = bs_inicial_r2_prov / cost_factor_prov
-    usd_neto_prov = usd_r2_prov * (1 - (req.comision_bpay_provincial / 100))
+    # comision_maker_p2p fee venta USDT, 0.5% comision VES banco, suggested_usd flooreado
+    bs_inicial_r2_prov = cap * (1 - (req.comision_maker_p2p / 100)) * req.tasa_usdt_p2p
+    cost_factor_prov = req.tasa_bcv * (1 + 0.005)
+    suggested_usd_prov = math.floor(bs_inicial_r2_prov / cost_factor_prov)
+    bolivares_gastados_prov = suggested_usd_prov * cost_factor_prov
+    usd_neto_prov = suggested_usd_prov * (1 - (req.comision_bpay_provincial / 100))
     usdt_final_r2_prov = usd_neto_prov * (1 - 0.041)  # 4.1% Binance deposit fee
-    roi_r2_prov = ((usdt_final_r2_prov - cap) / cap) * 100
-    ganancia_r2_prov = usdt_final_r2_prov - cap
+    usd_cost_operation_prov = bolivares_gastados_prov / req.tasa_usdt_p2p
+    roi_r2_prov = ((usdt_final_r2_prov - usd_cost_operation_prov) / usd_cost_operation_prov) * 100 if usd_cost_operation_prov > 0 else 0
+    ganancia_r2_prov = usdt_final_r2_prov - usd_cost_operation_prov
 
     # 3. R2: Mercantil (Arbitraje BCV)
-    # 0.25% fee venta USDT, 0.5% comision VES banco. Multiplicativo: (1 - tarjeta_fee) * (1 - 0.041 Binance fee)
-    bs_inicial_r2_merc = cap * (1 - 0.0025) * req.tasa_usdt_p2p
+    # comision_maker_p2p fee venta USDT, 0.5% comision VES banco, suggested_usd flooreado
+    bs_inicial_r2_merc = cap * (1 - (req.comision_maker_p2p / 100)) * req.tasa_usdt_p2p
     cost_factor_merc = req.tasa_bcv * (1 + 0.005)
-    usd_r2_merc = bs_inicial_r2_merc / cost_factor_merc
-    usd_neto_merc = usd_r2_merc * (1 - (req.comision_bpay_mercantil / 100))
+    suggested_usd_merc = math.floor(bs_inicial_r2_merc / cost_factor_merc)
+    bolivares_gastados_merc = suggested_usd_merc * cost_factor_merc
+    usd_neto_merc = suggested_usd_merc * (1 - (req.comision_bpay_mercantil / 100))
     usdt_final_r2_merc = usd_neto_merc * (1 - 0.041)  # 4.1% Binance deposit fee
-    roi_r2_merc = ((usdt_final_r2_merc - cap) / cap) * 100
-    ganancia_r2_merc = usdt_final_r2_merc - cap
+    usd_cost_operation_merc = bolivares_gastados_merc / req.tasa_usdt_p2p
+    roi_r2_merc = ((usdt_final_r2_merc - usd_cost_operation_merc) / usd_cost_operation_merc) * 100 if usd_cost_operation_merc > 0 else 0
+    ganancia_r2_merc = usdt_final_r2_merc - usd_cost_operation_merc
 
     # 4. R2: BDV Tercera Edad (Arbitraje BCV)
-    # 0.25% fee venta USDT, 0% comision VES banco (Tercera Edad). Multiplicativo: (1 - tarjeta_fee) * (1 - 0.041 Binance fee)
-    bs_inicial_r2_bdv = cap * (1 - 0.0025) * req.tasa_usdt_p2p
-    cost_factor_bdv = req.tasa_bcv * (1 + 0.0 + 0.003)
-    usd_r2_bdv = bs_inicial_r2_bdv / cost_factor_bdv
-    usd_neto_bdv = usd_r2_bdv * (1 - (req.comision_bpay_bdv / 100))
+    # comision_maker_p2p fee venta USDT, 0% comision VES banco (Tercera Edad), suggested_usd flooreado
+    bs_inicial_r2_bdv = cap * (1 - (req.comision_maker_p2p / 100)) * req.tasa_usdt_p2p
+    cost_factor_bdv = req.tasa_bcv * (1 + 0.0)
+    suggested_usd_bdv = math.floor(bs_inicial_r2_bdv / cost_factor_bdv)
+    bolivares_gastados_bdv = suggested_usd_bdv * cost_factor_bdv
+    usd_neto_bdv = suggested_usd_bdv * (1 - (req.comision_bpay_bdv / 100))
     usdt_final_r2_bdv = usd_neto_bdv * (1 - 0.041)  # 4.1% Binance deposit fee
-    roi_r2_bdv = ((usdt_final_r2_bdv - cap) / cap) * 100
-    ganancia_r2_bdv = usdt_final_r2_bdv - cap
+    usd_cost_operation_bdv = bolivares_gastados_bdv / req.tasa_usdt_p2p
+    roi_r2_bdv = ((usdt_final_r2_bdv - usd_cost_operation_bdv) / usd_cost_operation_bdv) * 100 if usd_cost_operation_bdv > 0 else 0
+    ganancia_r2_bdv = usdt_final_r2_bdv - usd_cost_operation_bdv
 
     # 5. R5: AirTM Backup
     # Ofrece remesas pero pagando por AirTM (spread ~0.5% menor que Zelle)
