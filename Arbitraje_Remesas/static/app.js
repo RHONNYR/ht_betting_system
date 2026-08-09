@@ -5835,11 +5835,6 @@ async function handlePinModalSubmit(e) {
 }
 
 
-        alert("Error: " + err.message);
-    }
-}
-
-
 // ============================================================
 // BLOQUE 8: ESTRATEGIAS & ORQUESTADOR (PILAR A)
 // ============================================================
