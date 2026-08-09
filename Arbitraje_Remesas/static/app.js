@@ -5904,65 +5904,66 @@ async function initOrquestadorTab() {
         
         // 1. Capital real actual de la caja
         const capInput = document.getElementById('est-capital');
-        if (capInput && (!capInput.value || capInput.value === "")) {
-            capInput.value = state.totalUsdEquivalente ? Math.round(state.totalUsdEquivalente) : 2300;
+        if (capInput) {
+            capInput.value = state.totalUsdEquivalente ? Math.round(state.totalUsdEquivalente) : "";
         }
 
         // 2. Tasa BCV Oficial
         const bcvInput = document.getElementById('est-tasa-bcv');
-        if (bcvInput && state.bcvRate > 0) {
-            bcvInput.value = state.bcvRate.toFixed(2);
+        if (bcvInput) {
+            bcvInput.value = state.bcvRate > 0 ? state.bcvRate.toFixed(2) : "";
         }
 
         // 3. Tasa de venta USDT P2P (tomada de la calculadora de ciclos si ya se ingresó)
         const p2pInput = document.getElementById('est-tasa-usdt-p2p');
-        if (p2pInput && (!p2pInput.value || p2pInput.value === "")) {
+        if (p2pInput) {
             const calcTasaVenta = document.getElementById('calc-tasa-venta');
-            p2pInput.value = (calcTasaVenta && calcTasaVenta.value) ? calcTasaVenta.value : "864.00";
+            p2pInput.value = (calcTasaVenta && calcTasaVenta.value) ? calcTasaVenta.value : "";
         }
 
-        // 4. Tasa de compra de efectivo (fallback)
+        // 4. Tasa de compra de efectivo (dejar vacío para ingreso manual)
         const compraEfectivoInput = document.getElementById('est-tasa-compra-efectivo');
-        if (compraEfectivoInput && (!compraEfectivoInput.value || compraEfectivoInput.value === "")) {
-            compraEfectivoInput.value = "845.00";
+        if (compraEfectivoInput) {
+            compraEfectivoInput.value = "";
         }
 
         // 5. Tasa de remesa al cliente (tomada del módulo de remesas si ya se ingresó)
         const remesaInput = document.getElementById('est-tasa-remesa-cliente');
-        if (remesaInput && (!remesaInput.value || remesaInput.value === "")) {
+        if (remesaInput) {
             const rsc = document.getElementById('remesa-tasa-cambio');
-            remesaInput.value = (rsc && rsc.value) ? rsc.value : "795.00";
+            remesaInput.value = (rsc && rsc.value) ? rsc.value : "";
         }
 
-        // 6. Comisiones por defecto estándares si están vacías
+        // 6. Comisiones por defecto (dejar vacías para que el usuario las digite)
         const comisionCashZelle = document.getElementById('est-comision-cash-zelle');
-        if (comisionCashZelle && (!comisionCashZelle.value || comisionCashZelle.value === "")) {
-            comisionCashZelle.value = "6.0";
+        if (comisionCashZelle) {
+            comisionCashZelle.value = "";
         }
 
         const spreadZelleUsdt = document.getElementById('est-spread-zelle-usdt');
-        if (spreadZelleUsdt && (!spreadZelleUsdt.value || spreadZelleUsdt.value === "")) {
-            spreadZelleUsdt.value = "2.0";
+        if (spreadZelleUsdt) {
+            spreadZelleUsdt.value = "";
         }
 
+        // 7. Parámetros de Tarjeta reales (BDV 2.5%, Provincial 0.0%, Mercantil 0.0%)
         const makerBinance = document.getElementById('est-comision-maker-p2p');
-        if (makerBinance && (!makerBinance.value || makerBinance.value === "")) {
+        if (makerBinance) {
             makerBinance.value = "0.15";
         }
 
         const bdvCard = document.getElementById('est-comision-bpay-bdv');
-        if (bdvCard && (!bdvCard.value || bdvCard.value === "")) {
-            bdvCard.value = "7.1";
+        if (bdvCard) {
+            bdvCard.value = "2.5";
         }
 
         const provCard = document.getElementById('est-comision-bpay-provincial');
-        if (provCard && (!provCard.value || provCard.value === "")) {
-            provCard.value = "4.1";
+        if (provCard) {
+            provCard.value = "0.0";
         }
 
         const mercCard = document.getElementById('est-comision-bpay-mercantil');
-        if (mercCard && (!mercCard.value || mercCard.value === "")) {
-            mercCard.value = "4.1";
+        if (mercCard) {
+            mercCard.value = "0.0";
         }
 
         // Auto calcular con los valores cargados
