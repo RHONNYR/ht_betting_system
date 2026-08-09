@@ -2827,15 +2827,18 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
     # 5. Sueldo Óptimo Recomendado (40% de la ganancia del negocio)
     sueldo_sugerido = ganancia_negocio * 0.40
     
-    # 6. Crecimiento Neto
-    crecimiento_neto = total_ingresos_mes - total_gastos_mes
+    # 6. Ingreso Total Consolidado (Negocio + Personal)
+    total_ingresos_consolidado = round(ganancia_negocio + total_ingresos_mes, 2)
+    
+    # 7. Crecimiento Neto Real (incluye ganancia del negocio + ingresos personales - gastos)
+    crecimiento_neto = round(total_ingresos_consolidado - total_gastos_mes, 2)
     
     # 7. Asesor Financiero Pro - Alertas Semáforo
     alertas = []
     
-    # Alerta Roja: Déficit personal
-    if total_gastos_mes > total_ingresos_mes:
-        diff = total_gastos_mes - total_ingresos_mes
+    # Alerta Roja: Déficit real (gastos > ingreso total consolidado)
+    if total_gastos_mes > total_ingresos_consolidado:
+        diff = round(total_gastos_mes - total_ingresos_consolidado, 2)
         # Find category with maximum expense this month to offer actionable tip
         max_cat = "Otros"
         max_val = 0.0
@@ -2845,15 +2848,15 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
                 max_cat = k
         alertas.append({
             "tipo": "rojo",
-            "mensaje": f"⚠️ ALERTA DE DÉFICIT: Tus gastos de este mes superan tus ingresos por ${diff.toFixed(2) if hasattr(diff, 'toFixed') else round(diff, 2)} USD. Estás drenando tu capital de trabajo. Se recomienda recortar gastos en {max_cat} inmediatamente."
+            "mensaje": f"⚠️ ALERTA DE DÉFICIT: Tus gastos de este mes superan tu ingreso total consolidado por ${round(diff, 2)} USD. Estás drenando tu capital de trabajo. Se recomienda recortar gastos en {max_cat} inmediatamente."
         })
-    elif total_gastos_mes > 0 and total_ingresos_mes > 0:
-        # Alerta Amarilla: Gasto alto (más del 85% del ingreso)
-        ratio = total_gastos_mes / total_ingresos_mes
+    elif total_gastos_mes > 0 and total_ingresos_consolidado > 0:
+        # Alerta Amarilla: Gasto alto (más del 85% del ingreso consolidado)
+        ratio = total_gastos_mes / total_ingresos_consolidado
         if ratio > 0.85:
             alertas.append({
                 "tipo": "amarillo",
-                "mensaje": f"⚠️ ALERTA DE AHORRO: Has consumido el {round(ratio * 100)}% de tus ingresos personales. Tu margen de seguridad es mínimo."
+                "mensaje": f"⚠️ ALERTA DE AHORRO: Has consumido el {round(ratio * 100)}% de tu ingreso total del mes (negocio + personal). Tu margen de seguridad es mínimo."
             })
             
     # Alerta de inversión / reinversión (Verde)
@@ -2880,6 +2883,7 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
         "total_deudas": total_deudas,
         "total_gastos_mes": total_gastos_mes,
         "total_ingresos_mes": total_ingresos_mes,
+        "total_ingresos_consolidado": total_ingresos_consolidado,
         "crecimiento_neto": crecimiento_neto,
         "sueldo_sugerido": sueldo_sugerido,
         "ganancia_negocio": ganancia_negocio,
