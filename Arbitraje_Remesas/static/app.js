@@ -450,6 +450,7 @@ async function loadCapital() {
     try {
         const data = await apiCall('/capital');
         state.capitalItems = data.items;
+        state.totalUsdEquivalente = data.totales.total_usd_equivalente;
 
         els.totalCapitalUsd.textContent = `$${data.totales.total_usd_equivalente.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         els.totalCapitalSimulado.textContent = `$${data.totales.total_usd_simulado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -5899,12 +5900,72 @@ async function initOrquestadorTab() {
         // Cargar historial de tasas
         await cargarSimsHistorial();
 
-        // Si hay una tasa BCV activa en la app, usarla en el formulario
-        if (state.bcvRate > 0) {
-            document.getElementById('est-tasa-bcv').value = state.bcvRate.toFixed(2);
+        // Rellenar dinámicamente el formulario con datos reales de la sesión del usuario
+        
+        // 1. Capital real actual de la caja
+        const capInput = document.getElementById('est-capital');
+        if (capInput && (!capInput.value || capInput.value === "")) {
+            capInput.value = state.totalUsdEquivalente ? Math.round(state.totalUsdEquivalente) : 2300;
         }
 
-        // Auto calcular con valores por defecto
+        // 2. Tasa BCV Oficial
+        const bcvInput = document.getElementById('est-tasa-bcv');
+        if (bcvInput && state.bcvRate > 0) {
+            bcvInput.value = state.bcvRate.toFixed(2);
+        }
+
+        // 3. Tasa de venta USDT P2P (tomada de la calculadora de ciclos si ya se ingresó)
+        const p2pInput = document.getElementById('est-tasa-usdt-p2p');
+        if (p2pInput && (!p2pInput.value || p2pInput.value === "")) {
+            const calcTasaVenta = document.getElementById('calc-tasa-venta');
+            p2pInput.value = (calcTasaVenta && calcTasaVenta.value) ? calcTasaVenta.value : "864.00";
+        }
+
+        // 4. Tasa de compra de efectivo (fallback)
+        const compraEfectivoInput = document.getElementById('est-tasa-compra-efectivo');
+        if (compraEfectivoInput && (!compraEfectivoInput.value || compraEfectivoInput.value === "")) {
+            compraEfectivoInput.value = "845.00";
+        }
+
+        // 5. Tasa de remesa al cliente (tomada del módulo de remesas si ya se ingresó)
+        const remesaInput = document.getElementById('est-tasa-remesa-cliente');
+        if (remesaInput && (!remesaInput.value || remesaInput.value === "")) {
+            const rsc = document.getElementById('remesa-tasa-cambio');
+            remesaInput.value = (rsc && rsc.value) ? rsc.value : "795.00";
+        }
+
+        // 6. Comisiones por defecto estándares si están vacías
+        const comisionCashZelle = document.getElementById('est-comision-cash-zelle');
+        if (comisionCashZelle && (!comisionCashZelle.value || comisionCashZelle.value === "")) {
+            comisionCashZelle.value = "6.0";
+        }
+
+        const spreadZelleUsdt = document.getElementById('est-spread-zelle-usdt');
+        if (spreadZelleUsdt && (!spreadZelleUsdt.value || spreadZelleUsdt.value === "")) {
+            spreadZelleUsdt.value = "2.0";
+        }
+
+        const makerBinance = document.getElementById('est-comision-maker-p2p');
+        if (makerBinance && (!makerBinance.value || makerBinance.value === "")) {
+            makerBinance.value = "0.15";
+        }
+
+        const bdvCard = document.getElementById('est-comision-bpay-bdv');
+        if (bdvCard && (!bdvCard.value || bdvCard.value === "")) {
+            bdvCard.value = "7.1";
+        }
+
+        const provCard = document.getElementById('est-comision-bpay-provincial');
+        if (provCard && (!provCard.value || provCard.value === "")) {
+            provCard.value = "4.1";
+        }
+
+        const mercCard = document.getElementById('est-comision-bpay-mercantil');
+        if (mercCard && (!mercCard.value || mercCard.value === "")) {
+            mercCard.value = "4.1";
+        }
+
+        // Auto calcular con los valores cargados
         await ejecutarCalculoEstrategia();
     } catch (err) {
         console.error("Error al inicializar pestaña orquestador:", err);
