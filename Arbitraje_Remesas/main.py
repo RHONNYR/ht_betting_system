@@ -28,51 +28,46 @@ def get_venezuela_time():
     return datetime.datetime.utcnow() - datetime.timedelta(hours=4)
 
 def recalculate_ciclo_stats(ciclo, db: Session):
-    db.flush()       # Sincronizar inserciones y eliminaciones en la transacción
-    db.refresh(ciclo)  # Recargar ciclo y sus relaciones compras_parciales desde la DB
+    db.flush()       # Sincronizar inserciones y eliminaciones pendientes en la transacción
+    db.refresh(ciclo)  # Recargar ciclo y sus relaciones desde la DB (incluye compras_parciales nuevas)
     
-    # ── Solo compras de divisas reales (usd_comprados > 0) ──────────────────────
+    # ── Separar compras reales de gastos personales ────────────────────────────────
     compras_reales = [
         cp for cp in (ciclo.compras_parciales or [])
         if cp.usd_comprados is not None and cp.usd_comprados > 0.0
     ]
-    
-    total_usd_recibidos     = sum((cp.usd_recibidos_binance or 0.0) for cp in compras_reales)
-    total_usd_comprados     = sum((cp.usd_comprados        or 0.0) for cp in compras_reales)
-    total_usd_procesados    = sum((cp.usd_procesados       or 0.0) for cp in compras_reales)
-    total_comision_ves      = sum((cp.comision_compra_ves  or 0.0) for cp in compras_reales)
-    total_transferencias_ves_reales = sum((cp.transferencias_ves or 0.0) for cp in compras_reales)
-
-    # Costo real en VES de las operaciones de arbitraje (excluye gastos personales)
-    costo_arbitraje_ves = sum(
-        ((cp.usd_comprados or 0.0) * (cp.tasa_bcv or 0.0))
-        + (cp.comision_compra_ves or 0.0)
-        + (cp.transferencias_ves  or 0.0)
-        for cp in compras_reales
-    )
-    
-    # También acumular todos los gastos personales del ciclo (para mostrar en UI)
-    total_transferencias_ves_personal = sum(
+    # Gastos personales = compras parciales donde usd_comprados es 0 o None
+    total_gastos_personales_ves = sum(
         (cp.transferencias_ves or 0.0)
         for cp in (ciclo.compras_parciales or [])
         if cp.usd_comprados is None or cp.usd_comprados == 0.0
     )
     
-    # ── Actualizar campos del ciclo ───────────────────────────────────────────────
+    total_usd_recibidos  = sum((cp.usd_recibidos_binance or 0.0) for cp in compras_reales)
+    total_usd_comprados  = sum((cp.usd_comprados        or 0.0) for cp in compras_reales)
+    total_usd_procesados = sum((cp.usd_procesados       or 0.0) for cp in compras_reales)
+    total_comision_ves   = sum((cp.comision_compra_ves  or 0.0) for cp in compras_reales)
+    total_transferencias_ves = sum((cp.transferencias_ves or 0.0) for cp in compras_reales)
+
     ciclo.usd_recibidos_binance  = round(total_usd_recibidos, 2)
     ciclo.usd_procesados_binance = round(total_usd_procesados, 2)
     ciclo.divisas_compradas      = round(total_usd_comprados, 2)
     ciclo.comision_compra_ves    = round(total_comision_ves, 2)
-    # transferencias_ves en el ciclo representa SOLO las de compras reales
-    ciclo.transferencias_ves     = round(total_transferencias_ves_reales, 2)
+    ciclo.transferencias_ves     = round(total_transferencias_ves, 2)
     
-    # ── Ganancia y ROI basados EXCLUSIVAMENTE en el arbitraje real ───────────────
+    # ── Ganancia basada en el SOBRE (envelope formula) ────────────────────────────
+    # Lógica: De todo lo que entró al sobre, restamos lo que queda Y lo que se gastó
+    # personalmente → lo que reste es el costo real del arbitraje en VES.
     tasa = ciclo.tasa_venta or 0.0
-    if costo_arbitraje_ves > 0 and tasa > 0:
-        costo_usdt = round(costo_arbitraje_ves / tasa, 2)
-    elif (ciclo.usdt_vendidos or 0.0) > 0 and tasa > 0:
-        # Fallback: si no hay compras parciales registradas, asumir todo el sobre
-        costo_usdt = round((ciclo.usdt_vendidos or 0.0) * 0.9975, 2)
+    usdt_vendidos = ciclo.usdt_vendidos or 0.0
+    
+    if tasa > 0 and usdt_vendidos > 0:
+        ves_inicial = round(usdt_vendidos * 0.9975 * tasa, 2)
+        ves_restantes = ciclo.bolivares_sobre_restantes or 0.0
+        # VES usados en arbitraje = inicial - lo que queda - gastos personales
+        ves_arbitraje = round(ves_inicial - ves_restantes - total_gastos_personales_ves, 2)
+        ves_arbitraje = max(0.0, ves_arbitraje)
+        costo_usdt = round(ves_arbitraje / tasa, 2)
     else:
         costo_usdt = 0.0
     
@@ -81,7 +76,7 @@ def recalculate_ciclo_stats(ciclo, db: Session):
         (ciclo.usd_recibidos_binance / costo_usdt - 1) * 100, 2
     ) if costo_usdt > 0 else 0.0
     
-    # bolivares_restantes = saldo del sobre (solo caja, no afecta ganancia)
+    # bolivares_restantes = saldo del sobre (caja) — no interviene en la ganancia
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
 
 app = FastAPI(title="Sistema de Arbitraje y Remesas")
@@ -2495,9 +2490,8 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
             )
             db.add(compra_parcial)
             
-            # Los gastos personales SOLO afectan el saldo del sobre (caja), NO la ganancia ni el ROI del ciclo
-            # No se llama recalculate_ciclo_stats para preservar la ganancia operativa intacta
-            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+            # Recalcular estadísticas del ciclo (la fórmula de sobre excluye gastos personales de la ganancia)
+            recalculate_ciclo_stats(ciclo, db)
             
             if ciclo.bolivares_sobre_restantes <= 0.01:
                 ciclo.status = "completado"
@@ -2549,8 +2543,8 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
             if cp:
                 db.delete(cp)
                 
-            # Los gastos personales SOLO afectan el saldo del sobre (caja), NO la ganancia ni el ROI
-            # No se llama recalculate_ciclo_stats para preservar la ganancia operativa intacta
+            # Recalcular estadísticas del ciclo (la fórmula excluye gastos personales de la ganancia)
+            recalculate_ciclo_stats(ciclo, db)
             
             if ciclo.bolivares_sobre_restantes > 0.01:
                 ciclo.status = "abierto"
