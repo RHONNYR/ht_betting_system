@@ -31,21 +31,40 @@ def recalculate_ciclo_stats(ciclo, db: Session):
     db.flush()  # Sincronizar inserciones y eliminaciones en la transacción
     db.refresh(ciclo)  # Recargar ciclo y sus relaciones compras_parciales desde la DB
     
-    # Sumar todos los gastos personales (compras parciales donde usd_comprados == 0.0)
-    total_gastos_personales = sum(cp.transferencias_ves for cp in (ciclo.compras_parciales or []) if cp.usd_comprados == 0.0)
+    # Sumar todos los gastos personales (compras parciales donde usd_comprados es None o 0.0)
+    total_gastos_personales = sum(
+        (cp.transferencias_ves or 0.0) 
+        for cp in (ciclo.compras_parciales or []) 
+        if cp.usd_comprados is None or cp.usd_comprados == 0.0
+    )
     
     # Calcular bolívares gastados estrictamente en operaciones de arbitraje (compras oficiales y remesas)
-    bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - (ciclo.bolivares_sobre_restantes or 0.0) - total_gastos_personales, 2)
+    bolivares_gastados_total = round(
+        ((ciclo.usdt_vendidos or 0.0) * 0.9975 * (ciclo.tasa_venta or 0.0)) - (ciclo.bolivares_sobre_restantes or 0.0) - total_gastos_personales, 
+        2
+    )
     bolivares_gastados_total = max(0.0, bolivares_gastados_total)
     
     ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
     
     # Recalcular usd acumulado de compras parciales donde usd_comprados > 0.0
-    total_usd_recibidos = sum(cp.usd_recibidos_binance for cp in (ciclo.compras_parciales or []) if cp.usd_comprados > 0.0)
-    total_usd_comprados = sum(cp.usd_comprados for cp in (ciclo.compras_parciales or []) if cp.usd_comprados > 0.0)
-    total_usd_procesados = sum(cp.usd_procesados for cp in (ciclo.compras_parciales or []) if cp.usd_comprados > 0.0)
-    total_comision_compra_ves = sum(cp.comision_compra_ves for cp in (ciclo.compras_parciales or []))
-    total_transferencias_ves = sum(cp.transferencias_ves for cp in (ciclo.compras_parciales or []))
+    total_usd_recibidos = sum(
+        (cp.usd_recibidos_binance or 0.0) 
+        for cp in (ciclo.compras_parciales or []) 
+        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
+    )
+    total_usd_comprados = sum(
+        (cp.usd_comprados or 0.0) 
+        for cp in (ciclo.compras_parciales or []) 
+        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
+    )
+    total_usd_procesados = sum(
+        (cp.usd_procesados or 0.0) 
+        for cp in (ciclo.compras_parciales or []) 
+        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
+    )
+    total_comision_compra_ves = sum((cp.comision_compra_ves or 0.0) for cp in (ciclo.compras_parciales or []))
+    total_transferencias_ves = sum((cp.transferencias_ves or 0.0) for cp in (ciclo.compras_parciales or []))
     
     ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
     ciclo.usd_procesados_binance = round(total_usd_procesados, 2)
@@ -1281,22 +1300,26 @@ def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user),
     ciclo.status = "completado"
     
     # Sumar sólo compras de divisas reales (excluyendo gastos personales)
-    total_ves_spent_cp = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales if cp.usd_comprados > 0.0)
+    total_ves_spent_cp = sum(
+        ((cp.usd_comprados or 0.0) * (cp.tasa_bcv or 0.0)) + (cp.comision_compra_ves or 0.0) + (cp.transferencias_ves or 0.0) 
+        for cp in (ciclo.compras_parciales or []) 
+        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
+    )
     
     if total_ves_spent_cp > 0:
         bolivares_gastados_total = total_ves_spent_cp
     elif (ciclo.divisas_compradas or 0.0) > 0 and (ciclo.tasa_bcv or 0.0) > 0:
-        bolivares_gastados_total = (ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
+        bolivares_gastados_total = (ciclo.divisas_compradas * (ciclo.tasa_bcv or 0.0)) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
     else:
         # Si no hay compras parciales registradas, se asume que se gastó todo el sobre en arbitraje
         # pero restando cualquier gasto personal registrado
-        total_gastos_personales = sum(cp.transferencias_ves for cp in ciclo.compras_parciales if cp.usd_comprados == 0.0)
-        bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - total_gastos_personales
+        total_gastos_personales = sum((cp.transferencias_ves or 0.0) for cp in (ciclo.compras_parciales or []) if cp.usd_comprados is None or cp.usd_comprados == 0.0)
+        bolivares_gastados_total = ((ciclo.usdt_vendidos or 0.0) * 0.9975 * (ciclo.tasa_venta or 0.0)) - total_gastos_personales
         
-    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if ciclo.tasa_venta > 0 else 0.0
+    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
     
     # Recalcular usd acumulado de compras oficiales/remesas
-    total_usd_recibidos = sum(cp.usd_recibidos_binance for cp in ciclo.compras_parciales if cp.usd_comprados > 0.0)
+    total_usd_recibidos = sum((cp.usd_recibidos_binance or 0.0) for cp in (ciclo.compras_parciales or []) if cp.usd_comprados is not None and cp.usd_comprados > 0.0)
     ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
     ciclo.usd_procesados_binance = round(total_usd_recibidos, 2)
     ciclo.divisas_compradas = round(total_usd_recibidos, 2)
