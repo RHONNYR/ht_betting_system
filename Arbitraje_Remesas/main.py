@@ -28,53 +28,60 @@ def get_venezuela_time():
     return datetime.datetime.utcnow() - datetime.timedelta(hours=4)
 
 def recalculate_ciclo_stats(ciclo, db: Session):
-    db.flush()  # Sincronizar inserciones y eliminaciones en la transacción
+    db.flush()       # Sincronizar inserciones y eliminaciones en la transacción
     db.refresh(ciclo)  # Recargar ciclo y sus relaciones compras_parciales desde la DB
     
-    # Sumar todos los gastos personales (compras parciales donde usd_comprados es None o 0.0)
-    total_gastos_personales = sum(
-        (cp.transferencias_ves or 0.0) 
-        for cp in (ciclo.compras_parciales or []) 
+    # ── Solo compras de divisas reales (usd_comprados > 0) ──────────────────────
+    compras_reales = [
+        cp for cp in (ciclo.compras_parciales or [])
+        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
+    ]
+    
+    total_usd_recibidos     = sum((cp.usd_recibidos_binance or 0.0) for cp in compras_reales)
+    total_usd_comprados     = sum((cp.usd_comprados        or 0.0) for cp in compras_reales)
+    total_usd_procesados    = sum((cp.usd_procesados       or 0.0) for cp in compras_reales)
+    total_comision_ves      = sum((cp.comision_compra_ves  or 0.0) for cp in compras_reales)
+    total_transferencias_ves_reales = sum((cp.transferencias_ves or 0.0) for cp in compras_reales)
+
+    # Costo real en VES de las operaciones de arbitraje (excluye gastos personales)
+    costo_arbitraje_ves = sum(
+        ((cp.usd_comprados or 0.0) * (cp.tasa_bcv or 0.0))
+        + (cp.comision_compra_ves or 0.0)
+        + (cp.transferencias_ves  or 0.0)
+        for cp in compras_reales
+    )
+    
+    # También acumular todos los gastos personales del ciclo (para mostrar en UI)
+    total_transferencias_ves_personal = sum(
+        (cp.transferencias_ves or 0.0)
+        for cp in (ciclo.compras_parciales or [])
         if cp.usd_comprados is None or cp.usd_comprados == 0.0
     )
     
-    # Calcular bolívares gastados estrictamente en operaciones de arbitraje (compras oficiales y remesas)
-    bolivares_gastados_total = round(
-        ((ciclo.usdt_vendidos or 0.0) * 0.9975 * (ciclo.tasa_venta or 0.0)) - (ciclo.bolivares_sobre_restantes or 0.0) - total_gastos_personales, 
-        2
-    )
-    bolivares_gastados_total = max(0.0, bolivares_gastados_total)
-    
-    ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
-    
-    # Recalcular usd acumulado de compras parciales donde usd_comprados > 0.0
-    total_usd_recibidos = sum(
-        (cp.usd_recibidos_binance or 0.0) 
-        for cp in (ciclo.compras_parciales or []) 
-        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
-    )
-    total_usd_comprados = sum(
-        (cp.usd_comprados or 0.0) 
-        for cp in (ciclo.compras_parciales or []) 
-        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
-    )
-    total_usd_procesados = sum(
-        (cp.usd_procesados or 0.0) 
-        for cp in (ciclo.compras_parciales or []) 
-        if cp.usd_comprados is not None and cp.usd_comprados > 0.0
-    )
-    total_comision_compra_ves = sum((cp.comision_compra_ves or 0.0) for cp in (ciclo.compras_parciales or []))
-    total_transferencias_ves = sum((cp.transferencias_ves or 0.0) for cp in (ciclo.compras_parciales or []))
-    
-    ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
+    # ── Actualizar campos del ciclo ───────────────────────────────────────────────
+    ciclo.usd_recibidos_binance  = round(total_usd_recibidos, 2)
     ciclo.usd_procesados_binance = round(total_usd_procesados, 2)
-    ciclo.divisas_compradas = round(total_usd_comprados, 2)
-    ciclo.comision_compra_ves = round(total_comision_compra_ves, 2)
-    ciclo.transferencias_ves = round(total_transferencias_ves, 2)
+    ciclo.divisas_compradas      = round(total_usd_comprados, 2)
+    ciclo.comision_compra_ves    = round(total_comision_ves, 2)
+    # transferencias_ves en el ciclo representa SOLO las de compras reales
+    ciclo.transferencias_ves     = round(total_transferencias_ves_reales, 2)
     
-    # Calcular ganancia y ROI
-    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
-    ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+    # ── Ganancia y ROI basados EXCLUSIVAMENTE en el arbitraje real ───────────────
+    tasa = ciclo.tasa_venta or 0.0
+    if costo_arbitraje_ves > 0 and tasa > 0:
+        costo_usdt = round(costo_arbitraje_ves / tasa, 2)
+    elif (ciclo.usdt_vendidos or 0.0) > 0 and tasa > 0:
+        # Fallback: si no hay compras parciales registradas, asumir todo el sobre
+        costo_usdt = round((ciclo.usdt_vendidos or 0.0) * 0.9975, 2)
+    else:
+        costo_usdt = 0.0
+    
+    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - costo_usdt, 2)
+    ciclo.ganancia_porcentaje = round(
+        (ciclo.usd_recibidos_binance / costo_usdt - 1) * 100, 2
+    ) if costo_usdt > 0 else 0.0
+    
+    # bolivares_restantes = saldo del sobre (solo caja, no afecta ganancia)
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
 
 app = FastAPI(title="Sistema de Arbitraje y Remesas")
@@ -2488,8 +2495,9 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
             )
             db.add(compra_parcial)
             
-            # Recalcular estadísticas del ciclo centralizado
-            recalculate_ciclo_stats(ciclo, db)
+            # Los gastos personales SOLO afectan el saldo del sobre (caja), NO la ganancia ni el ROI del ciclo
+            # No se llama recalculate_ciclo_stats para preservar la ganancia operativa intacta
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
             
             if ciclo.bolivares_sobre_restantes <= 0.01:
                 ciclo.status = "completado"
@@ -2541,8 +2549,8 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
             if cp:
                 db.delete(cp)
                 
-            # Recalcular estadísticas del ciclo centralizado
-            recalculate_ciclo_stats(ciclo, db)
+            # Los gastos personales SOLO afectan el saldo del sobre (caja), NO la ganancia ni el ROI
+            # No se llama recalculate_ciclo_stats para preservar la ganancia operativa intacta
             
             if ciclo.bolivares_sobre_restantes > 0.01:
                 ciclo.status = "abierto"
