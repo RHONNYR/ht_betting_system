@@ -28,6 +28,9 @@ def get_venezuela_time():
     return datetime.datetime.utcnow() - datetime.timedelta(hours=4)
 
 def recalculate_ciclo_stats(ciclo, db: Session):
+    db.flush()  # Sincronizar inserciones y eliminaciones en la transacción
+    db.refresh(ciclo)  # Recargar ciclo y sus relaciones compras_parciales desde la DB
+    
     # Sumar todos los gastos personales (compras parciales donde usd_comprados == 0.0)
     total_gastos_personales = sum(cp.transferencias_ves for cp in (ciclo.compras_parciales or []) if cp.usd_comprados == 0.0)
     
