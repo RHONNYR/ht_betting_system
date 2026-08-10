@@ -1073,6 +1073,9 @@ def get_ciclos(username: str = Depends(get_current_user), db: Session = Depends(
     for c in ciclos:
         compras = []
         for cp in c.compras_parciales:
+            # Exclude personal expenses from the cycle's purchases view
+            if cp.usd_comprados is None or cp.usd_comprados == 0.0:
+                continue
             card = cp.tarjeta
             tit = card.titular if card else None
             compras.append({
@@ -1165,6 +1168,9 @@ def get_ciclos_activos(username: str = Depends(get_current_user), db: Session = 
     for c in ciclos:
         compras = []
         for cp in c.compras_parciales:
+            # Exclude personal expenses from the cycle's purchases view
+            if cp.usd_comprados is None or cp.usd_comprados == 0.0:
+                continue
             card = cp.tarjeta
             tit = card.titular if card else None
             compras.append({
