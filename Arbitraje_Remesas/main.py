@@ -93,6 +93,22 @@ def fix_legacy_purchase_bank_names():
     finally:
         db.close()
 
+@app.on_event("startup")
+def heal_all_cycles_stats():
+    db = SessionLocal()
+    try:
+        # Forzar recálculo del estado financiero de todos los ciclos para corregir cualquier desfase previo de gastos personales
+        ciclos = db.query(HistorialCiclos).all()
+        print(f"Iniciando curación de estadísticas para {len(ciclos)} ciclos...")
+        for c in ciclos:
+            recalculate_ciclo_stats(c, db)
+        db.commit()
+        print("Curación de estadísticas de ciclos completada con éxito.")
+    except Exception as e:
+        print(f"Error durante la curación de ciclos: {e}")
+    finally:
+        db.close()
+
 # CORS middleware for local testing/cross-origin access
 app.add_middleware(
     CORSMiddleware,
