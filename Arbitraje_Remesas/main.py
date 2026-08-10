@@ -3408,6 +3408,55 @@ def get_historial_simulaciones(limit: int = 15, username: str = Depends(get_curr
 
 
 # ── ADMIN DIAGNOSTIC ENDPOINT ────────────────────────────────────────────────
+@app.post("/api/admin/emergency-revert-pizza")
+def emergency_revert_pizza(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Reverts pizza expense, restores capital distribution and cycle 14 state."""
+    # 1. Revert capital by manually deleting GastoPersonal 39 and adding back balance
+    gasto = db.query(GastoPersonal).filter(GastoPersonal.id == 39).first()
+    gasto_deleted = False
+    if gasto:
+        plat_pago = gasto.plataforma_pago.strip()
+        db_plat_pago = map_plataforma_nombre(plat_pago, gasto.moneda)
+        capital_target = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_pago)).first()
+        if capital_target:
+            if capital_target.convertir_ves:
+                if gasto.moneda == "VES":
+                    capital_target.saldo_ves += gasto.monto
+                else:
+                    capital_target.saldo_ves += (gasto.monto * gasto.tasa_bcv)
+            else:
+                if gasto.moneda == "USD":
+                    capital_target.saldo_usd += gasto.monto
+                else:
+                    capital_target.saldo_usd += gasto.monto_usd
+        db.delete(gasto)
+        gasto_deleted = True
+
+    # 2. Delete CompraCicloParcial 46
+    cp = db.query(CompraCicloParcial).filter(CompraCicloParcial.id == 46).first()
+    cp_deleted = False
+    if cp:
+        db.delete(cp)
+        cp_deleted = True
+
+    # 3. Restore Cycle 14 envelope
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == 14).first()
+    ciclo_restored = False
+    if ciclo:
+        ciclo.bolivares_sobre_restantes = 929434.98
+        ciclo.bolivares_restantes = 929434.98
+        recalculate_ciclo_stats(ciclo, db)
+        ciclo_restored = True
+
+    db.commit()
+    return {
+        "gasto_deleted": gasto_deleted,
+        "cp_deleted": cp_deleted,
+        "ciclo_restored": ciclo_restored,
+        "new_cycle_ganancia": ciclo.ganancia_usd if ciclo else None,
+        "new_cycle_ves_restantes": ciclo.bolivares_sobre_restantes if ciclo else None
+    }
+
 @app.get("/api/admin/diagnose")
 def admin_diagnose(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     """Returns raw cycle data for debugging profit calculations."""
