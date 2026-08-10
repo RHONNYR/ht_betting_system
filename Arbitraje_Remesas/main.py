@@ -114,21 +114,8 @@ def fix_legacy_purchase_bank_names():
     finally:
         db.close()
 
-@app.on_event("startup")
-def heal_all_cycles_stats():
-    db = SessionLocal()
-    try:
-        # Forzar recálculo del estado financiero de todos los ciclos para corregir cualquier desfase previo de gastos personales
-        ciclos = db.query(HistorialCiclos).all()
-        print(f"Iniciando curación de estadísticas para {len(ciclos)} ciclos...")
-        for c in ciclos:
-            recalculate_ciclo_stats(c, db)
-        db.commit()
-        print("Curación de estadísticas de ciclos completada con éxito.")
-    except Exception as e:
-        print(f"Error durante la curación de ciclos: {e}")
-    finally:
-        db.close()
+# heal_all_cycles_stats removed — startup mass-recalculation was overwriting
+# correctly stored ganancia_usd values for all cycles.
 
 # CORS middleware for local testing/cross-origin access
 app.add_middleware(
@@ -2490,8 +2477,9 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
             )
             db.add(compra_parcial)
             
-            # Recalcular estadísticas del ciclo (la fórmula de sobre excluye gastos personales de la ganancia)
-            recalculate_ciclo_stats(ciclo, db)
+            # Los gastos personales SOLO actualizan el saldo del sobre.
+            # La ganancia_usd del ciclo NUNCA se toca aquí.
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
             
             if ciclo.bolivares_sobre_restantes <= 0.01:
                 ciclo.status = "completado"
@@ -2542,9 +2530,10 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
             ).first()
             if cp:
                 db.delete(cp)
-                
-            # Recalcular estadísticas del ciclo (la fórmula excluye gastos personales de la ganancia)
-            recalculate_ciclo_stats(ciclo, db)
+            
+            # Los gastos personales SOLO actualizan el saldo del sobre.
+            # La ganancia_usd del ciclo NUNCA se toca aquí.
+            ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
             
             if ciclo.bolivares_sobre_restantes > 0.01:
                 ciclo.status = "abierto"
@@ -3416,6 +3405,89 @@ def get_historial_simulaciones(limit: int = 15, username: str = Depends(get_curr
             "tasa_remesa_cliente": s.tasa_remesa_cliente
         })
     return res
+
+
+# ── ADMIN DIAGNOSTIC ENDPOINT ────────────────────────────────────────────────
+@app.get("/api/admin/diagnose")
+def admin_diagnose(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Returns raw cycle data for debugging profit calculations."""
+    ciclos = db.query(HistorialCiclos).all()
+    result = []
+    for c in ciclos:
+        compras = c.compras_parciales or []
+        compras_reales = [cp for cp in compras if cp.usd_comprados is not None and cp.usd_comprados > 0.0]
+        gastos_personales = [cp for cp in compras if cp.usd_comprados is None or cp.usd_comprados == 0.0]
+        
+        tasa = c.tasa_venta or 0.0
+        usdt_vendidos = c.usdt_vendidos or 0.0
+        ves_inicial = round(usdt_vendidos * 0.9975 * tasa, 2) if tasa > 0 else 0.0
+        ves_restantes = c.bolivares_sobre_restantes or 0.0
+        total_gastos_ves = sum(cp.transferencias_ves or 0.0 for cp in gastos_personales)
+        ves_arbitraje = round(ves_inicial - ves_restantes - total_gastos_ves, 2)
+        costo_usdt = round(ves_arbitraje / tasa, 2) if tasa > 0 else 0.0
+        usd_recibidos = sum(cp.usd_recibidos_binance or 0.0 for cp in compras_reales)
+        ganancia_calculada = round(usd_recibidos - costo_usdt, 2)
+        
+        result.append({
+            "id": c.id,
+            "status": c.status,
+            "tasa_venta": tasa,
+            "usdt_vendidos": usdt_vendidos,
+            "ves_inicial": ves_inicial,
+            "bolivares_sobre_restantes": ves_restantes,
+            "total_gastos_personales_ves": total_gastos_ves,
+            "ves_para_arbitraje": ves_arbitraje,
+            "costo_usdt_calculado": costo_usdt,
+            "usd_recibidos_total": round(usd_recibidos, 2),
+            "ganancia_calculada": ganancia_calculada,
+            "ganancia_en_db": c.ganancia_usd,
+            "num_compras_reales": len(compras_reales),
+            "num_gastos_personales": len(gastos_personales),
+            "compras_reales": [{"banco": cp.banco, "usd_comprados": cp.usd_comprados, "usd_recibidos_binance": cp.usd_recibidos_binance, "tasa_bcv": cp.tasa_bcv, "transferencias_ves": cp.transferencias_ves} for cp in compras_reales],
+            "gastos_personales": [{"banco": cp.banco, "transferencias_ves": cp.transferencias_ves} for cp in gastos_personales],
+        })
+    return result
+
+@app.post("/api/admin/repair-profits")
+def admin_repair_profits(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    """
+    Recalculate profits for all cycles using individual purchase costs.
+    Same formula as close_ciclo. Safe to call on open or closed cycles.
+    """
+    ciclos = db.query(HistorialCiclos).all()
+    repaired = []
+    for c in ciclos:
+        old_ganancia = c.ganancia_usd
+        compras_reales = [cp for cp in (c.compras_parciales or []) if cp.usd_comprados is not None and cp.usd_comprados > 0.0]
+        
+        if not compras_reales:
+            repaired.append({"id": c.id, "old_ganancia": old_ganancia, "new_ganancia": old_ganancia, "skipped": True, "reason": "no compras reales"})
+            continue
+        
+        tasa = c.tasa_venta or 0.0
+        if tasa <= 0:
+            repaired.append({"id": c.id, "old_ganancia": old_ganancia, "new_ganancia": old_ganancia, "skipped": True, "reason": "tasa_venta=0"})
+            continue
+        
+        # Costo real en VES por compras individuales (mismo que usa close_ciclo)
+        total_ves_cost = sum(
+            ((cp.usd_comprados or 0.0) * (cp.tasa_bcv or 0.0))
+            + (cp.comision_compra_ves or 0.0)
+            + (cp.transferencias_ves or 0.0)
+            for cp in compras_reales
+        )
+        usd_recibidos = sum((cp.usd_recibidos_binance or 0.0) for cp in compras_reales)
+        costo_usdt = round(total_ves_cost / tasa, 2)
+        nueva_ganancia = round(usd_recibidos - costo_usdt, 2)
+        
+        c.ganancia_usd = nueva_ganancia
+        c.ganancia_porcentaje = round((usd_recibidos / costo_usdt - 1) * 100, 2) if costo_usdt > 0 else 0.0
+        c.usd_recibidos_binance = round(usd_recibidos, 2)
+        
+        repaired.append({"id": c.id, "old_ganancia": old_ganancia, "new_ganancia": nueva_ganancia})
+    
+    db.commit()
+    return {"repaired": len([r for r in repaired if not r.get("skipped")]), "details": repaired}
 
 
 # Serve static frontend files
