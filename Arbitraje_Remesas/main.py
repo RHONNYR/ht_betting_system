@@ -1545,6 +1545,9 @@ def get_stats_dashboard(
         # Check all partial purchases executed in this range
         for cp in all_compras_parciales:
             if cp.fecha and cp.fecha >= start_date and cp.fecha < end_date:
+                # Exclude personal expenses from statistics completely
+                if cp.usd_comprados is None or cp.usd_comprados == 0.0:
+                    continue
                 ciclo = ciclo_map.get(cp.ciclo_id)
                 vol, gan = get_cp_stats(cp, ciclo)
                 total_vol += vol
@@ -1568,6 +1571,9 @@ def get_stats_dashboard(
         total_gan = 0.0
         for cp in all_compras_parciales:
             if cp.fecha and cp.fecha.date() == day_date:
+                # Exclude personal expenses from statistics completely
+                if cp.usd_comprados is None or cp.usd_comprados == 0.0:
+                    continue
                 ciclo = ciclo_map.get(cp.ciclo_id)
                 vol, gan = get_cp_stats(cp, ciclo)
                 total_vol += vol
@@ -1585,6 +1591,9 @@ def get_stats_dashboard(
         total_gan = 0.0
         for cp in all_compras_parciales:
             if cp.fecha and cp.fecha.year == year and cp.fecha.month == month:
+                # Exclude personal expenses from statistics completely
+                if cp.usd_comprados is None or cp.usd_comprados == 0.0:
+                    continue
                 ciclo = ciclo_map.get(cp.ciclo_id)
                 vol, gan = get_cp_stats(cp, ciclo)
                 total_vol += vol
