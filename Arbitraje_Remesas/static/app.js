@@ -1338,7 +1338,7 @@ window.openPivotVES = function(cicloId, maxMonto) {
 
 window.openRegisterGasto = function(cicloId) {
     // Cambiar a la pestaña de Finanzas Personales
-    const tabBtn = document.querySelector('[data-tab="finanzas-personales"]');
+    const tabBtn = document.querySelector('[data-tab="tab-personal"]');
     if (tabBtn) tabBtn.click();
     
     // Seleccionar sub-pestaña de Registrar Gasto
