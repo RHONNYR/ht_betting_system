@@ -27,6 +27,34 @@ def get_venezuela_time():
     # Render servers run in UTC, so we subtract 4 hours to get Venezuela time (UTC-4)
     return datetime.datetime.utcnow() - datetime.timedelta(hours=4)
 
+def recalculate_ciclo_stats(ciclo, db: Session):
+    # Sumar todos los gastos personales (compras parciales donde usd_comprados == 0.0)
+    total_gastos_personales = sum(cp.transferencias_ves for cp in (ciclo.compras_parciales or []) if cp.usd_comprados == 0.0)
+    
+    # Calcular bolívares gastados estrictamente en operaciones de arbitraje (compras oficiales y remesas)
+    bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - (ciclo.bolivares_sobre_restantes or 0.0) - total_gastos_personales, 2)
+    bolivares_gastados_total = max(0.0, bolivares_gastados_total)
+    
+    ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
+    
+    # Recalcular usd acumulado de compras parciales donde usd_comprados > 0.0
+    total_usd_recibidos = sum(cp.usd_recibidos_binance for cp in (ciclo.compras_parciales or []) if cp.usd_comprados > 0.0)
+    total_usd_comprados = sum(cp.usd_comprados for cp in (ciclo.compras_parciales or []) if cp.usd_comprados > 0.0)
+    total_usd_procesados = sum(cp.usd_procesados for cp in (ciclo.compras_parciales or []) if cp.usd_comprados > 0.0)
+    total_comision_compra_ves = sum(cp.comision_compra_ves for cp in (ciclo.compras_parciales or []))
+    total_transferencias_ves = sum(cp.transferencias_ves for cp in (ciclo.compras_parciales or []))
+    
+    ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
+    ciclo.usd_procesados_binance = round(total_usd_procesados, 2)
+    ciclo.divisas_compradas = round(total_usd_comprados, 2)
+    ciclo.comision_compra_ves = round(total_comision_compra_ves, 2)
+    ciclo.transferencias_ves = round(total_transferencias_ves, 2)
+    
+    # Calcular ganancia y ROI
+    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+    ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+
 app = FastAPI(title="Sistema de Arbitraje y Remesas")
 
 # Startup migration to fix legacy purchase bank names in database
@@ -1173,18 +1201,8 @@ def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, us
     
     ciclo.bolivares_sobre_restantes = round(max(0.0, (ciclo.bolivares_sobre_restantes or 0.0) - total_ves_gastado), 2)
     
-    ciclo.divisas_compradas = round((ciclo.divisas_compradas or 0.0) + req.usd_comprados, 2)
-    ciclo.usd_procesados_binance = round((ciclo.usd_procesados_binance or 0.0) + req.usd_procesados, 2)
-    ciclo.usd_recibidos_binance = round((ciclo.usd_recibidos_binance or 0.0) + req.usd_recibidos_binance, 2)
-    ciclo.comision_compra_ves = round((ciclo.comision_compra_ves or 0.0) + req.comision_compra_ves, 2)
-    ciclo.transferencias_ves = round((ciclo.transferencias_ves or 0.0) + req.transferencias_ves, 2)
-    
-    bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
-    ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
-    
-    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
-    ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
-    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    # Recalcular estadísticas del ciclo centralizado
+    recalculate_ciclo_stats(ciclo, db)
     
     if ciclo.bolivares_sobre_restantes <= 0.01:
         ciclo.status = "completado"
@@ -1227,12 +1245,8 @@ def pivot_ciclo_bolivares(ciclo_id: int, req: PivotVESRequest, username: str = D
     if card:
         ciclo.banco_venta = f"{ciclo.banco_venta} ➔ {card.banco}"
         
-    bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes
-    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
-    
-    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
-    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    # Recalcular estadísticas del ciclo centralizado
+    recalculate_ciclo_stats(ciclo, db)
     
     db.commit()
     return {"message": "Transferencia de bolívares registrada con éxito", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
@@ -1247,19 +1261,29 @@ def close_ciclo_manual(ciclo_id: int, username: str = Depends(get_current_user),
     ciclo.bolivares_restantes = 0.0
     ciclo.status = "completado"
     
-    total_ves_spent_cp = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales)
+    # Sumar sólo compras de divisas reales (excluyendo gastos personales)
+    total_ves_spent_cp = sum((cp.usd_comprados * cp.tasa_bcv) + cp.comision_compra_ves + cp.transferencias_ves for cp in ciclo.compras_parciales if cp.usd_comprados > 0.0)
     
     if total_ves_spent_cp > 0:
         bolivares_gastados_total = total_ves_spent_cp
     elif (ciclo.divisas_compradas or 0.0) > 0 and (ciclo.tasa_bcv or 0.0) > 0:
         bolivares_gastados_total = (ciclo.divisas_compradas * ciclo.tasa_bcv) + (ciclo.comision_compra_ves or 0.0) + (ciclo.transferencias_ves or 0.0)
     else:
-        bolivares_gastados_total = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
+        # Si no hay compras parciales registradas, se asume que se gastó todo el sobre en arbitraje
+        # pero restando cualquier gasto personal registrado
+        total_gastos_personales = sum(cp.transferencias_ves for cp in ciclo.compras_parciales if cp.usd_comprados == 0.0)
+        bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - total_gastos_personales
         
     ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta if ciclo.tasa_venta > 0 else 0.0
     
-    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = ((ciclo.usd_recibidos_binance / ustd_cost_of_operation) - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
+    # Recalcular usd acumulado de compras oficiales/remesas
+    total_usd_recibidos = sum(cp.usd_recibidos_binance for cp in ciclo.compras_parciales if cp.usd_comprados > 0.0)
+    ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
+    ciclo.usd_procesados_binance = round(total_usd_recibidos, 2)
+    ciclo.divisas_compradas = round(total_usd_recibidos, 2)
+    
+    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
+    ciclo.ganancia_porcentaje = round(((ciclo.usd_recibidos_binance / ustd_cost_of_operation) - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
     
     db.commit()
     return {"message": "Ciclo cerrado manteniendo la ganancia real de las compras efectuadas", "status": ciclo.status, "ganancia_usd": ciclo.ganancia_usd}
@@ -1376,18 +1400,10 @@ def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_us
     initial_ves = ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta
     ciclo.bolivares_sobre_restantes = min(initial_ves, ciclo.bolivares_sobre_restantes + total_ves_gastado)
     
-    ciclo.divisas_compradas = max(0.0, ciclo.divisas_compradas - compra.usd_comprados)
-    ciclo.usd_procesados_binance = max(0.0, ciclo.usd_procesados_binance - compra.usd_procesados)
-    ciclo.usd_recibidos_binance = max(0.0, ciclo.usd_recibidos_binance - compra.usd_recibidos_binance)
-    ciclo.comision_compra_ves = max(0.0, ciclo.comision_compra_ves - compra.comision_compra_ves)
-    ciclo.transferencias_ves = max(0.0, ciclo.transferencias_ves - compra.transferencias_ves)
+    db.delete(compra)
     
-    bolivares_gastados_total = (ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes
-    ustd_cost_of_operation = bolivares_gastados_total / ciclo.tasa_venta
-    
-    ciclo.ganancia_usd = ciclo.usd_recibidos_binance - ustd_cost_of_operation
-    ciclo.ganancia_porcentaje = (ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100 if ustd_cost_of_operation > 0 else 0.0
-    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+    # Recalcular estadísticas del ciclo centralizado
+    recalculate_ciclo_stats(ciclo, db)
     
     if ciclo.bolivares_sobre_restantes > 0.01:
         ciclo.status = "abierto"
@@ -1409,7 +1425,6 @@ def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_us
         if plat:
             plat.saldo_ves = round((plat.saldo_ves or 0.0) + total_ves_gastado, 2)
 
-    db.delete(compra)
     db.commit()
     
     return {"message": "Compra parcial eliminada y saldo de sobre restaurado", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
@@ -1816,18 +1831,8 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
                 if plat:
                     plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - total_ves_gastados), 2)
             
-            # Forzar actualización de estadísticas del ciclo
-            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
-            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
-            
-            # Recalcular usd acumulado de compras parciales
-            total_usd_recibidos = sum(cp.usd_recibidos_binance for cp in ciclo.compras_parciales) + round(req.monto_usd, 2)
-            ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
-            ciclo.usd_procesados_binance = round(total_usd_recibidos, 2)
-            ciclo.divisas_compradas = round(total_usd_recibidos, 2)
-            
-            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
-            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            # Recalcular estadísticas del ciclo centralizado
+            recalculate_ciclo_stats(ciclo, db)
             
             if ciclo.bolivares_sobre_restantes <= 0.01:
                 ciclo.status = "completado"
@@ -2018,19 +2023,8 @@ def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db:
             if cp:
                 db.delete(cp)
                 
-            # Forzar actualización de estadísticas del ciclo excluyendo esta compra parcial
-            cp_id_to_exclude = cp.id if cp else None
-            total_usd_recibidos = sum(c_part.usd_recibidos_binance for c_part in ciclo.compras_parciales if c_part.id != cp_id_to_exclude)
-            
-            ciclo.usd_recibidos_binance = round(total_usd_recibidos, 2)
-            ciclo.usd_procesados_binance = round(total_usd_recibidos, 2)
-            ciclo.divisas_compradas = round(total_usd_recibidos, 2)
-            
-            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
-            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
-            
-            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
-            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            # Recalcular estadísticas del ciclo centralizado
+            recalculate_ciclo_stats(ciclo, db)
             
             if ciclo.bolivares_sobre_restantes > 0.01:
                 ciclo.status = "abierto"
@@ -2452,12 +2446,8 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
             )
             db.add(compra_parcial)
             
-            # Forzar actualización de estadísticas del ciclo
-            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
-            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
-            
-            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
-            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            # Recalcular estadísticas del ciclo centralizado
+            recalculate_ciclo_stats(ciclo, db)
             
             if ciclo.bolivares_sobre_restantes <= 0.01:
                 ciclo.status = "completado"
@@ -2509,12 +2499,8 @@ def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_use
             if cp:
                 db.delete(cp)
                 
-            # Forzar actualización de estadísticas del ciclo
-            bolivares_gastados_total = round((ciclo.usdt_vendidos * 0.9975 * ciclo.tasa_venta) - ciclo.bolivares_sobre_restantes, 2)
-            ustd_cost_of_operation = round(bolivares_gastados_total / ciclo.tasa_venta, 2) if (ciclo.tasa_venta and ciclo.tasa_venta > 0) else 0.0
-            
-            ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - ustd_cost_of_operation, 2)
-            ciclo.ganancia_porcentaje = round((ciclo.usd_recibidos_binance / ustd_cost_of_operation - 1) * 100, 2) if ustd_cost_of_operation > 0 else 0.0
+            # Recalcular estadísticas del ciclo centralizado
+            recalculate_ciclo_stats(ciclo, db)
             
             if ciclo.bolivares_sobre_restantes > 0.01:
                 ciclo.status = "abierto"
