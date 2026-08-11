@@ -1849,16 +1849,16 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
             ciclo.bolivares_sobre_restantes = round(max(0.0, (ciclo.bolivares_sobre_restantes or 0.0) - total_ves_gastados), 2)
             ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
             
-            # Registrar como CompraCicloParcial (repatriación indirecta)
+            # Registrar como CompraCicloParcial de gasto silencioso (sin usd_comprados para no alterar la ganancia del arbitraje ni aparecer en el historial)
             compra_parcial = CompraCicloParcial(
                 ciclo_id=ciclo.id,
                 fecha=remesa_date,
-                usd_comprados=round(req.monto_usd, 2),
-                usd_procesados=round(req.monto_usd, 2),
+                usd_comprados=0.0,
+                usd_procesados=0.0,
                 tasa_bcv=round(req.tasa_cliente, 2),
-                comision_compra_ves=round(req.monto_ves * pm_fee_pct, 2),
-                transferencias_ves=0.0,
-                usd_recibidos_binance=round(req.monto_usd, 2),
+                comision_compra_ves=0.0,
+                transferencias_ves=total_ves_gastados,
+                usd_recibidos_binance=0.0,
                 banco=f"Remesa #{remesa.id} ({req.cliente_nombre})"
             )
             db.add(compra_parcial)
@@ -1965,6 +1965,99 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
     old_monto = remesa.monto_usd
     old_cliente = remesa.cliente_nombre
 
+    old_ciclo_id = remesa.ciclo_id
+    new_ciclo_id = req.ciclo_id
+    old_monto_ves = remesa.monto_ves
+    old_banco_receptor = remesa.banco_receptor
+    
+    # Calculate old total spent including Pago Móvil fee
+    old_pm_fee_pct = 0.003 if (old_banco_receptor.strip().lower() == "pago móvil") else 0.0
+    old_total_ves_gastados = round(old_monto_ves * (1.0 + old_pm_fee_pct), 2)
+    
+    # Calculate new total spent including Pago Móvil fee
+    new_pm_fee_pct = 0.003 if (req.banco_receptor.strip().lower() == "pago móvil") else 0.0
+    new_total_ves_gastados = round(req.monto_ves * (1.0 + new_pm_fee_pct), 2)
+    
+    # ── 1. Revert Old Cycle Impact ──────────────────────────────────────────
+    if old_ciclo_id:
+        old_ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == old_ciclo_id).first()
+        if old_ciclo:
+            old_ciclo.bolivares_sobre_restantes = round((old_ciclo.bolivares_sobre_restantes or 0.0) + old_total_ves_gastados, 2)
+            old_ciclo.bolivares_restantes = old_ciclo.bolivares_sobre_restantes
+            if old_ciclo.bolivares_sobre_restantes > 0.01:
+                old_ciclo.status = "abierto"
+            
+            # Revert DistribucionCapital balance for old platform
+            old_bank_clean = old_banco_receptor.strip().lower()
+            if old_bank_clean == "pago móvil":
+                old_bank_clean = (old_ciclo.banco_venta or "").lower()
+            
+            old_target_platform = None
+            if "provincial" in old_bank_clean:
+                old_target_platform = "Banco Provincial (VES)"
+            elif "venezuela" in old_bank_clean or "bdv" in old_bank_clean:
+                old_target_platform = "Banco de Venezuela (VES)"
+            elif "mercantil" in old_bank_clean:
+                old_target_platform = "Banco Mercantil (VES)"
+            elif "bancamiga" in old_bank_clean:
+                old_target_platform = "Bancamiga (VES)"
+                
+            if old_target_platform:
+                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == old_target_platform).first()
+                if plat:
+                    plat.saldo_ves = round((plat.saldo_ves or 0.0) + old_total_ves_gastados, 2)
+            
+            # Delete old CompraCicloParcial
+            cp = db.query(CompraCicloParcial).filter(
+                CompraCicloParcial.ciclo_id == old_ciclo.id,
+                CompraCicloParcial.banco.like(f"%Remesa #{remesa.id}%")
+            ).first()
+            if cp:
+                db.delete(cp)
+
+    # ── 2. Apply New Cycle Impact ──────────────────────────────────────────
+    if new_ciclo_id:
+        new_ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == new_ciclo_id).first()
+        if new_ciclo:
+            new_ciclo.bolivares_sobre_restantes = round(max(0.0, (new_ciclo.bolivares_sobre_restantes or 0.0) - new_total_ves_gastados), 2)
+            new_ciclo.bolivares_restantes = new_ciclo.bolivares_sobre_restantes
+            if new_ciclo.bolivares_sobre_restantes <= 0.01:
+                new_ciclo.status = "completado"
+                
+            # Deduct from DistribucionCapital new platform
+            new_bank_clean = req.banco_receptor.strip().lower()
+            if new_bank_clean == "pago móvil":
+                new_bank_clean = (new_ciclo.banco_venta or "").lower()
+            
+            new_target_platform = None
+            if "provincial" in new_bank_clean:
+                new_target_platform = "Banco Provincial (VES)"
+            elif "venezuela" in new_bank_clean or "bdv" in new_bank_clean:
+                new_target_platform = "Banco de Venezuela (VES)"
+            elif "mercantil" in new_bank_clean:
+                new_target_platform = "Banco Mercantil (VES)"
+            elif "bancamiga" in new_bank_clean:
+                new_target_platform = "Bancamiga (VES)"
+                
+            if new_target_platform:
+                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == new_target_platform).first()
+                if plat:
+                    plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - new_total_ves_gastados), 2)
+            
+            # Create a silent CompraCicloParcial (usd_comprados = 0)
+            compra_parcial = CompraCicloParcial(
+                ciclo_id=new_ciclo.id,
+                fecha=remesa.fecha if req.fecha is None else parse_date_string(req.fecha),
+                usd_comprados=0.0,
+                usd_procesados=0.0,
+                tasa_bcv=round(req.tasa_cliente, 2),
+                comision_compra_ves=0.0,
+                transferencias_ves=new_total_ves_gastados,
+                usd_recibidos_binance=0.0,
+                banco=f"Remesa #{remesa.id} ({req.cliente_nombre})"
+            )
+            db.add(compra_parcial)
+
     if req.fecha:
         remesa.fecha = parse_date_string(req.fecha)
     remesa.cliente_nombre = req.cliente_nombre
@@ -1977,7 +2070,20 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
     remesa.banco_receptor = req.banco_receptor
     remesa.costo_adquisicion_usdt = round(req.costo_adquisicion_usdt, 4)
     remesa.comision_binance = round(req.comision_binance, 4)
+    remesa.ciclo_id = req.ciclo_id
     
+    db.commit()
+
+    # ── 3. Recalculate Cycle Stats ─────────────────────────────────────────
+    if old_ciclo_id:
+        old_ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == old_ciclo_id).first()
+        if old_ciclo:
+            recalculate_ciclo_stats(old_ciclo, db)
+    if new_ciclo_id and new_ciclo_id != old_ciclo_id:
+        new_ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == new_ciclo_id).first()
+        if new_ciclo:
+            recalculate_ciclo_stats(new_ciclo, db)
+            
     db.commit()
 
     # Sync Zelle ledger movements
@@ -3429,6 +3535,50 @@ def get_historial_simulaciones(limit: int = 15, username: str = Depends(get_curr
 
 
 # ── ADMIN DIAGNOSTIC ENDPOINT ────────────────────────────────────────────────
+@app.post("/api/admin/repair-remesas")
+def admin_repair_remesas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Convert all existing remesa-linked partial purchases to silent expenses (usd_comprados=0.0)."""
+    cps = db.query(CompraCicloParcial).filter(CompraCicloParcial.banco.like("Remesa #%")).all()
+    repaired_count = 0
+    affected_cycle_ids = set()
+    
+    for cp in cps:
+        if cp.usd_comprados is not None and cp.usd_comprados > 0.0:
+            try:
+                parts = cp.banco.split("#")
+                remesa_id_part = parts[1].split(" ")[0]
+                remesa_id = int(remesa_id_part)
+            except Exception as e:
+                print(f"Error parsing remesa ID from {cp.banco}: {e}")
+                continue
+                
+            remesa = db.query(HistorialRemesas).filter(HistorialRemesas.id == remesa_id).first()
+            if remesa:
+                pm_fee_pct = 0.003 if (remesa.banco_receptor.strip().lower() == "pago móvil") else 0.0
+                total_ves_gastados = round(remesa.monto_ves * (1.0 + pm_fee_pct), 2)
+                
+                # Convert it to a silent debit (like a personal expense)
+                cp.usd_comprados = 0.0
+                cp.usd_procesados = 0.0
+                cp.usd_recibidos_binance = 0.0
+                cp.comision_compra_ves = 0.0
+                cp.transferencias_ves = total_ves_gastados
+                
+                if cp.ciclo_id:
+                    affected_cycle_ids.add(cp.ciclo_id)
+                repaired_count += 1
+                
+    db.commit()
+    
+    # Recalculate stats for affected cycles
+    for cid in affected_cycle_ids:
+        ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == cid).first()
+        if ciclo:
+            recalculate_ciclo_stats(ciclo, db)
+            
+    db.commit()
+    return {"repaired": repaired_count, "cycles_affected": list(affected_cycle_ids)}
+
 @app.get("/api/admin/diagnose")
 def admin_diagnose(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     """Returns raw cycle data for debugging profit calculations."""
