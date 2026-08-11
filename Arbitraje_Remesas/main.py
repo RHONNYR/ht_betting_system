@@ -61,20 +61,26 @@ def recalculate_ciclo_stats(ciclo, db: Session):
     tasa = ciclo.tasa_venta or 0.0
     usdt_vendidos = ciclo.usdt_vendidos or 0.0
     
-    if tasa > 0 and usdt_vendidos > 0:
-        ves_inicial = round(usdt_vendidos * 0.9975 * tasa, 2)
-        ves_restantes = ciclo.bolivares_sobre_restantes or 0.0
-        # VES usados en arbitraje = inicial - lo que queda - gastos personales
-        ves_arbitraje = round(ves_inicial - ves_restantes - total_gastos_personales_ves, 2)
-        ves_arbitraje = max(0.0, ves_arbitraje)
-        costo_usdt = round(ves_arbitraje / tasa, 2)
+    # Si no hay compras reales registradas en el ciclo, la ganancia es simplemente 0.0
+    # (previene que ciclos de prueba o cancelados muestren una pérdida del 100%)
+    if not compras_reales:
+        ciclo.ganancia_usd = 0.0
+        ciclo.ganancia_porcentaje = 0.0
     else:
-        costo_usdt = 0.0
-    
-    ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - costo_usdt, 2)
-    ciclo.ganancia_porcentaje = round(
-        (ciclo.usd_recibidos_binance / costo_usdt - 1) * 100, 2
-    ) if costo_usdt > 0 else 0.0
+        if tasa > 0 and usdt_vendidos > 0:
+            ves_inicial = round(usdt_vendidos * 0.9975 * tasa, 2)
+            ves_restantes = ciclo.bolivares_sobre_restantes or 0.0
+            # VES usados en arbitraje = inicial - lo que queda - gastos personales
+            ves_arbitraje = round(ves_inicial - ves_restantes - total_gastos_personales_ves, 2)
+            ves_arbitraje = max(0.0, ves_arbitraje)
+            costo_usdt = round(ves_arbitraje / tasa, 2)
+        else:
+            costo_usdt = 0.0
+        
+        ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - costo_usdt, 2)
+        ciclo.ganancia_porcentaje = round(
+            (ciclo.usd_recibidos_binance / costo_usdt - 1) * 100, 2
+        ) if costo_usdt > 0 else 0.0
     
     # bolivares_restantes = saldo del sobre (caja) — no interviene en la ganancia
     ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
@@ -3476,7 +3482,9 @@ def admin_repair_profits(username: str = Depends(get_current_user), db: Session 
         compras_reales = [cp for cp in (c.compras_parciales or []) if cp.usd_comprados is not None and cp.usd_comprados > 0.0]
         
         if not compras_reales:
-            repaired.append({"id": c.id, "old_ganancia": old_ganancia, "new_ganancia": old_ganancia, "skipped": True, "reason": "no compras reales"})
+            c.ganancia_usd = 0.0
+            c.ganancia_porcentaje = 0.0
+            repaired.append({"id": c.id, "old_ganancia": old_ganancia, "new_ganancia": 0.0, "reason": "no compras reales"})
             continue
         
         tasa = c.tasa_venta or 0.0
