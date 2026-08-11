@@ -3535,50 +3535,6 @@ def get_historial_simulaciones(limit: int = 15, username: str = Depends(get_curr
 
 
 # ── ADMIN DIAGNOSTIC ENDPOINT ────────────────────────────────────────────────
-@app.post("/api/admin/repair-remesas")
-def admin_repair_remesas(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
-    """Convert all existing remesa-linked partial purchases to silent expenses (usd_comprados=0.0)."""
-    cps = db.query(CompraCicloParcial).filter(CompraCicloParcial.banco.like("Remesa #%")).all()
-    repaired_count = 0
-    affected_cycle_ids = set()
-    
-    for cp in cps:
-        if cp.usd_comprados is not None and cp.usd_comprados > 0.0:
-            try:
-                parts = cp.banco.split("#")
-                remesa_id_part = parts[1].split(" ")[0]
-                remesa_id = int(remesa_id_part)
-            except Exception as e:
-                print(f"Error parsing remesa ID from {cp.banco}: {e}")
-                continue
-                
-            remesa = db.query(HistorialRemesas).filter(HistorialRemesas.id == remesa_id).first()
-            if remesa:
-                pm_fee_pct = 0.003 if (remesa.banco_receptor.strip().lower() == "pago móvil") else 0.0
-                total_ves_gastados = round(remesa.monto_ves * (1.0 + pm_fee_pct), 2)
-                
-                # Convert it to a silent debit (like a personal expense)
-                cp.usd_comprados = 0.0
-                cp.usd_procesados = 0.0
-                cp.usd_recibidos_binance = 0.0
-                cp.comision_compra_ves = 0.0
-                cp.transferencias_ves = total_ves_gastados
-                
-                if cp.ciclo_id:
-                    affected_cycle_ids.add(cp.ciclo_id)
-                repaired_count += 1
-                
-    db.commit()
-    
-    # Recalculate stats for affected cycles
-    for cid in affected_cycle_ids:
-        ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == cid).first()
-        if ciclo:
-            recalculate_ciclo_stats(ciclo, db)
-            
-    db.commit()
-    return {"repaired": repaired_count, "cycles_affected": list(affected_cycle_ids)}
-
 @app.get("/api/admin/diagnose")
 def admin_diagnose(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     """Returns raw cycle data for debugging profit calculations."""
