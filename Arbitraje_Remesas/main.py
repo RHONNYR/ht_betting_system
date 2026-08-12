@@ -228,6 +228,17 @@ class CompraCicloParcialCreate(BaseModel):
     banco: Optional[str] = None
     tarjeta_id: Optional[int] = None
 
+class CompraCicloParcialUpdate(BaseModel):
+    usd_comprados: float
+    usd_procesados: float
+    tasa_bcv: float
+    comision_compra_ves: float
+    transferencias_ves: float
+    usd_recibidos_binance: float
+    banco: Optional[str] = None
+    tarjeta_id: Optional[int] = None
+    fecha: Optional[str] = None
+
 class PivotVESRequest(BaseModel):
     tarjeta_destino_id: int
     monto_ves_transferido: float
@@ -1471,6 +1482,88 @@ def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_us
     db.commit()
     
     return {"message": "Compra parcial eliminada y saldo de sobre restaurado", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes}
+
+@app.put("/api/ciclos/compras/{compra_id}")
+def update_compra_parcial(compra_id: int, req: CompraCicloParcialUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    compra = db.query(CompraCicloParcial).filter(CompraCicloParcial.id == compra_id).first()
+    if not compra:
+        raise HTTPException(status_code=404, detail="Compra parcial no encontrada")
+        
+    ciclo = db.query(HistorialCiclos).filter(HistorialCiclos.id == compra.ciclo_id).first()
+    if not ciclo:
+        raise HTTPException(status_code=404, detail="Ciclo no encontrado")
+        
+    # ── 1. Revert Old Cost Impact ──────────────────────────────────────────
+    old_costo_ves = compra.usd_comprados * compra.tasa_bcv
+    old_total_ves_gastado = old_costo_ves + compra.comision_compra_ves + compra.transferencias_ves
+    
+    initial_ves = (ciclo.usdt_vendidos or 0.0) * 0.9975 * (ciclo.tasa_venta or 0.0)
+    ciclo.bolivares_sobre_restantes = min(initial_ves, (ciclo.bolivares_sobre_restantes or 0.0) + old_total_ves_gastado)
+    
+    # Revert bank balance of old platform
+    old_bank_clean = (compra.banco or ciclo.banco_venta or "").lower()
+    old_target_platform = None
+    if "provincial" in old_bank_clean:
+        old_target_platform = "Banco Provincial (VES)"
+    elif "venezuela" in old_bank_clean or "bdv" in old_bank_clean:
+        old_target_platform = "Banco de Venezuela (VES)"
+    elif "mercantil" in old_bank_clean:
+        old_target_platform = "Banco Mercantil (VES)"
+    elif "bancamiga" in old_bank_clean:
+        old_target_platform = "Bancamiga (VES)"
+        
+    if old_target_platform:
+        plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == old_target_platform).first()
+        if plat:
+            plat.saldo_ves = round((plat.saldo_ves or 0.0) + old_total_ves_gastado, 2)
+            
+    # ── 2. Apply New Cost Impact ──────────────────────────────────────────
+    new_costo_ves = req.usd_comprados * req.tasa_bcv
+    new_total_ves_gastado = new_costo_ves + req.comision_compra_ves + req.transferencias_ves
+    
+    ciclo.bolivares_sobre_restantes = round(max(0.0, (ciclo.bolivares_sobre_restantes or 0.0) - new_total_ves_gastado), 2)
+    
+    # Deduct from DistribucionCapital new platform
+    new_bank_clean = (req.banco or ciclo.banco_venta or "").lower()
+    new_target_platform = None
+    if "provincial" in new_bank_clean:
+        new_target_platform = "Banco Provincial (VES)"
+    elif "venezuela" in new_bank_clean or "bdv" in new_bank_clean:
+        new_target_platform = "Banco de Venezuela (VES)"
+    elif "mercantil" in new_bank_clean:
+        new_target_platform = "Banco Mercantil (VES)"
+    elif "bancamiga" in new_bank_clean:
+        new_target_platform = "Bancamiga (VES)"
+        
+    if new_target_platform:
+        plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == new_target_platform).first()
+        if plat:
+            plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - new_total_ves_gastado), 2)
+            
+    # ── 3. Update Compra Record ─────────────────────────────────────────────
+    if req.fecha:
+        compra.fecha = parse_date_string(req.fecha)
+    compra.usd_comprados = round(req.usd_comprados, 2)
+    compra.usd_procesados = round(req.usd_procesados, 2)
+    compra.tasa_bcv = round(req.tasa_bcv, 2)
+    compra.comision_compra_ves = round(req.comision_compra_ves, 2)
+    compra.transferencias_ves = round(req.transferencias_ves, 2)
+    compra.usd_recibidos_binance = round(req.usd_recibidos_binance, 2)
+    compra.banco = req.banco
+    compra.tarjeta_id = req.tarjeta_id
+    
+    db.commit()
+    
+    # ── 4. Recalculate stats ───────────────────────────────────────────────
+    recalculate_ciclo_stats(ciclo, db)
+    
+    if ciclo.bolivares_sobre_restantes > 0.01:
+        ciclo.status = "abierto"
+    else:
+        ciclo.status = "completado"
+        
+    db.commit()
+    return {"message": "Compra parcial actualizada correctamente", "bolivares_sobre_restantes": ciclo.bolivares_sobre_restantes, "status": ciclo.status}
 
 # Remittance Routes
 @app.post("/api/p2p-rate")
