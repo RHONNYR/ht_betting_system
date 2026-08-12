@@ -2177,6 +2177,56 @@
         </div>
     </div>
 
+    <!-- MODAL: EDITAR COMPRA PARCIAL DE CICLO (SOBRE) -->
+    <div id="modal-editar-compra-parcial" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h3>Editar Compra Parcial de Sobre</h3>
+            <div style="background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; border: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-secondary);">
+                ℹ️ Modificar los datos recalculará automáticamente los bolívares restantes en tu sobre activo.
+            </div>
+            <form id="editar-compra-parcial-form">
+                <input type="hidden" id="edit-compra-parcial-id">
+                <input type="hidden" id="edit-compra-parcial-ciclo-id">
+                
+                <div class="input-group">
+                    <label for="edit-compra-parcial-usd">Dólares Aprobados/Comprados ($)</label>
+                    <input type="number" step="any" id="edit-compra-parcial-usd" required placeholder="Ej. 175">
+                </div>
+                
+                <div class="input-group">
+                    <label for="edit-compra-parcial-tasa">Tasa BCV Aplicada (Bs)</label>
+                    <input type="number" step="any" id="edit-compra-parcial-tasa" required placeholder="Tasa del día">
+                </div>
+                
+                <div class="input-group">
+                    <label for="edit-compra-parcial-tarjeta">Banco de Compra (Tarjeta)</label>
+                    <select id="edit-compra-parcial-tarjeta" required>
+                        <!-- Dynamically populated from JS -->
+                    </select>
+                </div>
+                
+                <div class="input-group flex-row-align" style="gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
+                    <input type="checkbox" id="edit-compra-parcial-pago-movil" style="width: auto;">
+                    <label for="edit-compra-parcial-pago-movil" style="margin: 0;">¿Aplicar 0.3% Pago Móvil / Transferencia?</label>
+                </div>
+                
+                <div class="input-group flex-row-align" style="gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
+                    <input type="checkbox" id="edit-compra-parcial-tercera-edad" style="width: auto;">
+                    <label for="edit-compra-parcial-tercera-edad" style="margin: 0;">👵 Cuenta Tercera Edad (Exento 0.5% BDV)</label>
+                </div>
+                
+                <div id="edit-compra-parcial-preview" style="background: rgba(0,112,243,0.06); border: 1px solid rgba(0,112,243,0.2); padding: 0.6rem 0.8rem; border-radius: 6px; margin-top: 0.75rem; font-size: 0.82rem; color: var(--text-primary); display: none;">
+                    <!-- Live calculation preview -->
+                </div>
+                
+                <div class="modal-actions mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="btn-close-modal-editar-compra-parcial" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Modal: Pivotar Bolívares (Transferir a otro banco) -->
     <div id="modal-pivot-ves" class="modal hidden">
         <div class="modal-content glass-card">
@@ -2486,6 +2536,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=148"></script>
+    <script src="app.js?v=149"></script>
 </body>
 </html>
