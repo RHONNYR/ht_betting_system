@@ -105,6 +105,10 @@ const els = {
     editarCicloForm: document.getElementById('editar-ciclo-form'),
     btnCloseModalEditarCiclo: document.getElementById('btn-close-modal-editar-ciclo'),
     
+    modalEditarCompraParcial: document.getElementById('modal-editar-compra-parcial'),
+    editarCompraParcialForm: document.getElementById('editar-compra-parcial-form'),
+    btnCloseModalEditarCompraParcial: document.getElementById('btn-close-modal-editar-compra-parcial'),
+    
     // Stats Tab
     statsPeriodoSelect: document.getElementById('stats-periodo-select'),
 
@@ -1477,6 +1481,139 @@ async function handleCompraParcialSubmit(e) {
     }
 }
 
+window.openEditCompraParcial = function(cpId, cicloId) {
+    const ciclo = state.ciclos.find(c => c.id === cicloId);
+    if (!ciclo) return;
+    const cp = ciclo.compras_parciales.find(item => item.id === cpId);
+    if (!cp) return;
+    
+    document.getElementById('edit-compra-parcial-id').value = cp.id;
+    document.getElementById('edit-compra-parcial-ciclo-id').value = cicloId;
+    document.getElementById('edit-compra-parcial-usd').value = cp.usd_comprados;
+    document.getElementById('edit-compra-parcial-tasa').value = cp.tasa_bcv;
+    
+    // Populate cards
+    const selectTarjeta = document.getElementById('edit-compra-parcial-tarjeta');
+    if (selectTarjeta && els.calcTarjetaCompra) {
+        selectTarjeta.innerHTML = els.calcTarjetaCompra.innerHTML;
+        selectTarjeta.value = cp.tarjeta_id || '';
+    }
+    
+    // Set checkboxes
+    const checkPm = document.getElementById('edit-compra-parcial-pago-movil');
+    if (checkPm) {
+        checkPm.checked = (cp.transferencias_ves > 0);
+    }
+    
+    const checkTercera = document.getElementById('edit-compra-parcial-tercera-edad');
+    if (checkTercera) {
+        const isBdv = (cp.banco || '').toLowerCase().includes('venezuela') || (cp.banco || '').toLowerCase().includes('bdv');
+        checkTercera.checked = (isBdv && cp.comision_compra_ves === 0.0);
+    }
+    
+    updateEditCompraParcialPreview();
+    openModal(els.modalEditarCompraParcial);
+};
+
+window.updateEditCompraParcialPreview = function() {
+    const previewContainer = document.getElementById('edit-compra-parcial-preview');
+    if (!previewContainer) return;
+    
+    const usd = parseFloat(document.getElementById('edit-compra-parcial-usd').value) || 0;
+    const tasa = parseFloat(document.getElementById('edit-compra-parcial-tasa').value) || 0;
+    const targetSelect = document.getElementById('edit-compra-parcial-tarjeta');
+    const applyPm = document.getElementById('edit-compra-parcial-pago-movil') ? document.getElementById('edit-compra-parcial-pago-movil').checked : false;
+    const applyTercera = document.getElementById('edit-compra-parcial-tercera-edad') ? document.getElementById('edit-compra-parcial-tercera-edad').checked : false;
+    
+    if (usd > 0 && tasa > 0 && targetSelect && targetSelect.selectedIndex >= 0) {
+        const selectedOption = targetSelect.options[targetSelect.selectedIndex];
+        const bancoText = selectedOption ? (selectedOption.getAttribute('data-banco') || 'Banco') : 'Banco';
+        const isBdv = bancoText.toLowerCase().includes('venezuela') || bancoText.toLowerCase().includes('bdv');
+        
+        const costoBase = usd * tasa;
+        const comisionCompra = (applyTercera && isBdv) ? 0.0 : (costoBase * 0.005);
+        const comisionPm = applyPm ? (costoBase * 0.003) : 0.0;
+        const totalVes = costoBase + comisionCompra + comisionPm;
+        
+        previewContainer.style.display = 'block';
+        previewContainer.innerHTML = `
+            <div style="display: flex; justify-content: space-between; font-weight: 500;">
+                <span>🏦 Banco a registrar:</span>
+                <strong style="color: var(--primary-color);">${bancoText}</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 2px;">
+                <span>Deducción estimada del sobre:</span>
+                <strong style="color: var(--text-danger);">${totalVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES</strong>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 2px;">
+                Costo Base: ${costoBase.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES | Comision BDV: ${comisionCompra.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES | PM: ${comisionPm.toLocaleString('es-VE', {minimumFractionDigits: 2})} VES
+            </div>
+        `;
+    } else {
+        previewContainer.style.display = 'none';
+    }
+};
+
+async function handleEditarCompraParcialSubmit(e) {
+    e.preventDefault();
+    const cpId = parseInt(document.getElementById('edit-compra-parcial-id').value);
+    const cicloId = parseInt(document.getElementById('edit-compra-parcial-ciclo-id').value);
+    const usd = parseFloat(document.getElementById('edit-compra-parcial-usd').value);
+    const tasa = parseFloat(document.getElementById('edit-compra-parcial-tasa').value);
+    const applyPm = document.getElementById('edit-compra-parcial-pago-movil').checked;
+    
+    if (isNaN(usd) || isNaN(tasa) || usd <= 0 || tasa <= 0) {
+        alert("Por favor introduce montos válidos.");
+        return;
+    }
+    
+    const selectTarjeta = document.getElementById('edit-compra-parcial-tarjeta');
+    const selectedOption = selectTarjeta ? selectTarjeta.options[selectTarjeta.selectedIndex] : null;
+    
+    let cardComisionPct = 0.0;
+    let isTerceraEdad = false;
+    let bancoText = "BCV";
+    let tarjetaIdVal = null;
+    
+    if (selectedOption) {
+        tarjetaIdVal = parseInt(selectedOption.value);
+        cardComisionPct = parseFloat(selectedOption.getAttribute('data-comision')) || 0.0;
+        isTerceraEdad = selectedOption.getAttribute('data-tercera-edad') === 'true';
+        bancoText = selectedOption.getAttribute('data-banco') || "Banco";
+    }
+    
+    const usdProcesadosCard = usd * (1 - cardComisionPct);
+    const applyTerceraEdad = document.getElementById('edit-compra-parcial-tercera-edad').checked || isTerceraEdad;
+    const isBdv = (bancoText || '').toLowerCase().includes('venezuela') || (bancoText || '').toLowerCase().includes('bdv');
+    const compraComisionPct = (applyTerceraEdad && isBdv) ? 0.0 : 0.005;
+    const costoBaseVES = usd * tasa;
+    const comisionCompraVES = costoBaseVES * compraComisionPct;
+    const transferenciasVes = applyPm ? (costoBaseVES * 0.003) : 0.0;
+    
+    const binanceDepositFeePct = 0.041;
+    const usdNetosRecibidosBinance = usdProcesadosCard * (1 - binanceDepositFeePct);
+    
+    const payload = {
+        usd_comprados: usd,
+        usd_procesados: usdProcesadosCard,
+        tasa_bcv: tasa,
+        comision_compra_ves: comisionCompraVES,
+        transferencias_ves: transferenciasVes,
+        usd_recibidos_binance: usdNetosRecibidosBinance,
+        banco: bancoText,
+        tarjeta_id: tarjetaIdVal
+    };
+    
+    try {
+        const res = await apiCall(`/ciclos/compras/${cpId}`, 'PUT', payload);
+        showToast(res.message);
+        closeModal(els.modalEditarCompraParcial);
+        await initDashboard();
+    } catch (err) {
+        showToast(err.message, "danger");
+    }
+}
+
 async function handlePivotVESSubmit(e) {
     e.preventDefault();
     const cicloId = parseInt(document.getElementById('pivot-ves-ciclo-id').value);
@@ -1615,7 +1752,10 @@ function renderCiclosTable() {
                     </td>
                     <td style="color: var(--text-muted); opacity: 0.5;">—</td>
                     <td>
-                        <button class="btn btn-sm" onclick="deleteCompraParcialDirect(${cp.id}, ${c.id})" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(239,68,68,0.1); color: var(--text-danger); border: 1px solid rgba(239,68,68,0.15);" title="Eliminar esta compra parcial de este sobre">🗑️ Compra</button>
+                        <div class="flex-row-align" style="gap: 0.3rem;">
+                            <button class="btn btn-secondary btn-sm" onclick="openEditCompraParcial(${cp.id}, ${c.id})" style="padding: 2px 6px; font-size: 0.7rem;" title="Editar esta compra parcial">✏️ Editar</button>
+                            <button class="btn btn-sm" onclick="deleteCompraParcialDirect(${cp.id}, ${c.id})" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(239,68,68,0.1); color: var(--text-danger); border: 1px solid rgba(239,68,68,0.15);" title="Eliminar esta compra parcial de este sobre">🗑️</button>
+                        </div>
                     </td>
                 `;
                 els.ciclosTableBody.appendChild(subTr);
@@ -2432,6 +2572,36 @@ function setupEventListeners() {
     }
     if (cpPm) cpPm.addEventListener('change', updatePartialBuyPreview);
     if (els.compraParcialTerceraEdad) els.compraParcialTerceraEdad.addEventListener('change', updatePartialBuyPreview);
+
+    if (els.editarCompraParcialForm) {
+        els.editarCompraParcialForm.addEventListener('submit', handleEditarCompraParcialSubmit);
+    }
+    if (els.btnCloseModalEditarCompraParcial) {
+        els.btnCloseModalEditarCompraParcial.addEventListener('click', () => closeModal(els.modalEditarCompraParcial));
+    }
+    
+    const editCpUsd = document.getElementById('edit-compra-parcial-usd');
+    const editCpTasa = document.getElementById('edit-compra-parcial-tasa');
+    const editCpTarjeta = document.getElementById('edit-compra-parcial-tarjeta');
+    const editCpPm = document.getElementById('edit-compra-parcial-pago-movil');
+    const editCpTercera = document.getElementById('edit-compra-parcial-tercera-edad');
+    
+    if (editCpUsd) editCpUsd.addEventListener('input', updateEditCompraParcialPreview);
+    if (editCpTasa) editCpTasa.addEventListener('input', updateEditCompraParcialPreview);
+    if (editCpTarjeta) {
+        editCpTarjeta.addEventListener('change', () => {
+            if (editCpTarjeta.selectedIndex >= 0) {
+                const opt = editCpTarjeta.options[editCpTarjeta.selectedIndex];
+                if (editCpTercera && opt) {
+                    editCpTercera.checked = (opt.getAttribute('data-tercera-edad') === 'true');
+                }
+            }
+            updateEditCompraParcialPreview();
+        });
+    }
+    if (editCpPm) editCpPm.addEventListener('change', updateEditCompraParcialPreview);
+    if (editCpTercera) editCpTercera.addEventListener('change', updateEditCompraParcialPreview);
+
     if (els.pivotVesForm) {
         els.pivotVesForm.addEventListener('submit', handlePivotVESSubmit);
     }
