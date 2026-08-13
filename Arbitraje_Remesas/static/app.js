@@ -3755,6 +3755,25 @@ function formatFechaForDatetimeLocal(fechaStr) {
     return '';
 }
 
+function formatFechaForDateInput(fechaStr) {
+    if (!fechaStr) return '';
+    try {
+        const parts = fechaStr.trim().split(' ');
+        if (parts.length >= 1 && parts[0].includes('/')) {
+            const [d, m, y] = parts[0].split('/');
+            const paddedD = String(d).padStart(2, '0');
+            const paddedMonth = String(m).padStart(2, '0');
+            return `${y}-${paddedMonth}-${paddedD}`;
+        }
+        if (fechaStr.includes('-')) {
+            return fechaStr.split('T')[0].split(' ')[0];
+        }
+    } catch (e) {
+        console.error("Error formatting date for input:", e);
+    }
+    return '';
+}
+
 function iniciarEditarRemesa(id) {
     const r = (state.rawRemesas || []).find(rem => rem.id === id);
     if (!r) return;
@@ -3763,7 +3782,7 @@ function iniciarEditarRemesa(id) {
     document.getElementById('edit-remesa-cliente').value = r.cliente_nombre;
     const inputFecha = document.getElementById('edit-remesa-fecha');
     if (inputFecha && r.fecha) {
-        inputFecha.value = formatFechaForDatetimeLocal(r.fecha);
+        inputFecha.value = formatFechaForDateInput(r.fecha);
     }
     document.getElementById('edit-remesa-monto-usd').value = r.monto_usd;
     document.getElementById('edit-remesa-tasa-p2p').value = r.tasa_p2p;
