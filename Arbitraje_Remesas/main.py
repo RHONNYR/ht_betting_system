@@ -3628,6 +3628,48 @@ def get_historial_simulaciones(limit: int = 15, username: str = Depends(get_curr
 
 
 # ── ADMIN DIAGNOSTIC ENDPOINT ────────────────────────────────────────────────
+@app.post("/api/admin/clean-zelle")
+def admin_clean_zelle(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    """Deletes duplicate Zelle ledger entries and reconciles Zelle platform balance."""
+    # 1. Update ID 35 to link to remesa 53 and correct its metadata
+    m35 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 35).first()
+    if m35:
+        m35.remesa_id = 53
+        m35.estado = "remesado"
+        m35.detalle = "Remesa ID #53 de José Figueroa"
+        
+    # 2. Duplicate IDs to delete
+    duplicate_ids = [34, 66, 58, 33, 55, 54, 56, 50]
+    deleted_count = 0
+    for mid in duplicate_ids:
+        m = db.query(MovimientoZelle).filter(MovimientoZelle.id == mid).first()
+        if m:
+            db.delete(m)
+            deleted_count += 1
+            
+    db.commit()
+    
+    # 3. Reconcile Zelle platform balance based on net sum of remaining movements
+    remaining_movs = db.query(MovimientoZelle).all()
+    total_ingresos = sum(m.monto for m in remaining_movs if m.tipo == "ingreso")
+    total_egresos = sum(m.monto for m in remaining_movs if m.tipo == "egreso")
+    net_balance = round(total_ingresos - total_egresos, 2)
+    
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    old_balance = 0.0
+    if zelle_plat:
+        old_balance = zelle_plat.saldo_usd
+        zelle_plat.saldo_usd = net_balance
+        
+    db.commit()
+    
+    return {
+        "message": "Zelle ledger cleaned and reconciled successfully",
+        "deleted_count": deleted_count,
+        "old_balance": old_balance,
+        "new_balance": net_balance
+    }
+
 @app.get("/api/admin/diagnose")
 def admin_diagnose(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     """Returns raw cycle data for debugging profit calculations."""
