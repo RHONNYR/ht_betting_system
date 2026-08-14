@@ -402,8 +402,11 @@
                                         <input type="number" step="any" id="remesa-monto-usd" required value="100" placeholder="Ej. 100">
                                     </div>
                                     <div class="input-group">
-                                        <label for="remesa-fecha">Fecha Operación (Opcional)</label>
-                                        <input type="date" id="remesa-fecha" title="Deja en blanco para la fecha actual o selecciona una fecha pasada">
+                                        <label>Fecha y Hora Operación (Opcional)</label>
+                                        <div style="display: flex; gap: 0.4rem; align-items: center;">
+                                            <input type="date" id="remesa-fecha" style="flex: 1;" title="Selecciona la fecha (opcional)">
+                                            <input type="time" id="remesa-hora" style="flex: 0 0 110px;" title="Selecciona la hora (opcional)">
+                                        </div>
                                     </div>
                                     <div class="input-group">
                                         <label for="remesa-margen">Margen Deseado (%)</label>
@@ -2048,8 +2051,11 @@
                         <input type="text" id="edit-remesa-cliente" required placeholder="Ej. Juan Pérez">
                     </div>
                     <div class="input-group">
-                        <label for="edit-remesa-fecha">Fecha Operación</label>
-                        <input type="date" id="edit-remesa-fecha">
+                        <label>Fecha y Hora Operación</label>
+                        <div style="display: flex; gap: 0.4rem; align-items: center;">
+                            <input type="date" id="edit-remesa-fecha" style="flex: 1;" title="Selecciona la fecha">
+                            <input type="time" id="edit-remesa-hora" style="flex: 0 0 110px;" title="Selecciona la hora">
+                        </div>
                     </div>
                     <div class="input-group">
                         <label for="edit-remesa-monto-usd">Monto Enviado (USD)</label>
@@ -2536,6 +2542,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=151"></script>
+    <script src="app.js?v=152"></script>
 </body>
 </html>
