@@ -2188,7 +2188,13 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
         zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
         
         if old_metodo == "zelle" and new_metodo != "zelle":
-            mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {old_cliente}").first()
+            mov = db.query(MovimientoZelle).filter(
+                MovimientoZelle.detalle.like(f"Remesa ID%{remesa_id} de {old_cliente}%")
+            ).first()
+            if not mov:
+                mov = db.query(MovimientoZelle).filter(
+                    MovimientoZelle.remesa_id == remesa_id
+                ).first()
             if mov:
                 db.delete(mov)
             if zelle_plat:
@@ -2207,7 +2213,13 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
                 zelle_plat.saldo_usd += new_monto
                 
         elif old_metodo == "zelle" and new_metodo == "zelle":
-            mov = db.query(MovimientoZelle).filter(MovimientoZelle.detalle == f"Remesa ID {remesa_id} de {old_cliente}").first()
+            mov = db.query(MovimientoZelle).filter(
+                MovimientoZelle.detalle.like(f"Remesa ID%{remesa_id} de {old_cliente}%")
+            ).first()
+            if not mov:
+                mov = db.query(MovimientoZelle).filter(
+                    MovimientoZelle.remesa_id == remesa_id
+                ).first()
             if mov:
                 mov.fecha = remesa.fecha
                 mov.monto = new_monto
