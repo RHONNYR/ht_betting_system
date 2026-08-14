@@ -2966,7 +2966,10 @@ function setupEventListeners() {
             const guessedGender = getGenderEmoji(cliente) === '👩' ? 'Femenino' : 'Masculino';
             
             const editFechaInput = document.getElementById('edit-remesa-fecha');
-            const editFechaVal = editFechaInput ? editFechaInput.value : null;
+            const editHoraInput  = document.getElementById('edit-remesa-hora');
+            const _editDate = editFechaInput ? editFechaInput.value : null;
+            const _editTime = editHoraInput  ? editHoraInput.value  : null;
+            const editFechaVal = _editDate ? (_editTime ? `${_editDate}T${_editTime}` : _editDate) : null;
             
             try {
                 await apiCall(`/remesas/${id}`, 'PUT', {
@@ -3561,7 +3564,9 @@ function calculateRemesa(source = null) {
         // Net profit in USD
         const gananciaUsd = Math.round((montoUsd - costoRealUsdt) * 100) / 100;
         
-        const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
+        const _rFecha = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
+        const _rHora  = document.getElementById('remesa-hora')  ? document.getElementById('remesa-hora').value  : null;
+        const remesaFechaVal = _rFecha ? (_rHora ? `${_rFecha}T${_rHora}` : _rFecha) : null;
         
         state.currentCalculatedRemesa = {
             cliente_nombre: els.remesaCliente ? (els.remesaCliente.value || "Cliente") : "Cliente",
@@ -3677,7 +3682,9 @@ async function registrarRemesa() {
             state.currentCalculatedRemesa.ciclo_id = null;
         }
 
-        const remesaFechaVal = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
+        const _rFecha2 = document.getElementById('remesa-fecha') ? document.getElementById('remesa-fecha').value : null;
+        const _rHora2  = document.getElementById('remesa-hora')  ? document.getElementById('remesa-hora').value  : null;
+        const remesaFechaVal = _rFecha2 ? (_rHora2 ? `${_rFecha2}T${_rHora2}` : _rFecha2) : null;
         if (remesaFechaVal) {
             state.currentCalculatedRemesa.fecha = remesaFechaVal;
         }
@@ -3774,6 +3781,33 @@ function formatFechaForDateInput(fechaStr) {
     return '';
 }
 
+function formatHoraForTimeInput(fechaStr) {
+    if (!fechaStr) return '';
+    try {
+        const parts = fechaStr.trim().split(' ');
+        if (parts.length >= 2 && parts[0].includes('/')) {
+            let timeStr = parts[1];
+            let [hh, mm] = timeStr.split(':');
+            let hours = parseInt(hh, 10);
+            if (parts.length >= 3) {
+                const ampm = parts[2].toUpperCase();
+                if (ampm === 'PM' && hours < 12) hours += 12;
+                if (ampm === 'AM' && hours === 12) hours = 0;
+            }
+            return `${String(hours).padStart(2, '0')}:${String(mm).padStart(2, '0')}`;
+        }
+        if (fechaStr.includes('T')) {
+            return fechaStr.split('T')[1].substring(0, 5);
+        }
+        if (fechaStr.includes(' ') && fechaStr.includes('-')) {
+            return fechaStr.split(' ')[1].substring(0, 5);
+        }
+    } catch (e) {
+        console.error("Error formatting time for input:", e);
+    }
+    return '';
+}
+
 function iniciarEditarRemesa(id) {
     const r = (state.rawRemesas || []).find(rem => rem.id === id);
     if (!r) return;
@@ -3781,8 +3815,12 @@ function iniciarEditarRemesa(id) {
     document.getElementById('edit-remesa-id').value = r.id;
     document.getElementById('edit-remesa-cliente').value = r.cliente_nombre;
     const inputFecha = document.getElementById('edit-remesa-fecha');
+    const inputHora  = document.getElementById('edit-remesa-hora');
     if (inputFecha && r.fecha) {
         inputFecha.value = formatFechaForDateInput(r.fecha);
+    }
+    if (inputHora && r.fecha) {
+        inputHora.value = formatHoraForTimeInput(r.fecha);
     }
     document.getElementById('edit-remesa-monto-usd').value = r.monto_usd;
     document.getElementById('edit-remesa-tasa-p2p').value = r.tasa_p2p;
