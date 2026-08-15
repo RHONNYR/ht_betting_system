@@ -1956,25 +1956,8 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
             )
             db.add(compra_parcial)
             
-            # Sincronización automática de saldo en DistribucionCapital
-            bank_clean = req.banco_receptor.strip().lower()
-            if bank_clean == "pago móvil":
-                bank_clean = (ciclo.banco_venta or "").lower()
-            
-            target_platform = None
-            if "provincial" in bank_clean:
-                target_platform = "Banco Provincial (VES)"
-            elif "venezuela" in bank_clean or "bdv" in bank_clean:
-                target_platform = "Banco de Venezuela (VES)"
-            elif "mercantil" in bank_clean:
-                target_platform = "Banco Mercantil (VES)"
-            elif "bancamiga" in bank_clean:
-                target_platform = "Bancamiga (VES)"
-                
-            if target_platform:
-                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
-                if plat:
-                    plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - total_ves_gastados), 2)
+            # Nota: Los saldos VES de DistribucionCapital se actualizan manualmente por el usuario.
+            # Solo el saldo Zelle se sincroniza de forma automática.
             
             # Recalcular estadísticas del ciclo centralizado
             recalculate_ciclo_stats(ciclo, db)
@@ -2080,25 +2063,7 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
             if old_ciclo.bolivares_sobre_restantes > 0.01:
                 old_ciclo.status = "abierto"
             
-            # Revert DistribucionCapital balance for old platform
-            old_bank_clean = old_banco_receptor.strip().lower()
-            if old_bank_clean == "pago móvil":
-                old_bank_clean = (old_ciclo.banco_venta or "").lower()
-            
-            old_target_platform = None
-            if "provincial" in old_bank_clean:
-                old_target_platform = "Banco Provincial (VES)"
-            elif "venezuela" in old_bank_clean or "bdv" in old_bank_clean:
-                old_target_platform = "Banco de Venezuela (VES)"
-            elif "mercantil" in old_bank_clean:
-                old_target_platform = "Banco Mercantil (VES)"
-            elif "bancamiga" in old_bank_clean:
-                old_target_platform = "Bancamiga (VES)"
-                
-            if old_target_platform:
-                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == old_target_platform).first()
-                if plat:
-                    plat.saldo_ves = round((plat.saldo_ves or 0.0) + old_total_ves_gastados, 2)
+            # Nota: Reversión de saldos VES omitida — el usuario gestiona esos saldos manualmente.
             
             # Delete old CompraCicloParcial
             cp = db.query(CompraCicloParcial).filter(
@@ -2117,25 +2082,7 @@ def update_remesa(remesa_id: int, req: RemesaCreate, username: str = Depends(get
             if new_ciclo.bolivares_sobre_restantes <= 0.01:
                 new_ciclo.status = "completado"
                 
-            # Deduct from DistribucionCapital new platform
-            new_bank_clean = req.banco_receptor.strip().lower()
-            if new_bank_clean == "pago móvil":
-                new_bank_clean = (new_ciclo.banco_venta or "").lower()
-            
-            new_target_platform = None
-            if "provincial" in new_bank_clean:
-                new_target_platform = "Banco Provincial (VES)"
-            elif "venezuela" in new_bank_clean or "bdv" in new_bank_clean:
-                new_target_platform = "Banco de Venezuela (VES)"
-            elif "mercantil" in new_bank_clean:
-                new_target_platform = "Banco Mercantil (VES)"
-            elif "bancamiga" in new_bank_clean:
-                new_target_platform = "Bancamiga (VES)"
-                
-            if new_target_platform:
-                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == new_target_platform).first()
-                if plat:
-                    plat.saldo_ves = round(max(0.0, (plat.saldo_ves or 0.0) - new_total_ves_gastados), 2)
+            # Nota: Deducción de saldos VES omitida — el usuario gestiona esos saldos manualmente.
             
             # Create a silent CompraCicloParcial (usd_comprados = 0)
             compra_parcial = CompraCicloParcial(
@@ -2258,25 +2205,7 @@ def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db:
             ciclo.bolivares_sobre_restantes = round((ciclo.bolivares_sobre_restantes or 0.0) + total_ves_gastados, 2)
             ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
             
-            # Revertir saldo en la cuenta bancaria de DistribucionCapital
-            bank_clean = remesa.banco_receptor.strip().lower()
-            if bank_clean == "pago móvil":
-                bank_clean = (ciclo.banco_venta or "").lower()
-                
-            target_platform = None
-            if "provincial" in bank_clean:
-                target_platform = "Banco Provincial (VES)"
-            elif "venezuela" in bank_clean or "bdv" in bank_clean:
-                target_platform = "Banco de Venezuela (VES)"
-            elif "mercantil" in bank_clean:
-                target_platform = "Banco Mercantil (VES)"
-            elif "bancamiga" in bank_clean:
-                target_platform = "Bancamiga (VES)"
-                
-            if target_platform:
-                plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
-                if plat:
-                    plat.saldo_ves = round((plat.saldo_ves or 0.0) + total_ves_gastados, 2)
+            # Nota: Reversión de saldo VES omitida — el usuario gestiona esos saldos manualmente.
             
             # Buscar y eliminar CompraCicloParcial correspondiente
             cp = db.query(CompraCicloParcial).filter(
