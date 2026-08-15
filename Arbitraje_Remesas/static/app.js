@@ -5502,6 +5502,12 @@ function renderCategoryChart(data) {
     const values = sortedEntries.map(e => e[1]);
     const total = values.reduce((a, b) => a + b, 0);
 
+    // Actualizar el total visible filtrado
+    const totalEl = document.getElementById('personal-gastos-filtrado-total');
+    if (totalEl) {
+        totalEl.textContent = `$${total.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+    }
+
     if (labels.length === 0) { labels.push("Sin gastos"); values.push(0); }
 
     // Ajustar altura del contenedor dinámicamente según el número de barras para evitar solapamientos
@@ -5655,6 +5661,12 @@ function renderIncomeChart(data) {
     const labels = sortedEntries.map(e => e[0]);
     const values = sortedEntries.map(e => e[1]);
     const total = values.reduce((a, b) => a + b, 0);
+
+    // Actualizar el total visible filtrado
+    const totalEl = document.getElementById('personal-ingresos-filtrado-total');
+    if (totalEl) {
+        totalEl.textContent = `$${total.toLocaleString('es-VE', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+    }
 
     if (labels.length === 0) { labels.push("Sin ingresos"); values.push(0); }
 
