@@ -1069,12 +1069,31 @@
                             </div>
 
 
-                            <!-- Gráficos de Finanzas Personales -->
+            <!-- Gráficos de Finanzas Personales -->
                             <div class="card glass-card">
-                                <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                                <div class="card-header" style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
                                     <h2>📊 Distribución de Gastos e Ingresos</h2>
+                                    <!-- Filtro de periodo -->
+                                    <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                                        <select id="personal-chart-periodo" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 8px; padding: 0.3rem 0.6rem; font-size: 0.72rem; cursor: pointer; outline: none;">
+                                            <option value="semana">📅 Esta semana</option>
+                                            <option value="mes" selected>🗓️ Este mes</option>
+                                            <option value="anio">📆 Este año</option>
+                                            <option value="historico">📜 Histórico</option>
+                                            <option value="personalizado">✏️ Personalizado</option>
+                                        </select>
+                                        <div id="personal-chart-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
+                                            <input type="date" id="personal-chart-desde" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 6px; padding: 0.25rem 0.4rem; font-size: 0.7rem; outline: none;">
+                                            <span style="font-size: 0.7rem; color: var(--text-secondary);">→</span>
+                                            <input type="date" id="personal-chart-hasta" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 6px; padding: 0.25rem 0.4rem; font-size: 0.7rem; outline: none;">
+                                            <button id="personal-chart-apply" style="background: linear-gradient(135deg,#6366f1,#8b5cf6); border: none; color: #fff; border-radius: 6px; padding: 0.25rem 0.55rem; font-size: 0.7rem; cursor: pointer;">Aplicar</button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <!-- Etiqueta del periodo activo -->
+                                <div id="personal-chart-label" style="text-align:center; font-size:0.7rem; color:var(--text-secondary); padding: 0.3rem 1rem 0;"></div>
                                 <div class="card-body" style="display: flex; flex-direction: column; gap: 1.8rem; padding: 1.25rem 1rem;">
+
                                     <!-- Sección de Gastos -->
                                     <div style="width: 100%; display: flex; flex-direction: column; gap: 0.6rem;">
                                         <div style="display: flex; justify-content: space-between; align-items: center; border-left: 3px solid #ef4444; padding-left: 0.5rem;">
