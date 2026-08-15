@@ -3178,15 +3178,34 @@ def get_deuda_abonos(deuda_id: int, username: str = Depends(get_current_user), d
 
 # 5. ASESOR FINANCIERO Y DASHBOARD PERSONAL
 @app.get("/api/personal/dashboard")
-def get_personal_dashboard(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+def get_personal_dashboard(
+    desde: str = None,
+    hasta: str = None,
+    username: str = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
     venezuela_now = get_venezuela_time()
-    inicio_mes = datetime.datetime(venezuela_now.year, venezuela_now.month, 1)
+
+    # Resolver rango de fechas según los parámetros recibidos
+    if desde and hasta:
+        try:
+            inicio_mes = datetime.datetime.fromisoformat(desde)
+            fin_periodo = datetime.datetime.fromisoformat(hasta) + datetime.timedelta(days=1)
+        except Exception:
+            inicio_mes = datetime.datetime(venezuela_now.year, venezuela_now.month, 1)
+            fin_periodo = None
+    else:
+        inicio_mes = datetime.datetime(venezuela_now.year, venezuela_now.month, 1)
+        fin_periodo = None
     
     # 1. Total debts pending
     total_deudas = db.query(func.sum(DeudaPersonal.saldo_pendiente_usd)).filter(DeudaPersonal.estado == "activa").scalar() or 0.0
     
-    # 2. Total expenses in current month
-    gastos_mes = db.query(GastoPersonal).filter(GastoPersonal.fecha >= inicio_mes).all()
+    # 2. Total expenses in the selected period
+    gastos_q = db.query(GastoPersonal).filter(GastoPersonal.fecha >= inicio_mes)
+    if fin_periodo:
+        gastos_q = gastos_q.filter(GastoPersonal.fecha < fin_periodo)
+    gastos_mes = gastos_q.all()
     total_gastos_mes = sum(g.monto_usd for g in gastos_mes)
     
     # Gastos por categoría para el gráfico circular
@@ -3201,8 +3220,11 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
             key = f"{icono} {cat_name}"
         gastos_por_categoria[key] = gastos_por_categoria.get(key, 0.0) + g.monto_usd
 
-    # 3. Total incomes in current month
-    ingresos_mes = db.query(IngresoPersonal).filter(IngresoPersonal.fecha >= inicio_mes).all()
+    # 3. Total incomes in the selected period
+    ingresos_q = db.query(IngresoPersonal).filter(IngresoPersonal.fecha >= inicio_mes)
+    if fin_periodo:
+        ingresos_q = ingresos_q.filter(IngresoPersonal.fecha < fin_periodo)
+    ingresos_mes = ingresos_q.all()
     total_ingresos_mes = sum(i.monto_usd for i in ingresos_mes)
     
     # Ingresos por categoría/detalle discretizados para el gráfico circular
@@ -3229,13 +3251,17 @@ def get_personal_dashboard(username: str = Depends(get_current_user), db: Sessio
     # se actualiza en tiempo real con cada compra registrada. El cierre del ciclo
     # es solo una marca administrativa de que se agotaron los bolívares del sobre,
     # no el momento en que nace la ganancia.
-    ciclos_mes = db.query(HistorialCiclos).filter(
-        HistorialCiclos.fecha >= inicio_mes
-    ).all()
+    ciclos_q = db.query(HistorialCiclos).filter(HistorialCiclos.fecha >= inicio_mes)
+    if fin_periodo:
+        ciclos_q = ciclos_q.filter(HistorialCiclos.fecha < fin_periodo)
+    ciclos_mes = ciclos_q.all()
     ganancia_ciclos = sum(c.ganancia_usd for c in ciclos_mes if c.ganancia_usd is not None)
     
-    # Remesas del mes: cada remesa ya tiene su ganancia registrada al momento de crearse
-    remesas_mes = db.query(HistorialRemesas).filter(HistorialRemesas.fecha >= inicio_mes).all()
+    # Remesas del periodo seleccionado
+    remesas_q = db.query(HistorialRemesas).filter(HistorialRemesas.fecha >= inicio_mes)
+    if fin_periodo:
+        remesas_q = remesas_q.filter(HistorialRemesas.fecha < fin_periodo)
+    remesas_mes = remesas_q.all()
     ganancia_remesas = sum(r.ganancia_usd for r in remesas_mes if r.ganancia_usd is not None)
     
     ganancia_negocio = round(ganancia_ciclos + ganancia_remesas, 2)
