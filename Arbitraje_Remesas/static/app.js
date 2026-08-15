@@ -426,6 +426,7 @@ function handleTabSwitch(e) {
         if (!state.personalUnlocked) {
             clearPin();
         } else {
+            initPersonalChartFilter();
             loadPersonalFinanceData();
         }
     }
@@ -5012,6 +5013,7 @@ window.submitPin = async function() {
             document.getElementById('personal-lock-screen').style.display = 'none';
             document.getElementById('personal-main-panel').style.display = 'block';
             showToast("🔓 Acceso personal autorizado");
+            initPersonalChartFilter();
             loadPersonalFinanceData();
         }
     } catch (err) {
@@ -5250,8 +5252,51 @@ async function loadPersonalFinanceData() {
         populatePersonalCategories(cats);
         initAnalisisDetalle(cats);  // Inicializar filtros con las categorías disponibles
 
-        // Cargar Dashboard / Asesor
-        const dash = await apiCall('/personal/dashboard');
+        // Resolver filtro de periodo para las gráficas
+        const periodoSel = document.getElementById('personal-chart-periodo');
+        const periodo = periodoSel ? periodoSel.value : 'mes';
+        const now = new Date();
+        let desde = null, hasta = null, labelTxt = '';
+
+        if (periodo === 'semana') {
+            const dow = now.getDay(); // 0=Dom
+            const lunes = new Date(now);
+            lunes.setDate(now.getDate() - ((dow + 6) % 7));
+            desde = lunes.toISOString().slice(0, 10);
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = `Semana: ${desde} → ${hasta}`;
+        } else if (periodo === 'mes') {
+            desde = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = `Mes: ${new Date(desde).toLocaleDateString('es-VE', {month:'long', year:'numeric'})}`;
+        } else if (periodo === 'anio') {
+            desde = `${now.getFullYear()}-01-01`;
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = `Año ${now.getFullYear()}`;
+        } else if (periodo === 'historico') {
+            desde = '2000-01-01';
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = 'Histórico completo';
+        } else if (periodo === 'personalizado') {
+            const desdeEl = document.getElementById('personal-chart-desde');
+            const hastaEl = document.getElementById('personal-chart-hasta');
+            desde = desdeEl ? desdeEl.value : null;
+            hasta = hastaEl ? hastaEl.value : null;
+            if (desde && hasta) {
+                labelTxt = `Del ${desde} al ${hasta}`;
+            } else {
+                labelTxt = 'Selecciona las fechas y presiona Aplicar';
+            }
+        }
+
+        // Mostrar etiqueta del periodo
+        const labelEl = document.getElementById('personal-chart-label');
+        if (labelEl) labelEl.textContent = labelTxt;
+
+        // Cargar Dashboard / Asesor con filtro de fechas
+        let dashUrl = '/personal/dashboard';
+        if (desde && hasta) dashUrl += `?desde=${desde}&hasta=${hasta}`;
+        const dash = await apiCall(dashUrl);
         renderPersonalDashboard(dash);
 
         // Cargar Deudas
@@ -5266,6 +5311,28 @@ async function loadPersonalFinanceData() {
         console.error("Error al cargar finanzas personales:", err);
     }
 }
+
+// Wire up period filter events (called once on tab load)
+function initPersonalChartFilter() {
+    const periodoSel = document.getElementById('personal-chart-periodo');
+    const customDates = document.getElementById('personal-chart-custom-dates');
+    const applyBtn = document.getElementById('personal-chart-apply');
+
+    if (periodoSel) {
+        periodoSel.addEventListener('change', () => {
+            if (customDates) {
+                customDates.style.display = periodoSel.value === 'personalizado' ? 'flex' : 'none';
+            }
+            if (periodoSel.value !== 'personalizado') {
+                loadPersonalFinanceData();
+            }
+        });
+    }
+    if (applyBtn) {
+        applyBtn.addEventListener('click', () => loadPersonalFinanceData());
+    }
+}
+
 
 // Poblar dropdowns de categorías
 function populatePersonalCategories(cats) {
