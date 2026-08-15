@@ -12,7 +12,9 @@ const state = {
     divisasCompradasManuallyEdited: false,
     clientes: [],
     personalUnlocked: false,
-    currentPinEntered: ""
+    currentPinEntered: "",
+    excludedPersonalExpenses: new Set(),
+    excludedPersonalIncomes: new Set()
 };
 
 // DOM Elements
@@ -5321,6 +5323,8 @@ function initPersonalChartFilter() {
 
     if (periodoSel) {
         periodoSel.addEventListener('change', () => {
+            state.excludedPersonalExpenses.clear();
+            state.excludedPersonalIncomes.clear();
             if (customDates) {
                 customDates.style.display = periodoSel.value === 'personalizado' ? 'flex' : 'none';
             }
@@ -5330,7 +5334,11 @@ function initPersonalChartFilter() {
         });
     }
     if (applyBtn) {
-        applyBtn.addEventListener('click', () => loadPersonalFinanceData());
+        applyBtn.addEventListener('click', () => {
+            state.excludedPersonalExpenses.clear();
+            state.excludedPersonalIncomes.clear();
+            loadPersonalFinanceData();
+        });
     }
 }
 
@@ -5435,10 +5443,61 @@ function renderCategoryChart(data) {
     const canvas = document.getElementById('chart-personal-categorias');
     if (!canvas) return;
 
+    // Renderizar tags/pills para filtrar
+    const tagsContainer = document.getElementById('personal-gastos-categories-tags');
+    if (tagsContainer) {
+        tagsContainer.innerHTML = '';
+        Object.keys(data).forEach(cat => {
+            const isExcluded = state.excludedPersonalExpenses.has(cat);
+            const pill = document.createElement('span');
+            pill.className = 'category-pill';
+            pill.textContent = cat;
+            
+            // Estilo del pill
+            pill.style.fontSize = '0.7rem';
+            pill.style.padding = '0.25rem 0.5rem';
+            pill.style.borderRadius = '12px';
+            pill.style.cursor = 'pointer';
+            pill.style.display = 'inline-block';
+            pill.style.userSelect = 'none';
+            pill.style.transition = 'all 0.2s';
+            pill.style.margin = '2px';
+
+            if (isExcluded) {
+                pill.style.background = 'rgba(255,255,255,0.04)';
+                pill.style.border = '1px solid rgba(255,255,255,0.08)';
+                pill.style.color = 'rgba(255,255,255,0.3)';
+            } else {
+                pill.style.background = 'rgba(239, 68, 68, 0.12)';
+                pill.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+                pill.style.color = '#fca5a5';
+            }
+
+            pill.addEventListener('click', () => {
+                if (isExcluded) {
+                    state.excludedPersonalExpenses.delete(cat);
+                } else {
+                    state.excludedPersonalExpenses.add(cat);
+                }
+                renderCategoryChart(data);
+            });
+
+            tagsContainer.appendChild(pill);
+        });
+    }
+
+    // Filtrar los datos reales para el gráfico
+    const filteredData = {};
+    Object.entries(data).forEach(([key, val]) => {
+        if (!state.excludedPersonalExpenses.has(key)) {
+            filteredData[key] = val;
+        }
+    });
+
     if (personalCategoryChart) personalCategoryChart.destroy();
 
     // Ordenar de mayor a menor
-    const sortedEntries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+    const sortedEntries = Object.entries(filteredData).sort((a, b) => b[1] - a[1]);
     const labels = sortedEntries.map(e => e[0]);
     const values = sortedEntries.map(e => e[1]);
     const total = values.reduce((a, b) => a + b, 0);
@@ -5538,10 +5597,61 @@ function renderIncomeChart(data) {
     const canvas = document.getElementById('chart-personal-ingresos');
     if (!canvas) return;
 
+    // Renderizar tags/pills para filtrar
+    const tagsContainer = document.getElementById('personal-ingresos-categories-tags');
+    if (tagsContainer) {
+        tagsContainer.innerHTML = '';
+        Object.keys(data).forEach(cat => {
+            const isExcluded = state.excludedPersonalIncomes.has(cat);
+            const pill = document.createElement('span');
+            pill.className = 'category-pill';
+            pill.textContent = cat;
+            
+            // Estilo del pill
+            pill.style.fontSize = '0.7rem';
+            pill.style.padding = '0.25rem 0.5rem';
+            pill.style.borderRadius = '12px';
+            pill.style.cursor = 'pointer';
+            pill.style.display = 'inline-block';
+            pill.style.userSelect = 'none';
+            pill.style.transition = 'all 0.2s';
+            pill.style.margin = '2px';
+
+            if (isExcluded) {
+                pill.style.background = 'rgba(255,255,255,0.04)';
+                pill.style.border = '1px solid rgba(255,255,255,0.08)';
+                pill.style.color = 'rgba(255,255,255,0.3)';
+            } else {
+                pill.style.background = 'rgba(16, 185, 129, 0.12)';
+                pill.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+                pill.style.color = '#a7f3d0';
+            }
+
+            pill.addEventListener('click', () => {
+                if (isExcluded) {
+                    state.excludedPersonalIncomes.delete(cat);
+                } else {
+                    state.excludedPersonalIncomes.add(cat);
+                }
+                renderIncomeChart(data);
+            });
+
+            tagsContainer.appendChild(pill);
+        });
+    }
+
+    // Filtrar los datos reales para el gráfico
+    const filteredData = {};
+    Object.entries(data).forEach(([key, val]) => {
+        if (!state.excludedPersonalIncomes.has(key)) {
+            filteredData[key] = val;
+        }
+    });
+
     if (personalIncomeChart) personalIncomeChart.destroy();
 
     // Ordenar de mayor a menor
-    const sortedEntries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+    const sortedEntries = Object.entries(filteredData).sort((a, b) => b[1] - a[1]);
     const labels = sortedEntries.map(e => e[0]);
     const values = sortedEntries.map(e => e[1]);
     const total = values.reduce((a, b) => a + b, 0);
