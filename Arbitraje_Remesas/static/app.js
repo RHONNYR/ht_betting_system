@@ -5268,7 +5268,8 @@ async function loadPersonalFinanceData() {
         } else if (periodo === 'mes') {
             desde = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
             hasta = now.toISOString().slice(0, 10);
-            labelTxt = `Mes: ${new Date(desde).toLocaleDateString('es-VE', {month:'long', year:'numeric'})}`;
+            const localMonthDate = new Date(now.getFullYear(), now.getMonth(), 1);
+            labelTxt = `Mes: ${localMonthDate.toLocaleDateString('es-VE', {month:'long', year:'numeric'})}`;
         } else if (periodo === 'anio') {
             desde = `${now.getFullYear()}-01-01`;
             hasta = now.toISOString().slice(0, 10);
