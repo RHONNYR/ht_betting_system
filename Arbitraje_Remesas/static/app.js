@@ -380,25 +380,43 @@ async function fetchBCV() {
         const btnBcvTomorrow = document.getElementById('btn-bcv-tomorrow');
         
         if (bcvToggles && btnBcvToday && btnBcvTomorrow) {
-            if (data.has_tomorrow && state.bcvSource !== 'Manual') {
+            // Mostrar controles si hay tasa de mañana publicada O si estamos en tasa manual (para poder volver a la oficial)
+            if (data.has_tomorrow || state.bcvSource === 'Manual') {
                 bcvToggles.classList.remove('hidden');
                 
-                // Style Today button
-                if (data.active_mode === 'today') {
-                    btnBcvToday.style.background = 'var(--primary-color)';
-                    btnBcvToday.style.color = '#ffffff';
-                    btnBcvTomorrow.style.background = 'var(--bg-hover)';
-                    btnBcvTomorrow.style.color = 'var(--text-secondary)';
+                // Si la tasa de mañana no está publicada, ocultar el botón "Mañana" y dejar solo "Hoy"
+                if (!data.has_tomorrow) {
+                    btnBcvTomorrow.style.display = 'none';
                 } else {
-                    btnBcvToday.style.background = 'var(--bg-hover)';
-                    btnBcvToday.style.color = 'var(--text-secondary)';
-                    btnBcvTomorrow.style.background = 'var(--primary-color)';
-                    btnBcvTomorrow.style.color = '#ffffff';
+                    btnBcvTomorrow.style.display = 'inline-block';
                 }
                 
-                // Set titles to show rates on hover
-                btnBcvToday.title = `Usar tasa de hoy: ${data.today_rate.toFixed(2)} Bs`;
-                btnBcvTomorrow.title = `Usar tasa de mañana: ${data.tomorrow_rate.toFixed(2)} Bs`;
+                if (state.bcvSource === 'Manual') {
+                    // Modo Manual: Ningún botón está seleccionado (estilo inactivo), pero muestran el valor de retorno en el hover
+                    btnBcvToday.style.background = 'var(--bg-hover)';
+                    btnBcvToday.style.color = 'var(--text-secondary)';
+                    btnBcvTomorrow.style.background = 'var(--bg-hover)';
+                    btnBcvTomorrow.style.color = 'var(--text-secondary)';
+                    
+                    btnBcvToday.title = `Volver a tasa oficial de hoy: ${data.today_rate.toFixed(2)} Bs`;
+                    btnBcvTomorrow.title = `Volver a tasa oficial de mañana: ${data.tomorrow_rate.toFixed(2)} Bs`;
+                } else {
+                    // Modo Oficial: Resaltar el botón activo (Hoy o Mañana)
+                    if (data.active_mode === 'today') {
+                        btnBcvToday.style.background = 'var(--primary-color)';
+                        btnBcvToday.style.color = '#ffffff';
+                        btnBcvTomorrow.style.background = 'var(--bg-hover)';
+                        btnBcvTomorrow.style.color = 'var(--text-secondary)';
+                    } else {
+                        btnBcvToday.style.background = 'var(--bg-hover)';
+                        btnBcvToday.style.color = 'var(--text-secondary)';
+                        btnBcvTomorrow.style.background = 'var(--primary-color)';
+                        btnBcvTomorrow.style.color = '#ffffff';
+                    }
+                    
+                    btnBcvToday.title = `Usar tasa de hoy: ${data.today_rate.toFixed(2)} Bs`;
+                    btnBcvTomorrow.title = `Usar tasa de mañana: ${data.tomorrow_rate.toFixed(2)} Bs`;
+                }
             } else {
                 bcvToggles.classList.add('hidden');
             }
