@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Depends, HTTPException, status, Security
+from fastapi import FastAPI, Depends, HTTPException, status, Security, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, text
 import datetime
+import os
 import math
 import requests
 from bs4 import BeautifulSoup
@@ -89,17 +90,50 @@ app = FastAPI(title="Sistema de Arbitraje y Remesas")
 
 # Startup migration to fix legacy purchase bank names in database
 @app.on_event("startup")
-def fix_legacy_purchase_bank_names():
+def run_startup_jobs():
+    # 1. Run database migrations to add cliente_nombre and capture_url to movimientos_zelle
     db = SessionLocal()
     try:
-        # 1. Update purchases that have a valid tarjeta_id
+        engine_name = db.bind.dialect.name
+        if engine_name == "sqlite":
+            try:
+                db.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN cliente_nombre VARCHAR"))
+                db.commit()
+            except Exception:
+                db.rollback()
+            try:
+                db.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN capture_url VARCHAR"))
+                db.commit()
+            except Exception:
+                db.rollback()
+        else: # PostgreSQL
+            try:
+                db.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN IF NOT EXISTS cliente_nombre VARCHAR"))
+                db.commit()
+            except Exception:
+                db.rollback()
+            try:
+                db.execute(text("ALTER TABLE movimientos_zelle ADD COLUMN IF NOT EXISTS capture_url VARCHAR"))
+                db.commit()
+            except Exception:
+                db.rollback()
+                
+        # Ensure uploads folder exists
+        os.makedirs("Arbitraje_Remesas/static/uploads", exist_ok=True)
+    except Exception as e:
+        print(f"Error during startup DB columns migration: {e}")
+    finally:
+        db.close()
+
+    # 2. Fix legacy purchase bank names
+    db = SessionLocal()
+    try:
         purchases_with_card = db.query(CompraCicloParcial).filter(CompraCicloParcial.tarjeta_id.isnot(None)).all()
         for p in purchases_with_card:
             card = db.query(Tarjeta).filter(Tarjeta.id == p.tarjeta_id).first()
             if card and p.banco != card.banco:
                 p.banco = card.banco
         
-        # 2. Update legacy purchases that have no card or are named "Rhonny", "None" or similar
         all_purchases = db.query(CompraCicloParcial).all()
         for p in all_purchases:
             if not p.banco or p.banco.strip().lower() in ("rhonny", "none", "banco", ""):
@@ -119,6 +153,19 @@ def fix_legacy_purchase_bank_names():
         print(f"Error during legacy purchase migration: {e}")
     finally:
         db.close()
+
+    # 3. Setup Telegram Bot webhook
+    bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+    if bot_token:
+        webhook_url = "https://arbitraje-rhonny-99.onrender.com/api/webhooks/telegram"
+        api_url = f"https://api.telegram.org/bot{bot_token}/setWebhook"
+        try:
+            r = requests.post(api_url, json={"url": webhook_url})
+            print(f"Telegram webhook registration: {r.status_code} - {r.json()}")
+        except Exception as e:
+            print(f"Failed to register Telegram webhook: {e}")
+    else:
+        print("TELEGRAM_BOT_TOKEN not configured. Skipping bot webhook registration.")
 
 # heal_all_cycles_stats removed — startup mass-recalculation was overwriting
 # correctly stored ganancia_usd values for all cycles.
@@ -294,6 +341,8 @@ class MovimientoZelleCreate(BaseModel):
     fecha: Optional[str] = None
     estado: Optional[str] = "completado"  # "completado", "pendiente"
     force: Optional[bool] = False
+    cliente_nombre: Optional[str] = None
+    capture_url: Optional[str] = None
 
 class BCVModeRequest(BaseModel):
     mode: str
@@ -756,7 +805,9 @@ def get_zelle_movimientos(
             "detalle": m.detalle or "-",
             "estado": getattr(m, "estado", "completado") or "completado",
             "remesa_id": getattr(m, "remesa_id", None),
-            "saldo_acumulado": balances_map.get(m.id, 0.0)
+            "saldo_acumulado": balances_map.get(m.id, 0.0),
+            "cliente_nombre": getattr(m, "cliente_nombre", None) or "-",
+            "capture_url": getattr(m, "capture_url", None)
         })
         
     return {
@@ -812,7 +863,9 @@ def create_zelle_movimiento(req: MovimientoZelleCreate, username: str = Depends(
         monto=req.monto,
         titular=req.titular,
         detalle=req.detalle,
-        estado=estado_mov
+        estado=estado_mov,
+        cliente_nombre=req.cliente_nombre,
+        capture_url=req.capture_url
     )
     db.add(mov)
     
@@ -858,6 +911,8 @@ def update_zelle_movimiento(mov_id: int, req: MovimientoZelleCreate, username: s
     mov.titular = req.titular
     mov.detalle = req.detalle
     mov.estado = req.estado or "completado"
+    mov.cliente_nombre = req.cliente_nombre
+    mov.capture_url = req.capture_url
     
     # Aplicar impacto del nuevo saldo
     if zelle_plat:
@@ -882,20 +937,212 @@ def update_zelle_movimiento_estado(mov_id: int, req: dict, username: str = Depen
 
 @app.delete("/api/zelle/movimientos/{mov_id}")
 def delete_zelle_movimiento(mov_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
-    mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == mov_id).first()
-    if not mov:
-        raise HTTPException(status_code=404, detail="Movimiento no encontrado")
-        
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    if zelle_plat:
-        if mov.tipo == "ingreso":
-            zelle_plat.saldo_usd -= mov.monto
-        elif mov.tipo == "egreso":
-            zelle_plat.saldo_usd += mov.monto
-            
     db.delete(mov)
     db.commit()
     return {"message": "Movimiento eliminado con éxito"}
+
+# Telegram Bot Webhook Integration
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID")
+
+def send_telegram_message(chat_id: int, text: str):
+    if not TELEGRAM_BOT_TOKEN:
+        return
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    try:
+        requests.post(url, json={
+            "chat_id": chat_id,
+            "text": text,
+            "parse_mode": "Markdown"
+        })
+    except Exception as e:
+        print(f"Error sending message to telegram: {e}")
+
+def download_telegram_file(file_id: str) -> str:
+    if not TELEGRAM_BOT_TOKEN:
+        return None
+    try:
+        # 1. Get file path
+        get_file_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getFile?file_id={file_id}"
+        res = requests.get(get_file_url).json()
+        file_path = res.get("result", {}).get("file_path")
+        if not file_path:
+            return None
+            
+        # 2. Download the file data
+        download_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
+        file_data = requests.get(download_url).content
+        
+        # 3. Save to static/uploads
+        filename = f"zelle_{int(datetime.datetime.now().timestamp())}_{os.path.basename(file_path)}"
+        local_path = os.path.join("Arbitraje_Remesas", "static", "uploads", filename)
+        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        with open(local_path, "wb") as f:
+            f.write(file_data)
+            
+        return f"/static/uploads/{filename}"
+    except Exception as e:
+        print(f"Error downloading telegram file: {e}")
+        return None
+
+import re
+
+@app.post("/api/webhooks/telegram")
+async def telegram_webhook(update: dict, db: Session = Depends(get_db)):
+    message = update.get("message", {})
+    chat_id = message.get("chat", {}).get("id")
+    sender_id = str(message.get("from", {}).get("id", ""))
+    
+    if not chat_id:
+        return {"status": "ignored"}
+        
+    # Validar que el usuario esté autorizado
+    if not TELEGRAM_ALLOWED_USER_ID:
+        send_telegram_message(chat_id, "⚠️ **Configuración incompleta:** `TELEGRAM_ALLOWED_USER_ID` no está configurado en el servidor.")
+        return {"status": "ignored"}
+        
+    if sender_id != str(TELEGRAM_ALLOWED_USER_ID):
+        send_telegram_message(chat_id, "❌ **Acceso denegado.** Tu ID de Telegram no está autorizado para interactuar con este bot.")
+        return {"status": "denied"}
+        
+    text = message.get("text") or message.get("caption") or ""
+    text = text.strip()
+    
+    # Descargar capture de imagen si existe
+    photo_list = message.get("photo", [])
+    capture_url = None
+    if photo_list:
+        largest_photo = photo_list[-1]
+        file_id = largest_photo.get("file_id")
+        capture_url = download_telegram_file(file_id)
+        
+    # Expresiones regulares de parseo
+    income_match = re.match(r"^\+\s*([0-9]+(?:\.[0-9]+)?)\s+(.+)$", text)
+    expense_match = re.match(r"^-\s*([0-9]+(?:\.[0-9]+)?)\s+(.+)$", text)
+    
+    fecha_mov = get_venezuela_time()
+    
+    if income_match:
+        monto = float(income_match.group(1))
+        names_str = income_match.group(2).strip()
+        
+        # Separar Cliente / Titular por barra diagonal "/"
+        if "/" in names_str:
+            parts = names_str.split("/", 1)
+            cliente = parts[0].strip()
+            titular = parts[1].strip()
+        else:
+            cliente = names_str
+            titular = names_str
+            
+        # Insertar movimiento como "pendiente"
+        mov = MovimientoZelle(
+            fecha=fecha_mov,
+            tipo="ingreso",
+            monto=monto,
+            cliente_nombre=cliente,
+            titular=titular,
+            detalle="Registrado vía Bot de Telegram",
+            estado="pendiente",
+            capture_url=capture_url
+        )
+        db.add(mov)
+        
+        # Sumar al saldo de la cuenta Zelle en DistribucionCapital
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        if zelle_plat:
+            zelle_plat.saldo_usd = round(zelle_plat.saldo_usd + monto, 2)
+            
+        db.commit()
+        db.refresh(mov)
+        
+        saldo_actual = zelle_plat.saldo_usd if zelle_plat else 0.0
+        
+        msg = (
+            f"✅ **Ingreso Zelle Registrado**\n\n"
+            f"💵 **Monto:** `${monto:.2f}`\n"
+            f"👤 **Cliente:** `{cliente}`\n"
+            f"🏦 **Emisor Zelle:** `{titular}`\n"
+            f"📸 **Capture:** {'Guardado exitosamente' if capture_url else 'No provisto'}\n\n"
+            f"📊 **Saldo Actual Zelle:** `${saldo_actual:.2f}`"
+        )
+        send_telegram_message(chat_id, msg)
+        
+    elif expense_match:
+        monto = float(expense_match.group(1))
+        detalle = expense_match.group(2).strip()
+        
+        # Insertar egreso como "completado"
+        mov = MovimientoZelle(
+            fecha=fecha_mov,
+            tipo="egreso",
+            monto=monto,
+            detalle=detalle,
+            estado="completado",
+            capture_url=capture_url
+        )
+        db.add(mov)
+        
+        # Restar del saldo de la cuenta Zelle en DistribucionCapital
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        if zelle_plat:
+            zelle_plat.saldo_usd = round(zelle_plat.saldo_usd - monto, 2)
+            
+        db.commit()
+        db.refresh(mov)
+        
+        saldo_actual = zelle_plat.saldo_usd if zelle_plat else 0.0
+        
+        msg = (
+            f"✅ **Egreso Zelle Registrado**\n\n"
+            f"💸 **Monto:** `-${monto:.2f}`\n"
+            f"📝 **Detalle/Concepto:** `{detalle}`\n"
+            f"📸 **Capture:** {'Guardado exitosamente' if capture_url else 'No provisto'}\n\n"
+            f"📊 **Saldo Actual Zelle:** `${saldo_actual:.2f}`"
+        )
+        send_telegram_message(chat_id, msg)
+        
+    elif text.lower() in ("saldo", "/saldo", "zelle", "capital"):
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        saldo_actual = zelle_plat.saldo_usd if zelle_plat else 0.0
+        
+        # Contar movimientos pendientes de remesar
+        pendientes = db.query(MovimientoZelle).filter(MovimientoZelle.estado == "pendiente").count()
+        
+        msg = (
+            f"📊 **Estado de Cuenta Zelle**\n\n"
+            f"🏦 **Saldo en Cuenta:** `${saldo_actual:.2f}`\n"
+            f"⏳ **Zelles por Remesar:** `{pendientes}`"
+        )
+        send_telegram_message(chat_id, msg)
+        
+    else:
+        # Comando no reconocido
+        msg = (
+            f"❓ **Comando no reconocido**\n\n"
+            f"Usa los siguientes formatos:\n"
+            f"• `+100 Cliente / Titular` (Registrar Ingreso)\n"
+            f"• `-50 Alquiler` (Registrar Egreso)\n"
+            f"• `saldo` (Ver saldo actual)\n\n"
+            f"*(Puedes adjuntar la imagen del capture en cualquiera de los comandos)*"
+        )
+        send_telegram_message(chat_id, msg)
+        
+    return {"status": "processed"}
+
+@app.post("/api/upload")
+async def upload_file(file: UploadFile = File(...), username: str = Depends(get_current_user)):
+    try:
+        # Check folders
+        os.makedirs("Arbitraje_Remesas/static/uploads", exist_ok=True)
+        # Save file
+        filename = f"manual_{int(datetime.datetime.now().timestamp())}_{os.path.basename(file.filename)}"
+        local_path = os.path.join("Arbitraje_Remesas", "static", "uploads", filename)
+        with open(local_path, "wb") as f:
+            f.write(await file.read())
+        return {"capture_url": f"/static/uploads/{filename}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error uploading file: {e}")
 
 # Titulares & Cards Routes
 @app.get("/api/titulares")
@@ -2084,7 +2331,14 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
         if req.zelle_movimiento_id:
             linked_mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == req.zelle_movimiento_id).first()
         if not linked_mov:
-            # Fallback search for pending Zelle deposit from this client
+            # Fallback search 1: Prioritize matching the new cliente_nombre field
+            linked_mov = db.query(MovimientoZelle).filter(
+                MovimientoZelle.tipo == "ingreso",
+                MovimientoZelle.cliente_nombre.ilike(f"%{req.cliente_nombre}%"),
+                MovimientoZelle.estado == "pendiente"
+            ).first()
+        if not linked_mov:
+            # Fallback search 2: Legacy compatibility matching titular
             linked_mov = db.query(MovimientoZelle).filter(
                 MovimientoZelle.tipo == "ingreso",
                 MovimientoZelle.titular.ilike(f"%{req.cliente_nombre}%"),
@@ -2100,6 +2354,7 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
                 fecha=remesa.fecha,
                 tipo="ingreso",
                 monto=round(req.monto_usd, 2),
+                cliente_nombre=req.cliente_nombre,
                 titular=req.cliente_nombre,
                 detalle=f"Remesa ID #{remesa.id} de {req.cliente_nombre}",
                 estado="remesado",
