@@ -673,7 +673,26 @@ def delete_capital_snapshot(snap_id: int, username: str = Depends(get_current_us
 
 # Zelle Ledger Routes
 @app.get("/api/zelle/movimientos")
-def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+def get_zelle_movimientos(
+    desde: str = None,
+    hasta: str = None,
+    username: str = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    # Parse dates for filtering query
+    inicio_filtro = None
+    fin_filtro = None
+    if desde:
+        try:
+            inicio_filtro = datetime.datetime.fromisoformat(desde)
+        except Exception:
+            pass
+    if hasta:
+        try:
+            fin_filtro = datetime.datetime.fromisoformat(hasta) + datetime.timedelta(days=1)
+        except Exception:
+            pass
+
     # 1. Fetch ALL movements sorted chronologically to compute running balances correctly
     all_movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.asc()).all()
     balances_map = {}
@@ -685,8 +704,14 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
             current_balance -= m.monto
         balances_map[m.id] = round(current_balance, 2)
 
-    # 2. Get the latest 150 movements sorted descending for display
-    movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(150).all()
+    # 2. Query movements to be returned (with optional date filtering)
+    query_movs = db.query(MovimientoZelle)
+    if inicio_filtro:
+        query_movs = query_movs.filter(MovimientoZelle.fecha >= inicio_filtro)
+    if fin_filtro:
+        query_movs = query_movs.filter(MovimientoZelle.fecha < fin_filtro)
+        
+    movs = query_movs.order_by(MovimientoZelle.fecha.desc()).limit(150).all()
     
     # Compute weekly totals (from Monday to Sunday of the current week)
     now = get_venezuela_time()
@@ -697,18 +722,28 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
     start_of_day = datetime.datetime(now.year, now.month, now.day)
     start_of_month = datetime.datetime(now.year, now.month, 1)
     
-    # Calcular consumos diario y mensual de ingresos y egresos Zelle
-    daily_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_day)
-    monthly_ingresos = sum(m.monto for m in db.query(MovimientoZelle).filter(MovimientoZelle.tipo == "ingreso", MovimientoZelle.fecha >= start_of_month).all())
-    daily_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_day)
-    monthly_egresos = sum(m.monto for m in db.query(MovimientoZelle).filter(MovimientoZelle.tipo == "egreso", MovimientoZelle.fecha >= start_of_month).all())
+    # Calcular consumos diario y mensual de ingresos y egresos Zelle (usando los datos de all_movs en memoria)
+    daily_ingresos = sum(m.monto for m in all_movs if m.tipo == "ingreso" and m.fecha >= start_of_day)
+    monthly_ingresos = sum(m.monto for m in all_movs if m.tipo == "ingreso" and m.fecha >= start_of_month)
+    daily_egresos = sum(m.monto for m in all_movs if m.tipo == "egreso" and m.fecha >= start_of_day)
+    monthly_egresos = sum(m.monto for m in all_movs if m.tipo == "egreso" and m.fecha >= start_of_month)
     
-    weekly_ingresos = sum(m.monto for m in movs if m.tipo == "ingreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
-    weekly_egresos = sum(m.monto for m in movs if m.tipo == "egreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
-    pendientes_remesar_usd = sum(m.monto for m in movs if m.tipo == "ingreso" and getattr(m, "estado", "completado") == "pendiente")
+    weekly_ingresos = sum(m.monto for m in all_movs if m.tipo == "ingreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
+    weekly_egresos = sum(m.monto for m in all_movs if m.tipo == "egreso" and m.fecha >= start_of_week and m.fecha < end_of_week)
+    pendientes_remesar_usd = sum(m.monto for m in all_movs if m.tipo == "ingreso" and getattr(m, "estado", "completado") == "pendiente")
     
     zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
     saldo_actual = zelle_plat.saldo_usd if zelle_plat else 0.0
+    
+    # Calcular totales del período filtrado para mostrarlos en el frontend
+    filtered_for_sum = all_movs
+    if inicio_filtro:
+        filtered_for_sum = [m for m in filtered_for_sum if m.fecha >= inicio_filtro]
+    if fin_filtro:
+        filtered_for_sum = [m for m in filtered_for_sum if m.fecha < fin_filtro]
+        
+    total_ingresos_filtrado = sum(m.monto for m in filtered_for_sum if m.tipo == "ingreso")
+    total_egresos_filtrado = sum(m.monto for m in filtered_for_sum if m.tipo == "egreso")
     
     result = []
     for m in movs:
@@ -734,9 +769,12 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
             "daily_ingresos": daily_ingresos,
             "monthly_ingresos": monthly_ingresos,
             "daily_egresos": daily_egresos,
-            "monthly_egresos": monthly_egresos
+            "monthly_egresos": monthly_egresos,
+            "total_ingresos_filtrado": total_ingresos_filtrado,
+            "total_egresos_filtrado": total_egresos_filtrado
         }
     }
+
 
 @app.post("/api/zelle/movimientos")
 def create_zelle_movimiento(req: MovimientoZelleCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
