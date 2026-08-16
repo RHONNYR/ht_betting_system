@@ -155,6 +155,31 @@ def run_startup_jobs():
     finally:
         db.close()
 
+    # Set Zelle holders split and Miguel Rojas client restoration
+    db = SessionLocal()
+    try:
+        z112 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 112).first()
+        if z112:
+            z112.titular = "José Luis Gonzalez"
+            
+        z113 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 113).first()
+        if z113:
+            z113.titular = "Leonel Betancourt"
+            
+        z105 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 105).first()
+        if z105:
+            z105.cliente_nombre = "Miguel Rojas"
+            z105.titular = "Felix Charaima"
+            z105.detalle = "Envia Felix Charaima / Cambio por efectivo al 5% [Remesado - Remesa ID #45]"
+            
+        db.commit()
+        print("Successfully corrected Miguel Rojas, Hermagora, and Solanda Zelle entries.")
+    except Exception as e:
+        print(f"Error correcting database entries: {e}")
+        db.rollback()
+    finally:
+        db.close()
+
     # 3. Setup Telegram Bot webhook
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     if bot_token:
