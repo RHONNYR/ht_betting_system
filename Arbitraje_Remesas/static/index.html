@@ -934,13 +934,35 @@
                     </div>
 
                     <div class="card glass-card">
-                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.75rem;">
                             <h2>Bitácora de Cuenta Zelle</h2>
+                            
+                            <!-- Filtro de fecha para Zelle -->
+                            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <select id="zelle-filter-periodo" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; outline: none; cursor: pointer;">
+                                    <option value="semana">📅 Esta semana</option>
+                                    <option value="mes" selected>🗓️ Este mes</option>
+                                    <option value="anio">📆 Este año</option>
+                                    <option value="historico">📜 Histórico</option>
+                                    <option value="personalizado">✏️ Personalizado</option>
+                                </select>
+                                <div id="zelle-filter-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
+                                    <input type="date" id="zelle-filter-desde" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 6px; padding: 0.25rem 0.4rem; font-size: 0.7rem; outline: none;">
+                                    <span style="font-size: 0.7rem; color: var(--text-secondary);">→</span>
+                                    <input type="date" id="zelle-filter-hasta" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 6px; padding: 0.25rem 0.4rem; font-size: 0.7rem; outline: none;">
+                                    <button id="zelle-filter-apply" style="background: linear-gradient(135deg,#6366f1,#8b5cf6); border: none; color: #fff; border-radius: 6px; padding: 0.25rem 0.55rem; font-size: 0.7rem; cursor: pointer;">Aplicar</button>
+                                </div>
+                            </div>
+
                             <div style="display: flex; gap: 8px;">
                                 <button id="btn-registrar-zelle-ingreso" class="btn btn-primary btn-sm">➕ Registrar Ingreso</button>
                                 <button id="btn-registrar-zelle-egreso" class="btn btn-danger btn-sm">➖ Registrar Egreso (Compra USDT)</button>
                             </div>
                         </div>
+                        
+                        <!-- Período Activo y Totales Filtrados -->
+                        <div id="zelle-filter-label" style="text-align: center; font-size: 0.72rem; color: var(--text-secondary); margin: 0.5rem 0 -0.2rem 0; font-weight: 500;"></div>
+                        
                         <div class="card-body">
                             <div class="table-container">
                                 <table class="data-table">
