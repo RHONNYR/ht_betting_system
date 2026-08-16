@@ -119,7 +119,8 @@ def run_startup_jobs():
                 db.rollback()
                 
         # Ensure uploads folder exists
-        os.makedirs("Arbitraje_Remesas/static/uploads", exist_ok=True)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        os.makedirs(os.path.join(base_dir, "static", "uploads"), exist_ok=True)
     except Exception as e:
         print(f"Error during startup DB columns migration: {e}")
     finally:
@@ -975,7 +976,8 @@ def download_telegram_file(file_id: str) -> str:
         
         # 3. Save to static/uploads
         filename = f"zelle_{int(datetime.datetime.now().timestamp())}_{os.path.basename(file_path)}"
-        local_path = os.path.join("Arbitraje_Remesas", "static", "uploads", filename)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        local_path = os.path.join(base_dir, "static", "uploads", filename)
         os.makedirs(os.path.dirname(local_path), exist_ok=True)
         with open(local_path, "wb") as f:
             f.write(file_data)
@@ -1134,10 +1136,12 @@ async def telegram_webhook(update: dict, db: Session = Depends(get_db)):
 async def upload_file(file: UploadFile = File(...), username: str = Depends(get_current_user)):
     try:
         # Check folders
-        os.makedirs("Arbitraje_Remesas/static/uploads", exist_ok=True)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        upload_dir = os.path.join(base_dir, "static", "uploads")
+        os.makedirs(upload_dir, exist_ok=True)
         # Save file
         filename = f"manual_{int(datetime.datetime.now().timestamp())}_{os.path.basename(file.filename)}"
-        local_path = os.path.join("Arbitraje_Remesas", "static", "uploads", filename)
+        local_path = os.path.join(upload_dir, filename)
         with open(local_path, "wb") as f:
             f.write(await file.read())
         return {"capture_url": f"/static/uploads/{filename}"}
