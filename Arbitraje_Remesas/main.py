@@ -586,9 +586,19 @@ def debug_solanda(db: Session = Depends(get_db)):
     
     log = []
     error = None
+    char_info = []
     try:
-        solanda = db.query(Cliente).filter(func.lower(Cliente.nombre) == "solanda").first()
-        solanda_gomez = db.query(Cliente).filter(func.lower(Cliente.nombre) == "solanda gomez").first()
+        clients_raw = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
+        for c in clients_raw:
+            char_info.append({
+                "id": c[0],
+                "nombre": c[1],
+                "length": len(c[1]) if c[1] else 0,
+                "chars": [ord(ch) for ch in c[1]] if c[1] else []
+            })
+            
+        solanda = db.query(Cliente).filter(func.trim(func.lower(Cliente.nombre)) == "solanda").first()
+        solanda_gomez = db.query(Cliente).filter(func.trim(func.lower(Cliente.nombre)) == "solanda gomez").first()
         
         log.append(f"solanda found: {bool(solanda)} (ID: {solanda.id if solanda else None})")
         log.append(f"solanda_gomez found: {bool(solanda_gomez)} (ID: {solanda_gomez.id if solanda_gomez else None})")
@@ -656,6 +666,7 @@ def debug_solanda(db: Session = Depends(get_db)):
     return {
         "log": log,
         "error": error,
+        "char_info": char_info,
         "clients": [{"id": c[0], "nombre": c[1]} for c in clients],
         "remesas": [{"id": r[0], "fecha": str(r[1]), "cliente_nombre": r[2], "monto_usd": r[3], "metodo_pago": r[4]} for r in remesas],
         "zelle": [{"id": z[0], "fecha": str(z[1]), "cliente_nombre": z[2], "titular": z[3], "monto": z[4], "estado": z[5], "remesa_id": z[6], "detalle": z[7]} for z in zelle]
