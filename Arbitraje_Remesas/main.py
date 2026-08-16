@@ -938,6 +938,17 @@ def update_zelle_movimiento_estado(mov_id: int, req: dict, username: str = Depen
 
 @app.delete("/api/zelle/movimientos/{mov_id}")
 def delete_zelle_movimiento(mov_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == mov_id).first()
+    if not mov:
+        raise HTTPException(status_code=404, detail="Movimiento no encontrado")
+        
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    if zelle_plat:
+        if mov.tipo == "ingreso":
+            zelle_plat.saldo_usd = round(zelle_plat.saldo_usd - mov.monto, 2)
+        elif mov.tipo == "egreso":
+            zelle_plat.saldo_usd = round(zelle_plat.saldo_usd + mov.monto, 2)
+            
     db.delete(mov)
     db.commit()
     return {"message": "Movimiento eliminado con éxito"}
