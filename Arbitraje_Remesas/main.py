@@ -582,24 +582,83 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
 
 @app.get("/api/debug-solanda")
 def debug_solanda(db: Session = Depends(get_db)):
-    from database import DATABASE_URL
-    import urllib.parse
+    import traceback
     
-    # Mask database URL for security
-    masked_url = "None"
-    if DATABASE_URL:
-        parsed = urllib.parse.urlparse(DATABASE_URL)
-        masked_url = f"{parsed.scheme}://****@{parsed.hostname}/{parsed.path.lstrip('/')}"
+    log = []
+    error = None
+    try:
+        solanda = db.query(Cliente).filter(func.lower(Cliente.nombre) == "solanda").first()
+        solanda_gomez = db.query(Cliente).filter(func.lower(Cliente.nombre) == "solanda gomez").first()
         
-    zelle_count = db.execute(text("SELECT count(*) FROM movimientos_zelle")).scalar()
-    remesa_count = db.execute(text("SELECT count(*) FROM historial_remesas")).scalar()
+        log.append(f"solanda found: {bool(solanda)} (ID: {solanda.id if solanda else None})")
+        log.append(f"solanda_gomez found: {bool(solanda_gomez)} (ID: {solanda_gomez.id if solanda_gomez else None})")
+        
+        if solanda and solanda_gomez:
+            log.append("Merging client 'Solanda' into 'Solanda Gomez'...")
+            # Update remesas
+            updated = db.query(HistorialRemesas).filter(HistorialRemesas.cliente_nombre == solanda.nombre).update(
+                {HistorialRemesas.cliente_nombre: solanda_gomez.nombre}, synchronize_session=False
+            )
+            log.append(f"Updated {updated} remesas.")
+            
+            # Delete old client
+            db.delete(solanda)
+            db.commit()
+            log.append("Deleted 'Solanda' client successfully.")
+            
+        # Update Zelle movements cliente_nombre
+        updated_zelle = db.execute(text("UPDATE movimientos_zelle SET cliente_nombre = 'Solanda Gomez' WHERE lower(cliente_nombre) = 'solanda' OR cliente_nombre = '' OR cliente_nombre IS NULL")).rowcount
+        db.commit()
+        log.append(f"Updated {updated_zelle} Zelle movements names.")
+        
+        # Look for the Zelle movement duplicate
+        solanda_movs = db.query(MovimientoZelle).filter(
+            or_(
+                MovimientoZelle.cliente_nombre == "Solanda Gomez",
+                MovimientoZelle.titular.ilike("%solanda%")
+            )
+        ).all()
+        log.append(f"Found {len(solanda_movs)} Zelle movements for Solanda / Solanda Gomez.")
+        
+        for m1 in solanda_movs:
+            # Duplicate created by the web
+            if m1.remesa_id is not None and m1.detalle and m1.detalle.startswith("Remesa ID"):
+                log.append(f"m1 duplicate candidate: ID {m1.id}, Amount {m1.monto}, Remesa ID {m1.remesa_id}")
+                for m2 in solanda_movs:
+                    if m2.id != m1.id and m2.remesa_id is None and abs(m2.monto - m1.monto) < 0.01:
+                        log.append(f"Found original match m2: ID {m2.id}, Amount {m2.monto}")
+                        # 1. Revert capital impact of the duplicate
+                        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+                        if zelle_plat:
+                            zelle_plat.saldo_usd = round(zelle_plat.saldo_usd - m1.monto, 2)
+                            log.append(f"Reverted Zelle platform capital by {m1.monto} USD. New balance: {zelle_plat.saldo_usd}")
+                        
+                        # 2. Link the original Telegram movement
+                        m2.remesa_id = m1.remesa_id
+                        m2.estado = "remesado"
+                        m2.cliente_nombre = "Solanda Gomez"
+                        m2.detalle = (m2.detalle or "") + f" [Remesado - Remesa ID #{m1.remesa_id}]"
+                        
+                        # 3. Delete the duplicate movement
+                        db.delete(m1)
+                        db.commit()
+                        log.append(f"Linked Telegram original Zelle movement ID {m2.id} to Remesa {m1.remesa_id} and deleted duplicate ID {m1.id}.")
+                        break
+    except Exception as e:
+        db.rollback()
+        error = f"Exception: {e}\n{traceback.format_exc()}"
+        
+    # Query final state
     clients = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
+    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE lower(cliente_nombre) LIKE '%solanda%'")).fetchall()
+    zelle = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle WHERE lower(cliente_nombre) LIKE '%solanda%' OR lower(titular) LIKE '%solanda%'")).fetchall()
     
     return {
-        "database_url": masked_url,
-        "zelle_count": zelle_count,
-        "remesa_count": remesa_count,
-        "clients": [{"id": c[0], "nombre": c[1]} for c in clients]
+        "log": log,
+        "error": error,
+        "clients": [{"id": c[0], "nombre": c[1]} for c in clients],
+        "remesas": [{"id": r[0], "fecha": str(r[1]), "cliente_nombre": r[2], "monto_usd": r[3], "metodo_pago": r[4]} for r in remesas],
+        "zelle": [{"id": z[0], "fecha": str(z[1]), "cliente_nombre": z[2], "titular": z[3], "monto": z[4], "estado": z[5], "remesa_id": z[6], "detalle": z[7]} for z in zelle]
     }
 
 # BCV Rates Routes
