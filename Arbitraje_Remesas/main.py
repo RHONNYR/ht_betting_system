@@ -155,6 +155,43 @@ def run_startup_jobs():
     finally:
         db.close()
 
+    # Restore Zelle movements client names and platform balance
+    db = SessionLocal()
+    try:
+        db.execute(text("""
+            UPDATE movimientos_zelle
+            SET cliente_nombre = hr.cliente_nombre
+            FROM historial_remesas hr
+            WHERE movimientos_zelle.remesa_id = hr.id
+        """))
+        db.execute(text("""
+            UPDATE movimientos_zelle
+            SET cliente_nombre = NULL
+            WHERE remesa_id IS NULL AND tipo = 'egreso'
+        """))
+        db.execute(text("""
+            UPDATE movimientos_zelle
+            SET cliente_nombre = 'Solanda Gomez'
+            WHERE remesa_id IS NULL AND tipo = 'ingreso' AND lower(titular) LIKE '%solanda%'
+        """))
+        db.execute(text("""
+            UPDATE movimientos_zelle
+            SET cliente_nombre = NULL
+            WHERE remesa_id IS NULL AND tipo = 'ingreso' AND lower(titular) NOT LIKE '%solanda%'
+        """))
+        
+        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+        if zelle_plat:
+            zelle_plat.saldo_usd = 1.07
+            
+        db.commit()
+        print("Successfully restored Zelle movements client names and platform balance.")
+    except Exception as restoration_err:
+        print(f"Error restoring Zelle movements: {restoration_err}")
+        db.rollback()
+    finally:
+        db.close()
+
     # 3. Setup Telegram Bot webhook
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     if bot_token:
