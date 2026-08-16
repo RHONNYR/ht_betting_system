@@ -3845,6 +3845,9 @@ async function loadZelleMovimientos() {
     try {
         const data = await apiCall('/zelle/movimientos');
         
+        // Guardar movimientos en el estado para poder editarlos fácilmente
+        state.zelleMovimientos = data.items;
+        
         // Update summary cards
         els.zelleSaldoCalculado.textContent = `$${data.summary.saldo_actual.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         els.zelleIngresosSemanales.textContent = `$${data.summary.weekly_ingresos.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -3855,11 +3858,11 @@ async function loadZelleMovimientos() {
         if (zellePendientesEl) {
             zellePendientesEl.textContent = `$${(data.summary.pendientes_remesar_usd || 0.0).toFixed(2)}`;
         }
-
+ 
         // Populate table body
         els.zelleTableBody.innerHTML = '';
         if (data.items.length === 0) {
-            els.zelleTableBody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
+            els.zelleTableBody.innerHTML = '<tr><td colspan="8" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
             return;
         }
         
@@ -3895,8 +3898,14 @@ async function loadZelleMovimientos() {
                     </strong>
                 </td>
                 <td>
+                    <span style="color: #cbd5e1; font-weight: 600;">
+                        $${(item.saldo_acumulado || 0.0).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
+                    </span>
+                </td>
+                <td>
                     <div class="flex-row-align" style="gap: 4px;">
                         ${isIngreso ? btnToggleEstado : ''}
+                        <button class="btn btn-primary btn-sm" onclick="abrirEditarZelle(${item.id})" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3);">Editar</button>
                         <button class="btn btn-danger btn-sm" onclick="eliminarMovimientoZelle(${item.id})" style="padding: 2px 6px; font-size: 0.7rem;">Eliminar</button>
                     </div>
                 </td>
@@ -3919,30 +3928,62 @@ window.toggleEstadoZelle = async function(id, currentEstado) {
     }
 };
 
-async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado) {
+async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, force = false) {
     try {
+        // Validación de año fuera del presente en la fecha (si se ingresa manualmente)
+        if (fecha) {
+            const parts = fecha.split(' ')[0].split('/');
+            if (parts.length === 3) {
+                const yr = parseInt(parts[2].trim(), 10);
+                const currentYear = new Date().getFullYear(); // 2026
+                if (yr !== currentYear) {
+                    if (!confirm(`⚠️ ATENCIÓN: El año ingresado (${yr}) es diferente al año actual (${currentYear}). ¿Estás seguro de que la fecha es correcta?`)) {
+                        return;
+                    }
+                }
+            }
+        }
+
         const payload = {
             tipo,
             monto: parseFloat(monto),
             titular: titular || null,
             detalle: detalle || null,
             fecha: fecha || null,
-            estado: estado || "completado"
+            estado: estado || "completado",
+            force: force
         };
         
-        await apiCall('/zelle/movimientos', 'POST', payload);
-        showToast(`Movimiento de Zelle registrado con éxito.`);
+        if (state.currentEditingZelleMovId) {
+            // Modo Edición (PUT)
+            await apiCall(`/zelle/movimientos/${state.currentEditingZelleMovId}`, 'PUT', payload);
+            showToast(`Movimiento de Zelle editado con éxito.`);
+        } else {
+            // Modo Registro Nuevo (POST)
+            await apiCall('/zelle/movimientos', 'POST', payload);
+            showToast(`Movimiento de Zelle registrado con éxito.`);
+        }
+        
         closeModalZelle();
         loadZelleMovimientos();
         loadCapital();
     } catch (err) {
-        console.error("Error creating Zelle movement:", err);
-        showToast("Error al registrar el movimiento de Zelle.", "error");
+        console.error("Error saving Zelle movement:", err);
+        // Interceptar la advertencia de duplicidad del backend
+        if (err.message && err.message.startsWith("duplicate_warning:")) {
+            const warningMsg = err.message.replace("duplicate_warning:", "");
+            if (confirm(warningMsg)) {
+                // Re-intentar con force = true
+                await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, true);
+            }
+        } else {
+            showToast("Error al procesar el movimiento: " + err.message, "danger");
+        }
     }
 }
 
 async function eliminarMovimientoZelle(id) {
-    if (!confirm("¿Estás seguro de que deseas eliminar este movimiento de Zelle? Se revertirá su impacto en el saldo de capital.")) {
+    if (!confirm("¿Estás seguro de que deseas eliminar este movimiento de Zelle? Se revertirá su impacto en el saldo de capital y se recalcularán los saldos progresivos de inmediato.")) {
         return;
     }
     try {
@@ -3956,17 +3997,46 @@ async function eliminarMovimientoZelle(id) {
     }
 }
 
+window.abrirEditarZelle = function(id) {
+    if (!state.zelleMovimientos) return;
+    const item = state.zelleMovimientos.find(m => m.id === id);
+    if (!item) return;
+
+    state.currentEditingZelleMovId = id;
+    els.modalZelleTipo.value = item.tipo;
+    els.modalZelleTitle.textContent = `✍️ Editar Movimiento Zelle (${item.tipo === 'ingreso' ? 'Ingreso' : 'Egreso'})`;
+    els.modalZelleMonto.value = item.monto;
+    els.modalZelleTitular.value = item.titular === '-' ? '' : item.titular;
+    els.modalZelleDetalle.value = item.detalle === '-' ? '' : item.detalle;
+    els.modalZelleFecha.value = item.fecha;
+    
+    const estadoEl = document.getElementById('modal-zelle-estado');
+    if (estadoEl) {
+        estadoEl.value = item.estado || 'completado';
+    }
+
+    els.modalZelleMovimiento.classList.remove('hidden');
+};
+
 function openModalZelle(tipo) {
+    state.currentEditingZelleMovId = null;
     els.modalZelleTipo.value = tipo;
     els.modalZelleTitle.textContent = tipo === 'ingreso' ? '➕ Registrar Ingreso Zelle' : '➖ Registrar Egreso Zelle';
     els.modalZelleMonto.value = '';
     els.modalZelleTitular.value = '';
     els.modalZelleDetalle.value = '';
     els.modalZelleFecha.value = '';
+    
+    const estadoEl = document.getElementById('modal-zelle-estado');
+    if (estadoEl) {
+        estadoEl.value = 'completado';
+    }
+
     els.modalZelleMovimiento.classList.remove('hidden');
 }
 
 function closeModalZelle() {
+    state.currentEditingZelleMovId = null;
     els.modalZelleMovimiento.classList.add('hidden');
 }
 
