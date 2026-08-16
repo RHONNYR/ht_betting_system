@@ -532,6 +532,18 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
     db.commit()
     return {"message": "Contraseña actualizada exitosamente"}
 
+@app.get("/api/debug-solanda")
+def debug_solanda(db: Session = Depends(get_db)):
+    clients = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
+    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE lower(cliente_nombre) LIKE '%solanda%'")).fetchall()
+    zelle = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle WHERE lower(cliente_nombre) LIKE '%solanda%' OR lower(titular) LIKE '%solanda%'")).fetchall()
+    
+    return {
+        "clients": [{"id": c[0], "nombre": c[1]} for c in clients],
+        "remesas": [{"id": r[0], "fecha": str(r[1]), "cliente_nombre": r[2], "monto_usd": r[3], "metodo_pago": r[4]} for r in remesas],
+        "zelle": [{"id": z[0], "fecha": str(z[1]), "cliente_nombre": z[2], "titular": z[3], "monto": z[4], "estado": z[5], "remesa_id": z[6], "detalle": z[7]} for z in zelle]
+    }
+
 # BCV Rates Routes
 @app.get("/api/bcv")
 def get_bcv_rate(username: str = Depends(get_current_user)):
