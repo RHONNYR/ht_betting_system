@@ -3027,6 +3027,9 @@ function setupEventListeners() {
     if (btnExportCiclos) {
         btnExportCiclos.addEventListener('click', exportCiclosToCSV);
     }
+    
+    // Inicializar filtro de fechas de Zelle
+    initZelleFilter();
 }
 
 // Theme Selector logic
@@ -3841,12 +3844,89 @@ function cerrarModalEditarRemesa() {
 }
 
 // Zelle Movements Logic
+function initZelleFilter() {
+    const periodoSel = document.getElementById('zelle-filter-periodo');
+    const customDates = document.getElementById('zelle-filter-custom-dates');
+    const applyBtn = document.getElementById('zelle-filter-apply');
+
+    if (periodoSel) {
+        periodoSel.addEventListener('change', () => {
+            if (customDates) {
+                customDates.style.display = periodoSel.value === 'personalizado' ? 'flex' : 'none';
+            }
+            if (periodoSel.value !== 'personalizado') {
+                loadZelleMovimientos();
+            }
+        });
+    }
+    if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+            loadZelleMovimientos();
+        });
+    }
+}
+
 async function loadZelleMovimientos() {
     try {
-        const data = await apiCall('/zelle/movimientos');
+        // Resolver filtro de periodo para Zelle
+        const periodoSel = document.getElementById('zelle-filter-periodo');
+        const periodo = periodoSel ? periodoSel.value : 'mes';
+        const now = new Date();
+        let desde = null, hasta = null, labelTxt = '';
+
+        if (periodo === 'semana') {
+            const dow = now.getDay();
+            const lunes = new Date(now);
+            lunes.setDate(now.getDate() - ((dow + 6) % 7));
+            desde = lunes.toISOString().slice(0, 10);
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = `Semana: ${desde} → ${hasta}`;
+        } else if (periodo === 'mes') {
+            desde = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
+            hasta = now.toISOString().slice(0, 10);
+            const localMonthDate = new Date(now.getFullYear(), now.getMonth(), 1);
+            labelTxt = `Mes: ${localMonthDate.toLocaleDateString('es-VE', {month:'long', year:'numeric'})}`;
+        } else if (periodo === 'anio') {
+            desde = `${now.getFullYear()}-01-01`;
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = `Año ${now.getFullYear()}`;
+        } else if (periodo === 'historico') {
+            desde = '2000-01-01';
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = 'Histórico completo';
+        } else if (periodo === 'personalizado') {
+            const desdeEl = document.getElementById('zelle-filter-desde');
+            const hastaEl = document.getElementById('zelle-filter-hasta');
+            desde = desdeEl ? desdeEl.value : null;
+            hasta = hastaEl ? hastaEl.value : null;
+            if (desde && hasta) {
+                labelTxt = `Del ${desde} al ${hasta}`;
+            } else {
+                labelTxt = 'Selecciona las fechas y presiona Aplicar';
+            }
+        }
+
+        let url = '/zelle/movimientos';
+        if (desde && hasta) {
+            url += `?desde=${desde}&hasta=${hasta}`;
+        }
+        
+        const data = await apiCall(url);
         
         // Guardar movimientos en el estado para poder editarlos fácilmente
         state.zelleMovimientos = data.items;
+        
+        // Pintar etiqueta de periodo activo en la UI de Zelle con totales filtrados
+        const filterLabelEl = document.getElementById('zelle-filter-label');
+        if (filterLabelEl) {
+            let info = labelTxt;
+            if (data.summary.total_ingresos_filtrado !== undefined && data.summary.total_egresos_filtrado !== undefined) {
+                const totalIn = data.summary.total_ingresos_filtrado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                const totalEg = data.summary.total_egresos_filtrado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                info += ` | 🟢 Ingresos: $${totalIn} | 🔴 Egresos: $${totalEg}`;
+            }
+            filterLabelEl.textContent = info;
+        }
         
         // Update summary cards
         els.zelleSaldoCalculado.textContent = `$${data.summary.saldo_actual.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
