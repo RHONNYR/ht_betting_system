@@ -2434,35 +2434,30 @@ function setupEventListeners() {
     const captureFileInput = document.getElementById('modal-zelle-capture-file');
     const captureUrlInput = document.getElementById('modal-zelle-capture-url');
     if (captureFileInput) {
-        captureFileInput.addEventListener('change', async () => {
+        captureFileInput.addEventListener('change', () => {
             if (captureFileInput.files.length > 0) {
                 const file = captureFileInput.files[0];
-                const formData = new FormData();
-                formData.append('file', file);
                 
-                showToast("⏳ Subiendo capture al servidor...");
-                try {
-                    const token = localStorage.getItem('token');
-                    const headers = {};
-                    if (token) {
-                        headers['Authorization'] = `Bearer ${token}`;
-                    }
-                    const res = await fetch('/api/upload', {
-                        method: 'POST',
-                        headers: headers,
-                        body: formData
-                    });
-                    if (!res.ok) {
-                        throw new Error("Error en la subida");
-                    }
-                    const data = await res.json();
-                    if (captureUrlInput) {
-                        captureUrlInput.value = data.capture_url;
-                    }
-                    showToast("✅ Capture subido con éxito.");
-                } catch (err) {
-                    showToast("❌ Error al subir capture: " + err.message, "danger");
+                // Restrict file size to 2MB to keep DB storage footprint reasonable
+                if (file.size > 2 * 1024 * 1024) {
+                    showToast("⚠️ El archivo es demasiado grande (máximo 2MB).", "danger");
+                    captureFileInput.value = '';
+                    if (captureUrlInput) captureUrlInput.value = '';
+                    return;
                 }
+                
+                showToast("⏳ Procesando imagen...");
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (captureUrlInput) {
+                        captureUrlInput.value = e.target.result;
+                    }
+                    showToast("✅ Capture cargado con éxito.");
+                };
+                reader.onerror = function() {
+                    showToast("❌ Error al procesar el archivo.", "danger");
+                };
+                reader.readAsDataURL(file);
             }
         });
     }
