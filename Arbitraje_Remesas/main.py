@@ -985,15 +985,36 @@ def download_telegram_file(file_id: str) -> str:
         download_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
         file_data = requests.get(download_url).content
         
-        # 3. Save to static/uploads
-        filename = f"zelle_{int(datetime.datetime.now().timestamp())}_{os.path.basename(file_path)}"
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        local_path = os.path.join(base_dir, "static", "uploads", filename)
-        os.makedirs(os.path.dirname(local_path), exist_ok=True)
-        with open(local_path, "wb") as f:
-            f.write(file_data)
+        # 3. Compress using Pillow and encode to base64
+        import io
+        import base64
+        from PIL import Image
+        
+        try:
+            img = Image.open(io.BytesIO(file_data))
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
             
-        return f"/uploads/{filename}"
+            # Resize if too large to keep base64 string small (20-30KB)
+            max_size = 800
+            if img.width > max_size or img.height > max_size:
+                img.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
+                
+            buffer = io.BytesIO()
+            img.save(buffer, format="JPEG", quality=60, optimize=True)
+            compressed_data = buffer.getvalue()
+            
+            encoded = base64.b64encode(compressed_data).decode("utf-8")
+            return f"data:image/jpeg;base64,{encoded}"
+        except Exception as img_err:
+            print(f"Pillow compression failed, using raw base64: {img_err}")
+            encoded = base64.b64encode(file_data).decode("utf-8")
+            mime_type = "image/jpeg"
+            if file_path.lower().endswith(".png"):
+                mime_type = "image/png"
+            elif file_path.lower().endswith(".gif"):
+                mime_type = "image/gif"
+            return f"data:{mime_type};base64,{encoded}"
     except Exception as e:
         print(f"Error downloading telegram file: {e}")
         return None
