@@ -970,11 +970,13 @@
                                         <tr>
                                             <th>Fecha y Hora</th>
                                             <th>Tipo</th>
-                                            <th>Titular/Cliente</th>
+                                            <th>Cliente (Web)</th>
+                                            <th>Emisor (Banco)</th>
                                             <th>Detalle/Concepto</th>
                                             <th>Estado</th>
                                             <th>Monto USD</th>
                                             <th>Saldo Resultante</th>
+                                            <th>Capture</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -1857,8 +1859,13 @@
                 </div>
                 
                 <div class="input-group mt-2">
-                    <label for="modal-zelle-titular">Titular / Cliente</label>
-                    <input type="text" id="modal-zelle-titular" placeholder="Nombre de quien envía/recibe">
+                    <label for="modal-zelle-cliente">Cliente (Nombre en Web)</label>
+                    <input type="text" id="modal-zelle-cliente" placeholder="Nombre de tu cliente para remesas">
+                </div>
+                
+                <div class="input-group mt-2">
+                    <label for="modal-zelle-titular">Emisor (Nombre en Banco)</label>
+                    <input type="text" id="modal-zelle-titular" placeholder="Nombre en el capture de Zelle">
                 </div>
                 
                 <div class="input-group mt-2">
@@ -1878,12 +1885,31 @@
                     <label for="modal-zelle-fecha">Fecha (Opcional)</label>
                     <input type="text" id="modal-zelle-fecha" placeholder="Ej: 20/07/2026 o dejar vacío para ahora">
                 </div>
+
+                <div class="input-group mt-2">
+                    <label for="modal-zelle-capture-file">Capture de Pantalla (Opcional)</label>
+                    <input type="file" id="modal-zelle-capture-file" accept="image/*" style="width: 100%; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);">
+                    <input type="hidden" id="modal-zelle-capture-url">
+                </div>
                 
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Registrar</button>
                     <button type="button" id="btn-close-modal-zelle" class="btn btn-secondary">Cancelar</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- MODAL: VER CAPTURE DE IMAGEN -->
+    <div id="modal-view-capture" class="modal hidden" style="z-index: 1100;">
+        <div class="modal-content glass-card" style="max-width: 500px; text-align: center; padding: 1rem;">
+            <h3>Capture de Transferencia Zelle</h3>
+            <div style="margin: 1rem 0; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 0.5rem; display: flex; justify-content: center; align-items: center; min-height: 200px;">
+                <img id="view-capture-img" src="" alt="Capture de transferencia" style="max-width: 100%; max-height: 70vh; border-radius: 6px; object-fit: contain; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            </div>
+            <div class="modal-actions" style="justify-content: center;">
+                <button type="button" id="btn-close-view-capture" class="btn btn-secondary" style="padding: 0.5rem 2rem;">Cerrar</button>
+            </div>
         </div>
     </div>
 
