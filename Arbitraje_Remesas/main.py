@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
-from sqlalchemy import func, text
+from sqlalchemy import func, text, or_, literal
 import datetime
 import os
 import math
@@ -152,6 +152,54 @@ def run_startup_jobs():
         db.commit()
     except Exception as e:
         print(f"Error during legacy purchase migration: {e}")
+    finally:
+        db.close()
+
+    # Merge "Solanda" and "Solanda Gomez" & resolve duplicate Zelle movements
+    db = SessionLocal()
+    try:
+        solanda = db.query(Cliente).filter(func.lower(Cliente.nombre) == "solanda").first()
+        solanda_gomez = db.query(Cliente).filter(func.lower(Cliente.nombre) == "solanda gomez").first()
+        
+        if solanda and solanda_gomez:
+            print("Merging client 'Solanda' into 'Solanda Gomez'...")
+            # Update remesas
+            db.query(HistorialRemesas).filter(HistorialRemesas.cliente_nombre == solanda.nombre).update(
+                {HistorialRemesas.cliente_nombre: solanda_gomez.nombre}, synchronize_session=False
+            )
+            # Delete old client
+            db.delete(solanda)
+            db.commit()
+            
+        # Update Zelle movements cliente_nombre to have the full name
+        db.execute(text("UPDATE movimientos_zelle SET cliente_nombre = 'Solanda Gomez' WHERE lower(cliente_nombre) = 'solanda'"))
+        db.commit()
+        
+        # Look for the Zelle movement duplicate
+        solanda_movs = db.query(MovimientoZelle).filter(MovimientoZelle.cliente_nombre == "Solanda Gomez").all()
+        for m1 in solanda_movs:
+            if m1.remesa_id is not None and m1.detalle and m1.detalle.startswith("Remesa ID #"):
+                # Duplicate created by the web
+                for m2 in solanda_movs:
+                    if m2.id != m1.id and m2.remesa_id is None and abs(m2.monto - m1.monto) < 0.01:
+                        print(f"Found duplicate pair: deleting web duplicate ID {m1.id} and linking Telegram original ID {m2.id}")
+                        # 1. Revert capital impact of the duplicate we are deleting
+                        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+                        if zelle_plat:
+                            zelle_plat.saldo_usd = round(zelle_plat.saldo_usd - m1.monto, 2)
+                        
+                        # 2. Link the original Telegram movement to the remesa
+                        m2.remesa_id = m1.remesa_id
+                        m2.estado = "remesado"
+                        m2.detalle = (m2.detalle or "") + f" [Remesado - Remesa ID #{m1.remesa_id}]"
+                        
+                        # 3. Delete the duplicate movement
+                        db.delete(m1)
+                        db.commit()
+                        break
+    except Exception as merge_err:
+        print(f"Error merging Solanda: {merge_err}")
+        db.rollback()
     finally:
         db.close()
 
@@ -534,9 +582,9 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
 
 @app.get("/api/debug-solanda")
 def debug_solanda(db: Session = Depends(get_db)):
-    clients = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
-    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE lower(cliente_nombre) LIKE '%solanda%'")).fetchall()
-    zelle = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle WHERE lower(cliente_nombre) LIKE '%solanda%' OR lower(titular) LIKE '%solanda%'")).fetchall()
+    clients = db.execute(text("SELECT id, nombre FROM clientes WHERE id > 0")).fetchall()
+    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE id > 100")).fetchall()
+    zelle = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle WHERE id > 100")).fetchall()
     
     return {
         "clients": [{"id": c[0], "nombre": c[1]} for c in clients],
@@ -2380,18 +2428,24 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
         if req.zelle_movimiento_id:
             linked_mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == req.zelle_movimiento_id).first()
         if not linked_mov:
-            # Fallback search 1: Prioritize matching the new cliente_nombre field
+            # Fallback search 1: Bidirectional substring matching on cliente_nombre
             linked_mov = db.query(MovimientoZelle).filter(
                 MovimientoZelle.tipo == "ingreso",
-                MovimientoZelle.cliente_nombre.ilike(f"%{req.cliente_nombre}%"),
-                MovimientoZelle.estado == "pendiente"
+                MovimientoZelle.estado == "pendiente",
+                or_(
+                    MovimientoZelle.cliente_nombre.ilike(f"%{req.cliente_nombre}%"),
+                    literal(req.cliente_nombre).ilike(func.concat('%', MovimientoZelle.cliente_nombre, '%'))
+                )
             ).first()
         if not linked_mov:
             # Fallback search 2: Legacy compatibility matching titular
             linked_mov = db.query(MovimientoZelle).filter(
                 MovimientoZelle.tipo == "ingreso",
-                MovimientoZelle.titular.ilike(f"%{req.cliente_nombre}%"),
-                MovimientoZelle.estado == "pendiente"
+                MovimientoZelle.estado == "pendiente",
+                or_(
+                    MovimientoZelle.titular.ilike(f"%{req.cliente_nombre}%"),
+                    literal(req.cliente_nombre).ilike(func.concat('%', MovimientoZelle.titular, '%'))
+                )
             ).first()
             
         if linked_mov:
