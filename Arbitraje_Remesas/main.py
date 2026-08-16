@@ -155,29 +155,6 @@ def run_startup_jobs():
     finally:
         db.close()
 
-    # Set Zelle starting balance adjustment, Hermagora client name, and final platform balance ($171.07 USD)
-    db = SessionLocal()
-    try:
-        z109 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 109).first()
-        if z109:
-            z109.monto = 1041.46
-            
-        z113 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 113).first()
-        if z113:
-            z113.cliente_nombre = 'Hermagora'
-            
-        zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-        if zelle_plat:
-            zelle_plat.saldo_usd = 171.07
-            
-        db.commit()
-        print("Successfully set Zelle balance adjustment to 1041.46 and final balance to 171.07 USD.")
-    except Exception as e:
-        print(f"Error setting Zelle balance: {e}")
-        db.rollback()
-    finally:
-        db.close()
-
     # 3. Setup Telegram Bot webhook
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     if bot_token:
