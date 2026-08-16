@@ -1003,7 +1003,8 @@ async def telegram_webhook(update: dict, db: Session = Depends(get_db)):
         send_telegram_message(chat_id, "⚠️ **Configuración incompleta:** `TELEGRAM_ALLOWED_USER_ID` no está configurado en el servidor.")
         return {"status": "ignored"}
         
-    if sender_id != str(TELEGRAM_ALLOWED_USER_ID):
+    allowed_ids = [x.strip() for x in str(TELEGRAM_ALLOWED_USER_ID).split(",") if x.strip()]
+    if sender_id not in allowed_ids:
         send_telegram_message(chat_id, "❌ **Acceso denegado.** Tu ID de Telegram no está autorizado para interactuar con este bot.")
         return {"status": "denied"}
         
