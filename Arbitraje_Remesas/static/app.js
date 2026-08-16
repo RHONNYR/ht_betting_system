@@ -2412,6 +2412,43 @@ function setupEventListeners() {
     if (els.btnRegistrarZelleIngreso) els.btnRegistrarZelleIngreso.addEventListener('click', () => openModalZelle('ingreso'));
     if (els.btnRegistrarZelleEgreso) els.btnRegistrarZelleEgreso.addEventListener('click', () => openModalZelle('egreso'));
     if (els.btnCloseModalZelle) els.btnCloseModalZelle.addEventListener('click', closeModalZelle);
+    
+    const captureFileInput = document.getElementById('modal-zelle-capture-file');
+    const captureUrlInput = document.getElementById('modal-zelle-capture-url');
+    if (captureFileInput) {
+        captureFileInput.addEventListener('change', async () => {
+            if (captureFileInput.files.length > 0) {
+                const file = captureFileInput.files[0];
+                const formData = new FormData();
+                formData.append('file', file);
+                
+                showToast("⏳ Subiendo capture al servidor...");
+                try {
+                    const token = localStorage.getItem('token');
+                    const headers = {};
+                    if (token) {
+                        headers['Authorization'] = `Bearer ${token}`;
+                    }
+                    const res = await fetch('/api/upload', {
+                        method: 'POST',
+                        headers: headers,
+                        body: formData
+                    });
+                    if (!res.ok) {
+                        throw new Error("Error en la subida");
+                    }
+                    const data = await res.json();
+                    if (captureUrlInput) {
+                        captureUrlInput.value = data.capture_url;
+                    }
+                    showToast("✅ Capture subido con éxito.");
+                } catch (err) {
+                    showToast("❌ Error al subir capture: " + err.message, "danger");
+                }
+            }
+        });
+    }
+
     if (els.formZelleMovimiento) {
         els.formZelleMovimiento.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -2422,7 +2459,11 @@ function setupEventListeners() {
             const fecha = els.modalZelleFecha.value;
             const estadoEl = document.getElementById('modal-zelle-estado');
             const estado = estadoEl ? estadoEl.value : 'completado';
-            await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado);
+            
+            const cliente = document.getElementById('modal-zelle-cliente') ? document.getElementById('modal-zelle-cliente').value : '';
+            const captureUrl = captureUrlInput ? captureUrlInput.value : '';
+            
+            await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, false, cliente, captureUrl);
         });
     }
     
@@ -3942,7 +3983,7 @@ async function loadZelleMovimientos() {
         // Populate table body
         els.zelleTableBody.innerHTML = '';
         if (data.items.length === 0) {
-            els.zelleTableBody.innerHTML = '<tr><td colspan="8" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
+            els.zelleTableBody.innerHTML = '<tr><td colspan="10" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
             return;
         }
         
@@ -3962,6 +4003,10 @@ async function loadZelleMovimientos() {
                 ? `<button class="btn btn-sm" onclick="toggleEstadoZelle(${item.id}, 'pendiente')" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(59,130,246,0.1); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2);" title="Marcar como remesado">🚀 Remesado</button>`
                 : `<button class="btn btn-sm" onclick="toggleEstadoZelle(${item.id}, '${estadoStr}')" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2);" title="Marcar como pendiente">⏳ Pendiente</button>`;
             
+            const btnVerCapture = item.capture_url 
+                ? `<button class="btn btn-sm" onclick="verCaptureZelle('${item.capture_url}')" style="padding: 2px 6px; font-size: 0.7rem; background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); outline: none;" title="Ver capture de transferencia">📷 Ver</button>`
+                : '<span style="color: var(--text-secondary); font-size: 0.7rem;">-</span>';
+
             tr.innerHTML = `
                 <td>${item.fecha}</td>
                 <td>
@@ -3969,7 +4014,8 @@ async function loadZelleMovimientos() {
                         ${isIngreso ? '🟢 Ingreso' : '🔴 Egreso'}
                     </span>
                 </td>
-                <td><strong>${item.titular}</strong></td>
+                <td><strong>${item.cliente_nombre || '-'}</strong></td>
+                <td>${item.titular || '-'}</td>
                 <td>${item.detalle}</td>
                 <td>${estadoBadge}</td>
                 <td>
@@ -3981,6 +4027,11 @@ async function loadZelleMovimientos() {
                     <span style="color: #cbd5e1; font-weight: 600;">
                         $${(item.saldo_acumulado || 0.0).toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
                     </span>
+                </td>
+                <td>
+                    <div style="text-align: center;">
+                        ${btnVerCapture}
+                    </div>
                 </td>
                 <td>
                     <div class="flex-row-align" style="gap: 4px;">
@@ -4008,7 +4059,7 @@ window.toggleEstadoZelle = async function(id, currentEstado) {
     }
 };
 
-async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, force = false) {
+async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, force = false, cliente = '', captureUrl = '') {
     try {
         // Validación de año fuera del presente en la fecha (si se ingresa manualmente)
         if (fecha) {
@@ -4031,7 +4082,9 @@ async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, es
             detalle: detalle || null,
             fecha: fecha || null,
             estado: estado || "completado",
-            force: force
+            force: force,
+            cliente_nombre: cliente || null,
+            capture_url: captureUrl || null
         };
         
         if (state.currentEditingZelleMovId) {
@@ -4054,7 +4107,7 @@ async function registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, es
             const warningMsg = err.message.replace("duplicate_warning:", "");
             if (confirm(warningMsg)) {
                 // Re-intentar con force = true
-                await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, true);
+                await registrarMovimientoZelle(tipo, monto, titular, detalle, fecha, estado, true, cliente, captureUrl);
             }
         } else {
             showToast("Error al procesar el movimiento: " + err.message, "danger");
@@ -4086,9 +4139,22 @@ window.abrirEditarZelle = function(id) {
     els.modalZelleTipo.value = item.tipo;
     els.modalZelleTitle.textContent = `✍️ Editar Movimiento Zelle (${item.tipo === 'ingreso' ? 'Ingreso' : 'Egreso'})`;
     els.modalZelleMonto.value = item.monto;
+    
+    const clienteEl = document.getElementById('modal-zelle-cliente');
+    if (clienteEl) {
+        clienteEl.value = item.cliente_nombre === '-' ? '' : item.cliente_nombre;
+    }
+    
     els.modalZelleTitular.value = item.titular === '-' ? '' : item.titular;
     els.modalZelleDetalle.value = item.detalle === '-' ? '' : item.detalle;
     els.modalZelleFecha.value = item.fecha;
+    
+    const captureFile = document.getElementById('modal-zelle-capture-file');
+    const captureUrl = document.getElementById('modal-zelle-capture-url');
+    if (captureFile) captureFile.value = '';
+    if (captureUrl) {
+        captureUrl.value = item.capture_url || '';
+    }
     
     const estadoEl = document.getElementById('modal-zelle-estado');
     if (estadoEl) {
@@ -4103,9 +4169,20 @@ function openModalZelle(tipo) {
     els.modalZelleTipo.value = tipo;
     els.modalZelleTitle.textContent = tipo === 'ingreso' ? '➕ Registrar Ingreso Zelle' : '➖ Registrar Egreso Zelle';
     els.modalZelleMonto.value = '';
+    
+    const clienteEl = document.getElementById('modal-zelle-cliente');
+    if (clienteEl) {
+        clienteEl.value = '';
+    }
+    
     els.modalZelleTitular.value = '';
     els.modalZelleDetalle.value = '';
     els.modalZelleFecha.value = '';
+    
+    const captureFile = document.getElementById('modal-zelle-capture-file');
+    const captureUrl = document.getElementById('modal-zelle-capture-url');
+    if (captureFile) captureFile.value = '';
+    if (captureUrl) captureUrl.value = '';
     
     const estadoEl = document.getElementById('modal-zelle-estado');
     if (estadoEl) {
@@ -4118,6 +4195,24 @@ function openModalZelle(tipo) {
 function closeModalZelle() {
     state.currentEditingZelleMovId = null;
     els.modalZelleMovimiento.classList.add('hidden');
+}
+
+// Viewer helper for Zelle capture files
+window.verCaptureZelle = function(url) {
+    const viewModal = document.getElementById('modal-view-capture');
+    const viewImg = document.getElementById('view-capture-img');
+    if (viewModal && viewImg) {
+        viewImg.src = url;
+        viewModal.classList.remove('hidden');
+    }
+};
+
+const btnCloseViewCapture = document.getElementById('btn-close-view-capture');
+if (btnCloseViewCapture) {
+    btnCloseViewCapture.addEventListener('click', () => {
+        const viewModal = document.getElementById('modal-view-capture');
+        if (viewModal) viewModal.classList.add('hidden');
+    });
 }
 
 // BCV Purchase Simulator Logic
