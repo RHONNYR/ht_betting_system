@@ -650,7 +650,7 @@ def debug_solanda(db: Session = Depends(get_db)):
         
     # Query final state
     clients = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
-    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE lower(cliente_nombre) LIKE '%solanda%'")).fetchall()
+    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas ORDER BY id DESC LIMIT 10")).fetchall()
     zelle = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle WHERE lower(cliente_nombre) LIKE '%solanda%' OR lower(titular) LIKE '%solanda%'")).fetchall()
     
     return {
