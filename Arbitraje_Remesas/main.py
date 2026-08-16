@@ -982,7 +982,7 @@ def download_telegram_file(file_id: str) -> str:
         with open(local_path, "wb") as f:
             f.write(file_data)
             
-        return f"/static/uploads/{filename}"
+        return f"/uploads/{filename}"
     except Exception as e:
         print(f"Error downloading telegram file: {e}")
         return None
@@ -1144,7 +1144,7 @@ async def upload_file(file: UploadFile = File(...), username: str = Depends(get_
         local_path = os.path.join(upload_dir, filename)
         with open(local_path, "wb") as f:
             f.write(await file.read())
-        return {"capture_url": f"/static/uploads/{filename}"}
+        return {"capture_url": f"/uploads/{filename}"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error uploading file: {e}")
 
