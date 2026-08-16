@@ -582,14 +582,24 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
 
 @app.get("/api/debug-solanda")
 def debug_solanda(db: Session = Depends(get_db)):
+    from database import DATABASE_URL
+    import urllib.parse
+    
+    # Mask database URL for security
+    masked_url = "None"
+    if DATABASE_URL:
+        parsed = urllib.parse.urlparse(DATABASE_URL)
+        masked_url = f"{parsed.scheme}://****@{parsed.hostname}/{parsed.path.lstrip('/')}"
+        
+    zelle_count = db.execute(text("SELECT count(*) FROM movimientos_zelle")).scalar()
+    remesa_count = db.execute(text("SELECT count(*) FROM historial_remesas")).scalar()
     clients = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
-    remesa_116 = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE id = 116")).fetchone()
-    zelle_all = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle ORDER BY id DESC LIMIT 20")).fetchall()
     
     return {
-        "clients": [{"id": c[0], "nombre": c[1]} for c in clients],
-        "remesa_116": {"id": remesa_116[0], "fecha": str(remesa_116[1]), "cliente_nombre": remesa_116[2], "monto_usd": remesa_116[3], "metodo_pago": remesa_116[4]} if remesa_116 else None,
-        "zelle_last_20": [{"id": z[0], "fecha": str(z[1]), "cliente_nombre": z[2], "titular": z[3], "monto": z[4], "estado": z[5], "remesa_id": z[6], "detalle": z[7]} for z in zelle_all]
+        "database_url": masked_url,
+        "zelle_count": zelle_count,
+        "remesa_count": remesa_count,
+        "clients": [{"id": c[0], "nombre": c[1]} for c in clients]
     }
 
 # BCV Rates Routes
