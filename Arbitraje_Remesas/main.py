@@ -582,14 +582,14 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
 
 @app.get("/api/debug-solanda")
 def debug_solanda(db: Session = Depends(get_db)):
-    clients = db.execute(text("SELECT id, nombre FROM clientes WHERE id > 0")).fetchall()
-    remesas = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE id > 100")).fetchall()
-    zelle = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle WHERE id > 100")).fetchall()
+    clients = db.execute(text("SELECT id, nombre FROM clientes WHERE lower(nombre) LIKE '%solanda%'")).fetchall()
+    remesa_116 = db.execute(text("SELECT id, fecha, cliente_nombre, monto_usd, metodo_pago FROM historial_remesas WHERE id = 116")).fetchone()
+    zelle_all = db.execute(text("SELECT id, fecha, cliente_nombre, titular, monto, estado, remesa_id, detalle FROM movimientos_zelle ORDER BY id DESC LIMIT 20")).fetchall()
     
     return {
         "clients": [{"id": c[0], "nombre": c[1]} for c in clients],
-        "remesas": [{"id": r[0], "fecha": str(r[1]), "cliente_nombre": r[2], "monto_usd": r[3], "metodo_pago": r[4]} for r in remesas],
-        "zelle": [{"id": z[0], "fecha": str(z[1]), "cliente_nombre": z[2], "titular": z[3], "monto": z[4], "estado": z[5], "remesa_id": z[6], "detalle": z[7]} for z in zelle]
+        "remesa_116": {"id": remesa_116[0], "fecha": str(remesa_116[1]), "cliente_nombre": remesa_116[2], "monto_usd": remesa_116[3], "metodo_pago": remesa_116[4]} if remesa_116 else None,
+        "zelle_last_20": [{"id": z[0], "fecha": str(z[1]), "cliente_nombre": z[2], "titular": z[3], "monto": z[4], "estado": z[5], "remesa_id": z[6], "detalle": z[7]} for z in zelle_all]
     }
 
 # BCV Rates Routes
