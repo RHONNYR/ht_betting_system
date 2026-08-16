@@ -150,6 +150,8 @@ class MovimientoZelle(Base):
     detalle = Column(String, nullable=True)
     estado = Column(String, default="completado")  # "completado", "pendiente", "remesado"
     remesa_id = Column(Integer, nullable=True)
+    cliente_nombre = Column(String, nullable=True)
+    capture_url = Column(String, nullable=True)
 
 class CategoriaPersonal(Base):
     __tablename__ = "personal_categorias"
