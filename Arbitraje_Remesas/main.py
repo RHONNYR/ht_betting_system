@@ -293,6 +293,7 @@ class MovimientoZelleCreate(BaseModel):
     detalle: Optional[str] = None
     fecha: Optional[str] = None
     estado: Optional[str] = "completado"  # "completado", "pendiente"
+    force: Optional[bool] = False
 
 class BCVModeRequest(BaseModel):
     mode: str
@@ -673,7 +674,20 @@ def delete_capital_snapshot(snap_id: int, username: str = Depends(get_current_us
 # Zelle Ledger Routes
 @app.get("/api/zelle/movimientos")
 def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    # 1. Fetch ALL movements sorted chronologically to compute running balances correctly
+    all_movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.asc()).all()
+    balances_map = {}
+    current_balance = 0.0
+    for m in all_movs:
+        if m.tipo == "ingreso":
+            current_balance += m.monto
+        elif m.tipo == "egreso":
+            current_balance -= m.monto
+        balances_map[m.id] = round(current_balance, 2)
+
+    # 2. Get the latest 150 movements sorted descending for display
     movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(150).all()
+    
     # Compute weekly totals (from Monday to Sunday of the current week)
     now = get_venezuela_time()
     days_to_monday = now.weekday()
@@ -706,7 +720,8 @@ def get_zelle_movimientos(username: str = Depends(get_current_user), db: Session
             "titular": m.titular or "-",
             "detalle": m.detalle or "-",
             "estado": getattr(m, "estado", "completado") or "completado",
-            "remesa_id": getattr(m, "remesa_id", None)
+            "remesa_id": getattr(m, "remesa_id", None),
+            "saldo_acumulado": balances_map.get(m.id, 0.0)
         })
         
     return {
@@ -734,6 +749,22 @@ def create_zelle_movimiento(req: MovimientoZelleCreate, username: str = Depends(
                 fecha_mov = datetime.datetime.strptime(req.fecha, "%d/%m/%Y")
             except ValueError:
                 pass
+
+    # Detectar duplicados potenciales si no está forzado
+    if not req.force:
+        start_of_day = datetime.datetime(fecha_mov.year, fecha_mov.month, fecha_mov.day)
+        end_of_day = start_of_day + datetime.timedelta(days=1)
+        duplicate = db.query(MovimientoZelle).filter(
+            MovimientoZelle.tipo == req.tipo,
+            MovimientoZelle.monto == req.monto,
+            MovimientoZelle.fecha >= start_of_day,
+            MovimientoZelle.fecha < end_of_day
+        ).first()
+        if duplicate:
+            raise HTTPException(
+                status_code=409,
+                detail=f"duplicate_warning:Ya existe un movimiento de tipo '{req.tipo}' por ${req.monto} registrado hoy. ¿Deseas guardarlo de todas formas?"
+            )
                 
     estado_mov = req.estado or ("pendiente" if req.tipo == "ingreso" and "pendiente" in (req.detalle or "").lower() else "completado")
     
@@ -756,6 +787,49 @@ def create_zelle_movimiento(req: MovimientoZelleCreate, username: str = Depends(
             
     db.commit()
     return {"message": "Movimiento registrado con éxito", "id": mov.id}
+
+@app.put("/api/zelle/movimientos/{mov_id}")
+def update_zelle_movimiento(mov_id: int, req: MovimientoZelleCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == mov_id).first()
+    if not mov:
+        raise HTTPException(status_code=404, detail="Movimiento no encontrado")
+        
+    # Revertir impacto del saldo anterior en la cuenta de Zelle
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    if zelle_plat:
+        if mov.tipo == "ingreso":
+            zelle_plat.saldo_usd -= mov.monto
+        elif mov.tipo == "egreso":
+            zelle_plat.saldo_usd += mov.monto
+            
+    # Procesar fecha
+    fecha_mov = get_venezuela_time()
+    if req.fecha:
+        try:
+            fecha_mov = datetime.datetime.strptime(req.fecha, "%d/%m/%Y %I:%M %p")
+        except ValueError:
+            try:
+                fecha_mov = datetime.datetime.strptime(req.fecha, "%d/%m/%Y")
+            except ValueError:
+                pass
+                
+    # Actualizar valores
+    mov.fecha = fecha_mov
+    mov.tipo = req.tipo
+    mov.monto = req.monto
+    mov.titular = req.titular
+    mov.detalle = req.detalle
+    mov.estado = req.estado or "completado"
+    
+    # Aplicar impacto del nuevo saldo
+    if zelle_plat:
+        if req.tipo == "ingreso":
+            zelle_plat.saldo_usd += req.monto
+        elif req.tipo == "egreso":
+            zelle_plat.saldo_usd -= req.monto
+            
+    db.commit()
+    return {"message": "Movimiento de Zelle actualizado con éxito"}
 
 @app.put("/api/zelle/movimientos/{mov_id}/estado")
 def update_zelle_movimiento_estado(mov_id: int, req: dict, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
