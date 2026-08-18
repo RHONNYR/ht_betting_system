@@ -1500,6 +1500,7 @@ window.openEditCompraParcial = function(cpId, cicloId) {
     
     document.getElementById('edit-compra-parcial-id').value = cp.id;
     document.getElementById('edit-compra-parcial-ciclo-id').value = cicloId;
+    document.getElementById('edit-compra-parcial-fecha').value = cp.fecha;
     document.getElementById('edit-compra-parcial-usd').value = cp.usd_comprados;
     document.getElementById('edit-compra-parcial-tasa').value = cp.tasa_bcv;
     
@@ -1569,6 +1570,7 @@ async function handleEditarCompraParcialSubmit(e) {
     e.preventDefault();
     const cpId = parseInt(document.getElementById('edit-compra-parcial-id').value);
     const cicloId = parseInt(document.getElementById('edit-compra-parcial-ciclo-id').value);
+    const fecha = document.getElementById('edit-compra-parcial-fecha').value;
     const usd = parseFloat(document.getElementById('edit-compra-parcial-usd').value);
     const tasa = parseFloat(document.getElementById('edit-compra-parcial-tasa').value);
     const applyPm = document.getElementById('edit-compra-parcial-pago-movil').checked;
@@ -1612,7 +1614,8 @@ async function handleEditarCompraParcialSubmit(e) {
         transferencias_ves: transferenciasVes,
         usd_recibidos_binance: usdNetosRecibidosBinance,
         banco: bancoText,
-        tarjeta_id: tarjetaIdVal
+        tarjeta_id: tarjetaIdVal,
+        fecha: fecha
     };
     
     try {
