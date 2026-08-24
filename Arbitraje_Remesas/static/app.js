@@ -922,7 +922,11 @@ function handleCalcularCiclo() {
     const gananciaPorcentaje = ustdCostOfOperation > 0 ? ((usdNetosRecibidosBinance / ustdCostOfOperation) - 1) * 100 : 0;
     const bolivaresRestantes = bolivaresRecibidos - bolivaresGastadosTotales;
     
+    const calcFechaEl = document.getElementById('calc-fecha');
+    const calcFechaVal = (calcFechaEl && calcFechaEl.value) ? calcFechaEl.value : null;
+
     state.currentCalculatedCiclo = {
+        fecha: calcFechaVal,
         usdt_vendidos: usdtVendidos,
         tasa_venta: tasaVenta,
         banco_venta: els.calcBancoVenta.value,
