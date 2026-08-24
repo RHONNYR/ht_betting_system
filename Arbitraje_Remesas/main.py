@@ -257,6 +257,7 @@ class CicloCreate(BaseModel):
     status: Optional[str] = "completado"
     bolivares_sobre_restantes: Optional[float] = 0.0
     tarjeta_id: Optional[int] = None
+    fecha: Optional[str] = None
 
 class CicloUpdate(BaseModel):
     fecha: str
@@ -1535,8 +1536,10 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
         if card:
             card_banco = card.banco
             
+    fecha_ciclo = parse_date_string(req.fecha) if req.fecha else get_venezuela_time()
+    
     ciclo = HistorialCiclos(
-        fecha=get_venezuela_time(),
+        fecha=fecha_ciclo,
         usdt_vendidos=round(req.usdt_vendidos, 2),
         tasa_venta=round(req.tasa_venta, 2),
         banco_venta=req.banco_venta,
@@ -1559,7 +1562,7 @@ def create_ciclo(req: CicloCreate, username: str = Depends(get_current_user), db
     if req.status == "abierto" and req.divisas_compradas > 0:
         compra_inicial = CompraCicloParcial(
             ciclo_id=ciclo.id,
-            fecha=get_venezuela_time(),
+            fecha=fecha_ciclo,
             usd_comprados=round(req.divisas_compradas, 2),
             usd_procesados=round(req.usd_procesados_binance, 2),
             tasa_bcv=round(req.tasa_bcv, 2),
@@ -1775,10 +1778,7 @@ def update_ciclo(ciclo_id: int, req: CicloUpdate, username: str = Depends(get_cu
     if not ciclo:
         raise HTTPException(status_code=404, detail="Ciclo no encontrado")
         
-    try:
-        parsed_date = datetime.datetime.strptime(req.fecha, "%d/%m/%Y %I:%M %p")
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Formato de fecha inválido. Use DD/MM/YYYY HH:MM AM/PM")
+    parsed_date = parse_date_string(req.fecha) if req.fecha else ciclo.fecha
         
     card = db.query(Tarjeta).filter(Tarjeta.id == req.tarjeta_id).first()
     if not card:
