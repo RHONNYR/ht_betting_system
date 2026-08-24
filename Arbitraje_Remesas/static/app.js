@@ -2418,6 +2418,18 @@ function setupEventListeners() {
     if (filterPeriodoRemesas) {
         filterPeriodoRemesas.addEventListener('change', renderRemesasTable);
     }
+    const btnRemesasFilterApply = document.getElementById('remesas-filter-apply');
+    if (btnRemesasFilterApply) {
+        btnRemesasFilterApply.addEventListener('click', renderRemesasTable);
+    }
+    const remesasFilterDesde = document.getElementById('remesas-filter-desde');
+    if (remesasFilterDesde) {
+        remesasFilterDesde.addEventListener('change', renderRemesasTable);
+    }
+    const remesasFilterHasta = document.getElementById('remesas-filter-hasta');
+    if (remesasFilterHasta) {
+        remesasFilterHasta.addEventListener('change', renderRemesasTable);
+    }
     const filterPeriodoCiclos = document.getElementById('filter-periodo-ciclos');
     if (filterPeriodoCiclos) {
         filterPeriodoCiclos.addEventListener('change', renderCiclosTable);
@@ -3120,13 +3132,29 @@ function renderRemesasTable() {
     const filterSelect = document.getElementById('filter-periodo-remesas');
     const period = filterSelect ? filterSelect.value : 'historico';
     
+    const customContainer = document.getElementById('remesas-filter-custom-dates');
+    if (customContainer) {
+        if (period === 'personalizado') {
+            customContainer.style.display = 'inline-flex';
+        } else {
+            customContainer.style.display = 'none';
+        }
+    }
+
+    const desdeInput = document.getElementById('remesas-filter-desde');
+    const hastaInput = document.getElementById('remesas-filter-hasta');
+    const customDesde = desdeInput ? desdeInput.value : null;
+    const customHasta = hastaInput ? hastaInput.value : null;
+    
     let totalGain = 0;
     let totalVolume = 0;
+    let count = 0;
     
     const data = state.rawRemesas || [];
     data.forEach(r => {
-        if (!isDateInPeriod(r.fecha, period)) return;
+        if (!isDateInPeriod(r.fecha, period, customDesde, customHasta)) return;
         
+        count++;
         totalGain += r.ganancia_usd;
         totalVolume += r.monto_usd;
         const tr = document.createElement('tr');
@@ -3149,6 +3177,10 @@ function renderRemesasTable() {
         `;
         els.remesasTableBody.appendChild(tr);
     });
+
+    if (count === 0) {
+        els.remesasTableBody.innerHTML = '<tr><td colspan="10" class="text-center text-muted">No hay remesas enviadas en este período</td></tr>';
+    }
     
     if (els.totalVolumenRemesas) {
         els.totalVolumenRemesas.textContent = `$${totalVolume.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -5050,10 +5082,23 @@ function exportRemesasToCSV() {
             return;
         }
         
+        const filterSelect = document.getElementById('filter-periodo-remesas');
+        const period = filterSelect ? filterSelect.value : 'historico';
+        const desdeInput = document.getElementById('remesas-filter-desde');
+        const hastaInput = document.getElementById('remesas-filter-hasta');
+        const customDesde = desdeInput ? desdeInput.value : null;
+        const customHasta = hastaInput ? hastaInput.value : null;
+        
+        const filtered = remesas.filter(r => isDateInPeriod(r.fecha, period, customDesde, customHasta));
+        if (filtered.length === 0) {
+            alert("No hay remesas para exportar en el período seleccionado.");
+            return;
+        }
+        
         let csvContent = "\uFEFF"; // UTF-8 BOM to support accents in Excel
         csvContent += "ID;Fecha;Cliente;Monto USD;Tasa P2P;Tasa Cliente;Monto VES;Adq. USDT %;Comision Binance %;Ganancia USD\n";
         
-        remesas.forEach(r => {
+        filtered.forEach(r => {
             const adqPct = (r.costo_adquisicion_usdt * 100).toFixed(2) + "%";
             const comBinPct = (r.comision_binance * 100).toFixed(2) + "%";
             const row = [
@@ -5075,7 +5120,7 @@ function exportRemesasToCSV() {
         const link = document.createElement("a");
         const url = URL.createObjectURL(blob);
         link.setAttribute("href", url);
-        link.setAttribute("download", `Reporte_Remesas_${new Date().toISOString().slice(0,10)}.csv`);
+        link.setAttribute("download", `Reporte_Remesas_${period}_${new Date().toISOString().slice(0,10)}.csv`);
         link.style.visibility = 'hidden';
         document.body.appendChild(link);
         link.click();
@@ -5129,7 +5174,7 @@ function parseSpanishDate(dateStr) {
     return new Date();
 }
 
-function isDateInPeriod(dateStr, period) {
+function isDateInPeriod(dateStr, period, customDesde = null, customHasta = null) {
     if (period === 'historico') return true;
     
     const d = parseSpanishDate(dateStr);
@@ -5140,13 +5185,13 @@ function isDateInPeriod(dateStr, period) {
     if (period === 'mes') {
         return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
     }
+
+    if (period === 'anio') {
+        return d.getFullYear() === now.getFullYear();
+    }
     
     if (period === 'semana') {
         // Calculate start of current week (Monday)
-        // getDay(): 0=Sunday, 1=Monday, ..., 6=Saturday
-        // We want Monday as first day:
-        //   - If today is Sunday (0): go back 6 days to Monday
-        //   - Otherwise: go back (getDay() - 1) days
         const startOfWeek = new Date(now);
         const dayOfWeek = startOfWeek.getDay(); // 0=Sun
         const daysFromMonday = (dayOfWeek === 0) ? 6 : dayOfWeek - 1;
@@ -5159,6 +5204,22 @@ function isDateInPeriod(dateStr, period) {
         endOfWeek.setHours(0, 0, 0, 0);
         
         return d >= startOfWeek && d < endOfWeek;
+    }
+
+    if (period === 'personalizado') {
+        if (!customDesde && !customHasta) return true;
+        const dDate = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        if (customDesde) {
+            const desdeParts = customDesde.split('-');
+            const fromD = new Date(parseInt(desdeParts[0]), parseInt(desdeParts[1]) - 1, parseInt(desdeParts[2]));
+            if (dDate < fromD) return false;
+        }
+        if (customHasta) {
+            const hastaParts = customHasta.split('-');
+            const toD = new Date(parseInt(hastaParts[0]), parseInt(hastaParts[1]) - 1, parseInt(hastaParts[2]));
+            if (dDate > toD) return false;
+        }
+        return true;
     }
     
     return true;
