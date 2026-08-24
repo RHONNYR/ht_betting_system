@@ -874,12 +874,20 @@
                     <div class="card glass-card">
                         <div class="card-header">
                             <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
-                            <div class="card-header-controls">
+                            <div class="card-header-controls" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 <select id="filter-periodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
-                                    <option value="semana">Esta Semana (Lun-Dom)</option>
-                                    <option value="mes">Este Mes</option>
-                                    <option value="historico" selected>Histórico (Todo)</option>
+                                    <option value="semana">📅 Esta Semana (Lun-Dom)</option>
+                                    <option value="mes">🗓️ Este Mes</option>
+                                    <option value="anio">📆 Este Año</option>
+                                    <option value="historico" selected>📜 Histórico (Todo)</option>
+                                    <option value="personalizado">✏️ Rango Personalizado</option>
                                 </select>
+                                <div id="remesas-filter-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
+                                    <input type="date" id="remesas-filter-desde" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 5px 8px; font-size: 0.75rem; outline: none;">
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">→</span>
+                                    <input type="date" id="remesas-filter-hasta" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 5px 8px; font-size: 0.75rem; outline: none;">
+                                    <button id="remesas-filter-apply" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.75rem; background: linear-gradient(135deg,#6366f1,#8b5cf6); border: none; color: #fff; cursor: pointer;">Aplicar</button>
+                                </div>
                                 <div class="total-ganado-badge" style="background: rgba(0, 112, 243, 0.1); border-color: rgba(0, 112, 243, 0.2); color: var(--primary-color);">
                                     <span>Total Volumen:</span>
                                     <strong id="total-volumen-remesas">$0.00</strong>
