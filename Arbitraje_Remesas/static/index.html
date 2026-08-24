@@ -178,7 +178,10 @@
                                     <div class="grid-2col-form">
                                         <div class="input-group">
                                             <label for="calc-fecha">Fecha y Hora de Creación (Opcional)</label>
-                                            <input type="datetime-local" id="calc-fecha" title="Selecciona la fecha y hora de este ciclo o déjalo vacío para la fecha actual">
+                                            <div class="flex-row-align">
+                                                <input type="datetime-local" id="calc-fecha" style="flex: 1;" title="Selecciona la fecha y hora de este ciclo o déjalo vacío para la fecha actual">
+                                                <button type="button" id="btn-calc-bcv-fecha" class="btn btn-secondary" style="padding: 0.75rem 0.85rem; font-size: 0.85rem; white-space: nowrap;" title="Cargar tasa oficial BCV de la fecha seleccionada">🏛️ Tasa BCV</button>
+                                            </div>
                                         </div>
                                         <div class="input-group">
                                             <label for="calc-usdt-vendidos">USDT a Vender</label>
@@ -1844,16 +1847,31 @@
 
     <!-- MODAL: EDITAR TASA BCV -->
     <div id="modal-bcv" class="modal hidden">
-        <div class="modal-content glass-card">
-            <h3>Fijar Tasa BCV Manual</h3>
-            <p>Introduce la tasa oficial del día. Deja vacío para volver a la tasa automática del BCV.</p>
-            <div class="input-group">
-                <label for="modal-bcv-input">Tasa en VES/$</label>
-                <input type="number" step="any" id="modal-bcv-input" placeholder="Ej. 36.42">
+        <div class="modal-content glass-card" style="max-width: 440px;">
+            <h3>Tasa BCV del Sistema</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Consulta la tasa oficial de cualquier fecha histórica o introduce una tasa manual personalizada.
+            </p>
+            
+            <!-- Selector de Fecha Histórica -->
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.75rem; margin-bottom: 1rem;">
+                <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.4rem;">📅 Consultar Tasa Histórica por Fecha</label>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <input type="date" id="modal-bcv-fecha-hist" style="flex: 1; padding: 6px 10px; font-size: 0.85rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-hover); color: var(--text-primary);">
+                    <button type="button" id="btn-fetch-bcv-hist" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem; white-space: nowrap;">🔍 Obtener Tasa</button>
+                </div>
+                <div id="modal-bcv-hist-feedback" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.4rem; min-height: 1.2rem;"></div>
             </div>
-            <div class="modal-actions mt-4">
-                <button id="btn-save-modal-bcv" class="btn btn-primary">Fijar Tasa</button>
+
+            <div class="input-group">
+                <label for="modal-bcv-input">Tasa Activa en VES/$</label>
+                <input type="number" step="any" id="modal-bcv-input" placeholder="Ej. 775.34">
+                <small style="color: var(--text-secondary); font-size: 0.75rem; display: block; margin-top: 4px;">* Deja vacío para volver a la tasa automática del BCV de hoy.</small>
+            </div>
+            <div class="modal-actions mt-4" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                <button id="btn-reset-bcv-auto" class="btn btn-secondary" style="margin-right: auto;" title="Volver a la tasa del día automática">🔄 Tasa Automática</button>
                 <button id="btn-close-modal-bcv" class="btn btn-secondary">Cancelar</button>
+                <button id="btn-save-modal-bcv" class="btn btn-primary">Fijar Tasa</button>
             </div>
         </div>
     </div>
