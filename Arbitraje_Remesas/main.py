@@ -534,6 +534,68 @@ def change_password(req: PasswordChange, username: str = Depends(get_current_use
     return {"message": "Contraseña actualizada exitosamente"}
 
 # BCV Rates Routes
+historical_bcv_cache = {
+    "last_fetch": None,
+    "data": []
+}
+
+def get_historical_bcv_data():
+    now = get_venezuela_time()
+    if historical_bcv_cache["last_fetch"] and historical_bcv_cache["data"]:
+        diff = (now - historical_bcv_cache["last_fetch"]).total_seconds()
+        if diff < 3600:  # 1 hour cache
+            return historical_bcv_cache["data"]
+            
+    try:
+        url = "https://ve.dolarapi.com/v1/historicos/dolares"
+        res = requests.get(url, timeout=10)
+        if res.status_code == 200:
+            data = res.json()
+            oficial_data = [x for x in data if x.get("fuente") == "oficial" and x.get("fecha")]
+            oficial_data.sort(key=lambda x: x.get("fecha"))
+            historical_bcv_cache["data"] = oficial_data
+            historical_bcv_cache["last_fetch"] = now
+            return oficial_data
+    except Exception as e:
+        print(f"Error fetching historical BCV data: {e}")
+        
+    return historical_bcv_cache["data"]
+
+@app.get("/api/bcv/historical")
+def get_historical_bcv_rate(fecha: str, username: str = Depends(get_current_user)):
+    target_date = fecha.strip()
+    data = get_historical_bcv_data()
+    if not data:
+        raise HTTPException(status_code=503, detail="No se pudo consultar el histórico de tasas BCV")
+        
+    exact = [x for x in data if x.get("fecha") == target_date]
+    if exact:
+        rate = exact[-1].get("promedio") or exact[-1].get("venta") or exact[-1].get("compra")
+        if rate:
+            return {
+                "fecha": target_date,
+                "effective_date": target_date,
+                "rate": float(rate),
+                "exact": True,
+                "found": True
+            }
+            
+    prev_records = [x for x in data if x.get("fecha") <= target_date]
+    if prev_records:
+        closest = prev_records[-1]
+        rate = closest.get("promedio") or closest.get("venta") or closest.get("compra")
+        if rate:
+            return {
+                "fecha": target_date,
+                "effective_date": closest.get("fecha"),
+                "rate": float(rate),
+                "exact": False,
+                "note": f"Tasa del {closest.get('fecha')} (vigente para el {target_date})",
+                "found": True
+            }
+            
+    raise HTTPException(status_code=404, detail=f"No se encontró tasa oficial para la fecha {target_date}")
+
 @app.get("/api/bcv")
 def get_bcv_rate(username: str = Depends(get_current_user)):
     tasa_hoy, tasa_manana = fetch_both_bcv_rates()
