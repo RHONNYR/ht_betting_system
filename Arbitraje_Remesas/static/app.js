@@ -2492,9 +2492,59 @@ function setupEventListeners() {
     // BCV Modals
     els.btnEditBcv.addEventListener('click', () => {
         els.modalBcvInput.value = state.bcvSource === 'Manual' ? state.bcvRate : '';
+        const histDateInput = document.getElementById('modal-bcv-fecha-hist');
+        if (histDateInput) {
+            histDateInput.value = new Date().toISOString().slice(0, 10);
+        }
+        const histFeedback = document.getElementById('modal-bcv-hist-feedback');
+        if (histFeedback) {
+            histFeedback.innerHTML = '';
+        }
         openModal(els.modalBcv);
     });
+    
     els.btnCloseModalBcv.addEventListener('click', () => closeModal(els.modalBcv));
+    
+    const btnFetchBcvHist = document.getElementById('btn-fetch-bcv-hist');
+    if (btnFetchBcvHist) {
+        btnFetchBcvHist.addEventListener('click', async () => {
+            const histDateInput = document.getElementById('modal-bcv-fecha-hist');
+            const histFeedback = document.getElementById('modal-bcv-hist-feedback');
+            if (!histDateInput || !histDateInput.value) {
+                if (histFeedback) histFeedback.innerHTML = '<span class="text-danger">Por favor selecciona una fecha.</span>';
+                return;
+            }
+            
+            if (histFeedback) histFeedback.innerHTML = '<span class="text-secondary">Consultando histórico BCV... ⏳</span>';
+            try {
+                const res = await apiCall(`/bcv/historical?fecha=${histDateInput.value}`);
+                if (res && res.rate) {
+                    els.modalBcvInput.value = res.rate;
+                    if (histFeedback) {
+                        const note = res.exact ? `Tasa oficial del ${res.fecha}` : (res.note || `Tasa vigente para ${res.fecha}`);
+                        histFeedback.innerHTML = `<span class="text-success font-bold">✅ ${note}: <strong>${res.rate.toFixed(4)} Bs</strong></span>`;
+                    }
+                }
+            } catch (err) {
+                if (histFeedback) histFeedback.innerHTML = `<span class="text-danger">⚠️ ${err.message || 'No se encontró tasa para esa fecha.'}</span>`;
+            }
+        });
+    }
+
+    const btnResetBcvAuto = document.getElementById('btn-reset-bcv-auto');
+    if (btnResetBcvAuto) {
+        btnResetBcvAuto.addEventListener('click', async () => {
+            try {
+                await apiCall('/bcv', 'POST', { rate: null });
+                closeModal(els.modalBcv);
+                await initDashboard();
+                showToast("Tasa BCV restablecida a modo automático.");
+            } catch (err) {
+                alert(err.message);
+            }
+        });
+    }
+
     els.btnSaveModalBcv.addEventListener('click', async () => {
         const val = els.modalBcvInput.value ? parseFloat(els.modalBcvInput.value) : null;
         try {
@@ -2502,10 +2552,36 @@ function setupEventListeners() {
             closeModal(els.modalBcv);
             await fetchBCV();
             await loadCapital();
+            showToast(val ? `Tasa BCV fijada en ${val.toFixed(2)} Bs` : "Tasa BCV en modo automático");
         } catch (err) {
             alert(err.message);
         }
     });
+
+    // Button in Cycle Calculator to fetch BCV for chosen calc-fecha
+    const btnCalcBcvFecha = document.getElementById('btn-calc-bcv-fecha');
+    if (btnCalcBcvFecha) {
+        btnCalcBcvFecha.addEventListener('click', async () => {
+            const calcFechaEl = document.getElementById('calc-fecha');
+            if (!calcFechaEl || !calcFechaEl.value) {
+                alert("Por favor selecciona primero una fecha en el campo 'Fecha y Hora de Creación'.");
+                return;
+            }
+            const dateOnly = calcFechaEl.value.slice(0, 10);
+            try {
+                const res = await apiCall(`/bcv/historical?fecha=${dateOnly}`);
+                if (res && res.rate) {
+                    await apiCall('/bcv', 'POST', { rate: res.rate });
+                    await fetchBCV();
+                    await loadCapital();
+                    const note = res.exact ? `del ${res.fecha}` : `vigente para ${res.fecha}`;
+                    showToast(`🏛️ Tasa BCV fijada ${note}: ${res.rate.toFixed(4)} Bs`, 'success');
+                }
+            } catch (err) {
+                alert("Error consultando tasa BCV histórica: " + err.message);
+            }
+        });
+    }
     
     // BCV Toggles click handlers
     const btnBcvToday = document.getElementById('btn-bcv-today');
