@@ -1526,6 +1526,7 @@
                                                         <th>Tasa BCV</th>
                                                         <th>Plataforma</th>
                                                         <th>Detalles</th>
+                                                        <th class="text-center">Acciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="analisis-movimientos-tbody">
@@ -2618,6 +2619,73 @@
                 <div class="modal-actions mt-4">
                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     <button type="button" id="btn-close-modal-deuda-edit" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: EDITAR MOVIMIENTO PERSONAL (GASTO O INGRESO) -->
+    <div id="modal-editar-movimiento-personal" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 500px; width: 92%;">
+            <h3 id="modal-edit-mov-title">✏️ Editar Movimiento Personal</h3>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Modifica el monto, fecha, moneda, categoría o plataforma. Los saldos de cuentas se ajustarán automáticamente.
+            </p>
+            <form id="form-editar-movimiento-personal">
+                <input type="hidden" id="edit-mov-id">
+                <input type="hidden" id="edit-mov-tipo">
+                
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                    <div class="form-group" style="margin: 0; grid-column: span 2;">
+                        <label for="edit-mov-fecha" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Fecha y Hora</label>
+                        <input type="text" id="edit-mov-fecha" required placeholder="DD/MM/YYYY HH:MM AM/PM" style="padding: 0.45rem; font-size: 0.85rem;">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label for="edit-mov-monto" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto</label>
+                        <input type="number" step="any" id="edit-mov-monto" required style="padding: 0.45rem; font-size: 0.85rem;">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label for="edit-mov-moneda" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Moneda</label>
+                        <select id="edit-mov-moneda" style="padding: 0.45rem; font-size: 0.85rem;">
+                            <option value="USD">USD ($)</option>
+                            <option value="VES">VES (Bs)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="edit-mov-tasa-group" style="margin: 0; display: none;">
+                        <label for="edit-mov-tasa" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Tasa BCV</label>
+                        <input type="number" step="any" id="edit-mov-tasa" style="padding: 0.45rem; font-size: 0.85rem;">
+                    </div>
+                    <div class="form-group" id="edit-mov-cat-group" style="margin: 0;">
+                        <label for="edit-mov-categoria" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Categoría</label>
+                        <select id="edit-mov-categoria" required style="padding: 0.45rem; font-size: 0.85rem;">
+                            <!-- Dinámico -->
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin: 0; grid-column: span 2;">
+                        <label for="edit-mov-plataforma" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Plataforma / Cuenta</label>
+                        <select id="edit-mov-plataforma" required style="padding: 0.45rem; font-size: 0.85rem;">
+                            <option value="Mercantil">🏦 Mercantil (Personal)</option>
+                            <option value="Bancamiga">🏦 Bancamiga</option>
+                            <option value="Provincial VES">🏦 Provincial (Trabajo)</option>
+                            <option value="BDV (VES)">🏦 BDV (Trabajo)</option>
+                            <option value="Zelle">🇺🇸 Zelle</option>
+                            <option value="Efectivo USD">💵 Efectivo USD</option>
+                            <option value="Efectivo VES">💵 Efectivo VES</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="edit-mov-subcat-group" style="margin: 0; grid-column: span 2;">
+                        <label for="edit-mov-subcategoria" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Subcategoría (Opcional)</label>
+                        <input type="text" id="edit-mov-subcategoria" placeholder="Ej. Movistar - Línea 1" style="padding: 0.45rem; font-size: 0.85rem;">
+                    </div>
+                    <div class="form-group" style="margin: 0; grid-column: span 2;">
+                        <label for="edit-mov-detalles" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Detalles / Concepto</label>
+                        <input type="text" id="edit-mov-detalles" placeholder="Ej. Almuerzo de trabajo" style="padding: 0.45rem; font-size: 0.85rem;">
+                    </div>
+                </div>
+                
+                <div class="modal-actions mt-4" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <button type="button" id="btn-close-edit-mov" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">💾 Guardar Cambios</button>
                 </div>
             </form>
         </div>
