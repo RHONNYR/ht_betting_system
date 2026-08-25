@@ -366,6 +366,16 @@ class GastoPersonalCreate(BaseModel):
     fecha: Optional[str] = None  # Opcional, para registrar con fechas del pasado
     ciclo_id: Optional[int] = None
 
+class GastoPersonalUpdate(BaseModel):
+    monto: float
+    moneda: str  # "USD" o "VES"
+    tasa_bcv: float
+    categoria_id: int
+    subcategoria: Optional[str] = None
+    detalles: Optional[str] = None
+    plataforma_pago: str
+    fecha: Optional[str] = None
+
 class DeudaPersonalCreate(BaseModel):
     acreedor: str
     monto_original_usd: float
@@ -385,6 +395,15 @@ class PagoDeudaRequest(BaseModel):
     fecha: Optional[str] = None
 
 class IngresoPersonalCreate(BaseModel):
+    monto: float
+    moneda: str  # "USD" o "VES"
+    tasa_bcv: float
+    categoria_id: int
+    plataforma_pago: Optional[str] = None
+    detalles: Optional[str] = None
+    fecha: Optional[str] = None
+
+class IngresoPersonalUpdate(BaseModel):
     monto: float
     moneda: str  # "USD" o "VES"
     tasa_bcv: float
@@ -2927,15 +2946,9 @@ def on_startup():
 # =====================================================
 
 def parse_personal_date(date_str: Optional[str]) -> datetime.datetime:
-    if date_str:
-        try:
-            # Handle YYYY-MM-DD or full ISO strings
-            if "T" in date_str:
-                return datetime.datetime.fromisoformat(date_str)
-            return datetime.datetime.strptime(date_str.split()[0], "%Y-%m-%d")
-        except Exception:
-            pass
-    return get_venezuela_time()
+    if not date_str or not str(date_str).strip():
+        return get_venezuela_time()
+    return parse_date_string(str(date_str).strip())
 
 # 1. CATEGORÍAS
 @app.get("/api/personal/categorias")
@@ -3025,6 +3038,7 @@ def get_personal_gastos(limit: int = 100, username: str = Depends(get_current_us
             "moneda": g.moneda,
             "tasa_bcv": g.tasa_bcv,
             "monto_usd": g.monto_usd,
+            "categoria_id": g.categoria_id,
             "categoria": g.categoria.nombre if g.categoria else "Otros",
             "icono": g.categoria.icono if g.categoria else "⚙️",
             "subcategoria": g.subcategoria,
@@ -3121,6 +3135,71 @@ def create_personal_gasto(req: GastoPersonalCreate, username: str = Depends(get_
             
     return {"message": "Gasto personal registrado con éxito", "id": gasto.id}
 
+@app.put("/api/personal/gastos/{gasto_id}")
+def update_personal_gasto(gasto_id: int, req: GastoPersonalUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    gasto = db.query(GastoPersonal).filter(GastoPersonal.id == gasto_id).first()
+    if not gasto:
+        raise HTTPException(status_code=404, detail="Gasto no encontrado.")
+        
+    cat = db.query(CategoriaPersonal).filter(CategoriaPersonal.id == req.categoria_id).first()
+    if not cat:
+        raise HTTPException(status_code=400, detail="Categoría no encontrada.")
+
+    # 1. Revert previous capital deduction
+    old_plat_pago = gasto.plataforma_pago.strip()
+    old_db_plat_pago = map_plataforma_nombre(old_plat_pago, gasto.moneda)
+    old_capital = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(old_db_plat_pago)).first()
+    if old_capital:
+        if old_capital.convertir_ves:
+            if gasto.moneda == "VES":
+                old_capital.saldo_ves += gasto.monto
+            else:
+                old_capital.saldo_ves += (gasto.monto * gasto.tasa_bcv)
+        else:
+            if gasto.moneda == "USD":
+                old_capital.saldo_usd += gasto.monto
+            else:
+                old_capital.saldo_usd += gasto.monto_usd
+
+    # 2. Calculate new USD equivalent
+    monto_usd = req.monto
+    if req.moneda == "VES":
+        if req.tasa_bcv <= 0:
+            raise HTTPException(status_code=400, detail="Para registrar en VES, debes incluir una tasa BCV válida.")
+        monto_usd = req.monto / req.tasa_bcv
+
+    # 3. Apply new capital deduction
+    new_plat_pago = req.plataforma_pago.strip()
+    new_db_plat_pago = map_plataforma_nombre(new_plat_pago, req.moneda)
+    new_capital = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(new_db_plat_pago)).first()
+    if new_capital:
+        if new_capital.convertir_ves:
+            if req.moneda == "VES":
+                new_capital.saldo_ves -= req.monto
+            else:
+                new_capital.saldo_ves -= (req.monto * req.tasa_bcv)
+        else:
+            if req.moneda == "USD":
+                new_capital.saldo_usd -= req.monto
+            else:
+                new_capital.saldo_usd -= monto_usd
+
+    # 4. Update fields
+    if req.fecha:
+        gasto.fecha = parse_personal_date(req.fecha)
+    gasto.monto = req.monto
+    gasto.moneda = req.moneda
+    gasto.tasa_bcv = req.tasa_bcv
+    gasto.monto_usd = monto_usd
+    gasto.categoria_id = req.categoria_id
+    gasto.subcategoria = req.subcategoria
+    gasto.detalles = req.detalles
+    gasto.plataforma_pago = req.plataforma_pago
+    
+    db.commit()
+    db.refresh(gasto)
+    return {"message": "Gasto personal actualizado con éxito"}
+
 @app.delete("/api/personal/gastos/{gasto_id}")
 def delete_personal_gasto(gasto_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     gasto = db.query(GastoPersonal).filter(GastoPersonal.id == gasto_id).first()
@@ -3195,6 +3274,7 @@ def get_personal_ingresos(limit: int = 100, username: str = Depends(get_current_
             "moneda": i.moneda,
             "tasa_bcv": i.tasa_bcv,
             "monto_usd": i.monto_usd,
+            "categoria_id": i.categoria_id,
             "categoria": i.categoria.nombre if i.categoria else "Otros",
             "icono": i.categoria.icono if i.categoria else "⚙️",
             "plataforma_pago": i.plataforma_pago,
@@ -3270,6 +3350,116 @@ def create_personal_ingreso(req: IngresoPersonalCreate, username: str = Depends(
     db.add(ingreso)
     db.commit()
     return {"message": "Ingreso personal registrado con éxito", "id": ingreso.id}
+
+@app.put("/api/personal/ingresos/{ingreso_id}")
+def update_personal_ingreso(ingreso_id: int, req: IngresoPersonalUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    ingreso = db.query(IngresoPersonal).filter(IngresoPersonal.id == ingreso_id).first()
+    if not ingreso:
+        raise HTTPException(status_code=404, detail="Ingreso no encontrado.")
+        
+    cat = db.query(CategoriaPersonal).filter(CategoriaPersonal.id == req.categoria_id).first()
+    if not cat:
+        raise HTTPException(status_code=400, detail="Categoría no encontrada.")
+
+    # 1. Revert previous Sueldo Auto-asignado if applicable
+    if ingreso.categoria and ingreso.categoria.nombre == "Sueldo Auto-asignado":
+        plat_origen = "Provincial VES"
+        if "zelle" in (ingreso.detalles or "").lower():
+            plat_origen = "Zelle"
+        elif "bdv" in (ingreso.detalles or "").lower():
+            plat_origen = "BDV (VES)"
+            
+        db_plat_origen = map_plataforma_nombre(plat_origen, ingreso.moneda)
+        old_cap_origen = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_origen)).first()
+        if old_cap_origen:
+            if old_cap_origen.convertir_ves:
+                if ingreso.moneda == "VES":
+                    old_cap_origen.saldo_ves += ingreso.monto
+                else:
+                    old_cap_origen.saldo_ves += (ingreso.monto * ingreso.tasa_bcv)
+            else:
+                if ingreso.moneda == "USD":
+                    old_cap_origen.saldo_usd += ingreso.monto
+                else:
+                    old_cap_origen.saldo_usd += ingreso.monto_usd
+
+    # 2. Revert previous destination platform addition
+    if ingreso.plataforma_pago:
+        plat_dest = ingreso.plataforma_pago.strip()
+        db_plat_dest = map_plataforma_nombre(plat_dest, ingreso.moneda)
+        old_cap_dest = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_dest)).first()
+        if old_cap_dest:
+            if old_cap_dest.convertir_ves:
+                if ingreso.moneda == "VES":
+                    old_cap_dest.saldo_ves -= ingreso.monto
+                else:
+                    old_cap_dest.saldo_ves -= (ingreso.monto * ingreso.tasa_bcv)
+            else:
+                if ingreso.moneda == "USD":
+                    old_cap_dest.saldo_usd -= ingreso.monto
+                else:
+                    old_cap_dest.saldo_usd -= ingreso.monto_usd
+
+    # 3. Calculate new USD equivalent
+    monto_usd = req.monto
+    if req.moneda == "VES":
+        if req.tasa_bcv <= 0:
+            raise HTTPException(status_code=400, detail="Para registrar en VES, debes incluir una tasa BCV válida.")
+        monto_usd = req.monto / req.tasa_bcv
+
+    # 4. Apply new Sueldo Auto-asignado debit if applicable
+    if cat.nombre == "Sueldo Auto-asignado":
+        plat_origen = "Provincial VES"
+        if "zelle" in (req.detalles or "").lower():
+            plat_origen = "Zelle"
+        elif "bdv" in (req.detalles or "").lower():
+            plat_origen = "BDV (VES)"
+        
+        db_plat_origen = map_plataforma_nombre(plat_origen, req.moneda)
+        new_cap_origen = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_origen)).first()
+        if new_cap_origen:
+            if new_cap_origen.convertir_ves:
+                if req.moneda == "VES":
+                    new_cap_origen.saldo_ves -= req.monto
+                else:
+                    new_cap_origen.saldo_ves -= (req.monto * req.tasa_bcv)
+            else:
+                if req.moneda == "USD":
+                    new_cap_origen.saldo_usd -= req.monto
+                else:
+                    new_cap_origen.saldo_usd -= monto_usd
+
+    # 5. Apply new destination platform addition
+    if req.plataforma_pago:
+        plat_destino = req.plataforma_pago.strip()
+        db_plat_destino = map_plataforma_nombre(plat_destino, req.moneda)
+        new_cap_destino = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_destino)).first()
+        if new_cap_destino:
+            if new_cap_destino.convertir_ves:
+                if req.moneda == "VES":
+                    new_cap_destino.saldo_ves += req.monto
+                else:
+                    new_cap_destino.saldo_ves += (req.monto * req.tasa_bcv)
+            else:
+                if req.moneda == "USD":
+                    new_cap_destino.saldo_usd += req.monto
+                else:
+                    new_cap_destino.saldo_usd += monto_usd
+
+    # 6. Update fields
+    if req.fecha:
+        ingreso.fecha = parse_personal_date(req.fecha)
+    ingreso.monto = req.monto
+    ingreso.moneda = req.moneda
+    ingreso.tasa_bcv = req.tasa_bcv
+    ingreso.monto_usd = monto_usd
+    ingreso.categoria_id = req.categoria_id
+    ingreso.plataforma_pago = req.plataforma_pago
+    ingreso.detalles = req.detalles
+
+    db.commit()
+    db.refresh(ingreso)
+    return {"message": "Ingreso personal actualizado con éxito"}
 
 @app.delete("/api/personal/ingresos/{ingreso_id}")
 def delete_personal_ingreso(ingreso_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
