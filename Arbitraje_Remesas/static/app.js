@@ -5737,6 +5737,7 @@ function initPersonalChartFilter() {
 
 // Poblar dropdowns de categorías
 function populatePersonalCategories(cats) {
+    state.personalCategories = cats || [];
     const selectGasto = document.getElementById('p-gasto-categoria');
     const selectIngreso = document.getElementById('p-ingreso-categoria');
     
@@ -6234,11 +6235,12 @@ function renderAnalisisDetalle(data) {
         `Total: $${data.total_general_usd.toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2})} USD — ${data.total_registros} registros`;
 
     // Tabla detalle
+    state.lastAnalisisMovimientos = data.movimientos || [];
     const tbody = document.getElementById('analisis-movimientos-tbody');
     tbody.innerHTML = '';
 
     if (data.movimientos.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="text-center text-secondary">Sin registros para los filtros aplicados.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="text-center text-secondary">Sin registros para los filtros aplicados.</td></tr>';
         return;
     }
 
@@ -6265,6 +6267,10 @@ function renderAnalisisDetalle(data) {
             <td style="color:var(--text-secondary);">${m.tasa_bcv > 0 ? m.tasa_bcv.toFixed(2) + ' Bs' : '—'}</td>
             <td>${m.plataforma_pago || '—'}</td>
             <td style="color:var(--text-secondary); font-size:0.72rem;">${m.detalles || '—'}</td>
+            <td class="text-center" style="white-space: nowrap;">
+                <button class="btn btn-sm text-primary" type="button" onclick="handleEditarMovimientoPersonal(${m.id}, '${m.tipo}')" title="Editar Movimiento" style="padding: 0.2rem 0.4rem; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.15); color: #60a5fa; margin-right: 4px; cursor: pointer;">✏️</button>
+                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteMovimiento(${m.id}, '${m.tipo}')" title="Eliminar Movimiento" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171; cursor: pointer;">🗑️</button>
+            </td>
         `;
         tbody.appendChild(tr);
     });
@@ -6404,6 +6410,7 @@ window.openAbonoDeudaModal = function(deudaId, acreedor) {
 
 // Renderizar tabla de historial
 function renderPersonalHistoryTable(movimientos) {
+    state.personalHistory = movimientos || [];
     const tbody = document.getElementById('personal-history-table-body');
     tbody.innerHTML = '';
     
@@ -6439,8 +6446,9 @@ function renderPersonalHistoryTable(movimientos) {
             </td>
             <td style="color: ${color}; font-weight: 500; line-height: 1.25;">${signo}${displayMonto}${displayEquiv}</td>
             <td class="text-secondary">${g.plataforma_pago}</td>
-            <td class="text-center">
-                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteMovimiento(${g.id}, '${g.tipo}')" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171;">🗑️</button>
+            <td class="text-center" style="white-space: nowrap;">
+                <button class="btn btn-sm text-primary" type="button" onclick="handleEditarMovimientoPersonal(${g.id}, '${g.tipo}')" title="Editar Movimiento" style="padding: 0.2rem 0.4rem; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.15); color: #60a5fa; margin-right: 4px; cursor: pointer;">✏️</button>
+                <button class="btn btn-danger btn-sm" type="button" onclick="handleDeleteMovimiento(${g.id}, '${g.tipo}')" title="Eliminar Movimiento" style="padding: 0.2rem 0.4rem; background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.15); color: #f87171; cursor: pointer;">🗑️</button>
             </td>
         `;
         tbody.appendChild(tr);
@@ -6636,6 +6644,146 @@ window.handleDeleteMovimiento = async function(id, tipo) {
         alert(err.message);
     }
 };
+
+window.handleEditarMovimientoPersonal = function(id, tipo) {
+    let mov = (state.personalHistory || []).find(m => m.id === id && (m.tipo === tipo || (!m.tipo && tipo === 'gasto')));
+    if (!mov && state.lastAnalisisMovimientos) {
+        mov = state.lastAnalisisMovimientos.find(m => m.id === id && (m.tipo === tipo || (!m.tipo && tipo === 'gasto')));
+    }
+    
+    if (!mov) {
+        alert("No se encontró el movimiento a editar.");
+        return;
+    }
+    
+    document.getElementById('edit-mov-id').value = mov.id;
+    document.getElementById('edit-mov-tipo').value = tipo;
+    document.getElementById('edit-mov-fecha').value = mov.fecha || '';
+    document.getElementById('edit-mov-monto').value = mov.monto || '';
+    document.getElementById('edit-mov-moneda').value = mov.moneda || 'USD';
+    document.getElementById('edit-mov-tasa').value = mov.tasa_bcv || state.bcvRate || '';
+    document.getElementById('edit-mov-detalles').value = mov.detalles || '';
+    document.getElementById('edit-mov-subcategoria').value = mov.subcategoria || '';
+    
+    const titleEl = document.getElementById('modal-edit-mov-title');
+    if (titleEl) {
+        titleEl.textContent = tipo === 'gasto' ? '✏️ Editar Egreso / Gasto' : '✏️ Editar Ingreso Personal';
+    }
+    
+    const catSelect = document.getElementById('edit-mov-categoria');
+    catSelect.innerHTML = '';
+    const cats = (state.personalCategories || []).filter(c => c.tipo === tipo);
+    cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = `${c.icono} ${c.nombre}`;
+        if (c.id === mov.categoria_id || c.nombre === mov.categoria) {
+            opt.selected = true;
+        }
+        catSelect.appendChild(opt);
+    });
+    
+    const platSelect = document.getElementById('edit-mov-plataforma');
+    if (platSelect && mov.plataforma_pago) {
+        platSelect.value = mov.plataforma_pago;
+        if (platSelect.selectedIndex === -1) {
+            const opt = document.createElement('option');
+            opt.value = mov.plataforma_pago;
+            opt.textContent = mov.plataforma_pago;
+            opt.selected = true;
+            platSelect.appendChild(opt);
+        }
+    }
+    
+    const tasaGroup = document.getElementById('edit-mov-tasa-group');
+    if (tasaGroup) {
+        tasaGroup.style.display = mov.moneda === 'VES' ? 'block' : 'none';
+    }
+    
+    const subcatGroup = document.getElementById('edit-mov-subcat-group');
+    if (subcatGroup) {
+        subcatGroup.style.display = tipo === 'gasto' ? 'block' : 'none';
+    }
+    
+    openModal(document.getElementById('modal-editar-movimiento-personal'));
+};
+
+const formEditMov = document.getElementById('form-editar-movimiento-personal');
+if (formEditMov) {
+    formEditMov.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const id = parseInt(document.getElementById('edit-mov-id').value);
+        const tipo = document.getElementById('edit-mov-tipo').value;
+        const fecha = document.getElementById('edit-mov-fecha').value;
+        const monto = parseFloat(document.getElementById('edit-mov-monto').value);
+        const moneda = document.getElementById('edit-mov-moneda').value;
+        const tasa = parseFloat(document.getElementById('edit-mov-tasa').value) || 0;
+        const categoriaId = parseInt(document.getElementById('edit-mov-categoria').value);
+        const plataforma = document.getElementById('edit-mov-plataforma').value;
+        const subcategoria = document.getElementById('edit-mov-subcategoria').value;
+        const detalles = document.getElementById('edit-mov-detalles').value;
+        
+        if (isNaN(monto) || monto <= 0) {
+            alert("Por favor introduce un monto válido.");
+            return;
+        }
+        
+        if (moneda === 'VES' && (!tasa || tasa <= 0)) {
+            alert("Para montos en VES (Bolívares) debes ingresar una tasa BCV válida.");
+            return;
+        }
+        
+        const payload = {
+            monto: monto,
+            moneda: moneda,
+            tasa_bcv: tasa,
+            categoria_id: categoriaId,
+            plataforma_pago: plataforma,
+            detalles: detalles,
+            fecha: fecha
+        };
+        
+        if (tipo === 'gasto') {
+            payload.subcategoria = subcategoria;
+        }
+        
+        try {
+            const endpoint = tipo === 'gasto' ? `/personal/gastos/${id}` : `/personal/ingresos/${id}`;
+            await apiCall(endpoint, 'PUT', payload);
+            closeModal(document.getElementById('modal-editar-movimiento-personal'));
+            showToast("Movimiento actualizado con éxito.", "success");
+            await loadPersonalFinanceData();
+            await loadCapital();
+            const panel = document.getElementById('analisis-detalle-panel');
+            if (panel && panel.style.display !== 'none') {
+                loadAnalisisDetalle();
+            }
+        } catch (err) {
+            alert("Error al actualizar movimiento: " + err.message);
+        }
+    });
+}
+
+const editMovMoneda = document.getElementById('edit-mov-moneda');
+if (editMovMoneda) {
+    editMovMoneda.addEventListener('change', () => {
+        const tasaGroup = document.getElementById('edit-mov-tasa-group');
+        if (tasaGroup) {
+            tasaGroup.style.display = editMovMoneda.value === 'VES' ? 'block' : 'none';
+        }
+        if (editMovMoneda.value === 'VES' && (!document.getElementById('edit-mov-tasa').value || parseFloat(document.getElementById('edit-mov-tasa').value) <= 0)) {
+            document.getElementById('edit-mov-tasa').value = state.bcvRate || '';
+        }
+    });
+}
+
+const btnCloseEditMov = document.getElementById('btn-close-edit-mov');
+if (btnCloseEditMov) {
+    btnCloseEditMov.addEventListener('click', () => {
+        closeModal(document.getElementById('modal-editar-movimiento-personal'));
+    });
+}
 
 window.openEditDeudaModal = function(id, acreedor, monto, concepto, detalles) {
     document.getElementById('modal-edit-deuda-id').value = id;
