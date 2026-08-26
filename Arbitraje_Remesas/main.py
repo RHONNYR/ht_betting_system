@@ -2068,7 +2068,7 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
     }
     
     try:
-        res = requests.post(url, json=payload, headers=headers, timeout=10)
+        res = requests.post(url, json=payload, headers=headers, timeout=8)
         if res.status_code == 200:
             data = res.json()
             advs = data.get("data", [])
@@ -2088,9 +2088,11 @@ def get_p2p_rate(req: P2PRateRequest, username: str = Depends(get_current_user))
                 })
             return {"success": True, "rates": rates}
         else:
-            raise HTTPException(status_code=res.status_code, detail=f"Binance P2P error: {res.text}")
+            print(f"Binance P2P non-200 status {res.status_code}")
+            return {"success": False, "rates": [], "error": f"Status {res.status_code}"}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to fetch P2P rates: {str(e)}")
+        print(f"Error connecting to Binance P2P: {e}")
+        return {"success": False, "rates": [], "error": str(e)}
 
 @app.get("/api/stats/dashboard")
 def get_stats_dashboard(
