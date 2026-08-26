@@ -352,7 +352,7 @@ async function initDashboard() {
         await loadAndRenderCharts();
         
         if (els.remesaP2pRef && (!els.remesaP2pRef.value || parseFloat(els.remesaP2pRef.value) <= 0)) {
-            handleConsultarP2P();
+            handleConsultarP2P(true);
         }
     } catch (err) {
         console.error("Error loading dashboard concurrently:", err);
@@ -429,7 +429,7 @@ function handleTabSwitch(e) {
     
     if (targetTab === 'tab-remesas') {
         if (els.remesaP2pRef && (!els.remesaP2pRef.value || parseFloat(els.remesaP2pRef.value) <= 0)) {
-            handleConsultarP2P();
+            handleConsultarP2P(true);
         }
     }
     if (targetTab === 'tab-personal') {
@@ -3432,6 +3432,8 @@ function showAutocompleteDropdown(filterText) {
 }
 
 async function handleConsultarP2P(isSilent = false) {
+    if (!state.token) return;
+    
     const amount = parseFloat(els.remesaMontoUsd.value) || 0;
     const banco = els.remesaBancoReceptor.value;
     const p2pRol = els.remesaRolP2p ? els.remesaRolP2p.value : 'maker';
@@ -3516,7 +3518,7 @@ async function handleConsultarP2P(isSilent = false) {
             calculateRemesa();
         } else {
             if (!isSilent) {
-                alert("No se encontraron tasas activas para este método en Binance P2P.");
+                showToast("No se encontraron tasas activas para este método en Binance P2P.", "warning");
             }
         }
     } catch (err) {
@@ -3524,12 +3526,14 @@ async function handleConsultarP2P(isSilent = false) {
         if (!isSilent) {
             els.btnConsultarP2p.textContent = "⚡ Consultar Binance P2P";
             els.btnConsultarP2p.disabled = false;
-            alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
+            showToast("Error al conectar con Binance P2P. Ingresa la tasa manualmente.", "danger");
         }
     }
 }
 
 async function handleCalcConsultarP2P() {
+    if (!state.token) return;
+    
     const amount = parseFloat(els.calcUsdtVendidos.value) || 0;
     const banco = els.calcBancoVenta.value;
     const p2pRol = els.calcRolP2p ? els.calcRolP2p.value : 'maker';
@@ -3590,12 +3594,12 @@ async function handleCalcConsultarP2P() {
             updateSuggestedDivisas();
             handleCalcularCiclo();
         } else {
-            alert("No se encontraron tasas activas en Binance P2P.");
+            showToast("No se encontraron tasas activas en Binance P2P.", "warning");
         }
     } catch (err) {
         els.btnCalcConsultarP2p.textContent = "⚡ P2P";
         els.btnCalcConsultarP2p.disabled = false;
-        alert("Error al conectar con Binance P2P. Por favor ingresa la tasa manualmente.");
+        showToast("Error al conectar con Binance P2P. Ingresa la tasa manualmente.", "danger");
     }
 }
 
