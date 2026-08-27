@@ -1243,6 +1243,44 @@ def delete_canje(canje_id: int, username: str = Depends(get_current_user), db: S
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_ALLOWED_USER_ID = os.getenv("TELEGRAM_ALLOWED_USER_ID")
 
+# In-memory deduplication cache & concurrency lock
+import time
+import threading
+
+_processed_telegram_updates = {}   # update_id -> timestamp
+_processed_telegram_messages = {}  # (chat_id, message_id) -> timestamp
+_telegram_lock = threading.Lock()
+
+def _check_and_register_telegram_event(update_id: int, chat_id: int, message_id: int) -> bool:
+    """Returns True if duplicate (already processed or currently processing), False otherwise."""
+    if not update_id and not (chat_id and message_id):
+        return False
+        
+    now = time.time()
+    with _telegram_lock:
+        # Purge entries older than 30 minutes (1800s)
+        expired_updates = [k for k, v in _processed_telegram_updates.items() if now - v > 1800]
+        for k in expired_updates:
+            del _processed_telegram_updates[k]
+            
+        expired_msgs = [k for k, v in _processed_telegram_messages.items() if now - v > 1800]
+        for k in expired_msgs:
+            del _processed_telegram_messages[k]
+            
+        # Check if already processed
+        if update_id and update_id in _processed_telegram_updates:
+            return True
+        if chat_id and message_id and (chat_id, message_id) in _processed_telegram_messages:
+            return True
+            
+        # Register immediately to block concurrent duplicates/retries
+        if update_id:
+            _processed_telegram_updates[update_id] = now
+        if chat_id and message_id:
+            _processed_telegram_messages[(chat_id, message_id)] = now
+            
+        return False
+
 def send_telegram_message(chat_id: int, text: str):
     if not TELEGRAM_BOT_TOKEN:
         return
@@ -1252,7 +1290,7 @@ def send_telegram_message(chat_id: int, text: str):
             "chat_id": chat_id,
             "text": text,
             "parse_mode": "Markdown"
-        })
+        }, timeout=10)
     except Exception as e:
         print(f"Error sending message to telegram: {e}")
 
@@ -1262,14 +1300,14 @@ def download_telegram_file(file_id: str) -> str:
     try:
         # 1. Get file path
         get_file_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getFile?file_id={file_id}"
-        res = requests.get(get_file_url).json()
+        res = requests.get(get_file_url, timeout=15).json()
         file_path = res.get("result", {}).get("file_path")
         if not file_path:
             return None
             
         # 2. Download the file data
         download_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file_path}"
-        file_data = requests.get(download_url).content
+        file_data = requests.get(download_url, timeout=20).content
         
         # 3. Compress using Pillow and encode to base64
         import io
@@ -1309,12 +1347,23 @@ import re
 
 @app.post("/api/webhooks/telegram")
 async def telegram_webhook(update: dict, db: Session = Depends(get_db)):
-    message = update.get("message", {})
+    # Ignore edited message updates to prevent re-processing transactions
+    if "edited_message" in update and "message" not in update:
+        return {"status": "ignored_edit"}
+        
+    update_id = update.get("update_id")
+    message = update.get("message") or update.get("channel_post") or update.get("edited_message") or {}
     chat_id = message.get("chat", {}).get("id")
+    message_id = message.get("message_id")
     sender_id = str(message.get("from", {}).get("id", ""))
     
     if not chat_id:
         return {"status": "ignored"}
+        
+    # Deduplicación inmediata (bloquea reintentos automáticos de Telegram o envíos paralelos)
+    if _check_and_register_telegram_event(update_id, chat_id, message_id):
+        print(f"Telegram webhook duplicate ignored: update_id={update_id}, msg_id={message_id}")
+        return {"status": "already_processed"}
         
     # Validar que el usuario esté autorizado
     if not TELEGRAM_ALLOWED_USER_ID:
@@ -1356,6 +1405,25 @@ async def telegram_webhook(update: dict, db: Session = Depends(get_db)):
             cliente = names_str
             titular = names_str
             
+        # Prevención de duplicados en base de datos (ventana de seguridad de 120 segundos para el mismo monto y cliente)
+        recent_window = fecha_mov - datetime.timedelta(seconds=120)
+        duplicate_entry = db.query(MovimientoZelle).filter(
+            MovimientoZelle.tipo == "ingreso",
+            MovimientoZelle.monto == monto,
+            MovimientoZelle.cliente_nombre == cliente,
+            MovimientoZelle.fecha >= recent_window
+        ).first()
+
+        if duplicate_entry:
+            print(f"Ignored duplicate Telegram Zelle income: {monto} for {cliente} (already recorded ID #{duplicate_entry.id})")
+            send_telegram_message(
+                chat_id,
+                f"⚠️ **Aviso de Duplicado:**\n\n"
+                f"Este movimiento de `+${monto:.2f}` ({cliente}) ya fue registrado hace un instante (ID: `#{duplicate_entry.id}`).\n"
+                f"🛡️ **Protección Antiduplicados Activa:** No se volvió a sumar a la cuenta Zelle."
+            )
+            return {"status": "ignored_duplicate", "id": duplicate_entry.id}
+            
         # Insertar movimiento como "pendiente"
         mov = MovimientoZelle(
             fecha=fecha_mov,
@@ -1393,6 +1461,25 @@ async def telegram_webhook(update: dict, db: Session = Depends(get_db)):
         monto = float(expense_match.group(1))
         detalle = expense_match.group(2).strip()
         
+        # Prevención de duplicados en base de datos (ventana de seguridad de 120 segundos para el mismo monto y detalle)
+        recent_window = fecha_mov - datetime.timedelta(seconds=120)
+        duplicate_entry = db.query(MovimientoZelle).filter(
+            MovimientoZelle.tipo == "egreso",
+            MovimientoZelle.monto == monto,
+            MovimientoZelle.detalle == detalle,
+            MovimientoZelle.fecha >= recent_window
+        ).first()
+
+        if duplicate_entry:
+            print(f"Ignored duplicate Telegram Zelle expense: {monto} ({detalle}) (already recorded ID #{duplicate_entry.id})")
+            send_telegram_message(
+                chat_id,
+                f"⚠️ **Aviso de Duplicado:**\n\n"
+                f"Este egreso de `-${monto:.2f}` ({detalle}) ya fue registrado hace un instante (ID: `#{duplicate_entry.id}`).\n"
+                f"🛡️ **Protección Antiduplicados Activa:** No se volvió a restar de la cuenta Zelle."
+            )
+            return {"status": "ignored_duplicate", "id": duplicate_entry.id}
+            
         # Insertar egreso como "completado"
         mov = MovimientoZelle(
             fecha=fecha_mov,
