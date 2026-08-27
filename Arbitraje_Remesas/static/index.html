@@ -227,15 +227,15 @@
                                 <div class="form-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr 1.1fr; gap: 0.6rem; margin-bottom: 0.65rem; align-items: end;">
                                     <div class="form-group" style="margin: 0;">
                                         <label for="inline-canje-monto-entregado" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto Entregado ($)</label>
-                                        <input type="number" step="any" id="inline-canje-monto-entregado" required placeholder="Ej. 1000" style="padding: 0.5rem; font-size: 0.9rem; font-weight: 700;">
+                                        <input type="number" step="any" id="inline-canje-monto-entregado" required placeholder="Ej. 1000" oninput="window.recalculateInlineCanjeForm('entregado')" onchange="window.recalculateInlineCanjeForm('entregado')" style="padding: 0.5rem; font-size: 0.9rem; font-weight: 700;">
                                     </div>
                                     <div class="form-group" style="margin: 0;">
                                         <label for="inline-canje-comision-pct" style="font-size: 0.75rem; margin-bottom: 0.25rem;">% Comisión</label>
-                                        <input type="number" step="any" id="inline-canje-comision-pct" value="6.0" placeholder="6.0" style="padding: 0.5rem; font-size: 0.9rem; color: #10b981; font-weight: 700; text-align: center;">
+                                        <input type="number" step="any" id="inline-canje-comision-pct" value="6.0" placeholder="6.0" oninput="window.recalculateInlineCanjeForm('comision')" onchange="window.recalculateInlineCanjeForm('comision')" style="padding: 0.5rem; font-size: 0.9rem; color: #10b981; font-weight: 700; text-align: center;">
                                     </div>
                                     <div class="form-group" style="margin: 0;">
                                         <label for="inline-canje-monto-recibido" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto Recibido ($)</label>
-                                        <input type="number" step="any" id="inline-canje-monto-recibido" required placeholder="Ej. 1060" style="padding: 0.5rem; font-size: 0.9rem; font-weight: 700;">
+                                        <input type="number" step="any" id="inline-canje-monto-recibido" required placeholder="Ej. 1060" oninput="window.recalculateInlineCanjeForm('recibido')" onchange="window.recalculateInlineCanjeForm('recibido')" style="padding: 0.5rem; font-size: 0.9rem; font-weight: 700;">
                                     </div>
                                 </div>
 
@@ -243,10 +243,10 @@
                                 <div style="display: flex; gap: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.45rem 0.65rem; border-radius: 6px; margin-bottom: 0.65rem; font-size: 0.75rem;">
                                     <span style="color: var(--text-secondary); font-weight: 500;">Modo:</span>
                                     <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; color: var(--text-primary);">
-                                        <input type="radio" name="inline-canje-calc-mode" value="markup" checked> Cobro a favor (+%): Recibo más
+                                        <input type="radio" name="inline-canje-calc-mode" value="markup" checked onchange="window.recalculateInlineCanjeForm('mode')" onclick="window.recalculateInlineCanjeForm('mode')"> Cobro a favor (+%): Recibo más
                                     </label>
                                     <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; color: var(--text-primary);">
-                                        <input type="radio" name="inline-canje-calc-mode" value="discount"> Descuento (-%): Entrego menos
+                                        <input type="radio" name="inline-canje-calc-mode" value="discount" onchange="window.recalculateInlineCanjeForm('mode')" onclick="window.recalculateInlineCanjeForm('mode')"> Descuento (-%): Entrego menos
                                     </label>
                                 </div>
 
@@ -259,16 +259,16 @@
                                         <div class="form-group" style="margin: 0;">
                                             <label style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 0.2rem;">
                                                 <span>Costo Reposición USDT (%):</span>
-                                                <input type="checkbox" id="inline-canje-toggle-repo" checked title="Activar/Desactivar">
+                                                <input type="checkbox" id="inline-canje-toggle-repo" checked onchange="window.recalculateInlineCanjeForm('repo')" title="Activar/Desactivar">
                                             </label>
-                                            <input type="number" step="any" id="inline-canje-repo-pct" value="2.0" style="padding: 0.35rem; font-size: 0.8rem;">
+                                            <input type="number" step="any" id="inline-canje-repo-pct" value="2.0" oninput="window.recalculateInlineCanjeForm('repo')" onchange="window.recalculateInlineCanjeForm('repo')" style="padding: 0.35rem; font-size: 0.8rem;">
                                         </div>
                                         <div class="form-group" style="margin: 0;">
                                             <label style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 0.2rem;">
                                                 <span>Comisiones P2P + PM (%):</span>
-                                                <input type="checkbox" id="inline-canje-toggle-op" checked title="Activar/Desactivar">
+                                                <input type="checkbox" id="inline-canje-toggle-op" checked onchange="window.recalculateInlineCanjeForm('op')" title="Activar/Desactivar">
                                             </label>
-                                            <input type="number" step="any" id="inline-canje-op-pct" value="0.55" style="padding: 0.35rem; font-size: 0.8rem;">
+                                            <input type="number" step="any" id="inline-canje-op-pct" value="0.55" oninput="window.recalculateInlineCanjeForm('op')" onchange="window.recalculateInlineCanjeForm('op')" style="padding: 0.35rem; font-size: 0.8rem;">
                                         </div>
                                     </div>
                                 </details>
@@ -2991,15 +2991,15 @@
                 <div class="form-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr 1.1fr; gap: 0.6rem; margin-bottom: 0.65rem; align-items: end;">
                     <div class="form-group" style="margin: 0;">
                         <label for="canje-monto-entregado" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto Entregado ($)</label>
-                        <input type="number" step="any" id="canje-monto-entregado" required placeholder="Ej. 1000.00" style="padding: 0.45rem; font-size: 0.88rem; font-weight: 600;">
+                        <input type="number" step="any" id="canje-monto-entregado" required placeholder="Ej. 1000.00" oninput="window.recalculateCanjeForm('entregado')" onchange="window.recalculateCanjeForm('entregado')" style="padding: 0.45rem; font-size: 0.88rem; font-weight: 600;">
                     </div>
                     <div class="form-group" style="margin: 0;">
                         <label for="canje-comision-pct" style="font-size: 0.75rem; margin-bottom: 0.25rem;">% Comisión Canje</label>
-                        <input type="number" step="any" id="canje-comision-pct" value="6.0" placeholder="6.0" style="padding: 0.45rem; font-size: 0.88rem; color: #10b981; font-weight: 700;">
+                        <input type="number" step="any" id="canje-comision-pct" value="6.0" placeholder="6.0" oninput="window.recalculateCanjeForm('comision')" onchange="window.recalculateCanjeForm('comision')" style="padding: 0.45rem; font-size: 0.88rem; color: #10b981; font-weight: 700;">
                     </div>
                     <div class="form-group" style="margin: 0;">
                         <label for="canje-monto-recibido" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto Recibido ($)</label>
-                        <input type="number" step="any" id="canje-monto-recibido" required placeholder="Ej. 1060.00" style="padding: 0.45rem; font-size: 0.88rem; font-weight: 600;">
+                        <input type="number" step="any" id="canje-monto-recibido" required placeholder="Ej. 1060.00" oninput="window.recalculateCanjeForm('recibido')" onchange="window.recalculateCanjeForm('recibido')" style="padding: 0.45rem; font-size: 0.88rem; font-weight: 600;">
                     </div>
                 </div>
 
@@ -3007,10 +3007,10 @@
                 <div style="display: flex; gap: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.45rem 0.65rem; border-radius: 6px; margin-bottom: 0.65rem; font-size: 0.75rem;">
                     <span style="color: var(--text-secondary); font-weight: 500;">Modo de cálculo:</span>
                     <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; color: var(--text-primary);">
-                        <input type="radio" name="canje-calc-mode" value="markup" checked> Cobro a favor (+%): Recibo más
+                        <input type="radio" name="canje-calc-mode" value="markup" checked onchange="window.recalculateCanjeForm('mode')" onclick="window.recalculateCanjeForm('mode')"> Cobro a favor (+%): Recibo más
                     </label>
                     <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; color: var(--text-primary);">
-                        <input type="radio" name="canje-calc-mode" value="discount"> Descuento entregado (-%): Entrego menos
+                        <input type="radio" name="canje-calc-mode" value="discount" onchange="window.recalculateCanjeForm('mode')" onclick="window.recalculateCanjeForm('mode')"> Descuento entregado (-%): Entrego menos
                     </label>
                 </div>
 
@@ -3023,16 +3023,16 @@
                         <div class="form-group" style="margin: 0;">
                             <label style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 0.2rem;">
                                 <span>Costo Reposición USDT (%):</span>
-                                <input type="checkbox" id="canje-toggle-reposicion" checked title="Activar/Desactivar">
+                                <input type="checkbox" id="canje-toggle-reposicion" checked onchange="window.recalculateCanjeForm('repo')" title="Activar/Desactivar">
                             </label>
-                            <input type="number" step="any" id="canje-comision-repo-pct" value="2.0" style="padding: 0.35rem; font-size: 0.8rem;">
+                            <input type="number" step="any" id="canje-comision-repo-pct" value="2.0" oninput="window.recalculateCanjeForm('repo')" onchange="window.recalculateCanjeForm('repo')" style="padding: 0.35rem; font-size: 0.8rem;">
                         </div>
                         <div class="form-group" style="margin: 0;">
                             <label style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 0.2rem;">
                                 <span>Comisiones Operativas (P2P + PM) (%):</span>
-                                <input type="checkbox" id="canje-toggle-operativas" checked title="Activar/Desactivar">
+                                <input type="checkbox" id="canje-toggle-operativas" checked onchange="window.recalculateCanjeForm('op')" title="Activar/Desactivar">
                             </label>
-                            <input type="number" step="any" id="canje-comision-op-pct" value="0.55" style="padding: 0.35rem; font-size: 0.8rem;">
+                            <input type="number" step="any" id="canje-comision-op-pct" value="0.55" oninput="window.recalculateCanjeForm('op')" onchange="window.recalculateCanjeForm('op')" style="padding: 0.35rem; font-size: 0.8rem;">
                         </div>
                     </div>
                 </details>
@@ -3116,6 +3116,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=155"></script>
+    <script src="app.js?v=156"></script>
 </body>
 </html>
