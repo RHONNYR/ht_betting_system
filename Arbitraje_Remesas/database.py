@@ -153,6 +153,23 @@ class MovimientoZelle(Base):
     cliente_nombre = Column(String, nullable=True)
     capture_url = Column(String, nullable=True)
 
+class CanjeDivisa(Base):
+    __tablename__ = "canjes_divisas"
+    id = Column(Integer, primary_key=True, index=True)
+    fecha = Column(DateTime, default=datetime.datetime.utcnow)
+    origen_plataforma = Column(String, nullable=False)   # e.g., "Efectivo USD"
+    monto_entregado = Column(Float, nullable=False)      # e.g., 1000.0 (o 282.0)
+    destino_plataforma = Column(String, nullable=False)  # e.g., "Zelle"
+    monto_recibido = Column(Float, nullable=False)       # e.g., 1060.0 (o 300.0)
+    comision_canje_pct = Column(Float, default=6.0)      # 6.0%
+    comision_reposicion_pct = Column(Float, default=2.0) # 2.0%
+    comisiones_operativas_pct = Column(Float, default=0.55) # 0.55%
+    ganancia_bruta_usd = Column(Float, default=0.0)      # e.g., 60.0 (o 18.0)
+    ganancia_neta_usd = Column(Float, default=0.0)       # e.g., 37.76 (o 11.33)
+    cliente_nombre = Column(String, nullable=True)
+    detalles = Column(String, nullable=True)
+    capture_url = Column(String, nullable=True)
+
 class CategoriaPersonal(Base):
     __tablename__ = "personal_categorias"
     id = Column(Integer, primary_key=True, index=True)
