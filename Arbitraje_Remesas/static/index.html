@@ -99,9 +99,10 @@
                 <div class="grid-2col" style="align-items: start;">
                     <!-- Capital Distribution -->
                     <div class="card glass-card">
-                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 0.5rem;">
                             <h2>Distribución del Capital</h2>
-                            <div style="display: flex; gap: 0.5rem;">
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <button type="button" id="btn-abrir-canje-modal" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: #fff; font-size: 0.75rem; font-weight: 600;">🔄 Canje de Divisas</button>
                                 <button type="button" id="btn-reset-capital-inputs" class="btn btn-danger btn-sm" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--text-danger); font-size: 0.75rem;">🗑️ Reiniciar a Cero</button>
                                 <button type="button" id="btn-snapshot-capital" class="btn btn-secondary btn-sm" style="font-size: 0.75rem;">📸 Foto Diaria</button>
                             </div>
@@ -744,6 +745,7 @@
                 <!-- Navigation sub-tabs -->
                 <div class="sub-nav-tabs">
                     <button class="sub-tab-link active" data-subtab="subtab-historial-ciclos">🔄 Ciclos Ejecutados</button>
+                    <button class="sub-tab-link" data-subtab="subtab-historial-canjes">💱 Canjes & Arbitrajes</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-compras">💳 Bitácora de Compras de Divisas</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-capital">📈 Bitácora Diaria de Capital</button>
                     <button class="sub-tab-link" data-subtab="subtab-historial-remesas">💸 Remesas Enviadas</button>
@@ -787,6 +789,47 @@
                                         </tr>
                                     </thead>
                                     <tbody id="ciclos-table-body">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB-TAB: HISTORIAL DE CANJES / ARBITRAJES -->
+                <div id="subtab-historial-canjes" class="sub-tab-pane">
+                    <div class="card glass-card">
+                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                            <h2>Historial de Canjes & Arbitrajes de Divisas</h2>
+                            <div class="card-header-controls" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                                <div class="total-ganado-badge" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.25);">
+                                    <span>Ganancia Neta Total:</span>
+                                    <strong id="total-ganancia-canjes" style="color: #10b981;">$0.00</strong>
+                                </div>
+                                <button id="btn-nuevo-canje-historial" class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); border: none;">➕ Registrar Canje</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha y Hora</th>
+                                            <th>Cuenta Origen</th>
+                                            <th>Monto Entregado</th>
+                                            <th>Cuenta Destino</th>
+                                            <th>Monto Recibido</th>
+                                            <th>Comisión Canje</th>
+                                            <th>Spread Bruto</th>
+                                            <th>Ganancia Neta Real</th>
+                                            <th>Cliente / Contacto</th>
+                                            <th>Detalles</th>
+                                            <th>Capture</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="canjes-table-body">
                                         <!-- Dynamically populated -->
                                     </tbody>
                                 </table>
@@ -969,7 +1012,8 @@
                                 </div>
                             </div>
 
-                            <div style="display: flex; gap: 8px;">
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button id="btn-zelle-canje" class="btn btn-sm" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: #fff; font-weight: 600;">🔄 Canje de Divisas</button>
                                 <button id="btn-registrar-zelle-ingreso" class="btn btn-primary btn-sm">➕ Registrar Ingreso</button>
                                 <button id="btn-registrar-zelle-egreso" class="btn btn-danger btn-sm">➖ Registrar Egreso (Compra USDT)</button>
                             </div>
@@ -2691,6 +2735,157 @@
         </div>
     </div>
 
+    <!-- MODAL: REGISTRAR / EDITAR CANJE & ARBITRAJE DE DIVISAS -->
+    <div id="modal-canje-divisas" class="modal hidden">
+        <div class="modal-content glass-card" style="max-width: 620px; width: 95%; max-height: 92vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 0.85rem;">
+                <h3 id="modal-canje-title" style="margin: 0; display: flex; align-items: center; gap: 0.5rem; font-size: 1.15rem; color: #10b981;">
+                    🔄 Canje / Arbitraje de Divisas
+                </h3>
+                <button type="button" id="btn-close-modal-canje" class="btn btn-secondary btn-sm" style="padding: 0.2rem 0.5rem;">✕</button>
+            </div>
+            
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.4;">
+                Registra la entrega y recepción de divisas entre cuentas (ej. Efectivo USD ➔ Zelle) con cálculo transparente de comisiones, costo de reposición de USDT y ganancia neta real garantizada.
+            </p>
+
+            <form id="form-canje-divisas">
+                <input type="hidden" id="modal-canje-id">
+
+                <!-- Fila 1: Origen y Destino -->
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-origen-plat" style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📤 Cuenta Origen (Lo que entregas)</label>
+                        <select id="canje-origen-plat" required style="padding: 0.45rem; font-size: 0.85rem;">
+                            <option value="Efectivo USD" selected>💵 Efectivo USD</option>
+                            <option value="Zelle">🇺🇸 Zelle</option>
+                            <option value="Binance (USDT)">🟡 Binance (USDT)</option>
+                            <option value="Zinli">🟣 Zinli</option>
+                            <option value="Banco Mercantil (USD)">🏦 Mercantil Panamá (USD)</option>
+                            <option value="Bancamiga (USD)">🏦 Bancamiga (USD)</option>
+                            <option value="Banco Provincial (USD)">🏦 Provincial (USD)</option>
+                            <option value="Banco de Venezuela (USD)">🏦 BDV (USD)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-destino-plat" style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📥 Cuenta Destino (Lo que recibes)</label>
+                        <select id="canje-destino-plat" required style="padding: 0.45rem; font-size: 0.85rem;">
+                            <option value="Zelle" selected>🇺🇸 Zelle</option>
+                            <option value="Efectivo USD">💵 Efectivo USD</option>
+                            <option value="Binance (USDT)">🟡 Binance (USDT)</option>
+                            <option value="Zinli">🟣 Zinli</option>
+                            <option value="Banco Mercantil (USD)">🏦 Mercantil Panamá (USD)</option>
+                            <option value="Bancamiga (USD)">🏦 Bancamiga (USD)</option>
+                            <option value="Banco Provincial (USD)">🏦 Provincial (USD)</option>
+                            <option value="Banco de Venezuela (USD)">🏦 BDV (USD)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Fila 2: Montos y % de Comisión -->
+                <div class="form-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr 1.1fr; gap: 0.6rem; margin-bottom: 0.65rem; align-items: end;">
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-monto-entregado" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto Entregado ($)</label>
+                        <input type="number" step="any" id="canje-monto-entregado" required placeholder="Ej. 1000.00" style="padding: 0.45rem; font-size: 0.88rem; font-weight: 600;">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-comision-pct" style="font-size: 0.75rem; margin-bottom: 0.25rem;">% Comisión Canje</label>
+                        <input type="number" step="any" id="canje-comision-pct" value="6.0" placeholder="6.0" style="padding: 0.45rem; font-size: 0.88rem; color: #10b981; font-weight: 700;">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-monto-recibido" style="font-size: 0.75rem; margin-bottom: 0.25rem;">Monto Recibido ($)</label>
+                        <input type="number" step="any" id="canje-monto-recibido" required placeholder="Ej. 1060.00" style="padding: 0.45rem; font-size: 0.88rem; font-weight: 600;">
+                    </div>
+                </div>
+
+                <!-- Modo de cálculo de comisión -->
+                <div style="display: flex; gap: 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 0.45rem 0.65rem; border-radius: 6px; margin-bottom: 0.65rem; font-size: 0.75rem;">
+                    <span style="color: var(--text-secondary); font-weight: 500;">Modo de cálculo:</span>
+                    <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; color: var(--text-primary);">
+                        <input type="radio" name="canje-calc-mode" value="markup" checked> Cobro a favor (+%): Recibo más
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer; color: var(--text-primary);">
+                        <input type="radio" name="canje-calc-mode" value="discount"> Descuento entregado (-%): Entrego menos
+                    </label>
+                </div>
+
+                <!-- Desplegable / Acordeón: Ajuste de Comisiones y Deducciones Operativas -->
+                <details style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 0.45rem 0.65rem; margin-bottom: 0.75rem;">
+                    <summary style="font-size: 0.75rem; font-weight: 600; color: #60a5fa; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                        ⚙️ Deducciones Operativas (Editable)
+                    </summary>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; padding-top: 0.45rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <div class="form-group" style="margin: 0;">
+                            <label style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 0.2rem;">
+                                <span>Costo Reposición USDT (%):</span>
+                                <input type="checkbox" id="canje-toggle-reposicion" checked title="Activar/Desactivar">
+                            </label>
+                            <input type="number" step="any" id="canje-comision-repo-pct" value="2.0" style="padding: 0.35rem; font-size: 0.8rem;">
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label style="display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; margin-bottom: 0.2rem;">
+                                <span>Comisiones Operativas (P2P + PM) (%):</span>
+                                <input type="checkbox" id="canje-toggle-operativas" checked title="Activar/Desactivar">
+                            </label>
+                            <input type="number" step="any" id="canje-comision-op-pct" value="0.55" style="padding: 0.35rem; font-size: 0.8rem;">
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Tarjeta de Desglose en Vivo (Live Preview Card) -->
+                <div id="canje-live-preview-box" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 0.65rem 0.85rem; margin-bottom: 0.75rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                        <span style="font-size: 0.74rem; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.04em;">📊 Desglose de Rentabilidad Neta</span>
+                        <span id="canje-preview-roi" style="font-size: 0.82rem; font-weight: 800; color: #10b981;">ROI Neto: +0.00%</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 0.4rem; font-size: 0.73rem;">
+                        <div>
+                            <span style="color: var(--text-secondary); display: block;">Spread Bruto:</span>
+                            <strong id="canje-preview-bruto" style="color: #f8fafc;">+$0.00 USD</strong>
+                        </div>
+                        <div>
+                            <span style="color: var(--text-secondary); display: block;">Deducciones:</span>
+                            <strong id="canje-preview-deducciones" style="color: #f87171;">-$0.00 USD</strong>
+                        </div>
+                        <div>
+                            <span style="color: var(--text-secondary); display: block;">Ganancia Neta Real:</span>
+                            <strong id="canje-preview-neta" style="color: #10b981; font-size: 0.88rem;">+$0.00 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila 3: Cliente, Fecha, Detalles -->
+                <div class="form-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.6rem; margin-bottom: 0.55rem;">
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-cliente-nombre" style="font-size: 0.75rem; margin-bottom: 0.2rem;">Cliente / Contacto (Opcional)</label>
+                        <input type="text" id="canje-cliente-nombre" placeholder="Ej. Carlos Mendoza" style="padding: 0.4rem; font-size: 0.82rem;">
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label for="canje-fecha" style="font-size: 0.75rem; margin-bottom: 0.2rem;">Fecha y Hora</label>
+                        <input type="text" id="canje-fecha" placeholder="DD/MM/YYYY HH:MM AM/PM" style="padding: 0.4rem; font-size: 0.82rem;">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin: 0 0 0.55rem 0;">
+                    <label for="canje-detalles" style="font-size: 0.75rem; margin-bottom: 0.2rem;">Detalles / Concepto (Opcional)</label>
+                    <input type="text" id="canje-detalles" placeholder="Ej. Canje de $1,000 en efectivo por Zelle" style="padding: 0.4rem; font-size: 0.82rem;">
+                </div>
+
+                <!-- Capture / Comprobante (Opcional) -->
+                <div class="form-group" style="margin: 0 0 0.75rem 0;">
+                    <label for="canje-capture-file" style="font-size: 0.75rem; margin-bottom: 0.2rem;">📎 Capture / Comprobante (Opcional, máx 2MB)</label>
+                    <input type="file" id="canje-capture-file" accept="image/*" style="font-size: 0.75rem; padding: 0.3rem;">
+                    <input type="hidden" id="canje-capture-url">
+                </div>
+
+                <div class="modal-actions" style="display: flex; gap: 0.5rem; justify-content: flex-end; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.65rem;">
+                    <button type="button" id="btn-cancel-canje" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #10b981, #059669); border: none; font-weight: 600;">💾 Guardar Canje</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- MODAL: CONFIGURAR RUTAS / CANALES (PILAR A) -->
     <div id="modal-config-rutas" class="modal hidden">
         <div class="modal-content glass-card" style="max-width: 750px; width: 95%; max-height: 90vh; overflow-y: auto;">
@@ -2716,6 +2911,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=152"></script>
+    <script src="app.js?v=153"></script>
 </body>
 </html>
