@@ -7341,10 +7341,37 @@ window.cargarSimulacionEnForm = function(simId) {
 
 let currentCanjesList = [];
 
+function parseNum(val) {
+    if (val === undefined || val === null || val === '') return 0;
+    if (typeof val === 'number') return isNaN(val) ? 0 : val;
+    const clean = String(val).replace(/,/g, '.').trim();
+    const parsed = parseFloat(clean);
+    return isNaN(parsed) ? 0 : parsed;
+}
+
+function formatDateTimeDisplay(dateStr) {
+    if (!dateStr) return '—';
+    try {
+        if (dateStr.includes('T')) {
+            const parts = dateStr.split('T');
+            const [yyyy, mm, dd] = parts[0].split('-');
+            const timeParts = parts[1].split(':');
+            let h = parseInt(timeParts[0], 10);
+            const min = timeParts[1] || '00';
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12 || 12;
+            return `${dd}/${mm}/${yyyy} ${String(h).padStart(2, '0')}:${min} ${ampm}`;
+        }
+        return dateStr;
+    } catch (e) {
+        return dateStr;
+    }
+}
+
 function initInlineCanjeForm() {
     const fechaInput = document.getElementById('inline-canje-fecha');
     if (fechaInput && !fechaInput.value) {
-        fechaInput.value = formatDateTime(new Date());
+        fechaInput.value = formatDateToLocalInput(new Date());
     }
     recalculateInlineCanjeForm('entregado');
 }
@@ -7361,19 +7388,19 @@ function recalculateInlineCanjeForm(sourceTrigger = 'entregado') {
 
     if (!montoEntregadoInput || !comisionPctInput || !montoRecibidoInput) return;
 
-    let montoEntregado = parseFloat(montoEntregadoInput.value) || 0;
-    let comisionPct = parseFloat(comisionPctInput.value) || 0;
-    let montoRecibido = parseFloat(montoRecibidoInput.value) || 0;
+    let montoEntregado = parseNum(montoEntregadoInput.value);
+    let comisionPct = parseNum(comisionPctInput.value);
+    let montoRecibido = parseNum(montoRecibidoInput.value);
     const mode = calcModeRadio ? calcModeRadio.value : 'markup';
 
-    if (sourceTrigger === 'entregado' || sourceTrigger === 'comision' || sourceTrigger === 'mode') {
+    if (sourceTrigger === 'entregado' || sourceTrigger === 'comision') {
         if (montoEntregado > 0) {
             if (mode === 'markup') {
                 montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
             } else {
                 montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
             }
-            montoRecibidoInput.value = montoRecibido.toFixed(2);
+            montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
         }
     } else if (sourceTrigger === 'recibido') {
         if (montoRecibido > 0) {
@@ -7383,17 +7410,38 @@ function recalculateInlineCanjeForm(sourceTrigger = 'entregado') {
                     comisionPctInput.value = comisionPct.toFixed(2);
                 } else if (comisionPct > 0) {
                     montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
-                    montoEntregadoInput.value = montoEntregado.toFixed(2);
+                    montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
                 }
             } else {
                 montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
-                montoEntregadoInput.value = montoEntregado.toFixed(2);
+                montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
             }
+        }
+    } else if (sourceTrigger === 'mode') {
+        if (montoEntregado > 0) {
+            if (mode === 'markup') {
+                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
+            } else {
+                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
+            }
+            montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
+        } else if (montoRecibido > 0) {
+            if (mode === 'markup') {
+                montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
+            } else {
+                montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
+            }
+            montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
         }
     }
 
-    const repoPct = (toggleRepo && toggleRepo.checked) ? (parseFloat(repoPctInput.value) || 0) : 0;
-    const opPct = (toggleOp && toggleOp.checked) ? (parseFloat(opPctInput.value) || 0) : 0;
+    // Re-read updated values for accurate profit breakdown
+    montoEntregado = parseNum(montoEntregadoInput.value);
+    montoRecibido = parseNum(montoRecibidoInput.value);
+    comisionPct = parseNum(comisionPctInput.value);
+
+    const repoPct = (toggleRepo && toggleRepo.checked) ? parseNum(repoPctInput?.value) : 0;
+    const opPct = (toggleOp && toggleOp.checked) ? parseNum(opPctInput?.value) : 0;
 
     const baseAmount = montoEntregado > 0 ? montoEntregado : montoRecibido;
     const spreadBruto = round2(montoRecibido - montoEntregado);
@@ -7412,7 +7460,7 @@ function recalculateInlineCanjeForm(sourceTrigger = 'entregado') {
     if (previewDeducciones) previewDeducciones.textContent = `-$${totalDeducciones.toFixed(2)} USD`;
     if (previewNeta) {
         previewNeta.textContent = `${gananciaNeta >= 0 ? '+' : ''}$${gananciaNeta.toFixed(2)} USD`;
-        previewNeta.className = gananciaNeta >= 0 ? 'text-success' : 'text-danger';
+        previewNeta.style.color = gananciaNeta >= 0 ? '#10b981' : '#f87171';
     }
     if (previewRoi) {
         previewRoi.textContent = `ROI Neto: ${roiNeto >= 0 ? '+' : ''}${roiNeto.toFixed(2)}%`;
@@ -7425,13 +7473,13 @@ async function handleInlineCanjeSubmit(e) {
     const id = document.getElementById('inline-canje-id').value;
     const origenPlat = document.getElementById('inline-canje-origen').value;
     const destinoPlat = document.getElementById('inline-canje-destino').value;
-    const montoEntregado = parseFloat(document.getElementById('inline-canje-monto-entregado').value);
-    const comisionPct = parseFloat(document.getElementById('inline-canje-comision-pct').value) || 0;
-    const montoRecibido = parseFloat(document.getElementById('inline-canje-monto-recibido').value);
-    const repoPct = (document.getElementById('inline-canje-toggle-repo')?.checked) ? (parseFloat(document.getElementById('inline-canje-repo-pct').value) || 0) : 0;
-    const opPct = (document.getElementById('inline-canje-toggle-op')?.checked) ? (parseFloat(document.getElementById('inline-canje-op-pct').value) || 0) : 0;
+    const montoEntregado = parseNum(document.getElementById('inline-canje-monto-entregado').value);
+    const comisionPct = parseNum(document.getElementById('inline-canje-comision-pct').value);
+    const montoRecibido = parseNum(document.getElementById('inline-canje-monto-recibido').value);
+    const repoPct = (document.getElementById('inline-canje-toggle-repo')?.checked) ? parseNum(document.getElementById('inline-canje-repo-pct').value) : 0;
+    const opPct = (document.getElementById('inline-canje-toggle-op')?.checked) ? parseNum(document.getElementById('inline-canje-op-pct').value) : 0;
     const clienteNombre = document.getElementById('inline-canje-cliente').value.trim();
-    const fecha = document.getElementById('inline-canje-fecha').value.trim();
+    const rawFecha = document.getElementById('inline-canje-fecha').value.trim();
     const detalles = document.getElementById('inline-canje-detalles').value.trim();
     const captureUrl = document.getElementById('inline-canje-capture-url').value;
 
@@ -7444,6 +7492,7 @@ async function handleInlineCanjeSubmit(e) {
         return;
     }
 
+    const fecha = rawFecha ? formatDateTimeDisplay(rawFecha) : formatDateTimeDisplay(formatDateToLocalInput(new Date()));
     const spreadBruto = round2(montoRecibido - montoEntregado);
     const deducRepo = round2(montoEntregado * (repoPct / 100));
     const deducOp = round2(montoEntregado * (opPct / 100));
@@ -7484,7 +7533,7 @@ async function handleInlineCanjeSubmit(e) {
         document.getElementById('inline-canje-capture-url').value = '';
         const capFile = document.getElementById('inline-canje-capture-file');
         if (capFile) capFile.value = '';
-        document.getElementById('inline-canje-fecha').value = formatDateTime(new Date());
+        document.getElementById('inline-canje-fecha').value = formatDateToLocalInput(new Date());
 
         recalculateInlineCanjeForm('entregado');
 
@@ -7536,7 +7585,7 @@ function openModalCanje(canje = null) {
         if (toggleRepo) toggleRepo.checked = (canje.comision_reposicion_pct > 0);
         if (toggleOp) toggleOp.checked = (canje.comisiones_operativas_pct > 0);
         clienteInput.value = canje.cliente_nombre || '';
-        fechaInput.value = canje.fecha || '';
+        fechaInput.value = formatFechaForDatetimeLocal(canje.fecha) || formatDateToLocalInput(new Date());
         detallesInput.value = canje.detalles || '';
         captureUrlInput.value = canje.capture_url || '';
     } else {
@@ -7552,7 +7601,7 @@ function openModalCanje(canje = null) {
         if (toggleRepo) toggleRepo.checked = true;
         if (toggleOp) toggleOp.checked = true;
         clienteInput.value = '';
-        fechaInput.value = formatDateTime(new Date());
+        fechaInput.value = formatDateToLocalInput(new Date());
         detallesInput.value = '';
         captureUrlInput.value = '';
     }
@@ -7578,19 +7627,19 @@ function recalculateCanjeForm(sourceTrigger = 'entregado') {
 
     if (!montoEntregadoInput || !comisionPctInput || !montoRecibidoInput) return;
 
-    let montoEntregado = parseFloat(montoEntregadoInput.value) || 0;
-    let comisionPct = parseFloat(comisionPctInput.value) || 0;
-    let montoRecibido = parseFloat(montoRecibidoInput.value) || 0;
+    let montoEntregado = parseNum(montoEntregadoInput.value);
+    let comisionPct = parseNum(comisionPctInput.value);
+    let montoRecibido = parseNum(montoRecibidoInput.value);
     const mode = calcModeRadio ? calcModeRadio.value : 'markup';
 
-    if (sourceTrigger === 'entregado' || sourceTrigger === 'comision' || sourceTrigger === 'mode') {
+    if (sourceTrigger === 'entregado' || sourceTrigger === 'comision') {
         if (montoEntregado > 0) {
             if (mode === 'markup') {
                 montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
             } else {
                 montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
             }
-            montoRecibidoInput.value = montoRecibido.toFixed(2);
+            montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
         }
     } else if (sourceTrigger === 'recibido') {
         if (montoRecibido > 0) {
@@ -7600,17 +7649,38 @@ function recalculateCanjeForm(sourceTrigger = 'entregado') {
                     comisionPctInput.value = comisionPct.toFixed(2);
                 } else if (comisionPct > 0) {
                     montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
-                    montoEntregadoInput.value = montoEntregado.toFixed(2);
+                    montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
                 }
             } else {
                 montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
-                montoEntregadoInput.value = montoEntregado.toFixed(2);
+                montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
             }
+        }
+    } else if (sourceTrigger === 'mode') {
+        if (montoEntregado > 0) {
+            if (mode === 'markup') {
+                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
+            } else {
+                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
+            }
+            montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
+        } else if (montoRecibido > 0) {
+            if (mode === 'markup') {
+                montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
+            } else {
+                montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
+            }
+            montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
         }
     }
 
-    const repoPct = (toggleRepo && toggleRepo.checked) ? (parseFloat(repoPctInput.value) || 0) : 0;
-    const opPct = (toggleOp && toggleOp.checked) ? (parseFloat(opPctInput.value) || 0) : 0;
+    // Re-read updated values for accurate profit breakdown
+    montoEntregado = parseNum(montoEntregadoInput.value);
+    montoRecibido = parseNum(montoRecibidoInput.value);
+    comisionPct = parseNum(comisionPctInput.value);
+
+    const repoPct = (toggleRepo && toggleRepo.checked) ? parseNum(repoPctInput?.value) : 0;
+    const opPct = (toggleOp && toggleOp.checked) ? parseNum(opPctInput?.value) : 0;
 
     const baseAmount = montoEntregado > 0 ? montoEntregado : montoRecibido;
     const spreadBruto = round2(montoRecibido - montoEntregado);
@@ -7642,13 +7712,13 @@ async function handleCanjeSubmit(e) {
     const id = document.getElementById('modal-canje-id').value;
     const origenPlat = document.getElementById('canje-origen-plat').value;
     const destinoPlat = document.getElementById('canje-destino-plat').value;
-    const montoEntregado = parseFloat(document.getElementById('canje-monto-entregado').value);
-    const comisionPct = parseFloat(document.getElementById('canje-comision-pct').value) || 0;
-    const montoRecibido = parseFloat(document.getElementById('canje-monto-recibido').value);
-    const repoPct = (document.getElementById('canje-toggle-reposicion')?.checked) ? (parseFloat(document.getElementById('canje-comision-repo-pct').value) || 0) : 0;
-    const opPct = (document.getElementById('canje-toggle-operativas')?.checked) ? (parseFloat(document.getElementById('canje-comision-op-pct').value) || 0) : 0;
+    const montoEntregado = parseNum(document.getElementById('canje-monto-entregado').value);
+    const comisionPct = parseNum(document.getElementById('canje-comision-pct').value);
+    const montoRecibido = parseNum(document.getElementById('canje-monto-recibido').value);
+    const repoPct = (document.getElementById('canje-toggle-reposicion')?.checked) ? parseNum(document.getElementById('canje-comision-repo-pct').value) : 0;
+    const opPct = (document.getElementById('canje-toggle-operativas')?.checked) ? parseNum(document.getElementById('canje-comision-op-pct').value) : 0;
     const clienteNombre = document.getElementById('canje-cliente-nombre').value.trim();
-    const fecha = document.getElementById('canje-fecha').value.trim();
+    const rawFecha = document.getElementById('canje-fecha').value.trim();
     const detalles = document.getElementById('canje-detalles').value.trim();
     const captureUrl = document.getElementById('canje-capture-url').value;
 
@@ -7661,6 +7731,7 @@ async function handleCanjeSubmit(e) {
         return;
     }
 
+    const fecha = rawFecha ? formatDateTimeDisplay(rawFecha) : formatDateTimeDisplay(formatDateToLocalInput(new Date()));
     const spreadBruto = round2(montoRecibido - montoEntregado);
     const deducRepo = round2(montoEntregado * (repoPct / 100));
     const deducOp = round2(montoEntregado * (opPct / 100));
@@ -7760,10 +7831,12 @@ function renderCanjesTable(canjes) {
                 ? `<button type="button" class="btn btn-sm btn-secondary" onclick="viewReceiptImage('${c.capture_url}')" style="padding: 2px 6px; font-size: 0.72rem;">📸 Ver</button>` 
                 : `<span style="color: var(--text-secondary); font-size: 0.72rem;">—</span>`;
 
+            const formattedFecha = formatDateTimeDisplay(c.fecha);
+
             if (isMain) {
                 return `
                     <tr>
-                        <td style="font-size: 0.78rem;">${c.fecha || '—'}</td>
+                        <td style="font-size: 0.78rem;">${formattedFecha}</td>
                         <td style="font-size: 0.8rem; white-space: nowrap;">
                             <span class="badge" style="background: rgba(239,68,68,0.1); color: #f87171; font-size: 0.72rem;">${c.origen_plataforma}</span>
                             <span style="color: var(--text-secondary);">➔</span>
@@ -7784,7 +7857,7 @@ function renderCanjesTable(canjes) {
             } else {
                 return `
                     <tr>
-                        <td style="font-size: 0.8rem;">${c.fecha || '—'}</td>
+                        <td style="font-size: 0.8rem;">${formattedFecha}</td>
                         <td><span class="badge" style="background: rgba(239, 68, 68, 0.1); color: #f87171;">📤 ${c.origen_plataforma}</span></td>
                         <td style="font-weight: 700; color: #f87171;">-$${c.monto_entregado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                         <td><span class="badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">📥 ${c.destino_plataforma}</span></td>
@@ -7848,14 +7921,33 @@ function setupCanjeListeners() {
     const inlineToggleOp = document.getElementById('inline-canje-toggle-op');
     const inlineCalcRadios = document.querySelectorAll('input[name="inline-canje-calc-mode"]');
 
-    if (inlineEntregado) inlineEntregado.addEventListener('input', () => recalculateInlineCanjeForm('entregado'));
-    if (inlineComision) inlineComision.addEventListener('input', () => recalculateInlineCanjeForm('comision'));
-    if (inlineRecibido) inlineRecibido.addEventListener('input', () => recalculateInlineCanjeForm('recibido'));
-    if (inlineRepoPct) inlineRepoPct.addEventListener('input', () => recalculateInlineCanjeForm('entregado'));
-    if (inlineOpPct) inlineOpPct.addEventListener('input', () => recalculateInlineCanjeForm('entregado'));
+    if (inlineEntregado) {
+        inlineEntregado.addEventListener('input', () => recalculateInlineCanjeForm('entregado'));
+        inlineEntregado.addEventListener('change', () => recalculateInlineCanjeForm('entregado'));
+    }
+    if (inlineComision) {
+        inlineComision.addEventListener('input', () => recalculateInlineCanjeForm('comision'));
+        inlineComision.addEventListener('change', () => recalculateInlineCanjeForm('comision'));
+    }
+    if (inlineRecibido) {
+        inlineRecibido.addEventListener('input', () => recalculateInlineCanjeForm('recibido'));
+        inlineRecibido.addEventListener('change', () => recalculateInlineCanjeForm('recibido'));
+    }
+    if (inlineRepoPct) {
+        inlineRepoPct.addEventListener('input', () => recalculateInlineCanjeForm('entregado'));
+        inlineRepoPct.addEventListener('change', () => recalculateInlineCanjeForm('entregado'));
+    }
+    if (inlineOpPct) {
+        inlineOpPct.addEventListener('input', () => recalculateInlineCanjeForm('entregado'));
+        inlineOpPct.addEventListener('change', () => recalculateInlineCanjeForm('entregado'));
+    }
     if (inlineToggleRepo) inlineToggleRepo.addEventListener('change', () => recalculateInlineCanjeForm('entregado'));
     if (inlineToggleOp) inlineToggleOp.addEventListener('change', () => recalculateInlineCanjeForm('entregado'));
-    inlineCalcRadios.forEach(r => r.addEventListener('change', () => recalculateInlineCanjeForm('mode')));
+    
+    inlineCalcRadios.forEach(r => {
+        r.addEventListener('change', () => recalculateInlineCanjeForm('mode'));
+        r.addEventListener('click', () => recalculateInlineCanjeForm('mode'));
+    });
 
     const inlineCapFile = document.getElementById('inline-canje-capture-file');
     const inlineCapUrl = document.getElementById('inline-canje-capture-url');
@@ -7909,14 +8001,33 @@ function setupCanjeListeners() {
     const toggleOp = document.getElementById('canje-toggle-operativas');
     const calcModeRadios = document.querySelectorAll('input[name="canje-calc-mode"]');
 
-    if (montoEntregadoInput) montoEntregadoInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
-    if (comisionPctInput) comisionPctInput.addEventListener('input', () => recalculateCanjeForm('comision'));
-    if (montoRecibidoInput) montoRecibidoInput.addEventListener('input', () => recalculateCanjeForm('recibido'));
-    if (repoPctInput) repoPctInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
-    if (opPctInput) opPctInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+    if (montoEntregadoInput) {
+        montoEntregadoInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+        montoEntregadoInput.addEventListener('change', () => recalculateCanjeForm('entregado'));
+    }
+    if (comisionPctInput) {
+        comisionPctInput.addEventListener('input', () => recalculateCanjeForm('comision'));
+        comisionPctInput.addEventListener('change', () => recalculateCanjeForm('comision'));
+    }
+    if (montoRecibidoInput) {
+        montoRecibidoInput.addEventListener('input', () => recalculateCanjeForm('recibido'));
+        montoRecibidoInput.addEventListener('change', () => recalculateCanjeForm('recibido'));
+    }
+    if (repoPctInput) {
+        repoPctInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+        repoPctInput.addEventListener('change', () => recalculateCanjeForm('entregado'));
+    }
+    if (opPctInput) {
+        opPctInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+        opPctInput.addEventListener('change', () => recalculateCanjeForm('entregado'));
+    }
     if (toggleRepo) toggleRepo.addEventListener('change', () => recalculateCanjeForm('entregado'));
     if (toggleOp) toggleOp.addEventListener('change', () => recalculateCanjeForm('entregado'));
-    calcModeRadios.forEach(radio => radio.addEventListener('change', () => recalculateCanjeForm('mode')));
+    
+    calcModeRadios.forEach(radio => {
+        radio.addEventListener('change', () => recalculateCanjeForm('mode'));
+        radio.addEventListener('click', () => recalculateCanjeForm('mode'));
+    });
 
     const captureFile = document.getElementById('canje-capture-file');
     const captureUrl = document.getElementById('canje-capture-url');
