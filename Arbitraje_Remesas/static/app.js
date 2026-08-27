@@ -346,7 +346,8 @@ async function initDashboard() {
             loadCompras(),
             loadCapitalSnapshots(),
             loadRemesas(),
-            loadClientes()
+            loadClientes(),
+            loadCanjes()
         ]);
         
         await loadAndRenderCharts();
@@ -454,6 +455,9 @@ function handleSubTabSwitch(e) {
     
     if (targetSubTab === 'subtab-historial-zelle') {
         loadZelleMovimientos();
+    }
+    if (targetSubTab === 'subtab-historial-canjes') {
+        loadCanjes();
     }
     if (targetSubTab === 'subtab-simulador-bcv') {
         initBCVSimulator();
@@ -7320,11 +7324,367 @@ window.cargarSimulacionEnForm = function(simId) {
     showToast("📋 Tasas del historial cargadas en el formulario");
 };
 
+// ----------------------------------------------------
+// CANJES Y ARBITRAJE DE DIVISAS (CASH -> ZELLE, ETC.)
+// ----------------------------------------------------
+
+let currentCanjesList = [];
+
+function openModalCanje(canje = null) {
+    const modal = document.getElementById('modal-canje-divisas');
+    if (!modal) return;
+
+    const idInput = document.getElementById('modal-canje-id');
+    const title = document.getElementById('modal-canje-title');
+    const origenPlat = document.getElementById('canje-origen-plat');
+    const destinoPlat = document.getElementById('canje-destino-plat');
+    const montoEntregado = document.getElementById('canje-monto-entregado');
+    const comisionPct = document.getElementById('canje-comision-pct');
+    const montoRecibido = document.getElementById('canje-monto-recibido');
+    const repoPct = document.getElementById('canje-comision-repo-pct');
+    const opPct = document.getElementById('canje-comision-op-pct');
+    const toggleRepo = document.getElementById('canje-toggle-reposicion');
+    const toggleOp = document.getElementById('canje-toggle-operativas');
+    const clienteInput = document.getElementById('canje-cliente-nombre');
+    const fechaInput = document.getElementById('canje-fecha');
+    const detallesInput = document.getElementById('canje-detalles');
+    const captureUrlInput = document.getElementById('canje-capture-url');
+    const captureFileInput = document.getElementById('canje-capture-file');
+
+    if (captureFileInput) captureFileInput.value = '';
+
+    if (canje) {
+        // Editing existing canje
+        title.innerHTML = '✏️ Editar Canje de Divisas';
+        idInput.value = canje.id;
+        origenPlat.value = canje.origen_plataforma;
+        destinoPlat.value = canje.destino_plataforma;
+        montoEntregado.value = canje.monto_entregado;
+        comisionPct.value = canje.comision_canje_pct !== undefined ? canje.comision_canje_pct : 6.0;
+        montoRecibido.value = canje.monto_recibido;
+        repoPct.value = canje.comision_reposicion_pct !== undefined ? canje.comision_reposicion_pct : 2.0;
+        opPct.value = canje.comisiones_operativas_pct !== undefined ? canje.comisiones_operativas_pct : 0.55;
+        if (toggleRepo) toggleRepo.checked = (canje.comision_reposicion_pct > 0);
+        if (toggleOp) toggleOp.checked = (canje.comisiones_operativas_pct > 0);
+        clienteInput.value = canje.cliente_nombre || '';
+        fechaInput.value = canje.fecha || '';
+        detallesInput.value = canje.detalles || '';
+        captureUrlInput.value = canje.capture_url || '';
+    } else {
+        // New canje
+        title.innerHTML = '🔄 Canje / Arbitraje de Divisas';
+        idInput.value = '';
+        origenPlat.value = 'Efectivo USD';
+        destinoPlat.value = 'Zelle';
+        montoEntregado.value = '';
+        comisionPct.value = '6.0';
+        montoRecibido.value = '';
+        repoPct.value = '2.0';
+        opPct.value = '0.55';
+        if (toggleRepo) toggleRepo.checked = true;
+        if (toggleOp) toggleOp.checked = true;
+        clienteInput.value = '';
+        fechaInput.value = formatDateTime(new Date());
+        detallesInput.value = '';
+        captureUrlInput.value = '';
+    }
+
+    recalculateCanjeForm('entregado');
+    modal.classList.remove('hidden');
+}
+
+function closeModalCanje() {
+    const modal = document.getElementById('modal-canje-divisas');
+    if (modal) modal.classList.add('hidden');
+}
+
+function recalculateCanjeForm(sourceTrigger = 'entregado') {
+    const montoEntregadoInput = document.getElementById('canje-monto-entregado');
+    const comisionPctInput = document.getElementById('canje-comision-pct');
+    const montoRecibidoInput = document.getElementById('canje-monto-recibido');
+    const repoPctInput = document.getElementById('canje-comision-repo-pct');
+    const opPctInput = document.getElementById('canje-comision-op-pct');
+    const toggleRepo = document.getElementById('canje-toggle-reposicion');
+    const toggleOp = document.getElementById('canje-toggle-operativas');
+    const calcModeRadio = document.querySelector('input[name="canje-calc-mode"]:checked');
+
+    if (!montoEntregadoInput || !comisionPctInput || !montoRecibidoInput) return;
+
+    let montoEntregado = parseFloat(montoEntregadoInput.value) || 0;
+    let comisionPct = parseFloat(comisionPctInput.value) || 0;
+    let montoRecibido = parseFloat(montoRecibidoInput.value) || 0;
+    const mode = calcModeRadio ? calcModeRadio.value : 'markup';
+
+    if (sourceTrigger === 'entregado' || sourceTrigger === 'comision' || sourceTrigger === 'mode') {
+        if (montoEntregado > 0) {
+            if (mode === 'markup') {
+                // Cobro a favor (+%): Recibo = Entregado * (1 + comisionPct/100)
+                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
+            } else {
+                // Descuento entregado (-%): Si cliente paga X Zelle y le damos X*(1 - comisionPct/100)
+                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
+            }
+            montoRecibidoInput.value = montoRecibido.toFixed(2);
+        }
+    } else if (sourceTrigger === 'recibido') {
+        if (montoRecibido > 0) {
+            if (mode === 'markup') {
+                if (montoEntregado > 0) {
+                    comisionPct = round2(((montoRecibido / montoEntregado) - 1) * 100);
+                    comisionPctInput.value = comisionPct.toFixed(2);
+                } else if (comisionPct > 0) {
+                    montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
+                    montoEntregadoInput.value = montoEntregado.toFixed(2);
+                }
+            } else {
+                // Modo descuento: Entregado = Recibido * (1 - comisionPct/100)
+                montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
+                montoEntregadoInput.value = montoEntregado.toFixed(2);
+            }
+        }
+    }
+
+    // Calcular costos de reposición y operativos
+    const repoPct = (toggleRepo && toggleRepo.checked) ? (parseFloat(repoPctInput.value) || 0) : 0;
+    const opPct = (toggleOp && toggleOp.checked) ? (parseFloat(opPctInput.value) || 0) : 0;
+
+    const baseAmount = montoEntregado > 0 ? montoEntregado : montoRecibido;
+    const spreadBruto = round2(montoRecibido - montoEntregado);
+    const deducRepo = round2(baseAmount * (repoPct / 100));
+    const deducOp = round2(baseAmount * (opPct / 100));
+    const totalDeducciones = round2(deducRepo + deducOp);
+    const gananciaNeta = round2(spreadBruto - totalDeducciones);
+    const roiNeto = baseAmount > 0 ? round2((gananciaNeta / baseAmount) * 100) : 0;
+
+    // Actualizar caja preview
+    const previewBruto = document.getElementById('canje-preview-bruto');
+    const previewDeducciones = document.getElementById('canje-preview-deducciones');
+    const previewNeta = document.getElementById('canje-preview-neta');
+    const previewRoi = document.getElementById('canje-preview-roi');
+
+    if (previewBruto) previewBruto.textContent = `${spreadBruto >= 0 ? '+' : ''}$${spreadBruto.toFixed(2)} USD`;
+    if (previewDeducciones) previewDeducciones.textContent = `-$${totalDeducciones.toFixed(2)} USD`;
+    if (previewNeta) {
+        previewNeta.textContent = `${gananciaNeta >= 0 ? '+' : ''}$${gananciaNeta.toFixed(2)} USD`;
+        previewNeta.style.color = gananciaNeta >= 0 ? '#10b981' : '#f87171';
+    }
+    if (previewRoi) {
+        previewRoi.textContent = `ROI Neto: ${roiNeto >= 0 ? '+' : ''}${roiNeto.toFixed(2)}%`;
+        previewRoi.style.color = roiNeto >= 0 ? '#10b981' : '#f87171';
+    }
+}
+
+async function handleCanjeSubmit(e) {
+    e.preventDefault();
+    const id = document.getElementById('modal-canje-id').value;
+    const origenPlat = document.getElementById('canje-origen-plat').value;
+    const destinoPlat = document.getElementById('canje-destino-plat').value;
+    const montoEntregado = parseFloat(document.getElementById('canje-monto-entregado').value);
+    const comisionPct = parseFloat(document.getElementById('canje-comision-pct').value) || 0;
+    const montoRecibido = parseFloat(document.getElementById('canje-monto-recibido').value);
+    const repoPct = (document.getElementById('canje-toggle-reposicion')?.checked) ? (parseFloat(document.getElementById('canje-comision-repo-pct').value) || 0) : 0;
+    const opPct = (document.getElementById('canje-toggle-operativas')?.checked) ? (parseFloat(document.getElementById('canje-comision-op-pct').value) || 0) : 0;
+    const clienteNombre = document.getElementById('canje-cliente-nombre').value.trim();
+    const fecha = document.getElementById('canje-fecha').value.trim();
+    const detalles = document.getElementById('canje-detalles').value.trim();
+    const captureUrl = document.getElementById('canje-capture-url').value;
+
+    if (isNaN(montoEntregado) || montoEntregado <= 0) {
+        showToast("⚠️ Ingresa un monto entregado válido", "warning");
+        return;
+    }
+    if (isNaN(montoRecibido) || montoRecibido <= 0) {
+        showToast("⚠️ Ingresa un monto recibido válido", "warning");
+        return;
+    }
+
+    const spreadBruto = round2(montoRecibido - montoEntregado);
+    const deducRepo = round2(montoEntregado * (repoPct / 100));
+    const deducOp = round2(montoEntregado * (opPct / 100));
+    const gananciaNeta = round2(spreadBruto - deducRepo - deducOp);
+
+    const payload = {
+        origen_plataforma: origenPlat,
+        monto_entregado: montoEntregado,
+        destino_plataforma: destinoPlat,
+        monto_recibido: montoRecibido,
+        comision_canje_pct: comisionPct,
+        comision_reposicion_pct: repoPct,
+        comisiones_operativas_pct: opPct,
+        ganancia_bruta_usd: spreadBruto,
+        ganancia_neta_usd: gananciaNeta,
+        cliente_nombre: clienteNombre,
+        fecha: fecha,
+        detalles: detalles,
+        capture_url: captureUrl
+    };
+
+    try {
+        if (id) {
+            await apiCall(`/canjes/${id}`, 'PUT', payload);
+            showToast("✅ Canje de divisas actualizado con éxito");
+        } else {
+            await apiCall('/canjes', 'POST', payload);
+            showToast("✅ Canje de divisas registrado con éxito");
+        }
+        closeModalCanje();
+        await Promise.all([
+            loadCanjes(),
+            loadCapital(),
+            loadZelleMovimientos(),
+            loadAndRenderCharts()
+        ]);
+    } catch (err) {
+        console.error("Error saving canje:", err);
+        showToast(`❌ Error al guardar el canje: ${err.message || err}`, "danger");
+    }
+}
+
+async function loadCanjes() {
+    try {
+        const data = await apiCall('/canjes');
+        currentCanjesList = data || [];
+        renderCanjesTable(currentCanjesList);
+    } catch (err) {
+        console.error("Error loading canjes:", err);
+    }
+}
+
+function renderCanjesTable(canjes) {
+    const tbody = document.getElementById('canjes-table-body');
+    const totalBadge = document.getElementById('total-ganancia-canjes');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+    let totalGanancia = 0;
+
+    if (!canjes || canjes.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="12" style="text-align: center; color: var(--text-secondary); padding: 1.5rem;">No hay canjes de divisas registrados</td></tr>`;
+        if (totalBadge) totalBadge.textContent = '$0.00';
+        return;
+    }
+
+    canjes.forEach(c => {
+        totalGanancia += (c.ganancia_neta_usd || 0);
+        const tr = document.createElement('tr');
+        
+        const captureHtml = c.capture_url 
+            ? `<button class="btn btn-sm btn-secondary" onclick="viewReceiptImage('${c.capture_url}')" style="padding: 2px 6px; font-size: 0.72rem;">📸 Ver</button>` 
+            : `<span style="color: var(--text-secondary); font-size: 0.72rem;">—</span>`;
+
+        tr.innerHTML = `
+            <td style="font-size: 0.8rem;">${c.fecha || '—'}</td>
+            <td><span class="badge" style="background: rgba(239, 68, 68, 0.1); color: #f87171;">📤 ${c.origen_plataforma}</span></td>
+            <td style="font-weight: 700; color: #f87171;">-$${c.monto_entregado.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+            <td><span class="badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">📥 ${c.destino_plataforma}</span></td>
+            <td style="font-weight: 700; color: #10b981;">+$${c.monto_recibido.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+            <td style="text-align: center; font-weight: 600; color: #60a5fa;">${c.comision_canje_pct}%</td>
+            <td style="font-weight: 600; color: var(--text-secondary);">+$${c.ganancia_bruta_usd.toFixed(2)}</td>
+            <td style="font-weight: 800; color: #10b981; font-size: 0.88rem;">+$${c.ganancia_neta_usd.toFixed(2)}</td>
+            <td style="font-weight: 500;">${c.cliente_nombre || '—'}</td>
+            <td style="font-size: 0.75rem; color: var(--text-secondary); max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${c.detalles || ''}">${c.detalles || '—'}</td>
+            <td style="text-align: center;">${captureHtml}</td>
+            <td style="white-space: nowrap;">
+                <button class="btn btn-secondary btn-sm" onclick="openEditCanjeModal(${c.id})" style="padding: 2px 6px; font-size: 0.75rem;" title="Editar">✏️</button>
+                <button class="btn btn-danger btn-sm" onclick="handleDeleteCanje(${c.id})" style="padding: 2px 6px; font-size: 0.75rem; background: rgba(239,68,68,0.15); color: #f87171;" title="Eliminar">🗑️</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    if (totalBadge) {
+        totalBadge.textContent = `$${totalGanancia.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+}
+
+window.openEditCanjeModal = function(id) {
+    const canje = currentCanjesList.find(c => c.id === id);
+    if (!canje) return;
+    openModalCanje(canje);
+};
+
+window.handleDeleteCanje = async function(id) {
+    if (!confirm("¿Estás seguro de eliminar este canje? Se revertirán los saldos de capital asociados a las cuentas involucradas.")) {
+        return;
+    }
+    try {
+        await apiCall(`/canjes/${id}`, 'DELETE');
+        showToast("🗑️ Canje eliminado y saldos restaurados con éxito");
+        await Promise.all([
+            loadCanjes(),
+            loadCapital(),
+            loadZelleMovimientos(),
+            loadAndRenderCharts()
+        ]);
+    } catch (err) {
+        console.error("Error deleting canje:", err);
+        showToast(`❌ Error al eliminar el canje: ${err.message || err}`, "danger");
+    }
+};
+
+function setupCanjeListeners() {
+    const btnAbrirCapital = document.getElementById('btn-abrir-canje-modal');
+    const btnZelleCanje = document.getElementById('btn-zelle-canje');
+    const btnNuevoHistorial = document.getElementById('btn-nuevo-canje-historial');
+    const btnCloseModal = document.getElementById('btn-close-modal-canje');
+    const btnCancel = document.getElementById('btn-cancel-canje');
+    const formCanje = document.getElementById('form-canje-divisas');
+
+    if (btnAbrirCapital) btnAbrirCapital.addEventListener('click', () => openModalCanje());
+    if (btnZelleCanje) btnZelleCanje.addEventListener('click', () => openModalCanje());
+    if (btnNuevoHistorial) btnNuevoHistorial.addEventListener('click', () => openModalCanje());
+    if (btnCloseModal) btnCloseModal.addEventListener('click', closeModalCanje);
+    if (btnCancel) btnCancel.addEventListener('click', closeModalCanje);
+    if (formCanje) formCanje.addEventListener('submit', handleCanjeSubmit);
+
+    // Event listeners para el cálculo en tiempo real
+    const montoEntregadoInput = document.getElementById('canje-monto-entregado');
+    const comisionPctInput = document.getElementById('canje-comision-pct');
+    const montoRecibidoInput = document.getElementById('canje-monto-recibido');
+    const repoPctInput = document.getElementById('canje-comision-repo-pct');
+    const opPctInput = document.getElementById('canje-comision-op-pct');
+    const toggleRepo = document.getElementById('canje-toggle-reposicion');
+    const toggleOp = document.getElementById('canje-toggle-operativas');
+    const calcModeRadios = document.querySelectorAll('input[name="canje-calc-mode"]');
+
+    if (montoEntregadoInput) montoEntregadoInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+    if (comisionPctInput) comisionPctInput.addEventListener('input', () => recalculateCanjeForm('comision'));
+    if (montoRecibidoInput) montoRecibidoInput.addEventListener('input', () => recalculateCanjeForm('recibido'));
+    if (repoPctInput) repoPctInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+    if (opPctInput) opPctInput.addEventListener('input', () => recalculateCanjeForm('entregado'));
+    if (toggleRepo) toggleRepo.addEventListener('change', () => recalculateCanjeForm('entregado'));
+    if (toggleOp) toggleOp.addEventListener('change', () => recalculateCanjeForm('entregado'));
+    calcModeRadios.forEach(radio => radio.addEventListener('change', () => recalculateCanjeForm('mode')));
+
+    // Manejador de capture
+    const captureFile = document.getElementById('canje-capture-file');
+    const captureUrl = document.getElementById('canje-capture-url');
+    if (captureFile) {
+        captureFile.addEventListener('change', () => {
+            if (captureFile.files.length > 0) {
+                const file = captureFile.files[0];
+                if (file.size > 2 * 1024 * 1024) {
+                    showToast("⚠️ El comprobante es demasiado grande (máx 2MB)", "warning");
+                    captureFile.value = '';
+                    if (captureUrl) captureUrl.value = '';
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (captureUrl) captureUrl.value = e.target.result;
+                    showToast("✅ Comprobante cargado correctamente");
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+}
 
 // DOM Content Loaded entry point
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     setupEventListeners();
     setupPersonalFinanceListeners();
+    setupCanjeListeners();
     checkAuth();
 });
