@@ -21,6 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
+APP_VERSION = "v157"  # Build marker - forces Render rebuild with round2 fix
 
 security = HTTPBearer()
 
