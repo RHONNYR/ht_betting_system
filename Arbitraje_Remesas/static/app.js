@@ -7341,6 +7341,10 @@ window.cargarSimulacionEnForm = function(simId) {
 
 let currentCanjesList = [];
 
+function round2(num) {
+    return Math.round((num + Number.EPSILON) * 100) / 100;
+}
+
 function parseNum(val) {
     if (val === undefined || val === null || val === '') return 0;
     if (typeof val === 'number') return isNaN(val) ? 0 : val;
