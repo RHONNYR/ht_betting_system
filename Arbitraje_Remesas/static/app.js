@@ -7368,15 +7368,15 @@ function formatDateTimeDisplay(dateStr) {
     }
 }
 
-function initInlineCanjeForm() {
+window.initInlineCanjeForm = function() {
     const fechaInput = document.getElementById('inline-canje-fecha');
     if (fechaInput && !fechaInput.value) {
         fechaInput.value = formatDateToLocalInput(new Date());
     }
-    recalculateInlineCanjeForm('entregado');
-}
+    window.recalculateInlineCanjeForm('entregado');
+};
 
-function recalculateInlineCanjeForm(sourceTrigger = 'entregado') {
+window.recalculateInlineCanjeForm = function(sourceTrigger = 'entregado') {
     const montoEntregadoInput = document.getElementById('inline-canje-monto-entregado');
     const comisionPctInput = document.getElementById('inline-canje-comision-pct');
     const montoRecibidoInput = document.getElementById('inline-canje-monto-recibido');
@@ -7418,20 +7418,22 @@ function recalculateInlineCanjeForm(sourceTrigger = 'entregado') {
             }
         }
     } else if (sourceTrigger === 'mode') {
-        if (montoEntregado > 0) {
-            if (mode === 'markup') {
-                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
-            } else {
-                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
-            }
-            montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
-        } else if (montoRecibido > 0) {
-            if (mode === 'markup') {
-                montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
-            } else {
+        if (mode === 'discount') {
+            if (montoRecibido > 0) {
                 montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
+                montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
+            } else if (montoEntregado > 0) {
+                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
+                montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
             }
-            montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
+        } else {
+            if (montoEntregado > 0) {
+                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
+                montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
+            } else if (montoRecibido > 0) {
+                montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
+                montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
+            }
         }
     }
 
@@ -7466,7 +7468,7 @@ function recalculateInlineCanjeForm(sourceTrigger = 'entregado') {
         previewRoi.textContent = `ROI Neto: ${roiNeto >= 0 ? '+' : ''}${roiNeto.toFixed(2)}%`;
         previewRoi.style.color = roiNeto >= 0 ? '#10b981' : '#f87171';
     }
-}
+};
 
 async function handleInlineCanjeSubmit(e) {
     e.preventDefault();
@@ -7535,7 +7537,7 @@ async function handleInlineCanjeSubmit(e) {
         if (capFile) capFile.value = '';
         document.getElementById('inline-canje-fecha').value = formatDateToLocalInput(new Date());
 
-        recalculateInlineCanjeForm('entregado');
+        window.recalculateInlineCanjeForm('entregado');
 
         await Promise.all([
             loadCanjes(),
@@ -7606,7 +7608,7 @@ function openModalCanje(canje = null) {
         captureUrlInput.value = '';
     }
 
-    recalculateCanjeForm('entregado');
+    window.recalculateCanjeForm('entregado');
     modal.classList.remove('hidden');
 }
 
@@ -7615,7 +7617,7 @@ function closeModalCanje() {
     if (modal) modal.classList.add('hidden');
 }
 
-function recalculateCanjeForm(sourceTrigger = 'entregado') {
+window.recalculateCanjeForm = function(sourceTrigger = 'entregado') {
     const montoEntregadoInput = document.getElementById('canje-monto-entregado');
     const comisionPctInput = document.getElementById('canje-comision-pct');
     const montoRecibidoInput = document.getElementById('canje-monto-recibido');
@@ -7657,20 +7659,22 @@ function recalculateCanjeForm(sourceTrigger = 'entregado') {
             }
         }
     } else if (sourceTrigger === 'mode') {
-        if (montoEntregado > 0) {
-            if (mode === 'markup') {
-                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
-            } else {
-                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
-            }
-            montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
-        } else if (montoRecibido > 0) {
-            if (mode === 'markup') {
-                montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
-            } else {
+        if (mode === 'discount') {
+            if (montoRecibido > 0) {
                 montoEntregado = round2(montoRecibido * (1 - (comisionPct / 100)));
+                montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
+            } else if (montoEntregado > 0) {
+                montoRecibido = round2(montoEntregado / (1 - (comisionPct / 100)));
+                montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
             }
-            montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
+        } else {
+            if (montoEntregado > 0) {
+                montoRecibido = round2(montoEntregado * (1 + (comisionPct / 100)));
+                montoRecibidoInput.value = montoRecibido > 0 ? montoRecibido.toFixed(2) : '';
+            } else if (montoRecibido > 0) {
+                montoEntregado = round2(montoRecibido / (1 + (comisionPct / 100)));
+                montoEntregadoInput.value = montoEntregado > 0 ? montoEntregado.toFixed(2) : '';
+            }
         }
     }
 
@@ -7705,7 +7709,7 @@ function recalculateCanjeForm(sourceTrigger = 'entregado') {
         previewRoi.textContent = `ROI Neto: ${roiNeto >= 0 ? '+' : ''}${roiNeto.toFixed(2)}%`;
         previewRoi.style.color = roiNeto >= 0 ? '#10b981' : '#f87171';
     }
-}
+};
 
 async function handleCanjeSubmit(e) {
     e.preventDefault();
