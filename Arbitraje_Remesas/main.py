@@ -15,7 +15,7 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, SimulacionRutas, engine
+from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, SimulacionRutas, CanjeDivisa, engine
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
@@ -118,6 +118,9 @@ def run_startup_jobs():
             except Exception:
                 db.rollback()
                 
+        # Ensure canjes_divisas table exists
+        CanjeDivisa.__table__.create(bind=engine, checkfirst=True)
+        
         # Ensure uploads folder exists
         base_dir = os.path.dirname(os.path.abspath(__file__))
         os.makedirs(os.path.join(base_dir, "static", "uploads"), exist_ok=True)
@@ -344,6 +347,36 @@ class MovimientoZelleCreate(BaseModel):
     estado: Optional[str] = "completado"  # "completado", "pendiente"
     force: Optional[bool] = False
     cliente_nombre: Optional[str] = None
+    capture_url: Optional[str] = None
+
+class CanjeDivisaCreate(BaseModel):
+    fecha: Optional[str] = None
+    origen_plataforma: str
+    monto_entregado: float
+    destino_plataforma: str
+    monto_recibido: float
+    comision_canje_pct: Optional[float] = 6.0
+    comision_reposicion_pct: Optional[float] = 2.0
+    comisiones_operativas_pct: Optional[float] = 0.55
+    ganancia_bruta_usd: Optional[float] = 0.0
+    ganancia_neta_usd: Optional[float] = 0.0
+    cliente_nombre: Optional[str] = None
+    detalles: Optional[str] = None
+    capture_url: Optional[str] = None
+
+class CanjeDivisaUpdate(BaseModel):
+    fecha: Optional[str] = None
+    origen_plataforma: str
+    monto_entregado: float
+    destino_plataforma: str
+    monto_recibido: float
+    comision_canje_pct: Optional[float] = 6.0
+    comision_reposicion_pct: Optional[float] = 2.0
+    comisiones_operativas_pct: Optional[float] = 0.55
+    ganancia_bruta_usd: Optional[float] = 0.0
+    ganancia_neta_usd: Optional[float] = 0.0
+    cliente_nombre: Optional[str] = None
+    detalles: Optional[str] = None
     capture_url: Optional[str] = None
 
 class BCVModeRequest(BaseModel):
@@ -1034,6 +1067,176 @@ def delete_zelle_movimiento(mov_id: int, username: str = Depends(get_current_use
     db.delete(mov)
     db.commit()
     return {"message": "Movimiento eliminado con éxito"}
+
+# ----------------------------------------------------
+# CANJES Y ARBITRAJE DE DIVISAS (CASH -> ZELLE, ETC.)
+# ----------------------------------------------------
+
+@app.get("/api/canjes")
+def get_canjes(limit: int = 150, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    canjes = db.query(CanjeDivisa).order_by(CanjeDivisa.fecha.desc()).limit(limit).all()
+    result = []
+    for c in canjes:
+        result.append({
+            "id": c.id,
+            "fecha": c.fecha.strftime("%d/%m/%Y %I:%M %p") if c.fecha else "",
+            "origen_plataforma": c.origen_plataforma,
+            "monto_entregado": c.monto_entregado,
+            "destino_plataforma": c.destino_plataforma,
+            "monto_recibido": c.monto_recibido,
+            "comision_canje_pct": c.comision_canje_pct,
+            "comision_reposicion_pct": c.comision_reposicion_pct,
+            "comisiones_operativas_pct": c.comisiones_operativas_pct,
+            "ganancia_bruta_usd": c.ganancia_bruta_usd,
+            "ganancia_neta_usd": c.ganancia_neta_usd,
+            "cliente_nombre": c.cliente_nombre or "",
+            "detalles": c.detalles or "",
+            "capture_url": c.capture_url or ""
+        })
+    return result
+
+@app.post("/api/canjes")
+def create_canje(req: CanjeDivisaCreate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    fecha_mov = parse_date_string(req.fecha) if req.fecha else get_venezuela_time()
+    
+    # 1. Calculate profits
+    ganancia_bruta = round(req.monto_recibido - req.monto_entregado, 2)
+    deduc_repo = round(req.monto_entregado * ((req.comision_reposicion_pct or 0.0) / 100.0), 2)
+    deduc_op = round(req.monto_entregado * ((req.comisiones_operativas_pct or 0.0) / 100.0), 2)
+    ganancia_neta = req.ganancia_neta_usd if (req.ganancia_neta_usd is not None and req.ganancia_neta_usd != 0.0) else round(ganancia_bruta - deduc_repo - deduc_op, 2)
+    
+    # 2. Adjust Origin Capital Platform
+    db_plat_orig = map_plataforma_nombre(req.origen_plataforma, "USD")
+    plat_orig = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_orig)).first()
+    if plat_orig:
+        if plat_orig.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            plat_orig.saldo_ves -= (req.monto_entregado * bcv)
+        else:
+            plat_orig.saldo_usd -= req.monto_entregado
+
+    # 3. Adjust Destination Capital Platform
+    db_plat_dest = map_plataforma_nombre(req.destino_plataforma, "USD")
+    plat_dest = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(db_plat_dest)).first()
+    if plat_dest:
+        if plat_dest.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            plat_dest.saldo_ves += (req.monto_recibido * bcv)
+        else:
+            plat_dest.saldo_usd += req.monto_recibido
+
+    # 4. Save Canje Record
+    canje = CanjeDivisa(
+        fecha=fecha_mov,
+        origen_plataforma=req.origen_plataforma,
+        monto_entregado=req.monto_entregado,
+        destino_plataforma=req.destino_plataforma,
+        monto_recibido=req.monto_recibido,
+        comision_canje_pct=req.comision_canje_pct,
+        comision_reposicion_pct=req.comision_reposicion_pct,
+        comisiones_operativas_pct=req.comisiones_operativas_pct,
+        ganancia_bruta_usd=ganancia_bruta,
+        ganancia_neta_usd=ganancia_neta,
+        cliente_nombre=req.cliente_nombre,
+        detalles=req.detalles,
+        capture_url=req.capture_url
+    )
+    db.add(canje)
+    db.commit()
+    db.refresh(canje)
+    return {"message": "Canje de divisas registrado con éxito", "id": canje.id}
+
+@app.put("/api/canjes/{canje_id}")
+def update_canje(canje_id: int, req: CanjeDivisaUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    canje = db.query(CanjeDivisa).filter(CanjeDivisa.id == canje_id).first()
+    if not canje:
+        raise HTTPException(status_code=404, detail="Canje no encontrado")
+        
+    # 1. Revert previous capital impacts
+    old_plat_orig = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(map_plataforma_nombre(canje.origen_plataforma, "USD"))).first()
+    if old_plat_orig:
+        if old_plat_orig.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            old_plat_orig.saldo_ves += (canje.monto_entregado * bcv)
+        else:
+            old_plat_orig.saldo_usd += canje.monto_entregado
+
+    old_plat_dest = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(map_plataforma_nombre(canje.destino_plataforma, "USD"))).first()
+    if old_plat_dest:
+        if old_plat_dest.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            old_plat_dest.saldo_ves -= (canje.monto_recibido * bcv)
+        else:
+            old_plat_dest.saldo_usd -= canje.monto_recibido
+
+    # 2. Apply new capital impacts
+    new_plat_orig = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(map_plataforma_nombre(req.origen_plataforma, "USD"))).first()
+    if new_plat_orig:
+        if new_plat_orig.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            new_plat_orig.saldo_ves -= (req.monto_entregado * bcv)
+        else:
+            new_plat_orig.saldo_usd -= req.monto_entregado
+
+    new_plat_dest = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(map_plataforma_nombre(req.destino_plataforma, "USD"))).first()
+    if new_plat_dest:
+        if new_plat_dest.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            new_plat_dest.saldo_ves += (req.monto_recibido * bcv)
+        else:
+            new_plat_dest.saldo_usd += req.monto_recibido
+
+    # 3. Calculate new profits
+    ganancia_bruta = round(req.monto_recibido - req.monto_entregado, 2)
+    deduc_repo = round(req.monto_entregado * ((req.comision_reposicion_pct or 0.0) / 100.0), 2)
+    deduc_op = round(req.monto_entregado * ((req.comisiones_operativas_pct or 0.0) / 100.0), 2)
+    ganancia_neta = req.ganancia_neta_usd if (req.ganancia_neta_usd is not None and req.ganancia_neta_usd != 0.0) else round(ganancia_bruta - deduc_repo - deduc_op, 2)
+
+    if req.fecha:
+        canje.fecha = parse_date_string(req.fecha)
+    canje.origen_plataforma = req.origen_plataforma
+    canje.monto_entregado = req.monto_entregado
+    canje.destino_plataforma = req.destino_plataforma
+    canje.monto_recibido = req.monto_recibido
+    canje.comision_canje_pct = req.comision_canje_pct
+    canje.comision_reposicion_pct = req.comision_reposicion_pct
+    canje.comisiones_operativas_pct = req.comisiones_operativas_pct
+    canje.ganancia_bruta_usd = ganancia_bruta
+    canje.ganancia_neta_usd = ganancia_neta
+    canje.cliente_nombre = req.cliente_nombre
+    canje.detalles = req.detalles
+    canje.capture_url = req.capture_url
+    
+    db.commit()
+    db.refresh(canje)
+    return {"message": "Canje de divisas actualizado con éxito"}
+
+@app.delete("/api/canjes/{canje_id}")
+def delete_canje(canje_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    canje = db.query(CanjeDivisa).filter(CanjeDivisa.id == canje_id).first()
+    if not canje:
+        raise HTTPException(status_code=404, detail="Canje no encontrado")
+        
+    # Revert capital impacts
+    plat_orig = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(map_plataforma_nombre(canje.origen_plataforma, "USD"))).first()
+    if plat_orig:
+        if plat_orig.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            plat_orig.saldo_ves += (canje.monto_entregado * bcv)
+        else:
+            plat_orig.saldo_usd += canje.monto_entregado
+
+    plat_dest = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma.ilike(map_plataforma_nombre(canje.destino_plataforma, "USD"))).first()
+    if plat_dest:
+        if plat_dest.convertir_ves:
+            bcv = bcv_state.cached_rate or 36.5
+            plat_dest.saldo_ves -= (canje.monto_recibido * bcv)
+        else:
+            plat_dest.saldo_usd -= canje.monto_recibido
+
+    db.delete(canje)
+    db.commit()
+    return {"message": "Canje eliminado y capital restaurado con éxito"}
 
 # Telegram Bot Webhook Integration
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -2116,6 +2319,7 @@ def get_stats_dashboard(
     all_remesas = db.query(HistorialRemesas).all()
     all_ciclos = db.query(HistorialCiclos).all()
     all_compras_parciales = db.query(CompraCicloParcial).all()
+    all_canjes = db.query(CanjeDivisa).all()
     
     # Map ciclo_id to the ciclo object for fast lookup
     ciclo_map = {c.id: c for c in all_ciclos}
@@ -2195,6 +2399,7 @@ def get_stats_dashboard(
     end_of_week = start_of_week + datetime.timedelta(days=7)
     
     weekly_remesas = [r for r in all_remesas if r.fecha and r.fecha >= start_of_week and r.fecha < end_of_week]
+    weekly_canjes = [c for c in all_canjes if c.fecha and c.fecha >= start_of_week and c.fecha < end_of_week]
     
     days_labels = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
     weekly_data = []
@@ -2209,13 +2414,20 @@ def get_stats_dashboard(
         # Filter cycle purchases for this specific day
         vol_cic, gan_cic = get_arbitraje_stats_for_day(day_date)
         
+        # Filter canjes for this specific day
+        c_day = [c for c in weekly_canjes if c.fecha and c.fecha.date() == day_date]
+        vol_can = sum(c.monto_recibido for c in c_day)
+        gan_can = sum(c.ganancia_neta_usd for c in c_day)
+        
         weekly_data.append({
             "label": days_labels[idx],
             "date": day_date.strftime("%d/%m"),
             "volumen_remesas": vol_rem,
             "ganancia_remesas": gan_rem,
             "volumen_ciclos": vol_cic,
-            "ganancia_ciclos": gan_cic
+            "ganancia_ciclos": gan_cic,
+            "volumen_canjes": vol_can,
+            "ganancia_canjes": gan_can
         })
         
     # --- MONTHLY (Current Year) ---
@@ -2232,12 +2444,18 @@ def get_stats_dashboard(
         
         vol_cic, gan_cic = get_arbitraje_stats_for_month(now.year, m_idx)
         
+        c_month = [c for c in all_canjes if c.fecha and c.fecha.year == now.year and c.fecha.month == m_idx]
+        vol_can = sum(c.monto_recibido for c in c_month)
+        gan_can = sum(c.ganancia_neta_usd for c in c_month)
+        
         monthly_data.append({
             "label": months_labels[m_idx - 1],
             "volumen_remesas": vol_rem,
             "ganancia_remesas": gan_rem,
             "volumen_ciclos": vol_cic,
-            "ganancia_ciclos": gan_cic
+            "ganancia_ciclos": gan_cic,
+            "volumen_canjes": vol_can,
+            "ganancia_canjes": gan_can
         })
         
     # --- PERIOD FILTER FOR SUMMARY KPIS ---
@@ -2246,9 +2464,11 @@ def get_stats_dashboard(
             sd = datetime.datetime.strptime(start_date.split(" ")[0], "%Y-%m-%d")
             ed = datetime.datetime.strptime(end_date.split(" ")[0], "%Y-%m-%d").replace(hour=23, minute=59, second=59, microsecond=999999)
             remesas_summary = [r for r in all_remesas if r.fecha and r.fecha >= sd and r.fecha <= ed]
+            canjes_summary = [c for c in all_canjes if c.fecha and c.fecha >= sd and c.fecha <= ed]
             total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(sd, ed)
         except Exception as e:
             remesas_summary = weekly_remesas
+            canjes_summary = weekly_canjes
             total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_week, end_of_week)
     elif period == "mes":
         start_of_month = datetime.datetime(now.year, now.month, 1)
@@ -2256,15 +2476,17 @@ def get_stats_dashboard(
         next_year = now.year if now.month < 12 else now.year + 1
         end_of_month = datetime.datetime(next_year, next_month, 1)
         remesas_summary = [r for r in all_remesas if r.fecha and r.fecha >= start_of_month and r.fecha < end_of_month]
+        canjes_summary = [c for c in all_canjes if c.fecha and c.fecha >= start_of_month and c.fecha < end_of_month]
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_month, end_of_month)
     elif period == "historico":
         remesas_summary = all_remesas
+        canjes_summary = all_canjes
         start_of_time = datetime.datetime(2020, 1, 1)
         end_of_time = datetime.datetime(now.year + 10, 1, 1)
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_time, end_of_time)
     else:  # default "semana"
         remesas_summary = weekly_remesas
-        
+        canjes_summary = weekly_canjes
         total_arbitrado, total_ganancia_arbitraje, total_ciclos_count = get_arbitraje_stats_for_range(start_of_week, end_of_week)
     
     # --- TRAFFIC DAYS (all-time remesas by weekday) ---
@@ -2306,32 +2528,39 @@ def get_stats_dashboard(
         banks_map[banco]["volumen"] += (r.monto_usd or 0.0)
     banks_destination = sorted(banks_map.values(), key=lambda x: x["volumen"], reverse=True)
 
-    # 5. Summary KPIs (Remesas & Arbitraje)
+    # 5. Summary KPIs (Remesas, Arbitraje & Canjes)
     total_remitido = sum((r.monto_usd or 0.0) for r in remesas_summary)
     total_ganancia_remesas = sum((r.ganancia_usd or 0.0) for r in remesas_summary)
     total_operaciones = len(remesas_summary)
     margen_promedio = (total_ganancia_remesas / total_remitido * 100) if total_remitido > 0 else 0.0
     
+    total_volumen_canjes = sum((c.monto_recibido or 0.0) for c in canjes_summary)
+    total_ganancia_canjes = sum((c.ganancia_neta_usd or 0.0) for c in canjes_summary)
+    total_canjes_count = len(canjes_summary)
+    
     rentabilidad_promedio = (total_ganancia_arbitraje / total_arbitrado * 100) if total_arbitrado > 0 else 0.0
     
     # Global Consolidated KPIs (All time & current periods)
     all_rem_gain = sum((r.ganancia_usd or 0.0) for r in all_remesas)
+    all_canjes_gain = sum((c.ganancia_neta_usd or 0.0) for c in all_canjes)
     
     # Historical total arbitraje stats
     _, all_arb_gain, _ = get_arbitraje_stats_for_range(datetime.datetime(2020, 1, 1), datetime.datetime(now.year + 10, 1, 1))
     
-    ganancia_semanal_consolidada = sum(day["ganancia_remesas"] + day["ganancia_ciclos"] for day in weekly_data)
+    ganancia_semanal_consolidada = sum(day["ganancia_remesas"] + day["ganancia_ciclos"] + day.get("ganancia_canjes", 0.0) for day in weekly_data)
     current_month_data = monthly_data[now.month - 1]
-    ganancia_mensual_consolidada = current_month_data["ganancia_remesas"] + current_month_data["ganancia_ciclos"]
-    ganancia_historica_consolidada = all_rem_gain + all_arb_gain
-    ganancia_rango_consolidada = total_ganancia_remesas + total_ganancia_arbitraje
+    ganancia_mensual_consolidada = current_month_data["ganancia_remesas"] + current_month_data["ganancia_ciclos"] + current_month_data.get("ganancia_canjes", 0.0)
+    ganancia_historica_consolidada = all_rem_gain + all_arb_gain + all_canjes_gain
+    ganancia_rango_consolidada = total_ganancia_remesas + total_ganancia_arbitraje + total_ganancia_canjes
     
     if ganancia_historica_consolidada > 0:
         pct_remesas = (all_rem_gain / ganancia_historica_consolidada) * 100
         pct_arbitraje = (all_arb_gain / ganancia_historica_consolidada) * 100
+        pct_canjes = (all_canjes_gain / ganancia_historica_consolidada) * 100
     else:
         pct_remesas = 0.0
         pct_arbitraje = 0.0
+        pct_canjes = 0.0
         
     summary = {
         "total_remitido": total_remitido,
@@ -2342,12 +2571,26 @@ def get_stats_dashboard(
         "total_ganancia_arbitraje": total_ganancia_arbitraje,
         "rentabilidad_promedio": rentabilidad_promedio,
         "total_ciclos": total_ciclos_count,
+        "total_volumen_canjes": total_volumen_canjes,
+        "total_ganancia_canjes": total_ganancia_canjes,
+        "total_canjes": total_canjes_count,
         "ganancia_semanal_consolidada": ganancia_semanal_consolidada,
         "ganancia_mensual_consolidada": ganancia_mensual_consolidada,
         "ganancia_historica_consolidada": ganancia_historica_consolidada,
         "ganancia_rango_consolidada": ganancia_rango_consolidada,
         "pct_remesas": pct_remesas,
-        "pct_arbitraje": pct_arbitraje
+        "pct_arbitraje": pct_arbitraje,
+        "pct_canjes": pct_canjes
+    }
+        
+    return {
+        "weekly": weekly_data,
+        "monthly": monthly_data,
+        "traffic_days": traffic_days,
+        "top_clients": top_clients,
+        "payment_methods": payment_methods,
+        "banks_destination": banks_destination,
+        "summary": summary
     }
         
     return {
