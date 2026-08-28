@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v158"  # Responsive table fixes and CSS container overhaul
+APP_VERSION = "v159"  # Telegram bot duplicate and Zelle deletion fixes
 
 security = HTTPBearer()
 
@@ -1342,70 +1342,6 @@ def download_telegram_file(file_id: str) -> str:
     except Exception as e:
         print(f"Error downloading telegram file: {e}")
         return None
-
-@app.get("/api/admin/clean-zelle-public")
-def admin_clean_zelle_public(db: Session = Depends(get_db)):
-    remaining_movs = db.query(MovimientoZelle).all()
-    total_ingresos = sum(m.monto for m in remaining_movs if m.tipo == "ingreso")
-    total_egresos = sum(m.monto for m in remaining_movs if m.tipo == "egreso")
-    net_balance = round(total_ingresos - total_egresos, 2)
-    
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    old_balance = 0.0
-    if zelle_plat:
-        old_balance = zelle_plat.saldo_usd
-        zelle_plat.saldo_usd = net_balance
-    db.commit()
-    return {
-        "message": "Zelle reconciled successfully",
-        "old_balance": old_balance,
-        "new_balance": net_balance
-    }
-
-@app.get("/api/temp-debug-zelle")
-def temp_debug_zelle(db: Session = Depends(get_db)):
-    all_movs = db.query(MovimientoZelle).all()
-    incomes = [m for m in all_movs if m.tipo == "ingreso"]
-    expenses = [m for m in all_movs if m.tipo == "egreso"]
-    
-    total_incomes = sum(m.monto for m in incomes)
-    total_expenses = sum(m.monto for m in expenses)
-    ledger_sum = round(total_incomes - total_expenses, 2)
-    
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    actual_balance = zelle_plat.saldo_usd if zelle_plat else 0.0
-    diff = round(actual_balance - ledger_sum, 2)
-    
-    # Find all movements with amount 500
-    m500 = [
-        {
-            "id": m.id,
-            "fecha": m.fecha.isoformat() if m.fecha else "",
-            "tipo": m.tipo,
-            "monto": m.monto,
-            "cliente": m.cliente_nombre,
-            "titular": m.titular,
-            "detalle": m.detalle,
-            "estado": m.estado
-        }
-        for m in all_movs if m.monto == 500.0
-    ]
-    
-    # Last 20 movements for display
-    sorted_movs = sorted(all_movs, key=lambda x: x.fecha or datetime.datetime.min, reverse=True)[:20]
-    
-    return {
-        "summary": {
-            "total_incomes": total_incomes,
-            "total_expenses": total_expenses,
-            "ledger_sum": ledger_sum,
-            "actual_balance": actual_balance,
-            "difference": diff
-        },
-        "m500": m500,
-        "movs": [{"id": m.id, "fecha": m.fecha.isoformat() if m.fecha else "", "tipo": m.tipo, "monto": m.monto, "cliente": m.cliente_nombre, "titular": m.titular, "detalle": m.detalle, "estado": m.estado} for m in sorted_movs],
-        "caps": [{"plataforma": c.plataforma, "saldo_usd": c.saldo_usd} for c in db.query(DistribucionCapital).all()]
-    }
 
 import re
 
