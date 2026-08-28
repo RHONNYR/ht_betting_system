@@ -1345,11 +1345,47 @@ def download_telegram_file(file_id: str) -> str:
 
 @app.get("/api/temp-debug-zelle")
 def temp_debug_zelle(db: Session = Depends(get_db)):
-    movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(20).all()
-    caps = db.query(DistribucionCapital).all()
+    all_movs = db.query(MovimientoZelle).all()
+    incomes = [m for m in all_movs if m.tipo == "ingreso"]
+    expenses = [m for m in all_movs if m.tipo == "egreso"]
+    
+    total_incomes = sum(m.monto for m in incomes)
+    total_expenses = sum(m.monto for m in expenses)
+    ledger_sum = round(total_incomes - total_expenses, 2)
+    
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    actual_balance = zelle_plat.saldo_usd if zelle_plat else 0.0
+    diff = round(actual_balance - ledger_sum, 2)
+    
+    # Find all movements with amount 500
+    m500 = [
+        {
+            "id": m.id,
+            "fecha": m.fecha.isoformat() if m.fecha else "",
+            "tipo": m.tipo,
+            "monto": m.monto,
+            "cliente": m.cliente_nombre,
+            "titular": m.titular,
+            "detalle": m.detalle,
+            "estado": m.estado
+        }
+        for m in all_movs if m.monto == 500.0
+    ]
+    
+    # Last 20 movements for display
+    sorted_movs = sorted(all_movs, key=lambda x: x.fecha or datetime.datetime.min, reverse=True)[:20]
+    
     return {
-        "movs": [{"id": m.id, "fecha": m.fecha.isoformat() if m.fecha else "", "tipo": m.tipo, "monto": m.monto, "cliente": m.cliente_nombre, "titular": m.titular, "detalle": m.detalle, "estado": m.estado} for m in movs],
-        "caps": [{"plataforma": c.plataforma, "saldo_usd": c.saldo_usd} for c in caps]
+        "summary": {
+            "total_incomes": total_incomes,
+            "total_expenses": total_expenses,
+            "ledger_sum": ledger_sum,
+            "actual_balance": actual_balance,
+            "difference": diff
+        },
+        "m500": m500,
+        "movs": [{"id": m.id, "fecha": m.fecha.isoformat() if m.fecha else "", "tipo": m.tipo, "monto": m.monto, "cliente": m.cliente_nombre, "titular": m.titular, "detalle": m.detalle, "estado": m.estado} for m in sorted_movs],
+        "caps": [{"plataforma": c.plataforma, "saldo_usd": c.saldo_usd} for c in db.query(DistribucionCapital).all()]
     }
 
 import re
