@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v159"  # Telegram bot duplicate and Zelle deletion fixes
+APP_VERSION = "v160"  # Debug balances endpoint for Zelle balance tracking
 
 security = HTTPBearer()
 
@@ -1342,6 +1342,15 @@ def download_telegram_file(file_id: str) -> str:
     except Exception as e:
         print(f"Error downloading telegram file: {e}")
         return None
+
+@app.get("/api/admin/debug-balances")
+def debug_balances(db: Session = Depends(get_db)):
+    caps = db.query(DistribucionCapital).all()
+    zelle_movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(15).all()
+    return {
+        "balances": [{"plataforma": c.plataforma, "saldo_usd": c.saldo_usd} for c in caps],
+        "zelle_movs": [{"id": z.id, "monto": z.monto, "tipo": z.tipo, "cliente": z.cliente_nombre, "estado": z.estado} for z in zelle_movs]
+    }
 
 import re
 
