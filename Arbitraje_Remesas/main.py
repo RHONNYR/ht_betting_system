@@ -1343,6 +1343,15 @@ def download_telegram_file(file_id: str) -> str:
         print(f"Error downloading telegram file: {e}")
         return None
 
+@app.get("/api/temp-debug-zelle")
+def temp_debug_zelle(db: Session = Depends(get_db)):
+    movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.desc()).limit(20).all()
+    caps = db.query(DistribucionCapital).all()
+    return {
+        "movs": [{"id": m.id, "fecha": m.fecha.isoformat() if m.fecha else "", "tipo": m.tipo, "monto": m.monto, "cliente": m.cliente_nombre, "titular": m.titular, "detalle": m.detalle, "estado": m.estado} for m in movs],
+        "caps": [{"plataforma": c.plataforma, "saldo_usd": c.saldo_usd} for c in caps]
+    }
+
 import re
 
 @app.post("/api/webhooks/telegram")
