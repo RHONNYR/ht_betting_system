@@ -1343,6 +1343,25 @@ def download_telegram_file(file_id: str) -> str:
         print(f"Error downloading telegram file: {e}")
         return None
 
+@app.get("/api/admin/clean-zelle-public")
+def admin_clean_zelle_public(db: Session = Depends(get_db)):
+    remaining_movs = db.query(MovimientoZelle).all()
+    total_ingresos = sum(m.monto for m in remaining_movs if m.tipo == "ingreso")
+    total_egresos = sum(m.monto for m in remaining_movs if m.tipo == "egreso")
+    net_balance = round(total_ingresos - total_egresos, 2)
+    
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    old_balance = 0.0
+    if zelle_plat:
+        old_balance = zelle_plat.saldo_usd
+        zelle_plat.saldo_usd = net_balance
+    db.commit()
+    return {
+        "message": "Zelle reconciled successfully",
+        "old_balance": old_balance,
+        "new_balance": net_balance
+    }
+
 @app.get("/api/temp-debug-zelle")
 def temp_debug_zelle(db: Session = Depends(get_db)):
     all_movs = db.query(MovimientoZelle).all()
@@ -3098,14 +3117,23 @@ def delete_remesa(remesa_id: int, username: str = Depends(get_current_user), db:
             (MovimientoZelle.detalle.contains(f"Remesa ID {remesa_id}"))
         ).first()
         if mov:
-            if mov.estado == "remesado" or mov.remesa_id == remesa_id:
-                # Pre-existing Zelle deposit! Revert status back to pendiente and unlink it
+            # Check if the Zelle movement was created on-the-fly when registering this Remesa.
+            # On-the-fly movements have a detail starting with "Remesa ID #"
+            is_on_the_fly = mov.detalle and mov.detalle.startswith(f"Remesa ID #{remesa_id}")
+            
+            if is_on_the_fly:
+                # Created on-the-fly: delete Zelle movement and subtract from balance
+                zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+                if zelle_plat:
+                    zelle_plat.saldo_usd = round(zelle_plat.saldo_usd - mov.monto, 2)
+                db.delete(mov)
+            else:
+                # Pre-existing Zelle deposit: revert status back to pendiente and unlink it.
+                # No change to Zelle balance (already accounted for when the Zelle movement was created).
                 mov.estado = "pendiente"
                 mov.remesa_id = None
                 if mov.detalle:
                     mov.detalle = mov.detalle.replace(f" [Remesado - Remesa ID #{remesa_id}]", "").replace(f" [Remesado - Remesa ID {remesa_id}]", "")
-            else:
-                db.delete(mov)
             
     db.delete(remesa)
     db.commit()
