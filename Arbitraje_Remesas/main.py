@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v162"  # Update debug-balances with comprehensive math
+APP_VERSION = "v163"  # Multi-table Zelle reconciliation and cleanup
 
 security = HTTPBearer()
 
@@ -1342,6 +1342,33 @@ def download_telegram_file(file_id: str) -> str:
     except Exception as e:
         print(f"Error downloading telegram file: {e}")
         return None
+
+@app.get("/api/admin/clean-zelle-public")
+def admin_clean_zelle_public(db: Session = Depends(get_db)):
+    zelle_movs = db.query(MovimientoZelle).all()
+    canjes = db.query(CanjeDivisa).all()
+    
+    # Calculate Zelle from MovimientoZelle
+    mz_incomes = sum(m.monto for m in zelle_movs if m.tipo == "ingreso")
+    mz_expenses = sum(m.monto for m in zelle_movs if m.tipo == "egreso")
+    
+    # Calculate Zelle from CanjeDivisa
+    c_incomes = sum(c.monto_recibido for c in canjes if c.destino_plataforma == "Zelle")
+    c_expenses = sum(c.monto_entregado for c in canjes if c.origen_plataforma == "Zelle")
+    
+    net_balance = round(mz_incomes - mz_expenses + c_incomes - c_expenses, 2)
+    
+    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+    old_balance = 0.0
+    if zelle_plat:
+        old_balance = zelle_plat.saldo_usd
+        zelle_plat.saldo_usd = net_balance
+    db.commit()
+    return {
+        "message": "Zelle reconciled successfully using multi-table formula",
+        "old_balance": old_balance,
+        "new_balance": net_balance
+    }
 
 @app.get("/api/admin/debug-balances")
 def debug_balances(db: Session = Depends(get_db)):
