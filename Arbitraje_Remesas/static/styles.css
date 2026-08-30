@@ -435,6 +435,8 @@ select option {
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .card-header {
