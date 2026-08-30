@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v163"  # Multi-table Zelle reconciliation and cleanup
+APP_VERSION = "v164"  # Clean version after successful Zelle reconciliation
 
 security = HTTPBearer()
 
@@ -1342,67 +1342,6 @@ def download_telegram_file(file_id: str) -> str:
     except Exception as e:
         print(f"Error downloading telegram file: {e}")
         return None
-
-@app.get("/api/admin/clean-zelle-public")
-def admin_clean_zelle_public(db: Session = Depends(get_db)):
-    zelle_movs = db.query(MovimientoZelle).all()
-    canjes = db.query(CanjeDivisa).all()
-    
-    # Calculate Zelle from MovimientoZelle
-    mz_incomes = sum(m.monto for m in zelle_movs if m.tipo == "ingreso")
-    mz_expenses = sum(m.monto for m in zelle_movs if m.tipo == "egreso")
-    
-    # Calculate Zelle from CanjeDivisa
-    c_incomes = sum(c.monto_recibido for c in canjes if c.destino_plataforma == "Zelle")
-    c_expenses = sum(c.monto_entregado for c in canjes if c.origen_plataforma == "Zelle")
-    
-    net_balance = round(mz_incomes - mz_expenses + c_incomes - c_expenses, 2)
-    
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    old_balance = 0.0
-    if zelle_plat:
-        old_balance = zelle_plat.saldo_usd
-        zelle_plat.saldo_usd = net_balance
-    db.commit()
-    return {
-        "message": "Zelle reconciled successfully using multi-table formula",
-        "old_balance": old_balance,
-        "new_balance": net_balance
-    }
-
-@app.get("/api/admin/debug-balances")
-def debug_balances(db: Session = Depends(get_db)):
-    caps = db.query(DistribucionCapital).all()
-    zelle_movs = db.query(MovimientoZelle).all()
-    canjes = db.query(CanjeDivisa).all()
-    
-    # Calculate Zelle from MovimientoZelle
-    mz_incomes = sum(m.monto for m in zelle_movs if m.tipo == "ingreso")
-    mz_expenses = sum(m.monto for m in zelle_movs if m.tipo == "egreso")
-    
-    # Calculate Zelle from CanjeDivisa
-    c_incomes = sum(c.monto_recibido for c in canjes if c.destino_plataforma == "Zelle")
-    c_expenses = sum(c.monto_entregado for c in canjes if c.origen_plataforma == "Zelle")
-    
-    expected_zelle = round(mz_incomes - mz_expenses + c_incomes - c_expenses, 2)
-    
-    zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
-    actual_zelle = zelle_plat.saldo_usd if zelle_plat else 0.0
-    
-    return {
-        "balances": [{"plataforma": c.plataforma, "saldo_usd": c.saldo_usd} for c in caps],
-        "zelle_analysis": {
-            "mz_incomes": mz_incomes,
-            "mz_expenses": mz_expenses,
-            "canje_incomes": c_incomes,
-            "canje_expenses": c_expenses,
-            "expected_zelle": expected_zelle,
-            "actual_zelle": actual_zelle,
-            "diff": round(actual_zelle - expected_zelle, 2)
-        },
-        "recent_zelle_movs": [{"id": z.id, "monto": z.monto, "tipo": z.tipo, "cliente": z.cliente_nombre, "estado": z.estado} for z in zelle_movs[-15:]],
-        "recent_canjes": [{"id": c.id, "origen": c.origen_plataforma, "monto_entregado": c.monto_entregado, "destino": c.destino_plataforma, "monto_recibido": c.monto_recibido, "cliente": c.cliente_nombre} for c in canjes[-10:]]
-    }
 
 import re
 
