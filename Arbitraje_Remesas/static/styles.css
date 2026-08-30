@@ -2055,3 +2055,12 @@ tr.sub-row-compra td:first-child {
     transform: scale(0.95);
 }
 
+/* Enforce proper width containment and box-sizing on all form inputs and selects inside form-group */
+.form-group input:not([type="radio"]):not([type="checkbox"]),
+.form-group select,
+.form-group textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
