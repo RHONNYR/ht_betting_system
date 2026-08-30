@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v164"  # Clean version after successful Zelle reconciliation
+APP_VERSION = "v165"  # Fixed Zelle running balance (SALDO RESULTANTE) in ledger
 
 security = HTTPBearer()
 
@@ -859,16 +859,50 @@ def get_zelle_movimientos(
         except Exception:
             pass
 
-    # 1. Fetch ALL movements sorted chronologically to compute running balances correctly
-    all_movs = db.query(MovimientoZelle).order_by(MovimientoZelle.fecha.asc()).all()
+    # 1. Fetch ALL movements & canjes sorted chronologically to compute running balances correctly
+    all_movs = db.query(MovimientoZelle).all()
+    all_canjes = db.query(CanjeDivisa).all()
+    
+    events = []
+    for m in all_movs:
+        dt = m.fecha if m.fecha else datetime.datetime.min
+        events.append({
+            'date': dt,
+            'type': 'mov',
+            'flow': m.tipo,
+            'amount': m.monto,
+            'id': m.id
+        })
+    for c in all_canjes:
+        dt = c.fecha if c.fecha else datetime.datetime.min
+        if c.destino_plataforma == 'Zelle':
+            events.append({
+                'date': dt,
+                'type': 'canje',
+                'flow': 'ingreso',
+                'amount': c.monto_recibido,
+                'id': c.id
+            })
+        if c.origen_plataforma == 'Zelle':
+            events.append({
+                'date': dt,
+                'type': 'canje',
+                'flow': 'egreso',
+                'amount': c.monto_entregado,
+                'id': c.id
+            })
+            
+    events.sort(key=lambda x: x['date'])
+    
     balances_map = {}
     current_balance = 0.0
-    for m in all_movs:
-        if m.tipo == "ingreso":
-            current_balance += m.monto
-        elif m.tipo == "egreso":
-            current_balance -= m.monto
-        balances_map[m.id] = round(current_balance, 2)
+    for e in events:
+        if e['flow'] == 'ingreso':
+            current_balance += e['amount']
+        elif e['flow'] == 'egreso':
+            current_balance -= e['amount']
+        if e['type'] == 'mov':
+            balances_map[e['id']] = round(current_balance, 2)
 
     # 2. Query movements to be returned (with optional date filtering)
     query_movs = db.query(MovimientoZelle)
