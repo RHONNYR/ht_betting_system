@@ -1126,11 +1126,14 @@
                         <div class="card-header">
                             <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
                             <div class="card-header-controls" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                <input type="text" id="remesas-search-input" placeholder="🔍 Buscar cliente, ID o monto..." style="padding: 5px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; border-radius: 6px; outline: none; width: 190px;">
                                 <select id="filter-periodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
-                                    <option value="semana">📅 Esta Semana (Lun-Dom)</option>
+                                    <option value="ultimos_30_dias" selected>⏱️ Últimos 30 días</option>
+                                    <option value="historico">📜 Histórico (Todo)</option>
                                     <option value="mes">🗓️ Este Mes</option>
+                                    <option value="mes_anterior">⏮️ Mes anterior</option>
+                                    <option value="semana">📅 Esta Semana (Lun-Dom)</option>
                                     <option value="anio">📆 Este Año</option>
-                                    <option value="historico" selected>📜 Histórico (Todo)</option>
                                     <option value="personalizado">✏️ Rango Personalizado</option>
                                 </select>
                                 <div id="remesas-filter-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
