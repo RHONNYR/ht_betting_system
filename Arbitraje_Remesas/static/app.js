@@ -2439,6 +2439,10 @@ function setupEventListeners() {
     if (remesasFilterHasta) {
         remesasFilterHasta.addEventListener('change', renderRemesasTable);
     }
+    const searchInputRemesas = document.getElementById('remesas-search-input');
+    if (searchInputRemesas) {
+        searchInputRemesas.addEventListener('input', renderRemesasTable);
+    }
     const filterPeriodoCiclos = document.getElementById('filter-periodo-ciclos');
     if (filterPeriodoCiclos) {
         filterPeriodoCiclos.addEventListener('change', renderCiclosTable);
@@ -3241,9 +3245,20 @@ function renderRemesasTable() {
     let totalVolume = 0;
     let count = 0;
     
+    const searchInput = document.getElementById('remesas-search-input');
+    const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    
     const data = state.rawRemesas || [];
     data.forEach(r => {
         if (!isDateInPeriod(r.fecha, period, customDesde, customHasta)) return;
+        
+        if (searchTerm) {
+            const matchesClient = (r.cliente_nombre || '').toLowerCase().includes(searchTerm);
+            const matchesId = String(r.id).includes(searchTerm);
+            const matchesAmount = String(r.monto_usd).includes(searchTerm);
+            const matchesBanco = (r.banco_receptor || '').toLowerCase().includes(searchTerm);
+            if (!matchesClient && !matchesId && !matchesAmount && !matchesBanco) return;
+        }
         
         count++;
         totalGain += r.ganancia_usd;
@@ -5289,6 +5304,18 @@ function isDateInPeriod(dateStr, period, customDesde = null, customHasta = null)
     
     const now = new Date();
     
+    if (period === 'ultimos_30_dias') {
+        const past30 = new Date(now);
+        past30.setDate(now.getDate() - 30);
+        past30.setHours(0, 0, 0, 0);
+        return d >= past30 && d <= now;
+    }
+
+    if (period === 'mes_anterior') {
+        const prevMonthDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        return d.getFullYear() === prevMonthDate.getFullYear() && d.getMonth() === prevMonthDate.getMonth();
+    }
+
     if (period === 'mes') {
         return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
     }
