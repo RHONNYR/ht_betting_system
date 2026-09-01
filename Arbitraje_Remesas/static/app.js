@@ -2443,6 +2443,22 @@ function setupEventListeners() {
     if (searchInputRemesas) {
         searchInputRemesas.addEventListener('input', renderRemesasTable);
     }
+    const filterClienteRemesas = document.getElementById('filter-cliente-remesas');
+    if (filterClienteRemesas) {
+        filterClienteRemesas.addEventListener('change', renderRemesasTable);
+    }
+    const filterTasaP2pRemesas = document.getElementById('filter-tasap2p-remesas');
+    if (filterTasaP2pRemesas) {
+        filterTasaP2pRemesas.addEventListener('change', renderRemesasTable);
+    }
+    const filterBancoRemesas = document.getElementById('filter-banco-remesas');
+    if (filterBancoRemesas) {
+        filterBancoRemesas.addEventListener('change', renderRemesasTable);
+    }
+    const btnResetRemesasFilters = document.getElementById('btn-reset-remesas-filters');
+    if (btnResetRemesasFilters) {
+        btnResetRemesasFilters.addEventListener('click', resetRemesasFilters);
+    }
     const filterPeriodoCiclos = document.getElementById('filter-periodo-ciclos');
     if (filterPeriodoCiclos) {
         filterPeriodoCiclos.addEventListener('change', renderCiclosTable);
@@ -3214,10 +3230,96 @@ async function loadRemesas() {
     try {
         const remesas = await apiCall('/remesas');
         state.rawRemesas = remesas || [];
+        populateRemesasFilterDropdowns();
         renderRemesasTable();
     } catch (err) {
         console.error("Error loading remesas:", err);
     }
+}
+
+function populateRemesasFilterDropdowns() {
+    const data = state.rawRemesas || [];
+    
+    // 1. Clientes
+    const clienteSel = document.getElementById('filter-cliente-remesas');
+    if (clienteSel) {
+        const currentVal = clienteSel.value;
+        const clientesSet = new Set();
+        data.forEach(r => {
+            if (r.cliente_nombre && r.cliente_nombre.trim()) {
+                clientesSet.add(r.cliente_nombre.trim());
+            }
+        });
+        const sortedClientes = Array.from(clientesSet).sort((a, b) => a.localeCompare(b));
+        let html = '<option value="todos">👤 Todos los Clientes</option>';
+        sortedClientes.forEach(c => {
+            const escaped = c.replace(/"/g, '&quot;');
+            html += `<option value="${escaped}">${escaped}</option>`;
+        });
+        clienteSel.innerHTML = html;
+        if (sortedClientes.includes(currentVal)) {
+            clienteSel.value = currentVal;
+        }
+    }
+
+    // 2. Tasas P2P
+    const tasaSel = document.getElementById('filter-tasap2p-remesas');
+    if (tasaSel) {
+        const currentVal = tasaSel.value;
+        const tasasSet = new Set();
+        data.forEach(r => {
+            if (r.tasa_p2p !== undefined && r.tasa_p2p !== null) {
+                tasasSet.add(Number(r.tasa_p2p).toFixed(2));
+            }
+        });
+        const sortedTasas = Array.from(tasasSet).sort((a, b) => parseFloat(b) - parseFloat(a));
+        let html = '<option value="todas">📈 Todas las Tasas P2P</option>';
+        sortedTasas.forEach(t => {
+            html += `<option value="${t}">${t} Bs</option>`;
+        });
+        tasaSel.innerHTML = html;
+        if (sortedTasas.includes(currentVal)) {
+            tasaSel.value = currentVal;
+        }
+    }
+
+    // 3. Bancos Utilizados
+    const bancoSel = document.getElementById('filter-banco-remesas');
+    if (bancoSel) {
+        const currentVal = bancoSel.value;
+        const bancosSet = new Set();
+        data.forEach(r => {
+            if (r.banco_receptor && r.banco_receptor.trim()) {
+                bancosSet.add(r.banco_receptor.trim());
+            }
+        });
+        const sortedBancos = Array.from(bancosSet).sort((a, b) => a.localeCompare(b));
+        let html = '<option value="todos">🏦 Todos los Bancos Utilizados</option>';
+        sortedBancos.forEach(b => {
+            const escaped = b.replace(/"/g, '&quot;');
+            html += `<option value="${escaped}">${escaped}</option>`;
+        });
+        bancoSel.innerHTML = html;
+        if (sortedBancos.includes(currentVal)) {
+            bancoSel.value = currentVal;
+        }
+    }
+}
+
+function resetRemesasFilters() {
+    const searchInput = document.getElementById('remesas-search-input');
+    if (searchInput) searchInput.value = '';
+    const filterPeriodo = document.getElementById('filter-periodo-remesas');
+    if (filterPeriodo) filterPeriodo.value = 'ultimos_30_dias';
+    const filterCliente = document.getElementById('filter-cliente-remesas');
+    if (filterCliente) filterCliente.value = 'todos';
+    const filterTasaP2p = document.getElementById('filter-tasap2p-remesas');
+    if (filterTasaP2p) filterTasaP2p.value = 'todas';
+    const filterBanco = document.getElementById('filter-banco-remesas');
+    if (filterBanco) filterBanco.value = 'todos';
+    const customDates = document.getElementById('remesas-filter-custom-dates');
+    if (customDates) customDates.style.display = 'none';
+    renderRemesasTable();
 }
 
 function renderRemesasTable() {
@@ -3225,7 +3327,7 @@ function renderRemesasTable() {
     els.remesasTableBody.innerHTML = '';
     
     const filterSelect = document.getElementById('filter-periodo-remesas');
-    const period = filterSelect ? filterSelect.value : 'historico';
+    const period = filterSelect ? filterSelect.value : 'ultimos_30_dias';
     
     const customContainer = document.getElementById('remesas-filter-custom-dates');
     if (customContainer) {
@@ -3241,39 +3343,71 @@ function renderRemesasTable() {
     const customDesde = desdeInput ? desdeInput.value : null;
     const customHasta = hastaInput ? hastaInput.value : null;
     
-    let totalGain = 0;
-    let totalVolume = 0;
-    let count = 0;
-    
+    const clienteFilter = document.getElementById('filter-cliente-remesas')?.value || 'todos';
+    const tasaP2pFilter = document.getElementById('filter-tasap2p-remesas')?.value || 'todas';
+    const bancoFilter = document.getElementById('filter-banco-remesas')?.value || 'todos';
+
     const searchInput = document.getElementById('remesas-search-input');
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+    let totalGain = 0;
+    let totalVolume = 0;
+    let totalVes = 0;
+    let count = 0;
     
     const data = state.rawRemesas || [];
     data.forEach(r => {
+        // 1. Filtro por fecha
         if (!isDateInPeriod(r.fecha, period, customDesde, customHasta)) return;
         
+        // 2. Filtro por cliente
+        if (clienteFilter !== 'todos' && (r.cliente_nombre || '').trim() !== clienteFilter) return;
+
+        // 3. Filtro por Tasa P2P
+        if (tasaP2pFilter !== 'todas') {
+            const rowTasa = Number(r.tasa_p2p || 0).toFixed(2);
+            if (rowTasa !== tasaP2pFilter) return;
+        }
+
+        // 4. Filtro por Banco Utilizado
+        if (bancoFilter !== 'todos' && (r.banco_receptor || '').trim() !== bancoFilter) return;
+
+        // 5. Búsqueda libre
         if (searchTerm) {
             const matchesClient = (r.cliente_nombre || '').toLowerCase().includes(searchTerm);
             const matchesId = String(r.id).includes(searchTerm);
             const matchesAmount = String(r.monto_usd).includes(searchTerm);
             const matchesBanco = (r.banco_receptor || '').toLowerCase().includes(searchTerm);
-            if (!matchesClient && !matchesId && !matchesAmount && !matchesBanco) return;
+            const matchesMetodo = (r.metodo_pago || '').toLowerCase().includes(searchTerm);
+            const matchesTasa = String(r.tasa_p2p || '').includes(searchTerm);
+            if (!matchesClient && !matchesId && !matchesAmount && !matchesBanco && !matchesMetodo && !matchesTasa) return;
         }
         
         count++;
-        totalGain += r.ganancia_usd;
-        totalVolume += r.monto_usd;
+        totalGain += (r.ganancia_usd || 0);
+        totalVolume += (r.monto_usd || 0);
+        totalVes += (r.monto_ves || 0);
+
+        const bancoLabel = r.banco_receptor && r.banco_receptor.trim() ? r.banco_receptor.trim() : 'No especificado';
+        const metodoLabel = r.metodo_pago ? `<div style="font-size: 0.68rem; color: var(--text-secondary); margin-top: 3px;">💳 ${r.metodo_pago}</div>` : '';
+
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${r.fecha}</td>
             <td><strong>${r.cliente_nombre}</strong></td>
-            <td>$${r.monto_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-            <td>${r.tasa_p2p.toFixed(2)} Bs</td>
+            <td><strong>$${r.monto_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong></td>
+            <td><span style="font-weight: 600; color: #38bdf8;">${r.tasa_p2p.toFixed(2)} Bs</span></td>
             <td>${r.tasa_cliente.toFixed(2)} Bs</td>
             <td>${r.monto_ves.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES</td>
+            <td>
+                <span class="badge" style="background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.25); font-size: 0.75rem; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+                    🏦 ${bancoLabel}
+                </span>
+                ${metodoLabel}
+            </td>
             <td>${(r.costo_adquisicion_usdt * 100).toFixed(1)}%</td>
             <td>${(r.comision_binance * 100).toFixed(2)}%</td>
-            <td class="text-success">+$${r.ganancia_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+            <td class="${r.ganancia_usd >= 0 ? 'text-success' : 'text-danger'}">+$${r.ganancia_usd.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
             <td>
                 <div style="display: flex; gap: 0.5rem; justify-content: center; align-items: center;">
                     <button type="button" class="btn-icon-only text-primary" onclick="iniciarEditarRemesa(${r.id})" title="Editar Remesa" style="background: transparent; border: none; cursor: pointer; padding: 4px; font-size: 1.1rem;">✏️</button>
@@ -3285,11 +3419,19 @@ function renderRemesasTable() {
     });
 
     if (count === 0) {
-        els.remesasTableBody.innerHTML = '<tr><td colspan="10" class="text-center text-muted">No hay remesas enviadas en este período</td></tr>';
+        els.remesasTableBody.innerHTML = '<tr><td colspan="11" class="text-center text-muted" style="padding: 2.5rem 1rem;">No hay remesas enviadas que coincidan con los filtros seleccionados</td></tr>';
     }
     
+    const totalCountEl = document.getElementById('total-count-remesas');
+    if (totalCountEl) {
+        totalCountEl.textContent = `${count}`;
+    }
     if (els.totalVolumenRemesas) {
         els.totalVolumenRemesas.textContent = `$${totalVolume.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
+    const totalVesEl = document.getElementById('total-ves-remesas');
+    if (totalVesEl) {
+        totalVesEl.textContent = `${totalVes.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})} VES`;
     }
     if (els.totalGananciaRemesas) {
         els.totalGananciaRemesas.textContent = `$${totalGain.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -5205,24 +5347,46 @@ function exportRemesasToCSV() {
         }
         
         const filterSelect = document.getElementById('filter-periodo-remesas');
-        const period = filterSelect ? filterSelect.value : 'historico';
+        const period = filterSelect ? filterSelect.value : 'ultimos_30_dias';
         const desdeInput = document.getElementById('remesas-filter-desde');
         const hastaInput = document.getElementById('remesas-filter-hasta');
         const customDesde = desdeInput ? desdeInput.value : null;
         const customHasta = hastaInput ? hastaInput.value : null;
+
+        const clienteFilter = document.getElementById('filter-cliente-remesas')?.value || 'todos';
+        const tasaP2pFilter = document.getElementById('filter-tasap2p-remesas')?.value || 'todas';
+        const bancoFilter = document.getElementById('filter-banco-remesas')?.value || 'todos';
+        const searchTerm = document.getElementById('remesas-search-input')?.value.toLowerCase().trim() || '';
         
-        const filtered = remesas.filter(r => isDateInPeriod(r.fecha, period, customDesde, customHasta));
+        const filtered = remesas.filter(r => {
+            if (!isDateInPeriod(r.fecha, period, customDesde, customHasta)) return false;
+            if (clienteFilter !== 'todos' && (r.cliente_nombre || '').trim() !== clienteFilter) return false;
+            if (tasaP2pFilter !== 'todas' && Number(r.tasa_p2p || 0).toFixed(2) !== tasaP2pFilter) return false;
+            if (bancoFilter !== 'todos' && (r.banco_receptor || '').trim() !== bancoFilter) return false;
+            if (searchTerm) {
+                const matchesClient = (r.cliente_nombre || '').toLowerCase().includes(searchTerm);
+                const matchesId = String(r.id).includes(searchTerm);
+                const matchesAmount = String(r.monto_usd).includes(searchTerm);
+                const matchesBanco = (r.banco_receptor || '').toLowerCase().includes(searchTerm);
+                const matchesMetodo = (r.metodo_pago || '').toLowerCase().includes(searchTerm);
+                if (!matchesClient && !matchesId && !matchesAmount && !matchesBanco && !matchesMetodo) return false;
+            }
+            return true;
+        });
+
         if (filtered.length === 0) {
-            alert("No hay remesas para exportar en el período seleccionado.");
+            alert("No hay remesas para exportar con los filtros seleccionados.");
             return;
         }
         
         let csvContent = "\uFEFF"; // UTF-8 BOM to support accents in Excel
-        csvContent += "ID;Fecha;Cliente;Monto USD;Tasa P2P;Tasa Cliente;Monto VES;Adq. USDT %;Comision Binance %;Ganancia USD\n";
+        csvContent += "ID;Fecha;Cliente;Monto USD;Tasa P2P;Tasa Cliente;Monto VES;Banco Utilizado;Metodo Pago;Adq. USDT %;Comision Binance %;Ganancia USD\n";
         
         filtered.forEach(r => {
             const adqPct = (r.costo_adquisicion_usdt * 100).toFixed(2) + "%";
             const comBinPct = (r.comision_binance * 100).toFixed(2) + "%";
+            const bancoText = (r.banco_receptor || 'No especificado').replace(/"/g, '""');
+            const metodoText = (r.metodo_pago || 'No especificado').replace(/"/g, '""');
             const row = [
                 r.id,
                 r.fecha,
@@ -5231,6 +5395,8 @@ function exportRemesasToCSV() {
                 r.tasa_p2p.toFixed(2),
                 r.tasa_cliente.toFixed(2),
                 r.monto_ves.toFixed(2),
+                `"${bancoText}"`,
+                `"${metodoText}"`,
                 adqPct,
                 comBinPct,
                 r.ganancia_usd.toFixed(2)
