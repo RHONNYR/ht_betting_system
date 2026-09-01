@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v168"  # Enforced width 100% and box-sizing on Canje form inputs to prevent clipping
+APP_VERSION = "v169"  # Default Zelle filter to Ultimos 30 dias and synced capital to 928.16
 
 security = HTTPBearer()
 
