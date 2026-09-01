@@ -1203,10 +1203,12 @@
                             <!-- Filtro de fecha para Zelle -->
                             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 <select id="zelle-filter-periodo" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--text-primary); border-radius: 6px; padding: 0.25rem 0.5rem; font-size: 0.75rem; outline: none; cursor: pointer;">
+                                    <option value="ultimos_30_dias" selected>⏱️ Últimos 30 días</option>
+                                    <option value="mes">🗓️ Este mes</option>
+                                    <option value="mes_anterior">⏮️ Mes anterior</option>
                                     <option value="semana">📅 Esta semana</option>
-                                    <option value="mes" selected>🗓️ Este mes</option>
                                     <option value="anio">📆 Este año</option>
-                                    <option value="historico">📜 Histórico</option>
+                                    <option value="historico">📜 Histórico completo</option>
                                     <option value="personalizado">✏️ Personalizado</option>
                                 </select>
                                 <div id="zelle-filter-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
