@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v170"  # Added search filter and 30-day view to Remesas history table
+APP_VERSION = "v171"  # Improved auto-linking by amount and added fix-yelianni-link
 
 security = HTTPBearer()
 
@@ -2816,7 +2816,29 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
         if req.zelle_movimiento_id:
             linked_mov = db.query(MovimientoZelle).filter(MovimientoZelle.id == req.zelle_movimiento_id).first()
         if not linked_mov:
-            # Fallback search 1: Bidirectional substring matching on cliente_nombre
+            # Priority search 1: Exact matching amount and client name
+            linked_mov = db.query(MovimientoZelle).filter(
+                MovimientoZelle.tipo == "ingreso",
+                MovimientoZelle.estado == "pendiente",
+                MovimientoZelle.monto == req.monto_usd,
+                or_(
+                    MovimientoZelle.cliente_nombre.ilike(f"%{req.cliente_nombre}%"),
+                    literal(req.cliente_nombre).ilike(func.concat('%', MovimientoZelle.cliente_nombre, '%'))
+                )
+            ).first()
+        if not linked_mov:
+            # Priority search 2: Exact matching amount and titular
+            linked_mov = db.query(MovimientoZelle).filter(
+                MovimientoZelle.tipo == "ingreso",
+                MovimientoZelle.estado == "pendiente",
+                MovimientoZelle.monto == req.monto_usd,
+                or_(
+                    MovimientoZelle.titular.ilike(f"%{req.cliente_nombre}%"),
+                    literal(req.cliente_nombre).ilike(func.concat('%', MovimientoZelle.titular, '%'))
+                )
+            ).first()
+        if not linked_mov:
+            # Fallback search 3: Same client name (any amount)
             linked_mov = db.query(MovimientoZelle).filter(
                 MovimientoZelle.tipo == "ingreso",
                 MovimientoZelle.estado == "pendiente",
@@ -2826,7 +2848,7 @@ def create_remesa(req: RemesaCreate, username: str = Depends(get_current_user), 
                 )
             ).first()
         if not linked_mov:
-            # Fallback search 2: Legacy compatibility matching titular
+            # Fallback search 4: Legacy compatibility matching titular (any amount)
             linked_mov = db.query(MovimientoZelle).filter(
                 MovimientoZelle.tipo == "ingreso",
                 MovimientoZelle.estado == "pendiente",
@@ -4673,6 +4695,25 @@ def admin_clean_zelle(username: str = Depends(get_current_user), db: Session = D
         "deleted_count": deleted_count,
         "old_balance": old_balance,
         "new_balance": net_balance
+    }
+
+@app.post("/api/admin/fix-yelianni-link")
+def fix_yelianni_link(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    m148 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 148).first()
+    m149 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 149).first()
+    if m148:
+        m148.estado = "pendiente"
+        m148.remesa_id = None
+        m148.detalle = "Registrado vía Bot de Telegram"
+    if m149:
+        m149.estado = "remesado"
+        m149.remesa_id = 170
+        m149.detalle = "Registrado vía Bot de Telegram [Remesado - Remesa ID #170]"
+    db.commit()
+    return {
+        "message": "Link fixed successfully",
+        "m148": {"id": 148, "monto": 50.0, "estado": "pendiente"},
+        "m149": {"id": 149, "monto": 30.0, "estado": "remesado", "remesa_id": 170}
     }
 
 @app.get("/api/admin/diagnose")
