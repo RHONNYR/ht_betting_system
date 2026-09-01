@@ -1123,11 +1123,35 @@
                 <!-- SUB-TAB 4: HISTORIAL DE REMESAS ENVIADAS -->
                 <div id="subtab-historial-remesas" class="sub-tab-pane">
                     <div class="card glass-card">
-                        <div class="card-header">
-                            <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
-                            <div class="card-header-controls" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                                <input type="text" id="remesas-search-input" placeholder="🔍 Buscar cliente, ID o monto..." style="padding: 5px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; border-radius: 6px; outline: none; width: 190px;">
-                                <select id="filter-periodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 12px; outline: none; font-size: 0.8rem; cursor: pointer;">
+                        <div class="card-header" style="flex-direction: column; align-items: stretch; gap: 0.85rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                                <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                                    <div class="total-ganado-badge" style="background: rgba(148, 163, 184, 0.1); border-color: rgba(148, 163, 184, 0.25); color: #cbd5e1;">
+                                        <span>N° Remesas:</span>
+                                        <strong id="total-count-remesas">0</strong>
+                                    </div>
+                                    <div class="total-ganado-badge" style="background: rgba(0, 112, 243, 0.1); border-color: rgba(0, 112, 243, 0.2); color: var(--primary-color);">
+                                        <span>Total Volumen:</span>
+                                        <strong id="total-volumen-remesas">$0.00</strong>
+                                    </div>
+                                    <div class="total-ganado-badge" style="background: rgba(234, 179, 8, 0.1); border-color: rgba(234, 179, 8, 0.25); color: #eab308;">
+                                        <span>Total Pagado (VES):</span>
+                                        <strong id="total-ves-remesas">0.00 VES</strong>
+                                    </div>
+                                    <div class="total-ganado-badge">
+                                        <span>Ganancia Total:</span>
+                                        <strong id="total-ganancia-remesas">$0.00</strong>
+                                    </div>
+                                    <button id="btn-export-remesas" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 4px;">📥 Exportar</button>
+                                </div>
+                            </div>
+
+                            <!-- Barra de Filtros Dinámicos -->
+                            <div class="card-header-controls" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; background: rgba(255,255,255,0.02); padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                                <input type="text" id="remesas-search-input" placeholder="🔍 Buscar..." style="padding: 6px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; border-radius: 6px; outline: none; width: 140px;">
+                                
+                                <select id="filter-periodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
                                     <option value="ultimos_30_dias" selected>⏱️ Últimos 30 días</option>
                                     <option value="historico">📜 Histórico (Todo)</option>
                                     <option value="mes">🗓️ Este Mes</option>
@@ -1136,21 +1160,27 @@
                                     <option value="anio">📆 Este Año</option>
                                     <option value="personalizado">✏️ Rango Personalizado</option>
                                 </select>
+                                
                                 <div id="remesas-filter-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
                                     <input type="date" id="remesas-filter-desde" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 5px 8px; font-size: 0.75rem; outline: none;">
                                     <span style="font-size: 0.75rem; color: var(--text-secondary);">→</span>
                                     <input type="date" id="remesas-filter-hasta" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 5px 8px; font-size: 0.75rem; outline: none;">
                                     <button id="remesas-filter-apply" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.75rem; background: linear-gradient(135deg,#6366f1,#8b5cf6); border: none; color: #fff; cursor: pointer;">Aplicar</button>
                                 </div>
-                                <div class="total-ganado-badge" style="background: rgba(0, 112, 243, 0.1); border-color: rgba(0, 112, 243, 0.2); color: var(--primary-color);">
-                                    <span>Total Volumen:</span>
-                                    <strong id="total-volumen-remesas">$0.00</strong>
-                                </div>
-                                <div class="total-ganado-badge">
-                                    <span>Ganancia Total:</span>
-                                    <strong id="total-ganancia-remesas">$0.00</strong>
-                                </div>
-                                <button id="btn-export-remesas" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 4px;">📥 Exportar</button>
+
+                                <select id="filter-cliente-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                    <option value="todos">👤 Todos los Clientes</option>
+                                </select>
+
+                                <select id="filter-tasap2p-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                    <option value="todas">📈 Todas las Tasas P2P</option>
+                                </select>
+
+                                <select id="filter-banco-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                    <option value="todos">🏦 Todos los Bancos Utilizados</option>
+                                </select>
+
+                                <button id="btn-reset-remesas-filters" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0; cursor: pointer; border-radius: 4px;" title="Restablecer todos los filtros">🔄 Limpiar</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -1164,6 +1194,7 @@
                                             <th>Tasa P2P</th>
                                             <th>Tasa Cliente</th>
                                             <th>Monto VES</th>
+                                            <th>Banco Utilizado</th>
                                             <th>Adq. USDT</th>
                                             <th>Comisión Bin.</th>
                                             <th>Ganancia ($)</th>
