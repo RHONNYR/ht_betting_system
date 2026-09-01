@@ -4052,7 +4052,19 @@ async function loadZelleMovimientos() {
         const now = new Date();
         let desde = null, hasta = null, labelTxt = '';
 
-        if (periodo === 'semana') {
+        if (periodo === 'ultimos_30_dias') {
+            const past30 = new Date(now);
+            past30.setDate(now.getDate() - 30);
+            desde = past30.toISOString().slice(0, 10);
+            hasta = now.toISOString().slice(0, 10);
+            labelTxt = `Últimos 30 días`;
+        } else if (periodo === 'mes_anterior') {
+            const prevMonthFirst = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+            const prevMonthLast = new Date(now.getFullYear(), now.getMonth(), 0);
+            desde = `${prevMonthFirst.getFullYear()}-${String(prevMonthFirst.getMonth() + 1).padStart(2, '0')}-01`;
+            hasta = `${prevMonthLast.getFullYear()}-${String(prevMonthLast.getMonth() + 1).padStart(2, '0')}-${String(prevMonthLast.getDate()).padStart(2, '0')}`;
+            labelTxt = `Mes anterior: ${prevMonthFirst.toLocaleDateString('es-VE', {month:'long', year:'numeric'})}`;
+        } else if (periodo === 'semana') {
             const dow = now.getDay();
             const lunes = new Date(now);
             lunes.setDate(now.getDate() - ((dow + 6) % 7));
@@ -4120,7 +4132,7 @@ async function loadZelleMovimientos() {
         // Populate table body
         els.zelleTableBody.innerHTML = '';
         if (data.items.length === 0) {
-            els.zelleTableBody.innerHTML = '<tr><td colspan="10" class="text-center text-muted">No hay movimientos registrados en Zelle</td></tr>';
+            els.zelleTableBody.innerHTML = `<tr><td colspan="10" class="text-center text-muted" style="padding: 2.5rem 1rem;">No hay movimientos registrados en Zelle para este período (${labelTxt}).<br><a href="javascript:void(0)" onclick="document.getElementById('zelle-filter-periodo').value='historico'; loadZelleMovimientos();" style="color: #60a5fa; text-decoration: underline; margin-top: 8px; display: inline-block; font-size: 0.85rem; font-weight: 600;">📜 Ver Histórico Completo</a></td></tr>`;
             return;
         }
         
