@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v169"  # Default Zelle filter to Ultimos 30 dias and synced capital to 928.16
+APP_VERSION = "v170"  # Added search filter and 30-day view to Remesas history table
 
 security = HTTPBearer()
 
