@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v171"  # Improved auto-linking by amount and added fix-yelianni-link
+APP_VERSION = "v172"  # Clean version after fixing Yelianni link and exact-amount auto-matching
 
 security = HTTPBearer()
 
@@ -4695,25 +4695,6 @@ def admin_clean_zelle(username: str = Depends(get_current_user), db: Session = D
         "deleted_count": deleted_count,
         "old_balance": old_balance,
         "new_balance": net_balance
-    }
-
-@app.post("/api/admin/fix-yelianni-link")
-def fix_yelianni_link(username: str = Depends(get_current_user), db: Session = Depends(get_db)):
-    m148 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 148).first()
-    m149 = db.query(MovimientoZelle).filter(MovimientoZelle.id == 149).first()
-    if m148:
-        m148.estado = "pendiente"
-        m148.remesa_id = None
-        m148.detalle = "Registrado vía Bot de Telegram"
-    if m149:
-        m149.estado = "remesado"
-        m149.remesa_id = 170
-        m149.detalle = "Registrado vía Bot de Telegram [Remesado - Remesa ID #170]"
-    db.commit()
-    return {
-        "message": "Link fixed successfully",
-        "m148": {"id": 148, "monto": 50.0, "estado": "pendiente"},
-        "m149": {"id": 149, "monto": 30.0, "estado": "remesado", "remesa_id": 170}
     }
 
 @app.get("/api/admin/diagnose")
