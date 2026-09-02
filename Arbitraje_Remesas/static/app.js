@@ -2455,6 +2455,10 @@ function setupEventListeners() {
     if (filterBancoRemesas) {
         filterBancoRemesas.addEventListener('change', renderRemesasTable);
     }
+    const filterMetodoRemesas = document.getElementById('filter-metodo-remesas');
+    if (filterMetodoRemesas) {
+        filterMetodoRemesas.addEventListener('change', renderRemesasTable);
+    }
     const btnResetRemesasFilters = document.getElementById('btn-reset-remesas-filters');
     if (btnResetRemesasFilters) {
         btnResetRemesasFilters.addEventListener('click', resetRemesasFilters);
@@ -3304,6 +3308,42 @@ function populateRemesasFilterDropdowns() {
             bancoSel.value = currentVal;
         }
     }
+
+    // 4. Métodos / Tipos de Remesa
+    const metodoSel = document.getElementById('filter-metodo-remesas');
+    if (metodoSel) {
+        const currentVal = metodoSel.value;
+        const metodosDefault = [
+            "Zelle",
+            "Efectivo USD",
+            "Mercantil Panamá",
+            "Zinli",
+            "Binance Pay",
+            "Mony",
+            "Airtm",
+            "Wise",
+            "Zen",
+            "Revolut",
+            "Paypal",
+            "Euros Electrónicos"
+        ];
+        const metodosSet = new Set(metodosDefault);
+        data.forEach(r => {
+            if (r.metodo_pago && r.metodo_pago.trim()) {
+                metodosSet.add(r.metodo_pago.trim());
+            }
+        });
+        const sortedMetodos = Array.from(metodosSet);
+        let html = '<option value="todos">💳 Todos los Tipos (Zelle, Efectivo, etc.)</option>';
+        sortedMetodos.forEach(m => {
+            const escaped = m.replace(/"/g, '&quot;');
+            html += `<option value="${escaped}">${escaped}</option>`;
+        });
+        metodoSel.innerHTML = html;
+        if (sortedMetodos.includes(currentVal)) {
+            metodoSel.value = currentVal;
+        }
+    }
 }
 
 function resetRemesasFilters() {
@@ -3317,6 +3357,8 @@ function resetRemesasFilters() {
     if (filterTasaP2p) filterTasaP2p.value = 'todas';
     const filterBanco = document.getElementById('filter-banco-remesas');
     if (filterBanco) filterBanco.value = 'todos';
+    const filterMetodo = document.getElementById('filter-metodo-remesas');
+    if (filterMetodo) filterMetodo.value = 'todos';
     const customDates = document.getElementById('remesas-filter-custom-dates');
     if (customDates) customDates.style.display = 'none';
     renderRemesasTable();
@@ -3346,6 +3388,7 @@ function renderRemesasTable() {
     const clienteFilter = document.getElementById('filter-cliente-remesas')?.value || 'todos';
     const tasaP2pFilter = document.getElementById('filter-tasap2p-remesas')?.value || 'todas';
     const bancoFilter = document.getElementById('filter-banco-remesas')?.value || 'todos';
+    const metodoFilter = document.getElementById('filter-metodo-remesas')?.value || 'todos';
 
     const searchInput = document.getElementById('remesas-search-input');
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
@@ -3372,7 +3415,14 @@ function renderRemesasTable() {
         // 4. Filtro por Banco Utilizado
         if (bancoFilter !== 'todos' && (r.banco_receptor || '').trim() !== bancoFilter) return;
 
-        // 5. Búsqueda libre
+        // 5. Filtro por Método / Tipo de Remesa
+        if (metodoFilter !== 'todos') {
+            const rMetodo = (r.metodo_pago || '').trim().toLowerCase();
+            const targetMetodo = metodoFilter.trim().toLowerCase();
+            if (rMetodo !== targetMetodo && !rMetodo.includes(targetMetodo) && !targetMetodo.includes(rMetodo)) return;
+        }
+
+        // 6. Búsqueda libre
         if (searchTerm) {
             const matchesClient = (r.cliente_nombre || '').toLowerCase().includes(searchTerm);
             const matchesId = String(r.id).includes(searchTerm);
@@ -5356,6 +5406,7 @@ function exportRemesasToCSV() {
         const clienteFilter = document.getElementById('filter-cliente-remesas')?.value || 'todos';
         const tasaP2pFilter = document.getElementById('filter-tasap2p-remesas')?.value || 'todas';
         const bancoFilter = document.getElementById('filter-banco-remesas')?.value || 'todos';
+        const metodoFilter = document.getElementById('filter-metodo-remesas')?.value || 'todos';
         const searchTerm = document.getElementById('remesas-search-input')?.value.toLowerCase().trim() || '';
         
         const filtered = remesas.filter(r => {
@@ -5363,6 +5414,11 @@ function exportRemesasToCSV() {
             if (clienteFilter !== 'todos' && (r.cliente_nombre || '').trim() !== clienteFilter) return false;
             if (tasaP2pFilter !== 'todas' && Number(r.tasa_p2p || 0).toFixed(2) !== tasaP2pFilter) return false;
             if (bancoFilter !== 'todos' && (r.banco_receptor || '').trim() !== bancoFilter) return false;
+            if (metodoFilter !== 'todos') {
+                const rMetodo = (r.metodo_pago || '').trim().toLowerCase();
+                const targetMetodo = metodoFilter.trim().toLowerCase();
+                if (rMetodo !== targetMetodo && !rMetodo.includes(targetMetodo) && !targetMetodo.includes(rMetodo)) return false;
+            }
             if (searchTerm) {
                 const matchesClient = (r.cliente_nombre || '').toLowerCase().includes(searchTerm);
                 const matchesId = String(r.id).includes(searchTerm);
