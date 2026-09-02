@@ -1180,6 +1180,10 @@
                                     <option value="todos">🏦 Todos los Bancos Utilizados</option>
                                 </select>
 
+                                <select id="filter-metodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                    <option value="todos">💳 Todos los Tipos (Zelle, Efectivo, etc.)</option>
+                                </select>
+
                                 <button id="btn-reset-remesas-filters" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0; cursor: pointer; border-radius: 4px;" title="Restablecer todos los filtros">🔄 Limpiar</button>
                             </div>
                         </div>
@@ -2460,12 +2464,19 @@
                         <label for="edit-remesa-metodo-pago">Método Recibo USD</label>
                         <select id="edit-remesa-metodo-pago">
                             <option value="Zelle">Zelle</option>
+                            <option value="Efectivo USD">Efectivo USD</option>
+                            <option value="Mercantil Panamá">Mercantil Panamá</option>
                             <option value="Zinli">Zinli</option>
-                            <option value="Cash (Margarita)">Cash (Margarita)</option>
-                            <option value="Cash (Caracas)">Cash (Caracas)</option>
                             <option value="Mony">Mony</option>
+                            <option value="Airtm">Airtm</option>
+                            <option value="Euros Electrónicos">Euros Electrónicos</option>
+                            <option value="Wise">Wise</option>
+                            <option value="Zen">Zen</option>
+                            <option value="Revolut">Revolut</option>
                             <option value="Paypal">Paypal</option>
                             <option value="Binance Pay">Binance Pay</option>
+                            <option value="Cash (Margarita)">Cash (Margarita)</option>
+                            <option value="Cash (Caracas)">Cash (Caracas)</option>
                             <option value="Transferencia Panamá">Transferencia Panamá</option>
                         </select>
                     </div>
