@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v173"  # Dynamic Remesas Table with interactive filters, Banco Utilizado and auto-sum KPIs
+APP_VERSION = "v174"  # Added payment method filter (Zelle, Cash, Mercantil Panama, etc.) to Remesas table
 
 security = HTTPBearer()
 
