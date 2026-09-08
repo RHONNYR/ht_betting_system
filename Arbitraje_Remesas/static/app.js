@@ -3216,6 +3216,16 @@ function setupEventListeners() {
             closeModal(els.modalEditarCiclo);
         });
     }
+    const btnDeleteModalEditarCiclo = document.getElementById('btn-delete-modal-editar-ciclo');
+    if (btnDeleteModalEditarCiclo) {
+        btnDeleteModalEditarCiclo.addEventListener('click', async () => {
+            const cicloId = document.getElementById('edit-ciclo-id')?.value;
+            if (cicloId) {
+                closeModal(els.modalEditarCiclo);
+                await deleteCiclo(cicloId);
+            }
+        });
+    }
     
     // Export buttons Event Listeners
     const btnExportRemesas = document.getElementById('btn-export-remesas');
