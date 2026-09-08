@@ -1708,6 +1708,9 @@ function renderCiclosTable() {
             });
             displayGain = sumGain;
             displayMargin = sumCostUsdt > 0 ? ((sumReceived / sumCostUsdt) - 1) * 100 : 0;
+        } else if (!c.divisas_compradas || c.divisas_compradas === 0) {
+            displayGain = 0.0;
+            displayMargin = 0.0;
         }
 
         totalGain += displayGain;
