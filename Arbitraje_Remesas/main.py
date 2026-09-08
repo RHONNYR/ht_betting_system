@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v175"  # Fixed Cycle Profit & Percentage calculation consistency with child partial purchases
+APP_VERSION = "v176"  # Fixed empty cycle negative gain anomaly and added direct cycle deletion
 
 security = HTTPBearer()
 
@@ -169,6 +169,12 @@ def run_startup_jobs():
                 c.ganancia_porcentaje = round(((usd_recibidos / costo_usdt) - 1) * 100, 2) if costo_usdt > 0 else 0.0
                 c.usd_recibidos_binance = round(usd_recibidos, 2)
                 c.divisas_compradas = round(sum((cp.usd_comprados or 0.0) for cp in compras_reales), 2)
+            else:
+                # Ciclo sin compras reales o vacío
+                c.ganancia_usd = 0.0
+                c.ganancia_porcentaje = 0.0
+                c.usd_recibidos_binance = 0.0
+                c.divisas_compradas = 0.0
         db.commit()
     except Exception as e:
         print(f"Error during legacy purchase migration: {e}")
