@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v176"  # Fixed empty cycle negative gain anomaly and added direct cycle deletion
+APP_VERSION = "v177"  # Updated cachebusters and added delete buttons in table and edit modal
 
 security = HTTPBearer()
 
