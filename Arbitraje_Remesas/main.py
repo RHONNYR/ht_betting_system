@@ -21,7 +21,7 @@ from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, Histori
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v174"  # Added payment method filter (Zelle, Cash, Mercantil Panama, etc.) to Remesas table
+APP_VERSION = "v175"  # Fixed Cycle Profit & Percentage calculation consistency with child partial purchases
 
 security = HTTPBearer()
 
@@ -57,35 +57,35 @@ def recalculate_ciclo_stats(ciclo, db: Session):
     ciclo.comision_compra_ves    = round(total_comision_ves, 2)
     ciclo.transferencias_ves     = round(total_transferencias_ves, 2)
     
-    # ── Ganancia basada en el SOBRE (envelope formula) ────────────────────────────
-    # Lógica: De todo lo que entró al sobre, restamos lo que queda Y lo que se gastó
-    # personalmente → lo que reste es el costo real del arbitraje en VES.
     tasa = ciclo.tasa_venta or 0.0
     usdt_vendidos = ciclo.usdt_vendidos or 0.0
     
     # Si no hay compras reales registradas en el ciclo, la ganancia es simplemente 0.0
-    # (previene que ciclos de prueba o cancelados muestren una pérdida del 100%)
-    if not compras_reales:
+    if not compras_reales or tasa <= 0:
         ciclo.ganancia_usd = 0.0
         ciclo.ganancia_porcentaje = 0.0
     else:
-        if tasa > 0 and usdt_vendidos > 0:
-            ves_inicial = round(usdt_vendidos * 0.9975 * tasa, 2)
-            ves_restantes = ciclo.bolivares_sobre_restantes or 0.0
-            # VES usados en arbitraje = inicial - lo que queda - gastos personales
-            ves_arbitraje = round(ves_inicial - ves_restantes - total_gastos_personales_ves, 2)
-            ves_arbitraje = max(0.0, ves_arbitraje)
-            costo_usdt = round(ves_arbitraje / tasa, 2)
-        else:
-            costo_usdt = 0.0
-        
+        # Costo real en VES por compras individuales realizadas
+        total_ves_cost = sum(
+            ((cp.usd_comprados or 0.0) * (cp.tasa_bcv or 0.0))
+            + (cp.comision_compra_ves or 0.0)
+            + (cp.transferencias_ves or 0.0)
+            for cp in compras_reales
+        )
+        costo_usdt = round(total_ves_cost / tasa, 2)
         ciclo.ganancia_usd = round(ciclo.usd_recibidos_binance - costo_usdt, 2)
         ciclo.ganancia_porcentaje = round(
-            (ciclo.usd_recibidos_binance / costo_usdt - 1) * 100, 2
+            ((ciclo.usd_recibidos_binance / costo_usdt) - 1) * 100, 2
         ) if costo_usdt > 0 else 0.0
-    
-    # bolivares_restantes = saldo del sobre (caja) — no interviene en la ganancia
-    ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
+        
+        # Calcular bolivares restantes reales en el sobre
+        if usdt_vendidos > 0:
+            ves_inicial = round(usdt_vendidos * 0.9975 * tasa, 2)
+            ves_restantes_calc = round(ves_inicial - total_ves_cost - total_gastos_personales_ves, 2)
+            if ciclo.status == "abierto" or not ciclo.bolivares_sobre_restantes:
+                ciclo.bolivares_sobre_restantes = max(0.0, ves_restantes_calc)
+        
+        ciclo.bolivares_restantes = ciclo.bolivares_sobre_restantes
 
 app = FastAPI(title="Sistema de Arbitraje y Remesas")
 
@@ -152,14 +152,30 @@ def run_startup_jobs():
                     p.banco = ciclo.banco_venta or "Venezuela"
                 else:
                     p.banco = "Venezuela"
-                    
+        # 3. Heal cycle stats based on actual partial purchases
+        all_ciclos = db.query(HistorialCiclos).all()
+        for c in all_ciclos:
+            compras_reales = [cp for cp in (c.compras_parciales or []) if cp.usd_comprados is not None and cp.usd_comprados > 0.0]
+            if compras_reales and (c.tasa_venta or 0) > 0:
+                total_ves_cost = sum(
+                    ((cp.usd_comprados or 0.0) * (cp.tasa_bcv or 0.0))
+                    + (cp.comision_compra_ves or 0.0)
+                    + (cp.transferencias_ves or 0.0)
+                    for cp in compras_reales
+                )
+                usd_recibidos = sum((cp.usd_recibidos_binance or 0.0) for cp in compras_reales)
+                costo_usdt = round(total_ves_cost / c.tasa_venta, 2)
+                c.ganancia_usd = round(usd_recibidos - costo_usdt, 2)
+                c.ganancia_porcentaje = round(((usd_recibidos / costo_usdt) - 1) * 100, 2) if costo_usdt > 0 else 0.0
+                c.usd_recibidos_binance = round(usd_recibidos, 2)
+                c.divisas_compradas = round(sum((cp.usd_comprados or 0.0) for cp in compras_reales), 2)
         db.commit()
     except Exception as e:
         print(f"Error during legacy purchase migration: {e}")
     finally:
         db.close()
 
-    # 3. Setup Telegram Bot webhook
+    # 4. Setup Telegram Bot webhook
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
     if bot_token:
         webhook_url = "https://arbitraje-rhonny-99.onrender.com/api/webhooks/telegram"
