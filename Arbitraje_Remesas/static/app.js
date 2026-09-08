@@ -1692,7 +1692,25 @@ function renderCiclosTable() {
     data.forEach(c => {
         if (!isDateInPeriod(c.fecha, period)) return;
         
-        totalGain += c.ganancia_usd;
+        let displayGain = c.ganancia_usd;
+        let displayMargin = c.ganancia_porcentaje;
+        if (c.compras_parciales && c.compras_parciales.length > 0) {
+            let sumGain = 0;
+            let sumCostUsdt = 0;
+            let sumReceived = 0;
+            c.compras_parciales.forEach(cp => {
+                const costoVesCp = (cp.usd_comprados * cp.tasa_bcv) + (cp.comision_compra_ves || 0) + (cp.transferencias_ves || 0);
+                const costoUsdtCp = c.tasa_venta > 0 ? (costoVesCp / c.tasa_venta) : 0;
+                const gananciaCpUsd = (cp.usd_recibidos_binance || 0) - costoUsdtCp;
+                sumGain += gananciaCpUsd;
+                sumCostUsdt += costoUsdtCp;
+                sumReceived += (cp.usd_recibidos_binance || 0);
+            });
+            displayGain = sumGain;
+            displayMargin = sumCostUsdt > 0 ? ((sumReceived / sumCostUsdt) - 1) * 100 : 0;
+        }
+
+        totalGain += displayGain;
         const tr = document.createElement('tr');
         tr.className = 'main-row-ciclo';
         if (c.status === 'abierto') {
@@ -1700,7 +1718,7 @@ function renderCiclosTable() {
         } else {
             tr.classList.add('ciclo-completado');
         }
-        const profitClass = c.ganancia_usd >= 0 ? 'text-success' : 'text-danger';
+        const profitClass = displayGain >= 0 ? 'text-success' : 'text-danger';
         
         const statusBadge = c.status === 'abierto'
             ? ` <span class="badge" style="font-size: 0.7rem; background: rgba(245,158,11,0.15); color: #f59e0b; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(245,158,11,0.3);">Abierto</span>`
@@ -1732,8 +1750,8 @@ function renderCiclosTable() {
             <td><strong style="color: var(--text-primary); font-size: 0.9rem;">$${c.divisas_compradas.toFixed(2)}</strong></td>
             <td>${tasaBcvCell}</td>
             <td><strong style="color: var(--text-primary); font-size: 0.9rem;">$${c.usd_recibidos_binance.toFixed(2)}</strong></td>
-            <td class="${profitClass}"><strong>$${c.ganancia_usd.toFixed(2)}</strong></td>
-            <td class="${profitClass}"><strong>${c.ganancia_porcentaje.toFixed(2)}%</strong></td>
+            <td class="${profitClass}"><strong>$${displayGain.toFixed(2)}</strong></td>
+            <td class="${profitClass}"><strong>${displayMargin.toFixed(2)}%</strong></td>
             <td>${c.bolivares_restantes.toLocaleString('es-VE', {maximumFractionDigits: 2})}</td>
             <td>
                 <div class="flex-row-align" style="gap: 0.4rem; justify-content: center;">
