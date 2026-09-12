@@ -1,4 +1,7 @@
-from database import init_db, SessionLocal, User, Titular, Tarjeta, DistribucionCapital
+try:
+    from database import init_db, SessionLocal, User, Titular, Tarjeta, DistribucionCapital
+except ImportError:
+    from Arbitraje_Remesas.database import init_db, SessionLocal, User, Titular, Tarjeta, DistribucionCapital
 import bcrypt
 
 def seed_data():
@@ -27,7 +30,9 @@ def seed_data():
         {"plataforma": "Banco de Venezuela (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.066},
         {"plataforma": "Banco Provincial (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
         {"plataforma": "Banco Mercantil (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.046},
-        {"plataforma": "Bancamiga (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041}
+        {"plataforma": "Bancamiga (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
+        {"plataforma": "Banco Banesco (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
+        {"plataforma": "Banco Banesco (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041}
     ]
     
     for plat in default_platforms:
@@ -43,8 +48,8 @@ def seed_data():
             "tercera_edad": False,
             "tarjetas": [
                 {"banco": "BDV", "tipo_tarjeta": "Internacional $", "limite_diario": 2000.0, "limite_mensual": 10000.0, "comision_porcentaje": 0.025},
-                {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.015},
-                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.0}
+                {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.025},
+                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.015}
             ]
         },
         {
@@ -52,8 +57,8 @@ def seed_data():
             "tercera_edad": True,
             "tarjetas": [
                 {"banco": "BDV", "tipo_tarjeta": "Internacional $", "limite_diario": 2000.0, "limite_mensual": 10000.0, "comision_porcentaje": 0.025},
-                {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.015},
-                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.0}
+                {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.025},
+                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.015}
             ]
         },
         {
@@ -61,15 +66,15 @@ def seed_data():
             "tercera_edad": True,
             "tarjetas": [
                 {"banco": "BDV", "tipo_tarjeta": "Internacional $", "limite_diario": 2000.0, "limite_mensual": 10000.0, "comision_porcentaje": 0.025},
-                {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.015},
-                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.0}
+                {"banco": "BDV", "tipo_tarjeta": "Master Debit", "limite_diario": 1000.0, "limite_mensual": 5000.0, "comision_porcentaje": 0.025},
+                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.015}
             ]
         },
         {
             "nombre": "Anaisabel",
             "tercera_edad": False,
             "tarjetas": [
-                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.0}
+                {"banco": "Provincial", "tipo_tarjeta": "Master Debit", "limite_diario": 2000.0, "limite_mensual": 20000.0, "comision_porcentaje": 0.015}
             ]
         }
     ]
