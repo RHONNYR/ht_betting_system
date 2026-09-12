@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbitraje & Remesas - Control Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=177">
+    <link rel="stylesheet" href="styles.css?v=180">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230070F3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3l4 4-4 4'/><path d='M20 7H4'/><path d='M8 21l-4-4 4-4'/><path d='M4 17h16'/></svg>">
 </head>
@@ -1056,6 +1056,7 @@
                                     <option value="todos">🏦 Todos los Bancos</option>
                                     <option value="BDV">BDV</option>
                                     <option value="Provincial">Provincial</option>
+                                    <option value="Banesco">Banesco</option>
                                     <option value="Mercantil">Mercantil</option>
                                     <option value="Zinli">Zinli</option>
                                 </select>
@@ -2324,6 +2325,7 @@
                     <select id="tarjeta-banco" required>
                         <option value="BDV">Banco de Venezuela (BDV)</option>
                         <option value="Provincial">Provincial</option>
+                        <option value="Banesco">Banesco</option>
                         <option value="Mercantil">Mercantil</option>
                         <option value="Zinli">Zinli</option>
                     </select>
@@ -2694,8 +2696,11 @@
 
     <!-- Modal: Editar Ciclo de Arbitraje -->
     <div id="modal-editar-ciclo" class="modal hidden">
-        <div class="modal-content glass-card">
-            <h3>Editar Ciclo de Arbitraje</h3>
+        <div class="modal-content glass-card" style="max-width: 500px; width: 90%;">
+            <div class="flex-row-space-between mb-3" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0;">✏️ Editar Ciclo de Arbitraje</h3>
+                <button type="button" id="btn-x-modal-editar-ciclo" class="btn btn-secondary modal-close-btn" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">✕</button>
+            </div>
             <form id="editar-ciclo-form">
                 <input type="hidden" id="edit-ciclo-id">
                 
@@ -3166,6 +3171,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=177"></script>
+    <script src="app.js?v=180"></script>
 </body>
 </html>
