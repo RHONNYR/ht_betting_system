@@ -2022,7 +2022,7 @@ function updateCompraLiveBreakdown() {
     
     const selectedOpt = tarjetaSelect.options[tarjetaSelect.selectedIndex];
     let isTerceraEdad = false;
-    let cardCommPct = 0.015;
+    let cardCommPct = 0.025;
     let isBdv = false;
     
     if (selectedOpt) {
@@ -2380,16 +2380,20 @@ function updateCardPresetDefaults() {
         } else if (tipo === 'Master Debit') {
             diario = 1000;
             mensual = 5000;
-            comision = 1.5; // 1.5%
+            comision = 2.5; // 2.5%
         } else {
             diario = 1000;
             mensual = 5000;
-            comision = 0.0;
+            comision = 2.5; // 2.5%
         }
     } else if (banco === 'Provincial') {
         diario = 2000;
         mensual = 20000;
-        comision = 0.0;
+        comision = 1.5; // 1.5%
+    } else if (banco === 'Banesco') {
+        diario = 2000;
+        mensual = 10000;
+        comision = 1.5; // 1.5%
     } else if (banco === 'Mercantil' || banco === 'Zinli') {
         diario = 1000;
         mensual = 1000;
