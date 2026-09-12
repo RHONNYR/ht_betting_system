@@ -24,7 +24,7 @@ except ImportError:
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v179"  # Fixed BDV Master Debit to 2.5% in DB and app, corrected Ciclo 31
+APP_VERSION = "v180"  # Enhanced responsive modals & global layout scaling for laptops
 
 security = HTTPBearer()
 
