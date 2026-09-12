@@ -5,7 +5,9 @@ import datetime
 import os
 
 # Default local SQLite path
-LOCAL_DB_PATH = "sqlite:///c:/Users/rhonn/Downloads/ht_betting_system/arbitraje_remesas/database.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_FILE = os.path.join(BASE_DIR, "database.db").replace("\\", "/")
+LOCAL_DB_PATH = f"sqlite:///{DB_FILE}"
 
 # DATABASE_URL is set automatically by Render/Railway
 DATABASE_URL = os.getenv("DATABASE_URL", LOCAL_DB_PATH)
