@@ -15,13 +15,16 @@ import bcrypt
 from pydantic import BaseModel
 from typing import List, Optional
 
-from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, SimulacionRutas, CanjeDivisa, engine
+try:
+    from database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, SimulacionRutas, CanjeDivisa, engine, init_db
+except ImportError:
+    from Arbitraje_Remesas.database import SessionLocal, User, Titular, Tarjeta, CompraDivisa, HistorialCiclos, DistribucionCapital, HistorialCapitalDiario, HistorialRemesas, Cliente, CompraCicloParcial, MovimientoZelle, CategoriaPersonal, GastoPersonal, DeudaPersonal, IngresoPersonal, PresupuestoPersonal, SimulacionRutas, CanjeDivisa, engine, init_db
 
 # JWT configuration
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v177"  # Updated cachebusters and added delete buttons in table and edit modal
+APP_VERSION = "v179"  # Fixed BDV Master Debit to 2.5% in DB and app, corrected Ciclo 31
 
 security = HTTPBearer()
 
@@ -92,6 +95,10 @@ app = FastAPI(title="Sistema de Arbitraje y Remesas")
 # Startup migration to fix legacy purchase bank names in database
 @app.on_event("startup")
 def run_startup_jobs():
+    try:
+        init_db()
+    except Exception as e:
+        print(f"Error calling init_db: {e}")
     # 1. Run database migrations to add cliente_nombre and capture_url to movimientos_zelle
     db = SessionLocal()
     try:
@@ -260,6 +267,13 @@ class TarjetaCreate(BaseModel):
     limite_diario: float
     limite_mensual: float
     comision_porcentaje: float
+
+class TarjetaUpdate(BaseModel):
+    banco: Optional[str] = None
+    tipo_tarjeta: Optional[str] = None
+    limite_diario: Optional[float] = None
+    limite_mensual: Optional[float] = None
+    comision_porcentaje: Optional[float] = None
 
 class CompraDivisaCreate(BaseModel):
     tarjeta_id: int
@@ -1746,6 +1760,24 @@ def create_tarjeta(req: TarjetaCreate, username: str = Depends(get_current_user)
     db.commit()
     return {"message": "Tarjeta agregada exitosamente", "id": card.id}
 
+@app.put("/api/tarjetas/{tarjeta_id}")
+def update_tarjeta(tarjeta_id: int, req: TarjetaUpdate, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
+    card = db.query(Tarjeta).filter(Tarjeta.id == tarjeta_id).first()
+    if not card:
+        raise HTTPException(status_code=404, detail="Tarjeta no encontrada")
+    if req.banco is not None:
+        card.banco = req.banco
+    if req.tipo_tarjeta is not None:
+        card.tipo_tarjeta = req.tipo_tarjeta
+    if req.limite_diario is not None:
+        card.limite_diario = req.limite_diario
+    if req.limite_mensual is not None:
+        card.limite_mensual = req.limite_mensual
+    if req.comision_porcentaje is not None:
+        card.comision_porcentaje = req.comision_porcentaje
+    db.commit()
+    return {"message": "Tarjeta actualizada exitosamente"}
+
 @app.delete("/api/tarjetas/{tarjeta_id}")
 def delete_tarjeta(tarjeta_id: int, username: str = Depends(get_current_user), db: Session = Depends(get_db)):
     card = db.query(Tarjeta).filter(Tarjeta.id == tarjeta_id).first()
@@ -2095,6 +2127,8 @@ def create_ciclo_compra_parcial(ciclo_id: int, req: CompraCicloParcialCreate, us
         target_platform = "Banco Mercantil (VES)"
     elif "bancamiga" in bank_clean:
         target_platform = "Bancamiga (VES)"
+    elif "banesco" in bank_clean:
+        target_platform = "Banco Banesco (VES)"
         
     if target_platform:
         plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
@@ -2297,6 +2331,8 @@ def delete_compra_parcial(compra_id: int, username: str = Depends(get_current_us
         target_platform = "Banco Mercantil (VES)"
     elif "bancamiga" in bank_clean:
         target_platform = "Bancamiga (VES)"
+    elif "banesco" in bank_clean:
+        target_platform = "Banco Banesco (VES)"
         
     if target_platform:
         plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == target_platform).first()
@@ -2335,6 +2371,8 @@ def update_compra_parcial(compra_id: int, req: CompraCicloParcialUpdate, usernam
         old_target_platform = "Banco Mercantil (VES)"
     elif "bancamiga" in old_bank_clean:
         old_target_platform = "Bancamiga (VES)"
+    elif "banesco" in old_bank_clean:
+        old_target_platform = "Banco Banesco (VES)"
         
     if old_target_platform:
         plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == old_target_platform).first()
@@ -2358,6 +2396,8 @@ def update_compra_parcial(compra_id: int, req: CompraCicloParcialUpdate, usernam
         new_target_platform = "Banco Mercantil (VES)"
     elif "bancamiga" in new_bank_clean:
         new_target_platform = "Bancamiga (VES)"
+    elif "banesco" in new_bank_clean:
+        new_target_platform = "Banco Banesco (VES)"
         
     if new_target_platform:
         plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == new_target_platform).first()
@@ -3203,8 +3243,12 @@ def update_cliente(cliente_id: int, req: ClienteCreate, username: str = Depends(
 @app.on_event("startup")
 def on_startup():
     try:
-        from database import init_db, SessionLocal, User, DistribucionCapital
-        from seed import seed_data
+        try:
+            from database import init_db, SessionLocal, User, DistribucionCapital
+            from seed import seed_data
+        except ImportError:
+            from Arbitraje_Remesas.database import init_db, SessionLocal, User, DistribucionCapital
+            from Arbitraje_Remesas.seed import seed_data
         print("Initializing database...")
         init_db()
         db = SessionLocal()
@@ -3236,6 +3280,8 @@ def on_startup():
                 {"plataforma": "Banco Mercantil (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.046},
                 {"plataforma": "Bancamiga (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
                 {"plataforma": "Bancamiga (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
+                {"plataforma": "Banco Banesco (VES)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": True, "comision_simulacion": 0.046},
+                {"plataforma": "Banco Banesco (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.041},
                 {"plataforma": "Mercantil Panamá (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.025},
                 {"plataforma": "Airtm (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.02},
                 {"plataforma": "Wally (USD)", "saldo_usd": 0.0, "saldo_ves": 0.0, "convertir_ves": False, "comision_simulacion": 0.02},
@@ -3249,6 +3295,20 @@ def on_startup():
                     print(f"Migration: Added platform '{plat['plataforma']}'")
                 else:
                     existing.comision_simulacion = plat["comision_simulacion"]
+            
+            # 2b. Migrate Card Commissions: BDV Master Debit -> 2.5%, Provincial -> 1.5%
+            try:
+                for card in db.query(Tarjeta).all():
+                    b_clean = (card.banco or "").strip().lower()
+                    tipo_clean = (card.tipo_tarjeta or "").strip().lower()
+                    if ("bdv" in b_clean or "venezuela" in b_clean) and "master" in tipo_clean:
+                        card.comision_porcentaje = 0.025
+                    elif "provincial" in b_clean:
+                        card.comision_porcentaje = 0.015
+                db.commit()
+                print("Migration: Updated BDV Master Debit (2.5%) and Provincial (1.5%) card commissions.")
+            except Exception as e:
+                print(f"Error updating card commissions in migration: {e}")
             
             # 3. Add titular Anaisabel and card if they don't exist
             anaisabel = db.query(Titular).filter(Titular.nombre == "Anaisabel").first()
@@ -3266,7 +3326,7 @@ def on_startup():
                     tipo_tarjeta="Master Debit",
                     limite_diario=2000.0,
                     limite_mensual=20000.0,
-                    comision_porcentaje=0.0
+                    comision_porcentaje=0.015
                 )
                 db.add(prov_card)
                 db.commit()
@@ -3326,7 +3386,6 @@ def on_startup():
                 
             # 6. Import historical client names from HistorialRemesas to Cliente table if not present
             try:
-                from database import HistorialRemesas
                 remesa_names = db.query(HistorialRemesas.cliente_nombre).distinct().all()
                 imported_count = 0
                 for r_name in remesa_names:
@@ -4804,4 +4863,5 @@ def admin_repair_profits(username: str = Depends(get_current_user), db: Session 
 
 
 # Serve static frontend files
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
