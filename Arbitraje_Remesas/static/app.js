@@ -2415,15 +2415,65 @@ function updateCardPresetDefaults() {
 
 // Modal handlers
 function openModal(modal) {
+    if (!modal) return;
+    if (typeof modal === 'string') modal = document.getElementById(modal);
+    if (!modal) return;
     modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
 }
 
 function closeModal(modal) {
+    if (!modal) return;
+    if (typeof modal === 'string') modal = document.getElementById(modal);
+    if (!modal) return;
     modal.classList.add('hidden');
+    const remainingOpen = document.querySelectorAll('.modal:not(.hidden)');
+    if (remainingOpen.length === 0) {
+        document.body.classList.remove('modal-open');
+    }
 }
 
 // Event Listeners
 function setupEventListeners() {
+    // Global Modal Backdrop Click, Close Buttons & Escape Key Handlers
+    document.querySelectorAll('.modal').forEach(modalEl => {
+        modalEl.addEventListener('click', (e) => {
+            if (e.target === modalEl) {
+                closeModal(modalEl);
+            }
+        });
+
+        modalEl.querySelectorAll('button').forEach(btn => {
+            if (btn.textContent.trim() === '✕' || btn.classList.contains('modal-close-btn')) {
+                btn.addEventListener('click', () => closeModal(modalEl));
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const activeModals = document.querySelectorAll('.modal:not(.hidden)');
+            activeModals.forEach(m => closeModal(m));
+        }
+    });
+
+    // Observer to keep body.modal-open in sync even if .hidden is toggled directly
+    try {
+        const modalObserver = new MutationObserver(() => {
+            const hasOpen = document.querySelectorAll('.modal:not(.hidden)').length > 0;
+            if (hasOpen) {
+                document.body.classList.add('modal-open');
+            } else {
+                document.body.classList.remove('modal-open');
+            }
+        });
+        document.querySelectorAll('.modal').forEach(m => {
+            modalObserver.observe(m, { attributes: true, attributeFilter: ['class'] });
+        });
+    } catch (err) {
+        console.warn("Modal observer warning:", err);
+    }
+
     // Auth
     els.loginForm.addEventListener('submit', handleLogin);
     els.btnLogout.addEventListener('click', logout);
