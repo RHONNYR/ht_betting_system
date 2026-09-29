@@ -153,6 +153,16 @@ def main():
     df_today_picks = pd.DataFrame()
     
     try:
+        # Añadir próximos partidos libres desde Football-Data.co.uk
+        try:
+            from src.data.football_data_co_uk_client import fetch_upcoming_fixtures_from_football_data
+            df_fd_upcoming = fetch_upcoming_fixtures_from_football_data()
+            if not df_fd_upcoming.empty:
+                all_fixtures = pd.concat([all_fixtures, df_fd_upcoming], ignore_index=True)
+                print(f"[Football-Data] Agregados {len(df_fd_upcoming)} próximos partidos a evaluar.")
+        except Exception as e:
+            print(f"Aviso al agregar próximos partidos libres: {e}")
+
         # Convertir columna date a datetime con zona horaria UTC
         all_fixtures['match_dt_utc'] = pd.to_datetime(all_fixtures['date'], utc=True)
         
@@ -203,7 +213,14 @@ def main():
                 
                 for idx, r in df_today_picks.iterrows():
                     m_id = int(r['match_id'])
-                    if m_id in cached_odds:
+                    if pd.notna(r.get('cuota_cierre')) and float(r.get('cuota_cierre', 0)) > 1.0:
+                        c_val = float(r.get('cuota_cierre'))
+                        bm_val = str(r.get('bookmaker_cierre', 'Bet365'))
+                        cuotas_rec.append(c_val)
+                        bms_rec.append(bm_val)
+                        otras_list.append({bm_val: c_val})
+                        print(f"  [FD-DIRECT] ID {m_id} ({r['Local']} vs {r['Visitante']}): {c_val} en {bm_val}")
+                    elif m_id in cached_odds:
                         c_info = cached_odds[m_id]
                         cuotas_rec.append(c_info['cuota_recomendada'])
                         bms_rec.append(c_info['bookmaker_recomendado'])
