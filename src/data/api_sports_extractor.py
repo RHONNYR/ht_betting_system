@@ -4,6 +4,7 @@ import json
 import pandas as pd
 from config import settings
 from src.data.api_football_client import ApiFootballClient
+from src.data.football_data_co_uk_client import API_ID_TO_DIV, fetch_football_data_season, fetch_upcoming_fixtures_from_football_data
 
 class ApiSportsExtractor:
     def __init__(self):
@@ -27,6 +28,10 @@ class ApiSportsExtractor:
             except Exception as e:
                 print(f"Error al leer active_seasons.json: {e}")
         
+        # Si la liga está cubierta por football-data.co.uk, la temporada europea actual es 2026
+        if int(league_id) in API_ID_TO_DIV:
+            return 2026
+
         # Si la liga está en caché y tiene menos de 7 días, usarla
         if str(league_id) in seasons_cache:
             cache_data = seasons_cache[str(league_id)]
@@ -90,9 +95,27 @@ class ApiSportsExtractor:
             except Exception as e:
                 print(f"Error al leer la base de datos local ({cache_file}): {e}. Descargando de nuevo...")
 
-        # Si no se usa la base de datos local, descargar desde la API
+        # Integración libre con Football-Data.co.uk para grandes ligas europeas
+        lid = int(league_id)
+        if lid in API_ID_TO_DIV:
+            div = API_ID_TO_DIV[lid]
+            print(f"Obteniendo datos de {div} (ID {lid}, temp {season_year}) desde Football-Data.co.uk...")
+            df_fd = fetch_football_data_season(div, season_year)
+            if not df_fd.empty:
+                try:
+                    df_fd.to_parquet(cache_file, index=False)
+                    print(f"Guardado exitosamente en Base de Datos Local: {cache_file}")
+                except Exception as e:
+                    print(f"Error al guardar en la base de datos local: {e}")
+                return df_fd
+
+        # Si no se usa la base de datos local ni football-data, descargar desde la API
         print(f"Descargando fixtures para la liga ID {league_id}, temporada {season_year} desde la API-Sports...")
-        raw_fixtures = self.client.fetch_fixtures(league_id, season_year)
+        try:
+            raw_fixtures = self.client.fetch_fixtures(league_id, season_year)
+        except Exception as e:
+            print(f"Aviso API-Sports para liga {league_id}: {e}")
+            raw_fixtures = []
         
         rows = []
         for item in raw_fixtures:
@@ -290,6 +313,22 @@ class ApiSportsExtractor:
                 })
                 
         df = pd.DataFrame(rows)
+        if df.empty:
+            fix_cache = os.path.join(self.db_dir, f"fixtures_{league_id}_{season_year}.parquet")
+            if os.path.exists(fix_cache):
+                try:
+                    df_fix = pd.read_parquet(fix_cache)
+                    if 'cuota_cierre' in df_fix.columns and not df_fix.empty:
+                        df = df_fix[['match_id', 'cuota_cierre', 'bookmaker_cierre']].copy()
+                        df['otras_cuotas_cierre'] = '{}'
+                        try:
+                            df.to_parquet(cache_file, index=False)
+                        except:
+                            pass
+                        return df
+                except Exception:
+                    pass
+
         # Guardar en la base de datos local
         if not df.empty:
             try:
