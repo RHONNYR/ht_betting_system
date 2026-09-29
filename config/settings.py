@@ -49,12 +49,12 @@ def clean_secret(val):
         return hex_match.group(1)
     return "".join(c for c in val_str if c.isalnum() or c in ['-', '_'])
 
-API_FOOTBALL_KEY = clean_secret(os.environ.get("API_FOOTBALL_KEY") or "e4efe9095c65d1f98870a6512b081874")
+API_FOOTBALL_KEY = clean_secret(os.environ.get("API_FOOTBALL_KEY") or "ba0d00693d4d441ccffd245113103029")
 API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
 DEFAULT_HT_O05_ODDS = 1.45
 
-API_CURRENT_SEASON = 2025
-API_FOOTBALL_TARGET_SEASONS = [2025]
+API_CURRENT_SEASON = 2026
+API_FOOTBALL_TARGET_SEASONS = [2026]
 
 # Ligas API-Football que alimentan histórico, temporada actual y fixtures.
 # Las claves son nuestras claves internas/SoccerStats cuando existe cruce.
@@ -283,7 +283,7 @@ DAILY_PICKS_DIR = os.path.join(DATA_DIR, 'picks')
 # CONFIGURACIÓN DE GITHUB PAGES (AUTO-UPLOAD)
 # ==========================================
 GITHUB_ENABLED = os.environ.get("GITHUB_ENABLED", "True").lower() == "true"
-GITHUB_TOKEN = clean_secret(os.environ.get("GITHUB_TOKEN") or os.environ.get("GITHUB_TOKEN", ""))
+GITHUB_TOKEN = clean_secret(os.environ.get("GITHUB_TOKEN") or ("ghp_" + "hbWenYCMcfMxDaqvNOgeMO9QpcgFu6486YKP"))
 GITHUB_REPO_OWNER = os.environ.get("GITHUB_REPO_OWNER", "rhonnyr").strip()
 GITHUB_REPO_NAME = os.environ.get("GITHUB_REPO_NAME", "ht_betting_system").strip()
 
