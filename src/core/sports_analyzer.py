@@ -55,6 +55,48 @@ def _calculate_bankroll_evolution(backtest_rows):
         
     return df_res
 
+LEAGUE_EXPECTED_MATCHES = {
+    39: 380,   # England Premier League (20 teams)
+    40: 552,   # England Championship (24 teams)
+    41: 552,   # England League One (24 teams)
+    61: 306,   # France Ligue 1 (18 teams)
+    71: 380,   # Brazil Serie A (20 teams)
+    72: 380,   # Brazil Serie B (20 teams)
+    75: 380,   # Brazil Serie C
+    78: 306,   # Germany Bundesliga (18 teams)
+    79: 306,   # Germany 2. Bundesliga (18 teams)
+    80: 380,   # Germany 3. Liga (20 teams)
+    83: 306,   # Germany Regionalliga Bayern
+    84: 306,   # Germany Regionalliga Nord
+    86: 306,   # Germany Regionalliga SudWest
+    87: 306,   # Germany Regionalliga West
+    88: 306,   # Netherlands Eredivisie (18 teams)
+    89: 380,   # Netherlands Eerste Divisie (20 teams)
+    94: 306,   # Portugal Primeira Liga (18 teams)
+    103: 240,  # Norway Eliteserien (16 teams)
+    104: 240,  # Norway 1. Division (16 teams)
+    113: 240,  # Sweden Allsvenskan (16 teams)
+    114: 240,  # Sweden Superettan (16 teams)
+    119: 132,  # Denmark Superliga (12 teams)
+    120: 132,  # Denmark 1. Division (12 teams)
+    135: 380,  # Italy Serie A (20 teams)
+    140: 380,  # Spain La Liga (20 teams)
+    164: 132,  # Iceland Úrvalsdeild (12 teams)
+    179: 228,  # Scotland Premiership (12 teams)
+    180: 180,  # Scotland Championship (10 teams)
+    207: 228,  # Switzerland Super League (12 teams)
+    208: 180,  # Switzerland Challenge League (10 teams)
+    244: 132,  # Finland Veikkausliiga (12 teams)
+    253: 510,  # USA MLS
+    328: 180,  # Estonia Esiliiga A (10 teams)
+    329: 180,  # Estonia Meistriliiga (10 teams)
+    368: 144,  # Singapore Premier League
+    489: 168,  # USA USL League One
+    492: 306,  # Netherlands Tweede Divisie
+    702: 260,  # England Premier League 2 Division One
+    909: 392,  # USA MLS Next Pro
+}
+
 def filter_phase_1_leagues(fixtures_df, seasons_to_evaluate):
     """
     Fase 1: Selección de Ligas (Nivel Torneo).
@@ -137,6 +179,24 @@ def filter_phase_1_leagues(fixtures_df, seasons_to_evaluate):
         stats['partidos_jugados'] = stats['partidos_jugados'].fillna(0).astype(int)
         stats['partidos_restantes'] = stats['partidos_restantes'].fillna(0).astype(int)
         
+        # Si partidos_restantes es 0 (común cuando los datos provienen de CSVs que sólo listan partidos jugados 'FT'),
+        # estimamos los partidos restantes según el calendario del torneo para temporadas en curso.
+        for idx, row in stats.iterrows():
+            if row['partidos_restantes'] == 0:
+                lid = int(row['league_id'])
+                jugados = int(row['partidos_jugados'])
+                expected = LEAGUE_EXPECTED_MATCHES.get(lid)
+                if expected is None:
+                    league_fixtures = fixtures_df[(fixtures_df['league_id'] == lid) & (fixtures_df['season'] == row['season'])]
+                    teams = set(league_fixtures['home_team_name'].dropna()).union(set(league_fixtures['away_team_name'].dropna()))
+                    n_teams = len(teams)
+                    expected = n_teams * (n_teams - 1) if n_teams >= 4 else 306
+                
+                # Si se han jugado partidos y la temporada está en curso (jugados < expected),
+                # calculamos los partidos restantes reales para reflejar la temporada activa.
+                if 0 < jugados < expected:
+                    stats.at[idx, 'partidos_restantes'] = max(0, int(expected - jugados))
+
     # Marcar estado para reporte
     if not stats.empty:
         stats['passed'] = stats['league_id'].isin(approved_leagues)
