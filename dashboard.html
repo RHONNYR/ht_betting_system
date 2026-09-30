@@ -3745,9 +3745,18 @@
                 ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
                 : 'bg-red-500/10 border-red-500/20 text-rose-400';
             
-            const statusBadge = isWinter 
-                ? `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-500/10 border-blue-500/30 text-blue-400 flex items-center gap-1">⏳ Reinicia en Agosto</span>`
-                : `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-500/10 border-slate-500/30 text-slate-400 flex items-center gap-1">🏁 Finalizada</span>`;
+            // Determinar etiqueta según fecha real del año (receso veraniego de mayo a julio)
+            const currentMonth = new Date().getMonth(); // 0 = Ene, 4 = May, 5 = Jun, 6 = Jul
+            const isSummerBreak = (currentMonth >= 4 && currentMonth <= 6);
+            
+            let statusBadge;
+            if (isWinter && isSummerBreak) {
+                statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-500/10 border-blue-500/30 text-blue-400 flex items-center gap-1">⏳ Reinicia en Agosto</span>`;
+            } else if ((l.partidos_jugados || 0) > 0 && (l.partidos_restantes || 0) === 0) {
+                statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-500/10 border-slate-500/30 text-slate-400 flex items-center gap-1">🏁 Temporada Concluida</span>`;
+            } else {
+                statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-500/10 border-slate-500/30 text-slate-400 flex items-center gap-1">⏸️ En Pausa</span>`;
+            }
 
             card.className = `glass-card p-5 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-blue-500/30 transition-all duration-300 opacity-85 hover:opacity-100`;
             card.innerHTML = `
