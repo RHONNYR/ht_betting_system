@@ -1,0 +1,80 @@
+ID | Fecha | Tipo | Monto | Titular | Detalle | Estado | RemesaID
+--------------------------------------------------------------------------------
+85 | 12/08/2026 11:43 AM | ingreso | 50.0 | Martha Sánchez | Remesa ID #96 de Martha Sánchez | remesado | 96
+84 | 11/08/2026 03:36 PM | ingreso | 20.0 | Roselis Granda | Remesa ID #95 de Roselis Granda | remesado | 95
+83 | 11/08/2026 12:44 PM | ingreso | 20.0 | Martha Sánchez | Remesa ID #94 de Martha Sánchez | remesado | 94
+82 | 10/08/2026 09:41 PM | ingreso | 40.0 | Yenis Gomez | Remesa ID #93 de Yenis Gomez | remesado | 93
+81 | 10/08/2026 09:30 PM | ingreso | 100.0 | Roselis Granda | Remesa ID #92 de Roselis Granda | remesado | 92
+79 | 10/08/2026 05:22 PM | ingreso | 230.01 | Génesis Salazar | Remesa ID #90 de Génesis Salazar | remesado | 90
+80 | 10/08/2026 05:22 PM | ingreso | 94.9 | Génesis Salazar | Remesa ID #91 de Génesis Salazar | remesado | 91
+78 | 09/08/2026 04:22 PM | ingreso | 50.0 | Yelianni Rivas | Remesa ID 88 de Yelianni Rivas | completado | None
+76 | 08/08/2026 06:15 PM | ingreso | 20.0 | Hermagora | Remesa ID #87 de Hermagora | remesado | 87
+75 | 07/08/2026 09:37 AM | ingreso | 20.0 | Solanda Gomez | Remesa ID #86 de Solanda Gomez | remesado | 86
+74 | 07/08/2026 09:11 AM | ingreso | 50.0 | Génesis Salazar | Remesa ID #85 de Génesis Salazar | remesado | 85
+73 | 06/08/2026 02:32 PM | ingreso | 30.0 | Roselis Granda | Remesa ID #84 de Roselis Granda | remesado | 84
+72 | 06/08/2026 12:20 PM | ingreso | 50.0 | Cecilia | Remesa ID #83 de Cecilia | remesado | 83
+71 | 05/08/2026 09:41 AM | ingreso | 170.0 | Martha Sánchez | Remesa ID #80 de Martha Sánchez | remesado | 80
+64 | 04/08/2026 09:35 PM | ingreso | 20.0 | Martha Sánchez | Remesa ID #75 de Martha Sánchez | remesado | 75
+70 | 04/08/2026 08:58 PM | ingreso | 20.0 | Roselis Granda | Remesa ID #79 de Roselis Granda | remesado | 79
+69 | 04/08/2026 06:16 PM | egreso | 1500.0 | TENDEDEROS SILA LLC | Compra usdt Binance a 1.020 | completado | None
+68 | 04/08/2026 01:58 PM | ingreso | 93.39 | José Figueroa | Remesa ID #78 de José Figueroa | remesado | 78
+67 | 04/08/2026 01:58 PM | ingreso | 56.6 | José Figueroa | Remesa ID #77 de José Figueroa | remesado | 77
+65 | 04/08/2026 11:31 AM | ingreso | 50.0 | Yolimar Bastardo | Remesa ID #76 de Yolimar Bastardo | remesado | 76
+66 | 04/08/2026 09:35 AM | ingreso | 20.0 | Martha Sánchez | Remesa ID 75 de Martha Sánchez | completado | None
+63 | 03/08/2026 10:43 PM | ingreso | 27.0 | Martha Sánchez | Remesa ID #74 de Martha Sánchez | remesado | 74
+62 | 03/08/2026 09:10 PM | ingreso | 131.0 | Martha Sánchez | Remesa ID #73 de Martha Sánchez | remesado | 73
+61 | 03/08/2026 06:46 PM | egreso | 909.0 | Maria Veliz | Compra usdt Binance a 1.020 | completado | None
+58 | 03/08/2026 03:14 PM | ingreso | 100.0 | Roselis Granda | Remesa ID 71 de Roselis Granda | completado | None
+57 | 03/08/2026 03:14 PM | ingreso | 100.0 | Roselis Granda | Remesa ID #71 de Roselis Granda | remesado | 71
+55 | 03/08/2026 01:44 PM | ingreso | 10.0 | Martha Sánchez | Remesa ID 69 de Martha Sánchez | completado | None
+53 | 03/08/2026 01:44 PM | ingreso | 25.0 | Martha Sánchez | Remesa ID #70 de Martha Sánchez | remesado | 70
+52 | 03/08/2026 01:44 PM | ingreso | 10.0 | Martha Sánchez | Remesa ID #69 de Martha Sánchez | remesado | 69
+54 | 03/08/2026 01:44 PM | ingreso | 25.0 | Martha Sánchez | Remesa ID 70 de Martha Sánchez | completado | None
+56 | 03/08/2026 01:27 PM | ingreso | 140.0 | José Figueroa | Remesa ID 68 de José Figueroa | completado | None
+51 | 03/08/2026 01:27 PM | ingreso | 140.0 | José Figueroa | Remesa ID #68 de José Figueroa | remesado | 68
+49 | 02/08/2026 09:35 PM | ingreso | 100.0 | Martha Sánchez | Remesa ID #67 de Martha Sánchez | remesado | 67
+50 | 02/08/2026 09:35 PM | ingreso | 100.0 | Martha Sánchez | Remesa ID 67 de Martha Sánchez | completado | None
+48 | 02/08/2026 09:05 PM | ingreso | 50.0 | Yenis Gomez | Remesa ID #66 de Yenis Gomez | remesado | 66
+47 | 02/08/2026 03:16 PM | ingreso | 94.27 | Juan Figueroa | Remesa ID #64 de Juan Figueroa | remesado | 64
+45 | 02/08/2026 09:44 AM | egreso | 1000.0 | Marian Estrada  | Compra Usdt a 1.020 Binances | completado | None
+46 | 02/08/2026 08:42 AM | ingreso | 100.0 | Hermagora | Remesa ID #63 de Hermagora | remesado | 63
+44 | 02/08/2026 12:14 AM | ingreso | 20.0 | Martha Sánchez | Remesa ID #62 de Martha Sánchez | remesado | 62
+43 | 01/08/2026 07:34 PM | ingreso | 350.0 | Enilis Rondon | Remesa ID #61 de Enilis Rondon | remesado | 61
+42 | 01/08/2026 05:17 PM | ingreso | 50.0 | Yenis Gomez | Remesa ID #60 de Yenis Gomez | remesado | 60
+40 | 01/08/2026 01:44 PM | ingreso | 44.53 | Martha Sánchez | Remesa ID #58 de Martha Sánchez | remesado | 58
+41 | 01/08/2026 01:44 PM | ingreso | 33.0 | Martha Sánchez | Remesa ID #59 de Martha Sánchez | remesado | 59
+39 | 01/08/2026 01:41 PM | ingreso | 275.47 | Martha Sánchez | Remesa ID #57 de Martha Sánchez | remesado | 57
+38 | 01/08/2026 01:06 PM | ingreso | 60.0 | Yelianni Rivas | Remesa ID #56 de Yelianni Rivas | remesado | 56
+37 | 01/08/2026 09:34 AM | ingreso | 40.0 | Yenis Gomez | Remesa ID #55 de Yenis Gomez | remesado | 55
+36 | 31/07/2026 07:59 PM | ingreso | 30.0 | Yolimar Bastardo | Remesa ID #54 de Yolimar Bastardo | remesado | 54
+35 | 31/07/2026 12:25 PM | ingreso | 220.0 | José Figueroa | Remesa ID 53 de José Figueroa | completado | None
+33 | 30/07/2026 03:10 PM | ingreso | 30.0 | Roselis Granda | Remesa ID 51 de Roselis Granda | completado | None
+32 | 30/07/2026 03:10 PM | ingreso | 30.0 | Roselis Granda | Remesa ID #51 de Roselis Granda | remesado | 51
+31 | 30/07/2026 10:27 AM | ingreso | 139.18 | Génesis Salazar | Remesa ID #50 de Génesis Salazar | remesado | 50
+30 | 29/07/2026 11:59 PM | ingreso | 82.0 | José Figueroa | Remesa ID #49 de José Figueroa | remesado | 49
+29 | 29/07/2026 09:12 PM | ingreso | 245.0 | Cecilia | Remesa ID #48 de Cecilia | remesado | 48
+28 | 29/07/2026 06:08 PM | ingreso | 25.0 | Daly Acevedo | Remesa ID #47 de Daly Acevedo | remesado | 47
+27 | 29/07/2026 05:32 PM | ingreso | 98.0 | Daly Acevedo | Remesa ID #46 de Daly Acevedo | remesado | 46
+26 | 29/07/2026 11:20 AM | ingreso | 50.0 | Gregorio Ramos | Remesa ID #45 de Gregorio Ramos | remesado | 45
+25 | 28/07/2026 02:56 PM | ingreso | 50.0 | Daly Acevedo | Remesa ID #44 de Daly Acevedo | remesado | 44
+24 | 26/07/2026 11:51 AM | ingreso | 50.0 | Yelianni Rivas | Remesa ID #43 de Yelianni Rivas | remesado | 43
+23 | 26/07/2026 11:31 AM | ingreso | 28.0 | Martha Sánchez | Remesa ID #42 de Martha Sánchez | remesado | 42
+22 | 26/07/2026 08:30 AM | ingreso | 90.0 | José Figueroa | Remesa ID #41 de José Figueroa | remesado | 41
+21 | 25/07/2026 10:31 AM | ingreso | 25.0 | José Urbaez | Remesa ID #40 de José Urbaez | remesado | 40
+20 | 24/07/2026 10:07 PM | ingreso | 25.0 | Roselis Granda | Remesa ID #39 de Roselis Granda | remesado | 39
+19 | 24/07/2026 07:25 PM | ingreso | 100.0 | Daly Acevedo | Remesa ID #38 de Daly Acevedo | remesado | 38
+18 | 24/07/2026 05:01 PM | ingreso | 50.0 | Diana Delgado | Remesa ID #37 de Diana Delgado | remesado | 37
+14 | 24/07/2026 10:20 AM | ingreso | 30.0 | Virdelva Gonzalez | Remesa ID 34 de Virdelva Gonzalez | completado | None
+13 | 23/07/2026 10:37 PM | ingreso | 50.0 | Hermagora | Remesa ID 33 de Hermagora | completado | None
+16 | 23/07/2026 12:00 AM | egreso | 80.0 | Roselis Granda | Alquiler de Cuenta Zelle | completado | None
+12 | 22/07/2026 04:49 PM | ingreso | 20.0 | Solanda Gomez | Remesa ID 32 de Solanda Gomez | completado | None
+15 | 22/07/2026 12:00 AM | ingreso | 50.0 | Maria Padilla | Remesa Maryan Cita medita  [Remesado - Remesa ID #35] [Remesado - Remesa ID #52] | remesado | 52
+10 | 21/07/2026 07:35 PM | egreso | 1000.0 | Eduardo Davila | Compra de USDT  1 A 1 | completado | None
+11 | 21/07/2026 07:16 PM | ingreso | 60.0 | Génesis Salazar | Remesa ID 31 de Génesis Salazar | completado | None
+6 | 21/07/2026 01:43 PM | ingreso | 90.0 | Lismar  | Remesa ID 30 de Lismar  | completado | None
+5 | 20/07/2026 09:31 PM | ingreso | 50.0 | Daly Acevedo | Remesa ID 29 de Daly Acevedo | completado | None
+4 | 20/07/2026 08:21 PM | ingreso | 280.0 | Hermagora | Remesa ID 28 de Hermagora | completado | None
+1 | 19/07/2026 10:28 PM | ingreso | 200.0 | Enilis Rondon | Remesa ID 27 de Enilis Rondon | completado | None
+3 | 19/07/2026 11:57 AM | ingreso | 30.0 | Enilis Rondon | Remesa ID 24 de Enilis Rondon | completado | None
+2 | 13/07/2026 11:10 PM | ingreso | 100.0 | Enilis Rondon | Remesa ID 5 de Enilis Rondon | completado | None
+34 | 31/07/2025 12:25 PM | ingreso | 220.0 | José Figueroa | Remesa ID #53 de José Figueroa | remesado | 53
