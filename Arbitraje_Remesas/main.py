@@ -3414,6 +3414,18 @@ def on_startup():
             except Exception as e:
                 print(f"Error unifying Daly Acedo/Acevedo: {e}")
                 
+            # 8. Ensure historical cycles and zelle movements are present
+            try:
+                if db.query(HistorialCiclos).count() == 0 or db.query(MovimientoZelle).count() == 0:
+                    print("Historical records missing in database. Running auto-restore...")
+                    try:
+                        from restore_historical_data import restore_all
+                    except ImportError:
+                        from Arbitraje_Remesas.restore_historical_data import restore_all
+                    restore_all(db)
+            except Exception as e:
+                print(f"Error checking/restoring historical data: {e}")
+
             db.commit()
             db.close()
             print("Database updates completed successfully.")
