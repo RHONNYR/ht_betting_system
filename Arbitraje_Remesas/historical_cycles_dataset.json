@@ -1,0 +1,775 @@
+[
+  {
+    "id": 29,
+    "fecha": "28/08/2026 08:31 AM",
+    "usdt_vendidos": 600.0,
+    "tasa_venta": 947.3,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 69.73,
+    "tasa_bcv": 791.67,
+    "compras": [
+      {
+        "id": 113,
+        "fecha": "28/08/2026 08:31 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 791.67,
+        "comision_compra_ves": 0.0,
+        "transferencias_ves": 1187.5,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "tarjeta_id": 1,
+        "titular": "Felix Sosa",
+        "tipo_tarjeta": "Master Debit"
+      },
+      {
+        "id": 115,
+        "fecha": "28/08/2026 09:19 AM",
+        "usd_comprados": 50.0,
+        "usd_procesados": 50.0,
+        "tasa_bcv": 791.67,
+        "comision_compra_ves": 197.92,
+        "transferencias_ves": 0.0,
+        "usd_recibidos_binance": 47.95,
+        "banco": "Provincial",
+        "tarjeta_id": 3,
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      },
+      {
+        "id": 114,
+        "fecha": "02/09/2026 09:19 PM",
+        "usd_comprados": 97.0,
+        "usd_procesados": 97.0,
+        "tasa_bcv": 801.18,
+        "comision_compra_ves": 388.57,
+        "transferencias_ves": 0.0,
+        "usd_recibidos_binance": 93.02,
+        "banco": "Provincial",
+        "tarjeta_id": 3,
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "fecha": "27/08/2026 09:10 PM",
+    "usdt_vendidos": 541.99,
+    "tasa_venta": 926.4,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 0.0,
+    "tasa_bcv": 791.32,
+    "compras": []
+  },
+  {
+    "id": 26,
+    "fecha": "27/08/2026 08:41 PM",
+    "usdt_vendidos": 732.2,
+    "tasa_venta": 958.4,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 111.68,
+    "tasa_bcv": 791.32,
+    "compras": [
+      {
+        "id": 111,
+        "fecha": "27/08/2026 08:41 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 791.32,
+        "comision_compra_ves": 0.0,
+        "transferencias_ves": 1186.99,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "tarjeta_id": 1,
+        "titular": "Felix Sosa",
+        "tipo_tarjeta": "Master Debit"
+      },
+      {
+        "id": 112,
+        "fecha": "27/08/2026 08:44 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 487.5,
+        "tasa_bcv": 791.32,
+        "comision_compra_ves": 0.0,
+        "transferencias_ves": 1186.98,
+        "usd_recibidos_binance": 467.51,
+        "banco": "BDV",
+        "tarjeta_id": 1,
+        "titular": "Maria Padilla",
+        "tipo_tarjeta": "Internacional $"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "fecha": "24/08/2026 08:42 AM",
+    "usdt_vendidos": 1302.78,
+    "tasa_venta": 923.4,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 119.26,
+    "tasa_bcv": 778.5,
+    "compras": [
+      {
+        "fecha": "24/08/2026 08:42 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 778.5,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "24/08/2026 09:00 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 778.5,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "24/08/2026 09:30 AM",
+        "usd_comprados": 400.0,
+        "usd_procesados": 400.0,
+        "tasa_bcv": 778.5,
+        "usd_recibidos_binance": 377.85,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "fecha": "19/08/2026 09:14 AM",
+    "usdt_vendidos": 823.33,
+    "tasa_venta": 913.2,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 63.6,
+    "tasa_bcv": 765.2,
+    "compras": [
+      {
+        "fecha": "19/08/2026 09:14 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 765.2,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "19/08/2026 09:40 AM",
+        "usd_comprados": 400.0,
+        "usd_procesados": 400.0,
+        "tasa_bcv": 765.2,
+        "usd_recibidos_binance": 377.85,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "fecha": "18/08/2026 02:27 PM",
+    "usdt_vendidos": 1302.07,
+    "tasa_venta": 888.8,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 77.29,
+    "tasa_bcv": 758.1,
+    "compras": [
+      {
+        "fecha": "18/08/2026 02:30 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 758.1,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "18/08/2026 03:00 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 758.1,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "18/08/2026 03:30 PM",
+        "usd_comprados": 400.0,
+        "usd_procesados": 400.0,
+        "tasa_bcv": 758.1,
+        "usd_recibidos_binance": 377.85,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "fecha": "17/08/2026 07:45 AM",
+    "usdt_vendidos": 2056.2,
+    "tasa_venta": 872.71,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 110.65,
+    "tasa_bcv": 752.4,
+    "compras": [
+      {
+        "fecha": "17/08/2026 08:00 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 752.4,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "17/08/2026 08:15 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 752.4,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "17/08/2026 08:30 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 752.4,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Aristides",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "17/08/2026 08:45 AM",
+        "usd_comprados": 400.0,
+        "usd_procesados": 400.0,
+        "tasa_bcv": 752.4,
+        "usd_recibidos_binance": 377.85,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "fecha": "15/08/2026 05:05 PM",
+    "usdt_vendidos": 200.14,
+    "tasa_venta": 883.5,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 0.0,
+    "tasa_bcv": 745.0,
+    "compras": []
+  },
+  {
+    "id": 19,
+    "fecha": "11/08/2026 11:33 PM",
+    "usdt_vendidos": 381.03,
+    "tasa_venta": 865.6,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 6.02,
+    "tasa_bcv": 740.1,
+    "compras": [
+      {
+        "fecha": "11/08/2026 11:35 PM",
+        "usd_comprados": 400.0,
+        "usd_procesados": 400.0,
+        "tasa_bcv": 740.1,
+        "usd_recibidos_binance": 377.85,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "fecha": "11/08/2026 11:09 PM",
+    "usdt_vendidos": 241.78,
+    "tasa_venta": 869.8,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 3.03,
+    "tasa_bcv": 740.1,
+    "compras": [
+      {
+        "fecha": "11/08/2026 11:15 PM",
+        "usd_comprados": 250.0,
+        "usd_procesados": 250.0,
+        "tasa_bcv": 740.1,
+        "usd_recibidos_binance": 236.15,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "fecha": "11/08/2026 09:42 PM",
+    "usdt_vendidos": 703.06,
+    "tasa_venta": 869.8,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 19.91,
+    "tasa_bcv": 740.1,
+    "compras": [
+      {
+        "fecha": "11/08/2026 09:45 PM",
+        "usd_comprados": 700.0,
+        "usd_procesados": 700.0,
+        "tasa_bcv": 740.1,
+        "usd_recibidos_binance": 661.24,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "fecha": "10/08/2026 01:30 PM",
+    "usdt_vendidos": 1260.1,
+    "tasa_venta": 855.9,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 64.3,
+    "tasa_bcv": 735.6,
+    "compras": [
+      {
+        "fecha": "10/08/2026 01:35 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 735.6,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "10/08/2026 01:45 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 735.6,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "10/08/2026 02:00 PM",
+        "usd_comprados": 300.0,
+        "usd_procesados": 300.0,
+        "tasa_bcv": 735.6,
+        "usd_recibidos_binance": 283.39,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "fecha": "10/08/2026 01:06 PM",
+    "usdt_vendidos": 440.43,
+    "tasa_venta": 846.9,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 4.64,
+    "tasa_bcv": 735.6,
+    "compras": [
+      {
+        "fecha": "10/08/2026 01:10 PM",
+        "usd_comprados": 450.0,
+        "usd_procesados": 450.0,
+        "tasa_bcv": 735.6,
+        "usd_recibidos_binance": 425.08,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "fecha": "05/08/2026 11:52 PM",
+    "usdt_vendidos": 1503.81,
+    "tasa_venta": 847.8,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 32.28,
+    "tasa_bcv": 725.3,
+    "compras": [
+      {
+        "fecha": "05/08/2026 11:55 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 725.3,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "06/08/2026 12:15 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 725.3,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "06/08/2026 12:30 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 725.3,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Aristides",
+        "tipo_tarjeta": "Internacional $"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "fecha": "04/08/2026 05:59 PM",
+    "usdt_vendidos": 728.05,
+    "tasa_venta": 849.3,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 28.01,
+    "tasa_bcv": 720.0,
+    "compras": [
+      {
+        "fecha": "04/08/2026 06:05 PM",
+        "usd_comprados": 700.0,
+        "usd_procesados": 700.0,
+        "tasa_bcv": 720.0,
+        "usd_recibidos_binance": 661.24,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "fecha": "03/08/2026 06:08 PM",
+    "usdt_vendidos": 1074.52,
+    "tasa_venta": 847.4,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 31.16,
+    "tasa_bcv": 715.5,
+    "compras": [
+      {
+        "fecha": "03/08/2026 06:15 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 715.5,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "03/08/2026 06:30 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 715.5,
+        "usd_recibidos_binance": 472.31,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "fecha": "30/07/2026 10:26 PM",
+    "usdt_vendidos": 1303.87,
+    "tasa_venta": 845.75,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 59.38,
+    "tasa_bcv": 710.2,
+    "compras": [
+      {
+        "fecha": "30/07/2026 10:30 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 710.2,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "30/07/2026 10:45 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 710.2,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "30/07/2026 11:00 PM",
+        "usd_comprados": 350.0,
+        "usd_procesados": 350.0,
+        "tasa_bcv": 710.2,
+        "usd_recibidos_binance": 330.62,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "fecha": "27/07/2026 10:14 PM",
+    "usdt_vendidos": 1241.56,
+    "tasa_venta": 860.9,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 98.47,
+    "tasa_bcv": 705.4,
+    "compras": [
+      {
+        "fecha": "27/07/2026 10:20 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 705.4,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "27/07/2026 10:35 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 705.4,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "27/07/2026 10:50 PM",
+        "usd_comprados": 300.0,
+        "usd_procesados": 300.0,
+        "tasa_bcv": 705.4,
+        "usd_recibidos_binance": 283.39,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "fecha": "22/07/2026 09:51 PM",
+    "usdt_vendidos": 1148.46,
+    "tasa_venta": 872.9,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 121.64,
+    "tasa_bcv": 698.8,
+    "compras": [
+      {
+        "fecha": "22/07/2026 09:55 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 698.8,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "22/07/2026 10:10 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 698.8,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "22/07/2026 10:25 PM",
+        "usd_comprados": 250.0,
+        "usd_procesados": 250.0,
+        "tasa_bcv": 698.8,
+        "usd_recibidos_binance": 236.15,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "fecha": "21/07/2026 10:07 AM",
+    "usdt_vendidos": 1715.61,
+    "tasa_venta": 866.6,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 171.74,
+    "tasa_bcv": 692.1,
+    "compras": [
+      {
+        "fecha": "21/07/2026 10:15 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 692.1,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "21/07/2026 10:30 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 692.1,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "21/07/2026 10:45 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 692.1,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Aristides",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "21/07/2026 11:00 AM",
+        "usd_comprados": 350.0,
+        "usd_procesados": 350.0,
+        "tasa_bcv": 692.1,
+        "usd_recibidos_binance": 330.62,
+        "banco": "Provincial",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Master Debit"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "fecha": "20/07/2026 11:45 PM",
+    "usdt_vendidos": 1551.57,
+    "tasa_venta": 854.8,
+    "banco_venta": "Provincial",
+    "status": "completado",
+    "ganancia_usd": 103.56,
+    "tasa_bcv": 688.0,
+    "compras": [
+      {
+        "fecha": "20/07/2026 11:50 PM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 688.0,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "21/07/2026 12:05 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 688.0,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "21/07/2026 12:20 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 688.0,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Aristides",
+        "tipo_tarjeta": "Internacional $"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "fecha": "20/07/2026 10:37 PM",
+    "usdt_vendidos": 1187.58,
+    "tasa_venta": 844.15,
+    "banco_venta": "BDV",
+    "status": "completado",
+    "ganancia_usd": 0.0,
+    "tasa_bcv": 688.0,
+    "compras": []
+  },
+  {
+    "id": 1,
+    "fecha": "15/07/2026 08:33 AM",
+    "usdt_vendidos": 972.48,
+    "tasa_venta": 869.5,
+    "banco_venta": "Mercantil",
+    "status": "completado",
+    "ganancia_usd": 115.5,
+    "tasa_bcv": 675.0,
+    "compras": [
+      {
+        "fecha": "15/07/2026 08:40 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 675.0,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Rhonny",
+        "tipo_tarjeta": "Internacional $"
+      },
+      {
+        "fecha": "15/07/2026 08:55 AM",
+        "usd_comprados": 500.0,
+        "usd_procesados": 500.0,
+        "tasa_bcv": 675.0,
+        "usd_recibidos_binance": 472.31,
+        "banco": "BDV",
+        "titular": "Solanda",
+        "tipo_tarjeta": "Internacional $"
+      }
+    ]
+  }
+]
