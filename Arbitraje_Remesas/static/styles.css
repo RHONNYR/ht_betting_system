@@ -783,6 +783,131 @@ tbody tr:hover, .data-table tr:hover {
 }
 
 /* =====================================================
+   FINTECH INSTITUTIONAL BADGES & ACTION BAR
+   ===================================================== */
+.kpi-metric-badge {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    min-width: 110px;
+    transition: all 0.15s ease;
+}
+
+.kpi-metric-badge:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.kpi-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748B;
+}
+
+.kpi-val {
+    font-size: 0.98rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: #0F172A;
+    line-height: 1.2;
+}
+
+.kpi-badge-neutral {
+    border-left: 3px solid #64748B;
+}
+
+.kpi-badge-blue {
+    border-left: 3px solid #0284C7;
+}
+
+.kpi-badge-blue .kpi-val {
+    color: #0369A1;
+}
+
+.kpi-badge-amber {
+    border-left: 3px solid #D97706;
+}
+
+.kpi-badge-amber .kpi-val {
+    color: #B45309;
+}
+
+.kpi-badge-green {
+    border-left: 3px solid #059669;
+}
+
+.kpi-badge-green .kpi-val {
+    color: #047857;
+}
+
+.fintech-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.fintech-input-search {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    color: #0F172A;
+    border-radius: 6px;
+    outline: none;
+    min-width: 200px;
+    flex: 1;
+    transition: all 0.15s ease;
+}
+
+.fintech-input-search:focus {
+    background: #FFFFFF;
+    border-color: #0284C7;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+.fintech-select {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    color: #0F172A;
+    border-radius: 6px;
+    padding: 7px 10px;
+    outline: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.fintech-select:focus {
+    border-color: #0284C7;
+    background: #FFFFFF;
+}
+
+.fintech-input-date {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    color: #0F172A;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 0.78rem;
+    outline: none;
+}
+
+
+/* =====================================================
    MODALS - 100% RESPONSIVE FOR LAPTOPS, TABLETS & MOBILES
    ===================================================== */
 .modal {
