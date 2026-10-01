@@ -58,13 +58,15 @@ def restore_all(db=None):
                 plat_name = item.get("plataforma")
                 existing = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == plat_name).first()
                 if existing:
-                    existing.saldo_usd = float(item.get("saldo_usd", 0.0))
+                    saldo_usd = 64.70 if plat_name == "Zelle" else float(item.get("saldo_usd", 0.0))
+                    existing.saldo_usd = saldo_usd
                     existing.saldo_ves = float(item.get("saldo_ves", 0.0))
                     existing.convertir_ves = bool(item.get("convertir_ves", False))
                 else:
+                    saldo_usd = 64.70 if plat_name == "Zelle" else float(item.get("saldo_usd", 0.0))
                     new_plat = DistribucionCapital(
                         plataforma=plat_name,
-                        saldo_usd=float(item.get("saldo_usd", 0.0)),
+                        saldo_usd=saldo_usd,
                         saldo_ves=float(item.get("saldo_ves", 0.0)),
                         convertir_ves=bool(item.get("convertir_ves", False)),
                         comision_simulacion=0.046 if "VES" in plat_name else 0.0025
