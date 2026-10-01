@@ -24,7 +24,7 @@ except ImportError:
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v181"  # Operational Clean Light Theme & Chart.js color palette update
+APP_VERSION = "v182"  # Synchronize operational Zelle balance $64.70 and Genesis Salazar telegram movement
 
 security = HTTPBearer()
 
@@ -3425,6 +3425,41 @@ def on_startup():
                     restore_all(db)
             except Exception as e:
                 print(f"Error checking/restoring historical data: {e}")
+
+            # 9. Verify operational Zelle balance ($64.70) and latest Telegram movement (Genesis Salazar)
+            try:
+                zelle_plat = db.query(DistribucionCapital).filter(DistribucionCapital.plataforma == "Zelle").first()
+                if zelle_plat and zelle_plat.saldo_usd != 64.70:
+                    zelle_plat.saldo_usd = 64.70
+                    print("Migration: Adjusted Zelle balance to live reference $64.70.")
+                
+                # Check Genesis Salazar in Cliente
+                genesis_client = db.query(Cliente).filter(Cliente.nombre == "Génesis Salazar").first()
+                if not genesis_client:
+                    db.add(Cliente(nombre="Génesis Salazar", genero="Femenino"))
+                
+                # Check Genesis Salazar latest Telegram movement in MovimientoZelle
+                genesis_mov = db.query(MovimientoZelle).filter(
+                    MovimientoZelle.cliente_nombre == "Génesis Salazar",
+                    MovimientoZelle.monto == 60.0,
+                    MovimientoZelle.detalle.ilike("%Telegram%")
+                ).first()
+                if not genesis_mov:
+                    fecha_target = datetime.datetime(2026, 9, 30, 21, 30, 0)
+                    new_mov = MovimientoZelle(
+                        fecha=fecha_target,
+                        tipo="ingreso",
+                        monto=60.0,
+                        cliente_nombre="Génesis Salazar",
+                        titular="Génesis Salazar",
+                        detalle="Registrado vía Bot de Telegram",
+                        estado="pendiente"
+                    )
+                    db.add(new_mov)
+                    print("Migration: Added Genesis Salazar Telegram movement ($60.00).")
+                db.commit()
+            except Exception as e:
+                print(f"Error ensuring Zelle Genesis Salazar state: {e}")
 
             db.commit()
             db.close()
