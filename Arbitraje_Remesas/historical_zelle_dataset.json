@@ -1,5 +1,16 @@
 [
   {
+    "id": 86,
+    "fecha": "30/09/2026 09:30 PM",
+    "tipo": "ingreso",
+    "monto": 60.0,
+    "titular": "Génesis Salazar",
+    "cliente_nombre": "Génesis Salazar",
+    "detalle": "Registrado vía Bot de Telegram",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
     "id": 85,
     "fecha": "12/08/2026 11:43 AM",
     "tipo": "ingreso",
