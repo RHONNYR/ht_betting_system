@@ -75,49 +75,30 @@ def restore_all(db=None):
         except Exception as e:
             print(f"⚠️ Error restaurando capital: {e}")
 
-    # 2. Clientes y Movimientos Zelle (del dump y snapshot)
-    zelle_dump_path = "zelle_movements_dump.txt"
-    if not os.path.exists(zelle_dump_path):
-        zelle_dump_path = os.path.join(os.path.dirname(__file__), "..", "zelle_movements_dump.txt")
+    # 2. Clientes y Movimientos Zelle (del dataset JSON limpio)
+    zelle_file = os.path.join(os.path.dirname(__file__), "historical_zelle_dataset.json")
+    if not os.path.exists(zelle_file):
+        zelle_file = "Arbitraje_Remesas/historical_zelle_dataset.json"
 
     movimientos_to_insert = []
-    if os.path.exists(zelle_dump_path):
+    if os.path.exists(zelle_file):
         try:
-            with open(zelle_dump_path, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("ID") or line.startswith("---"):
-                        continue
-                    parts = [p.strip() for p in line.split("|")]
-                    if len(parts) >= 7:
-                        # 85 | 12/08/2026 11:43 AM | ingreso | 50.0 | Martha Sánchez | Remesa ID #96 de Martha Sánchez | remesado | 96
-                        m_id = int(parts[0]) if parts[0].isdigit() else None
-                        m_fecha = parse_date_str(parts[1])
-                        m_tipo = parts[2].lower()
-                        m_monto = float(parts[3])
-                        m_titular = parts[4]
-                        m_detalle = parts[5]
-                        m_estado = parts[6].lower()
-                        m_remesa_id = int(parts[7]) if (len(parts) > 7 and parts[7].isdigit()) else None
-
-                        # Extraer cliente
-                        cliente_nombre = m_titular
-                        if "de " in m_detalle:
-                            cliente_nombre = m_detalle.split("de ")[-1].strip()
-
-                        movimientos_to_insert.append({
-                            "id": m_id,
-                            "fecha": m_fecha,
-                            "tipo": m_tipo,
-                            "monto": m_monto,
-                            "titular": m_titular,
-                            "cliente_nombre": cliente_nombre,
-                            "detalle": m_detalle,
-                            "estado": m_estado,
-                            "remesa_id": m_remesa_id
-                        })
+            with open(zelle_file, "r", encoding="utf-8") as f:
+                raw_items = json.load(f)
+            for item in raw_items:
+                movimientos_to_insert.append({
+                    "id": item.get("id"),
+                    "fecha": parse_date_str(item.get("fecha")),
+                    "tipo": item.get("tipo", "ingreso"),
+                    "monto": float(item.get("monto", 0.0)),
+                    "titular": item.get("titular", ""),
+                    "cliente_nombre": item.get("cliente_nombre", ""),
+                    "detalle": item.get("detalle", ""),
+                    "estado": item.get("estado", "completado"),
+                    "remesa_id": item.get("remesa_id")
+                })
         except Exception as e:
-            print(f"⚠️ Error leyendo zelle dump: {e}")
+            print(f"⚠️ Error cargando historical_zelle_dataset.json: {e}")
 
     # Insertar Zelle y Clientes
     clientes_registrados = set()
