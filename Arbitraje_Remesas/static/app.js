@@ -1811,6 +1811,24 @@ function renderCiclosTable() {
         }
     });
     
+    if (els.ciclosTableBody.children.length === 0) {
+        els.ciclosTableBody.innerHTML = `
+            <tr>
+                <td colspan="12" style="padding: 3.5rem 1rem; text-align: center; background: #FAFAFA;">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;">
+                        <div style="width: 52px; height: 52px; border-radius: 50%; background: #F1F5F9; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+                            🔄
+                        </div>
+                        <div style="font-size: 0.95rem; font-weight: 600; color: #0F172A;">No hay ciclos registrados para este período</div>
+                        <div style="font-size: 0.8rem; color: #64748B; max-width: 440px; line-height: 1.45;">
+                            Asegúrate de que el filtro esté en "Histórico (Todo)" o inicia un nuevo ciclo desde la Calculadora.
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }
+
     if (els.totalGananciaCiclos) {
         els.totalGananciaCiclos.textContent = `$${totalGain.toLocaleString('es-VE', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     }
@@ -3435,7 +3453,7 @@ function resetRemesasFilters() {
     const searchInput = document.getElementById('remesas-search-input');
     if (searchInput) searchInput.value = '';
     const filterPeriodo = document.getElementById('filter-periodo-remesas');
-    if (filterPeriodo) filterPeriodo.value = 'ultimos_30_dias';
+    if (filterPeriodo) filterPeriodo.value = 'historico';
     const filterCliente = document.getElementById('filter-cliente-remesas');
     if (filterCliente) filterCliente.value = 'todos';
     const filterTasaP2p = document.getElementById('filter-tasap2p-remesas');
@@ -3454,7 +3472,7 @@ function renderRemesasTable() {
     els.remesasTableBody.innerHTML = '';
     
     const filterSelect = document.getElementById('filter-periodo-remesas');
-    const period = filterSelect ? filterSelect.value : 'ultimos_30_dias';
+    const period = filterSelect ? filterSelect.value : 'historico';
     
     const customContainer = document.getElementById('remesas-filter-custom-dates');
     if (customContainer) {
@@ -3554,7 +3572,27 @@ function renderRemesasTable() {
     });
 
     if (count === 0) {
-        els.remesasTableBody.innerHTML = '<tr><td colspan="11" class="text-center text-muted" style="padding: 2.5rem 1rem;">No hay remesas enviadas que coincidan con los filtros seleccionados</td></tr>';
+        const periodText = period === 'historico' ? 'todo el historial' : (period === 'anio' ? 'este año' : (period === 'mes' ? 'este mes' : 'el período seleccionado'));
+        els.remesasTableBody.innerHTML = `
+            <tr>
+                <td colspan="11" style="padding: 3.5rem 1rem; text-align: center; background: #FAFAFA;">
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;">
+                        <div style="width: 52px; height: 52px; border-radius: 50%; background: #F1F5F9; border: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+                            📦
+                        </div>
+                        <div style="font-size: 0.95rem; font-weight: 600; color: #0F172A;">No hay remesas enviadas para ${periodText}</div>
+                        <div style="font-size: 0.8rem; color: #64748B; max-width: 440px; line-height: 1.45;">
+                            No se encontraron transacciones que coincidan con los filtros aplicados. Puedes restablecer los filtros para consultar todas las operaciones.
+                        </div>
+                        <div style="display: flex; gap: 0.6rem; margin-top: 0.6rem;">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="resetRemesasFilters()" style="padding: 6px 14px; font-size: 0.8rem; border: 1px solid #CBD5E1; background: #FFFFFF; color: #334155; border-radius: 6px; cursor: pointer; font-weight: 500;">
+                                🔄 Restablecer Filtros
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
     }
     
     const totalCountEl = document.getElementById('total-count-remesas');
