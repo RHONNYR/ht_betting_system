@@ -4829,6 +4829,35 @@ function recalculateSimulation() {
 
     els.simResCuentasDesc.innerHTML = rowsHtml;
 }
+// Global Chart.js configuration for Light Theme
+if (typeof Chart !== 'undefined') {
+    Chart.defaults.color = '#64748B'; // --text-muted
+    Chart.defaults.borderColor = '#F1F5F9'; // subtle grid lines
+    Chart.defaults.font.family = "'Outfit', sans-serif";
+}
+
+const chartOptions = {
+    responsive: true,
+    plugins: {
+        legend: {
+            labels: {
+                color: '#64748B', // --text-muted
+                font: { family: 'inherit', size: 12 }
+            }
+        }
+    },
+    scales: {
+        x: {
+            grid: { color: '#F1F5F9' }, // Líneas de cuadrícula sutiles
+            ticks: { color: '#64748B' }
+        },
+        y: {
+            grid: { color: '#F1F5F9' },
+            ticks: { color: '#64748B' }
+        }
+    }
+};
+
 let semanalChartRef = null;
 let mensualChartRef = null;
 let remesasTraficoDiasChartRef = null;
@@ -4994,12 +5023,12 @@ async function loadAndRenderCharts() {
                             title: {
                                 display: true,
                                 text: 'Volumen Total ($)',
-                                color: '#9CA3AF'
+                                color: '#64748B'
                             },
                             grid: {
-                                color: 'rgba(255, 255, 255, 0.05)'
+                                color: '#F1F5F9'
                             },
-                            ticks: { color: '#9CA3AF' }
+                            ticks: { color: '#64748B' }
                         },
                         y1: {
                             type: 'linear',
@@ -5008,23 +5037,23 @@ async function loadAndRenderCharts() {
                             title: {
                                 display: true,
                                 text: 'Ganancia ($)',
-                                color: '#9CA3AF'
+                                color: '#64748B'
                             },
                             grid: {
                                 drawOnChartArea: false
                             },
-                            ticks: { color: '#9CA3AF' }
+                            ticks: { color: '#64748B' }
                         },
                         x: {
                             grid: {
-                                color: 'rgba(255, 255, 255, 0.05)'
+                                color: '#F1F5F9'
                             },
-                            ticks: { color: '#9CA3AF' }
+                            ticks: { color: '#64748B' }
                         }
                     },
                     plugins: {
                         legend: {
-                            labels: { color: '#F3F4F6' }
+                            labels: { color: '#64748B', font: { family: 'inherit', size: 12 } }
                         }
                     }
                 }
@@ -5078,12 +5107,12 @@ async function loadAndRenderCharts() {
                             title: {
                                 display: true,
                                 text: 'Volumen ($)',
-                                color: '#9CA3AF'
+                                color: '#64748B'
                             },
                             grid: {
-                                color: 'rgba(255, 255, 255, 0.05)'
+                                color: '#F1F5F9'
                             },
-                            ticks: { color: '#9CA3AF' }
+                            ticks: { color: '#64748B' }
                         },
                         y1: {
                             type: 'linear',
@@ -5092,23 +5121,23 @@ async function loadAndRenderCharts() {
                             title: {
                                 display: true,
                                 text: 'Ganancia ($)',
-                                color: '#9CA3AF'
+                                color: '#64748B'
                             },
                             grid: {
                                 drawOnChartArea: false
                             },
-                            ticks: { color: '#9CA3AF' }
+                            ticks: { color: '#64748B' }
                         },
                         x: {
                             grid: {
-                                color: 'rgba(255, 255, 255, 0.05)'
+                                color: '#F1F5F9'
                             },
-                            ticks: { color: '#9CA3AF' }
+                            ticks: { color: '#64748B' }
                         }
                     },
                     plugins: {
                         legend: {
-                            labels: { color: '#F3F4F6' }
+                            labels: { color: '#64748B', font: { family: 'inherit', size: 12 } }
                         }
                     }
                 }
@@ -5158,24 +5187,24 @@ async function loadAndRenderCharts() {
                         y: {
                             type: 'linear',
                             position: 'left',
-                            title: { display: true, text: 'Volumen ($)', color: '#9CA3AF' },
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            title: { display: true, text: 'Volumen ($)', color: '#64748B' },
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         },
                         y1: {
                             type: 'linear',
                             position: 'right',
-                            title: { display: true, text: 'Operaciones', color: '#9CA3AF' },
+                            title: { display: true, text: 'Operaciones', color: '#64748B' },
                             grid: { drawOnChartArea: false },
-                            ticks: { color: '#9CA3AF', stepSize: 1 }
+                            ticks: { color: '#64748B', stepSize: 1 }
                         },
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         }
                     },
                     plugins: {
-                        legend: { labels: { color: '#F3F4F6' } }
+                        legend: { labels: { color: '#64748B', font: { family: 'inherit', size: 12 } } }
                     }
                 }
             });
@@ -5212,16 +5241,16 @@ async function loadAndRenderCharts() {
                     maintainAspectRatio: false,
                     scales: {
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         },
                         y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         }
                     },
                     plugins: {
-                        legend: { labels: { color: '#F3F4F6' } },
+                        legend: { labels: { color: '#64748B', font: { family: 'inherit', size: 12 } } },
                         tooltip: {
                             callbacks: {
                                 footer: (tooltipItems) => {
@@ -5263,7 +5292,7 @@ async function loadAndRenderCharts() {
                         {
                             data: data,
                             backgroundColor: colors.slice(0, labels.length),
-                            borderColor: '#111827',
+                            borderColor: '#FFFFFF',
                             borderWidth: 2
                         }
                     ]
@@ -5274,7 +5303,7 @@ async function loadAndRenderCharts() {
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#F3F4F6', boxWidth: 15 }
+                            labels: { color: '#64748B', boxWidth: 15, font: { family: 'inherit', size: 12 } }
                         }
                     }
                 }
@@ -5308,7 +5337,7 @@ async function loadAndRenderCharts() {
                         {
                             data: data,
                             backgroundColor: colors.slice(0, labels.length),
-                            borderColor: '#111827',
+                            borderColor: '#FFFFFF',
                             borderWidth: 2
                         }
                     ]
@@ -5319,7 +5348,7 @@ async function loadAndRenderCharts() {
                     plugins: {
                         legend: {
                             position: 'right',
-                            labels: { color: '#F3F4F6', boxWidth: 15 }
+                            labels: { color: '#64748B', boxWidth: 15, font: { family: 'inherit', size: 12 } }
                         }
                     }
                 }
@@ -5369,16 +5398,16 @@ async function loadAndRenderCharts() {
                     maintainAspectRatio: false,
                     scales: {
                         y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         },
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         }
                     },
                     plugins: {
-                        legend: { labels: { color: '#F3F4F6' } }
+                        legend: { labels: { color: '#64748B', font: { family: 'inherit', size: 12 } } }
                     }
                 }
             });
@@ -5454,16 +5483,16 @@ async function loadAndRenderCharts() {
                     maintainAspectRatio: false,
                     scales: {
                         y: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         },
                         x: {
-                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                            ticks: { color: '#9CA3AF' }
+                            grid: { color: '#F1F5F9' },
+                            ticks: { color: '#64748B' }
                         }
                     },
                     plugins: {
-                        legend: { labels: { color: '#F3F4F6' } }
+                        legend: { labels: { color: '#64748B', font: { family: 'inherit', size: 12 } } }
                     }
                 }
             });
@@ -6335,9 +6364,9 @@ function renderCategoryChart(data) {
             },
             scales: {
                 x: {
-                    grid: { color: 'rgba(255,255,255,0.05)', drawTicks: false },
+                    grid: { color: '#F1F5F9', drawTicks: false },
                     ticks: {
-                        color: 'rgba(255,255,255,0.6)',
+                        color: '#64748B',
                         font: { size: 9 },
                         callback: (val) => `$${val}`
                     }
@@ -6345,7 +6374,7 @@ function renderCategoryChart(data) {
                 y: {
                     grid: { display: false },
                     ticks: {
-                        color: 'rgba(255,255,255,0.85)',
+                        color: '#0F172A',
                         font: { size: 10, weight: '500' },
                         autoSkip: false // Mostrar todos los nombres siempre
                     }
@@ -6495,9 +6524,9 @@ function renderIncomeChart(data) {
             },
             scales: {
                 x: {
-                    grid: { color: 'rgba(255,255,255,0.05)', drawTicks: false },
+                    grid: { color: '#F1F5F9', drawTicks: false },
                     ticks: {
-                        color: 'rgba(255,255,255,0.6)',
+                        color: '#64748B',
                         font: { size: 9 },
                         callback: (val) => `$${val}`
                     }
@@ -6505,7 +6534,7 @@ function renderIncomeChart(data) {
                 y: {
                     grid: { display: false },
                     ticks: {
-                        color: 'rgba(255,255,255,0.85)',
+                        color: '#0F172A',
                         font: { size: 10, weight: '500' },
                         autoSkip: false // Mostrar todos los nombres siempre
                     }
