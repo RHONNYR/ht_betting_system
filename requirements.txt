@@ -1,3 +1,13 @@
+# Servidor Web y API (Arbitraje & Remesas)
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-jose[cryptography]
+bcrypt
+beautifulsoup4
+python-multipart
+
 # Dependencias del Sistema HT 0.5+
 pandas
 numpy
