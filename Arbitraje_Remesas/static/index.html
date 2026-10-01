@@ -1128,33 +1128,33 @@
                             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
                                 <h2>Historial de Remesas Enviadas (USD ➔ VES)</h2>
                                 <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-                                    <div class="total-ganado-badge" style="background: rgba(148, 163, 184, 0.1); border-color: rgba(148, 163, 184, 0.25); color: #cbd5e1;">
-                                        <span>N° Remesas:</span>
-                                        <strong id="total-count-remesas">0</strong>
+                                    <div class="kpi-metric-badge kpi-badge-neutral">
+                                        <span class="kpi-label">N° Remesas</span>
+                                        <strong id="total-count-remesas" class="kpi-val">0</strong>
                                     </div>
-                                    <div class="total-ganado-badge" style="background: rgba(0, 112, 243, 0.1); border-color: rgba(0, 112, 243, 0.2); color: var(--primary-color);">
-                                        <span>Total Volumen:</span>
-                                        <strong id="total-volumen-remesas">$0.00</strong>
+                                    <div class="kpi-metric-badge kpi-badge-blue">
+                                        <span class="kpi-label">Total Volumen</span>
+                                        <strong id="total-volumen-remesas" class="kpi-val">$0.00</strong>
                                     </div>
-                                    <div class="total-ganado-badge" style="background: rgba(234, 179, 8, 0.1); border-color: rgba(234, 179, 8, 0.25); color: #eab308;">
-                                        <span>Total Pagado (VES):</span>
-                                        <strong id="total-ves-remesas">0.00 VES</strong>
+                                    <div class="kpi-metric-badge kpi-badge-amber">
+                                        <span class="kpi-label">Total Pagado (VES)</span>
+                                        <strong id="total-ves-remesas" class="kpi-val">0.00 VES</strong>
                                     </div>
-                                    <div class="total-ganado-badge">
-                                        <span>Ganancia Total:</span>
-                                        <strong id="total-ganancia-remesas">$0.00</strong>
+                                    <div class="kpi-metric-badge kpi-badge-green">
+                                        <span class="kpi-label">Ganancia Total</span>
+                                        <strong id="total-ganancia-remesas" class="kpi-val">$0.00</strong>
                                     </div>
-                                    <button id="btn-export-remesas" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 4px;">📥 Exportar</button>
+                                    <button id="btn-export-remesas" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; font-weight: 500;">📥 Exportar</button>
                                 </div>
                             </div>
 
-                            <!-- Barra de Filtros Dinámicos -->
-                            <div class="card-header-controls" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; background: rgba(255,255,255,0.02); padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                                <input type="text" id="remesas-search-input" placeholder="🔍 Buscar..." style="padding: 6px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; border-radius: 6px; outline: none; width: 140px;">
+                            <!-- Barra de Filtros Dinámicos (Fintech Action Bar) -->
+                            <div class="fintech-action-bar">
+                                <input type="text" id="remesas-search-input" placeholder="🔍 Buscar remesa, cliente, banco..." class="fintech-input-search">
                                 
-                                <select id="filter-periodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
-                                    <option value="ultimos_30_dias" selected>⏱️ Últimos 30 días</option>
-                                    <option value="historico">📜 Histórico (Todo)</option>
+                                <select id="filter-periodo-remesas" class="fintech-select">
+                                    <option value="historico" selected>📜 Histórico (Todo)</option>
+                                    <option value="ultimos_30_dias">⏱️ Últimos 30 días</option>
                                     <option value="mes">🗓️ Este Mes</option>
                                     <option value="mes_anterior">⏮️ Mes anterior</option>
                                     <option value="semana">📅 Esta Semana (Lun-Dom)</option>
@@ -1163,29 +1163,29 @@
                                 </select>
                                 
                                 <div id="remesas-filter-custom-dates" style="display: none; align-items: center; gap: 0.3rem;">
-                                    <input type="date" id="remesas-filter-desde" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 5px 8px; font-size: 0.75rem; outline: none;">
-                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">→</span>
-                                    <input type="date" id="remesas-filter-hasta" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 5px 8px; font-size: 0.75rem; outline: none;">
-                                    <button id="remesas-filter-apply" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.75rem; background: linear-gradient(135deg,#6366f1,#8b5cf6); border: none; color: #fff; cursor: pointer;">Aplicar</button>
+                                    <input type="date" id="remesas-filter-desde" class="fintech-input-date">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">→</span>
+                                    <input type="date" id="remesas-filter-hasta" class="fintech-input-date">
+                                    <button id="remesas-filter-apply" class="btn btn-primary btn-sm" style="padding: 5px 10px; font-size: 0.75rem;">Aplicar</button>
                                 </div>
 
-                                <select id="filter-cliente-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                <select id="filter-cliente-remesas" class="fintech-select">
                                     <option value="todos">👤 Todos los Clientes</option>
                                 </select>
 
-                                <select id="filter-tasap2p-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                <select id="filter-tasap2p-remesas" class="fintech-select">
                                     <option value="todas">📈 Todas las Tasas P2P</option>
                                 </select>
 
-                                <select id="filter-banco-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                <select id="filter-banco-remesas" class="fintech-select">
                                     <option value="todos">🏦 Todos los Bancos Utilizados</option>
                                 </select>
 
-                                <select id="filter-metodo-remesas" style="background: var(--bg-hover); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); border-radius: 4px; padding: 6px 10px; outline: none; font-size: 0.78rem; cursor: pointer;">
+                                <select id="filter-metodo-remesas" class="fintech-select">
                                     <option value="todos">💳 Todos los Tipos (Zelle, Efectivo, etc.)</option>
                                 </select>
 
-                                <button id="btn-reset-remesas-filters" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0; cursor: pointer; border-radius: 4px;" title="Restablecer todos los filtros">🔄 Limpiar</button>
+                                <button id="btn-reset-remesas-filters" class="btn btn-ghost btn-sm" title="Restablecer filtros" style="padding: 6px 10px; font-size: 0.78rem; cursor: pointer; color: var(--text-muted);">🔄 Limpiar</button>
                             </div>
                         </div>
                         <div class="card-body">
