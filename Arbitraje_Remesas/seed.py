@@ -95,8 +95,21 @@ def seed_data():
             print(f"Titular '{tit_data['nombre']}' already exists.")
             
     db.commit()
+    print("Base seed completed.")
+    
+    # Auto-restore historical dataset if empty
+    try:
+        try:
+            from restore_historical_data import restore_all
+        except ImportError:
+            from Arbitraje_Remesas.restore_historical_data import restore_all
+        restore_all(db)
+    except Exception as e:
+        print(f"Notice: Historical data auto-restore skipped or partial: {e}")
+
     db.close()
     print("Seeding completed successfully!")
 
 if __name__ == "__main__":
     seed_data()
+
