@@ -1,6 +1,6 @@
 [
   {
-    "id": 86,
+    "id": 79,
     "fecha": "30/09/2026 09:30 PM",
     "tipo": "ingreso",
     "monto": 60.0,
@@ -11,7 +11,1085 @@
     "remesa_id": null
   },
   {
+    "id": 177,
+    "fecha": "29/09/2026 03:48 PM",
+    "tipo": "ingreso",
+    "monto": 60.0,
+    "titular": "Génesis Salazar",
+    "cliente_nombre": "Génesis Salazar",
+    "detalle": "Registrado vía Bot de Telegram (+60.00 Génesis Salazar)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 176,
+    "fecha": "29/09/2026 11:27 AM",
+    "tipo": "egreso",
+    "monto": 1150.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt @ 1.020 Tendederos Sila",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 175,
+    "fecha": "28/09/2026 01:53 PM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 174,
+    "fecha": "28/09/2026 01:51 PM",
+    "tipo": "ingreso",
+    "monto": 200.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+200.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 173,
+    "fecha": "27/09/2026 08:43 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Romina Ruiz",
+    "cliente_nombre": "Cecilia",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Cecilia)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 172,
+    "fecha": "26/09/2026 11:04 AM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Kelvin Ramos",
+    "cliente_nombre": "Yenis Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Yenis Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 171,
+    "fecha": "26/09/2026 11:03 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 170,
+    "fecha": "26/09/2026 11:01 AM",
+    "tipo": "egreso",
+    "monto": 1674.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt 1.020 Tendedero Sila LLC",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 169,
+    "fecha": "25/09/2026 08:27 PM",
+    "tipo": "ingreso",
+    "monto": 400.0,
+    "titular": "Marbella Correa",
+    "cliente_nombre": "Diana",
+    "detalle": "Registrado vía Bot de Telegram (+400.00 Diana)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 168,
+    "fecha": "25/09/2026 05:35 PM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "José Luis González",
+    "cliente_nombre": "Solanda Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Solanda Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 167,
+    "fecha": "25/09/2026 05:34 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 166,
+    "fecha": "25/09/2026 05:32 PM",
+    "tipo": "ingreso",
+    "monto": 200.0,
+    "titular": "Sabor Guayanés LLC",
+    "cliente_nombre": "Diana",
+    "detalle": "Registrado vía Bot de Telegram (+200.00 Diana)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 165,
+    "fecha": "25/09/2026 09:29 AM",
+    "tipo": "ingreso",
+    "monto": 24.0,
+    "titular": "Antonys García",
+    "cliente_nombre": "José Figueroa",
+    "detalle": "Registrado vía Bot de Telegram (+24.00 José Figueroa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 164,
+    "fecha": "25/09/2026 09:28 AM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Héctor Cermeño",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 163,
+    "fecha": "25/09/2026 09:27 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Antonys García",
+    "cliente_nombre": "José Figueroa",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 José Figueroa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 162,
+    "fecha": "25/09/2026 09:26 AM",
+    "tipo": "egreso",
+    "monto": 1182.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt a 1.020 Tendederos Sila LLC",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 161,
+    "fecha": "24/09/2026 12:22 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Hoobert bastardo",
+    "cliente_nombre": "Yolimar Bastardo",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Yolimar Bastardo)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 160,
+    "fecha": "23/09/2026 09:00 PM",
+    "tipo": "ingreso",
+    "monto": 150.0,
+    "titular": "Jhon Belmonte",
+    "cliente_nombre": "Javier Mata",
+    "detalle": "Registrado vía Bot de Telegram (+150.00 Javier Mata)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 159,
+    "fecha": "23/09/2026 09:17 AM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 158,
+    "fecha": "23/09/2026 09:16 AM",
+    "tipo": "ingreso",
+    "monto": 55.0,
+    "titular": "leorismar Solorzano",
+    "cliente_nombre": "Yordy Zerpa",
+    "detalle": "Registrado vía Bot de Telegram (+55.00 Yordy Zerpa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 157,
+    "fecha": "23/09/2026 09:15 AM",
+    "tipo": "ingreso",
+    "monto": 70.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+70.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 156,
+    "fecha": "23/09/2026 09:14 AM",
+    "tipo": "egreso",
+    "monto": 998.53,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt Binance a 1.019 / Luisnel Medina",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 155,
+    "fecha": "23/09/2026 09:11 AM",
+    "tipo": "ingreso",
+    "monto": 60.0,
+    "titular": "Angel Zerpa",
+    "cliente_nombre": "Yordy Zerpa",
+    "detalle": "Registrado vía Bot de Telegram (+60.00 Yordy Zerpa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 154,
+    "fecha": "20/09/2026 04:25 PM",
+    "tipo": "ingreso",
+    "monto": 150.0,
+    "titular": "Angel Zerpa",
+    "cliente_nombre": "Jordy Zerpa",
+    "detalle": "Registrado vía Bot de Telegram (+150.00 Jordy Zerpa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 153,
+    "fecha": "20/09/2026 02:30 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Geraldi Brito",
+    "cliente_nombre": "Yolimar Bastardo",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Yolimar Bastardo)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 152,
+    "fecha": "20/09/2026 02:29 PM",
+    "tipo": "ingreso",
+    "monto": 200.0,
+    "titular": "Renny Duerto",
+    "cliente_nombre": "Yolimar Bastardo",
+    "detalle": "Registrado vía Bot de Telegram (+200.00 Yolimar Bastardo)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 151,
+    "fecha": "19/09/2026 06:09 PM",
+    "tipo": "ingreso",
+    "monto": 83.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+83.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 150,
+    "fecha": "19/09/2026 06:07 PM",
+    "tipo": "ingreso",
+    "monto": 70.0,
+    "titular": "José Hernández",
+    "cliente_nombre": "José Hernández",
+    "detalle": "Registrado vía Bot de Telegram (+70.00 José Hernández)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 149,
+    "fecha": "19/09/2026 11:12 AM",
+    "tipo": "egreso",
+    "monto": 1000.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt Binance 1.016 Teja Mandapati",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 148,
+    "fecha": "19/09/2026 11:09 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Romina Ruiz",
+    "cliente_nombre": "Cecilia",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Cecilia)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 147,
+    "fecha": "19/09/2026 10:29 AM",
+    "tipo": "ingreso",
+    "monto": 5.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+5.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 146,
+    "fecha": "18/09/2026 11:48 PM",
+    "tipo": "egreso",
+    "monto": 3.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Juan Figueroa 6% recibido en divisas y una 1.4$ en bolívares por ende no suman en Zelle",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 145,
+    "fecha": "18/09/2026 11:41 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Sabor guayanés LLC",
+    "cliente_nombre": "Diana",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Diana)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 144,
+    "fecha": "18/09/2026 08:06 PM",
+    "tipo": "ingreso",
+    "monto": 135.0,
+    "titular": "Rossy Pérez",
+    "cliente_nombre": "Lilis",
+    "detalle": "Registrado vía Bot de Telegram (+135.00 Lilis)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 143,
+    "fecha": "18/09/2026 07:48 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Génesis Salazar",
+    "cliente_nombre": "Génesis Salazar",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Génesis Salazar)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 142,
+    "fecha": "18/09/2026 07:45 PM",
+    "tipo": "ingreso",
+    "monto": 40.0,
+    "titular": "Héctor Cermeño",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+40.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 141,
+    "fecha": "18/09/2026 07:44 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Héctor Cermeño",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 140,
+    "fecha": "18/09/2026 07:40 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 139,
+    "fecha": "18/09/2026 07:30 PM",
+    "tipo": "ingreso",
+    "monto": 12.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+12.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 138,
+    "fecha": "18/09/2026 08:08 AM",
+    "tipo": "ingreso",
+    "monto": 40.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+40.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 137,
+    "fecha": "17/09/2026 10:35 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "José Luis González",
+    "cliente_nombre": "Solanda Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Solanda Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 136,
+    "fecha": "17/09/2026 10:33 AM",
+    "tipo": "egreso",
+    "monto": 100.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Javier Mata Intercambio Efectivo 1x1 / José Pereira",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 135,
+    "fecha": "15/09/2026 09:14 PM",
+    "tipo": "ingreso",
+    "monto": 90.0,
+    "titular": "Martha Sánchez",
+    "cliente_nombre": "Martha Sánchez",
+    "detalle": "Registrado vía Bot de Telegram (+90.00 Martha Sánchez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 134,
+    "fecha": "15/09/2026 06:02 PM",
+    "tipo": "egreso",
+    "monto": 1000.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt Binance 1.016 Enmanuel Layade",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 133,
+    "fecha": "15/09/2026 05:10 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Martha Sánchez",
+    "cliente_nombre": "Martha Sánchez",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Martha Sánchez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 132,
+    "fecha": "15/09/2026 05:09 PM",
+    "tipo": "ingreso",
+    "monto": 130.0,
+    "titular": "Martha Sánchez",
+    "cliente_nombre": "Martha Sánchez",
+    "detalle": "Registrado vía Bot de Telegram (+130.00 Martha Sánchez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 131,
+    "fecha": "15/09/2026 05:07 PM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "Virdelva",
+    "cliente_nombre": "Virdelva",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Virdelva)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 130,
+    "fecha": "14/09/2026 01:03 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Martha Sánchez",
+    "cliente_nombre": "Martha Sánchez",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Martha Sánchez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 129,
+    "fecha": "14/09/2026 12:48 PM",
+    "tipo": "egreso",
+    "monto": 950.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt 1.017 Pro ACCE CA Binance",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 128,
+    "fecha": "14/09/2026 09:27 AM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Nakary Santamaría",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 127,
+    "fecha": "14/09/2026 09:26 AM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "Francisco Ramos",
+    "cliente_nombre": "Yenis Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Yenis Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 126,
+    "fecha": "14/09/2026 09:25 AM",
+    "tipo": "ingreso",
+    "monto": 40.0,
+    "titular": "Adonis Menjivar",
+    "cliente_nombre": "Daly",
+    "detalle": "Registrado vía Bot de Telegram (+40.00 Daly)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 125,
+    "fecha": "12/09/2026 12:12 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Ritson Maita",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 124,
+    "fecha": "08/09/2026 06:11 PM",
+    "tipo": "egreso",
+    "monto": 1000.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt a 1.017 Binance",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 123,
+    "fecha": "08/09/2026 06:07 PM",
+    "tipo": "ingreso",
+    "monto": 10.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+10.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 122,
+    "fecha": "08/09/2026 06:06 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 121,
+    "fecha": "08/09/2026 06:05 PM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "José Luis González",
+    "cliente_nombre": "Solanda Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Solanda Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 120,
+    "fecha": "03/09/2026 09:48 PM",
+    "tipo": "ingreso",
+    "monto": 70.0,
+    "titular": "Kelvin Ramos",
+    "cliente_nombre": "Yenis Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+70.00 Yenis Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 119,
+    "fecha": "03/09/2026 09:47 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "María Molina",
+    "cliente_nombre": "Zulay",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Zulay)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 118,
+    "fecha": "03/09/2026 09:47 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "María veneziano",
+    "cliente_nombre": "José Figueroa",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 José Figueroa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 117,
+    "fecha": "01/09/2026 08:54 AM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "Wilfredo Rojas",
+    "cliente_nombre": "Krisdelis",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Krisdelis)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 116,
+    "fecha": "01/09/2026 08:54 AM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "María veneziano",
+    "cliente_nombre": "José Figueroa",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 José Figueroa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 115,
+    "fecha": "01/09/2026 08:53 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Mario Abreu",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 114,
+    "fecha": "01/09/2026 08:52 AM",
+    "tipo": "ingreso",
+    "monto": 25.0,
+    "titular": "Darlenis Carrasquero",
+    "cliente_nombre": "Daly Acevedo",
+    "detalle": "Registrado vía Bot de Telegram (+25.00 Daly Acevedo)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 113,
+    "fecha": "01/09/2026 08:51 AM",
+    "tipo": "egreso",
+    "monto": 928.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Tendederos Sila LLC / Compra Usdt a 1.020",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 112,
+    "fecha": "30/08/2026 05:31 PM",
+    "tipo": "ingreso",
+    "monto": 70.0,
+    "titular": "Leonel Betancourt",
+    "cliente_nombre": "Hermagora",
+    "detalle": "Registrado vía Bot de Telegram (+70.00 Hermagora)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 111,
+    "fecha": "30/08/2026 05:30 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Olinier Zalazar",
+    "cliente_nombre": "Frank Bracho",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Frank Bracho)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 110,
+    "fecha": "30/08/2026 05:29 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 109,
+    "fecha": "30/08/2026 05:28 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 108,
+    "fecha": "30/08/2026 05:26 PM",
+    "tipo": "ingreso",
+    "monto": 60.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+60.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 107,
+    "fecha": "30/08/2026 05:24 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Antony García",
+    "cliente_nombre": "José Figueroa",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 José Figueroa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 106,
+    "fecha": "30/08/2026 05:15 PM",
+    "tipo": "ingreso",
+    "monto": 60.0,
+    "titular": "María Figueroa",
+    "cliente_nombre": "Juan Figueroa",
+    "detalle": "Registrado vía Bot de Telegram (+60.00 Juan Figueroa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 105,
+    "fecha": "28/08/2026 10:37 AM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Gian Paolo Cerasa",
+    "cliente_nombre": "Luis Cerasa",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Luis Cerasa)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 104,
+    "fecha": "27/08/2026 08:33 PM",
+    "tipo": "egreso",
+    "monto": 1296.0,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Tendedero Sila",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 103,
+    "fecha": "27/08/2026 08:32 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Roselis Granda",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 102,
+    "fecha": "27/08/2026 01:56 PM",
+    "tipo": "ingreso",
+    "monto": 200.0,
+    "titular": "Michael Mendez",
+    "cliente_nombre": "Charly Sulbaran",
+    "detalle": "Registrado vía Bot de Telegram (+200.00 Charly Sulbaran)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 101,
+    "fecha": "26/08/2026 03:13 PM",
+    "tipo": "ingreso",
+    "monto": 500.0,
+    "titular": "Edgar Alexander Moreno",
+    "cliente_nombre": "Jairo Rangel",
+    "detalle": "Registrado vía Bot de Telegram (+500.00 Jairo Rangel)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 100,
+    "fecha": "26/08/2026 03:12 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Génesis Salazar",
+    "cliente_nombre": "Génesis Salazar",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Génesis Salazar)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 99,
+    "fecha": "26/08/2026 03:11 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Virdelva González",
+    "cliente_nombre": "Virdelva González",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Virdelva González)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 98,
+    "fecha": "23/08/2026 08:52 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 97,
+    "fecha": "23/08/2026 08:49 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Héctor Cermeño",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 96,
+    "fecha": "23/08/2026 08:48 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Mauro Urbina",
+    "cliente_nombre": "Angely Cabeza",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Angely Cabeza)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 95,
+    "fecha": "23/08/2026 08:45 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Francisco Ramos",
+    "cliente_nombre": "Yenis Gomez",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Yenis Gomez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 94,
+    "fecha": "23/08/2026 08:44 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Mario Calzadilla",
+    "cliente_nombre": "Diana",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Diana)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 93,
+    "fecha": "23/08/2026 08:36 PM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 92,
+    "fecha": "23/08/2026 08:35 PM",
+    "tipo": "ingreso",
+    "monto": 20.0,
+    "titular": "Yelianni Rivas",
+    "cliente_nombre": "Yelianni Rivas",
+    "detalle": "Registrado vía Bot de Telegram (+20.00 Yelianni Rivas)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 91,
+    "fecha": "23/08/2026 08:34 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Martha Sánchez",
+    "cliente_nombre": "Martha Sánchez",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Martha Sánchez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 90,
+    "fecha": "23/08/2026 08:31 PM",
+    "tipo": "egreso",
+    "monto": 1269.91,
+    "titular": "",
+    "cliente_nombre": "",
+    "detalle": "Compra Usdt a 1.020 Tendedero Sila",
+    "estado": "completado",
+    "remesa_id": null
+  },
+  {
+    "id": 89,
+    "fecha": "21/08/2026 11:04 AM",
+    "tipo": "ingreso",
+    "monto": 180.0,
+    "titular": "Génesis Salazar",
+    "cliente_nombre": "Génesis Salazar",
+    "detalle": "Registrado vía Bot de Telegram (+180.00 Génesis Salazar)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 88,
+    "fecha": "21/08/2026 07:25 AM",
+    "tipo": "ingreso",
+    "monto": 200.0,
+    "titular": "Mario Calzadilla",
+    "cliente_nombre": "Diana",
+    "detalle": "Registrado vía Bot de Telegram (+200.00 Diana)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 87,
+    "fecha": "20/08/2026 10:16 PM",
+    "tipo": "ingreso",
+    "monto": 300.0,
+    "titular": "Kati",
+    "cliente_nombre": "Charly Sulbaran",
+    "detalle": "Registrado vía Bot de Telegram (+300.00 Charly Sulbaran)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 86,
+    "fecha": "20/08/2026 10:14 PM",
+    "tipo": "ingreso",
+    "monto": 100.0,
+    "titular": "Martha Sánchez",
+    "cliente_nombre": "Martha Sánchez",
+    "detalle": "Registrado vía Bot de Telegram (+100.00 Martha Sánchez)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
     "id": 85,
+    "fecha": "19/08/2026 06:09 PM",
+    "tipo": "ingreso",
+    "monto": 70.0,
+    "titular": "Alexander Buriel",
+    "cliente_nombre": "Yolimar",
+    "detalle": "Registrado vía Bot de Telegram (+70.00 Yolimar)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 84,
+    "fecha": "18/08/2026 10:05 AM",
+    "tipo": "ingreso",
+    "monto": 130.0,
+    "titular": "Romina Ruiz",
+    "cliente_nombre": "Cecilia",
+    "detalle": "Registrado vía Bot de Telegram (+130.00 Cecilia)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 83,
+    "fecha": "17/08/2026 03:13 PM",
+    "tipo": "ingreso",
+    "monto": 30.0,
+    "titular": "Rosiel",
+    "cliente_nombre": "Roselis Granda",
+    "detalle": "Registrado vía Bot de Telegram (+30.00 Roselis Granda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 82,
+    "fecha": "17/08/2026 09:03 AM",
+    "tipo": "ingreso",
+    "monto": 45.0,
+    "titular": "Rosiel",
+    "cliente_nombre": "shely",
+    "detalle": "Registrado vía Bot de Telegram (+45.00 shely)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 81,
+    "fecha": "16/08/2026 02:07 PM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "Leonel Betancourt",
+    "cliente_nombre": "Hermagora",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Hermagora)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 80,
+    "fecha": "16/08/2026 11:04 AM",
+    "tipo": "ingreso",
+    "monto": 50.0,
+    "titular": "José Luis Gonzalez",
+    "cliente_nombre": "Solanda",
+    "detalle": "Registrado vía Bot de Telegram (+50.00 Solanda)",
+    "estado": "pendiente",
+    "remesa_id": null
+  },
+  {
+    "id": 1,
     "fecha": "12/08/2026 11:43 AM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -22,7 +1100,7 @@
     "remesa_id": 96
   },
   {
-    "id": 84,
+    "id": 2,
     "fecha": "11/08/2026 03:36 PM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -33,7 +1111,7 @@
     "remesa_id": 95
   },
   {
-    "id": 83,
+    "id": 3,
     "fecha": "11/08/2026 12:44 PM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -44,7 +1122,7 @@
     "remesa_id": 94
   },
   {
-    "id": 82,
+    "id": 4,
     "fecha": "10/08/2026 09:41 PM",
     "tipo": "ingreso",
     "monto": 40.0,
@@ -55,7 +1133,7 @@
     "remesa_id": 93
   },
   {
-    "id": 81,
+    "id": 5,
     "fecha": "10/08/2026 09:30 PM",
     "tipo": "ingreso",
     "monto": 100.0,
@@ -66,7 +1144,7 @@
     "remesa_id": 92
   },
   {
-    "id": 79,
+    "id": 6,
     "fecha": "10/08/2026 05:22 PM",
     "tipo": "ingreso",
     "monto": 230.01,
@@ -77,7 +1155,7 @@
     "remesa_id": 90
   },
   {
-    "id": 80,
+    "id": 7,
     "fecha": "10/08/2026 05:22 PM",
     "tipo": "ingreso",
     "monto": 94.9,
@@ -88,7 +1166,7 @@
     "remesa_id": 91
   },
   {
-    "id": 78,
+    "id": 8,
     "fecha": "09/08/2026 04:22 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -99,7 +1177,7 @@
     "remesa_id": null
   },
   {
-    "id": 76,
+    "id": 9,
     "fecha": "08/08/2026 06:15 PM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -110,7 +1188,7 @@
     "remesa_id": 87
   },
   {
-    "id": 75,
+    "id": 10,
     "fecha": "07/08/2026 09:37 AM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -121,7 +1199,7 @@
     "remesa_id": 86
   },
   {
-    "id": 74,
+    "id": 11,
     "fecha": "07/08/2026 09:11 AM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -132,7 +1210,7 @@
     "remesa_id": 85
   },
   {
-    "id": 73,
+    "id": 12,
     "fecha": "06/08/2026 02:32 PM",
     "tipo": "ingreso",
     "monto": 30.0,
@@ -143,7 +1221,7 @@
     "remesa_id": 84
   },
   {
-    "id": 72,
+    "id": 13,
     "fecha": "06/08/2026 12:20 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -154,7 +1232,7 @@
     "remesa_id": 83
   },
   {
-    "id": 71,
+    "id": 14,
     "fecha": "05/08/2026 09:41 AM",
     "tipo": "ingreso",
     "monto": 170.0,
@@ -165,7 +1243,7 @@
     "remesa_id": 80
   },
   {
-    "id": 64,
+    "id": 15,
     "fecha": "04/08/2026 09:35 PM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -176,7 +1254,7 @@
     "remesa_id": 75
   },
   {
-    "id": 70,
+    "id": 16,
     "fecha": "04/08/2026 08:58 PM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -187,7 +1265,7 @@
     "remesa_id": 79
   },
   {
-    "id": 69,
+    "id": 17,
     "fecha": "04/08/2026 06:16 PM",
     "tipo": "egreso",
     "monto": 1500.0,
@@ -198,7 +1276,7 @@
     "remesa_id": null
   },
   {
-    "id": 68,
+    "id": 18,
     "fecha": "04/08/2026 01:58 PM",
     "tipo": "ingreso",
     "monto": 93.39,
@@ -209,7 +1287,7 @@
     "remesa_id": 78
   },
   {
-    "id": 67,
+    "id": 19,
     "fecha": "04/08/2026 01:58 PM",
     "tipo": "ingreso",
     "monto": 56.6,
@@ -220,7 +1298,7 @@
     "remesa_id": 77
   },
   {
-    "id": 65,
+    "id": 20,
     "fecha": "04/08/2026 11:31 AM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -231,7 +1309,7 @@
     "remesa_id": 76
   },
   {
-    "id": 66,
+    "id": 21,
     "fecha": "04/08/2026 09:35 AM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -242,7 +1320,7 @@
     "remesa_id": null
   },
   {
-    "id": 63,
+    "id": 22,
     "fecha": "03/08/2026 10:43 PM",
     "tipo": "ingreso",
     "monto": 27.0,
@@ -253,7 +1331,7 @@
     "remesa_id": 74
   },
   {
-    "id": 62,
+    "id": 23,
     "fecha": "03/08/2026 09:10 PM",
     "tipo": "ingreso",
     "monto": 131.0,
@@ -264,7 +1342,7 @@
     "remesa_id": 73
   },
   {
-    "id": 61,
+    "id": 24,
     "fecha": "03/08/2026 06:46 PM",
     "tipo": "egreso",
     "monto": 909.0,
@@ -275,7 +1353,7 @@
     "remesa_id": null
   },
   {
-    "id": 58,
+    "id": 25,
     "fecha": "03/08/2026 03:14 PM",
     "tipo": "ingreso",
     "monto": 100.0,
@@ -286,18 +1364,7 @@
     "remesa_id": null
   },
   {
-    "id": 57,
-    "fecha": "03/08/2026 03:14 PM",
-    "tipo": "ingreso",
-    "monto": 100.0,
-    "titular": "Roselis Granda",
-    "cliente_nombre": "Roselis Granda",
-    "detalle": "Remesa ID #71 de Roselis Granda",
-    "estado": "remesado",
-    "remesa_id": 71
-  },
-  {
-    "id": 55,
+    "id": 27,
     "fecha": "03/08/2026 01:44 PM",
     "tipo": "ingreso",
     "monto": 10.0,
@@ -308,7 +1375,7 @@
     "remesa_id": null
   },
   {
-    "id": 53,
+    "id": 28,
     "fecha": "03/08/2026 01:44 PM",
     "tipo": "ingreso",
     "monto": 25.0,
@@ -319,29 +1386,7 @@
     "remesa_id": 70
   },
   {
-    "id": 52,
-    "fecha": "03/08/2026 01:44 PM",
-    "tipo": "ingreso",
-    "monto": 10.0,
-    "titular": "Martha Sánchez",
-    "cliente_nombre": "Martha Sánchez",
-    "detalle": "Remesa ID #69 de Martha Sánchez",
-    "estado": "remesado",
-    "remesa_id": 69
-  },
-  {
-    "id": 54,
-    "fecha": "03/08/2026 01:44 PM",
-    "tipo": "ingreso",
-    "monto": 25.0,
-    "titular": "Martha Sánchez",
-    "cliente_nombre": "Martha Sánchez",
-    "detalle": "Remesa ID 70 de Martha Sánchez",
-    "estado": "completado",
-    "remesa_id": null
-  },
-  {
-    "id": 56,
+    "id": 31,
     "fecha": "03/08/2026 01:27 PM",
     "tipo": "ingreso",
     "monto": 140.0,
@@ -352,18 +1397,7 @@
     "remesa_id": null
   },
   {
-    "id": 51,
-    "fecha": "03/08/2026 01:27 PM",
-    "tipo": "ingreso",
-    "monto": 140.0,
-    "titular": "José Figueroa",
-    "cliente_nombre": "José Figueroa",
-    "detalle": "Remesa ID #68 de José Figueroa",
-    "estado": "remesado",
-    "remesa_id": 68
-  },
-  {
-    "id": 49,
+    "id": 33,
     "fecha": "02/08/2026 09:35 PM",
     "tipo": "ingreso",
     "monto": 100.0,
@@ -374,18 +1408,7 @@
     "remesa_id": 67
   },
   {
-    "id": 50,
-    "fecha": "02/08/2026 09:35 PM",
-    "tipo": "ingreso",
-    "monto": 100.0,
-    "titular": "Martha Sánchez",
-    "cliente_nombre": "Martha Sánchez",
-    "detalle": "Remesa ID 67 de Martha Sánchez",
-    "estado": "completado",
-    "remesa_id": null
-  },
-  {
-    "id": 48,
+    "id": 35,
     "fecha": "02/08/2026 09:05 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -396,7 +1419,7 @@
     "remesa_id": 66
   },
   {
-    "id": 47,
+    "id": 36,
     "fecha": "02/08/2026 03:16 PM",
     "tipo": "ingreso",
     "monto": 94.27,
@@ -407,7 +1430,7 @@
     "remesa_id": 64
   },
   {
-    "id": 45,
+    "id": 37,
     "fecha": "02/08/2026 09:44 AM",
     "tipo": "egreso",
     "monto": 1000.0,
@@ -418,7 +1441,7 @@
     "remesa_id": null
   },
   {
-    "id": 46,
+    "id": 38,
     "fecha": "02/08/2026 08:42 AM",
     "tipo": "ingreso",
     "monto": 100.0,
@@ -429,7 +1452,7 @@
     "remesa_id": 63
   },
   {
-    "id": 44,
+    "id": 39,
     "fecha": "02/08/2026 12:14 AM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -440,7 +1463,7 @@
     "remesa_id": 62
   },
   {
-    "id": 43,
+    "id": 40,
     "fecha": "01/08/2026 07:34 PM",
     "tipo": "ingreso",
     "monto": 350.0,
@@ -451,7 +1474,7 @@
     "remesa_id": 61
   },
   {
-    "id": 42,
+    "id": 41,
     "fecha": "01/08/2026 05:17 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -462,7 +1485,7 @@
     "remesa_id": 60
   },
   {
-    "id": 40,
+    "id": 42,
     "fecha": "01/08/2026 01:44 PM",
     "tipo": "ingreso",
     "monto": 44.53,
@@ -473,7 +1496,7 @@
     "remesa_id": 58
   },
   {
-    "id": 41,
+    "id": 43,
     "fecha": "01/08/2026 01:44 PM",
     "tipo": "ingreso",
     "monto": 33.0,
@@ -484,7 +1507,7 @@
     "remesa_id": 59
   },
   {
-    "id": 39,
+    "id": 44,
     "fecha": "01/08/2026 01:41 PM",
     "tipo": "ingreso",
     "monto": 275.47,
@@ -495,7 +1518,7 @@
     "remesa_id": 57
   },
   {
-    "id": 38,
+    "id": 45,
     "fecha": "01/08/2026 01:06 PM",
     "tipo": "ingreso",
     "monto": 60.0,
@@ -506,7 +1529,7 @@
     "remesa_id": 56
   },
   {
-    "id": 37,
+    "id": 46,
     "fecha": "01/08/2026 09:34 AM",
     "tipo": "ingreso",
     "monto": 40.0,
@@ -517,7 +1540,7 @@
     "remesa_id": 55
   },
   {
-    "id": 36,
+    "id": 47,
     "fecha": "31/07/2026 07:59 PM",
     "tipo": "ingreso",
     "monto": 30.0,
@@ -528,7 +1551,7 @@
     "remesa_id": 54
   },
   {
-    "id": 35,
+    "id": 48,
     "fecha": "31/07/2026 12:25 PM",
     "tipo": "ingreso",
     "monto": 220.0,
@@ -539,7 +1562,7 @@
     "remesa_id": null
   },
   {
-    "id": 33,
+    "id": 49,
     "fecha": "30/07/2026 03:10 PM",
     "tipo": "ingreso",
     "monto": 30.0,
@@ -550,18 +1573,7 @@
     "remesa_id": null
   },
   {
-    "id": 32,
-    "fecha": "30/07/2026 03:10 PM",
-    "tipo": "ingreso",
-    "monto": 30.0,
-    "titular": "Roselis Granda",
-    "cliente_nombre": "Roselis Granda",
-    "detalle": "Remesa ID #51 de Roselis Granda",
-    "estado": "remesado",
-    "remesa_id": 51
-  },
-  {
-    "id": 31,
+    "id": 51,
     "fecha": "30/07/2026 10:27 AM",
     "tipo": "ingreso",
     "monto": 139.18,
@@ -572,7 +1584,7 @@
     "remesa_id": 50
   },
   {
-    "id": 30,
+    "id": 52,
     "fecha": "29/07/2026 11:59 PM",
     "tipo": "ingreso",
     "monto": 82.0,
@@ -583,7 +1595,7 @@
     "remesa_id": 49
   },
   {
-    "id": 29,
+    "id": 53,
     "fecha": "29/07/2026 09:12 PM",
     "tipo": "ingreso",
     "monto": 245.0,
@@ -594,7 +1606,7 @@
     "remesa_id": 48
   },
   {
-    "id": 28,
+    "id": 54,
     "fecha": "29/07/2026 06:08 PM",
     "tipo": "ingreso",
     "monto": 25.0,
@@ -605,7 +1617,7 @@
     "remesa_id": 47
   },
   {
-    "id": 27,
+    "id": 55,
     "fecha": "29/07/2026 05:32 PM",
     "tipo": "ingreso",
     "monto": 98.0,
@@ -616,7 +1628,7 @@
     "remesa_id": 46
   },
   {
-    "id": 26,
+    "id": 56,
     "fecha": "29/07/2026 11:20 AM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -627,7 +1639,7 @@
     "remesa_id": 45
   },
   {
-    "id": 25,
+    "id": 57,
     "fecha": "28/07/2026 02:56 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -638,7 +1650,7 @@
     "remesa_id": 44
   },
   {
-    "id": 24,
+    "id": 58,
     "fecha": "26/07/2026 11:51 AM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -649,7 +1661,7 @@
     "remesa_id": 43
   },
   {
-    "id": 23,
+    "id": 59,
     "fecha": "26/07/2026 11:31 AM",
     "tipo": "ingreso",
     "monto": 28.0,
@@ -660,7 +1672,7 @@
     "remesa_id": 42
   },
   {
-    "id": 22,
+    "id": 60,
     "fecha": "26/07/2026 08:30 AM",
     "tipo": "ingreso",
     "monto": 90.0,
@@ -671,7 +1683,7 @@
     "remesa_id": 41
   },
   {
-    "id": 21,
+    "id": 61,
     "fecha": "25/07/2026 10:31 AM",
     "tipo": "ingreso",
     "monto": 25.0,
@@ -682,7 +1694,7 @@
     "remesa_id": 40
   },
   {
-    "id": 20,
+    "id": 62,
     "fecha": "24/07/2026 10:07 PM",
     "tipo": "ingreso",
     "monto": 25.0,
@@ -693,7 +1705,7 @@
     "remesa_id": 39
   },
   {
-    "id": 19,
+    "id": 63,
     "fecha": "24/07/2026 07:25 PM",
     "tipo": "ingreso",
     "monto": 100.0,
@@ -704,7 +1716,7 @@
     "remesa_id": 38
   },
   {
-    "id": 18,
+    "id": 64,
     "fecha": "24/07/2026 05:01 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -715,7 +1727,7 @@
     "remesa_id": 37
   },
   {
-    "id": 14,
+    "id": 65,
     "fecha": "24/07/2026 10:20 AM",
     "tipo": "ingreso",
     "monto": 30.0,
@@ -726,7 +1738,7 @@
     "remesa_id": null
   },
   {
-    "id": 13,
+    "id": 66,
     "fecha": "23/07/2026 10:37 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -737,7 +1749,7 @@
     "remesa_id": null
   },
   {
-    "id": 16,
+    "id": 67,
     "fecha": "23/07/2026 12:00 AM",
     "tipo": "egreso",
     "monto": 80.0,
@@ -748,7 +1760,7 @@
     "remesa_id": null
   },
   {
-    "id": 12,
+    "id": 68,
     "fecha": "22/07/2026 04:49 PM",
     "tipo": "ingreso",
     "monto": 20.0,
@@ -759,7 +1771,7 @@
     "remesa_id": null
   },
   {
-    "id": 15,
+    "id": 69,
     "fecha": "22/07/2026 12:00 AM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -770,7 +1782,7 @@
     "remesa_id": 52
   },
   {
-    "id": 10,
+    "id": 70,
     "fecha": "21/07/2026 07:35 PM",
     "tipo": "egreso",
     "monto": 1000.0,
@@ -781,7 +1793,7 @@
     "remesa_id": null
   },
   {
-    "id": 11,
+    "id": 71,
     "fecha": "21/07/2026 07:16 PM",
     "tipo": "ingreso",
     "monto": 60.0,
@@ -792,7 +1804,7 @@
     "remesa_id": null
   },
   {
-    "id": 6,
+    "id": 72,
     "fecha": "21/07/2026 01:43 PM",
     "tipo": "ingreso",
     "monto": 90.0,
@@ -803,7 +1815,7 @@
     "remesa_id": null
   },
   {
-    "id": 5,
+    "id": 73,
     "fecha": "20/07/2026 09:31 PM",
     "tipo": "ingreso",
     "monto": 50.0,
@@ -814,7 +1826,7 @@
     "remesa_id": null
   },
   {
-    "id": 4,
+    "id": 74,
     "fecha": "20/07/2026 08:21 PM",
     "tipo": "ingreso",
     "monto": 280.0,
@@ -825,7 +1837,7 @@
     "remesa_id": null
   },
   {
-    "id": 1,
+    "id": 75,
     "fecha": "19/07/2026 10:28 PM",
     "tipo": "ingreso",
     "monto": 200.0,
@@ -836,7 +1848,7 @@
     "remesa_id": null
   },
   {
-    "id": 3,
+    "id": 76,
     "fecha": "19/07/2026 11:57 AM",
     "tipo": "ingreso",
     "monto": 30.0,
@@ -847,7 +1859,7 @@
     "remesa_id": null
   },
   {
-    "id": 2,
+    "id": 77,
     "fecha": "13/07/2026 11:10 PM",
     "tipo": "ingreso",
     "monto": 100.0,
@@ -858,7 +1870,7 @@
     "remesa_id": null
   },
   {
-    "id": 34,
+    "id": 78,
     "fecha": "31/07/2025 12:25 PM",
     "tipo": "ingreso",
     "monto": 220.0,
