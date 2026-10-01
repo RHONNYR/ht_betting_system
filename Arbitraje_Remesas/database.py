@@ -20,7 +20,11 @@ if DATABASE_URL.startswith("postgres://"):
 if DATABASE_URL.startswith("sqlite"):
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 else:
-    engine = create_engine(DATABASE_URL)
+    try:
+        engine = create_engine(DATABASE_URL)
+    except Exception as e:
+        print(f"Warning: Failed to create engine for {DATABASE_URL}: {e}. Falling back to SQLite.")
+        engine = create_engine(LOCAL_DB_PATH, connect_args={"check_same_thread": False})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
