@@ -116,9 +116,12 @@ def restore_all(db=None):
                 db.add(Cliente(nombre=cl_name, genero="Femenino" if cl_name.endswith(('a', 'is', 'el')) else "Masculino"))
             clientes_registrados.add(cl_name)
 
-        # Evitar duplicar movimiento Zelle
+        # Evitar duplicar movimiento Zelle (tolerancia de 2 minutos por formatos de fecha)
+        f_min = m["fecha"] - datetime.timedelta(minutes=2)
+        f_max = m["fecha"] + datetime.timedelta(minutes=2)
         existing_mov = db.query(MovimientoZelle).filter(
-            MovimientoZelle.fecha == m["fecha"],
+            MovimientoZelle.fecha >= f_min,
+            MovimientoZelle.fecha <= f_max,
             MovimientoZelle.monto == m["monto"],
             MovimientoZelle.tipo == m["tipo"]
         ).first()
@@ -140,7 +143,8 @@ def restore_all(db=None):
         # Reconstruir HistorialRemesas si el movimiento era un ingreso por remesa
         if m["tipo"] == "ingreso":
             ex_rem = db.query(HistorialRemesas).filter(
-                HistorialRemesas.fecha == m["fecha"],
+                HistorialRemesas.fecha >= f_min,
+                HistorialRemesas.fecha <= f_max,
                 HistorialRemesas.monto_usd == m["monto"]
             ).first()
 
