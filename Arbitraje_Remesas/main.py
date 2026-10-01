@@ -24,7 +24,7 @@ except ImportError:
 SECRET_KEY = "rhonny_arbitraje_secret_key_super_secure"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
-APP_VERSION = "v182"  # Synchronize operational Zelle balance $64.70 and Genesis Salazar telegram movement
+APP_VERSION = "v183"  # Complete historical restore: 171 Zelle movements, 153 remesas, 42 clients (including full September 2026 dataset)
 
 security = HTTPBearer()
 
@@ -3414,10 +3414,10 @@ def on_startup():
             except Exception as e:
                 print(f"Error unifying Daly Acedo/Acevedo: {e}")
                 
-            # 8. Ensure historical cycles and zelle movements are present
+            # 8. Ensure historical cycles and zelle movements are present (full sync if < 160 records)
             try:
-                if db.query(HistorialCiclos).count() == 0 or db.query(MovimientoZelle).count() == 0:
-                    print("Historical records missing in database. Running auto-restore...")
+                if db.query(HistorialCiclos).count() == 0 or db.query(MovimientoZelle).count() < 160:
+                    print("Historical records missing or incomplete in database. Running full sync...")
                     try:
                         from restore_historical_data import restore_all
                     except ImportError:
