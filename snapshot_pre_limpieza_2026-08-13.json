@@ -1,0 +1,959 @@
+{
+  "timestamp": "2026-08-13T22:52:18.750144",
+  "descripcion": "Snapshot pre-limpieza duplicados Zelle. Capital Zelle=$1554.98. Bug de edicion metodo pago corregido.",
+  "capital": {
+    "items": [
+      {
+        "id": 8,
+        "plataforma": "Banco de Venezuela (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.066
+      },
+      {
+        "id": 2,
+        "plataforma": "Zinli",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.046
+      },
+      {
+        "id": 10,
+        "plataforma": "Banco Mercantil (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.046
+      },
+      {
+        "id": 11,
+        "plataforma": "Bancamiga (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.041
+      },
+      {
+        "id": 13,
+        "plataforma": "Mercantil Panamá (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.025
+      },
+      {
+        "id": 14,
+        "plataforma": "Airtm (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.02
+      },
+      {
+        "id": 15,
+        "plataforma": "Wally (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.02
+      },
+      {
+        "id": 16,
+        "plataforma": "PayPal (USD)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.035
+      },
+      {
+        "id": 4,
+        "plataforma": "Efectivo USD",
+        "saldo_usd": 30.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 30.0,
+        "usd_simulado": 30.0,
+        "comision_simulacion": 0.0
+      },
+      {
+        "id": 1,
+        "plataforma": "Binance (USDT)",
+        "saldo_usd": 581.16,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 581.16,
+        "usd_simulado": 579.7071,
+        "comision_simulacion": 0.0025
+      },
+      {
+        "id": 9,
+        "plataforma": "Banco Provincial (USD)",
+        "saldo_usd": 40.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 40.0,
+        "usd_simulado": 38.36,
+        "comision_simulacion": 0.041
+      },
+      {
+        "id": 12,
+        "plataforma": "Bancamiga (VES)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 3750.0,
+        "convertir_ves": true,
+        "usd_equivalente": 4.8633628481097855,
+        "usd_simulado": 4.639648157096735,
+        "comision_simulacion": 0.046
+      },
+      {
+        "id": 7,
+        "plataforma": "Banco Mercantil (VES)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 0.0,
+        "convertir_ves": true,
+        "usd_equivalente": 0.0,
+        "usd_simulado": 0.0,
+        "comision_simulacion": 0.046
+      },
+      {
+        "id": 6,
+        "plataforma": "Banco Provincial (VES)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 148981.35,
+        "convertir_ves": true,
+        "usd_equivalente": 193.2134300403309,
+        "usd_simulado": 184.32561225847567,
+        "comision_simulacion": 0.046
+      },
+      {
+        "id": 5,
+        "plataforma": "Banco de Venezuela (VES)",
+        "saldo_usd": 0.0,
+        "saldo_ves": 149429.45,
+        "convertir_ves": true,
+        "usd_equivalente": 193.79456947826102,
+        "usd_simulado": 180.0351550453045,
+        "comision_simulacion": 0.071
+      },
+      {
+        "id": 3,
+        "plataforma": "Zelle",
+        "saldo_usd": 1554.98,
+        "saldo_ves": 0.0,
+        "convertir_ves": false,
+        "usd_equivalente": 1554.98,
+        "usd_simulado": 1523.8804,
+        "comision_simulacion": 0.02
+      }
+    ],
+    "totales": {
+      "total_usd": 2206.14,
+      "total_ves": 302160.80000000005,
+      "total_usd_equivalente": 2598.0113623667016,
+      "total_usd_simulado": 2540.947915460877,
+      "tasa_bcv": 771.0714
+    }
+  },
+  "zelle_movimientos": {
+    "items": [
+      {
+        "id": 86,
+        "fecha": "13/08/2026 03:00 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Yelianni Rivas",
+        "detalle": "Remesa ID 88 de Yelianni Rivas",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 93,
+        "fecha": "12/08/2026 09:32 PM",
+        "tipo": "ingreso",
+        "monto": 300.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #102 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 102
+      },
+      {
+        "id": 92,
+        "fecha": "12/08/2026 07:29 PM",
+        "tipo": "ingreso",
+        "monto": 66.17,
+        "titular": "Génesis Salazar",
+        "detalle": "Remesa ID #101 de Génesis Salazar",
+        "estado": "remesado",
+        "remesa_id": 101
+      },
+      {
+        "id": 89,
+        "fecha": "12/08/2026 06:55 PM",
+        "tipo": "ingreso",
+        "monto": 28.93,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #99 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 99
+      },
+      {
+        "id": 90,
+        "fecha": "12/08/2026 06:55 PM",
+        "tipo": "ingreso",
+        "monto": 28.93,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID 99 de Martha Sánchez",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 88,
+        "fecha": "12/08/2026 06:55 PM",
+        "tipo": "ingreso",
+        "monto": 185.07,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID 98 de Martha Sánchez",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 85,
+        "fecha": "12/08/2026 11:43 AM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #96 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 96
+      },
+      {
+        "id": 87,
+        "fecha": "12/08/2026 12:00 AM",
+        "tipo": "ingreso",
+        "monto": 185.07,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #98 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 98
+      },
+      {
+        "id": 84,
+        "fecha": "11/08/2026 03:36 PM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #95 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 95
+      },
+      {
+        "id": 83,
+        "fecha": "11/08/2026 12:44 PM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #94 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 94
+      },
+      {
+        "id": 82,
+        "fecha": "10/08/2026 09:41 PM",
+        "tipo": "ingreso",
+        "monto": 40.0,
+        "titular": "Yenis Gomez",
+        "detalle": "Remesa ID #93 de Yenis Gomez",
+        "estado": "remesado",
+        "remesa_id": 93
+      },
+      {
+        "id": 81,
+        "fecha": "10/08/2026 09:30 PM",
+        "tipo": "ingreso",
+        "monto": 100.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #92 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 92
+      },
+      {
+        "id": 79,
+        "fecha": "10/08/2026 05:22 PM",
+        "tipo": "ingreso",
+        "monto": 230.01,
+        "titular": "Génesis Salazar",
+        "detalle": "Remesa ID #90 de Génesis Salazar",
+        "estado": "remesado",
+        "remesa_id": 90
+      },
+      {
+        "id": 80,
+        "fecha": "10/08/2026 05:22 PM",
+        "tipo": "ingreso",
+        "monto": 94.9,
+        "titular": "Génesis Salazar",
+        "detalle": "Remesa ID #91 de Génesis Salazar",
+        "estado": "remesado",
+        "remesa_id": 91
+      },
+      {
+        "id": 78,
+        "fecha": "09/08/2026 04:22 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Yelianni Rivas",
+        "detalle": "Remesa ID 88 de Yelianni Rivas",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 76,
+        "fecha": "08/08/2026 06:15 PM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Hermagora",
+        "detalle": "Remesa ID #87 de Hermagora",
+        "estado": "remesado",
+        "remesa_id": 87
+      },
+      {
+        "id": 75,
+        "fecha": "07/08/2026 09:37 AM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Solanda Gomez",
+        "detalle": "Remesa ID #86 de Solanda Gomez",
+        "estado": "remesado",
+        "remesa_id": 86
+      },
+      {
+        "id": 74,
+        "fecha": "07/08/2026 09:11 AM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Génesis Salazar",
+        "detalle": "Remesa ID #85 de Génesis Salazar",
+        "estado": "remesado",
+        "remesa_id": 85
+      },
+      {
+        "id": 73,
+        "fecha": "06/08/2026 02:32 PM",
+        "tipo": "ingreso",
+        "monto": 30.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #84 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 84
+      },
+      {
+        "id": 72,
+        "fecha": "06/08/2026 12:20 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Cecilia",
+        "detalle": "Remesa ID #83 de Cecilia",
+        "estado": "remesado",
+        "remesa_id": 83
+      },
+      {
+        "id": 71,
+        "fecha": "05/08/2026 09:41 AM",
+        "tipo": "ingreso",
+        "monto": 170.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #80 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 80
+      },
+      {
+        "id": 64,
+        "fecha": "04/08/2026 09:35 PM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #75 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 75
+      },
+      {
+        "id": 70,
+        "fecha": "04/08/2026 08:58 PM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #79 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 79
+      },
+      {
+        "id": 69,
+        "fecha": "04/08/2026 06:16 PM",
+        "tipo": "egreso",
+        "monto": 1500.0,
+        "titular": "TENDEDEROS SILA LLC",
+        "detalle": "Compra usdt Binance a 1.020",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 68,
+        "fecha": "04/08/2026 01:58 PM",
+        "tipo": "ingreso",
+        "monto": 93.39,
+        "titular": "José Figueroa",
+        "detalle": "Remesa ID #78 de José Figueroa",
+        "estado": "remesado",
+        "remesa_id": 78
+      },
+      {
+        "id": 67,
+        "fecha": "04/08/2026 01:58 PM",
+        "tipo": "ingreso",
+        "monto": 56.6,
+        "titular": "José Figueroa",
+        "detalle": "Remesa ID #77 de José Figueroa",
+        "estado": "remesado",
+        "remesa_id": 77
+      },
+      {
+        "id": 65,
+        "fecha": "04/08/2026 11:31 AM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Yolimar Bastardo",
+        "detalle": "Remesa ID #76 de Yolimar Bastardo",
+        "estado": "remesado",
+        "remesa_id": 76
+      },
+      {
+        "id": 63,
+        "fecha": "03/08/2026 10:43 PM",
+        "tipo": "ingreso",
+        "monto": 27.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #74 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 74
+      },
+      {
+        "id": 62,
+        "fecha": "03/08/2026 09:10 PM",
+        "tipo": "ingreso",
+        "monto": 131.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #73 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 73
+      },
+      {
+        "id": 61,
+        "fecha": "03/08/2026 06:46 PM",
+        "tipo": "egreso",
+        "monto": 909.0,
+        "titular": "Maria Veliz",
+        "detalle": "Compra usdt Binance a 1.020",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 57,
+        "fecha": "03/08/2026 03:14 PM",
+        "tipo": "ingreso",
+        "monto": 100.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #71 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 71
+      },
+      {
+        "id": 53,
+        "fecha": "03/08/2026 01:44 PM",
+        "tipo": "ingreso",
+        "monto": 25.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #70 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 70
+      },
+      {
+        "id": 52,
+        "fecha": "03/08/2026 01:44 PM",
+        "tipo": "ingreso",
+        "monto": 10.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #69 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 69
+      },
+      {
+        "id": 51,
+        "fecha": "03/08/2026 01:27 PM",
+        "tipo": "ingreso",
+        "monto": 140.0,
+        "titular": "José Figueroa",
+        "detalle": "Remesa ID #68 de José Figueroa",
+        "estado": "remesado",
+        "remesa_id": 68
+      },
+      {
+        "id": 49,
+        "fecha": "02/08/2026 09:35 PM",
+        "tipo": "ingreso",
+        "monto": 100.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #67 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 67
+      },
+      {
+        "id": 48,
+        "fecha": "02/08/2026 09:05 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Yenis Gomez",
+        "detalle": "Remesa ID #66 de Yenis Gomez",
+        "estado": "remesado",
+        "remesa_id": 66
+      },
+      {
+        "id": 47,
+        "fecha": "02/08/2026 03:16 PM",
+        "tipo": "ingreso",
+        "monto": 94.27,
+        "titular": "Juan Figueroa",
+        "detalle": "Remesa ID #64 de Juan Figueroa",
+        "estado": "remesado",
+        "remesa_id": 64
+      },
+      {
+        "id": 45,
+        "fecha": "02/08/2026 09:44 AM",
+        "tipo": "egreso",
+        "monto": 1000.0,
+        "titular": "Marian Estrada ",
+        "detalle": "Compra Usdt a 1.020 Binances",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 46,
+        "fecha": "02/08/2026 08:42 AM",
+        "tipo": "ingreso",
+        "monto": 100.0,
+        "titular": "Hermagora",
+        "detalle": "Remesa ID #63 de Hermagora",
+        "estado": "remesado",
+        "remesa_id": 63
+      },
+      {
+        "id": 44,
+        "fecha": "02/08/2026 12:14 AM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #62 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 62
+      },
+      {
+        "id": 43,
+        "fecha": "01/08/2026 07:34 PM",
+        "tipo": "ingreso",
+        "monto": 350.0,
+        "titular": "Enilis Rondon",
+        "detalle": "Remesa ID #61 de Enilis Rondon",
+        "estado": "remesado",
+        "remesa_id": 61
+      },
+      {
+        "id": 42,
+        "fecha": "01/08/2026 05:17 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Yenis Gomez",
+        "detalle": "Remesa ID #60 de Yenis Gomez",
+        "estado": "remesado",
+        "remesa_id": 60
+      },
+      {
+        "id": 41,
+        "fecha": "01/08/2026 01:44 PM",
+        "tipo": "ingreso",
+        "monto": 33.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #59 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 59
+      },
+      {
+        "id": 40,
+        "fecha": "01/08/2026 01:44 PM",
+        "tipo": "ingreso",
+        "monto": 44.53,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #58 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 58
+      },
+      {
+        "id": 39,
+        "fecha": "01/08/2026 01:41 PM",
+        "tipo": "ingreso",
+        "monto": 275.47,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #57 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 57
+      },
+      {
+        "id": 38,
+        "fecha": "01/08/2026 01:06 PM",
+        "tipo": "ingreso",
+        "monto": 60.0,
+        "titular": "Yelianni Rivas",
+        "detalle": "Remesa ID #56 de Yelianni Rivas",
+        "estado": "remesado",
+        "remesa_id": 56
+      },
+      {
+        "id": 37,
+        "fecha": "01/08/2026 09:34 AM",
+        "tipo": "ingreso",
+        "monto": 40.0,
+        "titular": "Yenis Gomez",
+        "detalle": "Remesa ID #55 de Yenis Gomez",
+        "estado": "remesado",
+        "remesa_id": 55
+      },
+      {
+        "id": 36,
+        "fecha": "31/07/2026 07:59 PM",
+        "tipo": "ingreso",
+        "monto": 30.0,
+        "titular": "Yolimar Bastardo",
+        "detalle": "Remesa ID #54 de Yolimar Bastardo",
+        "estado": "remesado",
+        "remesa_id": 54
+      },
+      {
+        "id": 35,
+        "fecha": "31/07/2026 12:25 PM",
+        "tipo": "ingreso",
+        "monto": 220.0,
+        "titular": "José Figueroa",
+        "detalle": "Remesa ID #53 de José Figueroa",
+        "estado": "remesado",
+        "remesa_id": 53
+      },
+      {
+        "id": 32,
+        "fecha": "30/07/2026 03:10 PM",
+        "tipo": "ingreso",
+        "monto": 30.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #51 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 51
+      },
+      {
+        "id": 31,
+        "fecha": "30/07/2026 10:27 AM",
+        "tipo": "ingreso",
+        "monto": 139.18,
+        "titular": "Génesis Salazar",
+        "detalle": "Remesa ID #50 de Génesis Salazar",
+        "estado": "remesado",
+        "remesa_id": 50
+      },
+      {
+        "id": 30,
+        "fecha": "29/07/2026 11:59 PM",
+        "tipo": "ingreso",
+        "monto": 82.0,
+        "titular": "José Figueroa",
+        "detalle": "Remesa ID #49 de José Figueroa",
+        "estado": "remesado",
+        "remesa_id": 49
+      },
+      {
+        "id": 29,
+        "fecha": "29/07/2026 09:12 PM",
+        "tipo": "ingreso",
+        "monto": 245.0,
+        "titular": "Cecilia",
+        "detalle": "Remesa ID #48 de Cecilia",
+        "estado": "remesado",
+        "remesa_id": 48
+      },
+      {
+        "id": 28,
+        "fecha": "29/07/2026 06:08 PM",
+        "tipo": "ingreso",
+        "monto": 25.0,
+        "titular": "Daly Acevedo",
+        "detalle": "Remesa ID #47 de Daly Acevedo",
+        "estado": "remesado",
+        "remesa_id": 47
+      },
+      {
+        "id": 27,
+        "fecha": "29/07/2026 05:32 PM",
+        "tipo": "ingreso",
+        "monto": 98.0,
+        "titular": "Daly Acevedo",
+        "detalle": "Remesa ID #46 de Daly Acevedo",
+        "estado": "remesado",
+        "remesa_id": 46
+      },
+      {
+        "id": 26,
+        "fecha": "29/07/2026 11:20 AM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Gregorio Ramos",
+        "detalle": "Remesa ID #45 de Gregorio Ramos",
+        "estado": "remesado",
+        "remesa_id": 45
+      },
+      {
+        "id": 25,
+        "fecha": "28/07/2026 02:56 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Daly Acevedo",
+        "detalle": "Remesa ID #44 de Daly Acevedo",
+        "estado": "remesado",
+        "remesa_id": 44
+      },
+      {
+        "id": 24,
+        "fecha": "26/07/2026 11:51 AM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Yelianni Rivas",
+        "detalle": "Remesa ID #43 de Yelianni Rivas",
+        "estado": "remesado",
+        "remesa_id": 43
+      },
+      {
+        "id": 23,
+        "fecha": "26/07/2026 11:31 AM",
+        "tipo": "ingreso",
+        "monto": 28.0,
+        "titular": "Martha Sánchez",
+        "detalle": "Remesa ID #42 de Martha Sánchez",
+        "estado": "remesado",
+        "remesa_id": 42
+      },
+      {
+        "id": 22,
+        "fecha": "26/07/2026 08:30 AM",
+        "tipo": "ingreso",
+        "monto": 90.0,
+        "titular": "José Figueroa",
+        "detalle": "Remesa ID #41 de José Figueroa",
+        "estado": "remesado",
+        "remesa_id": 41
+      },
+      {
+        "id": 21,
+        "fecha": "25/07/2026 10:31 AM",
+        "tipo": "ingreso",
+        "monto": 25.0,
+        "titular": "José Urbaez",
+        "detalle": "Remesa ID #40 de José Urbaez",
+        "estado": "remesado",
+        "remesa_id": 40
+      },
+      {
+        "id": 20,
+        "fecha": "24/07/2026 10:07 PM",
+        "tipo": "ingreso",
+        "monto": 25.0,
+        "titular": "Roselis Granda",
+        "detalle": "Remesa ID #39 de Roselis Granda",
+        "estado": "remesado",
+        "remesa_id": 39
+      },
+      {
+        "id": 19,
+        "fecha": "24/07/2026 07:25 PM",
+        "tipo": "ingreso",
+        "monto": 100.0,
+        "titular": "Daly Acevedo",
+        "detalle": "Remesa ID #38 de Daly Acevedo",
+        "estado": "remesado",
+        "remesa_id": 38
+      },
+      {
+        "id": 18,
+        "fecha": "24/07/2026 05:01 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Diana Delgado",
+        "detalle": "Remesa ID #37 de Diana Delgado",
+        "estado": "remesado",
+        "remesa_id": 37
+      },
+      {
+        "id": 14,
+        "fecha": "24/07/2026 10:20 AM",
+        "tipo": "ingreso",
+        "monto": 30.0,
+        "titular": "Virdelva Gonzalez",
+        "detalle": "Remesa ID 34 de Virdelva Gonzalez",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 13,
+        "fecha": "23/07/2026 10:37 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Hermagora",
+        "detalle": "Remesa ID 33 de Hermagora",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 16,
+        "fecha": "23/07/2026 12:00 AM",
+        "tipo": "egreso",
+        "monto": 80.0,
+        "titular": "Roselis Granda",
+        "detalle": "Alquiler de Cuenta Zelle",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 12,
+        "fecha": "22/07/2026 04:49 PM",
+        "tipo": "ingreso",
+        "monto": 20.0,
+        "titular": "Solanda Gomez",
+        "detalle": "Remesa ID 32 de Solanda Gomez",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 15,
+        "fecha": "22/07/2026 12:00 AM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Maria Padilla",
+        "detalle": "Remesa Maryan Cita medita  [Remesado - Remesa ID #35] [Remesado - Remesa ID #52]",
+        "estado": "remesado",
+        "remesa_id": 52
+      },
+      {
+        "id": 10,
+        "fecha": "21/07/2026 07:35 PM",
+        "tipo": "egreso",
+        "monto": 1000.0,
+        "titular": "Eduardo Davila",
+        "detalle": "Compra de USDT  1 A 1",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 11,
+        "fecha": "21/07/2026 07:16 PM",
+        "tipo": "ingreso",
+        "monto": 60.0,
+        "titular": "Génesis Salazar",
+        "detalle": "Remesa ID 31 de Génesis Salazar",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 6,
+        "fecha": "21/07/2026 01:43 PM",
+        "tipo": "ingreso",
+        "monto": 90.0,
+        "titular": "Lismar ",
+        "detalle": "Remesa ID 30 de Lismar ",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 5,
+        "fecha": "20/07/2026 09:31 PM",
+        "tipo": "ingreso",
+        "monto": 50.0,
+        "titular": "Daly Acevedo",
+        "detalle": "Remesa ID 29 de Daly Acevedo",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 4,
+        "fecha": "20/07/2026 08:21 PM",
+        "tipo": "ingreso",
+        "monto": 280.0,
+        "titular": "Hermagora",
+        "detalle": "Remesa ID 28 de Hermagora",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 1,
+        "fecha": "19/07/2026 10:28 PM",
+        "tipo": "ingreso",
+        "monto": 200.0,
+        "titular": "Enilis Rondon",
+        "detalle": "Remesa ID 27 de Enilis Rondon",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 3,
+        "fecha": "19/07/2026 11:57 AM",
+        "tipo": "ingreso",
+        "monto": 30.0,
+        "titular": "Enilis Rondon",
+        "detalle": "Remesa ID 24 de Enilis Rondon",
+        "estado": "completado",
+        "remesa_id": null
+      },
+      {
+        "id": 2,
+        "fecha": "13/07/2026 11:10 PM",
+        "tipo": "ingreso",
+        "monto": 100.0,
+        "titular": "Enilis Rondon",
+        "detalle": "Remesa ID 5 de Enilis Rondon",
+        "estado": "completado",
+        "remesa_id": null
+      }
+    ],
+    "summary": {
+      "saldo_actual": 1554.98,
+      "weekly_ingresos": 1399.08,
+      "weekly_egresos": 0,
+      "pendientes_remesar_usd": 0,
+      "daily_ingresos": 50.0,
+      "monthly_ingresos": 3679.34,
+      "daily_egresos": 0,
+      "monthly_egresos": 3409.0
+    }
+  }
+}
